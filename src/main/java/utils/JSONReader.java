@@ -1,6 +1,5 @@
 package utils;
 
-
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
@@ -11,15 +10,13 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import entities.BaseEntity;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -64,9 +61,9 @@ public class JSONReader {
         try {
             jsonToObject = gson.fromJson(new JsonReader(new FileReader(file)), clazz);
         } catch (JsonSyntaxException e){
-            List<String> objects = Files.readAllLines(Paths.get(file.getAbsolutePath()));
+            List<String> objects = FileUtils.readLines(file);
             objects.removeAll(Collections.singleton(""));
-            String jsonAsString = "["+ Joiner.on(",").join(objects)+"]";
+            String jsonAsString = "["+Joiner.on(",").join(objects)+"]";
             jsonToObject = gson.fromJson(jsonAsString, clazz);
         }
         List<T> result = new ArrayList<>(Arrays.asList(jsonToObject));
@@ -82,7 +79,7 @@ public class JSONReader {
         try {
             jsonToObject = gson.fromJson(new JsonReader(new FileReader(file)), type);
         } catch (JsonSyntaxException e) {
-            List<String> objects = Files.readAllLines(Paths.get(file.getAbsolutePath()));
+            List<String> objects = FileUtils.readLines(file);
             objects.removeAll(Collections.singleton(""));
             String jsonAsString = "[" + Joiner.on(",").join(objects) + "]";
             jsonToObject = gson.fromJson(jsonAsString, type);
