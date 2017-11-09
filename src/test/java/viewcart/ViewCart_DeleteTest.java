@@ -54,9 +54,10 @@ public class ViewCart_DeleteTest extends BaseTest {
         if (type == ProductTypes.MONITOR) // no default value for monitor - user have to select type before Adding to cart
             MonitorPage.Instance.selectMonitorType("One Person");
 
-        bp.clickAddToCart();
+        if (type == ProductTypes.DRAPES) // user must select color before adding to cart
+            DrapesPage.Instance.selectDrapesColor("Teak");
 
-        home.header.clickOnViewCartButton();
+        bp.clickAddToCart();
 
         // check item in viewcart
         Assert.assertTrue(viewcart.itemDisplayedOnViewCartPage(type.toString()),  "Item was not displayed in cart");

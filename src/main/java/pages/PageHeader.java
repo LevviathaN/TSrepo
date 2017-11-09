@@ -3,8 +3,10 @@ package pages;
 import entities.ItemEntity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utils.FileIO;
 import utils.Tools;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +26,9 @@ public class PageHeader extends BasePage {
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
-    By topMenuItem_FAQ = By.xpath(".//*[@class='help-number-wrapper']//a[contains(text(),' HELP')]");
+    By topMenuItem_FAQ = By.xpath("(//A[@href='https://www.tomorrowsleep.com/FAQ'][text()=' HELP'][text()=' HELP'])[1]");
     By topMenuItem_SignIn = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign In')]");
+    By topMenuItem_SignInStage = By.xpath("//ul[@class='header links']//a[contains(text(),'Account')]");
     By topMenuItem_Reviews = By.xpath("(//SPAN[text()='REVIEWS'][text()='REVIEWS'])[1]");
     By topMenuItem_Account = By.xpath("//ul[@class='header links']//span[text()='Account']");
     By topMenuItem_SignOut = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign Out')]");
@@ -47,6 +50,7 @@ public class PageHeader extends BasePage {
     By closeCartButton = By.id("btn-minicart-close");
     By cartQtyIndex = By.cssSelector("span.counter-number");
     By LOADING_SPINNER = By.cssSelector("div.fotorama__spinner");
+    By closeImproveWindow = By.xpath("//DIV[@class='close mteo-close']");
 
     PageHeader() {
         waitForPageToLoad();
@@ -188,6 +192,9 @@ public class PageHeader extends BasePage {
         reporter.info("Click on Checkout button");
         openCart();
         clickOnElement(cartCheckoutButton);
+        if (isElementPresent(closeImproveWindow)){
+            clickOnElement(closeImproveWindow);
+        }
         return CheckoutPage.Instance;
     }
 
