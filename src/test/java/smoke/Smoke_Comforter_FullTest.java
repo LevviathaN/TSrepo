@@ -15,8 +15,6 @@ import utils.EntitiesFactory;
 import utils.FileIO;
 import utils.ProductSync;
 
-import java.io.File;
-
 public class Smoke_Comforter_FullTest extends BaseTest {
 
     @Test
@@ -44,24 +42,13 @@ public class Smoke_Comforter_FullTest extends BaseTest {
         
         ProductSync.uncheck(ProductTypes.COMFORTER);
 
-        // check item in minicart
+        // check item in cart
         Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
 
+        home.header.clickOnCheckoutButton();
 
         //check item displayed in order
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            home.header.clickOnViewCartButton();
-            Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-            home.header.clickOnCheckoutButton();
-            Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
-        }
-
-        //check item in full cart
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")) {
-            home.header.clickOnViewCartButton();
-            Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-            home.header.clickOnCheckoutButton();
-        }
+        Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);
@@ -72,9 +59,7 @@ public class Smoke_Comforter_FullTest extends BaseTest {
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
 
         //check item in final order
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
-        }
+        Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
 
     }
 }

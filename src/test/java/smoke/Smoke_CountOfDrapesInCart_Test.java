@@ -40,12 +40,10 @@ public class Smoke_CountOfDrapesInCart_Test extends BaseTest {
         DrapesPage drapesPage= shopPage.clickOnShopOurDrapesButton();
 
         //filling the cart with different types and count of drapes
-        drapesPage.selectDrapesSize(defaultSheet.getSize())
-            .selectDrapesColor(defaultSheet.getType()).clickAddToCart();
+        drapesPage.selectDrapesColor(defaultSheet.getType()).clickAddToCart();
         drapesPage.open();
 
-        drapesPage.selectDrapesSize(defaultSheet.getSize())
-                .selectDrapesColor(defaultSheet.getType()).clickAddToCart();
+        drapesPage.selectDrapesColor(defaultSheet.getType()).clickAddToCart();
         drapesPage.open();
 
         //checking if items were added and counted normally
