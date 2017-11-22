@@ -19,9 +19,11 @@ public class HomePage extends BasePage{
 
     /** UI Mappings */
 
-    By shopOurMattressButton = By.xpath("(//a[text()='Shop Our Hybrid Mattress'])[1]");
+    By shopOurMattressButton = By.xpath("//A[@class='shop-button'][text()='Shop Our Hybrid\n" +
+            "                            Mattress']");
     By shopOurMonitorButton = By.xpath("(//a[text()='Shop Our Monitor'])[1]");
-    By shopFoamPillowButton = By.xpath("(//a[text()='Shop Our Pillow'])[1]");
+    By shopFoamPillowButton = By.xpath("(//A[@class='shop-button'][text()='Shop Our\n" +
+            "                            Pillow']");
     /** Page Methods */
 
     public MattressesPage clickOnShopOurMattressButton() {
@@ -31,12 +33,13 @@ public class HomePage extends BasePage{
         return MattressesPage.Instance;
     }
 
-    public MonitorPage clickOnShopOurMonitorButton() {
-        reporter.info("Click on Shop Our Monitor");
-        scrollToShopElement(driver().findElement(shopOurMonitorButton));
-        findElement(shopOurMonitorButton).click();
-        return MonitorPage.Instance;
-    }
+    //  homepage layout was cganged
+//    public MonitorPage clickOnShopOurMonitorButton() {
+//        reporter.info("Click on Shop Our Monitor");
+//        scrollToShopElement(driver().findElement(shopOurMonitorButton));
+//        findElement(shopOurMonitorButton).click();
+//        return MonitorPage.Instance;
+//    }
 
     public FoamPillowPage clickOnShopFoamPillowButton() {
         reporter.info("Click on Shop Our Pillow");

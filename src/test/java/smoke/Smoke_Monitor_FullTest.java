@@ -6,10 +6,7 @@ import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.CheckoutReviewPage;
-import pages.HomePage;
-import pages.ViewCartPage;
+import pages.*;
 import utils.BaseTest;
 import utils.EntitiesFactory;
 import utils.FileIO;
@@ -34,7 +31,9 @@ public class Smoke_Monitor_FullTest extends BaseTest {
         //open home page and add Monitor to cart
         home.open();
         ProductSync.check(ProductTypes.MONITOR);
-        home.clickOnShopOurMonitorButton()
+        ShopPage shopPage = home.header.clickShopMenuItem();
+
+        shopPage.clickOnShopOurMonitorButton()
                 .selectMonitorType(item.getType())
                 .clickAddToCart();
         home.header.clickShopMenuItem();
@@ -44,32 +43,20 @@ public class Smoke_Monitor_FullTest extends BaseTest {
         Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            home.header.clickOnViewCartButton();
-            Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-            home.header.clickOnCheckoutButton();
-            Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
-        }
+        home.header.clickOnViewCartButton();
+        Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
+        home.header.clickOnCheckoutButton();
 
-        //check item in full cart
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")) {
-            home.header.clickOnViewCartButton();
-            Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-            home.header.clickOnCheckoutButton();
-        }
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);
-        checkout.selectFreeShipping();
-        checkout.clickNextButton();
 
         //check Order Review page was opened
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
 
         //check item in final order
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
-        }
+        Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
+
 
     }
 }

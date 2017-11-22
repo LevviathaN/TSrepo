@@ -9,7 +9,10 @@ import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.logging.Level;
 
 /**
@@ -61,17 +64,51 @@ public class DriverProvider {
 
     }
 
-    public static WebDriver getDriver() {
+    static public RemoteWebDriver getMobileSafari() throws MalformedURLException {
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("udid", "auto");
+        capabilities.setCapability("deviceName", "iPhone 6s");
+        capabilities.setCapability("platformName", "ios");
+        capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability(CapabilityType.BROWSER_NAME, "safari");
+        capabilities.setCapability("startIWDP", "true");
+        capabilities.setCapability("ensureCleanSession", true);
+        capabilities.setCapability("newCommandTimeout", 300);
+
+        return new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+
+    }
+
+    static public RemoteWebDriver getMobileChrome() throws MalformedURLException{
+
+        DesiredCapabilities capabilities= new DesiredCapabilities();
+        capabilities.setCapability("device","Android");
+        capabilities.setCapability("udid", "ZX1G22NWL2");
+        capabilities.setCapability("platformVersion", "7.1.1");
+        capabilities.setCapability("deviceName", "Android");
+        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("browserName", "Chrome");
+        capabilities.setCapability("newCommandTimeout", 300);
+
+        return new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+    }
+
+    public static WebDriver getDriver() throws MalformedURLException {
         //if (instance == null)
         if (instance.get() == null)
             if (getCurrentBrowserName().equals(BrowserType.FIREFOX)) {
                 //instance = getFirefox();
                 instance.set(getFirefox());
             }
-            else{
+            else if (getCurrentBrowserName().equals(BrowserType.CHROME)){
                 //instance = getChrome();
                 instance.set(getChrome());
             }
+            else if (getCurrentBrowserName().equals("ios"))
+                instance.set(getMobileSafari());
+            else if (getCurrentBrowserName().equals("android"))
+                instance.set(getMobileChrome());
 
         //return instance;
         return instance.get();
@@ -88,8 +125,12 @@ public class DriverProvider {
         if (BROWSER_TYPE == null)
             if (FileIO.getConfigProperty("Driver").equals("firefox"))
                 BROWSER_TYPE = BrowserType.FIREFOX;
-            else
+            else if (FileIO.getConfigProperty("Driver").equals("chrome"))
                 BROWSER_TYPE = BrowserType.CHROME;
+            else if (FileIO.getConfigProperty("Driver").equals("safari"))
+                BROWSER_TYPE = "ios";
+            else
+                BROWSER_TYPE = "android";
         return BROWSER_TYPE;
     }
 }

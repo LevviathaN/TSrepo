@@ -3,10 +3,13 @@ package pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.DataProvider;
+import utils.DriverProvider;
 import utils.FileIO;
 import utils.ReporterManager;
 import utils.Tools;
@@ -94,7 +97,8 @@ public class BasePage {
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
         if (FileIO.getConfigProperty("EnvType").equals("Staging")){
             driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
-        }else {
+        }
+        else {
             driver().get(BASE_URL + pageURL);
         }
         //driver().manage().window().maximize();
@@ -407,6 +411,10 @@ public class BasePage {
             waitForElement(By.xpath("//SPAN[@class='close-button']"));
             findElement(By.xpath("//SPAN[@class='close-button']")).click();
         return HomePage.Instance;
+    }
+
+    public void tapOnElement(By by){
+        new TouchAction((PerformsTouchActions) driver()).tap(findElement(by)).perform();
     }
 
 }

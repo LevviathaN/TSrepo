@@ -125,28 +125,27 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutReviewPage clickNextButton(){
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
-            reporter.info("Click on Next button");
-            scrollToElement(driver().findElement(continueButton));
-            waitForElement(continueButton);
-            clickOnElement(continueButton);
-        }
-        return CheckoutReviewPage.Instance;
-    }
-
-    public CheckoutReviewPage selectFreeShipping(){
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
-            reporter.info("Selecting Free Shipping option");
-            scrollToElement(driver().findElement(freeShippingRadioButton));
-            waitForElement(freeShippingRadioButton);
-            findElement(freeShippingRadioButton).click();
-        }
-        return CheckoutReviewPage.Instance;
-    }
+//    public CheckoutReviewPage clickNextButton(){
+//        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
+//            reporter.info("Click on Next button");
+//            scrollToElement(driver().findElement(continueButton));
+//            waitForElement(continueButton);
+//            clickOnElement(continueButton);
+//        }
+//        return CheckoutReviewPage.Instance;
+//    }
+//
+//    public CheckoutReviewPage selectFreeShipping(){
+//        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
+//            reporter.info("Selecting Free Shipping option");
+//            scrollToElement(driver().findElement(freeShippingRadioButton));
+//            waitForElement(freeShippingRadioButton);
+//            findElement(freeShippingRadioButton).click();
+//        }
+//        return CheckoutReviewPage.Instance;
+//    }
 
     public CheckoutPage populateAllCheckoutFields(UserEntity user) {
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")) {
             this.setEmail(user.getContacts().getEmail())
                     .setFirstName(user.getFirstname())
                     .setLastName(user.getLastname())
@@ -157,19 +156,6 @@ public class CheckoutPage extends BasePage {
                     .selectRegion(user.getAddress().getRegion())
                     .setPostcode(user.getAddress().getZip())
                     .setPhone(user.getContacts().getPhone());
-        }
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            this.setEmail(user.getContacts().getEmail())
-                    .setFirstName(user.getFirstname())
-                    .setLastName(user.getLastname())
-                    .setCompany(user.getContacts().getCompany())
-                    .setStreet(user.getAddress().getStreet())
-                    .setStreet2(user.getAddress().getStreet_2())
-                    .setCity(user.getAddress().getCity())
-                    .selectRegion(user.getAddress().getRegion())
-                    .setPostcode(user.getAddress().getZip())
-                    .setPhone(user.getContacts().getPhone());
-        }
         return this;
     }
 

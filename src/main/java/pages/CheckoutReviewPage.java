@@ -30,8 +30,8 @@ public class CheckoutReviewPage extends BasePage{
 
     //order list
 
-    By orderItems = By.cssSelector("div.block.items-in-cart ol.minicart-items li.product-item");
-    By orderItemName = By.cssSelector("strong.product-item-name");
+    By orderItems = By.xpath("//LI[@class='product-item']");
+    By orderItemName = By.cssSelector("div.product-item-name-block");
     By orderItemQty = By.cssSelector("div.details-qty span.value");
     By orderItemPrice = By.cssSelector("span.cart-price");
     By orderItemDetails= By.cssSelector("dl.item-options span");

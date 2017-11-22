@@ -1,12 +1,14 @@
 package pages;
 
 import entities.ItemEntity;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.FileIO;
 import utils.Tools;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +54,9 @@ public class PageHeader extends BasePage {
     By LOADING_SPINNER = By.cssSelector("div.fotorama__spinner");
     By closeImproveWindow = By.xpath("//DIV[@class='close mteo-close']");
 
+    By menuMobile = By.xpath("(//span[@class='action nav-toggle'])[1]");
+    By menuItem_Shop_Mobile = By.xpath("//li[@class='ui-menu-item all-category']");
+
     PageHeader() {
         waitForPageToLoad();
     }
@@ -65,7 +70,14 @@ public class PageHeader extends BasePage {
 
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");
-        clickOnElement(topMenuItem_Shop);
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(menuMobile);
+            findElement(menuMobile).click();
+            waitForElement(menuItem_Shop_Mobile);
+            findElement(menuItem_Shop_Mobile).click();
+        }
+
+        else clickOnElement(topMenuItem_Shop);
         return ShopPage.Instance;
     }
 

@@ -84,7 +84,7 @@ public class ShopPage extends BasePage{
 
     public DrapesPage clickOnShopOurDrapesButton() {
         reporter.info("Click on Shop Our Drapes");
-        scrollToShopElement(driver().findElement(shopOurDrapesButton));
+        //scrollToShopElement(driver().findElement(shopOurDrapesButton));
         findElement(shopOurDrapesButton).click();
         return DrapesPage.Instance;
     }

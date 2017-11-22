@@ -36,7 +36,8 @@ public class Smoke_Drapes_FullTest extends BaseTest {
                 DrapesPage.Instance.selectDrapesSize(item.getSize())
                 .selectDrapesColor(item.getType())
                 .clickAddToCart();
-        home.header.clickShopMenuItem();
+        if (FileIO.getConfigProperty("device").equals("mobile")) home.open();
+        else home.header.clickShopMenuItem();
 
         ProductSync.uncheck(ProductTypes.DRAPES);
 
@@ -44,32 +45,19 @@ public class Smoke_Drapes_FullTest extends BaseTest {
         Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            home.header.clickOnViewCartButton();
-            Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-            home.header.clickOnCheckoutButton();
-            Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
-        }
+        home.header.clickOnViewCartButton();
+        Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
+        home.header.clickOnCheckoutButton();
 
-        //check item in full cart
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")) {
-            home.header.clickOnViewCartButton();
-            Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-            home.header.clickOnCheckoutButton();
-        }
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);
-        checkout.selectFreeShipping();
-        checkout.clickNextButton();
 
         //check Order Review page was opened
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
 
         //check item in final order
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")){
-            Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
-        }
+         Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
 
     }
 }

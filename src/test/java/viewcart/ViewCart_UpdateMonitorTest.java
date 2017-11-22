@@ -30,7 +30,9 @@ public class ViewCart_UpdateMonitorTest extends BaseTest {
         //open home page and add Monitor to cart
         home.open();
         ProductSync.check(ProductTypes.MONITOR);
-        home.clickOnShopOurMonitorButton()
+        ShopPage shopPage = home.header.clickShopMenuItem();
+
+        shopPage.clickOnShopOurMonitorButton()
                 .selectMonitorType(item.getType())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.MONITOR);
