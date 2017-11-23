@@ -1,8 +1,7 @@
 package pages;
 
 import entities.ItemEntity;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -19,11 +19,9 @@ public class HomePage extends BasePage{
 
     /** UI Mappings */
 
-    By shopOurMattressButton = By.xpath("//A[@class='shop-button'][text()='Shop Our Hybrid\n" +
-            "                            Mattress']");
+    By shopOurMattressButton = By.xpath("(//a[@class='shop-button'])[1]");
     By shopOurMonitorButton = By.xpath("(//a[text()='Shop Our Monitor'])[1]");
-    By shopFoamPillowButton = By.xpath("(//A[@class='shop-button'][text()='Shop Our\n" +
-            "                            Pillow']");
+    By shopFoamPillowButton = By.xpath("(//a[@class='shop-button'])[2]");
     /** Page Methods */
 
     public MattressesPage clickOnShopOurMattressButton() {
