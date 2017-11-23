@@ -46,7 +46,7 @@ public class AccountPage extends LoginPage {
 
     By userNameLocator = By.xpath(" //DIV[@class='box box-information']");
     By editAccountButton = By.xpath("(//A[@class='action edit'])[1]");
-    By changePasswordButton = By.xpath("//A[@href='https://www.tomorrowsleep.com/customer/account/edit/changepass/1/']");
+    By changePasswordButton = By.xpath("//a[@class='action change-password']");
 
     By subscriptionLocator = By.xpath("(//DIV[@class='box-content'])[2]");
     By editSubscriptionButton = By.xpath("(//A[@class='action edit'])[2]");
@@ -94,7 +94,7 @@ public class AccountPage extends LoginPage {
     //My Reviews Elements todo blank page issue
 
     //Newsletter elements todo
-    By subscriptionCheckbox = By.id("subscription");
+    By subscriptionCheckbox = By.xpath("//SPAN[text()='General Subscription']");
     By subscriptionSaveButton = By.xpath("//SPAN[text()='Save']");
     By removeSubscriptionSuccessMessage = By.xpath("//DIV[@data-bind='html: message.text'][text()='We removed the subscription.']");
     By enableSubscriptionSuccessMessage = By.xpath("//DIV[@data-bind='html: message.text'][text()='We saved the subscription.']");
@@ -377,6 +377,7 @@ public class AccountPage extends LoginPage {
             findElement(subscriptionCheckbox).click();
             findElement(subscriptionSaveButton).click();
             reporter.info("Removing subscription");
+            waitForElement(removeSubscriptionSuccessMessage);
             Assert.assertTrue(findElement(removeSubscriptionSuccessMessage).isDisplayed(), "Failed to remove subscription");
         }
         else {
@@ -384,6 +385,7 @@ public class AccountPage extends LoginPage {
             findElement(subscriptionCheckbox).click();
             findElement(subscriptionSaveButton).click();
             reporter.info("Enabling subscription");
+            waitForElement(enableSubscriptionSuccessMessage);
             Assert.assertTrue(findElement(enableSubscriptionSuccessMessage).isDisplayed(), "Failed to enable subscription");
         }
     }
