@@ -1,8 +1,6 @@
 package pages;
 
 import entities.ItemEntity;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,7 +22,8 @@ public class PageHeader extends BasePage {
     private static PageHeader instance;
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
     //top menu
-    By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
+    //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
+    By topMenuItem_Shop = By.id("ui-id-2");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
@@ -259,7 +258,7 @@ public class PageHeader extends BasePage {
 
     public void openMenuByItemName(String itemName) {
         hoverItem(topMenuItem_Shop);
-        clickOnElement(By.xpath("//a[@role='menuitem']/span[text()='" + itemName + "']"));
+        clickOnElement(By.xpath("//a[@role='menuitem']/p[text()='" + itemName + "']"));
     }
 
     public boolean waitUntilItemWillBeDropedToCart() {
