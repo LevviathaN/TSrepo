@@ -1,10 +1,6 @@
 package pages;
 
 import entities.ItemEntity;
-<<<<<<< HEAD
-=======
-
->>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
