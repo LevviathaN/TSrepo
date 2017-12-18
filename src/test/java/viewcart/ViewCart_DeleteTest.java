@@ -18,10 +18,10 @@ public class ViewCart_DeleteTest extends BaseTest {
                 {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
                 {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
                 {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Foam Pillow"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Memory Foam Pillow"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheets"},
-                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"}
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"}
 
 //                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
 //                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },

@@ -3,6 +3,7 @@ package pages;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utils.FileIO;
 
 import java.util.List;
 
@@ -86,6 +87,15 @@ public class ReviewsRating extends BasePage {
     By nextButton = By.xpath("//BUTTON[text()='Next »']");
     By previousButton = By.xpath("//BUTTON[text()='« Previous']");
 
+    By topSelector = By.id("previews-top-bar-custom");
+    By selectMonitor = By.className("tracker ");
+    By selectComforter = By.className("comforter ");
+    By selectFoam = By.className("fpillow ");
+    By selectPlush = By.className("hpillow ");
+    By selectSheets = By.className("sheets ");
+    By selectProtector = By.className("cover ");
+    By selectDrapes = By.className("drapes ");
+
 
     /*
      * Page Methods
@@ -93,15 +103,28 @@ public class ReviewsRating extends BasePage {
 
     //  Top menu bar methods
 
-    public ReviewsRating clickOnMattressReviewButton() {
+    public ReviewsRating    clickOnMattressReviewButton() {
         reporter.info("Click on Mattress review button");
-        scrollToElement(driver().findElement(topBarMattress));
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            //waitForElement(topSelector);
+            //findElement(topSelector).click();
+            return this;
+        }
+        else scrollToElement(driver().findElement(topBarMattress));
         findElement(topBarMattress).click();
         return this;
     }
 
     public ReviewsRating clickOnMonitorReviewButton() {
         reporter.info("Click on Monitor review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectMonitor));
+            findElement(selectMonitor).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarMonitor));
         findElement(topBarMonitor).click();
         return this;
@@ -109,6 +132,14 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnComforterReviewButton() {
         reporter.info("Click on Comforter review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectComforter));
+            findElement(selectComforter).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarComforter));
         findElement(topBarComforter).click();
         return this;
@@ -116,6 +147,14 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnFoamPillowReviewButton() {
         reporter.info("Click on Foam Pillow review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectFoam));
+            findElement(selectFoam).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarFoamPillow));
         findElement(topBarFoamPillow).click();
         return this;
@@ -123,6 +162,14 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnPlushPillowReviewButton() {
         reporter.info("Click on Plush Pillow review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectPlush));
+            findElement(selectPlush).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarPlushPillow));
         findElement(topBarPlushPillow).click();
         return this;
@@ -130,6 +177,14 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnSheetsReviewButton() {
         reporter.info("Click on Sheets review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectSheets));
+            findElement(selectSheets).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarSheets));
         findElement(topBarSheets).click();
         return this;
@@ -137,6 +192,14 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnProtectorReviewButton() {
         reporter.info("Click on Protector review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectProtector));
+            findElement(selectProtector).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarProtector));
         findElement(topBarProtector).click();
         return this;
@@ -144,6 +207,14 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnDrapesReviewButton() {
         reporter.info("Click on Drapes review button");
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(topSelector);
+            scrollToElement(driver().findElement(topSelector));
+            findElement(topSelector).click();
+            scrollToElement(driver().findElement(selectDrapes));
+            findElement(selectDrapes).click();
+            return this;
+        }
         scrollToElement(driver().findElement(topBarDrapes));
         findElement(topBarDrapes).click();
         return this;
@@ -179,6 +250,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 5 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar5));
             findElement(filterBar5).click();
             reporter.info("Click on 5 stars filter bar");
         }
@@ -189,6 +261,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 4 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar4));
             findElement(filterBar4).click();
             reporter.info("Click on 4 stars filter bar");
         }
@@ -199,6 +272,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 3 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar3));
             findElement(filterBar3).click();
             reporter.info("Click on 3 stars filter bar");
         }
@@ -209,6 +283,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 2 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar2));
             findElement(filterBar2).click();
             reporter.info("Click on 2 stars filter bar");
         }
@@ -219,6 +294,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 1 star filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar1));
             findElement(filterBar1).click();
             reporter.info("Click on 1 star filter bar");
         }

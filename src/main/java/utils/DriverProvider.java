@@ -84,8 +84,8 @@ public class DriverProvider {
 
         DesiredCapabilities capabilities= new DesiredCapabilities();
         capabilities.setCapability("device","Android");
-        capabilities.setCapability("udid", "ZX1G22NWL2");
-        capabilities.setCapability("platformVersion", "7.1.1");
+        capabilities.setCapability("udid", "HT5BJBE00844");
+        capabilities.setCapability("platformVersion", "6.0.1");
         capabilities.setCapability("deviceName", "Android");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("browserName", "Chrome");

@@ -72,7 +72,7 @@ public class Smoke_FAQ_FullTest extends BaseTest {
         faq.open();
 
         // Verify Support chat window for persistence
-        faq.clickOnfaqChatSupport();
+//        faq.clickOnfaqChatSupport();
 //        Assert.assertTrue(faq.getFaqChatSupportInputWindow().contains("Send Message"), "Failed to open");
 //        faq.open();
 

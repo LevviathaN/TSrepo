@@ -15,13 +15,13 @@ public class ViewCart_ChangeQuantityTest extends BaseTest {
     public Object[][] provider () throws Exception {
         return new Object[][]{
                 {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Foam Pillow"},
-                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Memory Foam Pillow"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"},
                 {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
                 {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
                 {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheets"}
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"}
 //                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
 //                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
 //                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },

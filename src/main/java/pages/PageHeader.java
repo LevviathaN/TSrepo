@@ -27,7 +27,7 @@ public class PageHeader extends BasePage {
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
-    By topMenuItem_FAQ = By.xpath("(//A[@href='https://www.tomorrowsleep.com/FAQ'][text()=' HELP'][text()=' HELP'])[1]");
+    By topMenuItem_FAQ = By.xpath("(//A[@href='https://www.tomorrowsleep.com/FAQ'][text()=' FAQ'][text()=' FAQ'])[1]");
     By topMenuItem_SignIn = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign In')]");
     By topMenuItem_SignInStage = By.xpath("//ul[@class='header links']//a[contains(text(),'Account')]");
     By topMenuItem_Reviews = By.xpath("(//SPAN[text()='REVIEWS'][text()='REVIEWS'])[1]");
@@ -55,6 +55,8 @@ public class PageHeader extends BasePage {
 
     By menuMobile = By.xpath("(//span[@class='action nav-toggle'])[1]");
     By menuItem_Shop_Mobile = By.xpath("//li[@class='ui-menu-item all-category']");
+    By menuItem_FAQ_Mobile = By.xpath("//li[@class='level0 level-top']");
+    By menuItem_Reviews_Mobile = By.xpath("//li[@class='level0 nav-6 last level-top']");
 
     PageHeader() {
         waitForPageToLoad();
@@ -100,13 +102,28 @@ public class PageHeader extends BasePage {
 
     public ReviewsPage clickReviewsMenuItem(){
         reporter.info("Click on REVIEW menu item");
-        clickOnElement(topMenuItem_Reviews);
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(menuMobile);
+            findElement(menuMobile).click();
+
+            waitForElement(menuItem_Reviews_Mobile);
+            scrollToElement(driver().findElement(menuItem_Reviews_Mobile));
+            findElement(menuItem_Reviews_Mobile).click();
+        }
+        else clickOnElement(topMenuItem_Reviews);
         return ReviewsPage.Instance;
     }
 
     public FaqPage clickFaqMenuItem() {
         reporter.info("Click on Help menu item");
-        clickOnElement(topMenuItem_FAQ);
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            waitForElement(menuMobile);
+            findElement(menuMobile).click();
+            waitForElement(menuItem_FAQ_Mobile);
+            findElement(menuItem_FAQ_Mobile).click();
+        }
+
+        else clickOnElement(topMenuItem_FAQ);
         return FaqPage.Instance;
     }
 
@@ -258,7 +275,7 @@ public class PageHeader extends BasePage {
 
     public void openMenuByItemName(String itemName) {
         hoverItem(topMenuItem_Shop);
-        clickOnElement(By.xpath("//a[@role='menuitem']/span[text()='" + itemName + "']"));
+        clickOnElement(By.xpath("//a[@role='menuitem']/p[text()='" + itemName + "']"));
     }
 
     public boolean waitUntilItemWillBeDropedToCart() {
