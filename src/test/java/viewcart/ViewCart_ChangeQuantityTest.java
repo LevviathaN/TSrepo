@@ -21,7 +21,7 @@ public class ViewCart_ChangeQuantityTest extends BaseTest {
                 {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
                 {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"}
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet set"}
 //                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
 //                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
 //                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
