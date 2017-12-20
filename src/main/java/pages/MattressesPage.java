@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -30,6 +31,7 @@ public class MattressesPage extends BaseProductPage{
     public MattressesPage selectMattressSize(String value){
         reporter.info("Select mattress size: " + value);
         header.closeCart();
+        if (FileIO.getConfigProperty("device").equals("mobile")){ scrollToElement(driver().findElement(selectMattressSize));}
         findElement(selectMattressSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
         if (!findElement(selectMattressSize).getText().contains(value)){

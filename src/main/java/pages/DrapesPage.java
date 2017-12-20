@@ -33,6 +33,7 @@ public class DrapesPage extends BaseProductPage{
     public DrapesPage selectDrapesSize(String value) {
             header.closeCart();
             reporter.info("Select Drapes size: " + value);
+//        scrollToElement(driver().findElement(selectDrapesSize));
             findElement(selectDrapesSize).click();
             findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
             if (!findElement(selectDrapesSize).getText().contains(value)){
@@ -44,6 +45,7 @@ public class DrapesPage extends BaseProductPage{
     public DrapesPage selectDrapesColor(String color) {
         header.closeCart();
         reporter.info("Select Drapes color: " + color);
+        scrollToElement(driver().findElement(By.xpath("//div[@option-label='" + color + "']")));
         clickOnElement(By.xpath("//div[@option-label='" + color + "']"));
         return this;
     }

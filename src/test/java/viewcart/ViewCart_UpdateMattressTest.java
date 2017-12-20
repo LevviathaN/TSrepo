@@ -35,7 +35,8 @@ public class ViewCart_UpdateMattressTest extends BaseTest {
                 .selectMattressFeel(item.getType())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.MATTRESS);
-        cartPage.clickOnEditProduct(item.getTitle());
+        cartPage
+                .clickOnEditProduct(item.getTitle());
 
         prodPage
                 .selectMattressSize(updateditem.getSize())

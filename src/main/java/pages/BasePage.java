@@ -3,10 +3,10 @@ package pages;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
+//<<<<<<< HEAD
+//=======
+//
+//>>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -305,11 +305,14 @@ public class BasePage {
     public static void scrollToElement(WebElement element) {
         waitForPageToLoad();
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY-=150)", element);
+        }
     }
 
-    public static void scrollToShopElement(WebElement element){
+    public static void scrollToShopElement(WebElement element) {
         waitForPageToLoad();
-        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=200)",element);
+        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=100)", element);//TODO fix android
     }
 
     public static void waitForPageToLoad(){
@@ -415,11 +418,11 @@ public class BasePage {
         return HomePage.Instance;
     }
 
-<<<<<<< HEAD
-=======
-   // public void tapOnElement(By by){
-     //   new TouchAction((PerformsTouchActions) driver()).tap(findElement(by)).perform();
-
->>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
+//<<<<<<< HEAD
+//=======
+//   // public void tapOnElement(By by){
+//     //   new TouchAction((PerformsTouchActions) driver()).tap(findElement(by)).perform();
+//
+//>>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
 
 }

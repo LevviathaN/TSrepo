@@ -5,7 +5,7 @@ package enums;
  */
 public enum ProductTypes {
 
-    MATTRESS("Our Hybrid Mattress"),
+    MATTRESS("Tomorrow Mattress"),
     MONITOR("Tomorrow Sleeptracker® Monitor"),
     DRAPES("Tomorrow Drapes"),
     FOAM_PILLOW("Tomorrow Memory Foam Pillow"),

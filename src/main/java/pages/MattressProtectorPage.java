@@ -30,6 +30,7 @@ public class MattressProtectorPage extends BaseProductPage{
         public MattressProtectorPage selectProtectorSize(String size) {
             reporter.info("Select Protector size: " + size);
             header.closeCart();
+            scrollToElement(driver().findElement(selectProtectorSize));
             findElement(selectProtectorSize).click();
             findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
             if (!findElement(selectProtectorSize).getText().contains(size)){

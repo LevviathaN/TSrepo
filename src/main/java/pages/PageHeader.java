@@ -54,7 +54,7 @@ public class PageHeader extends BasePage {
     By closeImproveWindow = By.xpath("//DIV[@class='close mteo-close']");
 
     By menuMobile = By.xpath("(//span[@class='action nav-toggle'])[1]");
-    By menuItem_Shop_Mobile = By.xpath("//li[@class='ui-menu-item all-category']");
+    By menuItem_Shop_Mobile = By.xpath("//li[@class='level0 nav-1 first level-top parent']//span[contains(text(),'Shop')]");//By.xpath("//li[@class='level-top active]");
     By menuItem_FAQ_Mobile = By.xpath("//li[@class='level0 level-top']");
     By menuItem_Reviews_Mobile = By.xpath("//li[@class='level0 nav-6 last level-top']");
 

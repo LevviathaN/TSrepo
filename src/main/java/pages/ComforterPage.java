@@ -30,6 +30,7 @@ public class ComforterPage extends BaseProductPage{
                 header.closeCart();
                 reporter.info("Select Comforter size: " + size);
                 try {  // TODO
+                    scrollToElement(driver().findElement(selectComforterSize));
                     findElement(selectComforterSize).click();
                 } catch(WebDriverException e){
                     header.closeCart();

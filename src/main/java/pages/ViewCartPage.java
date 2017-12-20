@@ -4,6 +4,7 @@ import entities.ItemEntity;
 import entities.UserEntity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utils.FileIO;
 import utils.Tools;
 
 import java.util.ArrayList;
@@ -122,6 +123,7 @@ public class ViewCartPage extends BasePage {
         List<WebElement> itemsList = findElements(orderItems);
         for (WebElement orderItem : itemsList ) {
             if ( orderItem.findElement(orderItemName).getText().equals(itemName)) {
+                if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(orderItemEditButton));}
                 orderItem.findElement(orderItemEditButton).click();
                 return;
             }
