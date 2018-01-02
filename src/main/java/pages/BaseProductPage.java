@@ -40,14 +40,15 @@ public class BaseProductPage extends BasePage{
     public BaseProductPage clickAddToCart() {
         reporter.info("Add to Cart button");
         header.closeCart();
-       // if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(addToCartButton));}
-        clickOnElement(addToCartButton);
+        //if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(addToCartButton));}
+        waitForPageToLoad();
+        driver().findElement(addToCartButton).click();
         if (header.waitUntilItemWillBeDropedToCart() == false) {
             driver().navigate().refresh();
             waitForPageToLoad();
             if (header.waitUntilItemWillBeDropedToCart() == false) {
                 reporter.info("Second attempt to click Add to Cart");
-                scrollToElement(driver().findElement(addToCartButton));//TODO check desktop
+                scrollToElement(driver().findElement(addToCartButton));
                 clickOnElement(addToCartButton);
             }
         };
@@ -57,8 +58,9 @@ public class BaseProductPage extends BasePage{
     public BaseProductPage clickUpdateCart() {
         reporter.info("Update cart item button");
         header.closeCart();
-        //if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(updateItemButton));}
-        clickOnElement(updateItemButton);
+        waitForPageToLoad();
+        // if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(updateItemButton));}
+        driver().findElement(updateItemButton).submit();
         return this;
     }
 }

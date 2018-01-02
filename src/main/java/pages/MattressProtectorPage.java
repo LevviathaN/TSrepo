@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -30,7 +31,7 @@ public class MattressProtectorPage extends BaseProductPage{
         public MattressProtectorPage selectProtectorSize(String size) {
             reporter.info("Select Protector size: " + size);
             header.closeCart();
-            scrollToElement(driver().findElement(selectProtectorSize));
+            if (FileIO.getConfigProperty("device").equals("mobile")){ scrollToElement(driver().findElement(selectProtectorSize));}
             findElement(selectProtectorSize).click();
             findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
             if (!findElement(selectProtectorSize).getText().contains(size)){

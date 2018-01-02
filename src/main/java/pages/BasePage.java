@@ -2,11 +2,6 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
-
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -19,6 +14,7 @@ import utils.Tools;
 /**
  * Created by odiachuk on 07.07.17.
  */
+
 public class BasePage {
 
     static ReporterManager reporter = ReporterManager.Instance;
@@ -417,12 +413,4 @@ public class BasePage {
             findElement(By.xpath("//SPAN[@class='close-button']")).click();
         return HomePage.Instance;
     }
-
-//<<<<<<< HEAD
-//=======
-//   // public void tapOnElement(By by){
-//     //   new TouchAction((PerformsTouchActions) driver()).tap(findElement(by)).perform();
-//
-//>>>>>>> 137d8e6dac4de68247604cf543f8d817275195a8
-
 }
