@@ -43,9 +43,11 @@ public class MattressesPage extends BaseProductPage{
     public MattressesPage selectMattressFeel(String mattressFeel) {
         reporter.info("Select mattress feel: " + mattressFeel);
         header.closeCart();
-        findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).click();
-        if (!findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).getAttribute("class").contains("selected"))
-            reporter.fail("Item was not selected: " + mattressFeel);
+        if (isElementPresent(By.xpath("//div[@option-label='" + mattressFeel + "']"))) {
+            findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).click();
+            if (!findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).getAttribute("class").contains("selected"))
+                reporter.fail("Item was not selected: " + mattressFeel);
+        }
         return this;
     }
 
