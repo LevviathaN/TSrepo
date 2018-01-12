@@ -6,10 +6,7 @@ import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.CheckoutReviewPage;
-import pages.HomePage;
-import pages.ViewCartPage;
+import pages.*;
 import utils.BaseTest;
 import utils.EntitiesFactory;
 import utils.FileIO;
@@ -27,6 +24,7 @@ public class Smoke_Mattress_FullTest extends BaseTest {
 
         //init pages
         HomePage home = HomePage.Instance;
+        ShopPage shop = ShopPage.Instance;
         ViewCartPage cart = ViewCartPage.Instance;
         CheckoutPage checkout = CheckoutPage.Instance;
         CheckoutReviewPage review = CheckoutReviewPage.Instance;
@@ -34,7 +32,8 @@ public class Smoke_Mattress_FullTest extends BaseTest {
         //open home page and add mattress to cart
         home.open();
         ProductSync.check(ProductTypes.MATTRESS);
-        home.clickOnShopOurMattressButton()
+        home.header.clickShopMenuItem();
+        shop.clickOnShopOurMattressButton()
                 .selectMattressSize(item.getSize())
                 .selectMattressFeel(item.getType())
                 .clickAddToCart();
