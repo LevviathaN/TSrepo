@@ -6,3 +6,7 @@
 target
 workspace.xml
 *.iws
+debugger.xml
+filetypes.xml
+ui.lnf.xml
+vcs.xml
