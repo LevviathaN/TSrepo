@@ -2,15 +2,16 @@ package viewcart;
 
 import annotations.TestName;
 import enums.ProductTypes;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 import utils.BaseTest;
+import utils.FileIO;
 import utils.ProductSync;
 
 public class ViewCart_DeleteTest extends BaseTest {
-
     @DataProvider(name = "default_item_provider")
     public Object[][] provider () throws Exception {
         return new Object[][]{
@@ -22,15 +23,6 @@ public class ViewCart_DeleteTest extends BaseTest {
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
                 {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
                 {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"}
-
-//                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
-//                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
-//                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
-//                {ProductTypes.COMFORTER, ComforterPage.class, "Comforter"},
-//                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-//                {ProductTypes.FOAM_PILLOW, FoamPillowPage.class, "Foam Pillow"},
-//                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-//                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheets"},
         };
     }
 

@@ -17,7 +17,7 @@ public class ViewCart_UpdateDrapesTest extends BaseTest {
     @Test
     @TestName(name="Drapes Update test")
     public void viewCart_UpdateDrapesTest() throws Exception {
-//TODO fix android add to cart
+
         //init test entities
         ItemEntity item = EntitiesFactory.getItem( FileIO.getDataFile("Default_Drapes.json") );
         ItemEntity updateditem = EntitiesFactory.getItem( FileIO.getDataFile("Updated_Drapes.json") );

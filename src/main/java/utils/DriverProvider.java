@@ -1,5 +1,6 @@
 package utils;
 
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;  //імпортуємо необхідні бібліотеки
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -84,14 +85,16 @@ public class DriverProvider {
 
         DesiredCapabilities capabilities= new DesiredCapabilities();
         capabilities.setCapability("device","Android");
-        capabilities.setCapability("udid", "HT5BJBE00844");
-        capabilities.setCapability("platformVersion", "6.0.1");
+        capabilities.setCapability("udid", "3RP4C17B14005745");//honor
+        //capabilities.setCapability("udid", "ad0616030849a4d2e1");//S7
+        capabilities.setCapability("platformVersion", "7.1.1");
         capabilities.setCapability("deviceName", "Android");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("browserName", "Chrome");
         capabilities.setCapability("newCommandTimeout", 300);
 
         return new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+
     }
 
     public static WebDriver getDriver() throws MalformedURLException {

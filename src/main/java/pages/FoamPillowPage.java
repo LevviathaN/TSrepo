@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -25,6 +26,7 @@ public class FoamPillowPage extends BaseProductPage{
         /** Page Methods */
 
     public FoamPillowPage clickAddToCart() {
+        if (FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(By.id("product-addtocart-button")));}
         super.clickAddToCart();
         return this;
     }

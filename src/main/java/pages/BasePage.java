@@ -2,11 +2,10 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import org.testng.annotations.DataProvider;
-import utils.DriverProvider;
 import utils.FileIO;
 import utils.ReporterManager;
 import utils.Tools;
@@ -308,7 +307,11 @@ public class BasePage {
 
     public static void scrollToShopElement(WebElement element) {
         waitForPageToLoad();
-        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=100)", element);//TODO fix android
+        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=100)", element);
+    }
+    public static void scrolltoFAQelement(WebElement element){
+        waitForPageToLoad();
+        ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public static void waitForPageToLoad(){

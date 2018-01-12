@@ -10,7 +10,6 @@ import utils.BaseTest;
 import utils.ProductSync;
 
 public class ViewCart_ChangeQuantityTest extends BaseTest {
-
     @DataProvider(name = "default_item_provider")
     public Object[][] provider () throws Exception {
         return new Object[][]{
@@ -22,14 +21,6 @@ public class ViewCart_ChangeQuantityTest extends BaseTest {
                 {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
                 {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"}
-//                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
-//                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
-//                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
-//                {ProductTypes.COMFORTER, ComforterPage.class, "Comforter"},
-//                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-//                {ProductTypes.FOAM_PILLOW, FoamPillowPage.class, "Foam Pillow"},
-//                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-//                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheets"},
         };
     }
 

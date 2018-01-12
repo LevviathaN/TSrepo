@@ -14,7 +14,6 @@ import utils.FileIO;
 import utils.ProductSync;
 
 public class NavigationTest_withDataprovider extends BaseTest {
-
     @DataProvider(name = "default_item_provider")
     public Object[][] provider (){
         return new Object[][]{

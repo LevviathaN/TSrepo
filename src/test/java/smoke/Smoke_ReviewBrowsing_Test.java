@@ -8,7 +8,7 @@ import pages.ReviewsRating;
 import utils.BaseTest;
 
 public class Smoke_ReviewBrowsing_Test extends BaseTest{
-
+//todo
     @Test
     @TestName(name = "Browse through review pages")
     public void browseThroughReviewPages() throws Exception {

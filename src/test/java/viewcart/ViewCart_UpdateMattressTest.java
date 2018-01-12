@@ -30,10 +30,19 @@ public class ViewCart_UpdateMattressTest extends BaseTest {
         //open home page and add mattress to cart
         home.open();
         ProductSync.check(ProductTypes.MATTRESS);
-        home.clickOnShopOurMattressButton()
+        if (FileIO.getConfigProperty("device").equals("desk")){
+            home.clickOnShopOurMattressButton()
+                .selectMattressSize(item.getSize())
+                .selectMattressFeel(item.getType())
+                .clickAddToCart();}
+
+        else
+            home.header.clickShopMenuItem()
+                .clickOnShopOurMattressButton()
                 .selectMattressSize(item.getSize())
                 .selectMattressFeel(item.getType())
                 .clickAddToCart();
+
         ProductSync.uncheck(ProductTypes.MATTRESS);
         cartPage
                 .clickOnEditProduct(item.getTitle());

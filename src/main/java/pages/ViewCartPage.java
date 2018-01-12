@@ -113,6 +113,7 @@ public class ViewCartPage extends BasePage {
     // click on product name on product cart
     public void clickOnProduct(String itemName) {
         reporter.info("Open item from View cart page: " + itemName );
+        if (FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(By.xpath("(//a[text()='" + itemName + "'])[2]")));}
         clickOnElement(By.xpath("(//a[text()='" + itemName + "'])[2]"));
     }
 
@@ -137,6 +138,7 @@ public class ViewCartPage extends BasePage {
         List<WebElement> itemsList = findElements(orderItems);
         for (WebElement orderItem : itemsList ) {
             if ( orderItem.findElement(orderItemName).getText().equals(itemName)) {
+                if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(orderItemDeleteButton));}
                 orderItem.findElement(orderItemDeleteButton).click();
                 return;
             }
@@ -150,6 +152,7 @@ public class ViewCartPage extends BasePage {
         List<WebElement> itemsList = findElements(orderItems);
         for (WebElement orderItem : itemsList ) {
             if ( orderItem.findElement(orderItemName).getText().equals(itemName)) {
+                if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(orderIncreaseQuantityItemButton));}
                 orderItem.findElement(orderIncreaseQuantityItemButton).click();
                 return;
             }
@@ -162,6 +165,7 @@ public class ViewCartPage extends BasePage {
         List<WebElement> itemsList = findElements(orderItems);
         for (WebElement orderItem : itemsList ) {
             if ( orderItem.findElement(orderItemName).getText().equals(itemName)) {
+                if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(orderDecreaseQuantityItemButton));}
                 orderItem.findElement(orderDecreaseQuantityItemButton).click();
                 return;
             }

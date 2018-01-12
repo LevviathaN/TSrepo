@@ -48,7 +48,7 @@ public class ReviewsRating extends BasePage {
 
 
     // Applied filter buttons
-
+    By removeFilterMobile = By.cssSelector(".pr-cross-icon");
     By xFiveStarsButton = By.xpath(".//span[contains(.,'5 Stars')]");
     By xFourStarsButton = By.xpath(".//span[contains(.,'4 Stars')]");
     By xThreeStarsButton = By.xpath(".//span[contains(.,'3 Stars')]");
@@ -232,8 +232,8 @@ public class ReviewsRating extends BasePage {
         if (count == 10 && isElementPresentAndDisplay(nextButton)){
 
             reporter.info("Clicking on Next button");
-            scrollToElement(driver().findElement(nextButton));
-            clickOnElement(nextButton);
+            scrollToElement(driver().findElement(By.xpath(".//button[@class='pr-rd-pagination-btn'][@aria-label='Next']")));
+            clickOnElement(By.xpath(".//button[@class='pr-rd-pagination-btn'][@aria-label='Next']"));
             Assert.assertTrue(isElementPresentAndDisplay(previousButton), "Previous button cant be found");
 
             reporter.info("Clicking on Previous button");
@@ -307,8 +307,13 @@ public class ReviewsRating extends BasePage {
 
     public void removeFiveStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xFiveStarsButton)){
-            findElement(xFiveStarsButton).click();
-            reporter.info("Click on 5 stars filter button and removing filter");
+            if (FileIO.getConfigProperty("device").equals("mobile")){
+                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
+                clickOnElement(removeFilterMobile);
+            }else {
+            scrollToElement(driver().findElement(xFiveStarsButton));
+            findElement(removeFilterMobile).click();
+            reporter.info("Click on 5 stars filter button and removing filter");}
         }else{
             reporter.info("5 Stars filter removal button was not found");
         }
@@ -316,7 +321,12 @@ public class ReviewsRating extends BasePage {
 
     public void removeFourStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xFourStarsButton)){
-            findElement(xFourStarsButton).click();
+            if (FileIO.getConfigProperty("device").equals("mobile")){
+                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
+                clickOnElement(removeFilterMobile);
+            }else {
+            scrollToElement(driver().findElement(xFourStarsButton));
+            findElement(removeFilterMobile).click();}
             reporter.info("Click on 4 stars filter button and removing filter");
         }else{
             reporter.info("4 Stars filter removal button was not found");
@@ -325,7 +335,12 @@ public class ReviewsRating extends BasePage {
 
     public void removeThreeStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xThreeStarsButton)){
-            findElement(xThreeStarsButton).click();
+            if (FileIO.getConfigProperty("device").equals("mobile")){
+                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
+                clickOnElement(removeFilterMobile);
+            }else {
+            scrollToElement(driver().findElement(xThreeStarsButton));
+            findElement(xThreeStarsButton).click();}
             reporter.info("Click on 3 stars filter button and removing filter");
         }else{
             reporter.info("3 Stars filter removal button was not found");
@@ -334,7 +349,12 @@ public class ReviewsRating extends BasePage {
 
     public void removeTwoStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xTwoStarsButton)){
-            findElement(xTwoStarsButton).click();
+            if (FileIO.getConfigProperty("device").equals("mobile")){
+                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
+                clickOnElement(removeFilterMobile);
+            }else {
+            scrollToElement(driver().findElement(xTwoStarsButton));
+            findElement(xTwoStarsButton).click();}
             reporter.info("Click on 2 stars filter button");
         }else{
             reporter.info("2 Stars filter removal button was not found");
@@ -343,7 +363,12 @@ public class ReviewsRating extends BasePage {
 
     public void removeOneStarFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xOneStarButton)){
-            findElement(xOneStarButton).click();
+            if (FileIO.getConfigProperty("device").equals("mobile")){
+                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
+                clickOnElement(removeFilterMobile);
+            }else {
+            scrollToElement(driver().findElement(xOneStarButton));
+            findElement(xOneStarButton).click();}
             reporter.info("Click on 1 stars filter button");
         }else{
             reporter.info("1 Star filter removal button was not found");

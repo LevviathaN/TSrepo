@@ -31,7 +31,14 @@ public class Smoke_DeleteItemFromCartTest extends BaseTest {
         ViewCartPage cart = ViewCartPage.Instance;
         ProductSync.check(ProductTypes.FOAM_PILLOW);
         //adding item to the cart
-        home.clickOnShopFoamPillowButton().clickAddToCart();
+        if (FileIO.getConfigProperty("device").equals("desk")){
+            home.clickOnShopFoamPillowButton().clickAddToCart();
+        }
+        else
+        home.header.clickShopMenuItem()
+                .clickOnShopOurFoamPillowButton()
+                .clickAddToCart();
+
         home.open();
 
         //checking that added items were displayed

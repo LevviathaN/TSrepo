@@ -1,9 +1,15 @@
 package pages;
 
 import entities.ItemEntity;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.appium.java_client.MobileDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.TouchScreen;
+import org.openqa.selenium.interactions.internal.TouchAction;
+import org.openqa.selenium.interactions.touch.TouchActions;
+import org.openqa.selenium.remote.RemoteTouchScreen;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteWebElement;
 import utils.FileIO;
 import utils.Tools;
 
@@ -52,6 +58,8 @@ public class PageHeader extends BasePage {
     By cartQtyIndex = By.cssSelector("span.counter-number");
     By LOADING_SPINNER = By.cssSelector("div.fotorama__spinner");
     By closeImproveWindow = By.xpath("//DIV[@class='close mteo-close']");
+    By wgBanner = By.id("wgdelban");
+    By closeBannerButton =By.xpath(".//*[@id='wgdelban']/div");
 
     By menuMobile = By.xpath("(//span[@class='action nav-toggle'])[1]");
     By menuItem_Shop_Mobile = By.xpath("//li[@class='level0 nav-1 first level-top parent']//span[contains(text(),'Shop')]");//By.xpath("//li[@class='level-top active]");
@@ -72,8 +80,14 @@ public class PageHeader extends BasePage {
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");
         if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(menuMobile);
-            findElement(menuMobile).click();
+            try {
+                waitForElement(menuMobile);
+                findElement(menuMobile).click();
+            }catch (WebDriverException e){
+                closeBanner();
+                waitForElement(menuMobile);
+                findElement(menuMobile).click();
+            }
             waitForElement(menuItem_Shop_Mobile);
             findElement(menuItem_Shop_Mobile).click();
         }
@@ -133,6 +147,7 @@ public class PageHeader extends BasePage {
         reporter.info("Open Cart (Click on Show cart button)");
         driver().navigate().refresh();
         waitForPageToLoad();
+        closeBanner();
         findElement(showCartButton).click();
 
         return this;
@@ -219,6 +234,7 @@ public class PageHeader extends BasePage {
     public CheckoutPage clickOnCheckoutButton() {
         reporter.info("Click on Checkout button");
         openCart();
+        if (FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(cartCheckoutButton));}
         clickOnElement(cartCheckoutButton);
         if (isElementPresent(closeImproveWindow)){
             clickOnElement(closeImproveWindow);
@@ -229,6 +245,7 @@ public class PageHeader extends BasePage {
     public ViewCartPage clickOnViewCartButton() {
         reporter.info("Click on View Cart button");
         openCart();
+        if(FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(viewCartButton));}
         clickOnElement(viewCartButton);
         return ViewCartPage.Instance;
     }
@@ -272,10 +289,47 @@ public class PageHeader extends BasePage {
         return count;
     }
 
-
     public void openMenuByItemName(String itemName) {
+        if (FileIO.getConfigProperty("device").equals("mobile")) {
+            //TODO fix me please if you know how to click on css pseudo element
+          waitForElement(menuMobile);
+          findElement(menuMobile).click();
+          waitForPageToLoad();
+        switch (itemName){
+            case "Mattress":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[1]")).click();
+                break;
+            case "Memory Foam Pillow":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[2]")).click();
+                break;
+            case "Plush Pillow":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[3]")).click();
+                break;
+            case "Comforter":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[4]")).click();
+                break;
+            case "Sheet Set":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[5]")).click();
+                break;
+            case "Protector":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[6]")).click();
+                break;
+            case "Sleeptracker Monitor":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[7]")).click();
+                break;
+            case "Drapes":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[8]")).click();
+                break;
+            case "Adjustable Base":
+                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[9]")).click();
+                break;
+        }
+
+        }
+    else {
         hoverItem(topMenuItem_Shop);
         clickOnElement(By.xpath("//a[@role='menuitem']/p[text()='" + itemName + "']"));
+        }
     }
 
     public boolean waitUntilItemWillBeDropedToCart() {
@@ -292,6 +346,13 @@ public class PageHeader extends BasePage {
             clickOnElementIgnoreException(closeCartButton);
         }
         ;
+    }
+    public void closeBanner(){
+        if (isElementDisplayedRightNow(wgBanner)){
+            reporter.info("Closing banner");
+            clickOnElementIgnoreException(closeBannerButton);
+        }
+        return;
     }
 
     public void clickSignOutMenuItem() {

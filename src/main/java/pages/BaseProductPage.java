@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
 import utils.FileIO;
 
 /**
@@ -36,31 +37,32 @@ public class BaseProductPage extends BasePage{
 //            reporter.fail("Item was not selected: " + type);
 //        return this;
 //    }
-
-    public BaseProductPage clickAddToCart() {
-        reporter.info("Add to Cart button");
-        header.closeCart();
-        //if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(addToCartButton));}
-        waitForPageToLoad();
-        driver().findElement(addToCartButton).click();
-        if (header.waitUntilItemWillBeDropedToCart() == false) {
-            driver().navigate().refresh();
+        public BaseProductPage clickAddToCart() {
+            reporter.info("Add to Cart button");
+            header.closeCart();
             waitForPageToLoad();
-            if (header.waitUntilItemWillBeDropedToCart() == false) {
-                reporter.info("Second attempt to click Add to Cart");
-                scrollToElement(driver().findElement(addToCartButton));
-                clickOnElement(addToCartButton);
+            try {
+                driver().findElement(addToCartButton).click();
+            } catch (WebDriverException e) {
+                driver().findElement(By.xpath(".//*[@id='product-addtocart-button'][1]")).submit();
             }
-        };
-        return this;
-    }
+            if (header.waitUntilItemWillBeDropedToCart() == false) {
+                driver().navigate().refresh();
+                waitForPageToLoad();
+                if (header.waitUntilItemWillBeDropedToCart() == false) {
+                    reporter.info("Second attempt to click Add to Cart");
+                    scrollToElement(driver().findElement(addToCartButton));
+                    clickOnElement(addToCartButton);
+                }
+            }
+            return this;
+        }
 
     public BaseProductPage clickUpdateCart() {
         reporter.info("Update cart item button");
         header.closeCart();
         waitForPageToLoad();
-        // if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(updateItemButton));}
-        driver().findElement(updateItemButton).submit();
+        driver().findElement(updateItemButton).submit();//todo fix .click
         return this;
     }
 }

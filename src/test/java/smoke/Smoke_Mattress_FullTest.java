@@ -34,11 +34,18 @@ public class Smoke_Mattress_FullTest extends BaseTest {
         //open home page and add mattress to cart
         home.open();
         ProductSync.check(ProductTypes.MATTRESS);
-        home.clickOnShopOurMattressButton()
-                .selectMattressSize(item.getSize())
-                .selectMattressFeel(item.getType())
-                .clickAddToCart();
-        home.header.clickShopMenuItem();
+        if (FileIO.getConfigProperty("device").equals("desk")){
+            home.clickOnShopOurMattressButton()
+                    .selectMattressSize(item.getSize())
+                    .selectMattressFeel(item.getType())
+                    .clickAddToCart();}
+
+        else
+            home.header.clickShopMenuItem()
+                    .clickOnShopOurMattressButton()
+                    .selectMattressSize(item.getSize())
+                    .selectMattressFeel(item.getType())
+                    .clickAddToCart();
 
         ProductSync.uncheck(ProductTypes.MATTRESS);
         // check item in cart

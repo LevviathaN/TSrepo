@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -26,8 +27,9 @@ public class SheetsetPage extends BaseProductPage{
 
     public SheetsetPage selectSheetsetSize(String size) {
         reporter.info("Select Sheetset size: " + size);
+        //waitForPageToLoad();
         header.closeCart();
-        scrollToElement(driver().findElement(selectSheetsetSize));
+        if (FileIO.getConfigProperty("device").equals("mobile")) { scrollToElement(driver().findElement(selectSheetsetSize));}
         findElement(selectSheetsetSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
         if (!findElement(selectSheetsetSize).getText().contains(size)){
