@@ -1,10 +1,11 @@
-<suite name="Suite" parallel="methods" thread-count="3">
+<suite name="Suite" parallel="methods" thread-count="5">
     <test name="Test">
         <classes>
 
             <class name="viewcart.ViewCart_ChangeQuantityTest" />
             <class name="viewcart.ViewCart_DeleteTest" />
             <class name="smoke.NavigationTest_withDataprovider" />
+
 
             <class name="smoke.Smoke_Protector_FullTest" />
             <class name="smoke.Smoke_Comforter_FullTest" />
@@ -26,12 +27,6 @@
             <class name="smoke.Smoke_CountOfSheetsInCart_Test" />
             <class name="smoke.Smoke_CountOfSleepTrackersInCart_Test" />
 
-            <class name="account.Smoke_SignInValidationTest" />
-            <class name="account.MyAccount_ChangeFullNameTest" />
-            <class name="account.CreateAccountTest" />
-            <class name="account.MyAccount_ChangeAddressTest" />
-            <class name="account.MyAccount_ChangeEmailTest" />
-            <class name="account.MyAccount_GeneralValidationTest" />
 
             <class name="viewcart.ViewCart_UpdateMonitorTest" />
             <class name="viewcart.ViewCart_UpdateMattressTest" />
@@ -42,10 +37,14 @@
             <class name="viewcart.ViewCart_UpdatePlushPillowTest" />
             <class name="viewcart.ViewCart_UpdateSheetsTest" />
 
+
             <class name="smoke.Smoke_FAQ_FullTest" />
-            <!-- <class name="smoke.Smoke_MagazineCategoriesValidationTest" /> -->
             <class name="smoke.Smoke_ReviewsRating_Test" />
             <class name="smoke.Smoke_ReviewBrowsing_Test" />
+
+
+            <!-- <class name="smoke.Smoke_MagazineCategoriesValidationTest" />-->
+
 
         </classes>
     </test> <!-- test -->

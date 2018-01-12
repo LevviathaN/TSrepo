@@ -1,7 +1,16 @@
 <suite name="Suite" parallel="none" thread-count="1">
     <test name="Test">
         <classes>
-            <class name="smoke.Smoke_FAQ_FullTest"/>
+            <class name="viewcart.ViewCart_UpdateMonitorTest" />
+            <class name="viewcart.ViewCart_UpdateMattressTest" />
+            <class name="viewcart.ViewCart_UpdateProtectorTest" />
+            <class name="viewcart.ViewCart_UpdateComforterTest" />
+            <class name="viewcart.ViewCart_UpdateDrapesTest" />
+            <class name="viewcart.ViewCart_UpdateFoamPillowTest" />
+            <class name="viewcart.ViewCart_UpdatePlushPillowTest" />
+            <class name="viewcart.ViewCart_UpdateSheetsTest" />
+
+            <class name="smoke.Smoke_FAQ_FullTest" />
         </classes>
     </test> <!-- test -->
 </suite> <!-- suite -->
