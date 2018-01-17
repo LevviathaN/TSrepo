@@ -1,6 +1,5 @@
 package utils;
 
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;  //імпортуємо необхідні бібліотеки
 import org.openqa.selenium.chrome.ChromeOptions;
