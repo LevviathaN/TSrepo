@@ -1,18 +1,9 @@
 package pages;
 
 import entities.ItemEntity;
-import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.TouchScreen;
-import org.openqa.selenium.interactions.internal.TouchAction;
-import org.openqa.selenium.interactions.touch.TouchActions;
-import org.openqa.selenium.remote.RemoteTouchScreen;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.RemoteWebElement;
 import utils.FileIO;
 import utils.Tools;
-
 import java.util.ArrayList;
 import java.util.List;
 

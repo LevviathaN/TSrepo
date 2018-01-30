@@ -12,7 +12,8 @@ public enum ProductTypes {
     PLUSH_PILLOW("Tomorrow Plush Pillow"),
     COMFORTER("Tomorrow Comforter"),
     MATTRESS_PROTECTOR("Tomorrow Mattress Protector"),
-    SHEETSET("Tomorrow Sheet Set");
+    SHEETSET("Tomorrow Sheet Set"),
+    ADJUSTABLE_BASE("Tomorrow Adjustable Base");
 
 
     private String value;

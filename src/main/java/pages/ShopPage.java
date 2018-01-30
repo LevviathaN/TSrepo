@@ -68,6 +68,13 @@ public class ShopPage extends BasePage{
         return SheetsetPage.Instance;
     }
 
+    public AdjustablePage clickOnShopOurBaseButton() {
+        reporter.info("Click on Shop Our Adjustable Base");
+        //TODO fix after TS-501
+        driver().get(BASE_URL+"/tomorrow-adjustable-base");
+        return AdjustablePage.Instance;
+    }
+
     public ComforterPage clickOnShopOurComforterButton() {
         reporter.info("Click on Shop Our Comforter");
         scrollToShopElement(driver().findElement(shopOurComforterButton));

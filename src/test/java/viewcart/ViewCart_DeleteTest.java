@@ -22,7 +22,8 @@ public class ViewCart_DeleteTest extends BaseTest {
                 {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Memory Foam Pillow"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
                 {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
-                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"}
+                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"},
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"}
         };
     }
 

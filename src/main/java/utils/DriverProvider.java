@@ -1,6 +1,5 @@
 package utils;
 
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;  //імпортуємо необхідні бібліотеки
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -85,8 +84,8 @@ public class DriverProvider {
 
         DesiredCapabilities capabilities= new DesiredCapabilities();
         capabilities.setCapability("device","Android");
-        capabilities.setCapability("udid", "3RP4C17B14005745");//honor
-        //capabilities.setCapability("udid", "ad0616030849a4d2e1");//S7
+        //capabilities.setCapability("udid", "3RP4C17B14005745");//honor
+        capabilities.setCapability("udid", "ad0616030849a4d2e1");//S7
         capabilities.setCapability("platformVersion", "7.1.1");
         capabilities.setCapability("deviceName", "Android");
         capabilities.setCapability("platformName", "Android");

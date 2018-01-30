@@ -1,4 +1,4 @@
-<suite name="Suite" parallel="methods" thread-count="5">
+<suite name="Suite" parallel="methods" thread-count="4">
     <test name="Test">
         <classes>
 
@@ -15,6 +15,7 @@
             <class name="smoke.Smoke_Mattress_FullTest" />
             <class name="smoke.Smoke_FoamPillow_FullTest" />
             <class name="smoke.Smoke_PlushPillow_FullTest" />
+            <class name="smoke.Smoke_Adjustable_FullTest" />
 
 
             <class name="smoke.Smoke_DeleteItemFromCartTest" />
@@ -26,6 +27,7 @@
             <class name="smoke.Smoke_CountOfPlushPillowsInCart_Test" />
             <class name="smoke.Smoke_CountOfSheetsInCart_Test" />
             <class name="smoke.Smoke_CountOfSleepTrackersInCart_Test" />
+            <class name="smoke.Smoke_CountOfAdjustableBasesInCart_Test" />
 
 
             <class name="viewcart.ViewCart_UpdateMonitorTest" />
@@ -36,6 +38,7 @@
             <class name="viewcart.ViewCart_UpdateFoamPillowTest" />
             <class name="viewcart.ViewCart_UpdatePlushPillowTest" />
             <class name="viewcart.ViewCart_UpdateSheetsTest" />
+            <class name="viewcart.ViewCart_UpdateAdjustableBaseTest" />
 
 
             <class name="smoke.Smoke_FAQ_FullTest" />
