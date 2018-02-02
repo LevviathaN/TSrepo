@@ -17,14 +17,14 @@ public class NavigationTest_withDataprovider extends BaseTest {
     @DataProvider(name = "default_item_provider")
     public Object[][] provider (){
         return new Object[][]{
-//                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"},
-//                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
-//                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
-//                {ProductTypes.COMFORTER, ComforterPage.class, "Comforter"},
-//                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-//                {ProductTypes.FOAM_PILLOW, FoamPillowPage.class, "Memory Foam Pillow"},
-//                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-//                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"},
+                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
+                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
+                {ProductTypes.COMFORTER, ComforterPage.class, "Comforter"},
+                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
+                {ProductTypes.FOAM_PILLOW, FoamPillowPage.class, "Memory Foam Pillow"},
+                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
                 {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"}
         };
     }
@@ -34,8 +34,6 @@ public class NavigationTest_withDataprovider extends BaseTest {
     public void topMenuValidation(ProductTypes type, Class page, String itemName) throws Exception {
 
         HomePage home = HomePage.Instance;
-        CheckoutPage checkout = CheckoutPage.Instance;
-        CheckoutReviewPage review = CheckoutReviewPage.Instance;
         ViewCartPage cart = ViewCartPage.Instance;
         BaseProductPage bp = (BaseProductPage) page.getConstructor().newInstance();
 
@@ -50,7 +48,6 @@ public class NavigationTest_withDataprovider extends BaseTest {
 
         bp.clickAddToCart();
         ProductSync.uncheck(type);
-
         //ViewCartPage cart = home.header.clickOnViewCartButton();
         cart.clickOnProduct(type.toString());
 

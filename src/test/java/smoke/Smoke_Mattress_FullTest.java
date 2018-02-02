@@ -41,8 +41,9 @@ public class Smoke_Mattress_FullTest extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.MATTRESS);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
 
+        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
+        //Assert.assertTrue();
         //check item displayed in order
         home.header.clickOnViewCartButton();
         Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");

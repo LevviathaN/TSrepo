@@ -5,6 +5,7 @@
             <class name="viewcart.ViewCart_ChangeQuantityTest" />
             <class name="viewcart.ViewCart_DeleteTest" />
             <class name="smoke.NavigationTest_withDataprovider" />
+            <class name="smoke.Smoke_WhiteGloveDeliveryTest" />
 
 
             <class name="smoke.Smoke_Protector_FullTest" />

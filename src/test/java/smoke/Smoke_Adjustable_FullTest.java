@@ -54,7 +54,6 @@ public class Smoke_Adjustable_FullTest extends BaseTest {
 
         //check Order Review page was opened
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
-
         //check item in final order
         Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
 

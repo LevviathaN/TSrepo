@@ -4,7 +4,6 @@ import entities.ItemEntity;
 import entities.UserEntity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import utils.FileIO;
 import utils.Tools;
 
 import java.util.ArrayList;
@@ -45,7 +44,10 @@ public class CheckoutPage extends BasePage {
     By phoneField = By.name("telephone");
     By continueButton = By.cssSelector("button.action.continue.primary");
 
-    By freeShippingRadioButton = By.xpath(".//*[@id='s_method_freeshipping_freeshipping']");
+    By freeShippingRadioButton = By.id("label_method_freeshipping_freeshipping");
+    By whiteGloveRadioButton = By.id("label_method_bestway_tablerate");
+    By oldMattressRemovalRadioButton =  By.cssSelector("div.value.deliverydate-removel label");
+    By firstAvailableDeliveryDay = By.xpath("//td[@data-handler='selectDay'][1]");
 
     //order list
 
@@ -53,17 +55,45 @@ public class CheckoutPage extends BasePage {
     By orderItemName = By.cssSelector("strong.product-item-name");
     By orderItemQty = By.cssSelector("div.details-qty span.value");
     By orderItemPrice = By.cssSelector("span.cart-price");
-    By orderItemDetails= By.cssSelector("dl.item-options span");
+    By orderItemDetails = By.cssSelector("dl.item-options span");
+    By shippingPrice = By.cssSelector("span[data-th='Shipping']");
 
     /** Page Methods */
+    public void selectFreeShipping() {
+        reporter.info("Select free shipping");
+        clickOnElement(freeShippingRadioButton);
+    }
 
-    public CheckoutPage setEmail(String email){
+    public void selectWhiteGloveSpipping() {
+        reporter.info("Select White Glove ");
+        clickOnElement(whiteGloveRadioButton);
+    }
+
+    public void selectOldMattressRemoval() {
+        reporter.info("Select Old Mattress removal ");
+        clickOnElement(oldMattressRemovalRadioButton);
+    }
+
+    public void selectDeliveryDate() {
+        reporter.info("Select delivery date");
+        clickOnElement(firstAvailableDeliveryDay);
+    }
+
+    public String firstAvailableDay() {
+        return(driver().findElement(firstAvailableDeliveryDay).getText());
+    }
+
+    public String selectedDate() {
+        return String.valueOf(findElement(By.cssSelector("div[id='datepicker-message-block'] div strong")).getText().replaceAll("(\\s[0-9]{4}$)","")).replaceAll("\\D","");
+    }
+
+    public CheckoutPage setEmail(String email) {
         reporter.info("Set Email name: " + email);
         findElement(emailField).sendKeys(email);
         return this;
     }
 
-    public CheckoutPage setLastName(String lastname){
+    public CheckoutPage setLastName(String lastname) {
         reporter.info("Set Last name: " + lastname);
         findElement(lastnameField).sendKeys(lastname);
         return this;
@@ -125,6 +155,11 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+    public String getShippingPrice(){
+        reporter.info("Check shipping price");
+        return findElement(shippingPrice).getText();
+    }
+
 //    public CheckoutReviewPage clickNextButton(){
 //        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
 //            reporter.info("Click on Next button");
@@ -156,6 +191,12 @@ public class CheckoutPage extends BasePage {
                     .selectRegion(user.getAddress().getRegion())
                     .setPostcode(user.getAddress().getZip())
                     .setPhone(user.getContacts().getPhone());
+        return this;
+    }
+    public CheckoutPage populateSpippingInfo(String state, String zip) {
+        this.setPostcode(zip)
+            .selectRegion(state);
+        waitForPageToLoad();
         return this;
     }
 
@@ -205,7 +246,7 @@ public class CheckoutPage extends BasePage {
             reporter.info("No items were found on Checkout page");
             //Assert.fail("No items were found on Checkout page");
         }
-
         return result;
+
     }
 }
