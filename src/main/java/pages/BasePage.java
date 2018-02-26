@@ -90,16 +90,16 @@ public class BasePage {
     }
 
     public void open() {
-
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
         if (FileIO.getConfigProperty("EnvType").equals("Staging")){
             driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
         }
         else {
             driver().get(BASE_URL + pageURL);
-        }
-        //driver().manage().window().maximize();
+            //set cookies to disable email popup
+            disablePopUp();
 
+        }
     }
 
     public void close() {
@@ -166,7 +166,7 @@ public class BasePage {
         }
     }
 
-    public boolean isElementDisplayedRightNow(By by) {
+    public static boolean isElementDisplayedRightNow(By by) {
         try {
             return findElementIgnoreException(by, SHORT_TIMEOUT).isDisplayed();
         } catch (Exception e) {
@@ -233,7 +233,8 @@ public class BasePage {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element" );
         }
@@ -410,10 +411,10 @@ public class BasePage {
         driver().switchTo().defaultContent();
     }
 
-    public HomePage closeWelcomeMessage(){
-            reporter.info("Closing welcome popup");
-            waitForElement(By.xpath("//SPAN[@class='close-button']"));
-            findElement(By.xpath("//SPAN[@class='close-button']")).click();
-        return HomePage.Instance;
+    public static void disablePopUp() {
+        Cookie ck = new Cookie("notFirstVisit", "true");
+        driver().manage().addCookie(ck);
+
+
     }
 }
