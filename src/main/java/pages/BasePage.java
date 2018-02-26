@@ -97,6 +97,7 @@ public class BasePage {
         }
         else {
             driver().get(BASE_URL + pageURL);
+            disablePopUp();
         }
         //driver().manage().window().maximize();
 
@@ -415,5 +416,11 @@ public class BasePage {
             waitForElement(By.xpath("//SPAN[@class='close-button']"));
             findElement(By.xpath("//SPAN[@class='close-button']")).click();
         return HomePage.Instance;
+    }
+
+    public static void disablePopUp() {
+        Cookie ck = new Cookie("notFirstVisit", "true");
+        driver().manage().addCookie(ck);
+        reporter.info("Adding a cookie");
     }
 }
