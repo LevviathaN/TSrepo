@@ -181,6 +181,7 @@ public class ViewCartPage extends BasePage {
 
     public void clickOnProceedToChechout() {
         reporter.info("Click on Proceed to Checkout button");
+        scrollToElement(driver().findElement(proceedToCheckoutButton));
         clickOnElement(proceedToCheckoutButton);
     }
 }

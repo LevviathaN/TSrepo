@@ -22,21 +22,16 @@ public class ComforterPage extends BaseProductPage{
         /** UI Mappings */
 
         //By addToCartButton = By.id("product-addtocart-button");
-        By selectComforterSize = By.cssSelector("div.bed-size-select");
+        By selectComforterSize = By.xpath("//div[@class='product-info-main loaded']//div[@class='bed-size-select']");
 
         /** Page Methods */
 
         public ComforterPage selectComforterSize(String size) {
-                header.closeCart();
-                reporter.info("Select Comforter size: " + size);
-                try {  // TODO
-                    scrollToElement(driver().findElement(selectComforterSize));
-                    findElement(selectComforterSize).click();
-                } catch(WebDriverException e){
-                    header.closeCart();
-                    findElement(selectComforterSize).click();
-                }
-                findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
+            header.closeCart();
+            reporter.info("Select Comforter size: " + size);
+            scrollToElement(driver().findElement(selectComforterSize));
+            findElement(selectComforterSize).click();
+                findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
                 if (!findElement(selectComforterSize).getText().contains(size)){
                         reporter.fail("Item was not changed to: " + size);
                 }

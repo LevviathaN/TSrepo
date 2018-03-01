@@ -20,7 +20,7 @@ public class PageHeader extends BasePage {
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
     //top menu
     //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
-    By topMenuItem_Shop = By.id("ui-id-2");
+    By topMenuItem_Shop = By.xpath("//a[@id='ui-id-2']//span[text()='Shop']");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
@@ -84,20 +84,14 @@ public class PageHeader extends BasePage {
 
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            try {
-                waitForElement(menuMobile);
-                findElement(menuMobile).click();
-            }catch (WebDriverException e){
-                closeBanner();
-                waitForElement(menuMobile);
-                findElement(menuMobile).click();
-            }
-            waitForElement(menuItem_Shop_Mobile);
-            findElement(menuItem_Shop_Mobile).click();
+        try{
+            scrollToElement(driver().findElement(topMenuItem_Shop));
+            clickOnElement(topMenuItem_Shop);
+        }catch (TimeoutException e){
+            reporter.info("Second attempt to click on SHO{ menu item");
+            clickOnElement(topMenuItem_Shop);
         }
 
-        else clickOnElement(topMenuItem_Shop);
         return ShopPage.Instance;
     }
 
@@ -295,50 +289,50 @@ public class PageHeader extends BasePage {
     }
 
     public void openMenuByItemName(String itemName) {
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-          waitForElement(menuMobile);
-          clickOnElement(menuMobile);
         switch (itemName){
             case "Mattress":
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuItem_Mattress);
                 break;
             case "Memory Foam Pillow":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuMemoryFoamPillow);
                 break;
             case "Plush Pillow":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuPlushPillow);
                 break;
             case "Comforter":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuComforter);
                 break;
             case "Sheet Set":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuSheetSet);
                 break;
             case "Protector":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuProtector);
                 break;
             case "Sleeptracker Monitor":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuSleeptrackerMonitor);
                 break;
             case "Drapes":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Accessories);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuDrapes);
                 break;
             case "Adjustable Base":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Bases);}
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuAdjustableBase);
                 break;
-            case "Foundation":
-                if (FileIO.getConfigProperty("device").equals("desk")){hoverItem(topMenuItem_Bases);}
+            case "Tomorrow Foundation":
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuFoundation);
                 break;
-        }
+
+            default:
+                assert false : "There is no "+ itemName + " item ";
         }
     }
 

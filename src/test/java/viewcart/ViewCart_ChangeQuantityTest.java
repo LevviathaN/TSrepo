@@ -21,7 +21,8 @@ public class ViewCart_ChangeQuantityTest extends BaseTest {
                 {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
                 {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
-                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"}
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"},
+                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Foundation"}
         };
     }
 

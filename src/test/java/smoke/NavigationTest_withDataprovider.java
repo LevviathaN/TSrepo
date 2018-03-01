@@ -25,7 +25,8 @@ public class NavigationTest_withDataprovider extends BaseTest {
                 {ProductTypes.FOAM_PILLOW, FoamPillowPage.class, "Memory Foam Pillow"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
                 {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
-                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"}
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"},
+                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Foundation"}
         };
     }
 

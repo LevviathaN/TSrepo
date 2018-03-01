@@ -23,7 +23,7 @@ public class AdjustablePage extends BaseProductPage{
     /** Page Methods */
 
     public AdjustablePage selectBaseSize(String size) {
-        reporter.info("Select Sheetset size: " + size);
+        reporter.info("Select Adjustable Base size: " + size);
         //waitForPageToLoad();
         header.closeCart();
         if (FileIO.getConfigProperty("device").equals("mobile")) { scrollToElement(driver().findElement(selectBaseSize));}
