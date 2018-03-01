@@ -97,7 +97,7 @@ public class BasePage {
         }
         else {
             driver().get(BASE_URL + pageURL);
-            disablePopUp();
+            closeWelcomeMessage();
         }
         //driver().manage().window().maximize();
 
@@ -412,15 +412,12 @@ public class BasePage {
     }
 
     public HomePage closeWelcomeMessage(){
-            reporter.info("Closing welcome popup");
-            waitForElement(By.xpath("//SPAN[@class='close-button']"));
-            findElement(By.xpath("//SPAN[@class='close-button']")).click();
+        reporter.info("Closing welcome popup");
+        if (isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']"))) {
+            clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
+            reloadPage();
+        }
         return HomePage.Instance;
     }
 
-    public static void disablePopUp() {
-        Cookie ck = new Cookie("notFirstVisit", "true");
-        driver().manage().addCookie(ck);
-        reporter.info("Adding a cookie");
-    }
 }
