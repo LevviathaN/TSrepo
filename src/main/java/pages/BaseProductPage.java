@@ -15,8 +15,9 @@ public class BaseProductPage extends BasePage{
 
         /** UI Mappings */
         By selectMattressSize = By.cssSelector("div.bed-size-select");
-        By addToCartButton = By.id("product-addtocart-button");
-        By updateItemButton = By.id("product-updatecart-button");
+        By addToCartButton = By.xpath("//main[@id='maincontent']//button[@id='product-addtocart-button']");
+        By updateItemButton = By.xpath("//main[@id='maincontent']//button[@id='product-updatecart-button']");
+
 
         /** Page Methods */
 
@@ -41,11 +42,7 @@ public class BaseProductPage extends BasePage{
             reporter.info("Add to Cart button");
             header.closeCart();
             waitForPageToLoad();
-            try {
-                driver().findElement(addToCartButton).click();
-            } catch (WebDriverException e) {
-                driver().findElement(By.xpath(".//*[@id='product-addtocart-button'][1]")).submit();
-            }
+            driver().findElement(addToCartButton).click();
             if (header.waitUntilItemWillBeDropedToCart() == false) {
                 driver().navigate().refresh();
                 waitForPageToLoad();
@@ -62,7 +59,7 @@ public class BaseProductPage extends BasePage{
         reporter.info("Update cart item button");
         header.closeCart();
         waitForPageToLoad();
-        driver().findElement(updateItemButton).submit();//todo fix .click
+        clickOnElement(updateItemButton);
         return this;
     }
 }

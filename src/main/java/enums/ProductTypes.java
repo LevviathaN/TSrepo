@@ -13,7 +13,8 @@ public enum ProductTypes {
     COMFORTER("Tomorrow Comforter"),
     MATTRESS_PROTECTOR("Tomorrow Mattress Protector"),
     SHEETSET("Tomorrow Sheet Set"),
-    ADJUSTABLE_BASE("Tomorrow Adjustable Base");
+    ADJUSTABLE_BASE("Tomorrow Adjustable Base"),
+    FOUNDATION("Tomorrow Foundation");
 
 
     private String value;

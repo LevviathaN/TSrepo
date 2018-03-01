@@ -67,11 +67,14 @@ public class ShopPage extends BasePage{
         findElement(shopOurSheetsButton).click();
         return SheetsetPage.Instance;
     }
-
+    public FoundationPage clickOnShopFoundationButton(){
+        reporter.info("Click on Shop Foundation");
+        clickOnElement(By.partialLinkText("Foundation"));
+        return FoundationPage.Instance;
+    }
     public AdjustablePage clickOnShopOurBaseButton() {
         reporter.info("Click on Shop Our Adjustable Base");
-        //TODO fix after TS-501
-        driver().get(BASE_URL+"/tomorrow-adjustable-base");
+        clickOnElement(By.partialLinkText("Adjustable Base"));
         return AdjustablePage.Instance;
     }
 

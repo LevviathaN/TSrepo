@@ -22,6 +22,7 @@ public class HomePage extends BasePage{
     By shopOurMattressButton = By.xpath("(//a[@class='shop-button'])[1]");
     By shopOurMonitorButton = By.xpath("(//a[text()='Shop Our Monitor'])[1]");
     By shopFoamPillowButton = By.xpath("(//a[@class='shop-button'])[2]");
+
     /** Page Methods */
 
     public MattressesPage clickOnShopOurMattressButton() {
@@ -47,3 +48,5 @@ public class HomePage extends BasePage{
     }
 
 }
+
+

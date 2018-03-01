@@ -24,16 +24,16 @@ public class MattressProtectorPage extends BaseProductPage{
     /** UI Mappings */
 
  //   By addToCartButton = By.id("product-addtocart-button");
-    By selectProtectorSize = By.cssSelector("div.bed-size-select");
+    By selectProtectorSize = By.xpath("//div[@class='product-info-main loaded']//div[@class='bed-size-select']");
 
         /** Page Methods */
 
         public MattressProtectorPage selectProtectorSize(String size) {
             reporter.info("Select Protector size: " + size);
             header.closeCart();
-            if (FileIO.getConfigProperty("device").equals("mobile")){ scrollToElement(driver().findElement(selectProtectorSize));}
             findElement(selectProtectorSize).click();
-            findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
+            scrollToElement(driver().findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")));
+            findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
             if (!findElement(selectProtectorSize).getText().contains(size)){
                 reporter.fail("Item was not changed to: " + size);
             }

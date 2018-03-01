@@ -6,10 +6,7 @@ import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.CheckoutReviewPage;
-import pages.HomePage;
-import pages.ViewCartPage;
+import pages.*;
 import utils.BaseTest;
 import utils.EntitiesFactory;
 import utils.FileIO;
@@ -30,7 +27,6 @@ public class Smoke_Adjustable_FullTest extends BaseTest {
         ViewCartPage cart = ViewCartPage.Instance;
         CheckoutPage checkout = CheckoutPage.Instance;
         CheckoutReviewPage review = CheckoutReviewPage.Instance;
-
         //open home page and add Sheets to cart
         home.open();
         ProductSync.check(ProductTypes.ADJUSTABLE_BASE);

@@ -31,7 +31,7 @@ public class MattressesPage extends BaseProductPage{
     public MattressesPage selectMattressSize(String value){
         reporter.info("Select mattress size: " + value);
         header.closeCart();
-        if (FileIO.getConfigProperty("device").equals("mobile")){ scrollToElement(driver().findElement(selectMattressSize));}
+        scrollToElement(driver().findElement(selectMattressSize));
         findElement(selectMattressSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
         if (!findElement(selectMattressSize).getText().contains(value)){

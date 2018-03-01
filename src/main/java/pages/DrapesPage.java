@@ -47,7 +47,7 @@ public class DrapesPage extends BaseProductPage{
         header.closeCart();
         reporter.info("Select Drapes color: " + color);
         scrollToElement(driver().findElement(By.xpath("//div[@option-label='" + color + "']")));
-        clickOnElement(By.xpath("//div[@option-label='" + color + "']"));
+        clickOnElement(By.xpath("//main[@id='maincontent']//div[@option-label='" + color + "']"));
         return this;
     }
 }

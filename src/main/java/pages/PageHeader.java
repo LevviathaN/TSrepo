@@ -20,7 +20,7 @@ public class PageHeader extends BasePage {
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
     //top menu
     //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
-    By topMenuItem_Shop = By.id("ui-id-2");
+    By topMenuItem_Shop = By.xpath("//a[@id='ui-id-2']//span[text()='Shop']");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
@@ -30,6 +30,20 @@ public class PageHeader extends BasePage {
     By topMenuItem_Reviews = By.xpath("(//SPAN[text()='REVIEWS'][text()='REVIEWS'])[1]");
     By topMenuItem_Account = By.xpath("//ul[@class='header links']//span[text()='Account']");
     By topMenuItem_SignOut = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign Out')]");
+
+    By topMenuItem_Mattress = By.partialLinkText("MATTRESS");
+    By topMenuItem_Accessories = By.partialLinkText("ACCESSORIES");
+        By topMenuMemoryFoamPillow = By.partialLinkText("Memory Foam Pillow");
+        By topMenuPlushPillow = By.partialLinkText("Plush Pillow");
+        By topMenuComforter = By.partialLinkText("Comforter");
+        By topMenuSheetSet = By.partialLinkText("Sheet Set");
+        By topMenuProtector = By.partialLinkText("Protector");
+        By topMenuSleeptrackerMonitor = By.partialLinkText("Sleeptracker Monitor");
+        By topMenuDrapes = By.partialLinkText("Drapes");
+    By topMenuItem_Bases = By.partialLinkText("BASES");
+        By topMenuAdjustableBase = By.partialLinkText("Adjustable Base");
+        By topMenuFoundation = By.partialLinkText("Foundation");
+
     //cart
     By showCartButton = By.cssSelector("a.action.showcart");
     //cart
@@ -52,7 +66,7 @@ public class PageHeader extends BasePage {
     By wgBanner = By.id("wgdelban");
     By closeBannerButton =By.xpath(".//*[@id='wgdelban']/div");
 
-    By menuMobile = By.xpath("(//span[@class='action nav-toggle'])[1]");
+    By menuMobile = By.cssSelector(".navbar-toggler-content");
     By menuItem_Shop_Mobile = By.xpath("//li[@class='level0 nav-1 first level-top parent']//span[contains(text(),'Shop')]");//By.xpath("//li[@class='level-top active]");
     By menuItem_FAQ_Mobile = By.xpath("//li[@class='level0 level-top']");
     By menuItem_Reviews_Mobile = By.xpath("//li[@class='level0 nav-6 last level-top']");
@@ -70,20 +84,14 @@ public class PageHeader extends BasePage {
 
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            try {
-                waitForElement(menuMobile);
-                findElement(menuMobile).click();
-            }catch (WebDriverException e){
-                closeBanner();
-                waitForElement(menuMobile);
-                findElement(menuMobile).click();
-            }
-            waitForElement(menuItem_Shop_Mobile);
-            findElement(menuItem_Shop_Mobile).click();
+        try{
+            scrollToElement(driver().findElement(topMenuItem_Shop));
+            clickOnElement(topMenuItem_Shop);
+        }catch (TimeoutException e){
+            reporter.info("Second attempt to click on SHO{ menu item");
+            clickOnElement(topMenuItem_Shop);
         }
 
-        else clickOnElement(topMenuItem_Shop);
         return ShopPage.Instance;
     }
 
@@ -281,45 +289,50 @@ public class PageHeader extends BasePage {
     }
 
     public void openMenuByItemName(String itemName) {
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            //TODO fix me please if you know how to click on css pseudo element
-          waitForElement(menuMobile);
-          findElement(menuMobile).click();
-          waitForPageToLoad();
         switch (itemName){
             case "Mattress":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[1]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuItem_Mattress);
                 break;
             case "Memory Foam Pillow":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[2]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuMemoryFoamPillow);
                 break;
             case "Plush Pillow":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[3]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuPlushPillow);
                 break;
             case "Comforter":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[4]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuComforter);
                 break;
             case "Sheet Set":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[5]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuSheetSet);
                 break;
             case "Protector":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[6]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuProtector);
                 break;
             case "Sleeptracker Monitor":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[7]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuSleeptrackerMonitor);
                 break;
             case "Drapes":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[8]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuDrapes);
                 break;
             case "Adjustable Base":
-                driver().findElement(By.xpath("//UL[@class='shop-icons-navbar siv level0 submenu']/li[9]")).click();
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuAdjustableBase);
                 break;
-        }
+            case "Tomorrow Foundation":
+                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+                clickOnElement(topMenuFoundation);
+                break;
 
-        }
-    else {
-        hoverItem(topMenuItem_Shop);
-        clickOnElement(By.xpath("//a[@role='menuitem']/p[text()='" + itemName + "']"));
+            default:
+                assert false : "There is no "+ itemName + " item ";
         }
     }
 
