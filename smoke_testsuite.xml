@@ -4,6 +4,8 @@
 
             <class name="viewcart.ViewCart_ChangeQuantityTest" />
             <class name="viewcart.ViewCart_DeleteTest" />
+
+
             <class name="smoke.NavigationTest_withDataprovider" />
             <class name="smoke.Smoke_WhiteGloveDeliveryTest" />
 
@@ -43,6 +45,7 @@
             <class name="viewcart.ViewCart_UpdateSheetsTest" />
             <class name="viewcart.ViewCart_UpdateAdjustableBaseTest" />
             <class name="viewcart.ViewCart_UpdateFoundationTest" />
+
 
             <class name="smoke.Smoke_FAQ_FullTest" />
             <class name="smoke.Smoke_ReviewsRating_Test" />

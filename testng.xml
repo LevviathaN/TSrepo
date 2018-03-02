@@ -1,9 +1,9 @@
 <suite name="Suite" parallel="methods" thread-count="5">
     <test name="Test">
         <classes>
-            <class name="smoke.NavigationTest_withDataprovider" />
-
             <class name="smoke.Smoke_Protector_FullTest" />
+            <class name="smoke.Smoke_DeleteItemFromCartTest" />
+            <class name="viewcart.ViewCart_DeleteTest" />
 
         </classes>
     </test> <!-- test -->
