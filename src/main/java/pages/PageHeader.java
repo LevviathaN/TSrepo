@@ -20,7 +20,7 @@ public class PageHeader extends BasePage {
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
     //top menu
     //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
-    By topMenuItem_Shop = By.xpath("//a[@id='ui-id-2']//span[text()='Shop']");
+    By topMenuItem_Shop = By.xpath("//span[text()='Shop'][1]");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
@@ -84,14 +84,8 @@ public class PageHeader extends BasePage {
 
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");
-        try{
-            scrollToElement(driver().findElement(topMenuItem_Shop));
-            clickOnElement(topMenuItem_Shop);
-        }catch (TimeoutException e){
-            reporter.info("Second attempt to click on SHO{ menu item");
-            clickOnElement(topMenuItem_Shop);
-        }
-
+        waitForElement(topMenuItem_Shop);
+        clickOnElement(topMenuItem_Shop);
         return ShopPage.Instance;
     }
 
@@ -237,6 +231,8 @@ public class PageHeader extends BasePage {
         clickOnElement(cartCheckoutButton);
         if (isElementPresent(closeImproveWindow)){
             clickOnElement(closeImproveWindow);
+        }else{
+            clickOnElement(cartCheckoutButton);
         }
         return CheckoutPage.Instance;
     }
@@ -289,45 +285,36 @@ public class PageHeader extends BasePage {
     }
 
     public void openMenuByItemName(String itemName) {
+        hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
         switch (itemName){
             case "Mattress":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuItem_Mattress);
                 break;
             case "Memory Foam Pillow":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuMemoryFoamPillow);
                 break;
             case "Plush Pillow":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuPlushPillow);
                 break;
             case "Comforter":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuComforter);
                 break;
             case "Sheet Set":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuSheetSet);
                 break;
             case "Protector":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuProtector);
                 break;
             case "Sleeptracker Monitor":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuSleeptrackerMonitor);
                 break;
             case "Drapes":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuDrapes);
                 break;
             case "Adjustable Base":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuAdjustableBase);
                 break;
             case "Tomorrow Foundation":
-                hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
                 clickOnElement(topMenuFoundation);
                 break;
 
