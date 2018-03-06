@@ -2,7 +2,7 @@
     <test name="Test">
         <classes>
 
-            <class name="viewcart.ViewCart_DeleteTest" />
+            <class name="viewcart.ViewCart_UpdateDrapesTest" />
 
         </classes>
     </test> <!-- test -->

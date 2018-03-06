@@ -1,4 +1,4 @@
-package smoke;
+package old;
 
 import annotations.TestName;
 import entities.ItemEntity;
