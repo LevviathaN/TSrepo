@@ -2,7 +2,7 @@
     <test name="Test">
         <classes>
 
-            <class name="viewcart.ViewCart_UpdateDrapesTest" />
+            <class name="smoke.NavigationTest_withDataprovider" />
 
         </classes>
     </test> <!-- test -->
