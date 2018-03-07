@@ -20,7 +20,8 @@ public class PageHeader extends BasePage {
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
     //top menu
     //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
-    By topMenuItem_Shop = By.xpath("//span[text()='Shop'][1]");
+    //By topMenuItem_Shop = By.id("ui-id-2");
+    By topMenuItem_Shop = By.xpath("//span[contains(text(), 'Shop')][1]");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
@@ -63,13 +64,8 @@ public class PageHeader extends BasePage {
     By cartQtyIndex = By.cssSelector("span.counter-number");
     By LOADING_SPINNER = By.cssSelector("div.fotorama__spinner");
     By closeImproveWindow = By.xpath("//DIV[@class='close mteo-close']");
-    By wgBanner = By.id("wgdelban");
-    By closeBannerButton =By.xpath(".//*[@id='wgdelban']/div");
 
-    By menuMobile = By.cssSelector(".navbar-toggler-content");
-    By menuItem_Shop_Mobile = By.xpath("//li[@class='level0 nav-1 first level-top parent']//span[contains(text(),'Shop')]");//By.xpath("//li[@class='level-top active]");
-    By menuItem_FAQ_Mobile = By.xpath("//li[@class='level0 level-top']");
-    By menuItem_Reviews_Mobile = By.xpath("//li[@class='level0 nav-6 last level-top']");
+
 
     PageHeader() {
         waitForPageToLoad();
@@ -109,28 +105,13 @@ public class PageHeader extends BasePage {
 
     public ReviewsPage clickReviewsMenuItem(){
         reporter.info("Click on REVIEW menu item");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(menuMobile);
-            findElement(menuMobile).click();
-
-            waitForElement(menuItem_Reviews_Mobile);
-            scrollToElement(driver().findElement(menuItem_Reviews_Mobile));
-            findElement(menuItem_Reviews_Mobile).click();
-        }
-        else clickOnElement(topMenuItem_Reviews);
+        clickOnElement(topMenuItem_Reviews);
         return ReviewsPage.Instance;
     }
 
     public FaqPage clickFaqMenuItem() {
         reporter.info("Click on Help menu item");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(menuMobile);
-            findElement(menuMobile).click();
-            waitForElement(menuItem_FAQ_Mobile);
-            findElement(menuItem_FAQ_Mobile).click();
-        }
-
-        else clickOnElement(topMenuItem_FAQ);
+        clickOnElement(topMenuItem_FAQ);
         return FaqPage.Instance;
     }
 
@@ -140,7 +121,6 @@ public class PageHeader extends BasePage {
         reporter.info("Open Cart (Click on Show cart button)");
         driver().navigate().refresh();
         waitForPageToLoad();
-        closeBanner();
         findElement(showCartButton).click();
 
         return this;
@@ -227,7 +207,6 @@ public class PageHeader extends BasePage {
     public CheckoutPage clickOnCheckoutButton() {
         reporter.info("Click on Checkout button");
         openCart();
-        if (FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(cartCheckoutButton));}
         clickOnElement(cartCheckoutButton);
         if (isElementPresent(closeImproveWindow)){
             clickOnElement(closeImproveWindow);
@@ -240,7 +219,6 @@ public class PageHeader extends BasePage {
     public ViewCartPage clickOnViewCartButton() {
         reporter.info("Click on View Cart button");
         openCart();
-        if(FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(viewCartButton));}
         clickOnElement(viewCartButton);
         return ViewCartPage.Instance;
     }
@@ -285,7 +263,7 @@ public class PageHeader extends BasePage {
     }
 
     public void openMenuByItemName(String itemName) {
-        hoverItem(By.xpath("//a[@id='ui-id-2']//span[text()='Shop']"));
+        hoverItem(topMenuItem_Shop);
         switch (itemName){
             case "Mattress":
                 clickOnElement(topMenuItem_Mattress);
@@ -338,13 +316,7 @@ public class PageHeader extends BasePage {
         }
         ;
     }
-    public void closeBanner(){
-        if (isElementDisplayedRightNow(wgBanner)){
-            reporter.info("Closing banner");
-            clickOnElementIgnoreException(closeBannerButton);
-        }
-        return;
-    }
+
 
     public void clickSignOutMenuItem() {
         reporter.info("Click on SIGN Out menu item");

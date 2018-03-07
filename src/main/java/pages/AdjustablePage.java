@@ -26,7 +26,6 @@ public class AdjustablePage extends BaseProductPage{
         reporter.info("Select Adjustable Base size: " + size);
         //waitForPageToLoad();
         header.closeCart();
-        if (FileIO.getConfigProperty("device").equals("mobile")) { scrollToElement(driver().findElement(selectBaseSize));}
         findElement(selectBaseSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
         if (!findElement(selectBaseSize).getText().contains(size)){

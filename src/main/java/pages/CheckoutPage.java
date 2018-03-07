@@ -47,7 +47,7 @@ public class CheckoutPage extends BasePage {
     By freeShippingRadioButton = By.id("label_method_freeshipping_freeshipping");
     By whiteGloveRadioButton = By.id("label_method_bestway_tablerate");
     By oldMattressRemovalRadioButton =  By.cssSelector("div.value.deliverydate-removel label");
-    By firstAvailableDeliveryDay = By.xpath("//td[@data-handler='selectDay'][1]");
+    By firstAvailableDeliveryDay = By.xpath("//td[@data-handler='selectDay'][2]");
 
     //order list
 
@@ -193,6 +193,7 @@ public class CheckoutPage extends BasePage {
                     .setPhone(user.getContacts().getPhone());
         return this;
     }
+
     public CheckoutPage populateSpippingInfo(String state, String zip) {
         this.setPostcode(zip)
             .selectRegion(state);

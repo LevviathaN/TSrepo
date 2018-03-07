@@ -91,15 +91,8 @@ public class BasePage {
 
     public void open() {
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
-            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
-            waitForPageToLoad();
-        }
-        else {
-            driver().get(BASE_URL + pageURL);
-            closeWelcomeMessage();
-            waitForPageToLoad();
-        }
+        driver().get(BASE_URL + pageURL);
+        closeWelcomeMessage();
     }
 
     public void close() {
@@ -301,9 +294,6 @@ public class BasePage {
     public static void scrollToElement(WebElement element) {
         waitForPageToLoad();
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY-=150)", element);
-        }
     }
 
     public static void scrollToShopElement(WebElement element) {

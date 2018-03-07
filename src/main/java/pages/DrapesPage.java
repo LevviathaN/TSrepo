@@ -34,7 +34,6 @@ public class DrapesPage extends BaseProductPage{
     public DrapesPage selectDrapesSize(String value) {
             header.closeCart();
             reporter.info("Select Drapes size: " + value);
-            if (FileIO.getConfigProperty("device").equals("mobile")) {scrollToElement(driver().findElement(selectDrapesSize));}
             findElement(selectDrapesSize).click();
             findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
             if (!findElement(selectDrapesSize).getText().contains(value)){

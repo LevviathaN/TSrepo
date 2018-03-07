@@ -48,7 +48,6 @@ public class ReviewsRating extends BasePage {
 
 
     // Applied filter buttons
-    By removeFilterMobile = By.cssSelector(".pr-cross-icon");
     By xFiveStarsButton = By.xpath(".//span[contains(.,'5 Stars')]");
     By xFourStarsButton = By.xpath(".//span[contains(.,'4 Stars')]");
     By xThreeStarsButton = By.xpath(".//span[contains(.,'3 Stars')]");
@@ -105,26 +104,13 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating    clickOnMattressReviewButton() {
         reporter.info("Click on Mattress review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            //waitForElement(topSelector);
-            //findElement(topSelector).click();
-            return this;
-        }
-        else scrollToElement(driver().findElement(topBarMattress));
+        scrollToElement(driver().findElement(topBarMattress));
         findElement(topBarMattress).click();
         return this;
     }
 
     public ReviewsRating clickOnMonitorReviewButton() {
         reporter.info("Click on Monitor review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectMonitor));
-            findElement(selectMonitor).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarMonitor));
         findElement(topBarMonitor).click();
         return this;
@@ -132,14 +118,6 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnComforterReviewButton() {
         reporter.info("Click on Comforter review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectComforter));
-            findElement(selectComforter).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarComforter));
         findElement(topBarComforter).click();
         return this;
@@ -147,14 +125,6 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnFoamPillowReviewButton() {
         reporter.info("Click on Foam Pillow review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectFoam));
-            findElement(selectFoam).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarFoamPillow));
         findElement(topBarFoamPillow).click();
         return this;
@@ -162,14 +132,6 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnPlushPillowReviewButton() {
         reporter.info("Click on Plush Pillow review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectPlush));
-            findElement(selectPlush).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarPlushPillow));
         findElement(topBarPlushPillow).click();
         return this;
@@ -177,14 +139,6 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnSheetsReviewButton() {
         reporter.info("Click on Sheets review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectSheets));
-            findElement(selectSheets).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarSheets));
         findElement(topBarSheets).click();
         return this;
@@ -192,14 +146,6 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnProtectorReviewButton() {
         reporter.info("Click on Protector review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectProtector));
-            findElement(selectProtector).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarProtector));
         findElement(topBarProtector).click();
         return this;
@@ -207,14 +153,6 @@ public class ReviewsRating extends BasePage {
 
     public ReviewsRating clickOnDrapesReviewButton() {
         reporter.info("Click on Drapes review button");
-        if (FileIO.getConfigProperty("device").equals("mobile")) {
-            waitForElement(topSelector);
-            scrollToElement(driver().findElement(topSelector));
-            findElement(topSelector).click();
-            scrollToElement(driver().findElement(selectDrapes));
-            findElement(selectDrapes).click();
-            return this;
-        }
         scrollToElement(driver().findElement(topBarDrapes));
         findElement(topBarDrapes).click();
         return this;
@@ -307,13 +245,9 @@ public class ReviewsRating extends BasePage {
 
     public void removeFiveStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xFiveStarsButton)){
-            if (FileIO.getConfigProperty("device").equals("mobile")){
-                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
-                clickOnElement(removeFilterMobile);
-            }else {
             scrollToElement(driver().findElement(xFiveStarsButton));
-            findElement(removeFilterMobile).click();
-            reporter.info("Click on 5 stars filter button and removing filter");}
+            findElement(xFiveStarsButton).click();
+            reporter.info("Click on 5 stars filter button and removing filter");
         }else{
             reporter.info("5 Stars filter removal button was not found");
         }
@@ -321,12 +255,8 @@ public class ReviewsRating extends BasePage {
 
     public void removeFourStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xFourStarsButton)){
-            if (FileIO.getConfigProperty("device").equals("mobile")){
-                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
-                clickOnElement(removeFilterMobile);
-            }else {
             scrollToElement(driver().findElement(xFourStarsButton));
-            findElement(removeFilterMobile).click();}
+            findElement(xFourStarsButton).click();
             reporter.info("Click on 4 stars filter button and removing filter");
         }else{
             reporter.info("4 Stars filter removal button was not found");
@@ -335,12 +265,8 @@ public class ReviewsRating extends BasePage {
 
     public void removeThreeStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xThreeStarsButton)){
-            if (FileIO.getConfigProperty("device").equals("mobile")){
-                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
-                clickOnElement(removeFilterMobile);
-            }else {
             scrollToElement(driver().findElement(xThreeStarsButton));
-            findElement(xThreeStarsButton).click();}
+            findElement(xThreeStarsButton).click();
             reporter.info("Click on 3 stars filter button and removing filter");
         }else{
             reporter.info("3 Stars filter removal button was not found");
@@ -349,12 +275,8 @@ public class ReviewsRating extends BasePage {
 
     public void removeTwoStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xTwoStarsButton)){
-            if (FileIO.getConfigProperty("device").equals("mobile")){
-                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
-                clickOnElement(removeFilterMobile);
-            }else {
             scrollToElement(driver().findElement(xTwoStarsButton));
-            findElement(xTwoStarsButton).click();}
+            findElement(xTwoStarsButton).click();
             reporter.info("Click on 2 stars filter button");
         }else{
             reporter.info("2 Stars filter removal button was not found");
@@ -363,12 +285,8 @@ public class ReviewsRating extends BasePage {
 
     public void removeOneStarFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xOneStarButton)){
-            if (FileIO.getConfigProperty("device").equals("mobile")){
-                scrolltoFAQelement(driver().findElement(By.xpath(".//*[@class='pr-review-close-filter pr-btn']")));
-                clickOnElement(removeFilterMobile);
-            }else {
             scrollToElement(driver().findElement(xOneStarButton));
-            findElement(xOneStarButton).click();}
+            findElement(xOneStarButton).click();
             reporter.info("Click on 1 stars filter button");
         }else{
             reporter.info("1 Star filter removal button was not found");

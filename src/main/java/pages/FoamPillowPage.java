@@ -26,7 +26,6 @@ public class FoamPillowPage extends BaseProductPage{
         /** Page Methods */
 
     public FoamPillowPage clickAddToCart() {
-        if (FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(By.id("product-addtocart-button")));}
         super.clickAddToCart();
         return this;
     }

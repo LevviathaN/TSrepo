@@ -29,7 +29,6 @@ public class SheetsetPage extends BaseProductPage{
         reporter.info("Select Sheetset size: " + size);
         //waitForPageToLoad();
         header.closeCart();
-        if (FileIO.getConfigProperty("device").equals("mobile")) { scrollToElement(driver().findElement(selectSheetsetSize));}
         findElement(selectSheetsetSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
         if (!findElement(selectSheetsetSize).getText().contains(size)){

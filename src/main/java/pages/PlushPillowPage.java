@@ -25,7 +25,6 @@ public class PlushPillowPage extends BaseProductPage{
     /** Page Methods */
 
     public PlushPillowPage clickAddToCart() {
-        if (FileIO.getConfigProperty("device").equals("mobile")){scrollToElement(driver().findElement(By.id("product-addtocart-button")));}
         super.clickAddToCart();
         return this;
     }

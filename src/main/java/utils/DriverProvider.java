@@ -54,9 +54,11 @@ public class DriverProvider {
         caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--kiosk");
+        //chromeOptions.addArguments("--kiosk");
         chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--start-fullscreen");
+        //chromeOptions.addArguments("--headless");
+        //chromeOptions.addArguments("--window-size=1920,1080");
 
         caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
@@ -64,37 +66,6 @@ public class DriverProvider {
 
     }
 
-    static public RemoteWebDriver getMobileSafari() throws MalformedURLException {
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("udid", "auto");
-        capabilities.setCapability("deviceName", "iPhone 6s");
-        capabilities.setCapability("platformName", "ios");
-        capabilities.setCapability("automationName", "XCUITest");
-        capabilities.setCapability(CapabilityType.BROWSER_NAME, "safari");
-        capabilities.setCapability("startIWDP", "true");
-        capabilities.setCapability("ensureCleanSession", true);
-        capabilities.setCapability("newCommandTimeout", 300);
-
-        return new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
-
-    }
-
-    static public RemoteWebDriver getMobileChrome() throws MalformedURLException{
-
-        DesiredCapabilities capabilities= new DesiredCapabilities();
-        capabilities.setCapability("device","Android");
-        //capabilities.setCapability("udid", "3RP4C17B14005745");//honor
-        capabilities.setCapability("udid", "ad0616030849a4d2e1");//S7
-        capabilities.setCapability("platformVersion", "7.1.1");
-        capabilities.setCapability("deviceName", "Android");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("browserName", "Chrome");
-        capabilities.setCapability("newCommandTimeout", 300);
-
-        return new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
-
-    }
 
     public static WebDriver getDriver() throws MalformedURLException {
         //if (instance == null)
@@ -107,11 +78,6 @@ public class DriverProvider {
                 //instance = getChrome();
                 instance.set(getChrome());
             }
-            else if (getCurrentBrowserName().equals("ios"))
-                instance.set(getMobileSafari());
-            else if (getCurrentBrowserName().equals("android"))
-                instance.set(getMobileChrome());
-
         //return instance;
         return instance.get();
     }
@@ -129,10 +95,6 @@ public class DriverProvider {
                 BROWSER_TYPE = BrowserType.FIREFOX;
             else if (FileIO.getConfigProperty("Driver").equals("chrome"))
                 BROWSER_TYPE = BrowserType.CHROME;
-            else if (FileIO.getConfigProperty("Driver").equals("safari"))
-                BROWSER_TYPE = "ios";
-            else
-                BROWSER_TYPE = "android";
         return BROWSER_TYPE;
     }
 }

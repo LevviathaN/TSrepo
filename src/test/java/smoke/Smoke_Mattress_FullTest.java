@@ -47,7 +47,7 @@ public class Smoke_Mattress_FullTest extends BaseTest {
         //check item displayed in order
         home.header.clickOnViewCartButton();
         Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-        home.header.clickOnCheckoutButton();
+        cart.clickOnProceedToChechout();
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);

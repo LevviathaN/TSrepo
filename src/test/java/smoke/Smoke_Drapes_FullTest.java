@@ -33,11 +33,11 @@ public class Smoke_Drapes_FullTest extends BaseTest {
         ProductSync.check(ProductTypes.DRAPES);
         home.header.clickShopMenuItem()
                 .clickOnShopOurDrapesButton();
-                DrapesPage.Instance.selectDrapesSize(item.getSize())
+
+        DrapesPage.Instance.selectDrapesSize(item.getSize())
                 .selectDrapesColor(item.getType())
                 .clickAddToCart();
-        if (FileIO.getConfigProperty("device").equals("mobile")) home.open();
-        else home.header.clickShopMenuItem();
+        home.header.clickShopMenuItem();
 
         ProductSync.uncheck(ProductTypes.DRAPES);
 
@@ -47,7 +47,7 @@ public class Smoke_Drapes_FullTest extends BaseTest {
         //check item displayed in order
         home.header.clickOnViewCartButton();
         Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
-        home.header.clickOnCheckoutButton();
+        cart.clickOnProceedToChechout();
 
 
         //set all user related felds
