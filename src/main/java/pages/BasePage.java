@@ -81,6 +81,7 @@ public class BasePage {
             reporter.info("Expected URL: " + pageURL);
             result = false;
         }
+        closeWelcomeMessage();
 
         return result;
     }
@@ -91,8 +92,14 @@ public class BasePage {
 
     public void open() {
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
-        driver().get(BASE_URL + pageURL);
-        closeWelcomeMessage();
+        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
+            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
+            closeWelcomeMessage();
+        }
+        else {
+            driver().get(BASE_URL + pageURL);
+            closeWelcomeMessage();
+        }
     }
 
     public void close() {

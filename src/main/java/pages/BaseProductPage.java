@@ -41,6 +41,7 @@ public class BaseProductPage extends BasePage{
         public BaseProductPage clickAddToCart() {
             reporter.info("Add to Cart button");
             header.closeCart();
+            closeWelcomeMessage();//TODO
             waitForPageToLoad();
             driver().findElement(addToCartButton).click();
             if (header.waitUntilItemWillBeDropedToCart() == false) {

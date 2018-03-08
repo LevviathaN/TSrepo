@@ -100,18 +100,21 @@ public class PageHeader extends BasePage {
     public MagazinePage clickOnMagazineItemMagPage() {
         reporter.info("Click on MAGAZINE menu item on the MAGAZINE page header");
         clickOnElement(topMagazineMenuItem_Magazine);
+        closeWelcomeMessage();//todo
         return MagazinePage.Instance;
     }
 
     public ReviewsPage clickReviewsMenuItem(){
         reporter.info("Click on REVIEW menu item");
         clickOnElement(topMenuItem_Reviews);
+        closeWelcomeMessage();//todo
         return ReviewsPage.Instance;
     }
 
     public FaqPage clickFaqMenuItem() {
         reporter.info("Click on Help menu item");
         clickOnElement(topMenuItem_FAQ);
+        closeWelcomeMessage();//todo
         return FaqPage.Instance;
     }
 
