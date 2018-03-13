@@ -15,9 +15,6 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.relevantcodes.extentreports.NetworkMode;
 
-import static utils.FileIO.Report_folder;
-import static utils.FileIO.Screen_folder;
-
 public class ReporterManager {
 
         private static ReporterManager instance;
@@ -34,7 +31,7 @@ public class ReporterManager {
 
         private synchronized static ExtentReports getInstance() {
             if (extent == null) {
-                extent = new ExtentReports(FileIO.TARGET_FOLDER + File.separator + Report_folder +File.separator + "Report" + Tools.getCurDateTime() + ".html", true, NetworkMode.ONLINE);
+                extent = new ExtentReports(FileIO.TARGET_FOLDER + File.separator + FileIO.Report_folder + File.separator + "Report" + Tools.getCurDateTime() + ".html", true, NetworkMode.ONLINE);
             }
             return extent;
         }
@@ -162,7 +159,7 @@ public class ReporterManager {
             logger.error(details);
             try {
                  screenshotFile = FileIO.takeScreenshot(DriverProvider.getDriver());
-                 message = message + "<br><a href=\"" + Report_folder + File.separator + Screen_folder + File.separator + screenshotFile + File.separator + "\" target=_blank alt>"
+                 message = message + "<br><a href=\"" + screenshotFile + File.separator + "\" target=_blank alt>"
                         + "SCREENSHOT" + "</a><br>";
             } catch (Exception e){
                 // processing of problem with taking screenshot

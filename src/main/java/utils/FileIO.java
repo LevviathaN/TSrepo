@@ -33,7 +33,6 @@ public class FileIO {
     static String CONFIG_FILE = System.getProperty("config");
     static String PROPERTIES = "src/main/resources/" + (( CONFIG_FILE == null ) ? "default" : CONFIG_FILE) + ".properties";
     static String Report_folder = "Report";
-    static String Screen_folder = "Screenshots";
 
     public static String getConfigProperty(String fieldName){
         String fileLocation = PROPERTIES;
@@ -233,7 +232,7 @@ public class FileIO {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String filename = name + "screen.png";
         try {
-            Files.copyFile(new FileInputStream(file) , new File(TARGET_FOLDER + File.separator + Report_folder + File.separator +Screen_folder + File.separator + filename));
+            Files.copyFile(new FileInputStream(file) , new File(TARGET_FOLDER + File.separator + Report_folder + File.separator + filename));
         } catch (IOException e) {
             e.printStackTrace();
         }

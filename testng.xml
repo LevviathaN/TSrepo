@@ -3,7 +3,6 @@
         <classes>
 
             <class name="smoke.Smoke_PlushPillow_FullTest" />
-            <class name="smoke.Smoke_Mattress_FullTest" />
 
         </classes>
     </test> <!-- test -->
