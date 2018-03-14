@@ -159,7 +159,7 @@ public class ReporterManager {
             logger.error(details);
             try {
                  screenshotFile = FileIO.takeScreenshot(DriverProvider.getDriver());
-                 message = message + "<br><a href=\"" + screenshotFile + File.separator + "\" target=_blank alt>"
+                 message = message + "<br><a href=\"" + screenshotFile + File.separator + " target=_blank alt>"
                         + "SCREENSHOT" + "</a><br>";
             } catch (Exception e){
                 // processing of problem with taking screenshot
