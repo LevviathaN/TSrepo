@@ -81,7 +81,6 @@ public class BasePage {
             reporter.info("Expected URL: " + pageURL);
             result = false;
         }
-        closeWelcomeMessage();
 
         return result;
     }
@@ -410,9 +409,9 @@ public class BasePage {
 
     public HomePage closeWelcomeMessage(){
         reporter.info("Closing welcome popup");
+        waitForPageToLoad();
         if (isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']"))) {
             clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
-            reloadPage();
         }
         return HomePage.Instance;
     }

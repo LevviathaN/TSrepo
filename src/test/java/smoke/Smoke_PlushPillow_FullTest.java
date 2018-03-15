@@ -41,7 +41,7 @@ public class Smoke_PlushPillow_FullTest extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.PLUSH_PILLOW);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
         home.header.clickOnViewCartButton();

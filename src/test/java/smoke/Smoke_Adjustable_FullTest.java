@@ -38,7 +38,7 @@ public class Smoke_Adjustable_FullTest extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.ADJUSTABLE_BASE);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
         home.header.clickOnViewCartButton();

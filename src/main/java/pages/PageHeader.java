@@ -52,8 +52,8 @@ public class PageHeader extends BasePage {
     By cartItemName = By.cssSelector("strong.product-item-name");
     By cartItemContent = By.cssSelector("div.content");
     By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
-    By cartItemPrice = By.xpath("./div/div[@class='price-container'][1]");
-//    By cartItemPrice = By.cssSelector("span.minicart-price span.price");
+    //By cartItemPrice = By.xpath("./div/div[@class='price-container'][1]");
+    By cartItemPrice = By.cssSelector("span.minicart-price span.price");
     By cartBox = By.xpath("//div[@data-role='dropdownDialog']");
     By cartCheckoutButton = By.cssSelector("button#top-cart-btn-checkout");
     By viewCartButton = By.cssSelector("a.action.viewcart");
@@ -100,21 +100,18 @@ public class PageHeader extends BasePage {
     public MagazinePage clickOnMagazineItemMagPage() {
         reporter.info("Click on MAGAZINE menu item on the MAGAZINE page header");
         clickOnElement(topMagazineMenuItem_Magazine);
-        closeWelcomeMessage();//todo
         return MagazinePage.Instance;
     }
 
     public ReviewsPage clickReviewsMenuItem(){
         reporter.info("Click on REVIEW menu item");
         clickOnElement(topMenuItem_Reviews);
-        closeWelcomeMessage();//todo
         return ReviewsPage.Instance;
     }
 
     public FaqPage clickFaqMenuItem() {
         reporter.info("Click on Help menu item");
         clickOnElement(topMenuItem_FAQ);
-        closeWelcomeMessage();//todo
         return FaqPage.Instance;
     }
 
@@ -163,6 +160,7 @@ public class PageHeader extends BasePage {
     public ArrayList<ItemEntity> getAllCartItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
 
+        reporter.info("Getting items in minicart");
         openCart();
 
         List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
@@ -196,7 +194,7 @@ public class PageHeader extends BasePage {
         return result;
     }
 
-    public boolean itemWasFoundInCart(ItemEntity item) {
+    public boolean itemWasFoundInMiniCart(ItemEntity item) {
         ArrayList<ItemEntity> items = getAllCartItems();
         reporter.info("Expected item: " + item.toString());
         return items.stream()

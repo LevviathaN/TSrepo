@@ -15,8 +15,6 @@ import utils.EntitiesFactory;
 import utils.FileIO;
 import utils.ProductSync;
 
-import java.io.File;
-
 public class Smoke_Comforter_FullTest extends BaseTest {
 
     @Test
@@ -45,7 +43,7 @@ public class Smoke_Comforter_FullTest extends BaseTest {
         ProductSync.uncheck(ProductTypes.COMFORTER);
 
         // check item in minicart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
 
         //check item displayed in order

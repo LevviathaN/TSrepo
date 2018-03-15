@@ -40,7 +40,7 @@ public class Smoke_Monitor_FullTest extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.MONITOR);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
         home.header.clickOnViewCartButton();

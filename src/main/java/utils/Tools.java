@@ -31,6 +31,6 @@ public class Tools {
     }
 
     public static float convertStringPriceToFloat(String strPrice){
-        return Float.valueOf(strPrice.replace("$","").replace(",",""));
+        return Float.valueOf(strPrice.replace("$","").replace(",","").replace("-", ""));
     }
 }

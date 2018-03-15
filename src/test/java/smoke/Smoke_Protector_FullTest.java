@@ -42,7 +42,7 @@ public class Smoke_Protector_FullTest extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.MATTRESS_PROTECTOR);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
         home.header.clickOnViewCartButton();

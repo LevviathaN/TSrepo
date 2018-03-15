@@ -49,6 +49,7 @@ public class ViewCartPage extends BasePage {
 
     public boolean itemDisplayedOnViewCartPage(ItemEntity item) {
         ArrayList<ItemEntity> items = getAllViewCartPageItems();
+        reporter.info("Expected item: " + item.toString());
         return items.stream()
                 .filter(cur -> item.getTitle() == null || item.getTitle().equals(cur.getTitle()))
                 .filter(cur -> item.getQty() == 0 || item.getQty() == cur.getQty())
@@ -74,7 +75,7 @@ public class ViewCartPage extends BasePage {
 
     private ArrayList<ItemEntity> getAllViewCartPageItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
-        reporter.info("Getting order items");
+        reporter.info("Getting order items on cart page");
         findElementIgnoreException(orderItems); // wait for order
         List<WebElement> itemsList = findElementsIgnoreException(orderItems);
         for (WebElement orderItem : itemsList ) {
@@ -168,15 +169,19 @@ public class ViewCartPage extends BasePage {
         }
     }
 
-
     public void clickOnBackToShop() {
         reporter.info("Click on back to shop link");
         findElement(backToShopLink).click();
     }
 
-    public void clickOnProceedToChechout() {
+    public CheckoutPage clickOnProceedToChechout() {
         reporter.info("Click on Proceed to Checkout button");
         scrollToElement(driver().findElement(proceedToCheckoutButton));
         clickOnElement(proceedToCheckoutButton);
+        return CheckoutPage.Instance;
+    }
+
+    public float getDiscount(){
+        return Tools.convertStringPriceToFloat(findElement(By.xpath("//*[@id=\"cart-totals\"]/div/table/tbody/tr[2]/td/span/span")).getText());
     }
 }

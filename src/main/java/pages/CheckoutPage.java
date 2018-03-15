@@ -19,6 +19,7 @@ public class CheckoutPage extends BasePage {
 
     public CheckoutPage(){
         pageURL = "/checkout/";
+        waitForPageToLoad();
     }
 
     /** Common elements **/
@@ -51,10 +52,11 @@ public class CheckoutPage extends BasePage {
 
     //order list
 
-    By orderItems = By.cssSelector("div.block.items-in-cart ol.minicart-items li.product-item");
-    By orderItemName = By.cssSelector("strong.product-item-name");
-    By orderItemQty = By.cssSelector("div.details-qty span.value");
-    By orderItemPrice = By.cssSelector("span.cart-price");
+    //By orderItems = By.cssSelector("div.block.items-in-cart ol.minicart-items li.product-item");
+    By orderItems = By.cssSelector("li.product-item");
+    By orderItemName = By.cssSelector("span.product-item-name");
+    By orderItemQty = By.cssSelector("span.value");
+    By orderItemPrice = By.cssSelector("span.price");
     By orderItemDetails = By.cssSelector("dl.item-options span");
     By shippingPrice = By.cssSelector("span[data-th='Shipping']");
 
@@ -214,7 +216,7 @@ public class CheckoutPage extends BasePage {
 
     private ArrayList<ItemEntity> getAllCheckoutPageItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
-        reporter.info("Getting order items");
+        reporter.info("Getting order items on checkout page");
         findElementIgnoreException(orderItems); // wait for order
         List<WebElement> itemsList = findElementsIgnoreException(orderItems);
         for (WebElement orderItem : itemsList ) {
