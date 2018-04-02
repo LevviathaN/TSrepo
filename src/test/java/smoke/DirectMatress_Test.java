@@ -17,16 +17,16 @@ public class DirectMatress_Test extends BaseTest{
     public Object[][] provider(){
         return new Object[][]{
                 {"Medium Soft", "Queen", 990},
-                {"Medium Soft", "Full", 800},
+                {"Medium Soft", "Full", 850},
                 {"Medium Soft", "King", 1200},
-                {"Medium Soft", "Twin", 550},
-                {"Medium Soft", "Twin XL", 600},
+                {"Medium Soft", "Twin", 595},
+                {"Medium Soft", "Twin XL", 645},
                 {"Medium Soft", "Cal. King", 1250},
                 {"Medium Firm", "Queen", 990},
-                {"Medium Firm", "Full", 800},
+                {"Medium Firm", "Full", 850},
                 {"Medium Firm", "King", 1200},
-                {"Medium Firm", "Twin", 550},
-                {"Medium Firm", "Twin XL", 600},
+                {"Medium Firm", "Twin", 595},
+                {"Medium Firm", "Twin XL", 645},
                 {"Medium Firm", "Cal. King", 1250}
         };
     }

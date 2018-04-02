@@ -101,6 +101,11 @@ public class BasePage {
         }
     }
 
+    public static void openUrl(String url) {
+        reporter.info("Opening the: " + url);
+        driver().get(url);
+    }
+
     public void close() {
         reporter.info("Closing the browser");
         driver().close();
