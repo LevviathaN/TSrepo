@@ -19,12 +19,11 @@ public class ScreenshotComparison {
     static String TARGET_FOLDER = "target";
 
 
-    public static Screenshot getExpectedScreenshot() throws IOException {
-        String name = "expected.png";
+    public static Screenshot getExpectedScreenshot(String name) throws IOException {
         Screenshot file = new AShot()
-                .shootingStrategy(ShootingStrategies.viewportPasting(2000))
+                .shootingStrategy(ShootingStrategies.viewportPasting(1000))
                 .takeScreenshot(DriverProvider.instance.get());
-        ImageIO.write(file.getImage(), "PNG", new File(TARGET_FOLDER + File.separator + name));
+        ImageIO.write(file.getImage(), "PNG", new File("src/main/resources/data/production/screenshot" + File.separator + name + ".png"));
         reporter.info("got expected");
         return file;
     }
