@@ -7,6 +7,7 @@ import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
@@ -17,6 +18,9 @@ public class ScreenshotComparison {
 
 
     static String TARGET_FOLDER = "target";
+    static String REPORT_FOLDER = "target/Report";
+    static String STAGING_SCREEN = "src/main/resources/data/staging/screenshot";
+    static String PROD_SCREEN = "src/main/resources/data/production/screenshot";
 
 
     public static Screenshot getExpectedScreenshot(String name) throws IOException {
@@ -28,23 +32,44 @@ public class ScreenshotComparison {
         return file;
     }
 
-    public static Screenshot getActualScreenshot() throws IOException {
-        String name = "actual.png";
+    public static Screenshot getActualScreenshot(String name) throws IOException {
         Screenshot file = new AShot()
                 .shootingStrategy(ShootingStrategies.viewportPasting(2000))
                 .takeScreenshot(DriverProvider.instance.get());
-        ImageIO.write(file.getImage(), "PNG", new File(TARGET_FOLDER + File.separator + name));
+        ImageIO.write(file.getImage(), "PNG", new File(TARGET_FOLDER + File.separator + name + ".png"));
         reporter.info("got actual");
         return file;
     }
 
-    public static boolean compare() throws IOException {
+    public static boolean compare(String page, String actualscreenshot, String name) throws IOException {
+        BufferedImage expected;
         reporter.info("comparing");
-        String name = "result.png";
-        BufferedImage actual = ImageIO.read(new File(TARGET_FOLDER + File.separator + "actual.png"));
-        BufferedImage expected = ImageIO.read(new File(TARGET_FOLDER + File.separator + "expected.png"));
+
+        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
+            expected = ImageIO.read(new File(PROD_SCREEN + File.separator + page + ".png"));
+        }else {
+            expected = ImageIO.read(new File(STAGING_SCREEN + File.separator + page + ".png"));
+        }
+
+        BufferedImage actual = ImageIO.read(new File(TARGET_FOLDER + File.separator + actualscreenshot + ".png"));
         ImageDiff diff = new ImageDiffer().makeDiff(actual, expected);
-        return ImageIO.write(diff.getMarkedImage(), "PNG", new File(TARGET_FOLDER + File.separator + name));
+        return diff.hasDiff();
+    }
+
+    public static void overwriteScreenshot(String page, String actualscreenshot, String name) throws IOException {
+        reporter.info("Overwriting");
+        BufferedImage expected;
+        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
+            expected = ImageIO.read(new File(PROD_SCREEN + File.separator + page + ".png"));
+        }else {
+            expected = ImageIO.read(new File(STAGING_SCREEN + File.separator + page + ".png"));
+        }
+
+        BufferedImage actual = ImageIO.read(new File(TARGET_FOLDER + File.separator + actualscreenshot + ".png"));
+        ImageDiff diff = new ImageDiffer().makeDiff(actual, expected);
+        ImageIO.write(diff.getMarkedImage(), "PNG", new File(REPORT_FOLDER + File.separator + name));
+        ImageIO.write(diff.getMarkedImage(), "PNG", new File(TARGET_FOLDER + File.separator + name));
+
     }
 
 }

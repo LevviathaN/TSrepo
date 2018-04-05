@@ -96,8 +96,8 @@ public class BasePage {
             closeWelcomeMessage();
         }
         else {
+            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
             driver().get(BASE_URL + pageURL);
-            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "1");
             driver().manage().addCookie(A_B_test);
             closeWelcomeMessage();
         }

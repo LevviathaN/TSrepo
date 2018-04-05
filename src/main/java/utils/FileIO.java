@@ -34,6 +34,8 @@ public class FileIO {
     static String PROPERTIES = "src/main/resources/" + (( CONFIG_FILE == null ) ? "default" : CONFIG_FILE) + ".properties";
     static String Report_folder = "Report";
 
+    public static String filename;
+
     public static String getConfigProperty(String fieldName){
         String fileLocation = PROPERTIES;
         String result   = null;
@@ -225,12 +227,12 @@ public class FileIO {
 */
 
     public static String takeScreenshot(WebDriver driver){
-            return takeScreenshot(driver, String.valueOf(System.currentTimeMillis()));
+        return takeScreenshot(driver, String.valueOf(System.currentTimeMillis()));
     }
 
     public static String takeScreenshot(WebDriver driver, String name){
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String filename = name + "screen.png";
+        filename = name + "screen.png";
         try {
             Files.copyFile(new FileInputStream(file) , new File(TARGET_FOLDER + File.separator + Report_folder + File.separator + filename));
         } catch (IOException e) {
