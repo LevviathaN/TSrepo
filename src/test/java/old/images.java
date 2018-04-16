@@ -1,14 +1,9 @@
 package old;
 
 import annotations.TestName;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-import sun.jvm.hotspot.debugger.Page;
-import sun.jvm.hotspot.oops.Instance;
 import utils.BaseTest;
-import utils.ScreenshotComparison;
 
 import java.io.IOException;
 

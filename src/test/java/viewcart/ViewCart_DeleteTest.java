@@ -15,16 +15,16 @@ public class ViewCart_DeleteTest extends BaseTest {
     @DataProvider(name = "default_item_provider")
     public Object[][] provider () throws Exception {
         return new Object[][]{
-                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
-                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
-                {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
-                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Memory Foam Pillow"},
-                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheet Set"},
-                {ProductTypes.MONITOR, MonitorPage.class, "Sleeptracker Monitor"},
-                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"},
-                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Foundation"}
+                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor"},
+                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress" },
+                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector" },
+                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter"},
+                {ProductTypes.DRAPES, DrapesPage.class, "Tomorrow Blackout Curtains"},
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set"},
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed"},
+                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Platform Bed"}
 
         };
     }

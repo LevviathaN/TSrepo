@@ -2,7 +2,6 @@ package pages;
 
 import entities.ItemEntity;
 import org.openqa.selenium.*;
-import utils.FileIO;
 import utils.Tools;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +39,9 @@ public class PageHeader extends BasePage {
         By topMenuSheetSet = By.partialLinkText("Sheet Set");
         By topMenuProtector = By.partialLinkText("Protector");
         By topMenuSleeptrackerMonitor = By.partialLinkText("Sleeptracker Monitor");
-        By topMenuDrapes = By.partialLinkText("Drapes");
-    By topMenuItem_Bases = By.partialLinkText("BASES");
-        By topMenuAdjustableBase = By.partialLinkText("Adjustable Base");
-        By topMenuFoundation = By.partialLinkText("Foundation");
+        By topMenuCurtains = By.partialLinkText("Curtains");
+        By topMenuAdjustableBed = By.partialLinkText("Adjustable Bed");
+        By topMenuPlatformBed = By.partialLinkText("Platform Bed");
 
     //cart
     By showCartButton = By.cssSelector("a.action.showcart");
@@ -266,35 +264,35 @@ public class PageHeader extends BasePage {
     public void openMenuByItemName(String itemName) {
         hoverItem(topMenuItem_Shop);
         switch (itemName){
-            case "Mattress":
+            case "Tomorrow Hybrid Mattress":
                 clickOnElement(topMenuItem_Mattress);
                 break;
-            case "Memory Foam Pillow":
+            case "Tomorrow Cooling Memory Foam Pillow":
                 clickOnElement(topMenuMemoryFoamPillow);
                 break;
-            case "Plush Pillow":
+            case "Tomorrow Hypoallergenic Plush Pillow":
                 clickOnElement(topMenuPlushPillow);
                 break;
-            case "Comforter":
+            case "Tomorrow White Comforter":
                 clickOnElement(topMenuComforter);
                 break;
-            case "Sheet Set":
+            case "Tomorrow White Sheet Set":
                 clickOnElement(topMenuSheetSet);
                 break;
-            case "Protector":
+            case "Tomorrow Waterproof Mattress Protector":
                 clickOnElement(topMenuProtector);
                 break;
-            case "Sleeptracker Monitor":
+            case "Tomorrow Sleeptracker® Monitor":
                 clickOnElement(topMenuSleeptrackerMonitor);
                 break;
-            case "Drapes":
-                clickOnElement(topMenuDrapes);
+            case "Tomorrow Blackout Curtains":
+                clickOnElement(topMenuCurtains);
                 break;
-            case "Adjustable Base":
-                clickOnElement(topMenuAdjustableBase);
+            case "Tomorrow Adjustable Bed":
+                clickOnElement(topMenuAdjustableBed);
                 break;
-            case "Tomorrow Foundation":
-                clickOnElement(topMenuFoundation);
+            case "Tomorrow Platform Bed":
+                clickOnElement(topMenuPlatformBed);
                 break;
 
             default:

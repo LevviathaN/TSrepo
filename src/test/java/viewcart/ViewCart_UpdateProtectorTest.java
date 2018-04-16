@@ -2,7 +2,6 @@ package viewcart;
 
 import annotations.TestName;
 import entities.ItemEntity;
-import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;

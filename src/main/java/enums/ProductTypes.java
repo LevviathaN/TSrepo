@@ -5,16 +5,16 @@ package enums;
  */
 public enum ProductTypes {
 
-    MATTRESS("Tomorrow Mattress"),
+    MATTRESS("Tomorrow Hybrid Mattress"),
     MONITOR("Tomorrow Sleeptracker® Monitor"),
-    DRAPES("Tomorrow Drapes"),
-    FOAM_PILLOW("Tomorrow Memory Foam Pillow"),
-    PLUSH_PILLOW("Tomorrow Plush Pillow"),
-    COMFORTER("Tomorrow Comforter"),
-    MATTRESS_PROTECTOR("Tomorrow Mattress Protector"),
-    SHEETSET("Tomorrow Sheet Set"),
-    ADJUSTABLE_BASE("Tomorrow Adjustable Base"),
-    FOUNDATION("Tomorrow Foundation");
+    DRAPES("Tomorrow Blackout Curtains"),
+    FOAM_PILLOW("Tomorrow Cooling Memory Foam Pillow"),
+    PLUSH_PILLOW("Tomorrow Hypoallergenic Plush Pillow"),
+    COMFORTER("Tomorrow White Comforter"),
+    MATTRESS_PROTECTOR("Tomorrow Waterproof Mattress Protector"),
+    SHEETSET("Tomorrow White Sheet Set"),
+    ADJUSTABLE_BASE("Tomorrow Adjustable Bed"),
+    FOUNDATION("Tomorrow Platform Bed");
 
 
     private String value;
