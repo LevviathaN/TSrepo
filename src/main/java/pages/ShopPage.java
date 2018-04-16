@@ -69,12 +69,12 @@ public class ShopPage extends BasePage{
     }
     public FoundationPage clickOnShopFoundationButton(){
         reporter.info("Click on Shop Foundation");
-        clickOnElement(By.partialLinkText("Foundation"));
+        clickOnElement(By.partialLinkText("Platform Bed"));
         return FoundationPage.Instance;
     }
     public AdjustablePage clickOnShopOurBaseButton() {
         reporter.info("Click on Shop Our Adjustable Base");
-        clickOnElement(By.partialLinkText("Adjustable Base"));
+        clickOnElement(By.partialLinkText("Adjustable Bed"));
         return AdjustablePage.Instance;
     }
 
