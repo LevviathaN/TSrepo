@@ -20,28 +20,28 @@ public class PageHeader extends BasePage {
     //top menu
     //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
     //By topMenuItem_Shop = By.id("ui-id-2");
-    By topMenuItem_Shop = By.xpath("//span[contains(text(), 'Shop')][1]");
+    By topMenuItem_Shop = By.xpath("//span[contains(text(), 'Shop')][1] | //a[@role='button' and contains(text(), 'Shop')]");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
-    By topMenuItem_FAQ = By.xpath(".//header[@class='page-header']//*[text()='FAQ']");
+    By topMenuItem_FAQ = By.linkText("FAQ");
     By topMenuItem_SignIn = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign In')]");
     By topMenuItem_SignInStage = By.xpath("//ul[@class='header links']//a[contains(text(),'Account')]");
-    By topMenuItem_Reviews = By.xpath("(//SPAN[text()='REVIEWS'][text()='REVIEWS'])[1]");
+    By topMenuItem_Reviews = By.linkText("REVIEWS");
     By topMenuItem_Account = By.xpath("//ul[@class='header links']//span[text()='Account']");
     By topMenuItem_SignOut = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign Out')]");
 
-    By topMenuItem_Mattress = By.partialLinkText("MATTRESS");
+    By topMenuItem_Mattress = By.partialLinkText("Hybrid Mattress");
     By topMenuItem_Accessories = By.partialLinkText("ACCESSORIES");
-        By topMenuMemoryFoamPillow = By.partialLinkText("Memory Foam Pillow");
-        By topMenuPlushPillow = By.partialLinkText("Plush Pillow");
-        By topMenuComforter = By.partialLinkText("Comforter");
-        By topMenuSheetSet = By.partialLinkText("Sheet Set");
-        By topMenuProtector = By.partialLinkText("Protector");
-        By topMenuSleeptrackerMonitor = By.partialLinkText("Sleeptracker Monitor");
-        By topMenuCurtains = By.partialLinkText("Curtains");
-        By topMenuAdjustableBed = By.partialLinkText("Adjustable Bed");
-        By topMenuPlatformBed = By.partialLinkText("Platform Bed");
+    By topMenuMemoryFoamPillow = By.partialLinkText("Memory Foam Pillow");
+    By topMenuPlushPillow = By.partialLinkText("Plush Pillow");
+    By topMenuComforter = By.partialLinkText("Comforter");
+    By topMenuSheetSet = By.partialLinkText("Sheet Set");
+    By topMenuProtector = By.partialLinkText("Protector");
+    By topMenuSleeptrackerMonitor = By.partialLinkText("Sleeptracker Monitor");
+    By topMenuCurtains = By.partialLinkText("Curtains");
+    By topMenuAdjustableBed = By.partialLinkText("Adjustable Bed");
+    By topMenuPlatformBed = By.partialLinkText("Platform Bed");
 
     //cart
     By showCartButton = By.cssSelector("a.action.showcart");

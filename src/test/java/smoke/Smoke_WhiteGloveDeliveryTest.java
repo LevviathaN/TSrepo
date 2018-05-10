@@ -13,8 +13,8 @@ public class Smoke_WhiteGloveDeliveryTest extends BaseTest {
     @DataProvider(name = "default_item_provider")
     public Object[][] provider() {
         return new Object[][]{
-                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress"},
-                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable Base"}
+                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress"},
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed"}
         };
     }
 

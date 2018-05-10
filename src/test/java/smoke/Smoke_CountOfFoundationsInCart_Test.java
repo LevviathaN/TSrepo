@@ -30,7 +30,7 @@ public class Smoke_CountOfFoundationsInCart_Test extends BaseTest {
         FoundationPage foundationPage = FoundationPage.Instance;
 
         homePage.open();
-        homePage.header.openMenuByItemName("Tomorrow Foundation");
+        homePage.header.openMenuByItemName("Tomorrow Adjustable Bed");
 
         ProductSync.check(ProductTypes.FOUNDATION);
 

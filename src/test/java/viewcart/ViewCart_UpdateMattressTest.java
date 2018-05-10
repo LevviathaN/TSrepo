@@ -31,7 +31,7 @@ public class ViewCart_UpdateMattressTest extends BaseTest {
         home.open();
         ProductSync.check(ProductTypes.MATTRESS);
 
-        home.header.openMenuByItemName("Mattress");
+        home.header.openMenuByItemName("Tomorrow Hybrid Mattress");
         prodPage.selectMattressSize(item.getSize())
                 .selectMattressFeel(item.getType())
                 .clickAddToCart();
