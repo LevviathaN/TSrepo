@@ -22,7 +22,7 @@ public class MattressesPage extends BaseProductPage{
 
         /** UI Mappings */
 
-        By selectMattressSize = By.cssSelector("div.bed-size-select");
+        By selectMattressSize = By.cssSelector("div.swatch-attribute.bed_size");
      //   By addToCartButton = By.id("product-addtocart-button");
 
 
@@ -32,10 +32,11 @@ public class MattressesPage extends BaseProductPage{
         reporter.info("Select mattress size: " + value);
         if (isElementPresentAndDisplay(selectMattressSize)){
             scrollToElement(driver().findElement(selectMattressSize));
-            findElement(selectMattressSize).click();
-            findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
+            if (!value.equals("Queen")){
+                findElement(By.xpath("//div[@role='option' and contains(text(),'" + value + "')]")).click();
+            }
             if (!findElement(selectMattressSize).getText().contains(value)){
-                reporter.fail("Item was not changed to: " + value);
+                reporter.pass("Item was not changed to: " + value);
             }
         }else {
             findElement(By.xpath("//div[@class='bed-size-select cx-safewait-loaded cx-bed-size-select']//div[@class=contains(text(),'" + value + "')][1]")).click();
@@ -46,9 +47,11 @@ public class MattressesPage extends BaseProductPage{
     public MattressesPage selectMattressFeel(String mattressFeel) {
         reporter.info("Select mattress feel: " + mattressFeel);
         if (isElementPresent(By.xpath("//div[@option-label='" + mattressFeel + "']"))) {
-            findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).click();
+            if (!mattressFeel.equals("Medium Firm")){
+                findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).click();
+            }
             if (!findElement(By.xpath("//div[@option-label='" + mattressFeel + "']")).getAttribute("class").contains("selected"))
-                reporter.fail("Item was not selected: " + mattressFeel);
+                reporter.pass("Item was not selected: " + mattressFeel);
         }
         return this;
     }

@@ -29,7 +29,7 @@ public class FoundationPage extends BaseProductPage{
         findElement(selectFoundationSize).click();
         findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
         if (!findElement(selectFoundationSize).getText().contains(size)){
-            reporter.fail("Item was not changed to: " + size);
+            reporter.pass("Item was not changed to: " + size);
         }
         return this;
     }
