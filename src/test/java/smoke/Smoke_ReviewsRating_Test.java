@@ -1,8 +1,6 @@
 package smoke;
 
 import annotations.TestName;
-import entities.CategoryEntity;
-import org.jsoup.Connection;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;

@@ -32,7 +32,7 @@ public class Smoke_AddItemAndLogin_Test extends BaseTest {
         //open pages
         HomePage homePage = HomePage.Instance;
         homePage.open();
-        ;
+
         ShopPage shopPage = homePage.header.clickShopMenuItem();
         MattressesPage mattressesPage = shopPage.clickOnShopOurMattressButton();
 
