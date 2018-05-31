@@ -217,15 +217,14 @@ public class CheckoutPage extends BasePage {
     private ArrayList<ItemEntity> getAllCheckoutPageItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
         reporter.info("Getting order items on checkout page");
+        waitForPageToLoad();
         findElementIgnoreException(orderItems); // wait for order
         List<WebElement> itemsList = findElementsIgnoreException(orderItems);
         for (WebElement orderItem : itemsList ) {
             ItemEntity currentItem = new ItemEntity();
 
             currentItem.setTitle(orderItem.findElement(orderItemName).getText());
-
             currentItem.setQty(Integer.valueOf(orderItem.findElement(orderItemQty).getText()));
-
             currentItem.setPrice(Tools.convertStringPriceToFloat(orderItem.findElement(orderItemPrice).getText()));
             currentItem.setSize("");
             currentItem.setType("");

@@ -39,7 +39,7 @@ public class BaseProductPage extends BasePage{
 //        return this;
 //    }
         public BaseProductPage clickAddToCart() {
-            reporter.info("Add to Cart button");
+            reporter.info("Click on \"Add to Cart\" button");
             header.closeCart();
             waitForPageToLoad();
             driver().findElement(addToCartButton).click();
@@ -56,7 +56,7 @@ public class BaseProductPage extends BasePage{
         }
 
     public BaseProductPage clickUpdateCart() {
-        reporter.info("Update cart item button");
+        reporter.info("Click on \"Update cart item\" button");
         header.closeCart();
         waitForPageToLoad();
         clickOnElement(updateItemButton);

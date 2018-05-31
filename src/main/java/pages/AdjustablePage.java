@@ -10,6 +10,7 @@ public class AdjustablePage extends BaseProductPage{
 
     public AdjustablePage(){
         pageURL = "/tomorrow-adjustable-base";
+        pageTitle = "SmartMotion™ Bases | Optimized Sleep | Beautyrest";
     }
 
     /** Common elements **/

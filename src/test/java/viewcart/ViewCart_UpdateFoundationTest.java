@@ -31,7 +31,7 @@ public class ViewCart_UpdateFoundationTest extends BaseTest {
         //open home page and add Sheets to cart
         home.open();
         ProductSync.check(ProductTypes.FOUNDATION);
-        home.header.openMenuByItemName("Tomorrow Adjustable Bed");
+        home.header.openMenuByItemName("Tomorrow Platform Bed");
         prodPage
                 .selectBaseSize(item.getSize())
                 .clickAddToCart();

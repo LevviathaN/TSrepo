@@ -15,7 +15,7 @@ public class Smoke_CountOfFoundationsInCart_Test extends BaseTest {
 
     @Test
     @TestName(name = "Check count of Foundations in cart and cart flag in header")
-    public void countOfFoundationsInCart_Test() throws Exception {
+    public void countOfPlatformBedsInCart_Test() throws Exception {
 
         int countOfGoodsFromCartIcon;
         int countOfGoodsInCart;
@@ -30,7 +30,7 @@ public class Smoke_CountOfFoundationsInCart_Test extends BaseTest {
         FoundationPage foundationPage = FoundationPage.Instance;
 
         homePage.open();
-        homePage.header.openMenuByItemName("Tomorrow Adjustable Bed");
+        homePage.header.openMenuByItemName("Tomorrow Platform Bed");
 
         ProductSync.check(ProductTypes.FOUNDATION);
 
