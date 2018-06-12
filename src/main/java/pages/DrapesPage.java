@@ -12,7 +12,11 @@ public class DrapesPage extends BaseProductPage{
         public static DrapesPage Instance = (instance != null) ? instance : new DrapesPage();
 
     public DrapesPage(){
-        pageURL = "/drapes";
+        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
+            pageURL = "/blackout-drapes";
+        } else {
+            pageURL="/blackout-curtains";
+        }
     }
 
     /** Common elements **/

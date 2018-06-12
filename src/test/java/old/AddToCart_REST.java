@@ -4,9 +4,13 @@ import annotations.TestName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.SkipException;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.BaseTest;
+import utils.FileIO;
 
 
 import java.io.BufferedReader;
@@ -25,7 +29,7 @@ public class AddToCart_REST extends BaseTest{
 
     String csv = "src/main/resources/products_info.csv";
 
-    @DataProvider(name = "test")
+    @DataProvider(name = "test", parallel = true)
     public Iterator <Object[]> provider() throws IOException {
 
         List <Object[]> product = new ArrayList<>();
@@ -40,7 +44,6 @@ public class AddToCart_REST extends BaseTest{
 
         return product.iterator();
     }
-
 
     @Test (dataProvider = "test")
     @TestName(name = "REST add to cart")
