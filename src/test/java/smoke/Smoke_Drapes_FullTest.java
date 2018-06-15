@@ -50,7 +50,7 @@ public class Smoke_Drapes_FullTest extends BaseTest {
         cart.clickOnProceedToChechout();
 
 
-        //set all user related felds
+        //set all user related fields
         checkout.populateAllCheckoutFields(user);
 
         //check Order Review page was opened

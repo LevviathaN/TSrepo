@@ -45,7 +45,7 @@ public class Smoke_Adjustable_FullTest extends BaseTest {
         Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
         cart.clickOnProceedToChechout();
 
-        //set all user related felds
+        //set all user related fields
         checkout.populateAllCheckoutFields(user);
 
         //check Order Review page was opened

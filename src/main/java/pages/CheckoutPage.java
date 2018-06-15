@@ -60,6 +60,20 @@ public class CheckoutPage extends BasePage {
     By orderItemDetails = By.cssSelector("dl.item-options span");
     By shippingPrice = By.cssSelector("span[data-th='Shipping']");
 
+
+    //payment method
+    By paymentIFrame = By.xpath("//iframe[id='braintree-hosted-field-number']");
+    By cardRadioButton = By.className("payment-method-title field choice");
+    By cardNumber = By.id("credit-card-number");
+    By cardExpMonth = By.name("expiration-month");
+    By cardExpYear = By.name("expiration-year");
+    By cardCVV = By.name("cvv");
+    By paypalRadioButton = By.className("payment-method payment-method-paypal");
+    By affirmRadioButton = By.className("payment-method payment-affirm _active");
+
+    By placeOrderButton = By.className("action primary checkout");
+
+
     /** Page Methods */
     public void selectFreeShipping() {
         reporter.info("Select free shipping");
@@ -162,6 +176,38 @@ public class CheckoutPage extends BasePage {
         return findElement(shippingPrice).getText();
     }
 
+    public CheckoutPage setCardNumber(){
+        reporter.info("Set Card Number: 4189813968238783");
+        switchToFrame(By.xpath("//iframe[@id='braintree-hosted-field-number']"));
+        findElement(cardNumber).sendKeys("4189813968238783");
+        switchToDefaultContent();
+        return this;
+    }
+
+    public CheckoutPage setCardExpMonth(){
+        reporter.info("Set Card Exeration Month: 09");
+        switchToFrame(By.xpath("//iframe[@id='braintree-hosted-field-expirationMonth']"));
+        findElement(cardExpMonth).sendKeys("09");
+        switchToDefaultContent();
+        return this;
+    }
+
+    public CheckoutPage setCardExpYear(){
+        reporter.info("Set Card Exeration Year: 20");
+        switchToFrame(By.xpath("//iframe[@id='braintree-hosted-field-expirationYear']"));
+        findElement(cardExpYear).sendKeys("20");
+        switchToDefaultContent();
+        return this;
+    }
+
+    public CheckoutPage setCardCVV(){
+        reporter.info("Set Card CVV: 210");
+        switchToFrame(By.xpath("//iframe[@id='braintree-hosted-field-cvv']"));
+        findElement(cardCVV).sendKeys("210");
+        switchToDefaultContent();
+        return this;
+    }
+
 //    public CheckoutReviewPage clickNextButton(){
 //        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
 //            reporter.info("Click on Next button");
@@ -251,4 +297,14 @@ public class CheckoutPage extends BasePage {
         return result;
 
     }
+
+    public CheckoutPage payWithCard(){
+        setCardNumber();
+        setCardExpMonth();
+        setCardExpYear();
+        setCardCVV();
+        return this;
+    }
+
+
 }

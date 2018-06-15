@@ -26,7 +26,7 @@ public class ShopPage extends BasePage{
     By shopOurCoverButton = By.xpath("(//a[text()='SHOP OUR COVER'])[1]");
     By shopSheetsButton = By.xpath("(//a[text()='SHOP OUR SHEETS'])[1]");
 
-    By shopOurDrapesButton = By.xpath("(//a[text()='SHOP OUR DRAPES'])[1]");
+    By shopOurDrapesButton = By.xpath("(//a[text()='SHOP OUR CURTAINS'])[1]");
     By shopComforterButton = By.xpath("(//a[text()='SHOP OUR COMFORTER'])[1]");
 
     public String shopPageUrl = "https://www.tomorrowsleep.com/drapes";

@@ -4,6 +4,7 @@ import annotations.TestName;
 import entities.ItemEntity;
 import entities.UserEntity;
 import enums.ProductTypes;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckoutPage;
@@ -56,6 +57,11 @@ public class Smoke_FoamPillow_FullTest extends BaseTest {
 
         //check item in final order
         Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
+
+        //payment with card
+        checkout.payWithCard();
+
+        //click Place Order
 
     }
 }
