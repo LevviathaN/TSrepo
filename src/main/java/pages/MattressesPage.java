@@ -1,8 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
-import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -13,7 +11,7 @@ public class MattressesPage extends BaseProductPage{
         public static MattressesPage Instance = (instance != null) ? instance : new MattressesPage();
 
     public MattressesPage(){
-        pageURL = "/mattresses";
+        pageURL = "/hybrid-mattress";
     }
 
     /** Common elements **/

@@ -12,7 +12,7 @@ public class FoamPillowPage extends BaseProductPage{
         public static FoamPillowPage Instance = (instance != null) ? instance : new FoamPillowPage();
 
     public FoamPillowPage(){
-        pageURL = "/memory-foam-pillow";
+        pageURL = "/cooling-memory-foam-pillow";
     }
 
     /** Common elements **/

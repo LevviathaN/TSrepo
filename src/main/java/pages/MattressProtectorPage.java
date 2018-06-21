@@ -14,7 +14,7 @@ public class MattressProtectorPage extends BaseProductPage{
         public static MattressProtectorPage Instance = (instance != null) ? instance : new MattressProtectorPage();
 
     public MattressProtectorPage(){
-        pageURL = "/mattress-protector";
+        pageURL = "/waterproof-mattress-protector";
     }
 
     /** Common elements **/

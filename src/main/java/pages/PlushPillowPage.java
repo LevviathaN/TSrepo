@@ -12,7 +12,7 @@ public class PlushPillowPage extends BaseProductPage{
         public static PlushPillowPage Instance = (instance != null) ? instance : new PlushPillowPage();
 
     public PlushPillowPage(){
-        pageURL = "/hypoallergenic-pillow";
+        pageURL = "/hypoallergenic-plush-pillow";
     }
 
     /** Common elements **/

@@ -12,7 +12,7 @@ public class SheetsetPage extends BaseProductPage{
         public static SheetsetPage Instance = (instance != null) ? instance : new SheetsetPage();
 
     public SheetsetPage(){
-        pageURL = "/sheets";
+        pageURL = "/white-sheet-set";
     }
 
     /** Common elements **/

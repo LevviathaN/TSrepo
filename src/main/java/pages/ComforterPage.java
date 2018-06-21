@@ -12,7 +12,7 @@ public class ComforterPage extends BaseProductPage{
         public static ComforterPage Instance = (instance != null) ? instance : new ComforterPage();
 
     public ComforterPage(){
-        pageURL = "/comforter";
+        pageURL = "/down-alternative-white-comforter";
     }
 
         /** Common elements **/

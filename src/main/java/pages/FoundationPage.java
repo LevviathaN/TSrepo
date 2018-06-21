@@ -9,7 +9,7 @@ public class FoundationPage extends BaseProductPage{
     public static FoundationPage Instance = (instance != null) ? instance : new FoundationPage();
 
     public FoundationPage(){
-        pageURL = "/foundation";
+        pageURL = "/platform-bed";
     }
 
     /** Common elements **/

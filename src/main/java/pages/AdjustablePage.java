@@ -9,7 +9,7 @@ public class AdjustablePage extends BaseProductPage{
     public static AdjustablePage Instance = (instance != null) ? instance : new AdjustablePage();
 
     public AdjustablePage(){
-        pageURL = "/tomorrow-adjustable-base";
+        pageURL = "/adjustable-bed";
         pageTitle = "SmartMotion™ Bases | Optimized Sleep | Beautyrest";
     }
 
