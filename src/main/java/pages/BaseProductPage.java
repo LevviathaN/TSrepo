@@ -55,11 +55,11 @@ public class BaseProductPage extends BasePage{
             return this;
         }
 
-    public BaseProductPage clickUpdateCart() {
+    public ViewCartPage clickUpdateCart() {
         reporter.info("Click on \"Update cart item\" button");
-        header.closeCart();
-        waitForPageToLoad();
+        //header.closeCart();
+        //waitForPageToLoad();
         clickOnElement(updateItemButton);
-        return this;
+        return ViewCartPage.Instance;
     }
 }

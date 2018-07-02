@@ -21,26 +21,41 @@ public class MattressesPage extends BaseProductPage{
         /** UI Mappings */
 
         By selectMattressSize = By.cssSelector("div.swatch-attribute.bed_size");
+        By mattressSizeSelectedByDefault = By.xpath("//div[@class='swatch-option text selected' and @aria-describedby='option-label-bed_size-177']");
      //   By addToCartButton = By.id("product-addtocart-button");
 
 
         /** Page Methods */
 
-    public MattressesPage selectMattressSize(String value){
-        reporter.info("Select mattress size: " + value);
-        if (isElementPresentAndDisplay(selectMattressSize)){
-            scrollToElement(driver().findElement(selectMattressSize));
-            if (!value.equals("Queen")){
+//    public MattressesPage selectMattressSize(String value){
+//        reporter.info("Select mattress size: " + value);
+//        if (isElementPresentAndDisplay(selectMattressSize)){
+//            scrollToElement(driver().findElement(selectMattressSize));
+//            if (!value.equals("Queen")){
+//                findElement(By.xpath("//div[@role='option' and contains(text(),'" + value + "')]")).click();
+//            }
+//            if (!findElement(selectMattressSize).getText().contains(value)){
+//                reporter.pass("Item was not changed to: " + value);
+//            }
+//        }else {
+//            findElement(By.xpath("//div[@class='bed-size-select cx-safewait-loaded cx-bed-size-select']//div[@class=contains(text(),'" + value + "')][1]")).click();
+//        }
+//        return this;
+//    }
+
+
+        public MattressesPage selectMattressSize(String value){
+            //reporter.info("Select mattress size: " + value);
+            reporter.info(findElement(mattressSizeSelectedByDefault).getText() + " is selected by default");
+            if (isElementPresentAndDisplay(selectMattressSize) && findElement(mattressSizeSelectedByDefault).getText().toLowerCase().contains(value.toLowerCase())){
+                //reporter.info(value + " size is selected by default");
+            }else {
+                reporter.info("Switching mattress size to " + value);
+                //scrollToElement(driver().findElement(selectMattressSize));
                 findElement(By.xpath("//div[@role='option' and contains(text(),'" + value + "')]")).click();
             }
-            if (!findElement(selectMattressSize).getText().contains(value)){
-                reporter.pass("Item was not changed to: " + value);
-            }
-        }else {
-            findElement(By.xpath("//div[@class='bed-size-select cx-safewait-loaded cx-bed-size-select']//div[@class=contains(text(),'" + value + "')][1]")).click();
+            return this;
         }
-        return this;
-    }
 
     public MattressesPage selectMattressFeel(String mattressFeel) {
         reporter.info("Select mattress feel: " + mattressFeel);
