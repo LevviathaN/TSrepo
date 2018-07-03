@@ -41,13 +41,13 @@ public class Smoke_CountOfMattressesInCart_Test extends BaseTest {
 
         //adding two the identical "bigger" mattresses to the cart
         mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
-        mattressesPage.open();
+        mattressesPage.getPage();
 
-        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
-        mattressesPage.open();
-
-        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
-        mattressesPage.open();
+//        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
+//        mattressesPage.getPage();
+//
+//        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
+//        mattressesPage.getPage();
 
         //checking if "bigger" mattresses were counted
         countOfGoodsFromCartIcon = mattressesPage.header.getCountOfGoodsFromCartIcon();
@@ -55,13 +55,13 @@ public class Smoke_CountOfMattressesInCart_Test extends BaseTest {
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "First time. Count of added to cart items equal to count from cart icon");
 
         //adding another item (model of smaller mattresses) to the cart
-        //mattressesPage.open();
+
         mattressesPage.selectMattressSize(smallerMattress.getSize()).selectMattressFeel(smallerMattress.getType()).clickAddToCart();
 
-        mattressesPage.open();
+        mattressesPage.getPage();
         mattressesPage.selectMattressSize(smallerMattress.getSize()).selectMattressFeel(smallerMattress.getType()).clickAddToCart();
 
-        mattressesPage.open();
+        mattressesPage.getPage();
 
         ProductSync.uncheck(ProductTypes.MATTRESS);
 

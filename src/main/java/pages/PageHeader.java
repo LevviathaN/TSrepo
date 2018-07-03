@@ -4,6 +4,7 @@ import entities.ItemEntity;
 import org.openqa.selenium.*;
 import utils.Tools;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -46,12 +47,16 @@ public class PageHeader extends BasePage {
     //cart
     By showCartButton = By.cssSelector("a.action.showcart");
     //cart
-    By cartItems = By.cssSelector("div.product-item-details");
+    By cartItems = By.cssSelector("div.product div.product-item-details");
     By cartItemName = By.cssSelector("strong.product-item-name");
     By cartItemContent = By.cssSelector("div.content");
+
     //By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
     //By cartItemQty = By.cssSelector(".item-qty.cart-item-qty.custom-disabled-input");
-    By cartItemQty = By.xpath("//div[@class='details-qty qty']/input");
+    //By cartItemQty = By.xpath("//div[@class='details-qty qty']/input");
+    By cartItemQty = By.xpath("//input[@disabled='disabled']");
+    //By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
+    //By cartItemQty = By.cssSelector("div.details-qty.qty");
     //By cartItemPrice = By.xpath("./div/div[@class='price-container'][1]");
     By cartItemPrice = By.cssSelector("span.minicart-price span.price");
     By cartBox = By.xpath("//div[@data-role='dropdownDialog']");
@@ -253,8 +258,8 @@ public class PageHeader extends BasePage {
         reporter.info("Counting sum of goods in the cart");
         openCart();
         int count = 0;
-        List<WebElement> cartItemsList = findElementsIgnoreException(cartItemQty);
-        for (int i = 0; i < cartItemsList.size(); i++) {
+        List <WebElement> cartItemsList = findElementsIgnoreException(cartItems);
+        for (int i = 0; i < cartItemsList.size()-1; i++) {
             WebElement cartItem = cartItemsList.get(i);
             count = count + Integer.valueOf(cartItem.findElement(cartItemQty).getAttribute("data-item-qty"));
         }

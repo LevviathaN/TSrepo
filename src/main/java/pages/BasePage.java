@@ -103,6 +103,11 @@ public class BasePage {
         }
     }
 
+    public void getPage(){
+        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
+        driver().get(BASE_URL + pageURL);
+    }
+
     public static void openUrl(String url) {
         reporter.info("Opening the: " + url);
         driver().get(url);

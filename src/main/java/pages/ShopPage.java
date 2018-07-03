@@ -34,6 +34,7 @@ public class ShopPage extends BasePage{
     /** Page Methods */  //TODO remove close welcome message method
 
     public MattressesPage clickOnShopOurMattressButton() {
+        waitForPageToLoad();
         reporter.info("Click on Shop Our Mattress");
         scrollToShopElement(driver().findElement(shopOurMattressButton));
         findElement(shopOurMattressButton).click();

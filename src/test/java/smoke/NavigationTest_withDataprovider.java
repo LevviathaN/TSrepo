@@ -17,16 +17,16 @@ public class NavigationTest_withDataprovider extends BaseTest {
     @DataProvider(name = "default_item_provider")
     public Object[][] provider (){
         return new Object[][]{
-//                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow"},
-//                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow"},
-//                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor"},
-//                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress" },
-//                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector" },
-//                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter"},
+                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor"},
+                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress" },
+                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector" },
+                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter"},
                 {ProductTypes.DRAPES, DrapesPage.class, "Tomorrow Blackout Curtains"},
-//                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set"},
-//                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed"},
-//                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Platform Bed"}
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set"},
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed"},
+                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Platform Bed"}
         };
     }
 
