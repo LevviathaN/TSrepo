@@ -54,7 +54,7 @@ public class PageHeader extends BasePage {
     //By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
     //By cartItemQty = By.cssSelector(".item-qty.cart-item-qty.custom-disabled-input");
     //By cartItemQty = By.xpath("//div[@class='details-qty qty']/input");
-    By cartItemQty = By.xpath("//input[@disabled='disabled']");
+    By cartItemQty = By.xpath(".//input[@disabled='disabled']");
     //By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
     //By cartItemQty = By.cssSelector("div.details-qty.qty");
     //By cartItemPrice = By.xpath("./div/div[@class='price-container'][1]");
@@ -259,7 +259,7 @@ public class PageHeader extends BasePage {
         openCart();
         int count = 0;
         List <WebElement> cartItemsList = findElementsIgnoreException(cartItems);
-        for (int i = 0; i < cartItemsList.size()-1; i++) {
+        for (int i = 0; i < cartItemsList.size(); i++) {
             WebElement cartItem = cartItemsList.get(i);
             count = count + Integer.valueOf(cartItem.findElement(cartItemQty).getAttribute("data-item-qty"));
         }
