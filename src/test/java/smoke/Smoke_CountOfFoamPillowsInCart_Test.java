@@ -8,8 +8,6 @@ import pages.*;
 import utils.BaseTest;
 import utils.ProductSync;
 
-import javax.swing.text.View;
-
 /**
  * @author Taras
  * @since 7/27/2017.

@@ -99,14 +99,15 @@ public class BasePage {
             Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
             driver().get(BASE_URL + pageURL);
             driver().manage().addCookie(A_B_test);
+            waitForPageToLoad();
             closeWelcomeMessage();
         }
     }
 
-    public void getPage(){
-        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
-        driver().get(BASE_URL + pageURL);
-    }
+//    public void open(){
+//        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
+//        driver().get(BASE_URL + pageURL);
+//    }
 
     public static void openUrl(String url) {
         reporter.info("Opening the: " + url);

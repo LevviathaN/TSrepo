@@ -230,7 +230,7 @@ public class PageHeader extends BasePage {
     }
 
     public void clickOnDeleteCartButton(ItemEntity item) {
-        closeCart();
+        //closeCart();
         openCart();
         List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (int i = 0; i < cartItemsList.size(); i++) {
