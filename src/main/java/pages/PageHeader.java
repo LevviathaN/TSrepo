@@ -184,7 +184,7 @@ public class PageHeader extends BasePage {
             reporter.info("No Cart items were found");
             //Assert.fail("No Cart items were found");
         }
-
+        closeCart();
         return result;
     }
 
@@ -238,7 +238,7 @@ public class PageHeader extends BasePage {
 
     public int getCountOfGoodsFromCartIcon() {
         reporter.info("Getting count of goods from cart's icon");
-        String[] result = findElement(showCartButton).getText().split("\n");
+        String[] result = findElement(By.cssSelector(".counter-number")).getText().split("\n");
         reporter.info("Items on cart icon are equal to " + Integer.valueOf(result[0]));
         return Integer.valueOf(result[0]);
     }

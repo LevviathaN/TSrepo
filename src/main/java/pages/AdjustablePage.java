@@ -25,7 +25,7 @@ public class AdjustablePage extends BaseProductPage{
 
     public AdjustablePage selectBaseSize(String size) {
         reporter.info("Select Adjustable Base size: " + size);
-        //waitForPageToLoad();
+        waitForPageToLoad();
         header.closeCart();
         findElement(selectBaseSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
