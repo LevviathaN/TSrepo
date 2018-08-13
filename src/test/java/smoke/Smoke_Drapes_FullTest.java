@@ -14,7 +14,7 @@ import utils.ProductSync;
 
 public class Smoke_Drapes_FullTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = utils.RetryAnalyzer.class)
     @TestName(name="Drapes Workflow test")
     public void smoke_Drapes_FullTest() throws Exception {
 

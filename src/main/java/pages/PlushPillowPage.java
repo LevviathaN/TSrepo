@@ -24,8 +24,8 @@ public class PlushPillowPage extends BaseProductPage{
 
     /** Page Methods */
 
-    public PlushPillowPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

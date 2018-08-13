@@ -87,8 +87,8 @@ public class MattressesPage extends BaseProductPage{
         return this;
     }
 
-    public MattressesPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

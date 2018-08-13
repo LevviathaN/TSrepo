@@ -34,8 +34,8 @@ public class FoundationPage extends BaseProductPage{
         return this;
     }
 
-    public FoundationPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

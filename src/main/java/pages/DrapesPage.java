@@ -26,9 +26,9 @@ public class DrapesPage extends BaseProductPage{
 
     /** Page Methods */
 
-    public DrapesPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 
     public DrapesPage selectDrapesSize(String value) {

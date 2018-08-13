@@ -37,7 +37,7 @@ public class Smoke_CountOfComfortersInCart_Test extends BaseTest {
         homePage.open();
         ProductSync.check(ProductTypes.COMFORTER);
         ShopPage shopPage = homePage.header.clickShopMenuItem();
-        ComforterPage comforterPage = shopPage.clickOnShopComforterButton();
+        ComforterPage comforterPage = shopPage.clickOnShopOurComforterButton();
 
         //filling the cart with different types and counts of comforters
         comforterPage.selectComforterSize(defaultComforter.getSize()).clickAddToCart();

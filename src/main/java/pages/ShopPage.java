@@ -16,22 +16,21 @@ public class ShopPage extends BasePage{
 
     /** UI Mappings */
 
-    By shopOurMattressButton = By.xpath("(//a[text()='Shop Our Hybrid Mattress'])[1]");
-    By shopOurFoamPillowButton = By.xpath("(//a[text()='SHOP OUR PILLOW'])[1]");
-    By shopOurPlushPillowButton = By.xpath("(//a[text()='SHOP OUR PILLOW'])[2]");
+    By shopOurMattressButton = By.xpath(".//a[text()='SHOP Our Hybrid Mattress']");
+    By shopOurFoamPillowButton = By.xpath(".//a[text()='SHOP OUR PILLOW'])[1]");
+    By shopOurPlushPillowButton = By.xpath(".//a[text()='SHOP OUR PILLOW'])[2]");
 
-    By shopOurTrackerButton = By.xpath("(//a[text()='SHOP OUR TRACKER'])[1]");
-    By shopOurSheetsButton = By.xpath("(//a[text()='SHOP OUR SHEETS'])[1]");
-    By shopOurComforterButton = By.xpath("(//a[text()='SHOP OUR COMFORTER'])[1]");
-    By shopOurCoverButton = By.xpath("(//a[text()='SHOP OUR COVER'])[1]");
-    By shopSheetsButton = By.xpath("(//a[text()='SHOP OUR SHEETS'])[1]");
+    By shopOurTrackerButton = By.xpath(".//a[text()='SHOP OUR TRACKER']");
+    By shopOurSheetsButton = By.xpath(".//a[text()='SHOP OUR SHEETS']");
+    By shopOurComforterButton = By.xpath(".//a[text()='SHOP OUR COMFORTER']");
+    By shopOurCoverButton = By.xpath(".//a[text()='SHOP OUR COVER']");
+    By shopSheetsButton = By.xpath(".//a[text()='SHOP OUR SHEETS']");
 
-    By shopOurDrapesButton = By.xpath("(//a[text()='SHOP OUR CURTAINS'])[1]");
-    By shopComforterButton = By.xpath("(//a[text()='SHOP OUR COMFORTER'])[1]");
+    By shopOurDrapesButton = By.xpath(".//a[text()='SHOP OUR CURTAINS']");
 
     public String shopPageUrl = "https://www.tomorrowsleep.com/drapes";
 
-    /** Page Methods */  //TODO remove close welcome message method
+    /** Page Methods **/
 
     public MattressesPage clickOnShopOurMattressButton() {
         waitForPageToLoad();
@@ -105,13 +104,6 @@ public class ShopPage extends BasePage{
         reporter.info("Click on Shop Our Sheets");
         findElement(shopSheetsButton).click();
         return SheetsetPage.Instance;
-    }
-
-    public ComforterPage clickOnShopComforterButton() {
-        scrollToShopElement(driver().findElement(shopComforterButton));
-        reporter.info("Click on Shop Our Comforter");
-        findElement(shopComforterButton).click();
-        return ComforterPage.Instance;
     }
 
 }

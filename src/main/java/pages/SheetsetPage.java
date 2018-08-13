@@ -37,8 +37,8 @@ public class SheetsetPage extends BaseProductPage{
         return this;
     }
 
-    public SheetsetPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

@@ -18,9 +18,8 @@ public class PageHeader extends BasePage {
 
     private static PageHeader instance;
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
+
     //top menu
-    //By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
-    //By topMenuItem_Shop = By.id("ui-id-2");
     By topMenuItem_Shop = By.xpath("//span[contains(text(), 'Shop')][1] | //a[@role='button' and contains(text(), 'Shop')]");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
@@ -44,20 +43,13 @@ public class PageHeader extends BasePage {
     By topMenuAdjustableBed = By.partialLinkText("Adjustable Bed");
     By topMenuPlatformBed = By.partialLinkText("Platform Bed");
 
+
     //cart
     By showCartButton = By.cssSelector("a.action.showcart");
-    //cart
     By cartItems = By.cssSelector("div.product div.product-item-details");
     By cartItemName = By.cssSelector("strong.product-item-name");
     By cartItemContent = By.cssSelector("div.content");
-
-    //By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
-    //By cartItemQty = By.cssSelector(".item-qty.cart-item-qty.custom-disabled-input");
-    //By cartItemQty = By.xpath("//div[@class='details-qty qty']/input");
     By cartItemQty = By.xpath(".//input[@disabled='disabled']");
-    //By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
-    //By cartItemQty = By.cssSelector("div.details-qty.qty");
-    //By cartItemPrice = By.xpath("./div/div[@class='price-container'][1]");
     By cartItemPrice = By.cssSelector("span.minicart-price span.price");
     By cartBox = By.xpath("//div[@data-role='dropdownDialog']");
     By cartCheckoutButton = By.cssSelector("button#top-cart-btn-checkout");
@@ -76,12 +68,9 @@ public class PageHeader extends BasePage {
         waitForPageToLoad();
     }
 
-    // loader
-    // img alt="Loading..."
-
     /**
      * Menu Methods
-     */
+     **/
 
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");

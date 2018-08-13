@@ -35,8 +35,8 @@ public class AdjustablePage extends BaseProductPage{
         return this;
     }
 
-    public AdjustablePage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

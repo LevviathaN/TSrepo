@@ -48,7 +48,7 @@ public class Smoke_WhiteGloveDeliveryTest extends BaseTest {
 
         //Verify correct delivery date selected
         checkout.selectDeliveryDate();
-        Assert.assertTrue(checkout.firstAvailableDay().equals(checkout.selectedDate()));
+        Assert.assertTrue(checkout.firstAvailableDay().equals(checkout.selectedDate()), "Failed to select delivery date");
 
         //Verify WG price subtracted and free shipping prise equals 0$
         checkout.selectFreeShipping();

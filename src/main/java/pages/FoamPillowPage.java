@@ -25,8 +25,8 @@ public class FoamPillowPage extends BaseProductPage{
 
         /** Page Methods */
 
-    public FoamPillowPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

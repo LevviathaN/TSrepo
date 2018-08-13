@@ -40,9 +40,9 @@ public class MattressProtectorPage extends BaseProductPage{
             return this;
         }
 
-    public MattressProtectorPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 
 }

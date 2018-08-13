@@ -172,6 +172,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public String getShippingPrice(){
+        waitForPageToLoad();
         reporter.info("Check shipping price");
         return findElement(shippingPrice).getText();
     }

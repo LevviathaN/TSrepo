@@ -38,8 +38,8 @@ public class ComforterPage extends BaseProductPage{
                 return this;
         }
 
-    public ComforterPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

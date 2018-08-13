@@ -13,7 +13,7 @@ import utils.EntitiesFactory;
 import utils.FileIO;
 
 public class DirectMatress_Test extends BaseTest{
-    @DataProvider(name = "matress")
+    @DataProvider(name = "matress", parallel = true)
     public Object[][] provider(){
         return new Object[][]{
                 {"Medium Soft", "Queen", 990},

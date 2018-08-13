@@ -38,7 +38,7 @@ public class BaseProductPage extends BasePage{
 //            reporter.fail("Item was not selected: " + type);
 //        return this;
 //    }
-        public BaseProductPage clickAddToCart() {
+        public ViewCartPage clickAddToCart() {
             reporter.info("Click on \"Add to Cart\" button");
             header.closeCart();
             waitForPageToLoad();
@@ -52,7 +52,7 @@ public class BaseProductPage extends BasePage{
                     clickOnElement(addToCartButton);
                 }
             }
-            return this;
+            return ViewCartPage.Instance;
         }
 
     public ViewCartPage clickUpdateCart() {
