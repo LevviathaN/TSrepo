@@ -324,6 +324,11 @@ public class BasePage {
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    public static void scrollToBottomOfPage(){
+        waitForPageToLoad();
+        ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
     public static void waitForPageToLoad(){
         sleepFor(STATIC_TIMEOUT); // todo fixme
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {

@@ -13,7 +13,7 @@ import utils.ProductSync;
 
 public class ViewCart_DeleteTest extends BaseTest {
     @DataProvider(name = "default_item_provider")
-    public Object[][] provider () throws Exception {
+    public Object[][] provider () {
         return new Object[][]{
                 {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow"},
                 {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow"},

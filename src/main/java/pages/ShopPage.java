@@ -17,8 +17,8 @@ public class ShopPage extends BasePage{
     /** UI Mappings */
 
     By shopOurMattressButton = By.xpath(".//a[text()='SHOP Our Hybrid Mattress']");
-    By shopOurFoamPillowButton = By.xpath(".//a[text()='SHOP OUR PILLOW'])[1]");
-    By shopOurPlushPillowButton = By.xpath(".//a[text()='SHOP OUR PILLOW'])[2]");
+    By shopOurFoamPillowButton = By.xpath(".//a[text()='SHOP OUR PILLOW'][1]");
+    By shopOurPlushPillowButton = By.xpath(".//p[contains(text(), 'hypoallergenic')]/following-sibling::div");
 
     By shopOurTrackerButton = By.xpath(".//a[text()='SHOP OUR TRACKER']");
     By shopOurSheetsButton = By.xpath(".//a[text()='SHOP OUR SHEETS']");
@@ -49,7 +49,9 @@ public class ShopPage extends BasePage{
 
     public PlushPillowPage clickOnShopOurPlushPillowButton() {
         reporter.info("Click on Shop Our Pillow (Plush)");
+
         scrollToShopElement(driver().findElement(shopOurPlushPillowButton));
+        scrollToBottomOfPage();
         findElement(shopOurPlushPillowButton).click();
         return PlushPillowPage.Instance;
     }

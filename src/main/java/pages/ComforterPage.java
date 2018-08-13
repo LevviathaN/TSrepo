@@ -28,6 +28,7 @@ public class ComforterPage extends BaseProductPage{
 
         public ComforterPage selectComforterSize(String size) {
             header.closeCart();
+            waitForPageToLoad();
             reporter.info("Select Comforter size: " + size);
             scrollToElement(driver().findElement(selectComforterSize));
             findElement(selectComforterSize).click();
