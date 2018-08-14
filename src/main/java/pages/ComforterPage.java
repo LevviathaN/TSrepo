@@ -31,7 +31,7 @@ public class ComforterPage extends BaseProductPage{
             waitForPageToLoad();
             reporter.info("Select Comforter size: " + size);
             scrollToElement(driver().findElement(selectComforterSize));
-            findElement(selectComforterSize).click();
+            //findElement(selectComforterSize).click();
                 findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
                 if (!findElement(selectComforterSize).getText().contains(size)){
                         reporter.fail("Item was not changed to: " + size);

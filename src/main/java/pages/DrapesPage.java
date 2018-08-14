@@ -35,7 +35,7 @@ public class DrapesPage extends BaseProductPage{
             header.closeCart();
             waitForPageToLoad();
             reporter.info("Select Drapes size: " + value);
-            findElement(selectDrapesSize).click();
+            //findElement(selectDrapesSize).click();
             findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
             if (!findElement(selectDrapesSize).getText().contains(value)){
                 reporter.fail("Item was not changed to: " + value);

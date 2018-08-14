@@ -27,9 +27,9 @@ public class SheetsetPage extends BaseProductPage{
 
     public SheetsetPage selectSheetsetSize(String size) {
         reporter.info("Select Sheetset size: " + size);
-        //waitForPageToLoad();
+        waitForPageToLoad();
         header.closeCart();
-        findElement(selectSheetsetSize).click();
+        //findElement(selectSheetsetSize).click();
         findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
         if (!findElement(selectSheetsetSize).getText().contains(size)){
             reporter.fail("Item was not changed to: " + size);
