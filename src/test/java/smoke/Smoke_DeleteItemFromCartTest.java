@@ -34,16 +34,18 @@ public class Smoke_DeleteItemFromCartTest extends BaseTest {
         home.header.clickShopMenuItem()
                 .clickOnShopOurFoamPillowButton()
                 .clickAddToCart();
-        home.open();
+
+        cart.clickOnDeleteProduct(item.getTitle());
+        Assert.assertFalse(cart.itemDisplayedOnViewCartPage(item), "Failed to delete item");
 
         //checking that added items were displayed
         //Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was displayed in cart");
 
         //deleting item from cart
-        home.header.clickOnDeleteCartButton(item);
+        //home.header.clickOnDeleteCartButton(item);
         ProductSync.uncheck(ProductTypes.FOAM_PILLOW);
 
         //checking that item was deleted from the cart
-        Assert.assertFalse(home.header.itemWasFoundInMiniCart(item),  "Item was deleted from cart");
+        //Assert.assertFalse(home.header.itemWasFoundInMiniCart(item),  "Item was deleted from cart");
     }
 }
