@@ -1,7 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -22,21 +22,29 @@ public class ComforterPage extends BaseProductPage{
         /** UI Mappings */
 
         //By addToCartButton = By.id("product-addtocart-button");
-        By selectComforterSize = By.xpath("//div[@class='product-info-main loaded']//div[@class='bed-size-select']");
+        By selectComforterSize = By.xpath("//div[@class='product-info-main loaded']//div[@class='option']");
+        By selectedOption = By.cssSelector(".swatch-attribute-selected-option");
 
         /** Page Methods */
 
         public ComforterPage selectComforterSize(String size) {
-            header.closeCart();
             waitForPageToLoad();
-            reporter.info("Select Comforter size: " + size);
-            scrollToElement(driver().findElement(selectComforterSize));
-            //findElement(selectComforterSize).click();
+            WebElement element = super.searchForDisplayedElement();
+            if (element == null){
+                reloadPage();
+                element = super.searchForDisplayedElement();
+            }
+
+            scrollToElement(element);
+            if (element.getText().contains(size)){
+                reporter.info(size + " size is selected by default");
+            } else {
+                reporter.info("Changing size to " + size);
+                element.click();
                 findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
-                if (!findElement(selectComforterSize).getText().contains(size)){
-                        reporter.fail("Item was not changed to: " + size);
-                }
-                return this;
+            }
+
+            return this;
         }
 
     public ViewCartPage clickAddToCart() {

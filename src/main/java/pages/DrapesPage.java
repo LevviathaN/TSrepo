@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utils.FileIO;
 
 /**
@@ -31,15 +32,23 @@ public class DrapesPage extends BaseProductPage{
         return ViewCartPage.Instance;
     }
 
-    public DrapesPage selectDrapesSize(String value) {
-            header.closeCart();
-            waitForPageToLoad();
-            reporter.info("Select Drapes size: " + value);
-            //findElement(selectDrapesSize).click();
-            findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
-            if (!findElement(selectDrapesSize).getText().contains(value)){
-                reporter.fail("Item was not changed to: " + value);
+    public DrapesPage selectDrapesSize(String size) {
+        waitForPageToLoad();
+        WebElement element = super.searchForDisplayedElement();
+        if (element == null){
+            reloadPage();
+            element = super.searchForDisplayedElement();
         }
+
+        scrollToElement(element);
+        if (element.getText().contains(size)){
+            reporter.info(size + " size is selected by default");
+        } else {
+            reporter.info("Changing size to " + size);
+            element.click();
+            findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
+        }
+
         return this;
     }
 

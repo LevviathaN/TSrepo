@@ -2,7 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import utils.FileIO;
+
+import java.util.List;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -61,5 +64,17 @@ public class BaseProductPage extends BasePage{
         //waitForPageToLoad();
         clickOnElement(updateItemButton);
         return ViewCartPage.Instance;
+    }
+
+    public WebElement searchForDisplayedElement(){
+        waitForPageToLoad();
+        By elements = By.xpath(".//div[@class='option']");
+        List<WebElement> options = findElements(elements);
+        for (WebElement element : options) {
+            if (element.isDisplayed()) {
+                return element;
+            }
+        }
+        return null;
     }
 }

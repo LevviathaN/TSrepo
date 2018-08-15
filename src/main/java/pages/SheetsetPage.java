@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utils.FileIO;
 
 /**
@@ -26,14 +27,22 @@ public class SheetsetPage extends BaseProductPage{
     /** Page Methods */
 
     public SheetsetPage selectSheetsetSize(String size) {
-        reporter.info("Select Sheetset size: " + size);
         waitForPageToLoad();
-        header.closeCart();
-        //findElement(selectSheetsetSize).click();
-        findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
-        if (!findElement(selectSheetsetSize).getText().contains(size)){
-            reporter.fail("Item was not changed to: " + size);
+        WebElement element = super.searchForDisplayedElement();
+        if (element == null){
+            reloadPage();
+            element = super.searchForDisplayedElement();
         }
+
+        scrollToElement(element);
+        if (element.getText().contains(size)){
+            reporter.info(size + " size is selected by default");
+        } else {
+            reporter.info("Changing size to " + size);
+            element.click();
+            findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
+        }
+
         return this;
     }
 
