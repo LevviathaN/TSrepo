@@ -35,6 +35,7 @@ public class ShopPage extends BasePage{
     public MattressesPage clickOnShopOurMattressButton() {
         waitForPageToLoad();
         reporter.info("Click on Shop Our Mattress");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurMattressButton));
         findElement(shopOurMattressButton).click();
         return MattressesPage.Instance;
@@ -42,6 +43,7 @@ public class ShopPage extends BasePage{
 
     public FoamPillowPage clickOnShopOurFoamPillowButton() {
         reporter.info("Click on Shop Our Pillow (Foam)");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurFoamPillowButton));
         findElement(shopOurFoamPillowButton).click();
         return FoamPillowPage.Instance;
@@ -49,15 +51,15 @@ public class ShopPage extends BasePage{
 
     public PlushPillowPage clickOnShopOurPlushPillowButton() {
         reporter.info("Click on Shop Our Pillow (Plush)");
-
-        scrollToShopElement(driver().findElement(shopOurPlushPillowButton));
         scrollToBottomOfPage();
+        scrollToShopElement(driver().findElement(shopOurPlushPillowButton));
         findElement(shopOurPlushPillowButton).click();
         return PlushPillowPage.Instance;
     }
 
     public MonitorPage clickOnShopOurMonitorButton() {
         reporter.info("Click on Shop Our Monitor");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurTrackerButton));
         findElement(shopOurTrackerButton).click();
         return MonitorPage.Instance;
@@ -65,23 +67,27 @@ public class ShopPage extends BasePage{
 
     public SheetsetPage clickOnShopOurSheetsButton() {
         reporter.info("Click on Shop Our Sheets");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurSheetsButton));
         findElement(shopOurSheetsButton).click();
         return SheetsetPage.Instance;
     }
     public FoundationPage clickOnShopFoundationButton(){
         reporter.info("Click on Shop Foundation");
+        scrollToBottomOfPage();
         clickOnElement(By.partialLinkText("Platform Bed"));
         return FoundationPage.Instance;
     }
     public AdjustablePage clickOnShopOurBaseButton() {
         reporter.info("Click on Shop Our Adjustable Base");
+        scrollToBottomOfPage();
         clickOnElement(By.partialLinkText("Adjustable Bed"));
         return AdjustablePage.Instance;
     }
 
     public ComforterPage clickOnShopOurComforterButton() {
         reporter.info("Click on Shop Our Comforter");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurComforterButton));
         findElement(shopOurComforterButton).click();
         return ComforterPage.Instance;
@@ -89,6 +95,7 @@ public class ShopPage extends BasePage{
 
     public MattressProtectorPage clickOnShopOurCoverButton() {
         reporter.info("Click on Shop Our Cover");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurCoverButton));
         findElement(shopOurCoverButton).click();
         return MattressProtectorPage.Instance;
@@ -96,14 +103,16 @@ public class ShopPage extends BasePage{
 
     public DrapesPage clickOnShopOurDrapesButton() {
         reporter.info("Click on Shop Our Drapes");
+        scrollToBottomOfPage();
         scrollToShopElement(driver().findElement(shopOurDrapesButton));
         findElement(shopOurDrapesButton).click();
         return DrapesPage.Instance;
     }
 
     public SheetsetPage clickOnShopSheetsButton() {
-        scrollToShopElement(driver().findElement(shopSheetsButton));
         reporter.info("Click on Shop Our Sheets");
+        scrollToBottomOfPage();
+        scrollToShopElement(driver().findElement(shopSheetsButton));
         findElement(shopSheetsButton).click();
         return SheetsetPage.Instance;
     }

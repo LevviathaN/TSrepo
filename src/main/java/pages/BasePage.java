@@ -104,10 +104,10 @@ public class BasePage {
         }
     }
 
-//    public void open(){
-//        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
-//        driver().get(BASE_URL + pageURL);
-//    }
+    public static String getSource(){
+        String s = driver().getPageSource();
+        return s;
+    }
 
     public static void openUrl(String url) {
         reporter.info("Opening the: " + url);
@@ -432,5 +432,10 @@ public class BasePage {
             clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
         }
         return HomePage.Instance;
+    }
+
+    public static void closeWelcome(){
+        waitForPageToLoad();
+        clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
     }
 }
