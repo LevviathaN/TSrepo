@@ -327,6 +327,7 @@ public class BasePage {
     public static void scrollToBottomOfPage(){
         waitForPageToLoad();
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        waitForPageToLoad();
     }
 
     public static void waitForPageToLoad(){
