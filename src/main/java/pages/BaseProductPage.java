@@ -20,6 +20,8 @@ public class BaseProductPage extends BasePage{
         By selectMattressSize = By.cssSelector("div.bed-size-select");
         By addToCartButton = By.xpath("//main[@id='maincontent']//button[@id='product-addtocart-button']");
         By updateItemButton = By.xpath("//main[@id='maincontent']//button[@id='product-updatecart-button']");
+        By crossSalesWindow = By.cssSelector(".xs-modal");
+        By viewCartButton = By.cssSelector(".__to-checkout.button.button-small.button-primary");
 
 
         /** Page Methods */
@@ -46,14 +48,17 @@ public class BaseProductPage extends BasePage{
             header.closeCart();
             waitForPageToLoad();
             driver().findElement(addToCartButton).click();
-            if (header.waitUntilItemWillBeDropedToCart() == false) {
-                driver().navigate().refresh();
-                waitForPageToLoad();
-                if (header.waitUntilItemWillBeDropedToCart() == false) {
-                    reporter.info("Second attempt to click Add to Cart");
-                    scrollToElement(driver().findElement(addToCartButton));
-                    clickOnElement(addToCartButton);
-                }
+//            if (header.waitUntilItemWillBeDropedToCart() == false) {
+//                driver().navigate().refresh();
+//                waitForPageToLoad();
+//                if (header.waitUntilItemWillBeDropedToCart() == false) {
+//                    reporter.info("Second attempt to click Add to Cart");
+//                    scrollToElement(driver().findElement(addToCartButton));
+//                    clickOnElement(addToCartButton);
+//                }
+//            }
+            if (isElementPresentAndDisplay(crossSalesWindow)){
+                clickOnElement(viewCartButton);
             }
             return ViewCartPage.Instance;
         }
