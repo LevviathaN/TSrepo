@@ -21,8 +21,7 @@ public class BaseProductPage extends BasePage{
         By addToCartButton = By.xpath("//main[@id='maincontent']//button[@id='product-addtocart-button']");
         By updateItemButton = By.xpath("//main[@id='maincontent']//button[@id='product-updatecart-button']");
         By crossSalesWindow = By.cssSelector(".xs-modal");
-        By viewCartButton = By.cssSelector(".__to-checkout.button.button-small.button-primary");
-
+        By viewCartButton = By.xpath("//a[@class='__to-checkout button']");
 
         /** Page Methods */
 
@@ -47,7 +46,7 @@ public class BaseProductPage extends BasePage{
             reporter.info("Click on \"Add to Cart\" button");
             header.closeCart();
             waitForPageToLoad();
-            driver().findElement(addToCartButton).click();
+            driver().findElement(addToCartButton).submit();
 //            if (header.waitUntilItemWillBeDropedToCart() == false) {
 //                driver().navigate().refresh();
 //                waitForPageToLoad();
