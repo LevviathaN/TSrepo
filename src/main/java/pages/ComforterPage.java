@@ -22,7 +22,7 @@ public class ComforterPage extends BaseProductPage{
         /** UI Mappings */
 
         //By addToCartButton = By.id("product-addtocart-button");
-        By selectComforterSize = By.xpath("//div[@class='product-info-main loaded']//div[@class='option']");
+        By selectComforterSize = By.cssSelector("div#product-options-wrapper.product-options-wrapper");
         By selectedOption = By.cssSelector(".swatch-attribute-selected-option");
 
         /** Page Methods */
@@ -41,7 +41,7 @@ public class ComforterPage extends BaseProductPage{
             } else {
                 reporter.info("Changing size to " + size);
                 element.click();
-                findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
+                findElement(By.xpath("//div[@class='swatch-option text' and contains(text(),'" + size + "')]")).click();
             }
 
             return this;

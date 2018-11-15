@@ -25,7 +25,7 @@ public class MattressProtectorPage extends BaseProductPage{
     /** UI Mappings */
 
  //   By addToCartButton = By.id("product-addtocart-button");
-    By selectProtectorSize = By.xpath("//div[@class='product-info-main loaded']//div[@class='option']");
+    By selectProtectorSize = By.cssSelector("div#product-options-wrapper.product-options-wrapper");
 
         /** Page Methods */
 
@@ -43,7 +43,7 @@ public class MattressProtectorPage extends BaseProductPage{
             } else {
                 reporter.info("Changing size to " + size);
                 element.click();
-                findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
+                findElement(By.xpath("//div[@class='swatch-option text selected' and contains(text(),'" + size + "')]")).click();
             }
 
             return this;

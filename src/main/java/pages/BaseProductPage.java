@@ -72,7 +72,7 @@ public class BaseProductPage extends BasePage{
 
     public WebElement searchForDisplayedElement(){
         waitForPageToLoad();
-        By elements = By.xpath(".//div[@class='option']");
+        By elements = By.xpath(".//div[@class='product-add-form']");
         List<WebElement> options = findElements(elements);
         for (WebElement element : options) {
             if (element.isDisplayed()) {
