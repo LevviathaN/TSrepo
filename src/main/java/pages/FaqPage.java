@@ -25,12 +25,12 @@ public class FaqPage extends BasePage{
     By faqSearchButton = By.xpath(".//*[@id='search-validate-detail']/div[2]/button");
 
     //FAQ Menus
-    By faqOurMattress = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[1]");
-    By faqSleepSystem = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[2]");
-    By faqSleeptracker = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[3]");
-    By faqPurchasing = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[4]");
-    By faqShipping = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[5]");
-    By faqReturnsAndWarranty = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[6]");
+    By faqOurMattress = By.xpath(".//*[@class='faq-main__list']/li[1]");
+    By faqSleepSystem = By.xpath(".//*[@class='faq-main__list']/li[2]");
+    By faqSleeptracker = By.xpath(".//*[@class='faq-main__list']/li[3]");
+    By faqPurchasing = By.xpath(".//*[@class='faq-main__list']/li[4]");
+    By faqShipping = By.xpath(".//*[@class='faq-main__list']/li[5]");
+    By faqReturnsAndWarranty = By.xpath(".//*[@class='faq-main__list']/li[6]");
 
     //Chat
     By faqChatSupport = By.xpath("//iframe[@data-test-id='ChatWidgetButton-iframe']']");
@@ -42,7 +42,7 @@ public class FaqPage extends BasePage{
     By faqPurchasingTitle = By.xpath(".//*[text()='Purchasing']");
     By faqShippingTitle = By.xpath(".//*[text()='Shipping & Delivery']");
     By faqReturnsAndWarrantyTitle = By.xpath(".//*[text()='Returns & Warranty']");
-    By faqSearchResults = By.xpath(".//*[@class='title_desktop']/h2");
+    By faqSearchResults = By.xpath(".//*[@class='block-header2']");
 
     //By faqChatSupportLocator = By.xpath("//*/label[text()='Leave us a Message']");
 

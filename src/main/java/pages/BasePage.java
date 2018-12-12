@@ -93,14 +93,18 @@ public class BasePage {
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
         if (FileIO.getConfigProperty("EnvType").equals("Staging")){
             driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
-            closeWelcomeMessage();
+            //closeWelcomeMessage();
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            driver().manage().addCookie(notFirstVisit);
         }
         else {
             Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
             driver().get(BASE_URL + pageURL);
             driver().manage().addCookie(A_B_test);
             waitForPageToLoad();
-            closeWelcomeMessage();
+            //closeWelcomeMessage();
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            driver().manage().addCookie(notFirstVisit);
         }
     }
 
@@ -251,6 +255,11 @@ public class BasePage {
             throw new RuntimeException("Failure clicking on element" );
         }
         waitForPageToLoad();
+    }
+
+    public static void clickWithJS(By element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript("arguments[0].click();", findElement(element));
     }
 
     public static WebElement findElement(By element, int... timeout) {

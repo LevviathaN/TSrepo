@@ -11,6 +11,7 @@
             <class name="smoke.Smoke_WhiteGloveDeliveryTest" />
 
             <class name="smoke.DirectMatress_Test" />
+            <class name="smoke.Smoke_WellcomePopUpTest" />
 
             <class name="smoke.Smoke_Protector_FullTest" />
             <class name="smoke.Smoke_Comforter_FullTest" />
