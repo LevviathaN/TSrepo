@@ -25,16 +25,12 @@ public class BaseProductPage extends BasePage{
 
         /** Page Methods */
 
-//    public BaseProductPage selectSize(String value){
-//        reporter.info("Select size: " + value);
-//        findElement(selectMattressSize).click();
-//        findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
-//        if (!findElement(selectMattressSize).getText().contains(value)){
-//            reporter.fail("Item was not changed to: " + value);
-//        }
-//        return this;
-//    }
-//
+    public BaseProductPage selectOption(String value){
+        reporter.info("Select size: " + value);
+        findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + value + "')]")).click();
+        return this;
+    }
+
 //    public BaseProductPage selecType(String type) {
 //        reporter.info("Select type: " + type);
 //        findElement(By.xpath("//div[@option-label='" + type + "']")).click();
@@ -80,5 +76,9 @@ public class BaseProductPage extends BasePage{
             }
         }
         return null;
+    }
+
+    public boolean isOptionSelected(String option){
+            return findElement(By.xpath("//div[@option-label='" + option + "']")).getAttribute("class").contains("selected");
     }
 }

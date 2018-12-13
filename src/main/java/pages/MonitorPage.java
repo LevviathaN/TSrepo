@@ -31,8 +31,9 @@ public class MonitorPage extends BaseProductPage{
     public MonitorPage selectMonitorType(String monitorType) {
         reporter.info("Select monitor type: " + monitorType);
         header.closeCart();
+        if (!isOptionSelected(monitorType))
         findElement(By.xpath("//div[@option-label='" + monitorType + "']")).click();
-        if (!findElement(By.xpath("//div[@option-label='" + monitorType + "']")).getAttribute("class").contains("selected"))
+        if (!isOptionSelected(monitorType))
             reporter.fail("Item was not selected: " + monitorType);
         return this;
     }
