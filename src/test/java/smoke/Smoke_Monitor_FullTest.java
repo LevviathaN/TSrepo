@@ -34,7 +34,7 @@ public class Smoke_Monitor_FullTest extends BaseTest {
         ShopPage shopPage = home.header.clickShopMenuItem();
 
         shopPage.clickOnShopOurMonitorButton()
-                .selectMonitorType(item.getType())
+                .selectOption(item.getType())
                 .clickAddToCart();
         home.header.clickShopMenuItem();
 

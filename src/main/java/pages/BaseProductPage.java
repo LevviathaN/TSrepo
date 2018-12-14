@@ -26,8 +26,11 @@ public class BaseProductPage extends BasePage{
         /** Page Methods */
 
     public BaseProductPage selectOption(String value){
-        reporter.info("Select size: " + value);
-        findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + value + "')]")).click();
+        reporter.info("Select option: " + value);
+        if (!isOptionSelected(value))
+            findElement(By.xpath("//div[@option-label and contains(text(),'" + value + "')]")).click();
+        if (!isOptionSelected(value))
+            reporter.fail("Item was not selected: " + value);
         return this;
     }
 
@@ -79,6 +82,6 @@ public class BaseProductPage extends BasePage{
     }
 
     public boolean isOptionSelected(String option){
-            return findElement(By.xpath("//div[@option-label='" + option + "']")).getAttribute("class").contains("selected");
+            return findElement(By.xpath("//div[@option-label and contains(text(),'" + option + "')]")).getAttribute("class").contains("selected");
     }
 }

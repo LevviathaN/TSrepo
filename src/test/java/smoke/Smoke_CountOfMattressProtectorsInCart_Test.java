@@ -47,8 +47,8 @@ public class Smoke_CountOfMattressProtectorsInCart_Test extends BaseTest {
         protectorPage.open();
 
         //checking if "default" protectors were counted
-        countOfGoodsFromCartIcon = protectorPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = protectorPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = protectorPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = protectorPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "First time. Count of added to cart items equal to count from cart icon");
 
 
@@ -63,8 +63,8 @@ public class Smoke_CountOfMattressProtectorsInCart_Test extends BaseTest {
         protectorPage.open();
         ProductSync.uncheck(ProductTypes.MATTRESS_PROTECTOR);
 
-        countOfGoodsFromCartIcon = protectorPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = protectorPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = protectorPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = protectorPage.header.getCountOfGoodsInMiniCart();
 
         //checking if count of goods is equal in the cart and on the cart icon
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Second time. Count of added to cart items equal to count from cart icon");

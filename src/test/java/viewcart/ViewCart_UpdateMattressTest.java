@@ -32,8 +32,8 @@ public class ViewCart_UpdateMattressTest extends BaseTest {
         ProductSync.check(ProductTypes.MATTRESS);
 
         home.header.openMenuByItemName("Tomorrow Hybrid Mattress");
-        prodPage.selectMattressSize(item.getSize())
-                .selectMattressFeel(item.getType())
+        prodPage.selectOption(item.getSize())
+                .selectOption(item.getType())
                 .clickAddToCart();
 
 
@@ -42,8 +42,8 @@ public class ViewCart_UpdateMattressTest extends BaseTest {
                 .clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectMattressSize(updateditem.getSize())
-                .selectMattressFeel(updateditem.getType())
+                .selectOption(updateditem.getSize())
+                .selectOption(updateditem.getType())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

@@ -40,8 +40,8 @@ public class Smoke_CountOfAdjustableBasesInCart_Test extends BaseTest {
         adjustableBasePage.open();
 
         //checking if items were added and counted normally
-        countOfGoodsFromCartIcon = adjustableBasePage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = adjustableBasePage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = adjustableBasePage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = adjustableBasePage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
         adjustableBasePage.selectBaseSize(updatedBase.getSize()).clickAddToCart();
@@ -55,9 +55,9 @@ public class Smoke_CountOfAdjustableBasesInCart_Test extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.ADJUSTABLE_BASE);
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = adjustableBasePage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = adjustableBasePage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = adjustableBasePage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = adjustableBasePage.header.getCountOfGoodsInMiniCart();
 
         //checking if sheets were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

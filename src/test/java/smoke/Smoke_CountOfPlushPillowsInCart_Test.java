@@ -43,9 +43,9 @@ public class Smoke_CountOfPlushPillowsInCart_Test extends BaseTest {
         plushPillowPage.open();
         ProductSync.uncheck(ProductTypes.PLUSH_PILLOW);
         //getting count from cart icon
-        countOfGoodsFromCartIcon = plushPillowPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = plushPillowPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count from cart
-        countOfGoodsInCart = plushPillowPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = plushPillowPage.header.getCountOfGoodsInMiniCart();
 
         //checking if plush pillows was added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

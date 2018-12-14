@@ -49,8 +49,8 @@ public class Smoke_CountOfDrapesInCart_Test extends BaseTest {
         drapesPage.open();
 
         //checking if items were added and counted normally
-        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
 
@@ -65,9 +65,9 @@ public class Smoke_CountOfDrapesInCart_Test extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.DRAPES);
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInMiniCart();
 
         //checking if drapes were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

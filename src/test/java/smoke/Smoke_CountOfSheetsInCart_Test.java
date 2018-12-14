@@ -24,8 +24,8 @@ public class Smoke_CountOfSheetsInCart_Test extends BaseTest {
     @TestName(name = "Check count of sheets in cart and cart flag in header")
     public void countOfSheetsInCart_Test() throws Exception {
 
-        int countOfGoodsFromCartIcon;
-        int countOfGoodsInCart;
+        int countOfGoodsFromMiniCartIcon;
+        int countOfGoodsInMiniCart;
 
         //creating system entities
         ItemEntity defaultSheet = EntitiesFactory.getItem(FileIO.getDataFile("Default_Sheets.json"));
@@ -40,34 +40,34 @@ public class Smoke_CountOfSheetsInCart_Test extends BaseTest {
         SheetsetPage sheetsetPage = shopPage.clickOnShopSheetsButton();
 
         //filling the cart with different types and count of sheets
-        sheetsetPage.selectSheetsetSize(defaultSheet.getSize()).clickAddToCart();
+        sheetsetPage.selectOption(defaultSheet.getSize()).clickAddToCart();
         sheetsetPage.open();
 
-        sheetsetPage.selectSheetsetSize(defaultSheet.getSize()).clickAddToCart();
+        sheetsetPage.selectOption(defaultSheet.getSize()).clickAddToCart();
         sheetsetPage.open();
 
         //checking if items were added and counted normally
-        countOfGoodsFromCartIcon = sheetsetPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = sheetsetPage.header.getCountOfGoodsInCart();
-        Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
+        countOfGoodsFromMiniCartIcon = sheetsetPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInMiniCart = sheetsetPage.header.getCountOfGoodsInMiniCart();
+        Assert.assertTrue(countOfGoodsInMiniCart == countOfGoodsFromMiniCartIcon, "Count of added to cart items equal to count from cart icon");
 
-        sheetsetPage.selectSheetsetSize(updatedSheet.getSize()).clickAddToCart();
+        sheetsetPage.selectOption(updatedSheet.getSize()).clickAddToCart();
         sheetsetPage.open();
 
-        sheetsetPage.selectSheetsetSize(updatedSheet.getSize()).clickAddToCart();
+        sheetsetPage.selectOption(updatedSheet.getSize()).clickAddToCart();
         sheetsetPage.open();
 
-        sheetsetPage.selectSheetsetSize(updatedSheet.getSize()).clickAddToCart();
+        sheetsetPage.selectOption(updatedSheet.getSize()).clickAddToCart();
         sheetsetPage.open();
 
         ProductSync.uncheck(ProductTypes.SHEETSET);
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = sheetsetPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromMiniCartIcon = sheetsetPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = sheetsetPage.header.getCountOfGoodsInCart();
+        countOfGoodsInMiniCart = sheetsetPage.header.getCountOfGoodsInMiniCart();
 
         //checking if sheets were added and counted
-        Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
+        Assert.assertTrue(countOfGoodsInMiniCart == countOfGoodsFromMiniCartIcon, "Count of added to cart items equal to count from cart icon");
     }
 
 }

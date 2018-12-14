@@ -32,14 +32,14 @@ public class ViewCart_UpdateComforterTest extends BaseTest {
         ProductSync.check(ProductTypes.COMFORTER);
         home.header.clickShopMenuItem()
                 .clickOnShopOurComforterButton()
-                .selectComforterSize(item.getSize())
+                .selectOption(item.getSize())
                 .clickAddToCart();
 
         ProductSync.uncheck(ProductTypes.COMFORTER);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectComforterSize(updateditem.getSize())
+                .selectOption(updateditem.getSize())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

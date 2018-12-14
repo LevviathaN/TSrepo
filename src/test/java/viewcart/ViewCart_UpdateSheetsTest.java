@@ -32,13 +32,13 @@ public class ViewCart_UpdateSheetsTest extends BaseTest {
         ProductSync.check(ProductTypes.SHEETSET);
         home.header.clickShopMenuItem()
                 .clickOnShopOurSheetsButton()
-                .selectSheetsetSize(item.getSize())
+                .selectOption(item.getSize())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.SHEETSET);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectSheetsetSize(updateditem.getSize())
+                .selectOption(updateditem.getSize())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

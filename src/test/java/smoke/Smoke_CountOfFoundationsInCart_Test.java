@@ -42,8 +42,8 @@ public class Smoke_CountOfFoundationsInCart_Test extends BaseTest {
         foundationPage.open();
 
         //checking if items were added and counted normally
-        countOfGoodsFromCartIcon = foundationPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = foundationPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = foundationPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = foundationPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
         foundationPage.selectBaseSize(updatedBase.getSize()).clickAddToCart();
@@ -57,9 +57,9 @@ public class Smoke_CountOfFoundationsInCart_Test extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.FOUNDATION);
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = foundationPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = foundationPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = foundationPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = foundationPage.header.getCountOfGoodsInMiniCart();
 
         //checking if sheets were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

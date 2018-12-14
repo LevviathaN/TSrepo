@@ -33,13 +33,13 @@ public class ViewCart_UpdateAdjustableBaseTest extends BaseTest {
         ProductSync.check(ProductTypes.ADJUSTABLE_BASE);
         home.header.clickShopMenuItem()
                 .clickOnShopOurBaseButton()
-                .selectBaseSize(item.getSize())
+                .selectOption(item.getSize())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.ADJUSTABLE_BASE);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectBaseSize(updateditem.getSize())
+                .selectOption(updateditem.getSize())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

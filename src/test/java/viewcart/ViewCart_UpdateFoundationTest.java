@@ -33,13 +33,13 @@ public class ViewCart_UpdateFoundationTest extends BaseTest {
         ProductSync.check(ProductTypes.FOUNDATION);
         home.header.openMenuByItemName("Tomorrow Platform Bed");
         prodPage
-                .selectBaseSize(item.getSize())
+                .selectOption(item.getSize())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.FOUNDATION);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectBaseSize(updateditem.getSize())
+                .selectOption(updateditem.getSize())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

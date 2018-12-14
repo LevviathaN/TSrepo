@@ -4,7 +4,6 @@ import entities.ItemEntity;
 import org.openqa.selenium.*;
 import utils.Tools;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -111,9 +110,9 @@ public class PageHeader extends BasePage {
 
     /** Cart Methods */
 
-    public PageHeader openCart() {
+    public PageHeader openMiniCart() {
         reporter.info("Open Cart (Click on Show cart button)");
-        driver().navigate().to("https://www.tomorrowsleep.com");
+//        driver().navigate().to("https://www.tomorrowsleep.com");
         waitForPageToLoad();
         findElement(showCartButton).click();
 
@@ -126,7 +125,7 @@ public class PageHeader extends BasePage {
         List<WebElement> currentCartItems = new ArrayList<WebElement>();
         String itemName = title;
 
-        openCart();
+        openMiniCart();
         for (String expectedField : expectedContent) {
             currentCartItems = findElementsIgnoreException(cartItems);
             for (WebElement cartItem : currentCartItems) {
@@ -155,7 +154,7 @@ public class PageHeader extends BasePage {
         ArrayList<ItemEntity> result = new ArrayList<>();
 
         reporter.info("Getting items in minicart");
-        openCart();
+        openMiniCart();
 
         List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (WebElement cartItem : cartItemsList) {
@@ -201,7 +200,7 @@ public class PageHeader extends BasePage {
 
     public CheckoutPage clickOnCheckoutButton() {
         reporter.info("Click on Checkout button");
-        openCart();
+        openMiniCart();
         clickOnElement(cartCheckoutButton);
         if (isElementPresent(closeImproveWindow)){
             clickOnElement(closeImproveWindow);
@@ -213,7 +212,7 @@ public class PageHeader extends BasePage {
 
     public ViewCartPage clickOnViewCartButton() {
         reporter.info("Click on View Cart button");
-        openCart();
+        openMiniCart();
         clickOnElement(viewCartButton);
         return ViewCartPage.Instance;
     }
@@ -221,7 +220,7 @@ public class PageHeader extends BasePage {
     public void clickOnDeleteCartButton(ItemEntity item) {
         //closeCart();
         waitForPageToLoad();
-        openCart();
+        openMiniCart();
         List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (int i = 0; i < cartItemsList.size(); i++) {
             WebElement cartItem = cartItemsList.get(i);
@@ -237,16 +236,16 @@ public class PageHeader extends BasePage {
 
     }
 
-    public int getCountOfGoodsFromCartIcon() {
+    public int getCountOfGoodsFromMiniCartIcon() {
         reporter.info("Getting count of goods from cart's icon");
         String[] result = findElement(By.cssSelector(".counter-number")).getText().split("\n");
         reporter.info("Items on cart icon are equal to " + Integer.valueOf(result[0]));
         return Integer.valueOf(result[0]);
     }
 
-    public int getCountOfGoodsInCart() {
+    public int getCountOfGoodsInMiniCart() {
         reporter.info("Counting sum of goods in the cart");
-        openCart();
+        openMiniCart();
         int count = 0;
         List <WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (int i = 0; i < cartItemsList.size(); i++) {

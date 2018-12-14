@@ -32,7 +32,7 @@ public class Smoke_Adjustable_FullTest extends BaseTest {
         ProductSync.check(ProductTypes.ADJUSTABLE_BASE);
         home.header.clickShopMenuItem()
                 .clickOnShopOurBaseButton()
-                .selectBaseSize(item.getSize())
+                .selectOption(item.getSize())
                 .clickAddToCart();
         home.header.clickShopMenuItem();
 

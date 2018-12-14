@@ -57,9 +57,9 @@ public class Smoke_CountOfSleepTrackersInCart_Test extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.MONITOR);
         //getting count of selected sleep trackers from cart icon
-        countOfGoodsFromCartIcon = monitorPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = monitorPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected sleep trackers from cart
-        countOfGoodsInCart = monitorPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = monitorPage.header.getCountOfGoodsInMiniCart();
 
         //checking if sleep trackers were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
