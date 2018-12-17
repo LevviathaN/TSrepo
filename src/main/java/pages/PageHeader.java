@@ -111,8 +111,8 @@ public class PageHeader extends BasePage {
     /** Cart Methods */
 
     public PageHeader openMiniCart() {
-        reporter.info("Open Cart (Click on Show cart button)");
-//        driver().navigate().to("https://www.tomorrowsleep.com");
+        reporter.info("Open Mini-Cart (Click on Show cart button)");
+        driver().navigate().to("https://www.tomorrowsleep.com");
         waitForPageToLoad();
         findElement(showCartButton).click();
 
@@ -150,7 +150,7 @@ public class PageHeader extends BasePage {
     }
 
 
-    public ArrayList<ItemEntity> getAllCartItems() {
+    public ArrayList<ItemEntity> getAllMiniCartItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
 
         reporter.info("Getting items in minicart");
@@ -171,9 +171,9 @@ public class PageHeader extends BasePage {
             for (WebElement elem : details) {
                 String value = elem.getText();
                 if (value.contains("(") && value.contains(")"))
-                    currentItem.setSize(value);
-                else
                     currentItem.setType(value);
+                else
+                    currentItem.setSize(value);
             }
 
             result.add(currentItem);
@@ -188,7 +188,7 @@ public class PageHeader extends BasePage {
     }
 
     public boolean itemWasFoundInMiniCart(ItemEntity item) {
-        ArrayList<ItemEntity> items = getAllCartItems();
+        ArrayList<ItemEntity> items = getAllMiniCartItems();
         reporter.info("Expected item: " + item.toString());
         return items.stream()
                 .filter(cur -> item.getTitle().equals(cur.getTitle()))

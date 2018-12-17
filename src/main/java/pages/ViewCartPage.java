@@ -94,9 +94,9 @@ public class ViewCartPage extends BasePage {
             for(WebElement elem : details){
                 String value = elem.getText();
                 if (value.contains("(") && value.contains(")"))
-                    currentItem.setSize(value);
-                else
                     currentItem.setType(value);
+                else
+                    currentItem.setSize(value);
             }
 
             reporter.info("Order item: " + currentItem.toString());
