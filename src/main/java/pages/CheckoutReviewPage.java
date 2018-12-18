@@ -74,10 +74,10 @@ public class CheckoutReviewPage extends BasePage{
 
             for(WebElement elem : details){
                 String value = elem.getText();
-                if (value.contains("(") && value.contains(")"))
-                    currentItem.setType(value);
-                else
+                if (isOptionASize(value))
                     currentItem.setSize(value);
+                else
+                    currentItem.setType(value);
             }
 
             reporter.info("Order item: " + currentItem.toString());

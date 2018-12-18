@@ -448,4 +448,8 @@ public class BasePage {
         waitForPageToLoad();
         clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
     }
+
+    public boolean isOptionASize(String value){
+        return value.contains("King")|value.contains("Queen")|value.contains("Twin")|value.contains("Full")|value.contains("Inches");
+    }
 }

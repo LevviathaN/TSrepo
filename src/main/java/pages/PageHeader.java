@@ -170,10 +170,10 @@ public class PageHeader extends BasePage {
 
             for (WebElement elem : details) {
                 String value = elem.getText();
-                if (value.contains("(") && value.contains(")"))
-                    currentItem.setType(value);
-                else
+                if (isOptionASize(value))
                     currentItem.setSize(value);
+                else
+                    currentItem.setType(value);
             }
 
             result.add(currentItem);
