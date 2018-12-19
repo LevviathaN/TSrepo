@@ -47,7 +47,6 @@ public class Smoke_CountOfMattressesInCart_Test extends BaseTest {
         mattressesPage.open();
 
         mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
-        mattressesPage.open();
 
         //checking if "bigger" mattresses were counted
         countOfGoodsFromCartIcon = mattressesPage.header.getCountOfGoodsFromMiniCartIcon();
@@ -56,6 +55,7 @@ public class Smoke_CountOfMattressesInCart_Test extends BaseTest {
 
         //adding another item (model of smaller mattresses) to the cart
 
+        mattressesPage.open();
         mattressesPage.selectMattressSize(smallerMattress.getSize()).selectMattressFeel(smallerMattress.getType()).clickAddToCart();
 
         mattressesPage.open();

@@ -37,13 +37,13 @@ public class Smoke_CountOfAdjustableBasesInCart_Test extends BaseTest {
         adjustableBasePage.open();
 
         adjustableBasePage.selectBaseSize(defaultBase.getSize()).clickAddToCart();
-        adjustableBasePage.open();
 
         //checking if items were added and counted normally
         countOfGoodsFromCartIcon = adjustableBasePage.header.getCountOfGoodsFromMiniCartIcon();
         countOfGoodsInCart = adjustableBasePage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
+        adjustableBasePage.open();
         adjustableBasePage.selectBaseSize(updatedBase.getSize()).clickAddToCart();
         adjustableBasePage.open();
 

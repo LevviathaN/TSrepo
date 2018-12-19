@@ -44,13 +44,13 @@ public class Smoke_CountOfSheetsInCart_Test extends BaseTest {
         sheetsetPage.open();
 
         sheetsetPage.selectOption(defaultSheet.getSize()).clickAddToCart();
-        sheetsetPage.open();
 
         //checking if items were added and counted normally
         countOfGoodsFromMiniCartIcon = sheetsetPage.header.getCountOfGoodsFromMiniCartIcon();
         countOfGoodsInMiniCart = sheetsetPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInMiniCart == countOfGoodsFromMiniCartIcon, "Count of added to cart items equal to count from cart icon");
 
+        sheetsetPage.open();
         sheetsetPage.selectOption(updatedSheet.getSize()).clickAddToCart();
         sheetsetPage.open();
 

@@ -41,7 +41,7 @@ public class Smoke_Drapes_FullTest extends BaseTest {
         ProductSync.uncheck(ProductTypes.DRAPES);
 
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in mini-cart");
 
         //check item displayed in order
         home.header.clickOnViewCartButton();

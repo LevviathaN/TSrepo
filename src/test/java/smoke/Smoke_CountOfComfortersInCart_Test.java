@@ -44,7 +44,6 @@ public class Smoke_CountOfComfortersInCart_Test extends BaseTest {
         comforterPage.open();
 
         comforterPage.selectComforterSize(defaultComforter.getSize()).clickAddToCart();
-        comforterPage.open();
 
         //getting count of selected goods from cart icon
         countOfGoodsFromCartIcon = comforterPage.header.getCountOfGoodsFromMiniCartIcon();
@@ -54,6 +53,7 @@ public class Smoke_CountOfComfortersInCart_Test extends BaseTest {
 
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
+        comforterPage.open();
         comforterPage.selectComforterSize(updatedComforter.getSize()).clickAddToCart();
 
         comforterPage.open();

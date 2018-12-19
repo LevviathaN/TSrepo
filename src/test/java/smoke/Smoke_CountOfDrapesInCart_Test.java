@@ -46,14 +46,13 @@ public class Smoke_CountOfDrapesInCart_Test extends BaseTest {
 
         drapesPage.selectDrapesSize(defaultSheet.getSize())
                 .selectDrapesColor(defaultSheet.getType()).clickAddToCart();
-        drapesPage.open();
 
         //checking if items were added and counted normally
         countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromMiniCartIcon();
         countOfGoodsInCart = drapesPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
-
+        drapesPage.open();
         drapesPage.selectDrapesColor(updatedSheet.getType()).clickAddToCart();
         drapesPage.open();
 
