@@ -33,10 +33,10 @@ public class Smoke_CountOfAdjustableBasesInCart_Test extends BaseTest {
         AdjustablePage adjustableBasePage = shopPage.clickOnShopOurBaseButton();
 
         //filling the cart with different types and count of sheets
-        adjustableBasePage.selectBaseSize(defaultBase.getSize()).clickAddToCart();
+        adjustableBasePage.selectOption(defaultBase.getSize()).clickAddToCart();
         adjustableBasePage.open();
 
-        adjustableBasePage.selectBaseSize(defaultBase.getSize()).clickAddToCart();
+        adjustableBasePage.selectOption(defaultBase.getSize()).clickAddToCart();
 
         //checking if items were added and counted normally
         countOfGoodsFromCartIcon = adjustableBasePage.header.getCountOfGoodsFromMiniCartIcon();
@@ -44,13 +44,13 @@ public class Smoke_CountOfAdjustableBasesInCart_Test extends BaseTest {
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
         adjustableBasePage.open();
-        adjustableBasePage.selectBaseSize(updatedBase.getSize()).clickAddToCart();
+        adjustableBasePage.selectOption(updatedBase.getSize()).clickAddToCart();
         adjustableBasePage.open();
 
-        adjustableBasePage.selectBaseSize(updatedBase.getSize()).clickAddToCart();
+        adjustableBasePage.selectOption(updatedBase.getSize()).clickAddToCart();
         adjustableBasePage.open();
 
-        adjustableBasePage.selectBaseSize(updatedBase.getSize()).clickAddToCart();
+        adjustableBasePage.selectOption(updatedBase.getSize()).clickAddToCart();
         adjustableBasePage.open();
 
         ProductSync.uncheck(ProductTypes.ADJUSTABLE_BASE);

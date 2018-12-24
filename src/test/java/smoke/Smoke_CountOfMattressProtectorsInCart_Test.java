@@ -40,10 +40,10 @@ public class Smoke_CountOfMattressProtectorsInCart_Test extends BaseTest {
         MattressProtectorPage protectorPage = shopPage.clickOnShopOurCoverButton();
 
         //adding two the identical "default" protectors to the cart
-        protectorPage.selectProtectorSize(defaultProtector.getSize()).selectProtectorSize(defaultProtector.getType()).clickAddToCart();
+        protectorPage.selectOption(defaultProtector.getSize()).selectOption(defaultProtector.getType()).clickAddToCart();
         protectorPage.open();
 
-        protectorPage.selectProtectorSize(defaultProtector.getSize()).selectProtectorSize(defaultProtector.getType()).clickAddToCart();
+        protectorPage.selectOption(defaultProtector.getSize()).selectOption(defaultProtector.getType()).clickAddToCart();
 
         //checking if "default" protectors were counted
         countOfGoodsFromCartIcon = protectorPage.header.getCountOfGoodsFromMiniCartIcon();
@@ -53,13 +53,13 @@ public class Smoke_CountOfMattressProtectorsInCart_Test extends BaseTest {
 
         //adding another "updated" configuration variants of protectors to the cart
         protectorPage.open();
-        protectorPage.selectProtectorSize(defaultProtector.getSize()).selectProtectorSize(updatedProtector.getType()).clickAddToCart();
+        protectorPage.selectOption(defaultProtector.getSize()).selectOption(updatedProtector.getType()).clickAddToCart();
         protectorPage.open();
 
-        protectorPage.selectProtectorSize(defaultProtector.getSize()).selectProtectorSize(updatedProtector.getType()).clickAddToCart();
+        protectorPage.selectOption(defaultProtector.getSize()).selectOption(updatedProtector.getType()).clickAddToCart();
         protectorPage.open();
 
-        protectorPage.selectProtectorSize(defaultProtector.getSize()).selectProtectorSize(updatedProtector.getType()).clickAddToCart();
+        protectorPage.selectOption(defaultProtector.getSize()).selectOption(updatedProtector.getType()).clickAddToCart();
         protectorPage.open();
         ProductSync.uncheck(ProductTypes.MATTRESS_PROTECTOR);
 
