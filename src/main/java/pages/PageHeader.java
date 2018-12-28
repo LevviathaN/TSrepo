@@ -112,7 +112,8 @@ public class PageHeader extends BasePage {
 
     public PageHeader openMiniCart() {
         reporter.info("Open Mini-Cart (Click on Show cart button)");
-        driver().navigate().to("https://www.tomorrowsleep.com");
+        //driver().navigate().to("https://www.tomorrowsleep.com");
+        HomePage.Instance.open();
         waitForPageToLoad();
         findElement(showCartButton).click();
 
