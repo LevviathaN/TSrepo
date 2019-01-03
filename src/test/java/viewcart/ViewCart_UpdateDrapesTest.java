@@ -32,15 +32,15 @@ public class ViewCart_UpdateDrapesTest extends BaseTest {
         ProductSync.check(ProductTypes.DRAPES);
         home.header.clickShopMenuItem()
                 .clickOnShopOurDrapesButton()
-                .selectDrapesSize(item.getSize())
-                .selectDrapesColor(item.getType())
+                .selectOption(item.getSize())
+                .selectOption(item.getType())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.DRAPES);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectDrapesSize(updateditem.getSize())
-                .selectDrapesColor(updateditem.getType())
+                .selectOption(updateditem.getSize())
+                .selectOption(updateditem.getType())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

@@ -452,4 +452,8 @@ public class BasePage {
     public boolean isOptionASize(String value){
         return value.contains("King")|value.contains("Queen")|value.contains("Twin")|value.contains("Full")|value.contains("Inches");
     }
+
+    public boolean isOptionAColor(String value){
+        return value.contains("Linen")|value.contains("Teak")|value.contains("Smoke")|value.contains("Blue");
+    }
 }

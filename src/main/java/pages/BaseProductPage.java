@@ -27,20 +27,29 @@ public class BaseProductPage extends BasePage{
 
     public BaseProductPage selectOption(String value){
         reporter.info("Select option: " + value);
-        if (!isOptionSelected(value))
-            findElement(By.xpath("//div[@option-label and contains(text(),'" + value + "')]")).click();
-        if (!isOptionSelected(value))
-            reporter.fail("Item was not selected: " + value);
+        if (!isOptionAColor(value))
+            selectSizeOrType(value);
+        else
+            selectColor(value);
         return this;
     }
 
-//    public BaseProductPage selecType(String type) {
-//        reporter.info("Select type: " + type);
-//        findElement(By.xpath("//div[@option-label='" + type + "']")).click();
-//        if (!findElement(By.xpath("//div[@option-label='" + type + "']")).getAttribute("class").contains("selected"))
-//            reporter.fail("Item was not selected: " + type);
-//        return this;
-//    }
+    public BaseProductPage selectSizeOrType(String option) {
+        if (!isOptionSelected(option))
+            findElement(By.xpath("//div[@option-label and contains(text(),'" + option + "')]")).click();
+        if (!isOptionSelected(option))
+            reporter.fail("Item was not selected: " + option);
+        return this;
+    }
+
+    public BaseProductPage selectColor(String color){
+        if (!findElement(By.xpath("//div[@option-label='" + color + "']")).getAttribute("class").contains("selected"))
+            findElement(By.xpath("//div[@option-label='" + color + "']")).click();
+        if (!findElement(By.xpath("//div[@option-label='" + color + "']")).getAttribute("class").contains("selected"))
+            reporter.fail("Item was not selected: " + color);
+        return this;
+    }
+
         public ViewCartPage clickAddToCart() {
             reporter.info("Click on \"Add to Cart\" button");
             header.closeCart();

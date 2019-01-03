@@ -21,10 +21,10 @@ public class Smoke_WellcomePopUpTest extends BaseTest {
 
         // Open home page
         home.open();
-        Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-        home.driver().manage().addCookie(notFirstVisit);
+        Cookie FirstVisit = new Cookie("notFirstVisit", "false");
+        home.driver().manage().addCookie(FirstVisit);
         BasePage.waitForPageToLoad();
-        Thread.sleep(90000);
+        Thread.sleep(95000);
         Assert.assertTrue(home.isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']")),"Wellcome Popup is not displayed");
 
     }

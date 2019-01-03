@@ -185,6 +185,7 @@ public class PageHeader extends BasePage {
             //Assert.fail("No Cart items were found");
         }
         closeCart();
+        //reporter.info("Actual items: " + result.toString());
         return result;
     }
 

@@ -33,8 +33,8 @@ public class Smoke_Drapes_FullTest extends BaseTest {
         ProductSync.check(ProductTypes.DRAPES);
         home.header.clickShopMenuItem()
                 .clickOnShopOurDrapesButton()
-                .selectDrapesSize(item.getSize())
-                .selectDrapesColor(item.getType())
+                .selectOption(item.getSize())
+                .selectOption(item.getType())
                 .clickAddToCart();
         home.header.clickShopMenuItem();
 
