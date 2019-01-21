@@ -20,9 +20,7 @@ public class Smoke_WellcomePopUpTest extends BaseTest {
         HomePage home = HomePage.Instance;
 
         // Open home page
-        home.open();
-        Cookie FirstVisit = new Cookie("notFirstVisit", "false");
-        home.driver().manage().addCookie(FirstVisit);
+        home.open(true);
         BasePage.waitForPageToLoad();
         Thread.sleep(95000);
         Assert.assertTrue(home.isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']")),"Wellcome Popup is not displayed");

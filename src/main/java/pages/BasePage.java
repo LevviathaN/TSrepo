@@ -99,12 +99,29 @@ public class BasePage {
         }
         else {
             Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
             driver().get(BASE_URL + pageURL);
+            driver().manage().addCookie(notFirstVisit);
             driver().manage().addCookie(A_B_test);
             waitForPageToLoad();
             //closeWelcomeMessage();
+        }
+    }
+
+    public void open(boolean wellcome) {
+        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
+        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
+            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
             Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-            driver().manage().addCookie(notFirstVisit);
+            if(!wellcome) driver().manage().addCookie(notFirstVisit);
+        }
+        else {
+            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            driver().get(BASE_URL + pageURL);
+            if(!wellcome) driver().manage().addCookie(notFirstVisit);
+            driver().manage().addCookie(A_B_test);
+            waitForPageToLoad();
         }
     }
 
