@@ -17,14 +17,14 @@ public class ProductFullTest_withDataprovider extends BaseTest {
     @DataProvider(name = "default_item_provider", parallel = true)
     public Object[][] provider (){
         return new Object[][]{
-//                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow", "Default_PlushPillow.json"},
-//                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow", "Default_FoamPillow.json"},
-//                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor", "Default_Monitor.json"},
-//                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress", "Default_Mattress.json"},
-//                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector", "Default_Protector.json"},
-//                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter", "Default_Comforter.json"},
-//                {ProductTypes.DRAPES, DrapesPage.class, "Tomorrow Blackout Curtains", "Default_Drapes.json"},
-//                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set", "Default_Sheets.json"},
+                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow", "Default_PlushPillow.json"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow", "Default_FoamPillow.json"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor", "Default_Monitor.json"},
+                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress", "Default_Mattress.json"},
+                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector", "Default_Protector.json"},
+                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter", "Default_Comforter.json"},
+                {ProductTypes.DRAPES, DrapesPage.class, "Tomorrow Blackout Curtains", "Default_Drapes.json"},
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set", "Default_Sheets.json"},
                 {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed", "Default_Adjustable.json"},
                 {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Platform Bed", "Default_Foundation.json"}
         };
