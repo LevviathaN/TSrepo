@@ -2,6 +2,7 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -274,9 +275,9 @@ public class BasePage {
         waitForPageToLoad();
     }
 
-    public static void clickWithJS(By element){
+    public static void clickWithJS(WebElement element){
         JavascriptExecutor executor = (JavascriptExecutor)driver();
-        executor.executeScript("arguments[0].click();", findElement(element));
+        executor.executeScript("arguments[0].click();", element);
     }
 
     public static WebElement findElement(By element, int... timeout) {
@@ -464,6 +465,17 @@ public class BasePage {
     public static void closeWelcome(){
         waitForPageToLoad();
         clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
+    }
+
+    public void handleMultipleWindows(String windowTitle) {
+        Set <String> windows = driver().getWindowHandles();
+
+        for (String window : windows) {
+            driver().switchTo().window(window);
+            if (driver().getTitle().contains(windowTitle)) {
+                return;
+            }
+        }
     }
 
     public boolean isOptionASize(String value){

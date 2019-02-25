@@ -2,7 +2,6 @@ package smoke;
 
 import annotations.TestName;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;

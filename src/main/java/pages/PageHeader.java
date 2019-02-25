@@ -44,7 +44,7 @@ public class PageHeader extends BasePage {
 
 
     //cart
-    By showCartButton = By.cssSelector("a.action.showcart");
+    By showCartButton = By.xpath("//a[@class='action showcart']");
     By cartItems = By.cssSelector("div.product div.product-item-details");
     By cartItemName = By.cssSelector("strong.product-item-name");
     By cartItemContent = By.cssSelector("div.content");
@@ -113,9 +113,12 @@ public class PageHeader extends BasePage {
     public PageHeader openMiniCart() {
         reporter.info("Open Mini-Cart (Click on Show cart button)");
         //driver().navigate().to("https://www.tomorrowsleep.com");
-        HomePage.Instance.open();
-        waitForPageToLoad();
-        findElement(showCartButton).click();
+        //HomePage.Instance.open();
+        //waitForPageToLoad();
+        try {findElement(showCartButton).click();}
+        catch(org.openqa.selenium.WebDriverException e){
+            findElement(By.xpath("//*[@class='counter qty']")).click();
+        }
 
         return this;
     }
@@ -177,6 +180,7 @@ public class PageHeader extends BasePage {
                     currentItem.setType(value);
             }
 
+            reporter.info("Order item: " + currentItem.toString());
             result.add(currentItem);
 
         }

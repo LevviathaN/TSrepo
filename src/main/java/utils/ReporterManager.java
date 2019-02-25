@@ -9,6 +9,7 @@ import annotations.TestName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -175,5 +176,10 @@ public class ReporterManager {
         public void fatalFail(String message) {
             logger.error(message);
             report().log(LogStatus.FAIL,  message);
+        }
+
+        public void skip(String message){
+            report().log(LogStatus.SKIP, message);
+            throw new SkipException(message);
         }
     }

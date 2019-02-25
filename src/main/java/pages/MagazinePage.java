@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.util.*;
 
@@ -16,6 +17,7 @@ public class MagazinePage extends BasePage {
 
     // URLs of magazine categories
     public final String urlTemplate = "/magazine/category/%s/";
+
     // magazine categories buttons
     //public final String buttonTemplate = "//ul[@id='menu-main-1']//a[text()='%s']";
     public final String buttonTemplate = "//*[@class='site-widgetized-section section-top']//a[text()='%s']";
@@ -53,6 +55,31 @@ public class MagazinePage extends BasePage {
         String newUrl = makeCategoryrUrl(categoryName);
         this.categoryURL = newUrl;
         return this;
+    }
+
+    public MagazinePage clickOnRandomArticle(){ //todo it's not random now. Some issues to be fixed
+        List<WebElement> articles = findElementsIgnoreException(articleLocator);
+//        Random rand = new Random();
+//        int articleNum = rand.nextInt(9) + 5;
+        String artclTitle = articles.get(7).getText();
+        reporter.info("Clicking on '" + artclTitle + "' article");
+        scrollToShopElement(articles.get(7));
+        articles.get(7).click();
+        waitForPageToLoad();
+        return this;
+    }
+
+    public void shareArticle(String social){
+        reporter.info("Sharing article via " + social);
+        driver().findElement(By.xpath(".//a[@class='" + social + "']")).click();
+        waitForPageToLoad();
+        switch (social){
+            case "facebook": handleMultipleWindows("Facebook");
+                break;
+            case "twitter": handleMultipleWindows("Поділитися посиланням у Твіттері");
+                break;
+            case "gplus": handleMultipleWindows("Вхід – облікові записи Google");
+        }
     }
 
     public int getArticlesQty(){

@@ -26,11 +26,15 @@ public class BaseProductPage extends BasePage{
         /** Page Methods */
 
     public BaseProductPage selectOption(String value){
-        reporter.info("Select option: " + value);
-        if (!isOptionAColor(value))
-            selectSizeOrType(value);
+        if (!(value.isEmpty())) {
+            reporter.info("Select option: " + value);
+            if (!isOptionAColor(value))
+                selectSizeOrType(value);
+            else
+                selectColor(value);
+        }
         else
-            selectColor(value);
+            reporter.info("Select option: *option is empty*");
         return this;
     }
 
@@ -92,5 +96,12 @@ public class BaseProductPage extends BasePage{
 
     public boolean isOptionSelected(String option){
             return findElement(By.xpath("//div[@option-label and contains(text(),'" + option + "')]")).getAttribute("class").contains("selected");
+    }
+
+    public BaseProductPage isProductInStock(){
+        if (isElementPresentAndDisplay(By.xpath("//a[@class='action alert']"))){
+            reporter.skip("Product is out of stock");
+        }
+        return this;
     }
 }
