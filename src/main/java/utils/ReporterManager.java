@@ -179,6 +179,7 @@ public class ReporterManager {
         }
 
         public void skip(String message){
+            logger.info(message);
             report().log(LogStatus.SKIP, message);
             throw new SkipException(message);
         }

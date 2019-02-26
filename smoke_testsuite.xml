@@ -14,6 +14,7 @@
             <class name="smoke.Smoke_WellcomePopUpTest" />
 
             <class name="smoke.ProductFullTest_withDataprovider" />
+            <!--______________All commented test below was replaced with one data-driven parallel test above______________-->
             <!--<class name="smoke.Smoke_Protector_FullTest" />-->
             <!--<class name="smoke.Smoke_Comforter_FullTest" />-->
             <!--<class name="smoke.Smoke_Sheets_FullTest" />-->
@@ -27,28 +28,32 @@
 
 
             <class name="smoke.Smoke_DeleteItemFromCartTest" />
-            <class name="smoke.Smoke_CountOfComfortersInCart_Test" />
-            <class name="smoke.Smoke_CountOfDrapesInCart_Test" />
-            <class name="smoke.Smoke_CountOfFoamPillowsInCart_Test" />
-            <class name="smoke.Smoke_CountOfMattressesInCart_Test" />
-            <class name="smoke.Smoke_CountOfMattressProtectorsInCart_Test" />
-            <class name="smoke.Smoke_CountOfPlushPillowsInCart_Test" />
-            <class name="smoke.Smoke_CountOfSheetsInCart_Test" />
-            <class name="smoke.Smoke_CountOfSleepTrackersInCart_Test" />
-            <class name="smoke.Smoke_CountOfAdjustableBasesInCart_Test" />
-            <class name="smoke.Smoke_CountOfFoundationsInCart_Test" />
+            <class name="smoke.CountOfProductsInCartTest_withDataprovider" />
+            <!--______________All commented test below was replaced with one data-driven parallel test above______________-->
+            <!--<class name="smoke.Smoke_CountOfComfortersInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfDrapesInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfFoamPillowsInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfMattressesInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfMattressProtectorsInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfPlushPillowsInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfSheetsInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfSleepTrackersInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfAdjustableBasesInCart_Test" />-->
+            <!--<class name="smoke.Smoke_CountOfFoundationsInCart_Test" />-->
 
 
-            <class name="viewcart.ViewCart_UpdateMonitorTest" />
-            <class name="viewcart.ViewCart_UpdateMattressTest" />
-            <class name="viewcart.ViewCart_UpdateProtectorTest" />
-            <class name="viewcart.ViewCart_UpdateComforterTest" />
-            <class name="viewcart.ViewCart_UpdateDrapesTest" />
-            <class name="viewcart.ViewCart_UpdateFoamPillowTest" />
-            <class name="viewcart.ViewCart_UpdatePlushPillowTest" />
-            <class name="viewcart.ViewCart_UpdateSheetsTest" />
-            <class name="viewcart.ViewCart_UpdateAdjustableBaseTest" />
-            <class name="viewcart.ViewCart_UpdateFoundationTest" />
+            <class name="viewcart.ViewCart_UpdateProductTest_WithDataProvider" />
+            <!--______________All commented test below was replaced with one data-driven parallel test above______________-->
+            <!--<class name="viewcart.ViewCart_UpdateMonitorTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateMattressTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateProtectorTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateComforterTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateDrapesTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateFoamPillowTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdatePlushPillowTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateSheetsTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateAdjustableBaseTest" />-->
+            <!--<class name="viewcart.ViewCart_UpdateFoundationTest" />-->
 
 
             <class name="smoke.Smoke_FAQ_FullTest" />
