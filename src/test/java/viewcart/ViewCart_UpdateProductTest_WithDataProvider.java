@@ -18,7 +18,7 @@ import utils.BaseTest;
  */
 
 public class ViewCart_UpdateProductTest_WithDataProvider extends BaseTest {
-    @DataProvider(name = "default_item_provider", parallel = true)
+    @DataProvider(name = "default_item_provider", parallel = Parallel)
     public Object[][] provider () {
         return new Object[][]{
                 {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "PlushPillow"},

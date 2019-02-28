@@ -13,25 +13,25 @@ import utils.FileIO;
 import utils.ProductSync;
 
 public class NavigationTest_withDataprovider extends BaseTest {
-    @DataProvider(name = "default_item_provider", parallel = true)
+    @DataProvider(name = "default_item_provider", parallel = Parallel)
     public Object[][] provider (){
         return new Object[][]{
-                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "PlushPillow"},
-                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "FoamPillow"},
-                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
-                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress"},
-                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector"},
-                {ProductTypes.COMFORTER,  ComforterPage.class, "Comforter"},
-                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheets"},
-                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Adjustable"},
-                {ProductTypes.FOUNDATION, FoundationPage.class, "Foundation"}
+                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow", "PlushPillow"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow", "FoamPillow"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor", "Monitor"},
+                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress", "Mattress" },
+                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector", "Protector" },
+                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter", "Comforter"},
+                {ProductTypes.DRAPES, DrapesPage.class, "Tomorrow Blackout Curtains", "Drapes"},
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set", "Sheets"},
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed", "Adjustable"},
+                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Platform Bed", "Foundation"}
         };
     }
 
     @Test (dataProvider = "default_item_provider")
-    @TestName (name="Navigation to PDP from cart validation")
-    public void topMenuValidation(ProductTypes type, Class page, String itemEntity) throws Exception {
+    @TestName (name="Navigation validation")
+    public void topMenuValidation(ProductTypes type, Class page, String itemName, String itemEntity) throws Exception {
 
         //init test entities
         ItemEntity item = EntitiesFactory.getItem( FileIO.getDataFile("Default_" + itemEntity +".json") );
@@ -44,7 +44,7 @@ public class NavigationTest_withDataprovider extends BaseTest {
         //test steps
         home.open();
         ProductSync.check(type);
-        home.header.openMenuByItemName(type.getValue());
+        home.header.openMenuByItemName(itemName);
         Assert.assertTrue(product.isPageLoaded(), "Page was not opened: " + product.getURL());
         product.isProductInStock()
                 .selectOption(item.getSize())

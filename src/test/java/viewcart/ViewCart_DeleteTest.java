@@ -15,7 +15,7 @@ import utils.FileIO;
 import utils.ProductSync;
 
 public class ViewCart_DeleteTest extends BaseTest {
-    @DataProvider(name = "default_item_provider", parallel = true)
+    @DataProvider(name = "default_item_provider", parallel = Parallel)
     public Object[][] provider () {
         return new Object[][]{
                 {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow", "Default_PlushPillow.json"},
