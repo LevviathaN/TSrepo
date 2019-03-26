@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.*;
 import utils.FileIO;
 import utils.ReporterManager;
 import utils.Tools;
-import cucumber.api.java.en.*;
 
 /**
  * Created by odiachuk on 07.07.17.

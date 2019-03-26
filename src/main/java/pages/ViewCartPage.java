@@ -73,7 +73,7 @@ public class ViewCartPage extends BasePage {
                 .count() > 0;
     }
 
-    private ArrayList<ItemEntity> getAllViewCartPageItems() {
+    public ArrayList<ItemEntity> getAllViewCartPageItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
         reporter.info("Getting order items on cart page");
         findElementIgnoreException(orderItems); // wait for order
