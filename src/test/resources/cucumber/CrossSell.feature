@@ -1,5 +1,5 @@
 @CrossSell
-#@Ignore
+@Ignore
 Feature: Cross Sell
   As a customer
   I want to see Cross Sell promotions when i add mattress to cart

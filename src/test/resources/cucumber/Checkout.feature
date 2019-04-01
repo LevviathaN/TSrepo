@@ -1,5 +1,5 @@
 @Checkout
-#@Ignore
+@Ignore
 Feature: Checkout
   As a customer
   I want to be able to complete checkout process with any product
@@ -13,8 +13,8 @@ Feature: Checkout
     When I fill all required fields
 
     Examples:
-      |pdp|
-      |Tomorrow Hybrid Mattress|
+      |pdp                                |
+      |Tomorrow Hybrid Mattress           |
       |Tomorrow Cooling Memory Foam Pillow|
 #      |Tomorrow Hypoallergenic Plush Pillow|
 #      |Tomorrow White Comforter|

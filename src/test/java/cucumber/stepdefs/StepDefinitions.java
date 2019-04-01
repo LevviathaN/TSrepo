@@ -14,7 +14,7 @@ public class StepDefinitions extends BasePage {
 
     ReporterManager reporter = ReporterManager.Instance;
 
-    @Given("^I am on the (Home|Cart|Shop|Magazine) Page$")
+    @Given("^I am on the (Home|Cart|Shop|Magazine|Reviews|FAQ) Page$")
     public void i_am_on_the_home_page(String page) {
         switch(page){
             case "Home":
@@ -29,6 +29,12 @@ public class StepDefinitions extends BasePage {
             case "Magazine":
                 driver().get("https://www.tomorrowsleep.com/magazine/");
                 break;
+            case "Reviews":
+                driver().get("https://www.tomorrowsleep.com/review/");
+                break;
+            case "FAQ":
+                driver().get("https://www.tomorrowsleep.com/faq/");
+                break;
             default:
                 reporter.fail("No such page");
         }
@@ -40,7 +46,7 @@ public class StepDefinitions extends BasePage {
         PageHeader.Instance.openMenuByItemName(title);
     }
 
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option)$")
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String button) {
         clickOnElement(By.xpath("//*[text()='" + button + "']"));
     }
@@ -66,5 +72,10 @@ public class StepDefinitions extends BasePage {
         System.out.println("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + page);
         Assert.assertEquals(driver().getTitle(), page, "Current page is " + page);
+    }
+
+    @When("^I click on Mini Cart icon$")
+    public void click_on_mini_cart(){
+        PageHeader.Instance.openMiniCart();
     }
 }

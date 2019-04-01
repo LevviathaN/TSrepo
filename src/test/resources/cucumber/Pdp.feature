@@ -1,5 +1,5 @@
 @PDP
-#@Ignore
+@Ignore
 Feature: Checkout
   As a customer
   I want to be able to see different product pages
@@ -17,7 +17,7 @@ Scenario Outline: Change product variation on PDP
     |Tomorrow Hybrid Mattress              |Queen       |$940.00              |Twin         |$545.00               |
     |Tomorrow Waterproof Mattress Protector|Twin        |$75.00               |King         |$95.00                |
 
-Scenario Outline: Add product to Shopping Cart
+Scenario Outline: Add product to Shopping Cart (presence on Cart Page)
   Given I am on the "<pdp>" PDP
   When I click on the "Add to Cart" button
   And If Cross Sell popup appears I click on the "View Cart" button

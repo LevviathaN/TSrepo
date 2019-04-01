@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import java.util.*;
 
@@ -23,7 +22,11 @@ public class MagazinePage extends BasePage {
     public final String buttonTemplate = "//*[@class='site-widgetized-section section-top']//a[text()='%s']";
 
         /** UI Mappings */
-    By articleLocator = By.cssSelector(".entry-title");
+    By articleLocator = By.xpath("//article");
+    By articleTitleLocator = By.cssSelector(".entry-title");
+    By articleTagLocator = By.cssSelector(".cat-links");
+    By nextBtn = By.xpath("//a[@class='next page-numbers']");
+    By prevBtn = By.xpath("//a[@class='prev page-numbers']");
 
     public MagazinePage(){
         pageURL = "/magazine";
@@ -33,6 +36,14 @@ public class MagazinePage extends BasePage {
     public String getURL() {
         reporter.info("getURL() returned: " + BASE_URL + pageURL + categoryURL);
         return super.getURL() + categoryURL;
+    }
+
+    public List<WebElement> getAllArticlesOnThePage(){
+        return findElements(articleLocator);
+    }
+
+    public List<WebElement> getAllArticlesOnAllPages(){
+        return findElements(articleLocator);
     }
 
     // makes URL category using url template and category name
@@ -58,7 +69,7 @@ public class MagazinePage extends BasePage {
     }
 
     public MagazinePage clickOnRandomArticle(){ //todo it's not random now. Some issues to be fixed
-        List<WebElement> articles = findElementsIgnoreException(articleLocator);
+        List<WebElement> articles = findElementsIgnoreException(articleTitleLocator);
 //        Random rand = new Random();
 //        int articleNum = rand.nextInt(9) + 5;
         String artclTitle = articles.get(7).getText();
@@ -83,19 +94,30 @@ public class MagazinePage extends BasePage {
     }
 
     public int getArticlesQty(){
-        List<WebElement> list = MagazinePage.findElements(articleLocator);
+        List<WebElement> list = MagazinePage.findElements(articleTitleLocator);
         reporter.info("getArticlesQty() returned: " +  String.valueOf(list.size()));
         return list.size();
     }
 
     public List<String> getArticleTitles(){
-        List<WebElement> listOfElemets = MagazinePage.findElements(articleLocator);
+        List<WebElement> listOfElemets = MagazinePage.findElements(articleTitleLocator);
         List<String> listOfTitles = new ArrayList<>();
         listOfElemets.stream().forEach(x-> listOfTitles.add(x.getText()));
         reporter.info("getArticleTitles() returned " + listOfTitles.size() + " articles: ");
         return listOfTitles;
     }
 
+    public List<String> getArticleTags(){
+        List<WebElement> listOfElemets = MagazinePage.findElements(articleTitleLocator);
+        List<String> listOfTags = new ArrayList<>();
+        listOfElemets.forEach(x->listOfTags.add(x.getTagName()));
+        return listOfTags;
+    }
 
+    public void goToNextPage(){
+        scrollToBottomOfPage();
+        if(isElementPresentAndDisplay(nextBtn))
+        clickOnElement(nextBtn);
+    }
 
 }

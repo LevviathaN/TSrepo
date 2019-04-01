@@ -39,6 +39,13 @@ public class CheckoutDefs extends BasePage {
                 productTitle + " is found in the Shopping Cart");
     }
 
+    @Then("^I should see \"([^\"]*)\" in Mini Cart$")
+    public void i_should_see_product_in_mini_cart(String productTitle) {
+        Assert.assertTrue(findElement(
+                By.xpath("//li[@class='item product product-item']/*/*/*/a[text()='" + productTitle + "']")).isDisplayed(),
+                productTitle + " is found in the Shopping Cart");
+    }
+
     @Then("^(Quantity|Price|Size|) of \"([^\"]*)\" in the Cart should be equal to \"([^\"]*)\"$")
     public void i_should_see_property_of_product(String prop, String product, String value) {
         ArrayList<ItemEntity> items = cart.getAllViewCartPageItems();

@@ -1,5 +1,5 @@
 @SoppingCart
-#@Ignore
+@Ignore
 Feature: Shopping Cart
   As a customer
   I want to be able to add products to cart
