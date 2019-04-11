@@ -11,10 +11,8 @@ Feature: Cross Sell
     And I add "Tomorrow Waterproof Mattress Protector" to cart from Cross Sell popup
     And I add "Tomorrow Cooling Memory Foam Pillow" to cart from Cross Sell popup
     Then I should see the "Item added to cart" message
-    When I click on the "View Cart" button in Cross Sell modal
+    When I click on "View Cart" button in Cross Sell modal
     Then I should be redirected to the "Shopping Cart | Tomorrow Sleep" page
     And I should see "Tomorrow Waterproof Mattress Protector" in the Cart
     And I should see "Tomorrow Cooling Memory Foam Pillow" in the Cart
     And I should see "Tomorrow Hybrid Mattress" in the Cart
-    Then I empty Shopping Cart
-    And I wait for 3 seconds

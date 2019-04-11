@@ -48,7 +48,7 @@ public class StepDefinitions extends BasePage {
 
     @When("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String button) {
-        clickOnElement(By.xpath("//*[text()='" + button + "']"));
+        clickOnAnyElement(By.xpath("//*[text()='" + button + "']"));
     }
 
     @When("^I wait for ([^\"]*) seconds$")

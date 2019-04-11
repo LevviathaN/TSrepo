@@ -232,6 +232,23 @@ public class BasePage {
         waitForPageToLoad();
     }
 
+    public void clickOnAnyElement(By element, int... elementNumber){
+        waitForPageToLoad();
+        List<WebElement> elements = findElements(element);
+        if(elementNumber.length>0){
+            elements.get(elementNumber[0]).click();
+        } else{
+            for (WebElement elem : elements){
+                try{
+                    elem.click();
+                    break;
+                } catch (Exception e){
+                    //nothing
+                }
+            }
+        }
+    }
+
     public static WebElement findElementIgnoreException(By element, int... timeout) {
         waitForPageToLoad();
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];

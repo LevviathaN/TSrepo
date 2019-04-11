@@ -108,10 +108,21 @@ public class MagazinePage extends BasePage {
     }
 
     public List<String> getArticleTags(){
-        List<WebElement> listOfElemets = MagazinePage.findElements(articleTitleLocator);
+        List<WebElement> listOfElemets = findElements(articleTagLocator);
         List<String> listOfTags = new ArrayList<>();
-        listOfElemets.forEach(x->listOfTags.add(x.getTagName()));
+        for(WebElement elem : listOfElemets){
+            listOfTags.add(elem.getText());
+        }
         return listOfTags;
+    }
+
+    public boolean categoryVerification(String category){
+        List<String> tags = getArticleTags();
+        boolean verified = true;
+        for(String tag : tags){
+            if(!tag.equals(category)&&!tag.isEmpty()) verified = false;
+        }
+        return verified;
     }
 
     public void goToNextPage(){

@@ -12,7 +12,7 @@ import pages.*;
 public class PdpDefs extends BasePage {
     BaseProductPage product = new BaseProductPage();
 
-    @When("^I click on the \"View Cart\" button in Cross Sell modal$|^If Cross Sell popup appears I click on the \"View Cart\" button$")
+    @When("^I click on \"View Cart\" button in Cross Sell modal$|^If Cross Sell popup appears I click on the \"View Cart\" button$")
     public void click_on_cross_sell_view_cart(){
         if (isElementPresentAndDisplay(By.cssSelector(".xs-modal"))){
             clickOnElement(By.xpath("//a[@class='__to-checkout button']"));
