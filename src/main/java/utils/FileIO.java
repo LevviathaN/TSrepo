@@ -6,15 +6,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
 import junit.framework.Assert;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.reporters.Files;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 import javax.xml.xpath.XPath;
@@ -31,6 +32,9 @@ public class FileIO {
     static String PROD_DATA_RESOURCES = "src/main/resources/data/production/";
     static String CONFIG_FILE = System.getProperty("config");
     static String PROPERTIES = "src/main/resources/" + (( CONFIG_FILE == null ) ? "default" : CONFIG_FILE) + ".properties";
+    static String Report_folder = "Report";
+
+    public static String filename;
 
     public static String getConfigProperty(String fieldName){
         String fileLocation = PROPERTIES;
@@ -223,14 +227,14 @@ public class FileIO {
 */
 
     public static String takeScreenshot(WebDriver driver){
-            return takeScreenshot(driver, String.valueOf(System.currentTimeMillis()));
+        return takeScreenshot(driver, String.valueOf(System.currentTimeMillis()));
     }
 
     public static String takeScreenshot(WebDriver driver, String name){
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String filename = name + "screen.png";
+        filename = name + "screen.png";
         try {
-            FileUtils.copyFile(file, new File(TARGET_FOLDER + File.separator + filename));
+            Files.copyFile(new FileInputStream(file) , new File(TARGET_FOLDER + File.separator + Report_folder + File.separator + filename));
         } catch (IOException e) {
             e.printStackTrace();
         }

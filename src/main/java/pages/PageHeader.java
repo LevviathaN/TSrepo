@@ -1,10 +1,8 @@
 package pages;
 
 import entities.ItemEntity;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import utils.Tools;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,25 +17,39 @@ public class PageHeader extends BasePage {
 
     private static PageHeader instance;
     public static PageHeader Instance = (instance != null) ? instance : new PageHeader();
+
     //top menu
-    By topMenuItem_Shop = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Shop']");
+    By topMenuItem_Shop = By.xpath("//span[contains(text(), 'Shop')][1] | //a[@role='button' and contains(text(), 'Shop')]");
     By topMenuItem_Sleep = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Sleep']");
     By topMenuItem_Magazine = By.xpath("//ul[@role='menu']//a[@role='menuitem']//span[text()='Magazine']");
     By topMagazineMenuItem_Magazine = By.xpath(".//*[@id='menu-main-1']/li/a[text()='Magazine']");
-    By topMenuItem_FAQ = By.xpath(".//*[@class='help-number-wrapper']//a[contains(text(),' HELP')]");
+    By topMenuItem_FAQ = By.linkText("FAQ");
     By topMenuItem_SignIn = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign In')]");
-    By topMenuItem_Reviews = By.xpath("(//SPAN[text()='REVIEWS'][text()='REVIEWS'])[1]");
+    By topMenuItem_SignInStage = By.xpath("//ul[@class='header links']//a[contains(text(),'Account')]");
+    By topMenuItem_Reviews = By.linkText("REVIEWS");
     By topMenuItem_Account = By.xpath("//ul[@class='header links']//span[text()='Account']");
     By topMenuItem_SignOut = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign Out')]");
+
+    By topMenuItem_Mattress = By.partialLinkText("Hybrid Mattress");
+    By topMenuItem_Accessories = By.partialLinkText("ACCESSORIES");
+    By topMenuMemoryFoamPillow = By.partialLinkText("Memory Foam Pillow");
+    By topMenuPlushPillow = By.partialLinkText("Plush Pillow");
+    By topMenuComforter = By.partialLinkText("Comforter");
+    By topMenuSheetSet = By.partialLinkText("Sheet Set");
+    By topMenuProtector = By.partialLinkText("Protector");
+    By topMenuSleeptrackerMonitor = By.partialLinkText("Sleeptracker Monitor");
+    By topMenuCurtains = By.partialLinkText("Curtains");
+    By topMenuAdjustableBed = By.partialLinkText("Adjustable Bed");
+    By topMenuPlatformBed = By.partialLinkText("Platform Bed");
+
+
     //cart
-    By showCartButton = By.cssSelector("a.action.showcart");
-    //cart
-    By cartItems = By.cssSelector("div.product-item-details");
+    By showCartButton = By.xpath("//a[@class='action showcart']");
+    By cartItems = By.cssSelector("div.product div.product-item-details");
     By cartItemName = By.cssSelector("strong.product-item-name");
     By cartItemContent = By.cssSelector("div.content");
-    By cartItemQty = By.xpath("./div/div/label[text()='Qty']/following::input[1]");
-    By cartItemPrice = By.xpath("./div/div[@class='price-container'][1]");
-//    By cartItemPrice = By.cssSelector("span.minicart-price span.price");
+    By cartItemQty = By.xpath(".//input[@disabled='disabled']");
+    By cartItemPrice = By.cssSelector("span.minicart-price span.price");
     By cartBox = By.xpath("//div[@data-role='dropdownDialog']");
     By cartCheckoutButton = By.cssSelector("button#top-cart-btn-checkout");
     By viewCartButton = By.cssSelector("a.action.viewcart");
@@ -47,20 +59,21 @@ public class PageHeader extends BasePage {
     By closeCartButton = By.id("btn-minicart-close");
     By cartQtyIndex = By.cssSelector("span.counter-number");
     By LOADING_SPINNER = By.cssSelector("div.fotorama__spinner");
+    By closeImproveWindow = By.xpath("//DIV[@class='close mteo-close']");
+
+
 
     PageHeader() {
         waitForPageToLoad();
     }
 
-    // loader
-    // img alt="Loading..."
-
     /**
      * Menu Methods
-     */
+     **/
 
     public ShopPage clickShopMenuItem() {
         reporter.info("Click on SHOP menu item");
+        waitForElement(topMenuItem_Shop);
         clickOnElement(topMenuItem_Shop);
         return ShopPage.Instance;
     }
@@ -97,11 +110,15 @@ public class PageHeader extends BasePage {
 
     /** Cart Methods */
 
-    public PageHeader openCart() {
-        reporter.info("Open Cart (Click on Show cart button)");
-        driver().navigate().refresh();
-        waitForPageToLoad();
-        findElement(showCartButton).click();
+    public PageHeader openMiniCart() {
+        reporter.info("Open Mini-Cart (Click on Show cart button)");
+        //driver().navigate().to("https://www.tomorrowsleep.com");
+        //HomePage.Instance.open();
+        //waitForPageToLoad();
+        try {findElement(showCartButton).click();}
+        catch(org.openqa.selenium.WebDriverException e){
+            findElement(By.xpath("//*[@class='counter qty']")).click();
+        }
 
         return this;
     }
@@ -112,7 +129,7 @@ public class PageHeader extends BasePage {
         List<WebElement> currentCartItems = new ArrayList<WebElement>();
         String itemName = title;
 
-        openCart();
+        openMiniCart();
         for (String expectedField : expectedContent) {
             currentCartItems = findElementsIgnoreException(cartItems);
             for (WebElement cartItem : currentCartItems) {
@@ -137,10 +154,11 @@ public class PageHeader extends BasePage {
     }
 
 
-    public ArrayList<ItemEntity> getAllCartItems() {
+    public ArrayList<ItemEntity> getAllMiniCartItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
 
-        openCart();
+        reporter.info("Getting items in minicart");
+        openMiniCart();
 
         List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (WebElement cartItem : cartItemsList) {
@@ -156,12 +174,13 @@ public class PageHeader extends BasePage {
 
             for (WebElement elem : details) {
                 String value = elem.getText();
-                if (value.contains("(") && value.contains(")"))
+                if (isOptionASize(value))
                     currentItem.setSize(value);
                 else
                     currentItem.setType(value);
             }
 
+            reporter.info("Order item: " + currentItem.toString());
             result.add(currentItem);
 
         }
@@ -169,12 +188,13 @@ public class PageHeader extends BasePage {
             reporter.info("No Cart items were found");
             //Assert.fail("No Cart items were found");
         }
-
+        closeCart();
+        //reporter.info("Actual items: " + result.toString());
         return result;
     }
 
-    public boolean itemWasFoundInCart(ItemEntity item) {
-        ArrayList<ItemEntity> items = getAllCartItems();
+    public boolean itemWasFoundInMiniCart(ItemEntity item) {
+        ArrayList<ItemEntity> items = getAllMiniCartItems();
         reporter.info("Expected item: " + item.toString());
         return items.stream()
                 .filter(cur -> item.getTitle().equals(cur.getTitle()))
@@ -186,21 +206,27 @@ public class PageHeader extends BasePage {
 
     public CheckoutPage clickOnCheckoutButton() {
         reporter.info("Click on Checkout button");
-        openCart();
+        openMiniCart();
         clickOnElement(cartCheckoutButton);
+        if (isElementPresent(closeImproveWindow)){
+            clickOnElement(closeImproveWindow);
+        }else{
+            clickOnElement(cartCheckoutButton);
+        }
         return CheckoutPage.Instance;
     }
 
     public ViewCartPage clickOnViewCartButton() {
         reporter.info("Click on View Cart button");
-        openCart();
+        openMiniCart();
         clickOnElement(viewCartButton);
         return ViewCartPage.Instance;
     }
 
     public void clickOnDeleteCartButton(ItemEntity item) {
-        closeCart();
-        openCart();
+        //closeCart();
+        waitForPageToLoad();
+        openMiniCart();
         List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (int i = 0; i < cartItemsList.size(); i++) {
             WebElement cartItem = cartItemsList.get(i);
@@ -216,18 +242,18 @@ public class PageHeader extends BasePage {
 
     }
 
-    public int getCountOfGoodsFromCartIcon() {
-        reporter.info("Getting count of goods from cart's item");
-        String[] result = findElement(showCartButton).getText().split("\n");
+    public int getCountOfGoodsFromMiniCartIcon() {
+        reporter.info("Getting count of goods from cart's icon");
+        String[] result = findElement(By.cssSelector(".counter-number")).getText().split("\n");
         reporter.info("Items on cart icon are equal to " + Integer.valueOf(result[0]));
         return Integer.valueOf(result[0]);
     }
 
-    public int getCountOfGoodsInCart() {
+    public int getCountOfGoodsInMiniCart() {
         reporter.info("Counting sum of goods in the cart");
-        openCart();
+        openMiniCart();
         int count = 0;
-        List<WebElement> cartItemsList = findElementsIgnoreException(cartItems);
+        List <WebElement> cartItemsList = findElementsIgnoreException(cartItems);
         for (int i = 0; i < cartItemsList.size(); i++) {
             WebElement cartItem = cartItemsList.get(i);
             count = count + Integer.valueOf(cartItem.findElement(cartItemQty).getAttribute("data-item-qty"));
@@ -237,10 +263,43 @@ public class PageHeader extends BasePage {
         return count;
     }
 
-
     public void openMenuByItemName(String itemName) {
         hoverItem(topMenuItem_Shop);
-        clickOnElement(By.xpath("//a[@role='menuitem']/span[text()='" + itemName + "']"));
+        switch (itemName){
+            case "Tomorrow Hybrid Mattress":
+                clickOnElement(topMenuItem_Mattress);
+                break;
+            case "Tomorrow Cooling Memory Foam Pillow":
+                clickOnElement(topMenuMemoryFoamPillow);
+                break;
+            case "Tomorrow Hypoallergenic Plush Pillow":
+                clickOnElement(topMenuPlushPillow);
+                break;
+            case "Tomorrow White Comforter":
+                clickOnElement(topMenuComforter);
+                break;
+            case "Tomorrow White Sheet Set":
+                clickOnElement(topMenuSheetSet);
+                break;
+            case "Tomorrow Waterproof Mattress Protector":
+                clickOnElement(topMenuProtector);
+                break;
+            case "Tomorrow Sleeptracker® Monitor":
+                clickOnElement(topMenuSleeptrackerMonitor);
+                break;
+            case "Tomorrow Blackout Curtains":
+                clickOnElement(topMenuCurtains);
+                break;
+            case "Tomorrow Adjustable Bed":
+                clickOnElement(topMenuAdjustableBed);
+                break;
+            case "Tomorrow Platform Bed":
+                clickOnElement(topMenuPlatformBed);
+                break;
+
+            default:
+                assert false : "There is no "+ itemName + " item ";
+        }
     }
 
     public boolean waitUntilItemWillBeDropedToCart() {
@@ -258,6 +317,7 @@ public class PageHeader extends BasePage {
         }
         ;
     }
+
 
     public void clickSignOutMenuItem() {
         reporter.info("Click on SIGN Out menu item");

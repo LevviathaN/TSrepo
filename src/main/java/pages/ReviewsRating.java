@@ -3,6 +3,7 @@ package pages;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utils.FileIO;
 
 import java.util.List;
 
@@ -47,7 +48,6 @@ public class ReviewsRating extends BasePage {
 
 
     // Applied filter buttons
-
     By xFiveStarsButton = By.xpath(".//span[contains(.,'5 Stars')]");
     By xFourStarsButton = By.xpath(".//span[contains(.,'4 Stars')]");
     By xThreeStarsButton = By.xpath(".//span[contains(.,'3 Stars')]");
@@ -86,6 +86,15 @@ public class ReviewsRating extends BasePage {
     By nextButton = By.xpath("//BUTTON[text()='Next »']");
     By previousButton = By.xpath("//BUTTON[text()='« Previous']");
 
+    By topSelector = By.id("previews-top-bar-custom");
+    By selectMonitor = By.className("tracker ");
+    By selectComforter = By.className("comforter ");
+    By selectFoam = By.className("fpillow ");
+    By selectPlush = By.className("hpillow ");
+    By selectSheets = By.className("sheets ");
+    By selectProtector = By.className("cover ");
+    By selectDrapes = By.className("drapes ");
+
 
     /*
      * Page Methods
@@ -93,7 +102,7 @@ public class ReviewsRating extends BasePage {
 
     //  Top menu bar methods
 
-    public ReviewsRating clickOnMattressReviewButton() {
+    public ReviewsRating    clickOnMattressReviewButton() {
         reporter.info("Click on Mattress review button");
         scrollToElement(driver().findElement(topBarMattress));
         findElement(topBarMattress).click();
@@ -161,8 +170,8 @@ public class ReviewsRating extends BasePage {
         if (count == 10 && isElementPresentAndDisplay(nextButton)){
 
             reporter.info("Clicking on Next button");
-            scrollToElement(driver().findElement(nextButton));
-            clickOnElement(nextButton);
+            scrollToElement(driver().findElement(By.xpath(".//button[@class='pr-rd-pagination-btn'][@aria-label='Next']")));
+            clickOnElement(By.xpath(".//button[@class='pr-rd-pagination-btn'][@aria-label='Next']"));
             Assert.assertTrue(isElementPresentAndDisplay(previousButton), "Previous button cant be found");
 
             reporter.info("Clicking on Previous button");
@@ -179,6 +188,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 5 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar5));
             findElement(filterBar5).click();
             reporter.info("Click on 5 stars filter bar");
         }
@@ -189,6 +199,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 4 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar4));
             findElement(filterBar4).click();
             reporter.info("Click on 4 stars filter bar");
         }
@@ -199,6 +210,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 3 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar3));
             findElement(filterBar3).click();
             reporter.info("Click on 3 stars filter bar");
         }
@@ -209,6 +221,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 2 stars filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar2));
             findElement(filterBar2).click();
             reporter.info("Click on 2 stars filter bar");
         }
@@ -219,6 +232,7 @@ public class ReviewsRating extends BasePage {
             reporter.info("0 reviews found. Can't click on 1 star filter bar");
         }
         else{
+            scrollToElement(driver().findElement(filterBar1));
             findElement(filterBar1).click();
             reporter.info("Click on 1 star filter bar");
         }
@@ -231,6 +245,7 @@ public class ReviewsRating extends BasePage {
 
     public void removeFiveStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xFiveStarsButton)){
+            scrollToElement(driver().findElement(xFiveStarsButton));
             findElement(xFiveStarsButton).click();
             reporter.info("Click on 5 stars filter button and removing filter");
         }else{
@@ -240,6 +255,7 @@ public class ReviewsRating extends BasePage {
 
     public void removeFourStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xFourStarsButton)){
+            scrollToElement(driver().findElement(xFourStarsButton));
             findElement(xFourStarsButton).click();
             reporter.info("Click on 4 stars filter button and removing filter");
         }else{
@@ -249,6 +265,7 @@ public class ReviewsRating extends BasePage {
 
     public void removeThreeStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xThreeStarsButton)){
+            scrollToElement(driver().findElement(xThreeStarsButton));
             findElement(xThreeStarsButton).click();
             reporter.info("Click on 3 stars filter button and removing filter");
         }else{
@@ -258,6 +275,7 @@ public class ReviewsRating extends BasePage {
 
     public void removeTwoStarsFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xTwoStarsButton)){
+            scrollToElement(driver().findElement(xTwoStarsButton));
             findElement(xTwoStarsButton).click();
             reporter.info("Click on 2 stars filter button");
         }else{
@@ -267,6 +285,7 @@ public class ReviewsRating extends BasePage {
 
     public void removeOneStarFilter(){ //ver. 2
         if(isElementPresentAndDisplay(xOneStarButton)){
+            scrollToElement(driver().findElement(xOneStarButton));
             findElement(xOneStarButton).click();
             reporter.info("Click on 1 stars filter button");
         }else{

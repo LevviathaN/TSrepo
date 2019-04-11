@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -11,11 +12,10 @@ public class PlushPillowPage extends BaseProductPage{
         public static PlushPillowPage Instance = (instance != null) ? instance : new PlushPillowPage();
 
     public PlushPillowPage(){
-        pageURL = "/hypoallergenic-pillow";
+        pageURL = "/hypoallergenic-plush-pillow";
     }
 
     /** Common elements **/
-
     public PageHeader header = PageHeader.Instance;
 
     /** UI Mappings */
@@ -24,8 +24,8 @@ public class PlushPillowPage extends BaseProductPage{
 
     /** Page Methods */
 
-    public PlushPillowPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

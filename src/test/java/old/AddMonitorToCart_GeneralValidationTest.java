@@ -6,6 +6,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.ShopPage;
 import utils.BaseTest;
 import annotations.TestName;
 
@@ -22,7 +23,9 @@ public class AddMonitorToCart_GeneralValidationTest extends BaseTest {
         HomePage home = HomePage.Instance;
 
         home.open();
-        home.clickOnShopOurMonitorButton()
+        ShopPage shopPage = home.header.clickShopMenuItem();
+
+        shopPage.clickOnShopOurMonitorButton()
             .selectMonitorType(monitorType)
             .clickAddToCart();
 

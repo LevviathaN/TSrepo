@@ -40,26 +40,26 @@ public class Smoke_CountOfSleepTrackersInCart_Test extends BaseTest {
         MonitorPage monitorPage = shopPage.clickOnShopOurMonitorButton();
 
         //filling the cart with different types and counts of sleep trackers
-        monitorPage.selectMonitorType(defaultMonitor.getType()).clickAddToCart();
+        monitorPage.selectOption(defaultMonitor.getType()).clickAddToCart();
         monitorPage.open();
 
-        monitorPage.selectMonitorType(defaultMonitor.getType()).clickAddToCart();
+        monitorPage.selectOption(defaultMonitor.getType()).clickAddToCart();
         monitorPage.open();
 
-        monitorPage.selectMonitorType(defaultMonitor.getType()).clickAddToCart();
+        monitorPage.selectOption(defaultMonitor.getType()).clickAddToCart();
         monitorPage.open();
 
-        monitorPage.selectMonitorType(updatedMonitor.getType()).clickAddToCart();
+        monitorPage.selectOption(updatedMonitor.getType()).clickAddToCart();
         monitorPage.open();
 
-        monitorPage.selectMonitorType(updatedMonitor.getType()).clickAddToCart();
+        monitorPage.selectOption(updatedMonitor.getType()).clickAddToCart();
         monitorPage.open();
 
         ProductSync.uncheck(ProductTypes.MONITOR);
         //getting count of selected sleep trackers from cart icon
-        countOfGoodsFromCartIcon = monitorPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = monitorPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected sleep trackers from cart
-        countOfGoodsInCart = monitorPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = monitorPage.header.getCountOfGoodsInMiniCart();
 
         //checking if sleep trackers were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

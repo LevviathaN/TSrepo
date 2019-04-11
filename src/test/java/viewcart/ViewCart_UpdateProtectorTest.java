@@ -2,7 +2,6 @@ package viewcart;
 
 import annotations.TestName;
 import entities.ItemEntity;
-import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -32,13 +31,13 @@ public class ViewCart_UpdateProtectorTest extends BaseTest {
         ProductSync.check(ProductTypes.MATTRESS_PROTECTOR);
         home.header.clickShopMenuItem()
                 .clickOnShopOurCoverButton()
-                .selectProtectorSize(item.getSize())
+                .selectOption(item.getSize())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.MATTRESS_PROTECTOR);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectProtectorSize(updateditem.getSize())
+                .selectOption(updateditem.getSize())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

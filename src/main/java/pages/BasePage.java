@@ -2,11 +2,11 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import org.testng.annotations.DataProvider;
 import utils.FileIO;
 import utils.ReporterManager;
 import utils.Tools;
@@ -14,6 +14,7 @@ import utils.Tools;
 /**
  * Created by odiachuk on 07.07.17.
  */
+
 public class BasePage {
 
     static ReporterManager reporter = ReporterManager.Instance;
@@ -90,15 +91,49 @@ public class BasePage {
     }
 
     public void open() {
-
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
         if (FileIO.getConfigProperty("EnvType").equals("Staging")){
-            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com");
-        }else {
-            driver().get(BASE_URL + pageURL);
+            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
+            //closeWelcomeMessage();
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            driver().manage().addCookie(notFirstVisit);
         }
-        driver().manage().window().maximize();
+        else {
+            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            driver().get(BASE_URL + pageURL);
+            driver().manage().addCookie(notFirstVisit);
+            driver().manage().addCookie(A_B_test);
+            waitForPageToLoad();
+            //closeWelcomeMessage();
+        }
+    }
 
+    public void open(boolean wellcome) {
+        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
+        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
+            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            if(!wellcome) driver().manage().addCookie(notFirstVisit);
+        }
+        else {
+            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
+            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+            driver().get(BASE_URL + pageURL);
+            if(!wellcome) driver().manage().addCookie(notFirstVisit);
+            driver().manage().addCookie(A_B_test);
+            waitForPageToLoad();
+        }
+    }
+
+    public static String getSource(){
+        String s = driver().getPageSource();
+        return s;
+    }
+
+    public static void openUrl(String url) {
+        reporter.info("Opening the: " + url);
+        driver().get(url);
     }
 
     public void close() {
@@ -165,7 +200,7 @@ public class BasePage {
         }
     }
 
-    public boolean isElementDisplayedRightNow(By by) {
+    public static boolean isElementDisplayedRightNow(By by) {
         try {
             return findElementIgnoreException(by, SHORT_TIMEOUT).isDisplayed();
         } catch (Exception e) {
@@ -195,6 +230,23 @@ public class BasePage {
             // nothing
         }
         waitForPageToLoad();
+    }
+
+    public void clickOnAnyElement(By element, int... elementNumber){
+        waitForPageToLoad();
+        List<WebElement> elements = findElements(element);
+        if(elementNumber.length>0){
+            elements.get(elementNumber[0]).click();
+        } else{
+            for (WebElement elem : elements){
+                try{
+                    elem.click();
+                    break;
+                } catch (Exception e){
+                    //nothing
+                }
+            }
+        }
     }
 
     public static WebElement findElementIgnoreException(By element, int... timeout) {
@@ -232,11 +284,17 @@ public class BasePage {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element" );
         }
         waitForPageToLoad();
+    }
+
+    public static void clickWithJS(WebElement element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript("arguments[0].click();", element);
     }
 
     public static WebElement findElement(By element, int... timeout) {
@@ -301,9 +359,19 @@ public class BasePage {
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static void scrollToShopElement(WebElement element){
+    public static void scrollToShopElement(WebElement element) {
         waitForPageToLoad();
-        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=200)",element);
+        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=100)", element);
+    }
+    public static void scrolltoFAQelement(WebElement element){
+        waitForPageToLoad();
+        ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    public static void scrollToBottomOfPage(){
+        waitForPageToLoad();
+        ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        waitForPageToLoad();
     }
 
     public static void waitForPageToLoad(){
@@ -403,10 +471,35 @@ public class BasePage {
     }
 
     public HomePage closeWelcomeMessage(){
-            reporter.info("Closing welcome popup");
-            waitForElement(By.xpath("//SPAN[@class='close-button']"));
-            findElement(By.xpath("//SPAN[@class='close-button']")).click();
+        reporter.info("Closing welcome popup");
+        waitForPageToLoad();
+        if (isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']"))) {
+            clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
+        }
         return HomePage.Instance;
     }
 
+    public static void closeWelcome(){
+        waitForPageToLoad();
+        clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
+    }
+
+    public void handleMultipleWindows(String windowTitle) {
+        Set <String> windows = driver().getWindowHandles();
+
+        for (String window : windows) {
+            driver().switchTo().window(window);
+            if (driver().getTitle().contains(windowTitle)) {
+                return;
+            }
+        }
+    }
+
+    public boolean isOptionASize(String value){
+        return value.contains("King")|value.contains("Queen")|value.contains("Twin")|value.contains("Full")|value.contains("Inches");
+    }
+
+    public boolean isOptionAColor(String value){
+        return value.contains("Linen")|value.contains("Teak")|value.contains("Smoke")|value.contains("Blue");
+    }
 }

@@ -5,7 +5,6 @@ import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.MattressesPage;
 import utils.BaseTest;
 
 public class AddMattressToCart_GeneralValidationTest extends BaseTest {
@@ -28,7 +27,7 @@ public class AddMattressToCart_GeneralValidationTest extends BaseTest {
 
         //validation new way
         ItemEntity item = new ItemEntity(ProductTypes.MATTRESS.getValue(), price, qty, mattressSize, mattressFeel);
-        Assert.assertTrue(home.header.itemWasFoundInCart(item));
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item));
 
         //validation old way
         Assert.assertTrue( home.header.validateItemContentByTitle(ProductTypes.MATTRESS.toString(), mattressSize, mattressFeel), "Expected Mattress was not found in Cart");

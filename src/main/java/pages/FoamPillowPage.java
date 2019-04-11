@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -11,7 +12,7 @@ public class FoamPillowPage extends BaseProductPage{
         public static FoamPillowPage Instance = (instance != null) ? instance : new FoamPillowPage();
 
     public FoamPillowPage(){
-        pageURL = "/memory-foam-pillow";
+        pageURL = "/cooling-memory-foam-pillow";
     }
 
     /** Common elements **/
@@ -24,8 +25,8 @@ public class FoamPillowPage extends BaseProductPage{
 
         /** Page Methods */
 
-    public FoamPillowPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

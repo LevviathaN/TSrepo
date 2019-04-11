@@ -9,13 +9,14 @@ import annotations.TestName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.relevantcodes.extentreports.NetworkMode;
 
-    public class ReporterManager {
+public class ReporterManager {
 
         private static ReporterManager instance;
         public static ReporterManager Instance = (instance != null) ? instance : new ReporterManager();
@@ -31,7 +32,7 @@ import com.relevantcodes.extentreports.NetworkMode;
 
         private synchronized static ExtentReports getInstance() {
             if (extent == null) {
-                extent = new ExtentReports(FileIO.TARGET_FOLDER + File.separator + "Report" + Tools.getCurDateTime() + ".html", true, NetworkMode.ONLINE);
+                extent = new ExtentReports(FileIO.TARGET_FOLDER + File.separator + FileIO.Report_folder + File.separator + "Report" + Tools.getCurDateTime() + ".html", true, NetworkMode.ONLINE);
             }
             return extent;
         }
@@ -159,7 +160,7 @@ import com.relevantcodes.extentreports.NetworkMode;
             logger.error(details);
             try {
                  screenshotFile = FileIO.takeScreenshot(DriverProvider.getDriver());
-                 message = message + "<br><a href=\"" + screenshotFile + File.separator + "\" target=_blank alt>"
+                 message = message + "<br><a href=\"" + screenshotFile  + "\" target=_blank alt>"
                         + "SCREENSHOT" + "</a><br>";
             } catch (Exception e){
                 // processing of problem with taking screenshot
@@ -175,5 +176,11 @@ import com.relevantcodes.extentreports.NetworkMode;
         public void fatalFail(String message) {
             logger.error(message);
             report().log(LogStatus.FAIL,  message);
+        }
+
+        public void skip(String message){
+            logger.info(message);
+            report().log(LogStatus.SKIP, message);
+            throw new SkipException(message);
         }
     }

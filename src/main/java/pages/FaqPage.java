@@ -25,12 +25,12 @@ public class FaqPage extends BasePage{
     By faqSearchButton = By.xpath(".//*[@id='search-validate-detail']/div[2]/button");
 
     //FAQ Menus
-    By faqOurMattress = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[1]");
-    By faqSleepSystem = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[2]");
-    By faqSleeptracker = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[3]");
-    By faqPurchasing = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[4]");
-    By faqShipping = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[5]");
-    By faqReturnsAndWarranty = By.xpath(".//*[@class='subtitle']/../following-sibling:: ul/li[6]");
+    By faqOurMattress = By.xpath(".//*[@class='faq-main__list']/li[1]");
+    By faqSleepSystem = By.xpath(".//*[@class='faq-main__list']/li[2]");
+    By faqSleeptracker = By.xpath(".//*[@class='faq-main__list']/li[3]");
+    By faqPurchasing = By.xpath(".//*[@class='faq-main__list']/li[4]");
+    By faqShipping = By.xpath(".//*[@class='faq-main__list']/li[5]");
+    By faqReturnsAndWarranty = By.xpath(".//*[@class='faq-main__list']/li[6]");
 
     //Chat
     By faqChatSupport = By.xpath("//iframe[@data-test-id='ChatWidgetButton-iframe']']");
@@ -42,7 +42,7 @@ public class FaqPage extends BasePage{
     By faqPurchasingTitle = By.xpath(".//*[text()='Purchasing']");
     By faqShippingTitle = By.xpath(".//*[text()='Shipping & Delivery']");
     By faqReturnsAndWarrantyTitle = By.xpath(".//*[text()='Returns & Warranty']");
-    By faqSearchResults = By.xpath(".//*[@class='title_desktop']/h2");
+    By faqSearchResults = By.xpath(".//*[@class='block-header2']");
 
     //By faqChatSupportLocator = By.xpath("//*/label[text()='Leave us a Message']");
 
@@ -58,7 +58,7 @@ public class FaqPage extends BasePage{
 
         reporter.info("Click on Search Field");
         scrollToElement(driver().findElement(faqSearchField));
-        findElement(faqSearchField).click();
+        clickOnElement(faqSearchField);
         return this;
     }
 
@@ -72,7 +72,7 @@ public class FaqPage extends BasePage{
     public FaqPage clickOnFaqSearchButton() {
         scrollToElement(driver().findElement(faqSearchButton));
         reporter.info("Click on Search Button");
-        findElement(faqSearchButton).click();
+        clickOnElement(faqSearchButton);
         return this;
     }
 
@@ -82,42 +82,42 @@ public class FaqPage extends BasePage{
     public FaqPage clickOnfaqOurMattress() {
         scrollToElement(driver().findElement(faqOurMattress));
         reporter.info("Click on Our Mattress FAQ Item");
-        findElement(faqOurMattress).click();
+        clickOnElement(faqOurMattress);
         return this;
     }
 
     public FaqPage clickOnfaqSleepSystem() {
         scrollToElement(driver().findElement(faqSleepSystem));
         reporter.info("Click on Sleep System Item");
-        findElement(faqSleepSystem).click();
+        clickOnElement(faqSleepSystem);
         return this;
     }
 
     public FaqPage clickOnfaqSleeptracker() {
         scrollToElement(driver().findElement(faqSleeptracker));
         reporter.info("Click on Sleeptracker Item");
-        findElement(faqSleeptracker).click();
+        clickOnElement(faqSleeptracker);
         return this;
     }
 
     public FaqPage clickOnfaqPurchasing() {
         scrollToElement(driver().findElement(faqPurchasing));
         reporter.info("Click on Purchasing Item");
-        findElement(faqPurchasing).click();
+        clickOnElement(faqPurchasing);
         return this;
     }
 
     public FaqPage clickOnfaqShipping() {
         scrollToElement(driver().findElement(faqShipping));
         reporter.info("Click on Shipping Item");
-        findElement(faqShipping).click();
+        clickOnElement(faqShipping);
         return this;
     }
 
     public FaqPage clickOnfaqReturnsAndWarranty() {
         scrollToElement(driver().findElement(faqReturnsAndWarranty));
         reporter.info("Click on Returns & Warranty Item");
-        findElement(faqReturnsAndWarranty).click();
+        clickOnElement(faqReturnsAndWarranty);
         return this;
     }
 

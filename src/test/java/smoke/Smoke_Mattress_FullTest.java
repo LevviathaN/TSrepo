@@ -6,10 +6,7 @@ import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.CheckoutReviewPage;
-import pages.HomePage;
-import pages.ViewCartPage;
+import pages.*;
 import utils.BaseTest;
 import utils.EntitiesFactory;
 import utils.FileIO;
@@ -27,6 +24,7 @@ public class Smoke_Mattress_FullTest extends BaseTest {
 
         //init pages
         HomePage home = HomePage.Instance;
+        ShopPage shop = ShopPage.Instance;
         ViewCartPage cart = ViewCartPage.Instance;
         CheckoutPage checkout = CheckoutPage.Instance;
         CheckoutReviewPage review = CheckoutReviewPage.Instance;
@@ -34,25 +32,25 @@ public class Smoke_Mattress_FullTest extends BaseTest {
         //open home page and add mattress to cart
         home.open();
         ProductSync.check(ProductTypes.MATTRESS);
-        home.clickOnShopOurMattressButton()
-                .selectMattressSize(item.getSize())
-                .selectMattressFeel(item.getType())
+        home.header.clickShopMenuItem();
+        shop.clickOnShopOurMattressButton()
+                .selectOption(item.getSize())
+                .selectOption(item.getType())
                 .clickAddToCart();
         home.header.clickShopMenuItem();
 
         ProductSync.uncheck(ProductTypes.MATTRESS);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
 
-        home.header.clickOnCheckoutButton();
-
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
+        //Assert.assertTrue();
         //check item displayed in order
-        Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
+        home.header.clickOnViewCartButton();
+        Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
+        cart.clickOnProceedToChechout();
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);
-        checkout.selectFreeShipping();
-        checkout.clickNextButton();
 
         //check Order Review page was opened
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");

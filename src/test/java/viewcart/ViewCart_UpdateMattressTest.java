@@ -30,16 +30,20 @@ public class ViewCart_UpdateMattressTest extends BaseTest {
         //open home page and add mattress to cart
         home.open();
         ProductSync.check(ProductTypes.MATTRESS);
-        home.clickOnShopOurMattressButton()
-                .selectMattressSize(item.getSize())
-                .selectMattressFeel(item.getType())
+
+        home.header.openMenuByItemName("Tomorrow Hybrid Mattress");
+        prodPage.selectOption(item.getSize())
+                .selectOption(item.getType())
                 .clickAddToCart();
+
+
         ProductSync.uncheck(ProductTypes.MATTRESS);
-        cartPage.clickOnEditProduct(item.getTitle());
+        cartPage
+                .clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectMattressSize(updateditem.getSize())
-                .selectMattressFeel(updateditem.getType())
+                .selectOption(updateditem.getSize())
+                .selectOption(updateditem.getType())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

@@ -40,33 +40,33 @@ public class Smoke_CountOfMattressesInCart_Test extends BaseTest {
         MattressesPage mattressesPage = shopPage.clickOnShopOurMattressButton();
 
         //adding two the identical "bigger" mattresses to the cart
-        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
+        mattressesPage.selectOption(biggerMattress.getSize()).selectOption(biggerMattress.getType()).clickAddToCart();
         mattressesPage.open();
 
-        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
+        mattressesPage.selectOption(biggerMattress.getSize()).selectOption(biggerMattress.getType()).clickAddToCart();
         mattressesPage.open();
 
-        mattressesPage.selectMattressSize(biggerMattress.getSize()).selectMattressFeel(biggerMattress.getType()).clickAddToCart();
-        mattressesPage.open();
+        mattressesPage.selectOption(biggerMattress.getSize()).selectOption(biggerMattress.getType()).clickAddToCart();
 
         //checking if "bigger" mattresses were counted
-        countOfGoodsFromCartIcon = mattressesPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = mattressesPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = mattressesPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = mattressesPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "First time. Count of added to cart items equal to count from cart icon");
 
         //adding another item (model of smaller mattresses) to the cart
-        //mattressesPage.open();
-        mattressesPage.selectMattressSize(smallerMattress.getSize()).selectMattressFeel(smallerMattress.getType()).clickAddToCart();
 
         mattressesPage.open();
-        mattressesPage.selectMattressSize(smallerMattress.getSize()).selectMattressFeel(smallerMattress.getType()).clickAddToCart();
+        mattressesPage.selectOption(smallerMattress.getSize()).selectOption(smallerMattress.getType()).clickAddToCart();
+
+        mattressesPage.open();
+        mattressesPage.selectOption(smallerMattress.getSize()).selectOption(smallerMattress.getType()).clickAddToCart();
 
         mattressesPage.open();
 
         ProductSync.uncheck(ProductTypes.MATTRESS);
 
-        countOfGoodsFromCartIcon = mattressesPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = mattressesPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = mattressesPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = mattressesPage.header.getCountOfGoodsInMiniCart();
 
         //checking if all mattress were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Second time. Count of added to cart items equal to count from cart icon");

@@ -1,6 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -11,7 +13,7 @@ public class SheetsetPage extends BaseProductPage{
         public static SheetsetPage Instance = (instance != null) ? instance : new SheetsetPage();
 
     public SheetsetPage(){
-        pageURL = "/sheets";
+        pageURL = "/white-sheet-set";
     }
 
     /** Common elements **/
@@ -25,18 +27,27 @@ public class SheetsetPage extends BaseProductPage{
     /** Page Methods */
 
     public SheetsetPage selectSheetsetSize(String size) {
-        reporter.info("Select Sheetset size: " + size);
-        header.closeCart();
-        findElement(selectSheetsetSize).click();
-        findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
-        if (!findElement(selectSheetsetSize).getText().contains(size)){
-            reporter.fail("Item was not changed to: " + size);
+        waitForPageToLoad();
+        WebElement element = super.searchForDisplayedElement();
+        if (element == null){
+            reloadPage();
+            element = super.searchForDisplayedElement();
         }
+
+        scrollToElement(element);
+        if (element.getText().contains(size)){
+            reporter.info(size + " size is selected by default");
+        } else {
+            reporter.info("Changing size to " + size);
+            element.click();
+            findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
+        }
+
         return this;
     }
 
-    public SheetsetPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 }

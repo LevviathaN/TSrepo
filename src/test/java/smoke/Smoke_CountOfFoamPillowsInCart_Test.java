@@ -8,8 +8,6 @@ import pages.*;
 import utils.BaseTest;
 import utils.ProductSync;
 
-import javax.swing.text.View;
-
 /**
  * @author Taras
  * @since 7/27/2017.
@@ -43,9 +41,9 @@ public class Smoke_CountOfFoamPillowsInCart_Test extends BaseTest {
         ProductSync.uncheck(ProductTypes.FOAM_PILLOW);
 
         //getting count from cart icon
-        countOfGoodsFromCartIcon = foamPillowPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = foamPillowPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count from cart
-        countOfGoodsInCart = foamPillowPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = foamPillowPage.header.getCountOfGoodsInMiniCart();
 
         //checking if foam pillows were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

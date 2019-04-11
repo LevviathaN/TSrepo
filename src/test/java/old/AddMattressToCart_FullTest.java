@@ -49,7 +49,6 @@ public class AddMattressToCart_FullTest extends BaseTest {
         Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item));
 
         checkout.populateAllCheckoutFields(user);
-        checkout.clickNextButton();
 
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
 

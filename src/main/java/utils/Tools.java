@@ -1,6 +1,5 @@
 package utils;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.SystemClock;
@@ -32,6 +31,6 @@ public class Tools {
     }
 
     public static float convertStringPriceToFloat(String strPrice){
-        return Float.valueOf(strPrice.replace("$","").replace(",",""));
+        return Float.valueOf(strPrice.replace("$","").replace(",","").replace("-", ""));
     }
 }

@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 public class BaseTest{
 
     ReporterManager reporter;
+    public final boolean Parallel = false;
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {

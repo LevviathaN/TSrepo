@@ -1,6 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -11,7 +13,7 @@ public class DrapesPage extends BaseProductPage{
         public static DrapesPage Instance = (instance != null) ? instance : new DrapesPage();
 
     public DrapesPage(){
-        pageURL = "/drapes";
+        pageURL = "/blackout-curtains";
     }
 
     /** Common elements **/
@@ -25,26 +27,36 @@ public class DrapesPage extends BaseProductPage{
 
     /** Page Methods */
 
-    public DrapesPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 
-    public DrapesPage selectDrapesSize(String value) {
-            header.closeCart();
-            reporter.info("Select Drapes size: " + value);
-            findElement(selectDrapesSize).click();
-            findElement(By.xpath("//div[@class='option' and contains(text(),'" + value + "')]")).click();
-            if (!findElement(selectDrapesSize).getText().contains(value)){
-                reporter.fail("Item was not changed to: " + value);
+    public DrapesPage selectDrapesSize(String size) {
+        waitForPageToLoad();
+        WebElement element = super.searchForDisplayedElement();
+        if (element == null){
+            reloadPage();
+            element = super.searchForDisplayedElement();
         }
+
+        scrollToElement(element);
+        if (element.getText().contains(size)){
+            reporter.info(size + " size is selected by default");
+        } else {
+            reporter.info("Changing size to " + size);
+            element.click();
+            findElement(By.xpath("//div[@class='product-info-main loaded']//div[@class='option' and contains(text(),'" + size + "')]")).click();
+        }
+
         return this;
     }
 
     public DrapesPage selectDrapesColor(String color) {
-        header.closeCart();
+        //header.closeCart();
         reporter.info("Select Drapes color: " + color);
-        clickOnElement(By.xpath("//div[@option-label='" + color + "']"));
+        scrollToElement(driver().findElement(By.xpath("//div[@option-label='" + color + "']")));
+        clickOnElement(By.xpath("//main[@id='maincontent']//div[@option-label='" + color + "']"));
         return this;
     }
 }

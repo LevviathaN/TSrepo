@@ -1,6 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import utils.FileIO;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -13,7 +15,7 @@ public class MattressProtectorPage extends BaseProductPage{
         public static MattressProtectorPage Instance = (instance != null) ? instance : new MattressProtectorPage();
 
     public MattressProtectorPage(){
-        pageURL = "/mattress-protector";
+        pageURL = "/waterproof-mattress-protector";
     }
 
     /** Common elements **/
@@ -23,24 +25,33 @@ public class MattressProtectorPage extends BaseProductPage{
     /** UI Mappings */
 
  //   By addToCartButton = By.id("product-addtocart-button");
-    By selectProtectorSize = By.cssSelector("div.bed-size-select");
+    By selectProtectorSize = By.cssSelector("div#product-options-wrapper.product-options-wrapper");
 
         /** Page Methods */
 
         public MattressProtectorPage selectProtectorSize(String size) {
-            reporter.info("Select Protector size: " + size);
-            header.closeCart();
-            findElement(selectProtectorSize).click();
-            findElement(By.xpath("//div[@class='option' and contains(text(),'" + size + "')]")).click();
-            if (!findElement(selectProtectorSize).getText().contains(size)){
-                reporter.fail("Item was not changed to: " + size);
+            waitForPageToLoad();
+            WebElement element = super.searchForDisplayedElement();
+            if (element == null){
+                reloadPage();
+                element = super.searchForDisplayedElement();
             }
+
+            scrollToElement(element);
+            if (element.getText().contains(size)){
+                reporter.info(size + " size is selected by default");
+            } else {
+                reporter.info("Changing size to " + size);
+                element.click();
+                findElement(By.xpath("//div[@class='swatch-option text selected' and contains(text(),'" + size + "')]")).click();
+            }
+
             return this;
         }
 
-    public MattressProtectorPage clickAddToCart() {
+    public ViewCartPage clickAddToCart() {
         super.clickAddToCart();
-        return this;
+        return ViewCartPage.Instance;
     }
 
 }

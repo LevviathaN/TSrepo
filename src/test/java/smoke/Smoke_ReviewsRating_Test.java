@@ -1,8 +1,6 @@
 package smoke;
 
 import annotations.TestName;
-import entities.CategoryEntity;
-import org.jsoup.Connection;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -14,7 +12,7 @@ import utils.FileIO;
  * Created by obohachuk on 7/28/17.
  */
 public class Smoke_ReviewsRating_Test extends BaseTest {
-
+    //todo
     @Test
     @TestName(name="Items Rating Verification")
     public void smoke_ReviewsRating_Test() throws Exception {

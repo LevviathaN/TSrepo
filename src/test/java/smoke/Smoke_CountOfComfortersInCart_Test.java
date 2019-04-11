@@ -37,39 +37,39 @@ public class Smoke_CountOfComfortersInCart_Test extends BaseTest {
         homePage.open();
         ProductSync.check(ProductTypes.COMFORTER);
         ShopPage shopPage = homePage.header.clickShopMenuItem();
-        ComforterPage comforterPage = shopPage.clickOnShopComforterButton();
+        ComforterPage comforterPage = shopPage.clickOnShopOurComforterButton();
 
         //filling the cart with different types and counts of comforters
-        comforterPage.selectComforterSize(defaultComforter.getSize()).clickAddToCart();
+        comforterPage.selectOption(defaultComforter.getSize()).clickAddToCart();
         comforterPage.open();
 
-        comforterPage.selectComforterSize(defaultComforter.getSize()).clickAddToCart();
-        comforterPage.open();
+        comforterPage.selectOption(defaultComforter.getSize()).clickAddToCart();
 
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = comforterPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = comforterPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = comforterPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = comforterPage.header.getCountOfGoodsInMiniCart();
 
 
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
-        comforterPage.selectComforterSize(updatedComforter.getSize()).clickAddToCart();
+        comforterPage.open();
+        comforterPage.selectOption(updatedComforter.getSize()).clickAddToCart();
 
         comforterPage.open();
-        comforterPage.selectComforterSize(updatedComforter.getSize()).clickAddToCart();
+        comforterPage.selectOption(updatedComforter.getSize()).clickAddToCart();
 
         comforterPage.open();
-        comforterPage.selectComforterSize(updatedComforter.getSize()).clickAddToCart();
+        comforterPage.selectOption(updatedComforter.getSize()).clickAddToCart();
 
         comforterPage.open();
 
         ProductSync.uncheck(ProductTypes.COMFORTER);
 
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = comforterPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = comforterPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = comforterPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = comforterPage.header.getCountOfGoodsInMiniCart();
 
         //checking if comforters were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

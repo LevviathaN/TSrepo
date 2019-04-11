@@ -4,6 +4,7 @@ import annotations.TestName;
 import entities.ItemEntity;
 import entities.UserEntity;
 import enums.ProductTypes;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CheckoutPage;
@@ -41,23 +42,26 @@ public class Smoke_FoamPillow_FullTest extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.FOAM_PILLOW);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
-
-        home.header.clickOnCheckoutButton();
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
-        Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
+        home.header.clickOnViewCartButton();
+        Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
+        cart.clickOnProceedToChechout();
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);
-        checkout.selectFreeShipping();
-        checkout.clickNextButton();
 
         //check Order Review page was opened
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
 
         //check item in final order
         Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
+
+        //payment with card
+        checkout.payWithCard();
+
+        //click Place Order
 
     }
 }

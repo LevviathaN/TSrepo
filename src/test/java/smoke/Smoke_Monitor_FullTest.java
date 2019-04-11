@@ -6,10 +6,7 @@ import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CheckoutPage;
-import pages.CheckoutReviewPage;
-import pages.HomePage;
-import pages.ViewCartPage;
+import pages.*;
 import utils.BaseTest;
 import utils.EntitiesFactory;
 import utils.FileIO;
@@ -34,30 +31,32 @@ public class Smoke_Monitor_FullTest extends BaseTest {
         //open home page and add Monitor to cart
         home.open();
         ProductSync.check(ProductTypes.MONITOR);
-        home.clickOnShopOurMonitorButton()
-                .selectMonitorType(item.getType())
+        ShopPage shopPage = home.header.clickShopMenuItem();
+
+        shopPage.clickOnShopOurMonitorButton()
+                .selectOption(item.getType())
                 .clickAddToCart();
         home.header.clickShopMenuItem();
 
         ProductSync.uncheck(ProductTypes.MONITOR);
         // check item in cart
-        Assert.assertTrue(home.header.itemWasFoundInCart(item),  "Item was not displayed in cart");
-
-        home.header.clickOnCheckoutButton();
+        Assert.assertTrue(home.header.itemWasFoundInMiniCart(item),  "Item was not displayed in cart");
 
         //check item displayed in order
-        Assert.assertTrue(checkout.itemDisplayedOnCheckoutPage(item), "Item was not displayed in order");
+        home.header.clickOnViewCartButton();
+        Assert.assertTrue(cart.itemDisplayedOnViewCartPage(item), "Item was not displayed in cart");
+        cart.clickOnProceedToChechout();
+
 
         //set all user related felds
         checkout.populateAllCheckoutFields(user);
-        checkout.selectFreeShipping();
-        checkout.clickNextButton();
 
         //check Order Review page was opened
         Assert.assertTrue(review.isPaymentMethodTitleDisplayed(),"Payment page was not displayed");
 
         //check item in final order
         Assert.assertTrue(review.itemWasFoundInOrder(item), "Item was not displayed on final page");
+
 
     }
 }

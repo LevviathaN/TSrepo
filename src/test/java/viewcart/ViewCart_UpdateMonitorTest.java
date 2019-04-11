@@ -30,14 +30,16 @@ public class ViewCart_UpdateMonitorTest extends BaseTest {
         //open home page and add Monitor to cart
         home.open();
         ProductSync.check(ProductTypes.MONITOR);
-        home.clickOnShopOurMonitorButton()
-                .selectMonitorType(item.getType())
+        ShopPage shopPage = home.header.clickShopMenuItem();
+
+        shopPage.clickOnShopOurMonitorButton()
+                .selectOption(item.getType())
                 .clickAddToCart();
         ProductSync.uncheck(ProductTypes.MONITOR);
         cartPage.clickOnEditProduct(item.getTitle());
 
         prodPage
-                .selectMonitorType(updateditem.getType())
+                .selectOption(updateditem.getType())
                 .clickUpdateCart();
 
         Assert.assertTrue(cartPage.itemDisplayedOnViewCartPage(updateditem), "Updated item was not displayed");

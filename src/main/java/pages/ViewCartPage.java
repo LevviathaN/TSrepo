@@ -2,11 +2,9 @@ package pages;
 
 import entities.ItemEntity;
 import entities.UserEntity;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.SkipException;
+import utils.FileIO;
 import utils.Tools;
 
 import java.util.ArrayList;
@@ -42,7 +40,7 @@ public class ViewCartPage extends BasePage {
     By orderItemEditButton = By.cssSelector("a.action.action-edit");
     By orderItemDeleteButton = By.cssSelector("a.action.action-delete");
     By backToShopLink = By.xpath("//A[@class='back-to-shop'][text()='Back to Shop']");
-    By errorMessage = By.xpath("//DIV[@class='message-error error message']");
+    By proceedToCheckoutButton = By.cssSelector("button[data-role='proceed-to-checkout']");
 
     By orderIncreaseQuantityItemButton = By.xpath("//button[@name='update_cart_action' and @title='+']");
     By orderDecreaseQuantityItemButton = By.xpath("//button[@name='update_cart_action' and @title='-']");
@@ -51,6 +49,7 @@ public class ViewCartPage extends BasePage {
 
     public boolean itemDisplayedOnViewCartPage(ItemEntity item) {
         ArrayList<ItemEntity> items = getAllViewCartPageItems();
+        reporter.info("Expected item: " + item.toString());
         return items.stream()
                 .filter(cur -> item.getTitle() == null || item.getTitle().equals(cur.getTitle()))
                 .filter(cur -> item.getQty() == 0 || item.getQty() == cur.getQty())
@@ -68,19 +67,15 @@ public class ViewCartPage extends BasePage {
 
     public boolean itemDisplayedOnViewCartPage(String itemName, int qty) {
         ArrayList<ItemEntity> items = getAllViewCartPageItems();
-        if (isElementPresent(errorMessage)){
-            reporter.info("Not enough items in stock");
-            throw new SkipException("Not enough items in stock");
-        }
         return items.stream()
                 .filter(cur -> itemName.equals(cur.getTitle()))
                 .filter(cur -> qty == cur.getQty())
                 .count() > 0;
     }
 
-    private ArrayList<ItemEntity> getAllViewCartPageItems() {
+    public ArrayList<ItemEntity> getAllViewCartPageItems() {
         ArrayList<ItemEntity> result = new ArrayList<>();
-        reporter.info("Getting order items");
+        reporter.info("Getting order items on cart page");
         findElementIgnoreException(orderItems); // wait for order
         List<WebElement> itemsList = findElementsIgnoreException(orderItems);
         for (WebElement orderItem : itemsList ) {
@@ -98,7 +93,7 @@ public class ViewCartPage extends BasePage {
 
             for(WebElement elem : details){
                 String value = elem.getText();
-                if (value.contains("(") && value.contains(")"))
+                if (isOptionASize(value))
                     currentItem.setSize(value);
                 else
                     currentItem.setType(value);
@@ -174,9 +169,19 @@ public class ViewCartPage extends BasePage {
         }
     }
 
-
     public void clickOnBackToShop() {
         reporter.info("Click on back to shop link");
         findElement(backToShopLink).click();
+    }
+
+    public CheckoutPage clickOnProceedToChechout() {
+        reporter.info("Click on Proceed to Checkout button");
+        scrollToElement(driver().findElement(proceedToCheckoutButton));
+        clickOnElement(proceedToCheckoutButton);
+        return CheckoutPage.Instance;
+    }
+
+    public float getDiscount(){
+        return Tools.convertStringPriceToFloat(findElement(By.xpath("//*[@id=\"cart-totals\"]/div/table/tbody/tr[2]/td/span/span")).getText());
     }
 }

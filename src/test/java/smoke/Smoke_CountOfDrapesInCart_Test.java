@@ -40,18 +40,19 @@ public class Smoke_CountOfDrapesInCart_Test extends BaseTest {
         DrapesPage drapesPage= shopPage.clickOnShopOurDrapesButton();
 
         //filling the cart with different types and count of drapes
-        drapesPage.selectDrapesColor(defaultSheet.getType()).clickAddToCart();
+        drapesPage.selectDrapesSize(defaultSheet.getSize())
+            .selectDrapesColor(defaultSheet.getType()).clickAddToCart();
         drapesPage.open();
 
-        drapesPage.selectDrapesColor(defaultSheet.getType()).clickAddToCart();
-        drapesPage.open();
+        drapesPage.selectDrapesSize(defaultSheet.getSize())
+                .selectDrapesColor(defaultSheet.getType()).clickAddToCart();
 
         //checking if items were added and counted normally
-        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromCartIcon();
-        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInCart();
+        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromMiniCartIcon();
+        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInMiniCart();
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");
 
-
+        drapesPage.open();
         drapesPage.selectDrapesColor(updatedSheet.getType()).clickAddToCart();
         drapesPage.open();
 
@@ -63,9 +64,9 @@ public class Smoke_CountOfDrapesInCart_Test extends BaseTest {
 
         ProductSync.uncheck(ProductTypes.DRAPES);
         //getting count of selected goods from cart icon
-        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromCartIcon();
+        countOfGoodsFromCartIcon = drapesPage.header.getCountOfGoodsFromMiniCartIcon();
         //getting count of selected goods from cart
-        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInCart();
+        countOfGoodsInCart = drapesPage.header.getCountOfGoodsInMiniCart();
 
         //checking if drapes were added and counted
         Assert.assertTrue(countOfGoodsInCart == countOfGoodsFromCartIcon, "Count of added to cart items equal to count from cart icon");

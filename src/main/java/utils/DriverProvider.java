@@ -9,7 +9,10 @@ import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.logging.Level;
 
 /**
@@ -52,7 +55,10 @@ public class DriverProvider {
 
         ChromeOptions chromeOptions = new ChromeOptions();
         //chromeOptions.addArguments("--kiosk");
-        //chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--start-fullscreen");
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--window-size=1920,1080");
 
         caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
@@ -60,18 +66,18 @@ public class DriverProvider {
 
     }
 
-    public static WebDriver getDriver() {
+
+    public static WebDriver getDriver() throws MalformedURLException {
         //if (instance == null)
         if (instance.get() == null)
             if (getCurrentBrowserName().equals(BrowserType.FIREFOX)) {
                 //instance = getFirefox();
                 instance.set(getFirefox());
             }
-            else{
+            else if (getCurrentBrowserName().equals(BrowserType.CHROME)){
                 //instance = getChrome();
                 instance.set(getChrome());
             }
-
         //return instance;
         return instance.get();
     }
@@ -87,7 +93,7 @@ public class DriverProvider {
         if (BROWSER_TYPE == null)
             if (FileIO.getConfigProperty("Driver").equals("firefox"))
                 BROWSER_TYPE = BrowserType.FIREFOX;
-            else
+            else if (FileIO.getConfigProperty("Driver").equals("chrome"))
                 BROWSER_TYPE = BrowserType.CHROME;
         return BROWSER_TYPE;
     }

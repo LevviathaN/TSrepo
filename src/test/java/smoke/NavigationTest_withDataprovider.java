@@ -2,7 +2,6 @@ package smoke;
 
 import annotations.TestName;
 import entities.ItemEntity;
-import entities.UserEntity;
 import enums.ProductTypes;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -14,46 +13,47 @@ import utils.FileIO;
 import utils.ProductSync;
 
 public class NavigationTest_withDataprovider extends BaseTest {
-
-    @DataProvider(name = "default_item_provider")
+    @DataProvider(name = "default_item_provider", parallel = Parallel)
     public Object[][] provider (){
         return new Object[][]{
-                {ProductTypes.MONITOR, MonitorPage.class, "Monitor"},
-                {ProductTypes.MATTRESS, MattressesPage.class, "Mattress" },
-                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Protector" },
-                {ProductTypes.COMFORTER, ComforterPage.class, "Comforter"},
-                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Plush Pillow"},
-                {ProductTypes.FOAM_PILLOW, FoamPillowPage.class, "Foam Pillow"},
-                {ProductTypes.DRAPES, DrapesPage.class, "Drapes"},
-                {ProductTypes.SHEETSET, SheetsetPage.class, "Sheets"},
+                {ProductTypes.PLUSH_PILLOW, PlushPillowPage.class, "Tomorrow Hypoallergenic Plush Pillow", "PlushPillow"},
+                {ProductTypes.FOAM_PILLOW,  FoamPillowPage.class, "Tomorrow Cooling Memory Foam Pillow", "FoamPillow"},
+                {ProductTypes.MONITOR, MonitorPage.class, "Tomorrow Sleeptracker® Monitor", "Monitor"},
+                {ProductTypes.MATTRESS, MattressesPage.class, "Tomorrow Hybrid Mattress", "Mattress" },
+                {ProductTypes.MATTRESS_PROTECTOR, MattressProtectorPage.class, "Tomorrow Waterproof Mattress Protector", "Protector" },
+                {ProductTypes.COMFORTER,  ComforterPage.class, "Tomorrow White Comforter", "Comforter"},
+                {ProductTypes.DRAPES, DrapesPage.class, "Tomorrow Blackout Curtains", "Drapes"},
+                {ProductTypes.SHEETSET, SheetsetPage.class, "Tomorrow White Sheet Set", "Sheets"},
+                {ProductTypes.ADJUSTABLE_BASE, AdjustablePage.class, "Tomorrow Adjustable Bed", "Adjustable"},
+                {ProductTypes.FOUNDATION, FoundationPage.class, "Tomorrow Platform Bed", "Foundation"}
         };
     }
 
     @Test (dataProvider = "default_item_provider")
     @TestName (name="Navigation validation")
-    public void topMenuValidation(ProductTypes type, Class page, String itemName) throws Exception {
+    public void topMenuValidation(ProductTypes type, Class page, String itemName, String itemEntity) throws Exception {
 
+        //init test entities
+        ItemEntity item = EntitiesFactory.getItem( FileIO.getDataFile("Default_" + itemEntity +".json") );
+
+        //init pages
         HomePage home = HomePage.Instance;
-        CheckoutPage checkout = CheckoutPage.Instance;
-        CheckoutReviewPage review = CheckoutReviewPage.Instance;
-        BaseProductPage bp = (BaseProductPage) page.getConstructor().newInstance();
+        ViewCartPage cart = ViewCartPage.Instance;
+        BaseProductPage product = (BaseProductPage) page.getConstructor().newInstance();
 
+        //test steps
         home.open();
         ProductSync.check(type);
         home.header.openMenuByItemName(itemName);
-
-        Assert.assertTrue(bp.isPageLoaded(), "Page was not opened: " + bp.getURL());
-
-        if (type == ProductTypes.MONITOR) // no default value for monitor - user have to select type before Adding to cart
-            MonitorPage.Instance.selectMonitorType("One Person");
-
-        bp.clickAddToCart();
+        Assert.assertTrue(product.isPageLoaded(), "Page was not opened: " + product.getURL());
+        product.isProductInStock()
+                .selectOption(item.getSize())
+                .selectOption(item.getType())
+                .clickAddToCart();
         ProductSync.uncheck(type);
-
-        ViewCartPage cart = home.header.clickOnViewCartButton();
+        //check, if user can navigate to pdp by clicking on it in cart page
         cart.clickOnProduct(type.toString());
-
-        Assert.assertTrue(bp.isPageLoaded(), "Page was not opened: " + bp.getURL());
+        Assert.assertTrue(product.isPageLoaded(), "Page was not opened: " + product.getURL());
 
     }
 }
