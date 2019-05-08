@@ -10,7 +10,7 @@ Feature: Checkout
     When I click on the "Add to Cart" button
     And If Cross Sell popup appears I click on the "View Cart" button
     Then I click on the "Proceed to Checkout" button
-    When I fill all required fields
+#    When I fill all required fields
 
     Examples:
       |pdp                                |

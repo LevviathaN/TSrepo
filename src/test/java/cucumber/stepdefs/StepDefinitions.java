@@ -4,7 +4,6 @@ import cucumber.api.java.en.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.BasePage;
-import pages.PageHeader;
 import utils.*;
 
 /**
@@ -40,11 +39,11 @@ public class StepDefinitions extends BasePage {
         }
     }
 
-    @Given("^I am on the \"([^\"]*)\" PDP$")
-    public void i_am_on_the_pdp(String title) {
-        open();
-        PageHeader.Instance.openMenuByItemName(title);
-    }
+//    @Given("^I am on the \"([^\"]*)\" PDP$")
+//    public void i_am_on_the_pdp(String title) {
+//        open();
+//        PageHeader.Instance.openMenuByItemName(title);
+//    }
 
     @When("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String button) {
@@ -72,10 +71,5 @@ public class StepDefinitions extends BasePage {
         System.out.println("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + page);
         Assert.assertEquals(driver().getTitle(), page, "Current page is " + page);
-    }
-
-    @When("^I click on Mini Cart icon$")
-    public void click_on_mini_cart(){
-        PageHeader.Instance.openMiniCart();
     }
 }

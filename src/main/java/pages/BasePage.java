@@ -470,13 +470,12 @@ public class BasePage {
         driver().switchTo().defaultContent();
     }
 
-    public HomePage closeWelcomeMessage(){
+    public void closeWelcomeMessage(){
         reporter.info("Closing welcome popup");
         waitForPageToLoad();
         if (isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']"))) {
             clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
         }
-        return HomePage.Instance;
     }
 
     public static void closeWelcome(){

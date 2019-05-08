@@ -10,7 +10,6 @@ import pages.*;
  */
 
 public class PdpDefs extends BasePage {
-    BaseProductPage product = new BaseProductPage();
 
     @When("^I click on \"View Cart\" button in Cross Sell modal$|^If Cross Sell popup appears I click on the \"View Cart\" button$")
     public void click_on_cross_sell_view_cart(){
@@ -34,10 +33,6 @@ public class PdpDefs extends BasePage {
         }
     }
 
-    @Then("^\"([^\"]*)\" (?:size|mattress feel) should be selected by default$")
-    public void option_should_be_selected(String option){
-        Assert.assertTrue(product.isOptionSelected(option),option + " option is not selected");
-    }
 
     @Then("^price should be equal to \"([^\"]*)\"$")
     public void price_should_be_equal(String price){

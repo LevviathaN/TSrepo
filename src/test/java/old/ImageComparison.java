@@ -1,9 +1,7 @@
 package old;
 
 import annotations.TestName;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
 import utils.BaseTest;
 import utils.DriverProvider;
 import utils.FileIO;
@@ -22,8 +20,7 @@ public class ImageComparison extends BaseTest {
     @TestName (name = "Homepage comparison")
 
     public void compareHomepage() throws IOException {
-        HomePage home = HomePage.Instance;
-        home.open();
+        DriverProvider.getDriver().get("https://www.tomorrowsleep.com");
         getActualScreenshot("Homepage");
         //Assert.assertFalse(compare("Homepage", "Homepage", "Homepage difference"), "Homepage image differs");
         if (compare("Homepage", "Homepage", "Homepage difference")){
