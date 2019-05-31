@@ -1,7 +1,6 @@
 package cucumber.stepdefs;
 
 import cucumber.api.java.en.*;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.BasePage;
 import utils.*;
@@ -13,41 +12,28 @@ public class StepDefinitions extends BasePage {
 
     ReporterManager reporter = ReporterManager.Instance;
 
-    @Given("^I am on the (Home|Cart|Shop|Magazine|Reviews|FAQ) Page$")
+    @Given("^I am on \"([^\"]*)\" URL$")
+    public void i_am_on_url(String url) {
+        driver().get(url);
+    }
+
+    @Given("^I am on the (Assets|Collections) Page$")
     public void i_am_on_the_home_page(String page) {
         switch(page){
-            case "Home":
-                driver().get("https://www.tomorrowsleep.com/");
+            case "Assets":
+                driver().get("https://author-bass-assets-stage65.adobecqms.net/assets.html/content/dam");
                 break;
-            case "Cart":
-                driver().get("https://www.tomorrowsleep.com/checkout/cart/");
-                break;
-            case "Shop":
-                driver().get("https://www.tomorrowsleep.com/shop");
-                break;
-            case "Magazine":
-                driver().get("https://www.tomorrowsleep.com/magazine/");
-                break;
-            case "Reviews":
-                driver().get("https://www.tomorrowsleep.com/review/");
-                break;
-            case "FAQ":
-                driver().get("https://www.tomorrowsleep.com/faq/");
+            case "Collections":
+                driver().get("https://author-bass-assets-stage65.adobecqms.net/mnt/overlay/dam/gui/content/collections.html/content/dam/collections");
                 break;
             default:
                 reporter.fail("No such page");
         }
     }
 
-//    @Given("^I am on the \"([^\"]*)\" PDP$")
-//    public void i_am_on_the_pdp(String title) {
-//        open();
-//        PageHeader.Instance.openMenuByItemName(title);
-//    }
-
     @When("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")
-    public void i_click_on_the_button(String button) {
-        clickOnAnyElement(By.xpath("//*[text()='" + button + "']"));
+    public void i_click_on_the_button(String element) {
+        clickOnAnyElement(byText(element));
     }
 
     @When("^I wait for ([^\"]*) seconds$")
@@ -55,11 +41,16 @@ public class StepDefinitions extends BasePage {
         sleepFor(Integer.parseInt(seconds)*1000);
     }
 
+    @When("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$")
+    public void hover_over(String element) {
+        hoverItem(byText(element));
+    }
+
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
         boolean isDisplayed = false;
-        for(int i=0; i<findElements(By.xpath("//*[text()='" + element + "']")).size(); i++){
-            if(findElements(By.xpath("//*[text()='" + element + "']")).get(i).isDisplayed()){
+        for(int i = 0; i<findElements(byText(element)).size(); i++){
+            if(findElements(byText(element)).get(i).isDisplayed()){
                 isDisplayed = true;
             }
         }

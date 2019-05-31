@@ -17,7 +17,7 @@ import utils.Tools;
 
 public class BasePage {
 
-    static ReporterManager reporter = ReporterManager.Instance;
+    public static ReporterManager reporter = ReporterManager.Instance;
 
     public final static String BASE_URL = (FileIO.getConfigProperty("Environment"));
 
@@ -25,6 +25,8 @@ public class BasePage {
     public String pageTitle = "";
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+
+    /**____________________________________________Timeouts section__________________________________________________*/
 
     public static final int DEFAULT_TIMEOUT = getTimeout();
     public static final int SHORT_TIMEOUT = getShortTimeout();
@@ -57,13 +59,19 @@ public class BasePage {
         return Integer.parseInt(timeout);
     }
 
+    /**____________________________________________________________________________________________________________*/
+
+    //constructor
     public BasePage() {
        // waitForPageToLoad();
     }
 
+    //Getter, that ensures only one driver instance exists in project
     public static WebDriver driver(){
         return driver.get();
     }
+
+    /**_______________________________________________Basic Assertions_______________________________________________*/
 
     public boolean isPageLoaded() {
         boolean result = false;
@@ -84,82 +92,6 @@ public class BasePage {
         }
 
         return result;
-    }
-
-    public void reloadPage() {
-        driver().navigate().refresh();
-    }
-
-    public void open() {
-        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
-            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
-            //closeWelcomeMessage();
-            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-            driver().manage().addCookie(notFirstVisit);
-        }
-        else {
-            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
-            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-            driver().get(BASE_URL + pageURL);
-            driver().manage().addCookie(notFirstVisit);
-            driver().manage().addCookie(A_B_test);
-            waitForPageToLoad();
-            //closeWelcomeMessage();
-        }
-    }
-
-    public void open(boolean wellcome) {
-        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
-        if (FileIO.getConfigProperty("EnvType").equals("Staging")){
-            driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
-            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-            if(!wellcome) driver().manage().addCookie(notFirstVisit);
-        }
-        else {
-            Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
-            Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-            driver().get(BASE_URL + pageURL);
-            if(!wellcome) driver().manage().addCookie(notFirstVisit);
-            driver().manage().addCookie(A_B_test);
-            waitForPageToLoad();
-        }
-    }
-
-    public static String getSource(){
-        String s = driver().getPageSource();
-        return s;
-    }
-
-    public static void openUrl(String url) {
-        reporter.info("Opening the: " + url);
-        driver().get(url);
-    }
-
-    public void close() {
-        reporter.info("Closing the browser");
-        driver().close();
-    }
-
-    public String getTitle() {
-        reporter.info("The page title is: " + "\"" + pageTitle + "\"");
-        return pageTitle;
-    }
-
-    public String getURL() {
-        reporter.info("The requested URL is: " + BASE_URL + pageURL);
-        return BASE_URL + pageURL;
-    }
-
-    protected void sendText(String cssSelector, String text) {
-        findElement(By.cssSelector(cssSelector)).sendKeys(text);
-    }
-
-    public void setText(By element, String value){
-        if (value != null) {
-            findElement(element).clear();
-            findElement(element).sendKeys(value);
-        }
     }
 
     public boolean isTextPresent(String text) {
@@ -208,16 +140,87 @@ public class BasePage {
         }
     }
 
+    /**_______________________________________________Basic Actions__________________________________________________*/
+
+    public void reloadPage() {
+        reporter.info("Refreshing the page: " + "\"" + BASE_URL + pageURL + "\"");
+        driver().navigate().refresh();
+    }
+
+    public void open() {
+        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
+        driver().get(BASE_URL + pageURL);
+        /*Commented below is example of putting Login and Pass for login popup as the parameters right into url
+        * and also usage of cookies:
+        *
+        driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
+        Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
+        Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
+        driver().manage().addCookie(notFirstVisit);
+        driver().manage().addCookie(A_B_test);
+        */
+    }
+
+    public void closeRatingPopup(){
+        switchToFrame(By.xpath("//*[@id='omg_survey']/iframe"));
+
+    }
+
+    public static String getSource(){
+        String s = driver().getPageSource();
+        return s;
+    }
+
+    public static void openUrl(String url) {
+        reporter.info("Opening the: " + url);
+        driver().get(url);
+    }
+
+    public void close() {
+        reporter.info("Closing the browser");
+        driver().close();
+    }
+
+    public String getTitle() {
+        reporter.info("The page title is: " + "\"" + pageTitle + "\"");
+        return pageTitle;
+    }
+
+    public String getURL() {
+        reporter.info("The requested URL is: " + BASE_URL + pageURL);
+        return BASE_URL + pageURL;
+    }
+
+    protected void sendText(String cssSelector, String text) {
+        findElement(By.cssSelector(cssSelector)).sendKeys(text);
+    }
+
+    public void setText(By element, String value){
+        if (value != null) {
+            findElement(element).clear();
+            findElement(element).sendKeys(value);
+        }
+    }
+
     public WebElement getWebElement(By by) {
         return findElement(by);
     }
 
 
-    public static void selectFromDropdown(By element, String value){
+    public void selectFromDropdown(By element, String value){
+        reporter.info("Selecting '" + value + "' from dropdown");
         Select dropdown = new Select(findElement(element));
         dropdown.selectByVisibleText(value);
     }
 
+    public WebElement findByText(String element){
+        reporter.info("finding '" + element + "' element");
+        return findElement(byText(element));
+    }
+
+    public By byText(String element){
+        return By.xpath("//*[text()='" + element + "']");
+    }
 
     public static void clickOnElementIgnoreException(By element, int... timeout) {
         waitForPageToLoad();
@@ -297,7 +300,7 @@ public class BasePage {
         executor.executeScript("arguments[0].click();", element);
     }
 
-    public static WebElement findElement(By element, int... timeout) {
+    public WebElement findElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
         try {
@@ -311,7 +314,7 @@ public class BasePage {
         }
     }
 
-    public static List<WebElement> findElements(By element, int... timeout) {
+    public List<WebElement> findElements(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
         try {
@@ -325,7 +328,7 @@ public class BasePage {
         }
     }
 
-    public static String getAttributeIDIgnoreExecption(By element, int... timeout) {
+    public String getAttributeIDIgnoreExecption(By element, int... timeout) {
         waitForPageToLoad();
         try {
             return getAttributeID(element, timeout[0]);
@@ -335,7 +338,7 @@ public class BasePage {
         return null;
     }
 
-    public static String getAttributeID(By element, int... timeout) {
+    public String getAttributeID(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
         try {
@@ -359,15 +362,6 @@ public class BasePage {
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static void scrollToShopElement(WebElement element) {
-        waitForPageToLoad();
-        ((JavascriptExecutor) driver()).executeScript("arguments[0].focus(); window.scroll(0, window.scrollY+=100)", element);
-    }
-    public static void scrolltoFAQelement(WebElement element){
-        waitForPageToLoad();
-        ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
-    }
-
     public static void scrollToBottomOfPage(){
         waitForPageToLoad();
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -377,13 +371,10 @@ public class BasePage {
     public static void waitForPageToLoad(){
         sleepFor(STATIC_TIMEOUT); // todo fixme
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-
             public Boolean apply(WebDriver driver)
             {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState")
-                        .equals("complete");
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
             }
-
         };
 
         Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
@@ -395,29 +386,6 @@ public class BasePage {
         {
             reporter.fail("JavaScript readyState query timeout - The page has not finished loading");
         }
-
-//        String source = driver().getPageSource();
-//
-//        expectation = new ExpectedCondition<Boolean>() {
-//
-//            public Boolean apply(WebDriver driver)
-//            {
-//                return ((JavascriptExecutor) driver).executeScript("return jQuery.active")
-//                        .equals("0");
-//            }
-//
-//        };
-//
-//        wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
-//
-//        try
-//        {
-//            wait.until(expectation);
-//        } catch (Exception error)
-//        {
-//            reporter.fail("The page has not finished loading");
-//        }
-
     }
 
     static void waitForElement(By by){
@@ -446,13 +414,6 @@ public class BasePage {
         }
     }
 
-    /*
-    static void waitForElement(WebDriver driver, By by, int timeout){
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.presenceOfElementLocated(by));
-    } */
-
-
     // Does not work because of geckodriver bug - https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
     public void hoverItem(By element){
         reporter.info("Put mouse pointer over element: " + element.toString());
@@ -478,11 +439,6 @@ public class BasePage {
         }
     }
 
-    public static void closeWelcome(){
-        waitForPageToLoad();
-        clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
-    }
-
     public void handleMultipleWindows(String windowTitle) {
         Set <String> windows = driver().getWindowHandles();
 
@@ -494,11 +450,4 @@ public class BasePage {
         }
     }
 
-    public boolean isOptionASize(String value){
-        return value.contains("King")|value.contains("Queen")|value.contains("Twin")|value.contains("Full")|value.contains("Inches");
-    }
-
-    public boolean isOptionAColor(String value){
-        return value.contains("Linen")|value.contains("Teak")|value.contains("Smoke")|value.contains("Blue");
-    }
 }

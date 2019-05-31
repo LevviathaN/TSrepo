@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import utils.BaseTest;
 
 @CucumberOptions(
-        features = "src/test/resources/cucumber",
+        features = "src/test/resources/bps",
         glue = {"cucumber.stepdefs"},
         tags = {"not @Ignore"},
         plugin = {"pretty"})
