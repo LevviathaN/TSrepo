@@ -90,7 +90,9 @@ public class AssetsPage extends AemBasePage{
 
     public void publishSelectedAssets(){
         clickOnAnyElement(fastMore);
-        findByText("Manage Publication").click();
+        findByText("Quick Publish").click();
+        clickOnAnyElement(byText("Publish to Brand Portal"));
+        clickOnAnyElement(byText("Publish"));
     }
 
     public void unpublishAsset(String assetName){}

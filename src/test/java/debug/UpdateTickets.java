@@ -12,7 +12,7 @@ public class UpdateTickets extends BaseTest {
     public void ticket_update () {
 
         TicketsDatabaseUpload jira = new TicketsDatabaseUpload();
-        jira.exportJiraTickets();
+//        jira.exportJiraTickets();
         jira.uploadTickets();
     }
 }

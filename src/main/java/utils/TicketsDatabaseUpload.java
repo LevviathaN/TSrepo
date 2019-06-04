@@ -9,6 +9,8 @@ public class TicketsDatabaseUpload extends BasePage {
     String jiraEmail = "ruslan.levytskyi@avionos.com";
     String jiraPass = "BillyJoe619";
     String pythonScriptPath = "/Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/quickstart.py";
+    String pathToPyExecutor = "/Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/venv/bin/python";
+    String uploadCommad = "/Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/venv/bin/python /Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/quickstart.py";
     String csvPath = "/Users/ruslanlevytskyi/Downloads/Tomorrow_Sleep.csv";
 
     By username = By.xpath(".//input[@id='username']");
@@ -37,11 +39,15 @@ public class TicketsDatabaseUpload extends BasePage {
     public void uploadTickets(){
         Runtime rt = Runtime.getRuntime();
         try {
-            Process proc = rt.exec(new String[]{pythonScriptPath,""});
-
+//            Process proc = rt.exec(uploadCommad);
+//            reporter.info(proc.getOutputStream().toString());
+//            reporter.info(proc.getErrorStream().toString());
+            String[] args = new String[] {pythonScriptPath};
+            Process proc = new ProcessBuilder(args).start();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            reporter.info("Oops!");
         }
     }
 }
