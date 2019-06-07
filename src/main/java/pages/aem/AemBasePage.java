@@ -8,14 +8,11 @@ import pages.BasePage;
  */
 public class AemBasePage extends BasePage {
 
-    private static AemBasePage instance;
-    public static AemBasePage Instance = (instance != null) ? instance : new AemBasePage();
-
     /**__________________________________PAGE ATTRIBUTES_______________________________*/
     /*__________________Credentials_________________*/
     String aemBaseUrl = "https://author-bass-assets-stage65.adobecqms.net";
-    String aemLogin = "Rlevytskyi";
-    String aemPass = "BassPro20!9";
+    String aemLogin = "rlevytskyi";
+    String aemPass = "basspro111@damM";
 
     /*_________________Login page elements________________*/
     By loginField = By.xpath(".//input[@id='username']");
