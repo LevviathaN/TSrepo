@@ -15,6 +15,7 @@ public class AemAssetPublishTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/basspro/test-folder");
+        ast.closeRatingPopup();
         ast.selectAsset("2016nstPMS0547.jpg");
         ast.publishSelectedAssets();
         Assert.assertTrue(ast.isElementPresent(ast.byText("Queued up for publish to Brand Portal.")));

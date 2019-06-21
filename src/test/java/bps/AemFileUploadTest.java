@@ -15,6 +15,7 @@ public class AemFileUploadTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/basspro/test-folder");
+        ast.closeRatingPopup();
         ast.uploadAsset("src/main/resources/data/bps/Assets/2016nstPMS0547.jpg");
         Assert.assertTrue(ast.isAssetPresent("2016nstPMS0547.jpg"), "Asset is not present");
     }

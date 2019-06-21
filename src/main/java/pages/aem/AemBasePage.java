@@ -30,11 +30,21 @@ public class AemBasePage extends BasePage {
 
     /**___________________________________PAGE METHODS__________________________________*/
     public void logIn() {
+        reporter.info("Logging into AEM");
         driver().get(aemBaseUrl);
         findElement(loginField).sendKeys(aemLogin);
         findElement(passField).sendKeys(aemPass);
         findElement(submitBtn).click();
     }
 
-
+    public void closeRatingPopup(){
+        reporter.info("Checking if Adobe rating popup appears");
+        if(isElementPresent(By.xpath("//div[@id='omg_surveyContainer']/div/iframe"))){
+            reporter.info("Closing popup");
+            switchToFrame(By.xpath("//div[@id='omg_surveyContainer']"));
+            clickOnElement(By.xpath("//div[@id='omg_close']"));
+            switchToDefaultContent();
+            clickOnAnyElement(By.xpath("//div[@id='omg_close']"));
+        }
+    }
 }

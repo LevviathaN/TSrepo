@@ -29,7 +29,11 @@ public class AssetsPage extends AemBasePage{
     /**___________________________________PAGE METHODS_________________________________*/
 
     public void uploadAsset(String localFilePath, String... givenAssetName){
-        reporter.info("Uploading "+localFilePath);
+        reporter.info("Uploading "+localFilePath+" to AEM");
+//        if(isElementPresent(byText("Replace"))){
+//            reporter.info(localFilePath + " is already uploaded. Replacing with new");
+//            findByText("Replace").click();
+//        }
         try {
             findElement(createBtn).click();
             findByText("Files").click();
@@ -76,7 +80,7 @@ public class AssetsPage extends AemBasePage{
             robot.keyRelease(KeyEvent.VK_ENTER);
         }
         catch(Exception e){
-            reporter.info("Ooops");
+            reporter.info("Ooops, something went wrong during upload");
         }
         sleepFor(1000);
         findByText("Upload").click();
@@ -84,9 +88,16 @@ public class AssetsPage extends AemBasePage{
     }
 
     public void deleteSelectedAssets(){
+        reporter.info("Deleting selected assets");
         clickOnAnyElement(fastMore);
         findByText("Delete").click();
         clickOnAnyElement(byText("Delete"));
+        if(isElementPresentAndDisplay(byText("Force Delete"))){
+            clickOnAnyElement(byText("Delete"));
+            reporter.info("FORCE DELETE prompted");
+            sleepFor(5000);
+            clickOnAnyElement(byText("Delete"));
+        }
     }
 
     public void publishSelectedAssets(){
@@ -112,6 +123,7 @@ public class AssetsPage extends AemBasePage{
 
     /**________________________LOGICAL ASSERTIONS__________________________*/
     public boolean isAssetPresent(String assetName){
+        reporter.info("Verifying " + assetName + " asset presence");
         return isElementPresent(By.xpath("//coral-card-title[text()='" + assetName + "']"));
     }
 }

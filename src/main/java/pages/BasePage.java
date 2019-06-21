@@ -161,11 +161,6 @@ public class BasePage {
         */
     }
 
-    public void closeRatingPopup(){
-        switchToFrame(By.xpath("//*[@id='omg_survey']/iframe"));
-
-    }
-
     public static String getSource(){
         String s = driver().getPageSource();
         return s;

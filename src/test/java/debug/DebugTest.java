@@ -15,15 +15,17 @@ public class DebugTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/basspro/test-folder");
-        
+        ast.uploadAsset("src/main/resources/data/bps/Assets/2016nstPMS0547.jpg");
+        ast.sleepFor(900000);
 
-        if (ast.isAssetPresent("2016nstPMS0547.jpg")){
-            ast.reporter.info("Element is present");
-        }
-        else{
-            ast.reporter.info("Element is absent");
-        }
+//        if (ast.isAssetPresent("2016nstPMS0547.jpg")){
+//            ast.reporter.info("Element is present");
+//        }
+//        else{
+//            ast.reporter.info("Element is absent");
+//        }
         //Assert.assertTrue(ast.isElementPresentAndDisplay(ast.byText("2016nstPMS0547.jpg")), "Asset is not present");
+        //*[@id="omg_close"]
     }
 
 }

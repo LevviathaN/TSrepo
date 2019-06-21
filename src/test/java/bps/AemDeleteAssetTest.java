@@ -15,17 +15,12 @@ public class AemDeleteAssetTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/basspro/test-folder");
+        ast.closeRatingPopup();
         if(!ast.isAssetPresent("2016nstPMS0547.jpg")){
             ast.uploadAsset("/src/main/resources/data/bps/Assets/2016nstPMS0547.jpg");
         }
         ast.selectAsset("2016nstPMS0547.jpg");
         ast.deleteSelectedAssets();
-        if(ast.isElementPresentAndDisplay(ast.byText("Force Delete"))){
-            ast.clickOnAnyElement(ast.byText("Delete"));
-            ast.reporter.info("FORCE DELETE prompted");
-            ast.sleepFor(5000);
-            ast.clickOnAnyElement(ast.byText("Delete"));
-        }
         Assert.assertFalse(ast.isAssetPresent("2016nstPMS0547.jpg"), "Asset is present");
     }
 }
