@@ -41,7 +41,7 @@ public class AemBasePage extends BasePage {
         reporter.info("Checking if Adobe rating popup appears");
         if(isElementPresent(By.xpath("//div[@id='omg_surveyContainer']/div/iframe"))){
             reporter.info("Closing popup");
-            switchToFrame(By.xpath("//div[@id='omg_surveyContainer']"));
+            switchToFrame(By.xpath("//div[@id='omg_surveyContainer']/div/iframe"));
             clickOnElement(By.xpath("//div[@id='omg_close']"));
             switchToDefaultContent();
             clickOnAnyElement(By.xpath("//div[@id='omg_close']"));
