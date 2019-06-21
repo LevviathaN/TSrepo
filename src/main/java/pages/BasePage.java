@@ -37,7 +37,7 @@ public class BasePage {
         if (timeout == null ) {
             reporter.fatalFail("DefaultTimeoutInSeconds parameter was not found");
             timeout = "15";
-        };
+        }
 
         return Integer.parseInt(timeout);
     }
@@ -46,7 +46,7 @@ public class BasePage {
         String timeout = FileIO.getConfigProperty("ShortTimeoutInSeconds");
         if (timeout == null ) {
             timeout = "3";
-        };
+        }
 
         return Integer.parseInt(timeout);
     }
@@ -55,7 +55,7 @@ public class BasePage {
         String timeout = FileIO.getConfigProperty("StaticTimeoutMilliseconds");
             if (timeout == null ) {
                     timeout = "1000";
-            };
+            }
         return Integer.parseInt(timeout);
     }
 
@@ -255,9 +255,7 @@ public class BasePage {
     public static WebElement findElementIgnoreException(By element, int... timeout) {
         waitForPageToLoad();
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        waitForPageToLoad();
         try {
-            //synchronize();
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver().findElement(element);
@@ -429,14 +427,6 @@ public class BasePage {
     public void switchToDefaultContent(){
         reporter.info("Switch to default content");
         driver().switchTo().defaultContent();
-    }
-
-    public void closeWelcomeMessage(){
-        reporter.info("Closing welcome popup");
-        waitForPageToLoad();
-        if (isElementPresentAndDisplay(By.xpath("//SPAN[@class='close-button']"))) {
-            clickOnElementIgnoreException(By.xpath("//SPAN[@class='close-button']"));
-        }
     }
 
     public void handleMultipleWindows(String windowTitle) {

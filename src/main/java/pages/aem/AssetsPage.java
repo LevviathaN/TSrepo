@@ -29,6 +29,7 @@ public class AssetsPage extends AemBasePage{
     /**___________________________________PAGE METHODS_________________________________*/
 
     public void uploadAsset(String localFilePath, String... givenAssetName){
+        reporter.info("Uploading "+localFilePath);
         try {
             findElement(createBtn).click();
             findByText("Files").click();
@@ -48,7 +49,7 @@ public class AssetsPage extends AemBasePage{
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_META);
             robot.keyRelease(KeyEvent.VK_TAB);
-            robot.delay(500);
+            robot.delay(1000);
 
         //Open Goto window
             reporter.info("Opening Goto Window");
@@ -70,7 +71,7 @@ public class AssetsPage extends AemBasePage{
             reporter.info("\"Executing Cmd + Tab\"");
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-            robot.delay(500);
+            robot.delay(1000);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
         }
@@ -89,16 +90,18 @@ public class AssetsPage extends AemBasePage{
     }
 
     public void publishSelectedAssets(){
+        reporter.info("Publishing selected assets");
         clickOnAnyElement(fastMore);
         findByText("Quick Publish").click();
         clickOnAnyElement(byText("Publish to Brand Portal"));
-        clickOnAnyElement(byText("Publish"));
+        clickOnAnyElement(By.xpath("//coral-button-label[text()='Publish']"));
     }
 
     public void unpublishAsset(String assetName){}
 
     public void selectAsset(String assetName){
-        hoverItem(byText(assetName));
+        reporter.info("Selecting "+assetName+" asset");
+        hoverItem(By.xpath("//coral-card-title[text()='" + assetName + "']"));
         clickOnAnyElement(fastSelect);
     }
 
@@ -108,7 +111,7 @@ public class AssetsPage extends AemBasePage{
     }
 
     /**________________________LOGICAL ASSERTIONS__________________________*/
-    public boolean isAssetPresent(String astName){
-        return isElementPresent(byText(astName));
+    public boolean isAssetPresent(String assetName){
+        return isElementPresent(By.xpath("//coral-card-title[text()='" + assetName + "']"));
     }
 }
