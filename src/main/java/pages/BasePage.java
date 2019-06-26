@@ -451,6 +451,7 @@ public class BasePage {
 
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
             Robot robot = new Robot();
+            robot.delay(2000);
 
             // Cmd + Tab is needed since it launches a Java app and the browser looses focus
             reporter.info("Executing Cmd + Tab");

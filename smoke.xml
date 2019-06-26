@@ -4,6 +4,8 @@
             <class name="bps.AemFileUploadTest" />
             <class name="bps.AemAssetPublishTest" />
             <class name="bps.AemDeleteAssetTest" />
+            <class name="bps.AemCollectionsTest" />
+            <class name="bps.SkywordUploadTest" />
         </classes>
     </test> <!-- test -->
 </suite> <!-- suite -->
