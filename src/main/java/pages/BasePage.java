@@ -1,5 +1,9 @@
 package pages;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -166,7 +170,7 @@ public class BasePage {
         return s;
     }
 
-    public static void openUrl(String url) {
+    public void openUrl(String url) {
         reporter.info("Opening the: " + url);
         driver().get(url);
     }
@@ -211,6 +215,11 @@ public class BasePage {
     public WebElement findByText(String element){
         reporter.info("finding '" + element + "' element");
         return findElement(byText(element));
+    }
+
+    public void clickByText(String text){
+        reporter.info("Clickng on element with text '"+text+"'");
+        findElement(byText(text)).click();
     }
 
     public By byText(String element){
@@ -263,7 +272,6 @@ public class BasePage {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
         try {
-            //synchronize();
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.presenceOfElementLocated(element));
             return driver().findElements(element);
@@ -432,6 +440,53 @@ public class BasePage {
             if (driver().getTitle().contains(windowTitle)) {
                 return;
             }
+        }
+    }
+
+    public void uploadFile(String path){
+        try {
+            //File Need to be imported
+            File file = new File(path);
+            StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
+
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+            Robot robot = new Robot();
+
+            // Cmd + Tab is needed since it launches a Java app and the browser looses focus
+            reporter.info("Executing Cmd + Tab");
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_TAB);
+            robot.keyRelease(KeyEvent.VK_META);
+            robot.keyRelease(KeyEvent.VK_TAB);
+            robot.delay(2000);
+
+            //Open Goto window
+            reporter.info("Opening Goto Window");
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_SHIFT);
+            robot.keyPress(KeyEvent.VK_G);
+            robot.keyRelease(KeyEvent.VK_META);
+            robot.keyRelease(KeyEvent.VK_SHIFT);
+            robot.keyRelease(KeyEvent.VK_G);
+
+            //Paste the clipboard value
+            reporter.info("Pasting from clipboard");
+            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(KeyEvent.VK_V);
+            robot.keyRelease(KeyEvent.VK_META);
+            robot.keyRelease(KeyEvent.VK_V);
+
+            //Press Enter key to close the Goto window and Upload window
+            reporter.info("\"Executing Cmd + Tab\"");
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            robot.delay(2000);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            robot.keyRelease(KeyEvent.VK_ENTER);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            reporter.info("Ooops, something went wrong during upload");
         }
     }
 

@@ -24,6 +24,8 @@ public class AemBasePage extends BasePage {
     By leftMenuDrp = By.xpath(".//coral-icon[@icon='railLeft']");
     By upperBreadcrumb = By.xpath(".//betty-breadcrumbs[@class='granite-collection-navigator']");
     By createBtn = By.xpath(".//coral-button-label[text()='Create']");
+    By ratingPopupIframe = By.xpath("//div[@id='omg_surveyContainer']/div/iframe");
+    By closeRatingPopupBtn = By.xpath("//div[@id='omg_close']");
 
 
 
@@ -39,12 +41,26 @@ public class AemBasePage extends BasePage {
 
     public void closeRatingPopup(){
         reporter.info("Checking if Adobe rating popup appears");
-        if(isElementPresent(By.xpath("//div[@id='omg_surveyContainer']/div/iframe"))){
-            reporter.info("Closing popup");
-            switchToFrame(By.xpath("//div[@id='omg_surveyContainer']/div/iframe"));
-            clickOnElement(By.xpath("//div[@id='omg_close']"));
-            switchToDefaultContent();
-            clickOnAnyElement(By.xpath("//div[@id='omg_close']"));
+        if(isElementPresent(ratingPopupIframe)){
+            reporter.info("Rating popup appeared!");
+            if(isElementPresent(closeRatingPopupBtn)){
+                clickOnElement(closeRatingPopupBtn);
+            } else{
+                switchToFrame(ratingPopupIframe);
+                clickOnElement(closeRatingPopupBtn);
+                switchToDefaultContent();
+                clickOnAnyElement(closeRatingPopupBtn);
+            }
         }
+    }
+
+    public void navigate(String path){
+        reporter.info("Navigate to: " + path);
+        openUrl(BASE_URL + pageURL + path);
+    }
+
+    public void checkLagoStatus(int itemNumber, String expectedValue){
+        openUrl("https://author-bass-assets-stage65.adobecqms.net/bin/motheship/endpoint?itemNumber=" + itemNumber);
+        //todo JSON response
     }
 }

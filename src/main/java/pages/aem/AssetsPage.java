@@ -35,54 +35,10 @@ public class AssetsPage extends AemBasePage{
 //            reporter.info(localFilePath + " is already uploaded. Replacing with new");
 //            findByText("Replace").click();
 //        }
-        try {
-            findElement(createBtn).click();
-            findByText("Files").click();
-
-            sleepFor(2000);
-
-            //File Need to be imported
-            File file = new File(localFilePath);
-            StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
-
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-            Robot robot = new Robot();
-
-        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-            reporter.info("Executing Cmd + Tab");
-            robot.keyPress(KeyEvent.VK_META);
-            robot.keyPress(KeyEvent.VK_TAB);
-            robot.keyRelease(KeyEvent.VK_META);
-            robot.keyRelease(KeyEvent.VK_TAB);
-            robot.delay(1000);
-
-        //Open Goto window
-            reporter.info("Opening Goto Window");
-            robot.keyPress(KeyEvent.VK_META);
-            robot.keyPress(KeyEvent.VK_SHIFT);
-            robot.keyPress(KeyEvent.VK_G);
-            robot.keyRelease(KeyEvent.VK_META);
-            robot.keyRelease(KeyEvent.VK_SHIFT);
-            robot.keyRelease(KeyEvent.VK_G);
-
-        //Paste the clipboard value
-            reporter.info("Pasting from clipboard");
-            robot.keyPress(KeyEvent.VK_META);
-            robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_META);
-            robot.keyRelease(KeyEvent.VK_V);
-
-        //Press Enter key to close the Goto window and Upload window
-            reporter.info("\"Executing Cmd + Tab\"");
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-            robot.delay(1000);
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-        }
-        catch(Exception e){
-            reporter.info("Ooops, something went wrong during upload");
-        }
+        findElement(createBtn).click();
+        findByText("Files").click();
+        sleepFor(2000);
+        uploadFile(localFilePath);
         sleepFor(1000);
         findByText("Upload").click();
         sleepFor(5000);
@@ -111,16 +67,21 @@ public class AssetsPage extends AemBasePage{
 
     public void unpublishAsset(String assetName){}
 
+    public void addSelectedAssetsToCol(String colName){
+        reporter.info("Adding selected assets to '" + colName + "' collection");
+        clickOnAnyElement(fastMore);
+        clickByText("To Collection");
+        clickByText(colName);
+        clickByText("Add");
+        clickByText("Close");
+    }
+
     public void selectAsset(String assetName){
         reporter.info("Selecting "+assetName+" asset");
         hoverItem(By.xpath("//coral-card-title[text()='" + assetName + "']"));
         clickOnAnyElement(fastSelect);
     }
 
-    public void navigate(String path){
-        reporter.info("Navigate to: " + path);
-        openUrl(BASE_URL + pageURL + path);
-    }
 
     /**________________________LOGICAL ASSERTIONS__________________________*/
     public boolean isAssetPresent(String assetName){
