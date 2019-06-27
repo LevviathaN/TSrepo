@@ -14,7 +14,7 @@ public class AemAssetPublishTest extends BaseTest {
         AssetsPage ast = AssetsPage.Instance;
 
         ast.logIn();
-        ast.navigate("/basspro/test-folder");
+        ast.navigate("/test-folder");
         ast.closeRatingPopup();
         ast.selectAsset("2016nstPMS0547.jpg");
         ast.publishSelectedAssets();

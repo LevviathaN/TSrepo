@@ -16,19 +16,21 @@ public class AemCollectionsTest extends BaseTest {
 
         col.logIn();
         col.navigate("");
+        col.closeRatingPopup();
         col.createCollection("SampleCol");
         col.navigate("");
         Assert.assertTrue(col.isCollectionPresent("SampleCol"));
     }
 
-    @Test
+    @Test(priority = 1)
     @TestName(name = "Associate collection with Assets")
     public void associateCollectionTest(){
         AssetsPage ast = AssetsPage.Instance;
         CollectionsPage col = CollectionsPage.Instance;
 
         ast.logIn();
-        ast.navigate("/basspro/test-folder");
+        ast.navigate("/test-folder");
+        ast.closeRatingPopup();
         ast.selectAsset("2016nstPMS0547.jpg");
         ast.addSelectedAssetsToCol("SampleCol");
     }

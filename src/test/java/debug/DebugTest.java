@@ -3,6 +3,7 @@ package debug;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.aem.AssetsPage;
 import utils.BaseTest;
 
@@ -15,8 +16,9 @@ public class DebugTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/basspro/test-folder");
-        ast.uploadAsset("src/main/resources/data/bps/Assets/2016nstPMS0547.jpg");
-        ast.sleepFor(900000);
+        BasePage.sleepFor(15000);
+        ast.reloadPage();
+        ast.sleepFor(15000);
 
 //        if (ast.isAssetPresent("2016nstPMS0547.jpg")){
 //            ast.reporter.info("Element is present");

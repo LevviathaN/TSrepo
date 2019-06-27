@@ -43,14 +43,16 @@ public class AemBasePage extends BasePage {
         reporter.info("Checking if Adobe rating popup appears");
         if(isElementPresent(ratingPopupIframe)){
             reporter.info("Rating popup appeared!");
-            if(isElementPresent(closeRatingPopupBtn)){
-                clickOnElement(closeRatingPopupBtn);
-            } else{
-                switchToFrame(ratingPopupIframe);
-                clickOnElement(closeRatingPopupBtn);
-                switchToDefaultContent();
-                clickOnAnyElement(closeRatingPopupBtn);
-            }
+            reloadPage();
+            /*F*ck that, it's not working anyway*/
+//            if(isElementPresent(closeRatingPopupBtn)){
+//                clickOnElement(closeRatingPopupBtn);
+//            } else{
+//                switchToFrame(ratingPopupIframe);
+//                clickOnElement(closeRatingPopupBtn);
+//                switchToDefaultContent();
+//                clickOnAnyElement(closeRatingPopupBtn);
+//            }
         }
     }
 

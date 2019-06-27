@@ -394,9 +394,10 @@ public class BasePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    public static void sleepFor(int timeout){
+    public static void sleepFor(int msTimeout){
+//        reporter.info("Sleep for " + msTimeout + " ms"); todo remove it in next commit
         try {
-            Thread.sleep(timeout);
+            Thread.sleep(msTimeout);
         } catch (InterruptedException e) {
         }
     }

@@ -8,13 +8,13 @@ import utils.BaseTest;
 
 public class AemDeleteAssetTest extends BaseTest {
 
-    @Test
+    @Test(priority = 2)
     @TestName(name="Delete Asset Test")
     public void deleteTest(){
         AssetsPage ast = AssetsPage.Instance;
 
         ast.logIn();
-        ast.navigate("/basspro/test-folder");
+        ast.navigate("/test-folder");
         ast.closeRatingPopup();
         if(!ast.isAssetPresent("2016nstPMS0547.jpg")){
             ast.uploadAsset("/src/main/resources/data/bps/Assets/2016nstPMS0547.jpg");

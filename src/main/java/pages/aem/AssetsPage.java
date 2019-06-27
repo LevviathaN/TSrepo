@@ -42,6 +42,8 @@ public class AssetsPage extends AemBasePage{
         sleepFor(1000);
         findByText("Upload").click();
         sleepFor(5000);
+        reloadPage();
+        sleepFor(2000);
     }
 
     public void deleteSelectedAssets(){
