@@ -2,10 +2,12 @@
     <test name="Test">
         <classes>
             <class name="bps.AemFileUploadTest" />
+            <class name="debug.DelayTest" />
             <class name="bps.AemAssetPublishTest" />
             <class name="bps.AemDeleteAssetTest" />
             <class name="bps.AemCollectionsTest" />
             <class name="bps.SkywordUploadTest" />
+            <class name="bps.ContentFragmentTest" />
         </classes>
     </test> <!-- test -->
 </suite> <!-- suite -->

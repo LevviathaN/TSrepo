@@ -13,10 +13,6 @@ public class SkywordUploadPage extends AemBasePage {
     /**__________________________________PAGE ATTRIBUTES_______________________________*/
     /*Fast actions icons locators*/
     By pathSelect = By.xpath(".//coral-icon[@aria-label='select']");
-    By fastDownload = By.xpath(".//coral-icon[@aria-label='download']");
-    By fastProperties = By.xpath(".//coral-icon[@aria-label='info circle']");
-    By fastMore = By.xpath(".//coral-icon[@aria-label='more']");
-    By fastToCollection = By.xpath(".//coral-icon[@aria-label='collection add']");
 
 
 
@@ -50,8 +46,19 @@ public class SkywordUploadPage extends AemBasePage {
         clickByText(folderName);
     }
 
-    public void getResults(){
-        reporter.info(findElement(By.xpath("//pre")).getText());
+    String[] getResults(){
+        String[] parts = findElement(By.xpath("//pre")).getText().split("\n");
+        for(String part : parts) {
+            reporter.info("'"+part+"'");
+        }
+        return parts;
     }
 
+    public boolean isSkywordErrors(){
+        boolean res = false;
+        for(String result :getResults()){
+            res = result.contains("Already exists");
+        }
+        return res;
+    }
 }

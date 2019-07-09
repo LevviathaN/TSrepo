@@ -1,33 +1,31 @@
 package debug;
 
 import annotations.TestName;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasePage;
 import pages.aem.AssetsPage;
 import utils.BaseTest;
+import utils.CsvReader;
+import utils.XmlReader;
 
 public class DebugTest extends BaseTest {
 
     @Test
-    @TestName(name = "Debug Test")
     public void debugTest(){
+        XmlReader reader = new XmlReader("src/main/resources/data/bps/Skyword_Create.xml");
+        reader.go();
+    }
+
+    @Test
+    public void csvReaderTest(){
+        CsvReader reader = new CsvReader("src/main/resources/data/bps/DMAT_short.csv");
+
+    }
+
+    @Test
+    public void isBrowserInFocusTest(){
         AssetsPage ast = AssetsPage.Instance;
-
         ast.logIn();
-        ast.navigate("/basspro/test-folder");
-        BasePage.sleepFor(15000);
-        ast.reloadPage();
-        ast.sleepFor(15000);
 
-//        if (ast.isAssetPresent("2016nstPMS0547.jpg")){
-//            ast.reporter.info("Element is present");
-//        }
-//        else{
-//            ast.reporter.info("Element is absent");
-//        }
-        //Assert.assertTrue(ast.isElementPresentAndDisplay(ast.byText("2016nstPMS0547.jpg")), "Asset is not present");
-        //*[@id="omg_close"]
     }
 
 }

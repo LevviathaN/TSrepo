@@ -1,6 +1,7 @@
 package pages.aem;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 
 /**
@@ -40,11 +41,15 @@ public class AemBasePage extends BasePage {
     }
 
     public void closeRatingPopup(){
-        reporter.info("Checking if Adobe rating popup appears");
-        if(isElementPresent(ratingPopupIframe)){
-            reporter.info("Rating popup appeared!");
-            reloadPage();
-            /*F*ck that, it's not working anyway*/
+        sleepFor(1000*10);
+        reloadPage();
+
+//        reporter.info("Checking if Adobe rating popup appears");
+//        if(isElementPresent(ratingPopupIframe)){
+//            reporter.info("Rating popup appeared!");
+//            reloadPage();
+//
+//            /*F*ck that, it's not working anyway*/
 //            if(isElementPresent(closeRatingPopupBtn)){
 //                clickOnElement(closeRatingPopupBtn);
 //            } else{
@@ -53,7 +58,7 @@ public class AemBasePage extends BasePage {
 //                switchToDefaultContent();
 //                clickOnAnyElement(closeRatingPopupBtn);
 //            }
-        }
+//        }
     }
 
     public void navigate(String path){
@@ -64,5 +69,13 @@ public class AemBasePage extends BasePage {
     public void checkLagoStatus(int itemNumber, String expectedValue){
         openUrl("https://author-bass-assets-stage65.adobecqms.net/bin/motheship/endpoint?itemNumber=" + itemNumber);
         //todo JSON response
+    }
+
+    public WebElement findFieldByTitle(String title){
+        return findElement(By.xpath(".//div[./label[text()='" + title + "']]/input"));
+    }
+
+    public void populateFieldByTitle(String title, String text){
+        findFieldByTitle(title).sendKeys(text);
     }
 }

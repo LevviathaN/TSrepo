@@ -27,6 +27,9 @@ public class BasePage {
 
     public String pageURL = "";
     public String pageTitle = "";
+    Robot robot;
+
+
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
@@ -67,6 +70,11 @@ public class BasePage {
 
     //constructor
     public BasePage() {
+        try{
+            robot = new Robot();
+        } catch(Exception e){
+
+        }
        // waitForPageToLoad();
     }
 
@@ -445,23 +453,14 @@ public class BasePage {
     }
 
     public void uploadFile(String path){
-        try {
+//        try {
             //File Need to be imported
             File file = new File(path);
             StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
 
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-            Robot robot = new Robot();
+//            Robot robot = new Robot();
             robot.delay(2000);
-
-            // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-            reporter.info("Executing Cmd + Tab");
-            robot.keyPress(KeyEvent.VK_META);
-            robot.keyPress(KeyEvent.VK_TAB);
-            robot.keyRelease(KeyEvent.VK_META);
-            robot.keyRelease(KeyEvent.VK_TAB);
-            robot.delay(2000);
-
             //Open Goto window
             reporter.info("Opening Goto Window");
             robot.keyPress(KeyEvent.VK_META);
@@ -485,11 +484,21 @@ public class BasePage {
             robot.delay(2000);
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            reporter.info("Ooops, something went wrong during upload");
-        }
+//        }
+//        catch(Exception e){
+//            e.printStackTrace();
+//            reporter.info("Ooops, something went wrong during upload");
+//        }
+    }
+
+    public void bringToFocus(){
+        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
+        reporter.info("Executing Cmd + Tab");
+        robot.keyPress(KeyEvent.VK_META);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_META);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.delay(2000);
     }
 
 }

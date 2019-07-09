@@ -9,7 +9,7 @@ public class LagoTest extends BaseTest {
         AssetsPage ast = AssetsPage.Instance;
 
         ast.logIn();
-        ast.openUrl("");
+        ast.checkLagoStatus(4668126,"testValue");
     }
 
 }

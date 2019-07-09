@@ -8,7 +8,7 @@ import utils.BaseTest;
 
 public class AemDeleteAssetTest extends BaseTest {
 
-    @Test(priority = 2)
+    @Test
     @TestName(name="Delete Asset Test")
     public void deleteTest(){
         AssetsPage ast = AssetsPage.Instance;

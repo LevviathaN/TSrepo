@@ -23,7 +23,8 @@ public class AssetsPage extends AemBasePage{
     By fastMore = By.xpath(".//coral-icon[@aria-label='more']");
     By fastToCollection = By.xpath(".//coral-icon[@aria-label='collection add']");
 
-
+    /*Content fragment creation*/
+    By newContentFragmentTitleField = By.xpath(".//input[@data-bindtofield='name']");
 
 
     /**___________________________________PAGE METHODS_________________________________*/
@@ -36,11 +37,11 @@ public class AssetsPage extends AemBasePage{
 //            findByText("Replace").click();
 //        }
         findElement(createBtn).click();
-        findByText("Files").click();
+        clickByText("Files");
         sleepFor(2000);
         uploadFile(localFilePath);
         sleepFor(1000);
-        findByText("Upload").click();
+        clickByText("Upload");
         sleepFor(5000);
         reloadPage();
         sleepFor(2000);
@@ -49,7 +50,7 @@ public class AssetsPage extends AemBasePage{
     public void deleteSelectedAssets(){
         reporter.info("Deleting selected assets");
         clickOnAnyElement(fastMore);
-        findByText("Delete").click();
+        clickByText("Delete");
         clickOnAnyElement(byText("Delete"));
         if(isElementPresentAndDisplay(byText("Force Delete"))){
             clickOnAnyElement(byText("Delete"));
@@ -62,7 +63,7 @@ public class AssetsPage extends AemBasePage{
     public void publishSelectedAssets(){
         reporter.info("Publishing selected assets");
         clickOnAnyElement(fastMore);
-        findByText("Quick Publish").click();
+        clickByText("Quick Publish");
         clickOnAnyElement(byText("Publish to Brand Portal"));
         clickOnAnyElement(By.xpath("//coral-button-label[text()='Publish']"));
     }
@@ -79,15 +80,38 @@ public class AssetsPage extends AemBasePage{
     }
 
     public void selectAsset(String assetName){
-        reporter.info("Selecting "+assetName+" asset");
+        reporter.info("Selecting '"+assetName+"' asset");
         hoverItem(By.xpath("//coral-card-title[text()='" + assetName + "']"));
         clickOnAnyElement(fastSelect);
+    }
+
+    public void clickOnAsset(String name){
+        reporter.info("Clicking on '" + name + "' asset");
+        clickOnAnyElement(byText(name));
+    }
+
+    public void createContentFragment(String cfName){
+        reporter.info("Creating Content Fragment with name '" + cfName + "'");
+        findElement(createBtn).click();
+        clickByText("Content Fragment");
+        clickByText("Simple Fragment");
+        clickByText("Next");
+        setText(newContentFragmentTitleField, cfName);
+        clickByText("Create");
+        clickByText("Done");
+    }
+
+    public void createCfVariation(String varName){
+        reporter.info("Creating variation named '" + varName + "' for current CF");
+        clickByText("Create Variation");
+        populateFieldByTitle("Title *",varName);
+        clickByText("Add");
     }
 
 
     /**________________________LOGICAL ASSERTIONS__________________________*/
     public boolean isAssetPresent(String assetName){
-        reporter.info("Verifying " + assetName + " asset presence");
+        reporter.info("Verifying '" + assetName + "' asset presence");
         return isElementPresent(By.xpath("//coral-card-title[text()='" + assetName + "']"));
     }
 }
