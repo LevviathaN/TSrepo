@@ -4,6 +4,7 @@
             <class name="bps.AemFileUploadTest" />
             <class name="debug.DelayTest" />
             <class name="bps.AemAssetPublishTest" />
+            <class name="bps.AssetDownloadTest" />
             <class name="bps.AemDeleteAssetTest" />
             <class name="bps.AemCollectionsTest" />
             <class name="bps.SkywordUploadTest" />

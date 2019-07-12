@@ -12,13 +12,21 @@ public class AemBasePage extends BasePage {
     /**__________________________________PAGE ATTRIBUTES_______________________________*/
     /*__________________Credentials_________________*/
     String aemBaseUrl = "https://author-bass-assets-stage65.adobecqms.net";
+    String bpBaseUrl = "https://basspro.brand-portal.adobe.com/mediaportal.html/content/dam/mac/basspro";
     String aemLogin = "rlevytskyi";
     String aemPass = "basspro111@damM";
+
+    String bpLogin = "ruslan.levytskyi@avionos.com";
+    String bpPass = "BillyJoe1998";
 
     /*_________________Login page elements________________*/
     By loginField = By.xpath(".//input[@id='username']");
     By passField = By.xpath(".//input[@id='password']");
     By submitBtn = By.xpath(".//button[@id='submit-button']");
+
+    By bpLoginField = By.xpath(".//input[@id='adobeid_username']");
+    By bpPassField = By.xpath(".//input[@id='adobeid_password']");
+    By bpSubmitBtn = By.xpath(".//button[@id='sign_in']");
 
     /*_______________Common elements_______________*/
     By homeLink = By.xpath(".//coral-shell-homeanchor-label");
@@ -38,6 +46,16 @@ public class AemBasePage extends BasePage {
         findElement(loginField).sendKeys(aemLogin);
         findElement(passField).sendKeys(aemPass);
         findElement(submitBtn).click();
+    }
+
+    public void logIntoBP() {
+        reporter.info("Logging into Brand Portal");
+        driver().get(bpBaseUrl);
+        clickByText("Sign In");
+        findElement(bpLoginField).sendKeys(bpLogin);
+        findElement(bpPassField).click();
+        findElement(bpPassField).sendKeys(bpPass);
+        findElement(bpSubmitBtn).click();
     }
 
     public void closeRatingPopup(){
@@ -64,6 +82,11 @@ public class AemBasePage extends BasePage {
     public void navigate(String path){
         reporter.info("Navigate to: " + path);
         openUrl(BASE_URL + pageURL + path);
+    }
+
+    public void bpNavigate(String path){
+        reporter.info("Navigate to: " + path);
+        openUrl(bpBaseUrl + path);
     }
 
     public void checkLagoStatus(int itemNumber, String expectedValue){

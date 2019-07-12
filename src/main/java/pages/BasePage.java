@@ -73,7 +73,7 @@ public class BasePage {
         try{
             robot = new Robot();
         } catch(Exception e){
-
+            e.printStackTrace();
         }
        // waitForPageToLoad();
     }
@@ -493,7 +493,7 @@ public class BasePage {
 
     public void bringToFocus(){
         // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-        reporter.info("Executing Cmd + Tab");
+//        reporter.info("Executing Cmd + Tab");
         robot.keyPress(KeyEvent.VK_META);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_META);

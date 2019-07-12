@@ -79,6 +79,20 @@ public class AssetsPage extends AemBasePage{
         clickByText("Close");
     }
 
+    public void downloadSelectedAssets(){
+        reporter.info("Downloading selected assets");
+//        clickOnAnyElement(fastMore);
+        clickOnAnyElement(byText("Download"));
+        clickOnElement(By.xpath("(//coral-button-label[text()='Download'])[3]"));
+        sleepFor(2000);
+    }
+
+    public void deleteDownloadedAsset(String assetName){
+        reporter.info("Deleting downloaded asset (cleanup)");
+        File f = new File("/Users/ruslanlevytskyi/Downloads/" + assetName + ".zip"); //todo: path is hardcoded
+        f.deleteOnExit();
+    }
+
     public void selectAsset(String assetName){
         reporter.info("Selecting '"+assetName+"' asset");
         hoverItem(By.xpath("//coral-card-title[text()='" + assetName + "']"));
@@ -113,5 +127,11 @@ public class AssetsPage extends AemBasePage{
     public boolean isAssetPresent(String assetName){
         reporter.info("Verifying '" + assetName + "' asset presence");
         return isElementPresent(By.xpath("//coral-card-title[text()='" + assetName + "']"));
+    }
+
+    public boolean isAssetDownloaded(String assetName){
+        reporter.info("Verifying that '" + assetName + "' asset was downloaded");
+        File f = new File("/Users/ruslanlevytskyi/Downloads/" + assetName + ".zip"); //todo: path is hardcoded
+        return f.exists();
     }
 }

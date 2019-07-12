@@ -18,6 +18,10 @@ public class AemAssetPublishTest extends BaseTest {
         ast.closeRatingPopup();
         ast.selectAsset("2016nstPMS0547.jpg");
         ast.publishSelectedAssets();
-        Assert.assertTrue(ast.isElementPresent(ast.byText("Queued up for publish to Brand Portal.")));
+        Assert.assertTrue(ast.isElementPresent(ast.byText("Queued up for publish to Brand Portal.")),
+                "Success message appeared");
+        ast.logIntoBP();
+        ast.bpNavigate("/test-folder");
+        Assert.assertTrue(ast.isAssetPresent("2016nstPMS0547.jpg"),"Asset is present in BP UI");
     }
 }
