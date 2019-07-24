@@ -426,7 +426,7 @@ public class BasePage {
 
     // Does not work because of geckodriver bug - https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
     public void hoverItem(By element){
-        reporter.info("Put mouse pointer over element: " + element.toString());
+        //reporter.info("Put mouse pointer over element: " + element.toString());
         Actions action = new Actions(driver());
         action.moveToElement(findElement(element)).build().perform();
     }

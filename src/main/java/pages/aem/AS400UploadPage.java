@@ -1,15 +1,58 @@
 package pages.aem;
 
 import org.openqa.selenium.By;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AS400UploadPage extends AemBasePage {
 
     private static AS400UploadPage instance;
     public static AS400UploadPage Instance = (instance != null) ? instance : new AS400UploadPage();
 
-    public AS400UploadPage(){ pageURL = "/as400metadata.html"; }
+    public AS400UploadPage(){
+        pageURL = "/as400metadata.html";
+        //Initialise dictionary
+        //Product data
+        metadata.put("INUMBR", "SKU Numbers");
+        metadata.put("SNUMBR", "Master SKU");
+        metadata.put("IDESCR", "SKU Description");
+        metadata.put("DSPNCD", "SKU Status");
+        metadata.put("ISTYPE", "SKU Type");
+        metadata.put("ISTYLN", "Style Number");
+        metadata.put("IDEPT", "Department Number");
+        metadata.put("ICLAS", "Class");
+        metadata.put("ISCLAS", "Sub-Class");
+        metadata.put("DEPTNM", "Department Name");
+        metadata.put("SDEPTNM", "Sub-Department");
+        metadata.put("ASNUM", "Vendor Number");
+        metadata.put("IVNDPN", "Model Number");
+        metadata.put("IUPC", "UPC Number");
+        metadata.put("SSTYLE", "Style Description");
+        metadata.put("WEBID", "Web ID");
+        //Initialise reversed dictionary
+        revMetadata.put("SKU Numbers", "INUMBR");
+        revMetadata.put("SKU Description","IDESCR");
+        revMetadata.put("SKU Status","DSPNCD");
+        revMetadata.put("SKU Type","ISTYPE");
+        revMetadata.put("Style Number","ISTYLN");
+        revMetadata.put("Department Number","IDEPT");
+        revMetadata.put("Class","ICLAS");
+        revMetadata.put("Sub-Class","ISCLAS");
+        revMetadata.put("Department Name","DEPTNM");
+        revMetadata.put("Sub-Department","SDEPTNM");
+        revMetadata.put("Vendor Number","ASNUM");
+        revMetadata.put("Model Number","IVNDPN");
+        revMetadata.put("UPC Number","IUPC");
+        revMetadata.put("Style Description","SSTYLE");
+        revMetadata.put("Web ID","WEBID");
+    }
 
     /**__________________________________PAGE ATTRIBUTES_______________________________*/
+    //Metadata fields dictionary
+    public static Map<String,String> metadata = new HashMap<String,String>();
+    public static Map<String,String> revMetadata = new HashMap<String,String>();
+    //Initialise dictionary
+
     /*Fast actions icons locators*/
     By typeSelect = By.xpath(".//coral-icon[@aria-label='chevron down']");
 
@@ -24,7 +67,7 @@ public class AS400UploadPage extends AemBasePage {
         clickByText("Submit");
     }
     private void selectType(String type){
-//        clickOnElement(typeSelect);
+        clickOnElement(typeSelect);
         clickByText("Select the type of file to import.");
         clickByText(type);
     }
@@ -43,5 +86,10 @@ public class AS400UploadPage extends AemBasePage {
             res = result.contains("Already exists");
         }
         return res;
+    }
+
+    public boolean verifyMetadata(String file){
+
+        return true;
     }
 }

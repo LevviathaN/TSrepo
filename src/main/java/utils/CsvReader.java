@@ -16,26 +16,64 @@ public class CsvReader {
 
     private static File fCsvFile;
     private static Scanner scanner;
+    private static List<String> headers;
 
     public CsvReader(String file){
         try{
             fCsvFile = new File(file);
             scanner = new Scanner(fCsvFile);
+            headers = parseLine(scanner.nextLine(),'|');
         } catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    public void CSV() throws Exception {
+    public void getHeaders(){
+        for(String header : headers){
+            System.out.println(header);
+        }
+    }
+
+    public void CSV() {
 
         while (scanner.hasNext()) {
-            List<String> line = parseLine(scanner.nextLine());
+            List<String> line = parseLine(scanner.nextLine(),'|');
             System.out.println("Country [id= " + line.get(0) + ", code= " + line.get(1) + " , name=" + line.get(2) + "]");
         }
         scanner.close();
 
     }
 
+    //_______________________Main Methods________________________
+    public void getAllDistinctValues(String column){
+
+    }
+
+    public String getValue(String keyCol, String keyValue, String targetCol){
+        String targetVal = "";
+        while (scanner.hasNext()) {
+            List<String> line = parseLine(scanner.nextLine(),'|');
+            if(line.get(headers.indexOf(keyCol)).equals(keyValue)){
+                targetVal = line.get(headers.indexOf(targetCol));
+            }
+        }
+        scanner.close();
+        return targetVal;
+    }
+
+    public List<String> getValues(String keyCol, String keyValue, String targetCol){
+        List<String> targetVals = new ArrayList<>();
+        while (scanner.hasNext()) {
+            List<String> line = parseLine(scanner.nextLine(),'|');
+            if(line.get(headers.indexOf(keyCol)).equals(keyValue)){
+                    targetVals.add(line.get(headers.indexOf(targetCol)));
+            }
+        }
+        scanner.close();
+        return targetVals;
+    }
+
+    //_______________________Base Methods________________________
     public static List<String> parseLine(String cvsLine) {
         return parseLine(cvsLine, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
     }

@@ -99,6 +99,12 @@ public class AssetsPage extends AemBasePage{
         clickOnAnyElement(fastSelect);
     }
 
+    public void openPropertiesOfAsset(String assetName){
+        reporter.info("Opening properties of '"+assetName+"' asset");
+        hoverItem(By.xpath("//coral-card-title[text()='" + assetName + "']"));
+        clickOnAnyElement(fastProperties);
+    }
+
     public void clickOnAsset(String name){
         reporter.info("Clicking on '" + name + "' asset");
         clickOnAnyElement(byText(name));
@@ -131,7 +137,8 @@ public class AssetsPage extends AemBasePage{
 
     public boolean isAssetDownloaded(String assetName){
         reporter.info("Verifying that '" + assetName + "' asset was downloaded");
-        File f = new File("/Users/ruslanlevytskyi/Downloads/" + assetName + ".zip"); //todo: path is hardcoded
+        String home = System.getProperty("user.home");
+        File f = new File(home + "/Downloads/" + assetName + ".zip");
         return f.exists();
     }
 }

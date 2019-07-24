@@ -18,7 +18,7 @@ public class DebugTest extends BaseTest {
     @Test
     public void csvReaderTest(){
         CsvReader reader = new CsvReader("src/main/resources/data/bps/DMAT_short.csv");
-
+        System.out.println(reader.getValues("ATDSKU","184337","SACCOD"));
     }
 
     @Test

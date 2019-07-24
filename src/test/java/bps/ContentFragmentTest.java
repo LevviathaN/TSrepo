@@ -40,7 +40,7 @@ public class ContentFragmentTest extends BaseTest {
         ast.logIn();
         ast.navigate("/test-folder");
         ast.selectAsset("AutoTestCF");
-        ast.clickOnAsset("Create CF Test");
+        ast.clickOnAsset("Create CF Test"); //todo correct flow is "Update CF Test". This is temporary solution regarding Skyword Update bug
         ast.deleteSelectedAssets();
         Assert.assertFalse(ast.isAssetPresent("AutoTestCF") &&
                 ast.isAssetPresent("Create CF Test"), "Assets are present");

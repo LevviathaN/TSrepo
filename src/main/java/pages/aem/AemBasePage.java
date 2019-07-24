@@ -11,7 +11,7 @@ public class AemBasePage extends BasePage {
 
     /**__________________________________PAGE ATTRIBUTES_______________________________*/
     /*__________________Credentials_________________*/
-    String aemBaseUrl = "https://author-bass-assets-stage65.adobecqms.net";
+    String aemBaseUrl = "https://author-bass-assets-stage2.adobecqms.net";
     String bpBaseUrl = "https://basspro.brand-portal.adobe.com/mediaportal.html/content/dam/mac/basspro";
     String aemLogin = "rlevytskyi";
     String aemPass = "basspro111@damM";
@@ -90,7 +90,7 @@ public class AemBasePage extends BasePage {
     }
 
     public void checkLagoStatus(int itemNumber, String expectedValue){
-        openUrl("https://author-bass-assets-stage65.adobecqms.net/bin/motheship/endpoint?itemNumber=" + itemNumber);
+        openUrl("https://author-bass-assets-stage2.adobecqms.net/bin/motheship/endpoint?itemNumber=" + itemNumber);
         //todo JSON response
     }
 
