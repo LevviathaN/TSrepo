@@ -3,6 +3,8 @@
         <classes>
             <class name="bps.AemFileUploadTest" />
             <class name="debug.DelayTest" />
+            <class name="bps.AS400UploadTest" />
+            <class name="bps.CabMetaUploadTest" />
             <class name="bps.AemAssetPublishTest" />
             <class name="bps.AssetDownloadTest" />
             <class name="bps.AemDeleteAssetTest" />

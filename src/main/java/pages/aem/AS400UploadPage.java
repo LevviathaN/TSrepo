@@ -13,44 +13,44 @@ public class AS400UploadPage extends AemBasePage {
         pageURL = "/as400metadata.html";
         //Initialise dictionary
         //Product data
-        metadata.put("INUMBR", "SKU Numbers");
-        metadata.put("SNUMBR", "Master SKU");
-        metadata.put("IDESCR", "SKU Description");
-        metadata.put("DSPNCD", "SKU Status");
-        metadata.put("ISTYPE", "SKU Type");
-        metadata.put("ISTYLN", "Style Number");
-        metadata.put("IDEPT", "Department Number");
-        metadata.put("ICLAS", "Class");
-        metadata.put("ISCLAS", "Sub-Class");
-        metadata.put("DEPTNM", "Department Name");
-        metadata.put("SDEPTNM", "Sub-Department");
-        metadata.put("ASNUM", "Vendor Number");
-        metadata.put("IVNDPN", "Model Number");
-        metadata.put("IUPC", "UPC Number");
-        metadata.put("SSTYLE", "Style Description");
-        metadata.put("WEBID", "Web ID");
-        //Initialise reversed dictionary
-        revMetadata.put("SKU Numbers", "INUMBR");
-        revMetadata.put("SKU Description","IDESCR");
-        revMetadata.put("SKU Status","DSPNCD");
-        revMetadata.put("SKU Type","ISTYPE");
-        revMetadata.put("Style Number","ISTYLN");
-        revMetadata.put("Department Number","IDEPT");
-        revMetadata.put("Class","ICLAS");
-        revMetadata.put("Sub-Class","ISCLAS");
-        revMetadata.put("Department Name","DEPTNM");
-        revMetadata.put("Sub-Department","SDEPTNM");
-        revMetadata.put("Vendor Number","ASNUM");
-        revMetadata.put("Model Number","IVNDPN");
-        revMetadata.put("UPC Number","IUPC");
-        revMetadata.put("Style Description","SSTYLE");
-        revMetadata.put("Web ID","WEBID");
+//        metadata.put("INUMBR", "SKU Numbers");
+//        metadata.put("SNUMBR", "Master SKU");
+//        metadata.put("IDESCR", "SKU Description");
+//        metadata.put("DSPNCD", "SKU Status");
+//        metadata.put("ISTYPE", "SKU Type");
+//        metadata.put("ISTYLN", "Style Number");
+//        metadata.put("IDEPT", "Department Number");
+//        metadata.put("ICLAS", "Class");
+//        metadata.put("ISCLAS", "Sub-Class");
+//        metadata.put("DEPTNM", "Department Name");
+//        metadata.put("SDEPTNM", "Sub-Department");
+//        metadata.put("ASNUM", "Vendor Number");
+//        metadata.put("IVNDPN", "Model Number");
+//        metadata.put("IUPC", "UPC Number");
+//        metadata.put("SSTYLE", "Style Description");
+//        metadata.put("WEBID", "Web ID");
+//        //Initialise reversed dictionary
+//        revMetadata.put("SKU Numbers", "INUMBR");
+//        revMetadata.put("SKU Description","IDESCR");
+//        revMetadata.put("SKU Status","DSPNCD");
+//        revMetadata.put("SKU Type","ISTYPE");
+//        revMetadata.put("Style Number","ISTYLN");
+//        revMetadata.put("Department Number","IDEPT");
+//        revMetadata.put("Class","ICLAS");
+//        revMetadata.put("Sub-Class","ISCLAS");
+//        revMetadata.put("Department Name","DEPTNM");
+//        revMetadata.put("Sub-Department","SDEPTNM");
+//        revMetadata.put("Vendor Number","ASNUM");
+//        revMetadata.put("Model Number","IVNDPN");
+//        revMetadata.put("UPC Number","IUPC");
+//        revMetadata.put("Style Description","SSTYLE");
+//        revMetadata.put("Web ID","WEBID");
     }
 
     /**__________________________________PAGE ATTRIBUTES_______________________________*/
     //Metadata fields dictionary
-    public static Map<String,String> metadata = new HashMap<String,String>();
-    public static Map<String,String> revMetadata = new HashMap<String,String>();
+//    public static Map<String,String> metadata = new HashMap<String,String>();
+//    public static Map<String,String> revMetadata = new HashMap<String,String>();
     //Initialise dictionary
 
     /*Fast actions icons locators*/
@@ -67,7 +67,6 @@ public class AS400UploadPage extends AemBasePage {
         clickByText("Submit");
     }
     private void selectType(String type){
-        clickOnElement(typeSelect);
         clickByText("Select the type of file to import.");
         clickByText(type);
     }

@@ -3,6 +3,7 @@ package debug;
 import annotations.TestName;
 import org.testng.annotations.Test;
 import pages.aem.AssetsPage;
+import pages.aem.MetadataFormPage;
 import utils.BaseTest;
 import utils.CsvReader;
 import utils.XmlReader;
@@ -26,6 +27,19 @@ public class DebugTest extends BaseTest {
         AssetsPage ast = AssetsPage.Instance;
         ast.logIn();
 
+    }
+
+    @Test
+    public void fieldsValueTest(){
+        AssetsPage ast = AssetsPage.Instance;
+        MetadataFormPage meta = MetadataFormPage.Instance;
+        ast.logIn();
+        ast.navigate("/test-folder/");
+        ast.openPropertiesOfAsset("2648783_100207535_is.jpeg");
+        for(String value : meta.getMultifieldValues("CAB SKU")){
+            System.out.println(value);
+        }
+        System.out.println(meta.findMultifieldByTitle("CAB SKU").getText());
     }
 
 }

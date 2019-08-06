@@ -20,13 +20,14 @@ public class AS400UploadTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/test-folder");
+        ast.closeRatingPopup();
         ast.openPropertiesOfAsset("2016nstPMS0547.jpg");
         mdf.addValueToMultifield("SKU Numbers","184337");
         ast.clickByText("Save & Close");
 
         as4.navigate("");
         as4.as400Upload("ITAP", "src/main/resources/data/bps/ITAP_short.csv");
-        Assert.assertTrue(as4.isAS400Errors(), "Some errors");
+        Assert.assertFalse(as4.isAS400Errors(), "Some errors");
         ast.navigate("/test-folder");
         ast.openPropertiesOfAsset("2016nstPMS0547.jpg");
         //todo verifyMetadata() method

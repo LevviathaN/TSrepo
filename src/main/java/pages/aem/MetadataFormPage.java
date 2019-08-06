@@ -25,7 +25,12 @@ public class MetadataFormPage extends AemBasePage {
     /**___________________________________PAGE METHODS_________________________________*/
 
     public WebElement findMultifieldByTitle(String title){
-        return findElement(By.xpath(".//div[./label[text()='" + title + "']]/input"));
+        return findMultifieldByTitle(title, 1);
+    }
+
+    public WebElement findMultifieldByTitle(String title, int num){
+        return findElement(By.xpath(".//div[./label[text()='" + title + "']]/coral-multifield/coral-multifield-item["
+                + num + "]/coral-multifield-item-content/input"));
     }
 
     //todo: need to check if "Add" btn is available
@@ -65,6 +70,15 @@ public class MetadataFormPage extends AemBasePage {
             //todo
         }
         return new ArrayList<>();
+    }
+
+    public List<String> getMultifieldValues(String title){
+        List<String> values = new ArrayList<>();
+        for (WebElement field : findElements(By.xpath(".//div[./label[text()='" + title +
+                "']]/coral-multifield/coral-multifield-item/coral-multifield-item-content/input"))){
+            values.add(field.getAttribute("value"));
+        }
+        return values;
     }
 
 }

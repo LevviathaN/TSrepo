@@ -15,6 +15,7 @@ public class ContentFragmentTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/test-folder");
+        ast.closeRatingPopup();
         ast.createContentFragment("AutoTestCF");
         Assert.assertTrue(ast.isAssetPresent("AutoTestCF"));
     }
@@ -26,6 +27,7 @@ public class ContentFragmentTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/test-folder");
+        ast.closeRatingPopup();
         ast.clickOnAsset("AutoTestCF");
         ast.createCfVariation("AutoTestVar");
         Assert.assertTrue(ast.isElementPresentAndDisplay(ast.byText("AutoTestVar")),
@@ -39,6 +41,7 @@ public class ContentFragmentTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/test-folder");
+        ast.closeRatingPopup();
         ast.selectAsset("AutoTestCF");
         ast.clickOnAsset("Create CF Test"); //todo correct flow is "Update CF Test". This is temporary solution regarding Skyword Update bug
         ast.deleteSelectedAssets();
