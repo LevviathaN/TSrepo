@@ -87,8 +87,33 @@ public class AS400UploadPage extends AemBasePage {
         return res;
     }
 
-    public boolean verifyMetadata(String file){
+    public boolean verifyItapSimple(){
+        MetadataFormPage meta = MetadataFormPage.Instance;
+        boolean ok = true;
+        boolean skuB = false;
+        boolean mediaSetB = false;
+        boolean upcB = false;
+        for(String value : meta.getMultifieldValues("Master SKU")){
+            if(value.equals("")){
+                skuB = true;
+            }
+            ok = skuB;
+            reporter.info("Expected CAB SKU - " + "" + "; Actual CAB SKU - " + value);
+        }
+        for(String value : meta.getMultifieldValues("CAB Media Set")){
+            if(value.equals("")){mediaSetB = true;}
+            ok = mediaSetB;
+            reporter.info("Expected CAB Media Set - " + "" + "; Actual CAB Media Set - " + value);
+        }
+        for(String value : meta.getMultifieldValues("CAB UPC")){
+            if(value.equals("")){upcB = true;}
+            ok = upcB;
+            reporter.info("Expected CAB UPC - " + "" + "; Actual CAB UPC - " + value);
+        }
+        return ok;
+    }
 
-        return true;
+    public boolean verifyDmat(String tag){
+        return isElementPresent(By.xpath("//coral-tag-label[text()='" + tag + "']"));
     }
 }

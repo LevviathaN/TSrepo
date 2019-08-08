@@ -1,6 +1,7 @@
 package debug;
 
 import annotations.TestName;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.aem.AssetsPage;
 import pages.aem.MetadataFormPage;
@@ -42,4 +43,14 @@ public class DebugTest extends BaseTest {
         System.out.println(meta.findMultifieldByTitle("CAB SKU").getText());
     }
 
+    @Test
+    public void verifyMetadata(){
+        MetadataFormPage meta = MetadataFormPage.Instance;
+        AssetsPage ast = AssetsPage.Instance;
+
+        ast.logIn();
+        ast.navigate("/test-folder");
+        ast.openPropertiesOfAsset("2648783_100207535_is.jpeg");
+        Assert.assertTrue(meta.verifyMetadata("CAB SKU/104897","Master SKU/1091175","SKU Status/A"));
+    }
 }

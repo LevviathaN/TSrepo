@@ -23,5 +23,6 @@ public class AemAssetPublishTest extends BaseTest {
         ast.logIntoBP();
         ast.bpNavigate("/test-folder");
         Assert.assertTrue(ast.isAssetPresent("2016nstPMS0547.jpg"),"Asset is present in BP UI");
+        //todo: verify on BP environment
     }
 }

@@ -81,4 +81,20 @@ public class MetadataFormPage extends AemBasePage {
         return values;
     }
 
+    public boolean verifyMetadata(String... nameValues){
+        boolean ok = true;
+        for(String nameValue : nameValues){
+            String[] nameAndValue = nameValue.split("/");
+            for(String value : getMultifieldValues(nameAndValue[0])){
+                boolean field = false;
+                if(value.equals(nameAndValue[1])){
+                    field = true;
+                }
+                reporter.info("Expected " + nameAndValue[0] + " - " + nameAndValue[1] + "; Actual " +
+                        nameAndValue[0] + " - " + value);
+                if(!field){ok=false;}
+            }
+        }
+        return ok;
+    }
 }

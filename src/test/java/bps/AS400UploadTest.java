@@ -30,6 +30,25 @@ public class AS400UploadTest extends BaseTest {
         Assert.assertFalse(as4.isAS400Errors(), "Some errors");
         ast.navigate("/test-folder");
         ast.openPropertiesOfAsset("2016nstPMS0547.jpg");
-        //todo verifyMetadata() method
+        Assert.assertTrue(mdf.verifyMetadata("CAB SKU/104897","Master SKU/1091175","SKU Status/A"));
+        //todo: add more name/value pairs
+    }
+
+    @Test
+    @TestName(name = "DMAT Upload Test")
+    public void b_DmatUploadTest(){
+
+        AS400UploadPage as4 = AS400UploadPage.Instance;
+        AssetsPage ast = AssetsPage.Instance;
+        MetadataFormPage mdf = MetadataFormPage.Instance;
+
+        ast.logIn();
+        as4.navigate("");
+        as4.as400Upload("DMAT", "src/main/resources/data/bps/DMAT_short.csv");
+        Assert.assertFalse(as4.isAS400Errors(), "Some errors");
+        ast.navigate("/test-folder");
+        ast.openPropertiesOfAsset("2016nstPMS0547.jpg");
+        Assert.assertTrue(as4.verifyDmat("type / bait-hooks"), "Tags are correct");
+        //todo: add multiple tags verification
     }
 }
