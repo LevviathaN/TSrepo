@@ -29,7 +29,6 @@ public class AssetsPage extends AemBasePage{
 
     /**___________________________________PAGE METHODS_________________________________*/
 
-    //Works only for mac. todo for windows
     public void uploadAsset(String localFilePath, String... givenAssetName){
         reporter.info("Uploading "+localFilePath+" to AEM");
 //        if(isElementPresent(byText("Replace"))){

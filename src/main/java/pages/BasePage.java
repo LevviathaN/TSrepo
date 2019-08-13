@@ -11,6 +11,7 @@ import java.util.Set;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import utils.DriverProvider;
 import utils.FileIO;
 import utils.ReporterManager;
 import utils.Tools;
@@ -29,6 +30,8 @@ public class BasePage {
     public String pageTitle = "";
     Robot robot;
 
+    //needed because of mac and windows have different Ctrl keys
+    int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
 
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
@@ -462,19 +465,21 @@ public class BasePage {
 //            Robot robot = new Robot();
             robot.delay(2000);
             //Open Goto window
+        if(DriverProvider.OS_EXTENTION.equals("_mac")){
             reporter.info("Opening Goto Window");
-            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(systemControllKey);
             robot.keyPress(KeyEvent.VK_SHIFT);
             robot.keyPress(KeyEvent.VK_G);
-            robot.keyRelease(KeyEvent.VK_META);
+            robot.keyRelease(systemControllKey);
             robot.keyRelease(KeyEvent.VK_SHIFT);
             robot.keyRelease(KeyEvent.VK_G);
+        }
 
             //Paste the clipboard value
             reporter.info("Pasting from clipboard");
-            robot.keyPress(KeyEvent.VK_META);
+            robot.keyPress(systemControllKey);
             robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_META);
+            robot.keyRelease(systemControllKey);
             robot.keyRelease(KeyEvent.VK_V);
 
             //Press Enter key to close the Goto window and Upload window
@@ -494,9 +499,9 @@ public class BasePage {
     public void bringToFocus(){
         // Cmd + Tab is needed since it launches a Java app and the browser looses focus
 //        reporter.info("Executing Cmd + Tab");
-        robot.keyPress(KeyEvent.VK_META);
+        robot.keyPress(systemControllKey);
         robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_META);
+        robot.keyRelease(systemControllKey);
         robot.keyRelease(KeyEvent.VK_TAB);
         robot.delay(2000);
     }

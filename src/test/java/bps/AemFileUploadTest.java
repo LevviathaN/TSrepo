@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.aem.AssetsPage;
 import utils.BaseTest;
+import utils.DriverProvider;
 
 public class AemFileUploadTest extends BaseTest {
 
@@ -15,7 +16,7 @@ public class AemFileUploadTest extends BaseTest {
 
         ast.logIn();
         ast.navigate("/test-folder");
-        ast.bringToFocus();
+        if(DriverProvider.OS_EXTENTION.equals("_mac")) ast.bringToFocus();
         ast.closeRatingPopup();
         ast.uploadAsset("src/main/resources/data/bps/Assets/2016nstPMS0547.jpg");
         Assert.assertTrue(ast.isAssetPresent("2016nstPMS0547.jpg"), "Asset is not present");
