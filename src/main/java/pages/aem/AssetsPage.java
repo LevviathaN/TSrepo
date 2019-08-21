@@ -98,6 +98,14 @@ public class AssetsPage extends AemBasePage{
         clickOnAnyElement(fastSelect);
     }
 
+    public void relateAsset(String assetPathName, String type){
+        reporter.info("Relating '" + assetPathName + "' asset to selected asset as " + type);
+        clickOnAnyElement(fastMore);
+        clickByText("Relate");
+        clickByText(type);
+        selectDestination(assetPathName);
+    }
+
     public void openPropertiesOfAsset(String assetName){
         reporter.info("Opening properties of '"+assetName+"' asset");
         hoverItem(By.xpath("//coral-card-title[text()='" + assetName + "']"));

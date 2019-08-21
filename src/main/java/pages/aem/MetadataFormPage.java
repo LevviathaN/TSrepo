@@ -97,4 +97,10 @@ public class MetadataFormPage extends AemBasePage {
         }
         return ok;
     }
+
+    public boolean verifyRelation(String assetName, String type){
+        clickByText("References");
+        return findElement(By.xpath("//div[@data-fieldlabel='" + type +
+                "']/div[@assetsreferences-wrapper]/a/coral-anchorbutton-label")).getText().equals(assetName);
+    }
 }

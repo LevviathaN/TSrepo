@@ -101,4 +101,29 @@ public class AemBasePage extends BasePage {
     public void populateFieldByTitle(String title, String text){
         findFieldByTitle(title).sendKeys(text);
     }
+
+    //todo: create separate class BaseUploadPage to be extended by Skyword, AS400, Cab and other upload pages
+    //put below methods to that class
+    public void selectDestination(String path){
+        reporter.info("Destinatio path is: " + path);
+        String _path = new String(path);
+        String lastFol = "";
+        for(String fol : _path.split("/")){
+            reporter.info("Expand " + fol + " folder");
+            expandFolder(fol);
+            lastFol = fol;
+        }
+        reporter.info("Select " + lastFol + " folder");
+        selectFolder(lastFol);
+        clickByText("Select");
+    }
+
+    void selectFolder(String folderName){
+        clickOnElement(By.xpath("//*[./coral-columnview-item-content[./div[text()='" + folderName
+                + "']]]/coral-columnview-item-thumbnail"));
+    }
+
+    void expandFolder(String folderName){
+        clickByText(folderName);
+    }
 }
