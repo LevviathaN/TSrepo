@@ -2,16 +2,13 @@ package utils;
 
 import org.openqa.selenium.By;
 import pages.BasePage;
+import java.io.*;
 
 public class TicketsDatabaseUpload extends BasePage {
 
-    String jiraTicketsFilterLink = "https://basspro.atlassian.net/browse/CCM-79?filter=-4&jql=project%20%3D%20CCM%20order%20by%20created%20ASC";
-    String jiraEmail = "ruslan.levytskyi@avionos.com";
-    String jiraPass = "BillyJoe619";
-    String pythonScriptPath = "/Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/quickstart.py";
-    String pathToPyExecutor = "/Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/venv/bin/python";
-    String uploadCommad = "/Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/venv/bin/python /Users/ruslanlevytskyi/Projects/LevviathaN/TestFramework/TestFramework/data/python/quickstart.py";
-    String csvPath = "/Users/ruslanlevytskyi/Downloads/Tomorrow_Sleep.csv";
+    String pythonScriptPath = "/Users/ruslanlevytskyi/PycharmProjects/GoogleSheetsApi/quickstart.py";
+    String pathToPyExecutor = "/Users/ruslanlevytskyi/PycharmProjects/GoogleSheetsApi/venv/python/bin/python";
+    String csvPath = "/Users/ruslanlevytskyi/Downloads/Jira.csv"; //todo: remove hardcode
 
     By username = By.xpath(".//input[@id='username']");
     By continueBtn = By.xpath(".//button[@id='login-submit']");
@@ -21,7 +18,7 @@ public class TicketsDatabaseUpload extends BasePage {
     By exportCurrent = By.xpath(".//a[text()='Export Excel CSV (current fields)']");
 
     //todo: Make it prettier
-    public void exportJiraTickets() {
+    public void exportJiraTickets(String jiraTicketsFilterLink, String jiraEmail, String jiraPass) {
         driver().get(jiraTicketsFilterLink);
         findElement(username).sendKeys(jiraEmail);
         findElement(continueBtn).click();
@@ -37,17 +34,18 @@ public class TicketsDatabaseUpload extends BasePage {
     }
 
     public void uploadTickets(){
-        Runtime rt = Runtime.getRuntime();
-        try {
-//            Process proc = rt.exec(uploadCommad);
-//            reporter.info(proc.getOutputStream().toString());
-//            reporter.info(proc.getErrorStream().toString());
-            String[] args = new String[] {pythonScriptPath};
-            Process proc = new ProcessBuilder(args).start();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            reporter.info("Oops!");
+        executeCommand(pathToPyExecutor,pythonScriptPath);
+    }
+
+    public void executeCommand(String pathToExecutor, String pathToScript){
+        ProcessBuilder builder = new ProcessBuilder();
+        builder.command(pathToExecutor,pathToScript);
+        builder.directory(new File(System.getProperty("user.home")));
+        try{
+            Process process = builder.start();
+            new BufferedReader(new InputStreamReader(process.getInputStream())).lines().forEach(System.out::println);
         }
+        catch(Exception e){e.printStackTrace();}
+
     }
 }
