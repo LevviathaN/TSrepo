@@ -1,6 +1,6 @@
 package bps;
 
-import pages.aem.AssetsPage;
+import pages.bps.AssetsPage;
 import utils.BaseTest;
 
 public class LagoTest extends BaseTest {

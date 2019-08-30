@@ -2,7 +2,7 @@ package old;
 
 import annotations.TestName;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.ts.ShopPage;
 import utils.BaseTest;
 
 import java.io.IOException;

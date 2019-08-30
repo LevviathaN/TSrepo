@@ -3,9 +3,9 @@ package bps;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.aem.AS400UploadPage;
-import pages.aem.AssetsPage;
-import pages.aem.MetadataFormPage;
+import pages.bps.AS400UploadPage;
+import pages.bps.AssetsPage;
+import pages.bps.MetadataFormPage;
 import utils.BaseTest;
 
 public class AS400UploadTest extends BaseTest {

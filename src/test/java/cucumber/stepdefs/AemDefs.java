@@ -3,8 +3,7 @@ package cucumber.stepdefs;
 import cucumber.api.java.en.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import pages.BasePage;
-import pages.aem.AemBasePage;
+import pages.bps.AemBasePage;
 
 public class AemDefs extends AemBasePage {
 

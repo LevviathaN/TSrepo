@@ -3,8 +3,8 @@ package bps;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.aem.AssetsPage;
-import pages.aem.SkywordUploadPage;
+import pages.bps.AssetsPage;
+import pages.bps.SkywordUploadPage;
 import utils.BaseTest;
 
 public class SkywordUploadTest extends BaseTest {

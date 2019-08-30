@@ -3,8 +3,8 @@ package bps;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.aem.AssetsPage;
-import pages.aem.MetadataFormPage;
+import pages.bps.AssetsPage;
+import pages.bps.MetadataFormPage;
 import utils.BaseTest;
 
 public class AssetRelationTest extends BaseTest {

@@ -3,8 +3,8 @@ package bps;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.aem.AssetsPage;
-import pages.aem.CabUploadPage;
+import pages.bps.AssetsPage;
+import pages.bps.CabUploadPage;
 import utils.BaseTest;
 
 public class CabMetaUploadTest extends BaseTest {

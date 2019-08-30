@@ -2,7 +2,7 @@ package debug;
 
 import annotations.TestName;
 import org.testng.annotations.Test;
-import pages.aem.AssetsPage;
+import pages.bps.AssetsPage;
 import utils.BaseTest;
 
 public class DelayTest extends BaseTest {

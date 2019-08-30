@@ -3,8 +3,8 @@ package bps;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.aem.AssetsPage;
-import pages.aem.CollectionsPage;
+import pages.bps.AssetsPage;
+import pages.bps.CollectionsPage;
 import utils.BaseTest;
 
 public class AemCollectionsTest extends BaseTest {

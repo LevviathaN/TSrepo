@@ -3,7 +3,7 @@ package bps;
 import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.aem.AssetsPage;
+import pages.bps.AssetsPage;
 import utils.BaseTest;
 
 public class ContentFragmentTest extends BaseTest {

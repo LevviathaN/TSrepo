@@ -18,7 +18,7 @@ public class CucumberTest extends BaseTest {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
-    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
+    @Test(description = "Runs Cucumber Feature", dataProvider = "features")
     public void feature(CucumberFeatureWrapper cucumberFeature) {
         testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
     }

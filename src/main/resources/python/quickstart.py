@@ -10,9 +10,9 @@ from googleapiclient import discovery
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
-SPREADSHEET_ID = '17Gi72bVavI5Huj32h11-KeZsxfpecwtfZvaiqLu4IOQ'
+SPREADSHEET_ID = '1bAO_VemYTyjdLxj9KMbYu5yEGyDJJXpyB6ET9pcMbts'
 RANGE_NAME = 'Test!A1'
-TICKETS_PAGE_ID = '195260292'
+TICKETS_PAGE_ID = '1509802357'
 
 # Paths
 PATH_TO_CSV = '/Users/ruslanlevytskyi/Downloads/JIRA.csv'
@@ -22,7 +22,8 @@ PATH_TO_CREDS = os.path.dirname(os.path.realpath(__file__))+'/credentials.json'
 
 def main():
     service = authorisation()
-    pasteCsv(PATH_TO_CSV, service)
+    # pasteCsv(PATH_TO_CSV, service)
+    return readFromSheet('Test!A1:C3', service)
 
 
 def authorisation():
@@ -48,6 +49,15 @@ def authorisation():
     return service
 
 
+def readFromSheet(range, srvc):
+    request = srvc.spreadsheets().values().get(spreadsheetId='1bAO_VemYTyjdLxj9KMbYu5yEGyDJJXpyB6ET9pcMbts',
+                                               range=range)
+    response = request.execute()
+    values = response.get('values', [])
+    print(values)
+    return values
+
+
 def pasteCsv(csvFile, srvc):
 
     with open(csvFile, 'r') as f:
@@ -66,7 +76,9 @@ def pasteCsv(csvFile, srvc):
             }
         }]
     }
-    request = srvc.spreadsheets().batchUpdate(spreadsheetId=SPREADSHEET_ID, body=body)
+    # request = srvc.spreadsheets().batchUpdate(spreadsheetId=SPREADSHEET_ID, body=body)
+    request = srvc.spreadsheets().values().get(spreadsheetId='1bAO_VemYTyjdLxj9KMbYu5yEGyDJJXpyB6ET9pcMbts',
+                                               range='Test!A1:C3')
     response = request.execute()
 
     pprint(response)
