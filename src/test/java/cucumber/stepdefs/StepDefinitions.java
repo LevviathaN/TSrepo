@@ -20,6 +20,7 @@ public class StepDefinitions extends BasePage {
 
     @Given("^I am on the (Assets|Collections) Page$")
     public void i_am_on_the_home_page(String page) {
+        //todo: create pages enum
         switch(page){
             case "Assets":
                 driver().get("https://author-bass-assets-stage65.adobecqms.net/assets.html/content/dam");
@@ -37,9 +38,9 @@ public class StepDefinitions extends BasePage {
         clickOnAnyElement(byText(element));
     }
 
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is ([^\"]*)$")
     public void i_click_on_the_n_button(String element, String nmb) {
-        clickByText("//body/descendant::*[text()='" + element + "'][" + Integer.parseInt(nmb) + "]");
+        clickOnElement(By.xpath("//body/descendant::*[text()='" + element + "'][" + Integer.parseInt(nmb) + "]"));
     }
 
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
@@ -69,9 +70,9 @@ public class StepDefinitions extends BasePage {
     }
 
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
-    public void i_should_be_redirected_to_page(String page) {
+    public void i_should_be_redirected_to_page(String pageTitle) {
         System.out.println("Current page is " + driver().getTitle());
-        System.out.println("Expected page is " + page);
-        Assert.assertEquals(driver().getTitle(), page, "Current page is " + page);
+        System.out.println("Expected page is " + pageTitle);
+        Assert.assertEquals(driver().getTitle(), pageTitle, "Current page is " + pageTitle);
     }
 }

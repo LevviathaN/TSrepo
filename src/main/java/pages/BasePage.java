@@ -250,6 +250,8 @@ public class BasePage {
         waitForPageToLoad();
     }
 
+    //todo: rename to clickOnFirstVisibleElement and create another method called clickOnFirstInteractibleElement
+    //actually, if you have second, you don't need first
     public void clickOnAnyElement(By element, int... elementNumber){
         waitForPageToLoad();
         List<WebElement> elements = findElements(element);
