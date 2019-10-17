@@ -1,6 +1,7 @@
 package cucumber.stepdefs;
 
-import cucumber.api.java.en.*;
+import io.cucumber.java.en.*;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.BasePage;
 import utils.*;
@@ -34,6 +35,16 @@ public class StepDefinitions extends BasePage {
     @When("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
         clickOnAnyElement(byText(element));
+    }
+
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")
+    public void i_click_on_the_n_button(String element, String nmb) {
+        clickByText("//body/descendant::*[text()='" + element + "'][" + Integer.parseInt(nmb) + "]");
+    }
+
+    @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
+    public void fill_field(String field, String text){
+        findElement(By.xpath("//input[@name='" + field + "']")).sendKeys(text);
     }
 
     @When("^I wait for ([^\"]*) seconds$")

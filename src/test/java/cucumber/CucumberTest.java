@@ -1,7 +1,7 @@
 package cucumber;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.*;
+import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.*;
 import org.testng.annotations.*;
 import utils.BaseTest;
 
@@ -20,13 +20,24 @@ public class CucumberTest extends BaseTest {
 
     @Test(description = "Runs Cucumber Feature", dataProvider = "features")
     public void feature(CucumberFeatureWrapper cucumberFeature) {
-        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
+//        testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
     }
 
-    @DataProvider
-    public Object[][] features() {
-        return testNGCucumberRunner.provideFeatures();
+    @Test(description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
+    public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
+// the 'featureWrapper' parameter solely exists to display the feature file in a test report
+        testNGCucumberRunner.runScenario(pickleWrapper.getPickleEvent());
     }
+
+//    @DataProvider
+//    public Object[][] features() {
+//        return testNGCucumberRunner.provideFeatures();
+//    }
+//
+//    @DataProvider
+//    public Object[][] scenarios() {
+//        return testNGCucumberRunner.provideFeatures();
+//    }
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
