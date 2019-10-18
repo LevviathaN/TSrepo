@@ -22,6 +22,7 @@ import utils.Tools;
 
 public class BasePage {
 
+    //todo: maybe we should consider to disable reporter messages about primitive actions and validations
     public static ReporterManager reporter = ReporterManager.Instance;
 
     public final static String BASE_URL = (FileIO.getConfigProperty("Environment"));
@@ -223,6 +224,7 @@ public class BasePage {
         dropdown.selectByVisibleText(value);
     }
 
+    //todo: refactor all findBy and clickBy element using click(bySomething)
     public WebElement findByText(String element){
         reporter.info("finding '" + element + "' element");
         return findElement(byText(element));
@@ -235,6 +237,10 @@ public class BasePage {
 
     public By byText(String element){
         return By.xpath("//*[text()='" + element + "']");
+    }
+
+    public By byAttribute(String attributeName, String attributeValue){
+        return By.xpath("//*[@" + attributeName + "='" + attributeValue + "']");
     }
 
     public static void clickOnElementIgnoreException(By element, int... timeout) {

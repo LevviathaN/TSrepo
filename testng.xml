@@ -1,9 +1,0 @@
-<suite name="Suite" parallel="methods" thread-count="5">
-    <test name="Test">
-        <classes>
-
-            <class name="smoke.Smoke_PlushPillow_FullTest" />
-
-        </classes>
-    </test> <!-- test -->
-</suite> <!-- suite -->
