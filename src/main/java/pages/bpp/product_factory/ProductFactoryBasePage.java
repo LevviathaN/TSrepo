@@ -12,20 +12,38 @@ public class ProductFactoryBasePage extends BasePage {
 
     /*__________________Credentials_________________*/
     String pfBaseUrl = "http://pf-services-qa-1697893966.eu-west-2.elb.amazonaws.com/login";
-    String aemLogin = "samuelslade@bpp.com";
-    String aemPass = "Password1";
+    String SPSLogin = "samuelslade@bpp.com";
+    String SPSPass = "Password1";
+    String PSLogin = "craigolivant@bpp.com";
+    String PSPass = "Password1";
 
 
 
     /**___________________________________PAGE METHODS_________________________________*/
 
-    public void logIn(){
+    public void logIn(String username, String password){
         reporter.info("Logging into ProductFactory");
         driver().get(pfBaseUrl);
         clickByText("Sign in with Auth0");
-        findElement(byAttribute("name","email")).sendKeys(aemLogin);
-        findElement(byAttribute("name","password")).sendKeys(aemPass);
+        findElement(byAttribute("name","email")).sendKeys(username);
+        findElement(byAttribute("name","password")).sendKeys(password);
         findElement(byAttribute("name","submit")).click();
+    }
+
+    public void logInAs(String role){
+        switch(role){
+            case "Senior Product Setter":
+                reporter.info("as Senior Product Setter");
+                logIn(SPSLogin, SPSPass);
+                break;
+            case "Product Setter":
+                reporter.info("as Product Setter");
+                logIn(PSLogin, PSPass);
+                break;
+//            default:
+//                logIn(SPSLogin, SPSPass);
+//                break;
+        }
     }
 
     public void createNewBody(String bodyShortName, String bodyName){

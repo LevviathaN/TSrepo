@@ -1,6 +1,6 @@
 Feature: Product Factory
     As a product setter
-    I want to be able to create Bodies in Product Factory
+    I want to be able to log into Product Factory
     In order to (just cause)
 
   Scenario: Log In
@@ -11,15 +11,3 @@ Feature: Product Factory
     And I click on the "Login" button which is 2
     When I wait for 4 seconds
     Then I should be redirected to the "Product Factory" page
-
-  Scenario Outline: Create New Body
-    When I click on the "Bodies" link
-    Then I click on the "Create" button
-    And I fill the "Short Name" field with "<short_name>"
-    And I fill the "Name" field with "<name>"
-
-    Examples:
-    |short_name    |name     |
-    |SomeShortName1|SomeName1|
-    |SomeShortName2|SomeName2|
-    |SomeShortName3|SomeName3|

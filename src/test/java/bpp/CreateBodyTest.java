@@ -13,7 +13,7 @@ public class CreateBodyTest extends BaseTest {
     public void createBodyTest(){
         ProductFactoryBasePage pf = ProductFactoryBasePage.Instance;
 
-        pf.logIn();
+        pf.logInAs("Senior Product Setter");
         pf.createNewBody("SomeShortName","SomeName");
         Assert.assertTrue(pf.isElementPresent(pf.byText("SomeShortName")),
                 "Success message appeared");
