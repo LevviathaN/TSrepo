@@ -1,4 +1,5 @@
 @PFTest
+@Ignore
 #@Ignore
 Feature: Product Factory
   As a product setter
