@@ -16,7 +16,7 @@ import java.util.List;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"not @Ignore"},
+        tags = {"@Bodies"},
         plugin = {"pretty"})
 
 public class CucumberTest  extends BaseTest {
