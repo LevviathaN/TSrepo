@@ -21,6 +21,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -57,25 +59,41 @@ public class ReusableHelper {
         fileContent = fileContent + step;
     }
 
-    public ArrayList<String> getReusablePickleSteps(String pickleName){
+    public ArrayList<String> getReusablePickleSteps(String pickleFullName){
+
+        String pickleName = "";
+
+        Pattern p = Pattern.compile("\"([^\"]*)\"");
+        Matcher m = p.matcher(pickleFullName);
+        while (m.find()) {
+            pickleName = m.group(1);
+        }
         ArrayList<String> stepsList = new ArrayList<>();
 
         try{
-            File inputFile = new File("TestDoablesBeans.xml");
+            File inputFile = new File("src/main/resources/data/bpp/ReusableTestSteps.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
 
+            Node reusablesNode = doc.getElementsByTagName("reusables").item(0);
+            Element reusablesElement = (Element) reusablesNode;
+//            System.out.println("Reusable tag : " + reusablesElement.getTagName());
+//            System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
+//            System.out.println("----------------------------");
 
-            NodeList reusablesList = doc.getElementsByTagName("reusable");
+            NodeList reusablesList = reusablesElement.getElementsByTagName("reusable");
             for (int i = 0; i < reusablesList.getLength(); i++) {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
+//                System.out.println(reusableElement.getAttribute("name"));
                 if(reusableElement.getAttribute("name").equals(pickleName)){
+//                    System.out.println("We found reusable:" + reusableElement.getAttribute("name"));
                     NodeList steps = reusableElement.getElementsByTagName("step");
                     for (int j = 0; j < steps.getLength(); j++){
                         stepsList.add(steps.item(j).getTextContent());
+//                        System.out.println(steps.item(j).getTextContent());
                     }
                 }
             }

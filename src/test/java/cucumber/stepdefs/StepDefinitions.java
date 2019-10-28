@@ -75,4 +75,9 @@ public class StepDefinitions extends BasePage {
         System.out.println("Expected page is " + pageTitle);
         Assert.assertEquals(driver().getTitle(), pageTitle, "Current page is " + pageTitle);
     }
+
+    @Then("^I execute \"([^\"]*)\" reusable step$")
+    public void i_execute_reusable_step(String pageTitle) {
+        System.out.println("Executing \"" + driver().getTitle() + "\" reusable step");
+    }
 }

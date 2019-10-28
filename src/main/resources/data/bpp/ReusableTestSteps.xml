@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <reusables>
     <reusable name="Log In">
         <step>I am on "http://pf-services-qa-1697893966.eu-west-2.elb.amazonaws.com" URL</step>

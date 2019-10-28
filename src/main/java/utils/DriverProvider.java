@@ -6,13 +6,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.*;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.logging.Level;
 
 /**
@@ -66,6 +65,49 @@ public class DriverProvider {
 
     }
 
+    static public ChromeDriver getChromeBStack(){
+
+        //downloads folder to automatically save the downloaded files
+        File folder = new File("downloads");
+        folder.mkdir();
+
+        System.setProperty("webdriver.chrome.driver", CHROME_PATH);
+
+        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.OFF);
+        caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        //chromeOptions.addArguments("--kiosk");
+//        chromeOptions.addArguments("--start-maximized");
+//        chromeOptions.addArguments("--start-fullscreen");
+//        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--window-size=1920,1080");
+
+        HashMap<String, Object> chromePreferences = new HashMap<>();
+        chromePreferences.put("profile.password_manager_enabled", "false");
+        chromePreferences.put("credentials_enable_service", "false");
+        chromePreferences.put("profile.default_content_settings.popups", 0);
+        chromePreferences.put("download.default_directory", folder.getAbsolutePath());
+        chromeOptions.setCapability("chrome.prefs", chromePreferences);
+
+        chromeOptions.setCapability("browserstack.debug", "true");
+        chromeOptions.setCapability("browserstack.video", "true");
+        chromeOptions.setCapability("browserstack.networkLogs", "true");
+        chromeOptions.setCapability("build", "automation");
+        chromeOptions.setCapability("browserstack.local", "true");
+        chromeOptions.setCapability("browserstack.localIdentifier", "TestAutomation");
+        chromeOptions.setCapability("browserstack.geoLocation", "GB");
+        chromeOptions.setCapability("browserstack.timeouts", "{\"implicit\"=>0, \"pageLoad\"=>60000, \"script\"=>60000}");
+
+        caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
+
+        return new ChromeDriver(caps);
+
+    }
+
 
     public static WebDriver getDriver() throws MalformedURLException {
         //if (instance == null)
@@ -77,6 +119,10 @@ public class DriverProvider {
             else if (getCurrentBrowserName().equals(BrowserType.CHROME)){
                 //instance = getChrome();
                 instance.set(getChrome());
+            }
+            else if (getCurrentBrowserName().equals(BrowserType.CHROME)){
+                //instance = getChrome();
+                instance.set(getChromeBStack());
             }
         //return instance;
         return instance.get();
@@ -94,6 +140,8 @@ public class DriverProvider {
             if (FileIO.getConfigProperty("Driver").equals("firefox"))
                 BROWSER_TYPE = BrowserType.FIREFOX;
             else if (FileIO.getConfigProperty("Driver").equals("chrome"))
+                BROWSER_TYPE = BrowserType.CHROME;
+            else if (FileIO.getConfigProperty("Driver").equals("bstack_chrome"))
                 BROWSER_TYPE = BrowserType.CHROME;
         return BROWSER_TYPE;
     }

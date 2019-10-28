@@ -1,5 +1,6 @@
 package cucumber;
 
+import gherkin.events.PickleEvent;
 import gherkin.pickles.Argument;
 import gherkin.pickles.Pickle;
 import gherkin.pickles.PickleLocation;
@@ -51,20 +52,25 @@ public class CucumberTest  extends BaseTest {
             dataProvider = "scenarios"
     )
     public void runScenarioWithReusable(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
-        Pickle currentPickle = pickleWrapper.getPickleEvent().pickle;
+        PickleEvent currentPickle = pickleWrapper.getPickleEvent();
         PickleStep step;
-        for(int iter = 0; iter < currentPickle.getSteps().size(); iter++){
-            step = currentPickle.getSteps().get(iter);
+        for(int iter = 0; iter < currentPickle.pickle.getSteps().size(); iter++){
+            step = currentPickle.pickle.getSteps().get(iter);
+            step.getText();
             if(step.getText().contains("reusable")){
                 System.out.println("reusable: " + step.getText());
 
-                PickleLocation tempLocation = new PickleLocation(7,3);
+                PickleLocation tempLocation = new PickleLocation(7,21);
                 List<Argument> tempList = new ArrayList<Argument>();
                 List<PickleLocation> tempLoc = new ArrayList<PickleLocation>();
-                PickleStep tempStep = new PickleStep(reusableHelper.getReusablePickleSteps(step.getText()).get(0), tempList, tempLoc);
+                tempLoc.add(tempLocation);
+                ArrayList<String> stepTextList = reusableHelper.getReusablePickleSteps(step.getText());
+                String stepText = stepTextList.get(0);
+                PickleStep tempStep = new PickleStep(stepText, tempList, tempLoc);
+                currentPickle.pickle.getSteps().add(1, tempStep);
             }
         }
-        this.testNGCucumberRunner.runScenario(pickleWrapper.getPickleEvent());
+        this.testNGCucumberRunner.runScenario(currentPickle);
     }
 
     @DataProvider(parallel = true)
