@@ -1,4 +1,4 @@
-#@Ignore
+@Ignore @Bodies
 Feature: Product Factory Bodies
     As a product setter
     I want to be able to create Bodies in Product Factory

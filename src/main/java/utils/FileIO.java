@@ -24,6 +24,7 @@ import javax.xml.xpath.XPathFactory;
 // Properties
 // XML
 
+/** Used to read/write properties from properties files and taking screenshots */
 public class FileIO {
 
     static String TARGET_FOLDER = "target";
