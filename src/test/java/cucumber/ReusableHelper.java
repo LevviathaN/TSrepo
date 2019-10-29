@@ -61,13 +61,13 @@ public class ReusableHelper {
 
     public ArrayList<String> getReusablePickleSteps(String pickleFullName){
 
-        String pickleName = "";
+        String pickleName = pickleFullName;
 
-        Pattern p = Pattern.compile("\"([^\"]*)\"");
-        Matcher m = p.matcher(pickleFullName);
-        while (m.find()) {
-            pickleName = m.group(1);
-        }
+//        Pattern p = Pattern.compile("\"([^\"]*)\"");
+//        Matcher m = p.matcher(pickleFullName);
+//        while (m.find()) {
+//            pickleName = m.group(1);
+//        }
         ArrayList<String> stepsList = new ArrayList<>();
 
         try{

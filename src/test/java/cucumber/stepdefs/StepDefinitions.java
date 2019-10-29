@@ -1,5 +1,6 @@
 package cucumber.stepdefs;
 
+import cucumber.ReusableRunner;
 import cucumber.api.java.en.*;
 //import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
@@ -39,7 +40,7 @@ public class StepDefinitions extends BasePage {
         clickOnAnyElement(byText(element));
     }
 
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is ([^\"]*)$")
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")
     public void i_click_on_the_n_button(String element, String nmb) {
         clickOnElement(By.xpath("//body/descendant::*[text()='" + element + "'][" + Integer.parseInt(nmb) + "]"));
     }
@@ -49,7 +50,7 @@ public class StepDefinitions extends BasePage {
         findElement(By.xpath("//input[@name='" + field + "']")).sendKeys(text);
     }
 
-    @When("^I wait for ([^\"]*) seconds$")
+    @When("^I wait for \"([^\"]*)\" seconds$")
     public void wait_for(String seconds) {
         sleepFor(Integer.parseInt(seconds)*1000);
     }
@@ -78,7 +79,7 @@ public class StepDefinitions extends BasePage {
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step$")
-    public void i_execute_reusable_step(String pageTitle) {
-        System.out.println("Executing \"" + driver().getTitle() + "\" reusable step");
+    public void i_execute_reusable_step(String reusableName) {
+        ReusableRunner.executeReusable(reusableName);
     }
 }

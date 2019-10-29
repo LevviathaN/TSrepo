@@ -1,27 +1,61 @@
 package cucumber;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import cucumber.stepdefs.StepDefinitions;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 public class ReusableRunner {
+    public static void executeReusable(String reusableName){
+        StepDefinitions stepDefs = new StepDefinitions();
+        ReusableHelper helper = new ReusableHelper();
+        System.out.println("Start executing \"" + reusableName + "\" reusable step");
+        System.out.println("it contains " + helper.getReusablePickleSteps(reusableName).size() + " reusable step");
 
-    public void runReusables(){
+        for(String step : helper.getReusablePickleSteps(reusableName)){
+            System.out.println("Executing: " + step);
 
-        ReusableHelper reusableHelper = new ReusableHelper();
+            String arg1, arg2 = "";
+            arg1 = getQuotet(step, '"').get(0);
+            if(getQuotet(step, '"').toArray().length==2){
+                arg2 = getQuotet(step, '"').get(1);
+            }
 
-        ApplicationContext context = new FileSystemXmlApplicationContext("TestDoablesBeans.xml");
-
-        // Run through the Beans xml
-        ReusableClass mainDoable = (ReusableClass) context.getBean("ExecuteDoable");
-
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-
-//        Runnable runnable = new ReusableClass(reusableHelper.);
-//        executor.execute(runnable);
+            //General stepdefs
+            if(step.matches("^I am on \"([^\"]*)\" URL$")){
+                stepDefs.i_am_on_url(arg1);
+            }else if(step.matches("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")){
+                stepDefs.i_click_on_the_button(arg1);
+            }else if(step.matches("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")){
+                stepDefs.i_click_on_the_n_button(arg1, arg2);
+            }else if(step.matches("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")){
+                stepDefs.fill_field(arg1, arg2);
+            }else if(step.matches("^I wait for \"([^\"]*)\" seconds$")){
+                stepDefs.wait_for(arg1);
+            }else if(step.matches("^I should be redirected to the \"([^\"]*)\" page$")){
+                stepDefs.i_should_be_redirected_to_page(arg1);
+            }
+        }
     }
+
+    public static List<String> getQuotet(final String input, final char quote) {
+        final ArrayList<String> result = new ArrayList<>();
+        int n = -1;
+        for(int i = 0; i < input.length(); i++) {
+            if(input.charAt(i) == quote) {
+                if(n == -1) { //not currently inside quote -> start new quote
+                    n = i + 1;
+                } else { //close current quote
+                    result.add(input.substring(n, i));
+                    n = -1;
+                }
+            }
+        }
+        return result;
+    }
+
+//    public static void main(String[] args){
+//        executeReusable("Log In");
+//    }
 }
