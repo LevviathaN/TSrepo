@@ -11,10 +11,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-import static utils.ProductSync.reporter;
-
 
 public class ScreenshotComparison {
+
+    static ReporterManager reporter = ReporterManager.Instance;
 
 
     static String TARGET_FOLDER = "target";
