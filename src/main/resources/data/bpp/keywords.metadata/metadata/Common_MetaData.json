@@ -1,0 +1,54 @@
+{"credentials":[
+  { "tag":"BPPUSER", "value":"crmteamfusion@noah_crm_bpp.com.noahqa" },
+  { "tag":"BPPPASSWORD", "value":"Fusion12345" },
+  { "tag":"BPPADMINUSER", "value":"crmteamfusionadmin@gmail.com.noahqa" },
+  { "tag":"BPPADMINPASSWORD", "value":"Fusion12345" },
+  { "tag":"SELFREGUSER", "value":"tchin@apollo.edu" },
+  { "tag":"SELFREGPASSWORD", "value":"Apollo01!" },
+  { "tag":"BPPPORTALUSER", "value":"b.uftflowers" },
+  { "tag":"BPPPORTALPASSWORD", "value":"Uf101416" },
+  { "tag":"BPPSSBUSER", "value":"a.bray" },
+  { "tag":"BPPSSBPASSWORD", "value":"Br062117" },
+  { "tag":"BPPVLEUSER", "value":"ateam" },
+  { "tag":"BPPVLEPASSWORD", "value":"Welcome1!" },
+  { "tag":"OPENBRAVOUSER", "value":"BP5041772" },
+  { "tag":"OPENBRAVOPASSWORD", "value":"Ch102116" },
+  { "tag":"BPPBANNERUSER", "value":"BP5080920" },
+  { "tag":"BPPBANNERPASSWORD", "value":"St050219" },
+  { "tag":"YAHOOEMAILUSER", "value":"ayaks.spam" },
+  { "tag":"YAHOOEMAILPASSWORD", "value":"Qwerty2@" },
+  { "tag":"YAHOOEMAILCASEUSER", "value":"casemail777" },
+  { "tag":"YAHOOEMAILCASEPASSWORD", "value":"Casemail123" },
+  { "tag":"PRODUCTFACTORYUSER", "value":"samuelslade@bpp.com" },
+  { "tag":"PRODUCTFACTORYPASSWORD", "value":"Password1" },
+  { "tag":"PRODUCTFACTORYDATABASEUSER", "value":"neo4j" },
+  { "tag":"PRODUCTFACTORYDATABASEPASSWORD", "value":"Password1" },
+  { "tag":"PRODUCTFACTORYJUNIORPRODUCTSETTER", "value":"craigolivant@bpp.com" },
+  { "tag":"PRODUCTFACTORYJUNIORPSPASSWORD", "value":"Password1" }
+],
+  "keyboard": [
+    { "tag":"ENTER", "value":"ENTER" },
+    { "tag":"REFRESH", "value":"F5" },
+    { "tag":"INSPECT", "value":"F12" },
+    { "tag":"BACKSPACE", "value":"BACK_SPACE" }
+  ],
+  "links": [
+    { "tag":"SALESFORCEURL", "value":"https://cs21.salesforce.com/home/home.jsp" },
+    { "tag":"BPPRFIURL", "value":"http://noahqa-bpp-13fd3e55188.cs17.force.com/rfi" },
+    { "tag":"SELFREGURL", "value":"https://bpp-test.apolloglobal.int/registration/login" },
+    { "tag":"BPPCASLOGIN", "value":"http://bpp-test.apolloglobal.int/ncas" },
+    { "tag":"BPPPORTAL", "value":"https://bpp-test.apolloglobal.int/ncas/login?service=https://bpp-fusion-test.apolloglobal.int/ncas/sso-login" },
+    { "tag":"BPPSSB", "value":"https://bpp-cas-test.apolloglobal.int/cas/login?service=http%3A%2F%2Fbpp-ssb-test.apolloglobal.int%3A%2Fssomanager%2Fc%2FSSB%3Fname%3Dhomepage" },
+    { "tag":"BPPVLEURL", "value":"http://bpp-fusion-test.apolloglobal.int/vle/login/index.php?authCAS=NOCAS" },
+    { "tag":"BPPVLEADMINURL", "value":"http://bpp-fusion-test.apolloglobal.int/vle/admin/search.php" },
+    { "tag":"OPENBRAVOURL", "value":"http://bpp-test.apolloglobal.int/openbravo/" },
+    { "tag":"BPPBANNERURL", "value":"http://bpp-sis-test.apolloglobal.int/" },
+    { "tag":"YAHOOMAILURL", "value":"https://login.yahoo.com/?.src=ym&.lang=en-US&.intl=us&.done=https%3A%2F%2Fmail.yahoo.com%2Fd" },
+    { "tag":"PRODUCTFACTORYURL", "value":"http://pf-services-qa-1697893966.eu-west-2.elb.amazonaws.com" },
+    { "tag":"PRODUCTFACTORYDATABASEURL", "value":"http://ec2-35-178-174-237.eu-west-2.compute.amazonaws.com:7474" }
+  ],
+  "validData": [
+    { "tag":"CUSTOMERGROUP", "value":"SELFFUND" },
+    { "tag":"MSCMANAGEMENTOFFERING", "value":"MSc Management CRO PTD 201819 for student application" }
+  ]
+}

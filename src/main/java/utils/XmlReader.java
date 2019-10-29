@@ -6,7 +6,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import utils.bpp.UltimateBPParser;
+
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * Created by Ruslan Levytskyi on 05.07.19.
@@ -14,55 +17,100 @@ import java.io.File;
 
 public class XmlReader {
 
-    private static File fXmlFile;
-    private static DocumentBuilderFactory dbFactory;
-    private static DocumentBuilder dBuilder;
-    private static Document doc;
-    private static Node rootNode;
+    String filePath;
+    String fileName;
+    String fileContent;
+    Document doc;
 
-    public XmlReader(String file){
-        try{
-            fXmlFile = new File(file);
-            dbFactory = DocumentBuilderFactory.newInstance();
-            dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(fXmlFile);
+    public XmlReader(String _filePath){
+        filePath = _filePath;
+        fileContent = "";
+        doc = getDocument();
+    }
+
+
+    public void initiateRead(){
+
+    }
+
+    public Document getDocument(){
+        try {
+            File inputFile = new File(filePath);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-//            rootNode = doc.getDocumentElement();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return doc;
     }
 
-    //BPS specific method
-    public int getDescriptionsQty(){
-        NodeList nList = doc.getElementsByTagName("productDescriptions2018");
-        return nList.getLength();
+    public NodeList getNodeListByTagName(String tagName){
+        return doc.getElementsByTagName(tagName);
     }
 
-    public String getActionType(){
-        return "";
+    public Node getNodeByTagName(String tagName, int index){
+        return getNodeListByTagName(tagName).item(index);
     }
 
-    public void go() {
+    public Element getElementByTagName(String tagName, int index){
+        return (Element) getNodeByTagName(tagName, index);
+    }
+
+
+
+    public NodeList getNodeListOfElementByTagName(Element element, String tagName){
+        return element.getElementsByTagName(tagName);
+    }
+
+    public Node getNodeOfElementByTagName(Element element, String tagName, int index){
+        return getNodeListOfElementByTagName(element, tagName).item(index);
+    }
+
+
+
+    public void mai(String[] args) {
+
+        UltimateBPParser featureCreator = new UltimateBPParser();
+        featureCreator.initiateFeatureFile();
+
 
         try {
-            NodeList nList = doc.getElementsByTagName("productDescriptions2018");
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
 
-                Node nNode = nList.item(temp);
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
-                    Element eElement = (Element) nNode;
+            Node beanListNode = doc.getElementsByTagName("list").item(0);
+            Element beanListElement = (Element) beanListNode;
+//            System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
+            NodeList beanList = beanListElement.getElementsByTagName("bean");
+//            System.out.println("----------------------------");
 
-                    System.out.println("Title : " + eElement.getElementsByTagName("title").item(0).getTextContent());
-                    System.out.println("Author : " + eElement.getElementsByTagName("author").item(0).getTextContent());
-                    System.out.println("Action : " + eElement.getElementsByTagName("action").item(0).getTextContent());
-                    System.out.println("ID : " + eElement.getElementsByTagName("id").item(0).getTextContent());
+            for (int i = 0; i < beanList.getLength(); i++) {
+                HashMap<String,String> parametersMap = new HashMap<>();
+
+                Node beanNode = beanList.item(i);
+                Element beanElement = (Element) beanNode;
+//                System.out.println(beanNode.getNodeName() + " : " + beanElement.getAttribute("class"));
+                parametersMap.put("doableName",beanElement.getAttribute("class"));
+                NodeList propertiesList = beanElement.getElementsByTagName("property");
+
+
+                for (int j = 0; j < propertiesList.getLength(); j++) {
+                    Node propertyNode = propertiesList.item(j);
+//                    System.out.println("\n" + propertyNode.getNodeName());
+                    Element propertyElement = (Element) propertyNode;
+
+//                    System.out.println(propertyElement.getAttribute("name") + " : " + propertyElement.getAttribute("value"));
+                    parametersMap.put(propertyElement.getAttribute("name"),propertyElement.getAttribute("value"));
                 }
+
+                featureCreator.stepBuilder(parametersMap);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        featureCreator.createDocument();
     }
 }
