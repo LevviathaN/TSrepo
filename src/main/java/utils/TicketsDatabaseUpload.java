@@ -4,6 +4,12 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import java.io.*;
 
+
+/**
+ * created by rlevytskyi
+ *
+ * Used to export tickets database from Jira to spreadsheet
+ * */
 public class TicketsDatabaseUpload extends BasePage {
 
     String pythonScriptPath = "/Users/ruslanlevytskyi/PycharmProjects/GoogleSheetsApi/quickstart.py";

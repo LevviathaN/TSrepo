@@ -7,4 +7,4 @@ Feature: Product Factory Pricing Matrices
   In order to (just cause)
 
   Scenario: Create Pricing Matrix
-    Given I leave comment: "Comment"
+    Given I am logged into Product Factory as "Senior Product Setter"

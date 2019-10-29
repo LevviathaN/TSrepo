@@ -9,16 +9,14 @@ public class UserEntity extends BaseEntity{
     String username;
     String password;
 
-    public UserEntity(String firstname, String lastname, String password, String username,  ContactsEntity contacts, AddressEntity address) {
+    public UserEntity(String firstname, String lastname, String password, String username, AddressEntity address) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         this.password = password;
-        this.contacts = contacts;
         this.address = address;
     }
 
-    ContactsEntity contacts;
     AddressEntity address;
 
     public UserEntity() { }
@@ -46,14 +44,6 @@ public class UserEntity extends BaseEntity{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public ContactsEntity getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(ContactsEntity contacts) {
-        this.contacts = contacts;
     }
 
     public AddressEntity getAddress() {

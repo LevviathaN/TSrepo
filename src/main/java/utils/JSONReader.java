@@ -27,6 +27,7 @@ import java.util.*;
  *
  *
  * Interaction with JSON files
+ * Used to parse JSONS (main/resources/data/staging) into Entities Classes (main/java/entities)
  *
  *
  */

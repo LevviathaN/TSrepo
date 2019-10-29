@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by Ruslan Levytskyi on 05.07.19.
+ * Created by Ruslan Levytskyi at 05.07.19.
+ *
+ * Used to work with CSV files
  */
 
 public class CsvReader {
