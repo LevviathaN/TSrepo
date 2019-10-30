@@ -1,5 +1,5 @@
 @Ignore
-@BPP
+@PricingMatrices
 
 Feature: Product Factory Pricing Matrices
   As a product setter

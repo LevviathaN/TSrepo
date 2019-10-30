@@ -1,5 +1,6 @@
 package cucumber;
 
+import cucumber.stepdefs.ProductFactoryDefs;
 import cucumber.stepdefs.StepDefinitions;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 public class ReusableRunner {
     public static void executeReusable(String reusableName){
         StepDefinitions stepDefs = new StepDefinitions();
+        ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
         ReusableHelper helper = new ReusableHelper();
         System.out.println("Start executing \"" + reusableName + "\" reusable step");
         System.out.println("it contains " + helper.getReusablePickleSteps(reusableName).size() + " reusable step");
@@ -35,6 +37,15 @@ public class ReusableRunner {
                 stepDefs.wait_for(arg1);
             }else if(step.matches("^I should be redirected to the \"([^\"]*)\" page$")){
                 stepDefs.i_should_be_redirected_to_page(arg1);
+            }
+
+            //Product Factory stepdefs
+            else if(step.matches("^I am logged into Product Factory as \"([^\"]*)\"$")){
+                pfStepDefs.log_in_as(arg1);
+            }else if(step.matches("^I fill the \"([^\"]*)\" PF field with \"([^\"]*)\"$")){
+                pfStepDefs.fill_pf_field(arg1, arg2);
+            }else if(step.matches("^I select \"([^\"]*)\" from PF dialog$")){
+                pfStepDefs.select_from_dialog(arg1);
             }
         }
     }

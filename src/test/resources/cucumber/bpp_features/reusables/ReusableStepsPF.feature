@@ -13,3 +13,13 @@ Feature: Product Factory
     And I click on the "Login" button which is "2"
     When I wait for "4" seconds
     Then I should be redirected to the "Product Factory" page
+
+  Scenario: Create Body Financial Dimension
+    When I click on the "Financial Dimensions" link
+    Then I click on the "Create" button
+    And I fill the "Code" PF field with "SomeCode1234"
+    And I fill the "Description" PF field with "Some Description"
+    And I click on the "Change" button
+    And I select "Body" from PF dialog
+    And I click on the "Save" button
+    Then I should see the "SomeCode1234" element

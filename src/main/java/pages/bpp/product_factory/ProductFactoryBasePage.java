@@ -1,6 +1,7 @@
 package pages.bpp.product_factory;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 
 public class ProductFactoryBasePage extends BasePage {
@@ -55,9 +56,29 @@ public class ProductFactoryBasePage extends BasePage {
         clickByText("Save");
     }
 
-
-
     public By pfField(String fieldName){
         return By.xpath("//label[text()='" + fieldName + "']/following-sibling::div/input");
+    }
+
+    public By pfEdit(String fieldName){
+        return By.xpath("//td[text()='" + fieldName + "']/following-sibling::td/button");
+    }
+
+    public void pfSelectFromModal(String value){
+        clickOnElement(By.xpath("//td[text()='" + value + "']/following-sibling::td/button/span[text()='Select']"));
+    }
+
+    public void pfCheckbox(String element, boolean shouldBeChecked){
+        WebElement checkbox = findElement(By.xpath("//td[text()='" + element + "']/preceding-sibling::td/span/span/input"));
+        if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
+            checkbox.click();
+        }
+    }
+
+    public void pfToggle(String element, boolean shouldBeChecked){
+        WebElement checkbox = findElement(By.xpath("//span[text()='" + element + "']/preceding-sibling::span/span/span/input"));
+        if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
+            checkbox.click();
+        }
     }
 }

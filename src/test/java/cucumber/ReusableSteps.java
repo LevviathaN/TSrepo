@@ -61,7 +61,7 @@ public class ReusableSteps extends BaseTest {
         fileContent = fileContent + step;
     }
 
-    @DataProvider(parallel = true)
+    @DataProvider()
     public Object[][] scenarios() {
         return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }
