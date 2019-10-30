@@ -102,7 +102,7 @@ public class PreProcessFiles {
 
 			if (generateBeansXmlFile) {
 				NoahLogManager.getLogger().info("Current Project Version: " + propertiesHelper.getProperties().getProperty("build.version"));
-//todo comented				new BeansXmlGenerator().xmlGenerate(TEST_EXECUTION_FILE_NAME, TEST_EXECUTION_SHEET_NAME);
+				new BeansXmlGenerator().xmlGenerate(TEST_EXECUTION_FILE_NAME, TEST_EXECUTION_SHEET_NAME);
 			}
 			else {
 				return false;

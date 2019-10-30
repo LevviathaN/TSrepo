@@ -1,8 +1,7 @@
 package utils.bpp_old;
 
-import pages.BasePage;
 import utils.bpp_old.PreProcessFiles;
-//import utils.bpp_old.WebDriverThread;
+import utils.bpp_old.webdriver.WebDriverThread;
 import com.google.common.base.Function;
 import com.isomorphic.webdriver.ByScLocator;
 import org.hamcrest.Matcher;
@@ -95,7 +94,7 @@ public class SeleniumHelper {
         eventListener = new WebEventListener();
         driver.register(eventListener);
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, SECONDS);
         driver.manage().window().maximize();
     }
 
@@ -105,8 +104,7 @@ public class SeleniumHelper {
 
     private WebDriver instantiateDriver() {
         try {
-            return BasePage.driver();
-            //return new WebDriverThread().getDriver();
+            return new WebDriverThread().getDriver();
         } catch (Exception e) {
             throw new WebDriverException("Could not start the Driver", e);
         }
@@ -213,7 +211,7 @@ public class SeleniumHelper {
         Matcher<?> matcher = is(greaterThanOrEqualTo(numberOfWindows));
         new FluentWait<WebDriver>(driver).withTimeout(timeoutSeconds, SECONDS).pollingEvery(1000, MILLISECONDS)
                 .until((Function<WebDriver, Boolean>) d -> (matcher.matches(driver.getWindowHandles().size())));
-    }
+                    }
 
     /**
      * Action to wait while browser close extra windows and leaves the main one.
@@ -226,7 +224,7 @@ public class SeleniumHelper {
         Matcher<?> matcher = is(lessThanOrEqualTo(numberOfWindows));
         new FluentWait<WebDriver>(driver).withTimeout(timeoutSeconds, SECONDS).pollingEvery(1000, MILLISECONDS)
                 .until((Function<WebDriver, Boolean>) d -> (matcher.matches(driver.getWindowHandles().size())));
-    }
+                    }
 
     /**
      * Method to define type of locators to be used in Doable classes
@@ -659,7 +657,7 @@ public class SeleniumHelper {
                 .ignoring(ScriptTimeoutException.class)
                 .pollingEvery(2, SECONDS)
                 .until((Function<WebDriver, Boolean>) driver -> (Boolean) getInstance().driver.
-                        executeScript("jQuery.active == 0"));
+                            executeScript("jQuery.active == 0"));
     }
     /**
      * Action to imitate key press from keyboard

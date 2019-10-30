@@ -106,7 +106,7 @@ public class WebEventListener implements WebDriverEventListener {
 
     public void afterScript(String script, WebDriver driver) {
     }
-//
+
 //    @Override
 //    public void beforeSwitchToWindow(String s, WebDriver webDriver) {
 //

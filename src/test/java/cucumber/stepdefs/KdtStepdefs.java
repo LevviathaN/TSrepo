@@ -6,8 +6,8 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import utils.ReporterManager;
-import utils.bpp.ExecutionContextHandler;
-import utils.bpp.SeleniumHelper;
+import utils.bpp_old.ExecutionContextHandler;
+import utils.bpp_old.SeleniumHelper;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
