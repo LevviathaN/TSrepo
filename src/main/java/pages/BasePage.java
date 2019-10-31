@@ -5,6 +5,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -24,6 +25,8 @@ public class BasePage {
 
     //todo: maybe we should consider to disable reporter messages about primitive actions and validations
     public static ReporterManager reporter = ReporterManager.Instance;
+
+    public static HashMap<String, String> EXECUTION_CONTEXT = new HashMap<>();
 
     public final static String BASE_URL = (FileIO.getConfigProperty("Environment"));
 

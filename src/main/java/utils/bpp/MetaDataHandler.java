@@ -1,8 +1,11 @@
-package utils.bpp_old;
+package utils.bpp;
 
-import utils.bpp_old.PreProcessFiles;
 import datageneration.metadata.MetaData;
 import datageneration.metadata.MetaDataManager;
+import utils.ReporterManager;
+//import utils.bpp.NoahLogManager;
+import utils.bpp.PreProcessFiles;
+//import utils.bpp.Reporter;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,6 +24,8 @@ import java.util.TreeSet;
 
 //TODO improve the flexibility of providing the metadata folder path by end user
 public class MetaDataHandler {
+
+    static ReporterManager reporter = ReporterManager.Instance;
 
     //private static final Logger log = Logger.getLogger(MetaDataHandler.class);
 
@@ -44,8 +49,8 @@ public class MetaDataHandler {
                 metaDataManager = new MetaDataManager(METADATA_FILE_PATH, PREFIX);
             }
         } catch (NullPointerException e) {
-            NoahLogManager.getLogger().error("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString(), e);
-            Reporter.fail("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString() + "<br>Please read the log file to get more information");
+            reporter.info("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString());
+            reporter.fail("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString() + "<br>Please read the log file to get more information");
             throw new NullPointerException("Failed to read metadata file.");
         }
     }
@@ -58,12 +63,12 @@ public class MetaDataHandler {
         if ((metadataKeyExists(metadataKey))) {
             return metaDataManager.getMetaData(metadataKey).getValue();
         } else {
-            NoahLogManager.getLogger().error("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
+            reporter.info("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- the requested key is misspelled in the excel file where the tests are defined. File location: " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH +
                     "\n\t\t- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.\n" +
                     "\t\tPlease check the excel spreadsheets.\n\t\tCannot proceed with the test execution.");
-            Reporter.warn("Requested " + metadataKey + " metadata key is absent.<pre>Possible reasons are:<br>" +
+            reporter.fail("Requested " + metadataKey + " metadata key is absent.<pre>Possible reasons are:<br>" +
                     "- the requested key is misspelled in the excel file where the tests are defined. File location: " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "<br>" +
                     "- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.<br>" +

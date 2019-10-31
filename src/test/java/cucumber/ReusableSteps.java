@@ -55,7 +55,10 @@ public class ReusableSteps extends BaseTest {
         Pickle pickle = pickleWrapper.getPickleEvent().pickle;
         step = "<reusable name=\"" + pickle.getName() + "\">";
         for(PickleStep pickleStep : pickle.getSteps()){
-            step = step + "<step>" + pickleStep.getText() + "</step>";
+            String currentStep = pickleStep.getText();
+            currentStep = currentStep.replaceAll("<", "&lt;");
+            currentStep = currentStep.replaceAll(">", "&gt;");
+            step = step + "<step>" + currentStep + "</step>";
         }
         step = step + "</reusable>";
         fileContent = fileContent + step;

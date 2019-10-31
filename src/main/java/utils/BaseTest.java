@@ -7,6 +7,9 @@ import org.testng.annotations.*;
 import pages.BasePage;
 import utils.DriverProvider;
 import utils.ReporterManager;
+import utils.bpp.KeywordsHandler;
+import utils.bpp.MetaDataHandler;
+import utils.bpp.PreProcessFiles;
 
 import java.lang.reflect.Method;
 
@@ -14,6 +17,7 @@ import java.lang.reflect.Method;
 public class BaseTest{
 
     ReporterManager reporter;
+    PreProcessFiles preProcessFiles;
     public final boolean Parallel = false;
 
     @BeforeMethod
@@ -22,6 +26,13 @@ public class BaseTest{
         //init reporter
         reporter = ReporterManager.Instance;
         reporter.startReporting(method, data);
+
+        preProcessFiles = new PreProcessFiles();
+        preProcessFiles.initPaths();
+
+        KeywordsHandler.instantiate();
+        MetaDataHandler.instantiate();
+
 
         //init threadlocal driver
         try {

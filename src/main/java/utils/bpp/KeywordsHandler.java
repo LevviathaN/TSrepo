@@ -1,7 +1,10 @@
-package utils.bpp_old;
+package utils.bpp;
 
-import utils.bpp_old.PreProcessFiles;
 import datageneration.keywords.KeywordManager;
+import utils.ReporterManager;
+//import utils.bpp.NoahLogManager;
+import utils.bpp.PreProcessFiles;
+//import utils.bpp.Reporter;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,6 +20,8 @@ import java.util.Random;
 //TODO improve the flexibility of providing the keywords' folder path by end user
 public class KeywordsHandler {
 
+    static ReporterManager reporter = ReporterManager.Instance;
+
     //private static final Logger log = Logger.getLogger(KeywordsHandler.class);
 
     private static KeywordManager keywordManager = null;
@@ -26,8 +31,8 @@ public class KeywordsHandler {
         try {
             keywordManager = new KeywordManager(KEYWORDS_FILE_PATH);
         } catch (NullPointerException e1) {
-            NoahLogManager.getLogger().error("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString(), e1);
-            Reporter.fail("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString()
+            reporter.info("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString());
+            reporter.fail("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString()
                     + "<br>Please read the log file to get more information");
             throw new NullPointerException();
         }
@@ -38,13 +43,13 @@ public class KeywordsHandler {
             if (keywordManager.isKeyword(keyword)) {
                 return keywordManager.getKeyword(keyword).convertKeyword();
             } else {
-                NoahLogManager.getLogger().warn("Requested " + keyword + " keyword is absent. Please check the keywords and/or test spreadsheets.");
+                reporter.info("Requested " + keyword + " keyword is absent. Please check the keywords and/or test spreadsheets.");
                 return keyword;
             }
         } catch (Exception e2) {
-            NoahLogManager.getLogger().error("Failed to generate a value by provided keyword: " + keyword
-                    + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading", e2);
-            Reporter.fail("Failed to generate a value by provided keyword: " + keyword
+            reporter.info("Failed to generate a value by provided keyword: " + keyword
+                    + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading");
+            reporter.fail("Failed to generate a value by provided keyword: " + keyword
                     + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading" +
                     "<br>Please read the log file to get more information");
             throw new NullPointerException();

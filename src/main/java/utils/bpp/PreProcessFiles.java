@@ -38,15 +38,15 @@ public class PreProcessFiles {
 
 	/**
 	 * The method is used for providing the right paths to the NoahClient's and the Noah's resources folders
-	 * @param args - argument that come from command line
+	 * - argument that come from command line
 	 */
-	private void initPaths(String[] args){
+	public void initPaths(){
 		String rootFolder = System.getProperty("user.dir").replace("\\", "/");
 		if (!classJar.startsWith("jar:")) {
-			TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/input";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/keywords.metadata";
-			TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/test.properties";
-			TEST_RESOURCES_FOLDER_PATH = rootFolder + "/src/main/resources";
+			TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/input";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/keywords.metadata";
+			TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/test.properties";
+			TEST_RESOURCES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/";
             ROOT_FOLDER_PATH = rootFolder;
 			IMAGES_FOLDER_PATH = rootFolder + "/images";
 			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
@@ -92,10 +92,10 @@ public class PreProcessFiles {
 	 * @throws IOException will throw exception ending the test execution if invalid information is available
 	 * @return returns true if all test configurations are correct and normal test execution can proceed
 	 */
-	public boolean preProcessTestConfiguration(String[] args) throws IOException {
+	public boolean preProcessTestConfiguration(String... args) throws IOException {
 
 		try {
-			initPaths(args);
+			initPaths();
 			PropertiesHandler.gatherProperties();
 
 			boolean generateBeansXmlFile = true;

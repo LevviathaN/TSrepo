@@ -1,7 +1,10 @@
-package utils.bpp_old;
+package utils.bpp;
 
-import utils.bpp_old.PreProcessFiles;
 import datageneration.execution.ExecutionContext;
+//import utils.bpp.NoahLogManager;
+import utils.ReporterManager;
+import utils.bpp.PreProcessFiles;
+//import utils.bpp.Reporter;
 
 import java.util.Map;
 
@@ -13,6 +16,8 @@ import java.util.Map;
  */
 
 public class ExecutionContextHandler {
+
+    static ReporterManager reporter = ReporterManager.Instance;
 
     //private static final Logger log = Logger.getLogger(ExecutionContextHandler.class);
 
@@ -30,10 +35,10 @@ public class ExecutionContextHandler {
         if (executionContext.getValues().containsKey(key)) {
             return executionContext.getValue(key);
         } else {
-            NoahLogManager.getLogger().warn("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
+            reporter.info("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- some previous CaptureData action(s) failed;\n" +
                     "\t\t- the requested key is misspelled in the excel spreadsheet located in the " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
-            Reporter.warn("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +
+            reporter.info("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +
                     "- some previous CaptureData action(s) failed;<br>" +
                     "- the requested key is misspelled in the excel spreadsheet located in the " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.</pre>");
             return key;

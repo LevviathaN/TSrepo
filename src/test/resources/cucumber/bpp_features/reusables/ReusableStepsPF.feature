@@ -17,9 +17,11 @@ Feature: Product Factory
   Scenario: Create Body Financial Dimension
     When I click on the "Financial Dimensions" link
     Then I click on the "Create" button
-    And I fill the "Code" PF field with "SomeCode1234"
-    And I fill the "Description" PF field with "Some Description"
+    And I remember "AutoFDCode<KW_AUTO_RANDOMNUMBER|####>" text as "EC_FD_CODE" variable
+    And I fill the "Code" PF field with "EC_FD_CODE"
+    And I remember "AutoFDDescription<KW_AUTO_RANDOMNUMBER|####>" text as "EC_FD_DESC" variable
+    And I fill the "Description" PF field with "EC_FD_DESC"
     And I click on the "Change" button
     And I select "Body" from PF dialog
     And I click on the "Save" button
-    Then I should see the "SomeCode1234" element
+    Then I should see the "EC_FD_CODE" element
