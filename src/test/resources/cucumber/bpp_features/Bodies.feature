@@ -4,7 +4,7 @@ Feature: Product Factory Bodies
     I want to be able to create Bodies in Product Factory
     In order to (just cause)
 
-  @Create
+  @Create @Single
   Scenario: Create New Body
     Given I execute "Log In" reusable step
 #    And I execute "Create Body Financial Dimension" reusable step
@@ -13,7 +13,7 @@ Feature: Product Factory Bodies
     And I fill the "Short Name" PF field with "SomeShortName1"
     And I fill the "Name" PF field with "SomeName1"
     And I click on the "Change" button
-    And I select "EC_FD_CODE" from PF dialog
+    And I select "SomeCode1234" from PF dialog
     And I click on the "Save" button
     Then I should see the "SomeShortName1" element
 

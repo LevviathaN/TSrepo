@@ -26,7 +26,7 @@ public class PropertiesHandler {
 
     //private static final Logger log = Logger.getLogger(PropertiesHandler.class);
 
-    private static final String PROPERTIES_FOLDER = /** todo: hardcoded path */ "src/main/resources/data/bpp/test/properties";
+    private static final String PROPERTIES_FOLDER = PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH;;
 
     //Next map is needed to store the web-elements' locator ('xpath', 'css-selector' etc.)
     private static Map<String, String> properties = new TreeMap<String, String>();

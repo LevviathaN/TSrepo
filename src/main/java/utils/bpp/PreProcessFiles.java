@@ -53,7 +53,7 @@ public class PreProcessFiles {
 		}
 		else {
 			TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/input";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/keywords.metadata";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
 			TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/resources/test.properties";
 			TEST_RESOURCES_FOLDER_PATH = rootFolder + "/resources";
 			ROOT_FOLDER_PATH = rootFolder;

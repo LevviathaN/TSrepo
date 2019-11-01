@@ -15,7 +15,7 @@
                     <property name="testStatus" value="Start"/>
                     <property name="businessProcess" value="Direct App Student Registration"/>
                     <property name="uiAction" value="GoToUrl"/>
-                    <property name="value" value="MD_COMMON_LINKS_BUILDEMPIREURL"/>
+                    <property name="value" value="MD_COMMON_LINKS_BPPRFIURL"/>
                     <property name="iteration" value="1"/>
                     <property name="testTagValue" value=""/>
                     <property name="sheetName" value="BuildEmpire"/>

@@ -1,5 +1,7 @@
 package utils.bpp;
 
+import com.isomorphic.webdriver.ByScLocator;
+import org.openqa.selenium.By;
 import utils.ReporterManager;
 import utils.bpp.*;
 
@@ -177,6 +179,29 @@ public class TestParametersController {
             return splittedValue.toString();
         } else {
             return parameter;
+        }
+    }
+
+    public static By initElementByLocator(String locator) {
+        if (PageLocatorMatcher.isXpath(locator)) {
+            return By.xpath(locator.substring(6));
+        } else if (PageLocatorMatcher.isId(locator)) {
+            return By.id(locator.substring(3));
+        } else if (PageLocatorMatcher.isCss(locator)) {
+            return By.cssSelector(locator.substring(4));
+        } else if (PageLocatorMatcher.isName(locator)) {
+            return By.name(locator.substring(5));
+        } else if (PageLocatorMatcher.isTagname(locator)) {
+            return By.tagName(locator.substring(8));
+        } else if (PageLocatorMatcher.isClass(locator)) {
+            return By.className(locator.substring(10));
+        } else if (PageLocatorMatcher.isLink(locator)) {
+            return By.linkText(locator.substring(5));
+        } else if (locator.startsWith("scLocator")) {
+            return ByScLocator.scLocator(locator);
+        } else {
+            reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
+            return By.linkText(locator);
         }
     }
 }

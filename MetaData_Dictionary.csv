@@ -42,5 +42,8 @@ MD_BPPBANNERURL,http://bpp-sis-test.apolloglobal.int/,descr.
 MD_YAHOOMAILURL,https://login.yahoo.com/?.src=ym&.lang=en-US&.intl=us&.done=https%3A%2F%2Fmail.yahoo.com%2Fd,descr.
 MD_PRODUCTFACTORYURL,http://pf-services-qa-1697893966.eu-west-2.elb.amazonaws.com,descr.
 MD_PRODUCTFACTORYDATABASEURL,http://ec2-35-178-174-237.eu-west-2.compute.amazonaws.com:7474,descr.
+MD_BUILDEMPIRELOGINURL,https://staging.bppdigital.buildempire.app/account,descr.
+MD_BUILDEMPIREURL,https://staging.bppdigital.buildempire.app/account,descr.
+MD_BUILDEMPIREADMINURL,https://admin.staging.bppdigital.buildempire.app,descr.
 MD_CUSTOMERGROUP,SELFFUND,descr.
 MD_MSCMANAGEMENTOFFERING,MSc Management CRO PTD 201819 for student application,descr.

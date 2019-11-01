@@ -19,6 +19,7 @@ public class BaseTest{
     ReporterManager reporter;
     PreProcessFiles preProcessFiles;
     public final boolean Parallel = false;
+    boolean startTestExecution;
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
@@ -26,13 +27,7 @@ public class BaseTest{
         //init reporter
         reporter = ReporterManager.Instance;
         reporter.startReporting(method, data);
-
         preProcessFiles = new PreProcessFiles();
-        preProcessFiles.initPaths();
-
-        KeywordsHandler.instantiate();
-        MetaDataHandler.instantiate();
-
 
         //init threadlocal driver
         try {
@@ -46,7 +41,14 @@ public class BaseTest{
             Assert.fail();
         }
 
-        //BasePage.driver().manage().window().maximize();
+        try{
+            startTestExecution = preProcessFiles.preProcessTestConfiguration();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        KeywordsHandler.instantiate();
+        MetaDataHandler.instantiate();
 
     }
 

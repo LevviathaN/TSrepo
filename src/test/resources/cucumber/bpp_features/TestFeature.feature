@@ -19,8 +19,7 @@ Feature: Product Factory
     When I capture data from "DIRECT_APP_FIRST_NAME_FIELD" BPP element into "EC_FIRSTNAME" variable
     When I fill the "DIRECT_APP_SURNAME_FIELD" BPP field with "Auto<KW_AUTO_LASTNAME>"
     When I capture data from "DIRECT_APP_SURNAME_FIELD" BPP element into "EC_LASTNAME" variable
-    When I SmartClient click on BPP element "CleanUp_DIRECTAPP_ACCEPT_AND_CLOSE_COOKIES_TOP_RIBBON_BUTTON"
-    When I fill the "DIRECT_APP_EMAIL_FIELD" BPP field with "Auto<KW_AUTO_FIRSTNAMEFILE><KW_AUTO_LASTNAMEFILE>\@harakirimail.com"
+    When I fill the "DIRECT_APP_EMAIL_FIELD" BPP field with "Auto<KW_AUTO_FIRSTNAMEFILE><KW_AUTO_LASTNAMEFILE>d@harakirimail.com"
     When I capture data from "DIRECT_APP_EMAIL_FIELD" BPP element into "EC_EMAIL_ADDRESS" variable
     When I fill the "DIRECT_APP_TELEPHONE_NUMBER_FIELD" BPP field with "0913<KW_AUTO_RANDOMNUMBER|#######>"
     When I fill the "DIRECT_APP_PASSWORD_FIELD" BPP field with "A@polloGlobal2018"

@@ -53,8 +53,8 @@ public class UltimateBPParser {
         }
 
         if(!parameters.get("businessProcess").equals(businessProcess)){
-            fileContent = fileContent + "\n    #----------------------------Business Process - " +
-                    parameters.get("businessProcess") + "----------------------------\n";
+            fileContent = fileContent + "\n    #____________________________Business Process - " +
+                    parameters.get("businessProcess") + "____________________________\n";
             businessProcess = parameters.get("businessProcess");
         }
 
