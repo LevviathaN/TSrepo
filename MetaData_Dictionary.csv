@@ -25,6 +25,8 @@ MD_PRODUCTFACTORYDATABASEUSER,neo4j,descr.
 MD_PRODUCTFACTORYDATABASEPASSWORD,Password1,descr.
 MD_PRODUCTFACTORYJUNIORPRODUCTSETTER,craigolivant@bpp.com,descr.
 MD_PRODUCTFACTORYJUNIORPSPASSWORD,Password1,descr.
+MD_TOTARAADMINUSER,bppadmin@bpp.com,descr.
+MD_TOTARAADMINPASSWORD,Password1!!!,descr.
 MD_ENTER,ENTER,descr.
 MD_REFRESH,F5,descr.
 MD_INSPECT,F12,descr.
@@ -45,5 +47,6 @@ MD_PRODUCTFACTORYDATABASEURL,http://ec2-35-178-174-237.eu-west-2.compute.amazona
 MD_BUILDEMPIRELOGINURL,https://staging.bppdigital.buildempire.app/account,descr.
 MD_BUILDEMPIREURL,https://staging.bppdigital.buildempire.app/account,descr.
 MD_BUILDEMPIREADMINURL,https://admin.staging.bppdigital.buildempire.app,descr.
+MD_TOTARALOGINURL,https://totara.staging.bppdigital.buildempire.app/login/index.php,descr.
 MD_CUSTOMERGROUP,SELFFUND,descr.
 MD_MSCMANAGEMENTOFFERING,MSc Management CRO PTD 201819 for student application,descr.
