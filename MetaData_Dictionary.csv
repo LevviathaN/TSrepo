@@ -27,6 +27,12 @@ MD_PRODUCTFACTORYJUNIORPRODUCTSETTER,craigolivant@bpp.com,descr.
 MD_PRODUCTFACTORYJUNIORPSPASSWORD,Password1,descr.
 MD_TOTARAADMINUSER,bppadmin@bpp.com,descr.
 MD_TOTARAADMINPASSWORD,Password1!!!,descr.
+MD_BUILDEMPIREADMINUSER,apprenticeships@bpptest.com,descr.
+MD_BUILDEMPIREADMINPASSWORD,Test Password003!,descr.
+MD_BUILDEMPIREMANAGERINUSER,waltdisney@mailinator.com,descr.
+MD_BUILDEMPIREMANAGERPASSWORD,Testing WALT 2018,descr.
+MD_BUILDEMPIRENEILADMINUSER,neilsteward@outlook.com,descr.
+MD_BUILDEMPIRENEILADMINPASSWORD,I am really really bored now!!,descr.
 MD_ENTER,ENTER,descr.
 MD_REFRESH,F5,descr.
 MD_INSPECT,F12,descr.

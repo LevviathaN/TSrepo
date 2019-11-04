@@ -3,14 +3,11 @@ package cucumber.stepdefs;
 //import cucumber.api.java.en.*;
 import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pages.BasePage;
-import utils.ReporterManager;
-import utils.bpp.ExecutionContextHandler;
-import utils.bpp.PropertiesHandler;
-import utils.bpp.SeleniumHelper;
-import utils.bpp.TestParametersController;
+import ui.pages.BasePage;
+import ui.utils.bpp.ExecutionContextHandler;
+import ui.utils.bpp.PropertiesHandler;
+import ui.utils.bpp.TestParametersController;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 

@@ -5,10 +5,10 @@ import cucumber.api.java.en.*;
 //import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import pages.BasePage;
-import utils.*;
-import utils.bpp.ExecutionContextHandler;
-import utils.bpp.TestParametersController;
+import ui.pages.BasePage;
+import ui.utils.*;
+import ui.utils.bpp.ExecutionContextHandler;
+import ui.utils.bpp.TestParametersController;
 
 /**
  * Created by Ruslan Levytskyi on 15/3/2019.

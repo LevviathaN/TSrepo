@@ -1,5 +1,5 @@
 <suite name="Suite" parallel="none" thread-count="1">
-    <test name="Test">
+    <test name="Cucumber Test">
         <classes>
             <class name="cucumber.ReusableSteps" />
             <class name="cucumber.CucumberTest" />

@@ -1,15 +1,13 @@
 package bpp;
 
-import annotations.TestName;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.bpp.product_factory.ProductFactoryBasePage;
-import utils.BaseTest;
+import ui.pages.bpp.product_factory.ProductFactoryBasePage;
+import ui.utils.BaseTest;
 
 public class CreateBodyTest extends BaseTest {
 
-    @Test
-    @TestName(name="Create Body Test")
+    @Test(testName = "Create Body Test")
     public void createBodyTest(){
         ProductFactoryBasePage pf = ProductFactoryBasePage.Instance;
 

@@ -1,20 +1,26 @@
 package cucumber;
 
-import gherkin.events.PickleEvent;
 import gherkin.pickles.Pickle;
 import gherkin.pickles.PickleStep;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.*;
 import org.testng.annotations.*;
-import utils.BaseTest;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import ui.utils.BaseTest;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -24,19 +30,15 @@ import static java.nio.file.StandardOpenOption.CREATE;
         tags = {"@Reusable"},
         plugin = {"pretty"})
 
-public class ReusableSteps extends BaseTest {
+public class ReusableSteps {
+
     private TestNGCucumberRunner testNGCucumberRunner;
-    public Pickle reusablePickle;
+    private String fileContent;
+    private String step;
 
-    String fileContent;
-    String step;
+    public ReusableSteps() {}
 
-    public ReusableSteps() {
-    }
-
-    @BeforeClass(
-            alwaysRun = true
-    )
+    @BeforeClass(alwaysRun = true)
     public void setUpClass() {
         this.testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
         step = "Initial step";
@@ -69,16 +71,14 @@ public class ReusableSteps extends BaseTest {
         return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }
 
-    @AfterClass(
-            alwaysRun = true
-    )
+    @AfterClass(alwaysRun = true)
     public void tearDownClass() {
         if (this.testNGCucumberRunner != null) {
             this.testNGCucumberRunner.finish();
 
             fileContent = fileContent + "</reusables>";
             byte data[] = fileContent.getBytes();
-            Path p = Paths.get("src/main/resources/data/bpp/ReusableTestSteps.xml");
+            Path p = Paths.get("src/main/resources/ReusableTestSteps.xml");
 
 
             try (OutputStream out = new BufferedOutputStream(

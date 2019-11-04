@@ -1,5 +1,0 @@
-<root>
-    <item name='org.apache.xpath.operations.String'>
-        <annotation name='java.lang.Deprecated'/>
-    </item>
-</root>

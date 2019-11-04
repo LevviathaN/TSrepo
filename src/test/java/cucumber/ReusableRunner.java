@@ -1,8 +1,15 @@
 package cucumber;
 
-import cucumber.stepdefs.ProductFactoryDefs;
+import cucumber.stepdefs.pfStepDefs.ProductFactoryDefs;
 import cucumber.stepdefs.StepDefinitions;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +18,10 @@ public class ReusableRunner {
     public static void executeReusable(String reusableName){
         StepDefinitions stepDefs = new StepDefinitions();
         ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
-        ReusableHelper helper = new ReusableHelper();
         System.out.println("Start executing \"" + reusableName + "\" reusable step");
-        System.out.println("it contains " + helper.getReusablePickleSteps(reusableName).size() + " reusable step");
+        System.out.println("it contains " + getReusablePickleSteps(reusableName).size() + " reusable step");
 
-        for(String step : helper.getReusablePickleSteps(reusableName)){
+        for(String step : getReusablePickleSteps(reusableName)){
             System.out.println("Executing: " + step);
 
             String arg1, arg2 = "";
@@ -50,7 +56,7 @@ public class ReusableRunner {
         }
     }
 
-    public static List<String> getQuotet(final String input, final char quote) {
+    private static List<String> getQuotet(final String input, final char quote) {
         final ArrayList<String> result = new ArrayList<>();
         int n = -1;
         for(int i = 0; i < input.length(); i++) {
@@ -64,6 +70,51 @@ public class ReusableRunner {
             }
         }
         return result;
+    }
+
+    private static ArrayList<String> getReusablePickleSteps(String pickleFullName){
+
+        String pickleName = pickleFullName;
+
+//        Pattern p = Pattern.compile("\"([^\"]*)\"");
+//        Matcher m = p.matcher(pickleFullName);
+//        while (m.find()) {
+//            pickleName = m.group(1);
+//        }
+        ArrayList<String> stepsList = new ArrayList<>();
+
+        try{
+            File inputFile = new File("src/main/resources/data/bpp/ReusableTestSteps.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputFile);
+            doc.getDocumentElement().normalize();
+
+            Node reusablesNode = doc.getElementsByTagName("reusables").item(0);
+            Element reusablesElement = (Element) reusablesNode;
+//            System.out.println("Reusable tag : " + reusablesElement.getTagName());
+//            System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
+//            System.out.println("----------------------------");
+
+            NodeList reusablesList = reusablesElement.getElementsByTagName("reusable");
+            for (int i = 0; i < reusablesList.getLength(); i++) {
+                Node reusableNode = reusablesList.item(i);
+                Element reusableElement = (Element) reusableNode;
+//                System.out.println(reusableElement.getAttribute("name"));
+                if(reusableElement.getAttribute("name").equals(pickleName)){
+//                    System.out.println("We found reusable:" + reusableElement.getAttribute("name"));
+                    NodeList steps = reusableElement.getElementsByTagName("step");
+                    for (int j = 0; j < steps.getLength(); j++){
+                        stepsList.add(steps.item(j).getTextContent());
+//                        System.out.println(steps.item(j).getTextContent());
+                    }
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return stepsList;
     }
 
 //    public static void main(String[] args){

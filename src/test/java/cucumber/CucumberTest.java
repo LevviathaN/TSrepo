@@ -3,27 +3,21 @@ package cucumber;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.*;
 import org.testng.annotations.*;
-import utils.BaseTest;
+import ui.utils.BaseTest;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@Old and not @Ignore"},
+        tags = {"@Bodies and @Create and @Single"},
         plugin = {"pretty"})
 
 public class CucumberTest  extends BaseTest {
     private TestNGCucumberRunner testNGCucumberRunner;
-    ReusableSteps reusableSteps;
-    ReusableHelper reusableHelper;
 
     public CucumberTest() {
-        reusableSteps = new ReusableSteps();
-        reusableHelper = new ReusableHelper();
     }
 
-    @BeforeClass(
-            alwaysRun = true
-    )
+    @BeforeClass(alwaysRun = true)
     public void setUpClass() {
         this.testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
@@ -42,9 +36,7 @@ public class CucumberTest  extends BaseTest {
         return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }
 
-    @AfterClass(
-            alwaysRun = true
-    )
+    @AfterClass(alwaysRun = true)
     public void tearDownClass() {
         if (this.testNGCucumberRunner != null) {
             this.testNGCucumberRunner.finish();
