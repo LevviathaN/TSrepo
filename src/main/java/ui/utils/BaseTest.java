@@ -30,7 +30,6 @@ public class BaseTest{
         try {
             reporter.info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
-            //reporter.info("Driver created " + BasePage.driver.get().hashCode());
         }catch (Exception e){
             reporter.fail("Before test failure during Driver creation", e);
             reporter.stopReporting();

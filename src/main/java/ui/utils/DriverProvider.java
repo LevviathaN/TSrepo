@@ -1,17 +1,23 @@
 package ui.utils;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;  //імпортуємо необхідні бібліотеки
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.*;
+import ui.utils.bpp.PropertiesHelper;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.logging.Level;
+import java.util.Map;
 
 /**
  * Created by odiachuk on 13.12.16.
@@ -33,115 +39,191 @@ public class DriverProvider {
 
         System.setProperty("webdriver.gecko.driver", FIREFOX_PATH);
 
-        DesiredCapabilities caps = DesiredCapabilities.firefox();
-        LoggingPreferences logPrefs = new LoggingPreferences();
-        logPrefs.enable(LogType.BROWSER, Level.ALL);
-        caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+        try {
+            DesiredCapabilities capabilities = new DesiredCapabilities().firefox();
+            FirefoxProfile profile = new FirefoxProfile();
+            profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+                    "image/jpeg, application/pdf, application/octet-stream, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            profile.setPreference("pdfjs.disabled", true);
+            profile.setPreference("browser.download.folderList", 2);
 
-        return new FirefoxDriver(caps);
+            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 
+            FirefoxOptions options =
+                    new FirefoxOptions();
+
+            return new FirefoxDriver(options);
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
     }
 
-    static public ChromeDriver getChrome(){
+    static public ChromeDriver getChrome() {
 
-        System.setProperty("webdriver.chrome.driver", CHROME_PATH);
+        try {
+            File folder = new File("downloads");
+            folder.mkdir();
+            System.setProperty("webdriver.chrome.driver", CHROME_PATH);
+            ChromeOptions options = new ChromeOptions();
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
 
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
-        LoggingPreferences logPrefs = new LoggingPreferences();
-        logPrefs.enable(LogType.BROWSER, Level.OFF);
-        caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+            options.setExperimentalOption("prefs", prefs);
+            options.addArguments("--test-type");
+            options.addArguments("--start-maximized");
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--disable-infobars");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-browser-side-navigation");
+            options.addArguments("--disable-gpu");
+            options.addArguments("enable-automation");
 
-        ChromeOptions chromeOptions = new ChromeOptions();
-        //chromeOptions.addArguments("--kiosk");
-//        chromeOptions.addArguments("--start-maximized");
-//        chromeOptions.addArguments("--start-fullscreen");
-//        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--window-size=1920,1080");
+            options.setPageLoadStrategy(PageLoadStrategy.NONE);
+            options.setCapability(ChromeOptions.CAPABILITY, options);
+            options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            options.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
 
-        caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+            HashMap<String, Object> chromePreferences = new HashMap<>();
+            chromePreferences.put("profile.password_manager_enabled", "false");
+            chromePreferences.put("credentials_enable_service", "false");
+            chromePreferences.put("profile.default_content_settings.popups", 0);
+            chromePreferences.put("download.default_directory", folder.getAbsolutePath());
 
-        return new ChromeDriver(caps);
+            options.setCapability("chrome.prefs", chromePreferences);
 
+            return new ChromeDriver(options);
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
     }
 
-    static public ChromeDriver getChromeBStack(){
+    static public RemoteWebDriver getChromeBrowserStack() {
 
-        //downloads folder to automatically save the downloaded files
-        File folder = new File("downloads");
-        folder.mkdir();
+        try {
+            File folder = new File("downloads");
+            folder.mkdir();
 
-        System.setProperty("webdriver.chrome.driver", CHROME_PATH);
+            ChromeOptions options = new ChromeOptions();
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
 
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
-        LoggingPreferences logPrefs = new LoggingPreferences();
-        logPrefs.enable(LogType.BROWSER, Level.OFF);
-        caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+            options.setExperimentalOption("prefs", prefs);
+            options.addArguments("--test-type");
+            options.addArguments("--start-maximized");
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-infobars");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-browser-side-navigation");
+            options.addArguments("--disable-gpu");
+            options.addArguments("enable-automation");
+            options.setPageLoadStrategy(PageLoadStrategy.NONE);
 
-        ChromeOptions chromeOptions = new ChromeOptions();
-        //chromeOptions.addArguments("--kiosk");
-//        chromeOptions.addArguments("--start-maximized");
-//        chromeOptions.addArguments("--start-fullscreen");
-//        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--window-size=1920,1080");
+            options.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
+            HashMap<String, Object> chromePreferences = new HashMap<>();
+            chromePreferences.put("profile.password_manager_enabled", "false");
+            chromePreferences.put("credentials_enable_service", "false");
+            chromePreferences.put("profile.default_content_settings.popups", 0);
+            chromePreferences.put("download.default_directory", folder.getAbsolutePath());
+            options.setCapability("chrome.prefs", chromePreferences);
+            options.setCapability("browser_version", FileIO.getConfigProperty("ch_version"));
+            options.setCapability("os", FileIO.getConfigProperty("os"));
+            options.setCapability("os_version", FileIO.getConfigProperty("os_version"));
+            options.setCapability("resolution", "1920x1080");
+            options.setCapability("browserstack.debug", "true");
+            options.setCapability("browserstack.video", "true");
+            options.setCapability("browserstack.networkLogs", "true");
+            options.setCapability("build", "automation");
+            options.setCapability("browserstack.local", "true");
+            options.setCapability("browserstack.localIdentifier", "TestAutomation");
+            options.setCapability("browserstack.timeouts", "{\"implicit\"=>0, \"pageLoad\"=>60000, \"script\"=>60000}");
+            options.setCapability(ChromeOptions.CAPABILITY, options);
+            options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            options.setCapability(ChromeOptions.CAPABILITY, options);
 
-        HashMap<String, Object> chromePreferences = new HashMap<>();
-        chromePreferences.put("profile.password_manager_enabled", "false");
-        chromePreferences.put("credentials_enable_service", "false");
-        chromePreferences.put("profile.default_content_settings.popups", 0);
-        chromePreferences.put("download.default_directory", folder.getAbsolutePath());
-        chromeOptions.setCapability("chrome.prefs", chromePreferences);
+            //configure capability to set the job name with Test Case name
+            //String testName = ReporterManager.Instance.getTestName(Method.class.getName(), Object.class.getAnnotations());
+            //options.setCapability("name", testName);
 
-        chromeOptions.setCapability("browserstack.debug", "true");
-        chromeOptions.setCapability("browserstack.video", "true");
-        chromeOptions.setCapability("browserstack.networkLogs", "true");
-        chromeOptions.setCapability("build", "automation");
-        chromeOptions.setCapability("browserstack.local", "true");
-        chromeOptions.setCapability("browserstack.localIdentifier", "TestAutomation");
-        chromeOptions.setCapability("browserstack.geoLocation", "GB");
-        chromeOptions.setCapability("browserstack.timeouts", "{\"implicit\"=>0, \"pageLoad\"=>60000, \"script\"=>60000}");
+            //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
+            //driver.setFileDetector(new LocalFileDetector());
+            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
 
-        caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
+    }
 
+    static public FirefoxDriver getFirefoxBrowserStack() {
 
-        return new ChromeDriver(caps);
+        try {
+            FirefoxProfile profile = new FirefoxProfile();
+            profile.setPreference("browser.download.folderList", 2);
+            profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
+                    "image/jpeg, application/pdf, application/octet-stream, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            profile.setPreference("pdfjs.disabled", true);
+            //To skip the insecured password behaviour
+            profile.setPreference("security.insecure_password.ui.enabled", false);
+            profile.setPreference("security.insecure_field_warning.contextual.enabled", false);
 
+            //Create Desired Capability Instance
+            FirefoxOptions options = new FirefoxOptions();
+            options.setCapability("browser_version", FileIO.getConfigProperty("ff_version"));
+            options.setCapability("os", FileIO.getConfigProperty("os"));
+            options.setCapability("os_version", FileIO.getConfigProperty("os_version"));
+            options.setCapability("resolution", "1920x1080");
+            options.setCapability("browserstack.debug", "true");
+            options.setCapability("browserstack.video", "true");
+            options.setCapability("browserstack.networkLogs", "true");
+            options.setCapability("build", "automation");
+            options.setCapability("browserstack.local", "true");
+            options.setCapability("browserstack.localIdentifier", "TestAutomation");
+            options.setCapability(FirefoxDriver.PROFILE, profile);
+
+            //configure capability for setting up Test Case name for Sauce Jobs
+            //String testName = Reporter.getCurrentTestName();
+            //options.setCapability("name", testName);
+
+            return new FirefoxDriver(options);
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
     }
 
 
     public static WebDriver getDriver() throws MalformedURLException {
-        //if (instance == null)
+
         if (instance.get() == null)
             if (getCurrentBrowserName().equals(BrowserType.FIREFOX)) {
-                //instance = getFirefox();
                 instance.set(getFirefox());
-            }
-            else if (getCurrentBrowserName().equals(BrowserType.CHROME)){
-                //instance = getChrome();
+            } else if (getCurrentBrowserName().equals(BrowserType.CHROME)) {
                 instance.set(getChrome());
+            } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_CHROME")) {
+                instance.set(getChromeBrowserStack());
+            } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_FIREFOX")) {
+                instance.set(getFirefoxBrowserStack());
             }
-            else if (getCurrentBrowserName().equals(BrowserType.CHROME)){
-                //instance = getChrome();
-                instance.set(getChromeBStack());
-            }
-        //return instance;
+
         return instance.get();
     }
 
-    public static void closeDriver(){
-        //instance.quit();
+    public static void closeDriver() {
         instance.get().quit();
-        //instance = null;
         instance.set(null);
     }
 
     public static String getCurrentBrowserName() {
         if (BROWSER_TYPE == null)
-            if (FileIO.getConfigProperty("Driver").equals("firefox"))
+            if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("firefox")) {
                 BROWSER_TYPE = BrowserType.FIREFOX;
-            else if (FileIO.getConfigProperty("Driver").equals("chrome"))
+            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("chrome")) {
                 BROWSER_TYPE = BrowserType.CHROME;
-            else if (FileIO.getConfigProperty("Driver").equals("bstack_chrome"))
-                BROWSER_TYPE = BrowserType.CHROME;
+            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("BSTACK_CHROME")) {
+                BROWSER_TYPE = "BSTACK_CHROME";
+            }
+
         return BROWSER_TYPE;
     }
 }
