@@ -32,10 +32,6 @@ public class PropertiesHelper {
 			inputStream = new FileInputStream(PreProcessFiles.TEST_RESOURCES_FOLDER_PATH + "/configuration.properties");
 			properties.load(inputStream);
 			inputStream.close();
-			String version = properties.getProperty("build.version").toString();
-			Formatter  f = new Formatter(PreProcessFiles.TEST_RESOURCES_FOLDER_PATH + "/ProjectVersion.txt");
-			f.format("%s", version, " \r\n");
-			f.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

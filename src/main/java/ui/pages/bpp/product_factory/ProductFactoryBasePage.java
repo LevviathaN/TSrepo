@@ -41,9 +41,6 @@ public class ProductFactoryBasePage extends BasePage {
                 reporter.info("as Product Setter");
                 logIn(PSLogin, PSPass);
                 break;
-//            default:
-//                logIn(SPSLogin, SPSPass);
-//                break;
         }
     }
 

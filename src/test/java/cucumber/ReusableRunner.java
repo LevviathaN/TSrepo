@@ -1,6 +1,6 @@
 package cucumber;
 
-import cucumber.stepdefs.pfStepDefs.ProductFactoryDefs;
+import cucumber.stepdefs.productFactoryStepDefs.ProductFactoryDefs;
 import cucumber.stepdefs.StepDefinitions;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

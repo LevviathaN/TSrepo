@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <tests>testng.xml</tests>
+        <tests>smoke_cucumber_bpp.xml</tests>
     </properties>
 
     <build>
