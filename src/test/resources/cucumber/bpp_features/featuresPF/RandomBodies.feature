@@ -6,11 +6,10 @@ Feature: Product Factory Random Bodies
 
   Background:
     Given I execute "Log In" reusable step
-#    And I execute "Create Body Financial Dimension" reusable step
+    And I execute "Create Body Financial Dimension" reusable step
 
   @Create @Random @Single
   Scenario: Create New Body Using Random Data
-#    When I click on the element by locator "xpath=span[text()='work']"
     When I click on the "work" link
     When I click on the "Bodies" link
     Then I click on the "Create" button

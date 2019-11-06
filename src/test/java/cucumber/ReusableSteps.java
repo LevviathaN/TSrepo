@@ -80,9 +80,11 @@ public class ReusableSteps {
             byte data[] = fileContent.getBytes();
             Path p = Paths.get("src/main/resources/data/bpp/ReusableTestSteps.xml");
 
+            try{
+                Files.deleteIfExists(p);
+            }catch(IOException e){e.printStackTrace();}
 
-            try (OutputStream out = new BufferedOutputStream(
-                    Files.newOutputStream(p, CREATE))) {
+            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE))) {
                 out.write(data, 0, data.length);
             } catch (IOException x) {
                 System.err.println(x);

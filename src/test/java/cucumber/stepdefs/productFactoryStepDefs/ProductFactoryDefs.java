@@ -24,15 +24,15 @@ public class ProductFactoryDefs extends ProductFactoryBasePage {
 
     @When("^I select \"([^\"]*)\" from PF dialog$")
     public void select_from_dialog(String value){
-        pfSelectFromModal(value);
+        pfSelectFromModal(TestParametersController.checkIfSpecialParameter(value));
     }
 
     @When("^I edit \"([^\"]*)\"$")
     public void click_on_edit(String value){
-        clickOnElement(pfEdit(value));
+        clickOnElement(pfEdit(TestParametersController.checkIfSpecialParameter(value)));
     }
 
-    @When("^I \"(chack|uncheck)\" \"([^\"]*)\" PF checkbox$")
+    @When("^I \"(check|uncheck)\" \"([^\"]*)\" PF checkbox$")
     public void check_uncheck(String value, String element){
         boolean state = true;
         if(value.equals("check")){state = true;}

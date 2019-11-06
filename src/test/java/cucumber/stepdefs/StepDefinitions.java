@@ -23,10 +23,15 @@ public class StepDefinitions extends BasePage {
         driver().get(TestParametersController.checkIfSpecialParameter(url));
     }
 
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
-        String specialElement = TestParametersController.checkIfSpecialParameter(element);
-        clickOnAnyElement(byText(TestParametersController.checkIfSpecialParameter(element)));
+        String specialElement = PropertiesHandler.getPropertyByKey(element);
+        if(element.startsWith("xpath")|element.startsWith("css"))
+            clickOnElement(TestParametersController.initElementByLocator(element));
+        else if(!element.equals(specialElement))
+            clickOnElement(TestParametersController.initElementByLocator(specialElement));
+        else
+            clickOnAnyElement(byText(TestParametersController.checkIfSpecialParameter(element)));
     }
 
     @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")

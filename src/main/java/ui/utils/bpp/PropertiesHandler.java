@@ -91,12 +91,12 @@ public class PropertiesHandler {
         if (properties.containsKey(key)) {
             return properties.get(key);
         } else {
-            reporter.info("Requested " + key + " property was not found. "
-                    + "\n\t\tPossible reasons are:\n"
-                    + "\t\t- the property is missed in properties file provided into the "
-                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
-                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
-                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+//            reporter.info("Requested " + key + " property was not found. "
+//                    + "\n\t\tPossible reasons are:\n"
+//                    + "\t\t- the property is missed in properties file provided into the "
+//                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
+//                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
+//                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             //NoahLogManager.getLogger().warn("Requested " + key + " property was not found. "
             //                    + "\n\t\tPossible reasons are:\n"
             //                    + "\t\t- the property is missed in properties file provided into the "

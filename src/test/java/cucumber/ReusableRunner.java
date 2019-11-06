@@ -33,16 +33,26 @@ public class ReusableRunner {
             //General stepdefs
             if(step.matches("^I am on \"([^\"]*)\" URL$")){
                 stepDefs.i_am_on_url(arg1);
-            }else if(step.matches("^I click on the \"([^\"]*)\" (?:button|link|option)(?: in [^\"]*)?$")){
+            }else if(step.matches("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")){
                 stepDefs.i_click_on_the_button(arg1);
             }else if(step.matches("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")){
                 stepDefs.i_click_on_the_n_button(arg1, arg2);
+            }else if(step.matches("^I click on the element by locator \"([^\"]*)\"$")){
+                stepDefs.i_click_on_the_element_by_locator(arg1);
             }else if(step.matches("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")){
                 stepDefs.fill_field(arg1, arg2);
             }else if(step.matches("^I wait for \"([^\"]*)\" seconds$")){
                 stepDefs.wait_for(arg1);
+            }else if(step.matches("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$")){
+                stepDefs.hover_over(arg1);
+            }else if(step.matches("^I should see the \"([^\"]*)\" (?:button|message|element)$")){
+                stepDefs.i_should_see_the_text(arg1);
             }else if(step.matches("^I should be redirected to the \"([^\"]*)\" page$")){
                 stepDefs.i_should_be_redirected_to_page(arg1);
+            }else if(step.matches("^I execute \"([^\"]*)\" reusable step$")){
+                stepDefs.i_execute_reusable_step(arg1);
+            }else if(step.matches("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")){
+                stepDefs.i_remember_text(arg1, arg2);
             }
 
             //Product Factory stepdefs
@@ -75,12 +85,6 @@ public class ReusableRunner {
     private static ArrayList<String> getReusablePickleSteps(String pickleFullName){
 
         String pickleName = pickleFullName;
-
-//        Pattern p = Pattern.compile("\"([^\"]*)\"");
-//        Matcher m = p.matcher(pickleFullName);
-//        while (m.find()) {
-//            pickleName = m.group(1);
-//        }
         ArrayList<String> stepsList = new ArrayList<>();
 
         try{
@@ -92,21 +96,15 @@ public class ReusableRunner {
 
             Node reusablesNode = doc.getElementsByTagName("reusables").item(0);
             Element reusablesElement = (Element) reusablesNode;
-//            System.out.println("Reusable tag : " + reusablesElement.getTagName());
-//            System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
-//            System.out.println("----------------------------");
 
             NodeList reusablesList = reusablesElement.getElementsByTagName("reusable");
             for (int i = 0; i < reusablesList.getLength(); i++) {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
-//                System.out.println(reusableElement.getAttribute("name"));
                 if(reusableElement.getAttribute("name").equals(pickleName)){
-//                    System.out.println("We found reusable:" + reusableElement.getAttribute("name"));
                     NodeList steps = reusableElement.getElementsByTagName("step");
                     for (int j = 0; j < steps.getLength(); j++){
                         stepsList.add(steps.item(j).getTextContent());
-//                        System.out.println(steps.item(j).getTextContent());
                     }
                 }
             }

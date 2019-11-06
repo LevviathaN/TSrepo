@@ -4,10 +4,13 @@ Feature: Product Factory Bodies
     I want to be able to create Bodies in Product Factory
     In order to (just cause)
 
+  Background:
+    Given I execute "Log In" reusable step
+    And I execute "Create Body Financial Dimension" reusable step
+
   @Create @Single
   Scenario: Create New Body
-    Given I execute "Log In" reusable step
-#    And I execute "Create Body Financial Dimension" reusable step
+    When I click on the "work" link
     When I click on the "Bodies" link
     Then I click on the "Create" button
     And I fill the "Short Name" PF field with "SomeShortName1"
@@ -19,8 +22,7 @@ Feature: Product Factory Bodies
 
   @Create @Multiple
   Scenario Outline: Create New Bodies
-    Given I execute "Log In" reusable step
-#    And I execute "Create Body Financial Dimension" reusable step
+    When I click on the "work" link
     When I click on the "Bodies" link
     Then I click on the "Create" button
     And I fill the "Short Name" PF field with "<short_name>"

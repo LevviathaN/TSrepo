@@ -22,7 +22,7 @@ Feature: Product Factory
     And I fill the "Code" PF field with "EC_FD_CODE"
     And I remember "AutoFDDescription<KW_AUTO_RANDOMNUMBER|####>" text as "EC_FD_DESC" variable
     And I fill the "Description" PF field with "EC_FD_DESC"
-    And I click on the "Change" button
-    And I select "Body" from PF dialog
+    And I click on the "xpath=//div[@aria-pressed='false']" element
+    And I click on the "Body" option
     And I click on the "Save" button
     Then I should see the "EC_FD_CODE" element
