@@ -8,6 +8,7 @@ import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
+import ui.utils.bpp.PropertiesHandler;
 import ui.utils.bpp.TestParametersController;
 
 /**
@@ -32,6 +33,13 @@ public class StepDefinitions extends BasePage {
     public void i_click_on_the_n_button(String element, String nmb) {
         clickOnElement(By.xpath("//body/descendant::*[text()='" +
                 TestParametersController.checkIfSpecialParameter(element) + "'][" + Integer.parseInt(nmb) + "]"));
+    }
+
+    @When("^I click on the element by locator \"([^\"]*)\"$")
+    public void i_click_on_the_element_by_locator(String element) {
+       if(element.startsWith("xpath")|element.startsWith("css"))
+        clickOnElement(TestParametersController.initElementByLocator(element));
+       else clickOnElement(TestParametersController.initElementByLocator(PropertiesHandler.getPropertyByKey(element)));
     }
 
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
@@ -72,6 +80,22 @@ public class StepDefinitions extends BasePage {
 
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
+        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+    }
+
+    //todo next three definitions of Reusables soon
+    @Then("^I execute \"([^\"]*)\" reusable step without some steps$")
+    public void i_execute_reusable_step_without(String reusableName) {
+        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+    }
+
+    @Then("^I execute \"([^\"]*)\" reusable step with some additional steps$")
+    public void i_execute_reusable_step_with(String reusableName) {
+        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+    }
+
+    @Then("^I execute \"([^\"]*)\" reusable step replacing some steps$")
+    public void i_execute_reusable_step_replace(String reusableName) {
         ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
     }
 

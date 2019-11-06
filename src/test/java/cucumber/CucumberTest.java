@@ -8,7 +8,7 @@ import ui.utils.BaseTest;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@Create"},
+        tags = {"@Bodies and @Random and @Single"},
         plugin = {"pretty"})
 
 public class CucumberTest  extends BaseTest {

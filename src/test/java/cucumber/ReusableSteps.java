@@ -78,7 +78,7 @@ public class ReusableSteps {
 
             fileContent = fileContent + "</reusables>";
             byte data[] = fileContent.getBytes();
-            Path p = Paths.get("src/main/resources/ReusableTestSteps.xml");
+            Path p = Paths.get("src/main/resources/data/bpp/ReusableTestSteps.xml");
 
 
             try (OutputStream out = new BufferedOutputStream(

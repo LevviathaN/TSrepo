@@ -15,7 +15,8 @@ Feature: Product Factory
     Then I should be redirected to the "Product Factory" page
 
   Scenario: Create Body Financial Dimension
-    When I click on the "Financial Dimensions" link
+    When I click on the "attach_money" link
+    Then I click on the "Financial Dimensions" link
     Then I click on the "Create" button
     And I remember "AutoFDCode<KW_AUTO_RANDOMNUMBER|####>" text as "EC_FD_CODE" variable
     And I fill the "Code" PF field with "EC_FD_CODE"
