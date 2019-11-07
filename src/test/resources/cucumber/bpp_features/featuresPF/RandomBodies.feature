@@ -1,4 +1,4 @@
-@Bodies
+@ProductFactory @Bodies
 Feature: Product Factory Random Bodies
     As a product setter
     I want to be able to create Bodies with random names in Product Factory
@@ -24,6 +24,7 @@ Feature: Product Factory Random Bodies
 
   @Create @Random @Multiple
   Scenario Outline: Create New Bodies Using Random Data
+    When I click on the "work" link
     When I click on the "Bodies" link
     Then I click on the "Create" button
     And I remember "<short_name>" text as "EC_BODY_SHORT_NAME" variable

@@ -1,4 +1,4 @@
-@Bodies
+@ProductFactory @Bodies
 Feature: Product Factory Bodies
     As a product setter
     I want to be able to create Bodies in Product Factory
@@ -8,7 +8,7 @@ Feature: Product Factory Bodies
     Given I execute "Log In" reusable step
     And I execute "Create Body Financial Dimension" reusable step
 
-  @Create @Single
+  @Create @Hardcoded @Single
   Scenario: Create New Body
     When I click on the "work" link
     When I click on the "Bodies" link
@@ -20,7 +20,7 @@ Feature: Product Factory Bodies
     And I click on the "Save" button
     Then I should see the "SomeShortName1" element
 
-  @Create @Multiple
+  @Create @Hardcoded @Multiple
   Scenario Outline: Create New Bodies
     When I click on the "work" link
     When I click on the "Bodies" link
