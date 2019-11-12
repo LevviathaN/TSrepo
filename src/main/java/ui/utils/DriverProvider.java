@@ -144,8 +144,8 @@ public class DriverProvider {
             options.setCapability(ChromeOptions.CAPABILITY, options);
 
             //configure capability to set the job name with Test Case name
-            //String testName = ReporterManager.Instance.getTestName(Method.class.getName(), Object.class.getAnnotations());
-            //options.setCapability("name", testName);
+            String testName = ReporterManager.getTestName();
+            options.setCapability("name", testName);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
             //driver.setFileDetector(new LocalFileDetector());
@@ -156,7 +156,7 @@ public class DriverProvider {
         }
     }
 
-    static public FirefoxDriver getFirefoxBrowserStack() {
+    static public RemoteWebDriver getFirefoxBrowserStack() {
 
         try {
             FirefoxProfile profile = new FirefoxProfile();
@@ -183,10 +183,10 @@ public class DriverProvider {
             options.setCapability(FirefoxDriver.PROFILE, profile);
 
             //configure capability for setting up Test Case name for Sauce Jobs
-            //String testName = Reporter.getCurrentTestName();
-            //options.setCapability("name", testName);
+            String testName = ReporterManager.getTestName();
+            options.setCapability("name", testName);
 
-            return new FirefoxDriver(options);
+            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
         } catch (Exception e) {
             throw new WebDriverException("Unable to launch the browser", e);
         }

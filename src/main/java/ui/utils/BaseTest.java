@@ -1,5 +1,6 @@
 package ui.utils;
 
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -9,14 +10,15 @@ import ui.utils.bpp.MetaDataHandler;
 import ui.utils.bpp.PreProcessFiles;
 
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 
 
 public class BaseTest {
 
     ReporterManager reporter;
     PreProcessFiles preProcessFiles;
-    public final boolean Parallel = false;
     boolean startTestExecution;
+    protected String sessionId;
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
@@ -53,9 +55,25 @@ public class BaseTest {
         // close reporter
         reporter.stopReporting(testResult);
 
-        //close driver
-        BasePage.driver().quit();
-        DriverProvider.closeDriver();
+        try {
+            if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK")) {
+                sessionId = ((RemoteWebDriver) DriverProvider.getDriver()).getSessionId().toString();
+                reporter.addLinkToReport(reporter.getScreencastLinkFromBrowserStack(sessionId));
+
+                if (testResult.toString().contains("FAILURE"))
+                    reporter.updateBrowserStackJob("fail", sessionId);
+                else
+                    reporter.updateBrowserStackJob("pass", sessionId);
+
+                BasePage.driver().quit();
+                DriverProvider.closeDriver();
+            } else {
+                BasePage.driver().quit();
+                DriverProvider.closeDriver();
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     @AfterSuite(alwaysRun = true)

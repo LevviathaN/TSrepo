@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import com.google.common.base.Function;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -382,12 +383,8 @@ public class BasePage {
     }
 
     public static void waitForPageToLoad() {
-        sleepFor(STATIC_TIMEOUT); // todo fixme
-        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-            }
-        };
+
+        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
 
         Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
 
@@ -396,7 +393,11 @@ public class BasePage {
         } catch (Exception error) {
             reporter.fail("JavaScript readyState query timeout - The page has not finished loading");
         }
+        //        Wait<WebDriver> wait = new WebDriverWait((WebDriver) driver, STATIC_TIMEOUT, 500).ignoring(WebDriverException.class);
+//        wait.until((Function<WebDriver, Boolean>) driver -> String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
+//                .equals("complete"));
     }
+
 
     static void waitForElement(By by) {
         WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
@@ -426,7 +427,6 @@ public class BasePage {
 
     // Does not work because of geckodriver bug - https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
     public void hoverItem(By element) {
-        //reporter.info("Put mouse pointer over element: " + element.toString());
         Actions action = new Actions(driver());
         action.moveToElement(findElement(element)).build().perform();
     }
@@ -453,15 +453,13 @@ public class BasePage {
     }
 
     public void uploadFile(String path) {
-//        try {
-        //File Need to be imported
+
         File file = new File(path);
         StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
 
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-//            Robot robot = new Robot();
         robot.delay(2000);
-        //Open Goto window
+
         if (DriverProvider.OS_EXTENTION.equals("_mac")) {
             reporter.info("Opening Goto Window");
             robot.keyPress(systemControllKey);
@@ -486,11 +484,6 @@ public class BasePage {
         robot.delay(2000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//            reporter.info("Ooops, something went wrong during upload");
-//        }
     }
 
     public void bringToFocus() {

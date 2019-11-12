@@ -23,7 +23,7 @@ public class BrowserstackApi {
             String userName = System.getProperty("browserStackUsername");
             String password = System.getProperty("browserStackPassword");
 
-            URL url = new URL(String.format("https://api.browserstack.com/automate/builds/" + System.getProperty("browserStackBuild") + "/sessions/" + sessionId + ".json"));
+            URL url = new URL(String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId + ".json"));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.setRequestMethod("PUT");
@@ -54,5 +54,13 @@ public class BrowserstackApi {
 
         String userPassword = username + ":" + password;
         return new String(Base64.encodeBase64(userPassword.getBytes()));
+    }
+
+    public static void addLinkToReport(String ref) {
+        String link = String.format("<a target='_blank' href='%s'>Screencast Link</a>", ref);
+        //node("BrowserStack Information", link);
+    }
+    public static String getScreencastLinkFromBrowserStack(String sessionId) {
+        return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
     }
 }
