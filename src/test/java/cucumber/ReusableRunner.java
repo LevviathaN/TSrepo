@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import ui.utils.ReporterManager;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,7 +23,7 @@ public class ReusableRunner {
         System.out.println("it contains " + getReusablePickleSteps(reusableName).size() + " reusable step");
 
         for(String step : getReusablePickleSteps(reusableName)){
-            System.out.println("Executing: " + step);
+            ReporterManager.info("Executing: " + step);
 
             String arg1, arg2 = "";
             arg1 = getQuotet(step, '"').get(0);

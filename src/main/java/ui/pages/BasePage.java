@@ -220,14 +220,14 @@ public class BasePage {
         dropdown.selectByVisibleText(value);
     }
 
-    //todo: refactor all findBy and clickBy element using click(bySomething)
+
     public WebElement findByText(String element) {
         reporter.info("Аinding '" + element + "' element");
         return findElement(byText(element));
     }
 
     public void clickByText(String text) {
-        reporter.info("Clickng on element with text '" + text + "'");
+        reporter.info("Clicking on element with text '" + text + "'");
         findElement(byText(text)).click();
     }
 

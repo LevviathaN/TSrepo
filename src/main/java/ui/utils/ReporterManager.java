@@ -157,12 +157,12 @@ public class ReporterManager {
             pass("Test passed");
     }
 
-    public void info(String details) {
+    public static synchronized void info(String details) {
         logger.info(details);
         report().log(LogStatus.INFO, details);
     }
 
-    public void pass(String details) {
+    public static synchronized void pass(String details) {
         logger.info(details);
         report().log(LogStatus.PASS, details);
     }
