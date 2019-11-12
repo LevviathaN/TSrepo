@@ -1,7 +1,6 @@
-<suite name="Suite" parallel="methods" data-provider-thread-count="5">
+<suite name="Suite" parallel="methods" data-provider-thread-count="3">
     <test name="Cucumber Test">
         <classes>
-            <class name="cucumber.ReusableSteps" />
             <class name="cucumber.CucumberTest" />
         </classes>
     </test> <!-- test -->

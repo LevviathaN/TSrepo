@@ -8,7 +8,7 @@ import ui.utils.BaseTest;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@Bodies and @Random and @Single"},
+        tags = {"@Create"},
         plugin = {"pretty"})
 
 public class CucumberTest  extends BaseTest {
@@ -23,8 +23,7 @@ public class CucumberTest  extends BaseTest {
     }
 
     @Test(
-            groups = {"cucumber"},
-            description = "Runs Cucumber Scenarios",
+            groups = {"BPP Automation"},
             dataProvider = "scenarios"
     )
     public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {

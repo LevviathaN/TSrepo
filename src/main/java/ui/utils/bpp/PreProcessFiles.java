@@ -2,7 +2,8 @@ package ui.utils.bpp;
 
 //import com.apolloglobal.testing.api.util.*;
 
-//import ui.utils.bpp.NoahLogManager;
+
+import org.apache.log4j.Logger;
 import ui.utils.ReporterManager;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class PreProcessFiles {
 	//New reporter
 	public static ReporterManager reporter = ReporterManager.Instance;
 
-	//private static final Logger logger = Logger.getLogger(PreProcessFiles.class);
+	public static org.apache.log4j.Logger logger = Logger.getLogger(PreProcessFiles.class);
 
 	public static String TEST_INPUT_FILES_FOLDER_PATH = null;
 	public static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
@@ -86,8 +87,7 @@ public class PreProcessFiles {
 				if (args.length > 1) {
 					TEST_EXECUTION_FILE_NAME = args[0];
 				} else {
-					reporter.info("You must specify a string for the test xlsx file name such as Test.xlsx and the name of the test sheet");
-//					NoahLogManager.getLogger().warn("You must specify a string for the test xlsx file name such as Test.xlsx and the name of the test sheet");
+					logger.info("You must specify a string for the test xlsx file name such as Test.xlsx and the name of the test sheet");
 					generateBeansXmlFile = false;
 				}
 			}else {
@@ -95,7 +95,7 @@ public class PreProcessFiles {
 			}
 
 			if (generateBeansXmlFile) {
-				reporter.info("Current Project Version: " + propertiesHelper.getProperties().getProperty("build.version"));
+				logger.info("Current Project Version: " + propertiesHelper.getProperties().getProperty("build.version"));
 			}
 			else {
 				return false;

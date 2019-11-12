@@ -1,6 +1,7 @@
 package ui.utils.bpp;
 
 import datageneration.keywords.KeywordManager;
+import ui.utils.BPPLogManager;
 import ui.utils.ReporterManager;
 //import ui.utils.bpp.NoahLogManager;
 //import ui.utils.bpp.Reporter;
@@ -30,7 +31,7 @@ public class KeywordsHandler {
         try {
             keywordManager = new KeywordManager(KEYWORDS_FILE_PATH);
         } catch (NullPointerException e1) {
-            reporter.info("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString());
+            BPPLogManager.getLogger().error("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString());
             reporter.fail("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString()
                     + "<br>Please read the log file to get more information");
             throw new NullPointerException();
@@ -42,11 +43,11 @@ public class KeywordsHandler {
             if (keywordManager.isKeyword(keyword)) {
                 return keywordManager.getKeyword(keyword).convertKeyword();
             } else {
-                reporter.info("Requested " + keyword + " keyword is absent. Please check the keywords and/or test spreadsheets.");
+                BPPLogManager.getLogger().warn(("Requested " + keyword + " keyword is absent. Please check the keywords and/or test spreadsheets."));
                 return keyword;
             }
         } catch (Exception e2) {
-            reporter.info("Failed to generate a value by provided keyword: " + keyword
+            BPPLogManager.getLogger().error("Failed to generate a value by provided keyword: " + keyword
                     + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading");
             reporter.fail("Failed to generate a value by provided keyword: " + keyword
                     + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading" +

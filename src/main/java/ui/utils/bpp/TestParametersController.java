@@ -1,6 +1,5 @@
 package ui.utils.bpp;
 
-import com.isomorphic.webdriver.ByScLocator;
 import org.openqa.selenium.By;
 import ui.utils.ReporterManager;
 
@@ -196,8 +195,6 @@ public class TestParametersController {
             return By.className(locator.substring(10));
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
-        } else if (locator.startsWith("scLocator")) {
-            return ByScLocator.scLocator(locator);
         } else {
             reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             return By.linkText(locator);

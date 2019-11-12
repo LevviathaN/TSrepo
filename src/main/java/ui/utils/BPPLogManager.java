@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class LogManager {
+public class BPPLogManager {
     private static final ConcurrentHashMap<Long, Logger> loggers = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<Long, FileAppender> appenders = new ConcurrentHashMap<>();
 

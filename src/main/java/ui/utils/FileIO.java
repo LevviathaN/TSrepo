@@ -2,10 +2,6 @@ package ui.utils;
 
 import java.io.*;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.testng.reporters.Files;
 
 import java.io.File;
 import java.util.Properties;
@@ -24,7 +20,7 @@ public class FileIO {
     static String PROD_DATA_RESOURCES = "src/main/resources/data/production/";
     static String CONFIG_FILE = System.getProperty("config");
     static String PROPERTIES = "src/main/resources/" + ((CONFIG_FILE == null) ? "default" : CONFIG_FILE) + ".properties";
-    static String Report_folder = "Report";
+    static String EXTENT_CONFIG = "src/main/resources/extent-config.xml";
 
     public static String filename;
 
@@ -57,21 +53,6 @@ public class FileIO {
             ReporterManager.Instance.fatalFail("Field was not found: " + fieldName);
         }
         return result;
-    }
-
-    public static String takeScreenshot(WebDriver driver) {
-        return takeScreenshot(driver, String.valueOf(System.currentTimeMillis()));
-    }
-
-    public static String takeScreenshot(WebDriver driver, String name) {
-        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        filename = name + "screen.png";
-        try {
-            Files.copyFile(new FileInputStream(file), new File(TARGET_FOLDER + File.separator + Report_folder + File.separator + filename));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return filename;
     }
 
     public static String getDataFile(String filename) {

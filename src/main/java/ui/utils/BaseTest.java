@@ -56,7 +56,6 @@ public class BaseTest {
         //close driver
         BasePage.driver().quit();
         DriverProvider.closeDriver();
-
     }
 
     @AfterSuite(alwaysRun = true)

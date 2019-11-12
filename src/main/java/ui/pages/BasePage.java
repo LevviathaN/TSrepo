@@ -9,13 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import ui.utils.DriverProvider;
-import ui.utils.FileIO;
-import ui.utils.ReporterManager;
-import ui.utils.Tools;
+import ui.utils.*;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -23,20 +21,16 @@ import ui.utils.Tools;
 
 public class BasePage {
 
-    //todo: maybe we should consider to disable reporter messages about primitive actions and validations
     public static ReporterManager reporter = ReporterManager.Instance;
-
+    public static Logger logger = Logger.getLogger(BasePage.class);
     public static HashMap<String, String> EXECUTION_CONTEXT = new HashMap<>();
-
     public final static String BASE_URL = (FileIO.getConfigProperty("Environment"));
-
     public String pageURL = "";
     public String pageTitle = "";
     Robot robot;
 
     //needed because of mac and windows have different Ctrl keys
     int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
-
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
@@ -51,7 +45,7 @@ public class BasePage {
     private static int getTimeout() {
         String timeout = FileIO.getConfigProperty("DefaultTimeoutInSeconds");
         if (timeout == null) {
-            reporter.fatalFail("DefaultTimeoutInSeconds parameter was not found");
+            reporter.fail("DefaultTimeoutInSeconds parameter was not found");
             timeout = "15";
         }
 
@@ -99,19 +93,19 @@ public class BasePage {
 
     public boolean isPageLoaded() {
         boolean result = false;
-        reporter.info("Page title is: " + driver().getTitle());
-        reporter.info("Page URL is: " + driver().getCurrentUrl());
+        logger.info("Page title is: " + driver().getTitle());
+        logger.info("Page URL is: " + driver().getCurrentUrl());
         if (driver().getTitle().contains(pageTitle))
             result = true;
         else {
-            reporter.info("Expected title: " + pageTitle);
+            logger.info("Expected title: " + pageTitle);
             result = false;
         }
 
         if (driver().getCurrentUrl().contains(pageURL))
             result = true;
         else {
-            reporter.info("Expected URL: " + pageURL);
+            logger.info("Expected URL: " + pageURL);
             result = false;
         }
 
@@ -169,12 +163,12 @@ public class BasePage {
      */
 
     public void reloadPage() {
-        reporter.info("Refreshing the page: " + "\"" + BASE_URL + pageURL + "\"");
+        logger.info("Refreshing the page: " + "\"" + BASE_URL + pageURL + "\"");
         driver().navigate().refresh();
     }
 
     public void open() {
-        reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
+        logger.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
         driver().get(BASE_URL + pageURL);
     }
 
@@ -189,17 +183,17 @@ public class BasePage {
     }
 
     public void close() {
-        reporter.info("Closing the browser");
+        logger.info("Closing the browser");
         driver().close();
     }
 
     public String getTitle() {
-        reporter.info("The page title is: " + "\"" + pageTitle + "\"");
+        logger.info("The page title is: " + "\"" + pageTitle + "\"");
         return pageTitle;
     }
 
     public String getURL() {
-        reporter.info("The requested URL is: " + BASE_URL + pageURL);
+        logger.info("The requested URL is: " + BASE_URL + pageURL);
         return BASE_URL + pageURL;
     }
 
@@ -227,7 +221,7 @@ public class BasePage {
 
     //todo: refactor all findBy and clickBy element using click(bySomething)
     public WebElement findByText(String element) {
-        reporter.info("finding '" + element + "' element");
+        reporter.info("Аinding '" + element + "' element");
         return findElement(byText(element));
     }
 
@@ -500,13 +494,11 @@ public class BasePage {
     }
 
     public void bringToFocus() {
-        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-//        reporter.info("Executing Cmd + Tab");
+
         robot.keyPress(systemControllKey);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(systemControllKey);
         robot.keyRelease(KeyEvent.VK_TAB);
         robot.delay(2000);
     }
-
 }
