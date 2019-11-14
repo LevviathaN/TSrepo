@@ -8,7 +8,7 @@ Feature: Product Factory Random Bodies
     Given I execute "Log In" reusable step
     And I execute "Create Body Financial Dimension" reusable step
 
-  @Create @Random @Single
+  @Create @Random
   Scenario: Create New Body Using Random Data
     When I click on the "work" link
     When I click on the "Bodies" link
@@ -22,7 +22,7 @@ Feature: Product Factory Random Bodies
     And I click on the "Save" button
     Then I should see the "EC_BODY_SHORT_NAME" element
 
-  @Create @Random @Multiple
+  @Create @Random
   Scenario Outline: Create New Bodies Using Random Data
     When I click on the "work" link
     When I click on the "Bodies" link

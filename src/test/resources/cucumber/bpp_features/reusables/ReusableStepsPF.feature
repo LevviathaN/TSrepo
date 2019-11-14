@@ -1,4 +1,3 @@
-@Ignore
 @Reusable
 Feature: Product Factory
   As a product setter

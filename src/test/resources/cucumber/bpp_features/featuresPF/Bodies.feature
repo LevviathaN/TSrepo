@@ -8,7 +8,7 @@ Feature: Product Factory Bodies
     Given I execute "Log In" reusable step
     And I execute "Create Body Financial Dimension" reusable step
 
-  @Create @Hardcoded @Single
+  @Create
   Scenario: Create New Body
     When I click on the "work" link
     When I click on the "Bodies" link
@@ -20,7 +20,7 @@ Feature: Product Factory Bodies
     And I click on the "Save" button
     Then I should see the "SomeShortName1" element
 
-  @Create @Hardcoded @Multiple
+  @Create
   Scenario Outline: Create New Bodies
     When I click on the "work" link
     When I click on the "Bodies" link

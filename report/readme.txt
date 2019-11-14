@@ -1,1 +1,0 @@
-Report folder contains all screenshots (if test fails) and html report with detailed information about test execution.

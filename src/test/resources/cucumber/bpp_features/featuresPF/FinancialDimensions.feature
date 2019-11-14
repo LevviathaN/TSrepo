@@ -7,7 +7,7 @@ Feature: Product Factory Financial Dimensions
   Background:
     Given I execute "Log In" reusable step
 
-  @Single @Hardcoded
+  @Create
   Scenario: Create Body Financial Dimension
     Given I execute "Log In" reusable step
     When I click on the "Financial Dimensions" link
