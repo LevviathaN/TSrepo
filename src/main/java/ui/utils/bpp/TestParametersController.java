@@ -41,7 +41,7 @@ public class TestParametersController {
 
     private static final Pattern ACCEPTABLE_METADATA_PATTERN = Pattern.compile("^MD_([A-Z]+_){2}[A-Z]+$");
     private static final Pattern ACCEPTABLE_KEYWORD_PATTERN = Pattern.compile("^([A-Za-z\\d-_.]*<?KW_AUTO_[A-Z]+(\\b|[|])[~:)(/A-Za-z._#?-]*>?[/A-Za-z\\d@._-]*)+$");
-    private static final Pattern ACCEPTABLE_EXECUTION_CONTEXT_PATTERN = Pattern.compile("^([A-Za-z\\d\\s:\\-\\/\\\\|@_.=]*<?EC_([A-Z]+_*)+[A-Z]*>?[A-Za-z\\d\\s:\\-\\/\\\\|@_.]*)+$|" +
+    private static final Pattern ACCEPTABLE_EXECUTION_CONTEXT_PATTERN = Pattern.compile("^([A-Za-z\\d\\s:\\-/\\\\|@_.=]*<?EC_([A-Z]+_*)+[A-Z]*>?[A-Za-z\\d\\s:\\-/\\|.]*)+$|" +
             "EC_([A-Z]+_*)+[A-Z]+$");
     private static final Pattern GENERAL_METADATA_PATTERN = Pattern.compile("^MD_.+$");
     private static final Pattern GENERAL_KEYWORD_PATTERN = Pattern.compile("^.*KW_.+$");

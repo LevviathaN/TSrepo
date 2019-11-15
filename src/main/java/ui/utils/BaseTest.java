@@ -17,7 +17,6 @@ public class BaseTest {
 
     ReporterManager reporter;
     PreProcessFiles preProcessFiles;
-    boolean startTestExecution;
     protected String sessionId;
 
     @BeforeMethod
@@ -39,7 +38,7 @@ public class BaseTest {
         }
 
         try {
-            startTestExecution = preProcessFiles.preProcessTestConfiguration();
+            boolean startTestExecution = preProcessFiles.preProcessTestConfiguration();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,11 +59,11 @@ public class BaseTest {
                 sessionId = ((RemoteWebDriver) DriverProvider.getDriver()).getSessionId().toString();
                 reporter.addLinkToReport(reporter.getScreencastLinkFromBrowserStack(sessionId));
 
-                if (testResult.toString().contains("FAILURE"))
+                if (testResult.toString().contains("FAILURE")) {
                     reporter.updateBrowserStackJob("fail", sessionId);
-                else
+                }else {
                     reporter.updateBrowserStackJob("pass", sessionId);
-
+                }
                 BasePage.driver().quit();
                 DriverProvider.closeDriver();
             } else {
