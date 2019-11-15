@@ -4,13 +4,15 @@ import cucumber.ReusableRunner;
 import cucumber.api.java.en.*;
 //import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
-import org.springframework.core.annotation.AliasFor;
 import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHandler;
 import ui.utils.bpp.TestParametersController;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Ruslan Levytskyi on 15/3/2019.
@@ -49,8 +51,16 @@ public class StepDefinitions extends BasePage {
     }
 
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
-    public void fill_field(String field, String text){
-        findElement(By.xpath("//input[@name='" + TestParametersController.checkIfSpecialParameter(field) +
+    public void fill_field(String element, String text){
+        String specialElement = PropertiesHandler.getPropertyByKey(element);
+        if(element.startsWith("xpath")|element.startsWith("css"))
+            findElement(TestParametersController.initElementByLocator(element))
+                    .sendKeys(TestParametersController.checkIfSpecialParameter(text));
+        else if(!element.equals(specialElement))
+            findElement(TestParametersController.initElementByLocator(specialElement))
+                    .sendKeys(TestParametersController.checkIfSpecialParameter(text));
+        else
+            findElement(By.xpath("//input[@name='" + TestParametersController.checkIfSpecialParameter(element) +
                 "']")).sendKeys(TestParametersController.checkIfSpecialParameter(text));
     }
 
@@ -96,8 +106,8 @@ public class StepDefinitions extends BasePage {
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step with some additional steps$")
-    public void i_execute_reusable_step_with(String reusableName) {
-        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+    public void i_execute_reusable_step_with(String reusableName, Map<Integer, String> steps) {
+        ReusableRunner.executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step replacing some steps$")
@@ -109,5 +119,16 @@ public class StepDefinitions extends BasePage {
     @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
+    }
+
+    @Then("^I test \"([^\"]*)\" parametric reusable$")
+    public void i_test_parametric_reusable(String text, List<List<String>> data) {
+        ReporterManager.info("Executing " + text + " reusable");
+        for(List arg : data){
+            ReporterManager.info("Step");
+            for(Object step : arg){
+                ReporterManager.info("Substep: " + step);
+            }
+        }
     }
 }
