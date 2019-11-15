@@ -6,18 +6,18 @@ Feature: Product Factory Bodies
 
   Background:
     Given I execute "Log In" reusable step
-    And I execute "Create Body Financial Dimension" reusable step
+#    And I execute "Create Body Financial Dimension" reusable step
 
-  @Create
+  @Test
   Scenario: Create New Body
-    When I click on the "work" link
-    When I click on the "Bodies" link
-    Then I click on the "Create" button
-    And I fill the "Short Name" PF field with "SomeShortName1"
-    And I fill the "Name" PF field with "SomeName1"
-    And I click on the "Change" button
-    And I select "SomeCode1234" from PF dialog
-    And I click on the "Save" button
+    When I click on the "PRODUCT_FACTORY_WORK_LINK" link
+    When I click on the "PRODUCT_FACTORY_BODY_LINK" link
+    Then I click on the "PRODUCT_FACTORY_CREATE_BUTTON" button
+    And I fill the "PRODUCT_FACTORY_SHORTNAME_TEXT_FIELD" PF field with "<short_name>"
+    And I fill the "PRODUCT_FACTORY_NAME_TEXT_FIELD" PF field with "SomeName1"
+    And I click on the "PRODUCT_FACTORY_CHANGE_BUTTON" button
+    And I select "PRODUCT_FACTORY_SELECT_DROPDOWN" from PF dialog
+    And I click on the "PRODUCT_FACTORY_SAVE_BUTTON" button
     Then I should see the "SomeShortName1" element
 
   @Create

@@ -1,5 +1,9 @@
 package ui.utils;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -30,4 +34,26 @@ public class Tools {
         return result.toString();
     }
 
+    /**
+     * @param locatorsFile - the name of Json file which will be used to retrieve Json file as an Object
+     */
+    public JSONObject getJsonObjectForLocators(String locatorsFile) {
+
+        JSONParser parser = new JSONParser();
+
+        StringBuilder path = new StringBuilder();
+        path.append(System.getProperty("user.dir"));
+        path.append(locatorsFile);
+
+        try (FileReader reader = new FileReader(path.toString())) {
+
+            Object obj = parser.parse(reader);
+
+            return (JSONObject) obj;
+        } catch (ParseException | IOException ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
 }

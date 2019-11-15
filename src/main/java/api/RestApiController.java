@@ -2,11 +2,11 @@ package api;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.apache.log4j.LogManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import ui.utils.Tools;
 import ui.utils.bpp.TestParametersController;
-
+import java.util.Map;
 import java.util.Random;
 
 import static io.restassured.RestAssured.given;
@@ -74,5 +74,24 @@ public class RestApiController {
         });
 
         return map.toString();
+    }
+
+    public Map processLocatorProperties(String locatorsFile) {
+
+        JSONObject map = new Tools().getJsonObjectForLocators(locatorsFile);
+
+        map.keySet().forEach(keyStr -> {
+            Object keyValue = map.get(keyStr);
+
+            if (keyValue instanceof JSONArray) {
+                JSONArray valueArray = (JSONArray) keyValue;
+                keyValue = valueArray.get(new Random().nextInt(valueArray.size())).toString();
+            }
+
+            map.put(keyStr, TestParametersController.checkIfSpecialParameter(keyValue.toString()));
+
+        });
+
+        return map;
     }
 }

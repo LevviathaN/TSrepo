@@ -1,5 +1,7 @@
 package ui.utils.bpp;
 
+import api.RestApiController;
+import ui.utils.BPPLogManager;
 import ui.utils.ReporterManager;
 //import ui.utils.bpp.NoahLogManager;
 
@@ -67,15 +69,15 @@ public class PropertiesHandler {
             }
         } catch (IOException e1) {
             reporter.info("Failed to read properties file located in the " + PROPERTIES_FOLDER.toString());
-            //NoahLogManager.getLogger().error("Failed to read properties file located in the " + PROPERTIES_FOLDER.toString(), e1);
+            BPPLogManager.getLogger().error("Failed to read properties file located in the " + PROPERTIES_FOLDER.toString(), e1);
             throw new IOException();
         } catch (NullPointerException e2) {
             reporter.info("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString());
-            //NoahLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString(), e2);
+            BPPLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString(), e2);
             throw new NullPointerException();
         } catch (Exception e3) {
             reporter.info("Failed to gather properties");
-            //NoahLogManager.getLogger().error("Failed to gather properties", e3);
+            BPPLogManager.getLogger().error("Failed to gather properties", e3);
             throw new NullPointerException();
         }
     }
@@ -91,18 +93,18 @@ public class PropertiesHandler {
         if (properties.containsKey(key)) {
             return properties.get(key);
         } else {
-//            reporter.info("Requested " + key + " property was not found. "
-//                    + "\n\t\tPossible reasons are:\n"
-//                    + "\t\t- the property is missed in properties file provided into the "
-//                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
-//                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
-//                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
-            //NoahLogManager.getLogger().warn("Requested " + key + " property was not found. "
-            //                    + "\n\t\tPossible reasons are:\n"
-            //                    + "\t\t- the property is missed in properties file provided into the "
-            //                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
-            //                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
-            //                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+            reporter.info("Requested " + key + " property was not found. "
+                    + "\n\t\tPossible reasons are:\n"
+                    + "\t\t- the property is missed in properties file provided into the "
+                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
+                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
+                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+            BPPLogManager.getLogger().warn("Requested " + key + " property was not found. "
+                                + "\n\t\tPossible reasons are:\n"
+                                + "\t\t- the property is missed in properties file provided into the "
+                                + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
+                                + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
+                                + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             return key;
         }
     }
@@ -124,12 +126,12 @@ public class PropertiesHandler {
                     + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
                     + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
                     + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
-            //NoahLogManager.getLogger().warn("Requested " + key + " property was not found. "
-            //                    + "\n\t\tPossible reasons are:\n"
-            //                    + "\t\t- the property is missed in properties file provided into the "
-            //                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
-            //                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
-            //                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+            BPPLogManager.getLogger().warn("Requested " + key + " property was not found. "
+                                + "\n\t\tPossible reasons are:\n"
+                                + "\t\t- the property is missed in properties file provided into the "
+                                + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
+                                + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
+                                + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             return "";
         }
     }
@@ -151,13 +153,31 @@ public class PropertiesHandler {
                     + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
                     + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
                     + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
-            //NoahLogManager.getLogger().warn("Requested " + key + " property was not found."
-            //                    + "\n\t\tPossible reasons are:\n"
-            //                    + "\t\t- the property is missed in properties file provided into the "
-            //                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
-            //                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
-            //                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+            BPPLogManager.getLogger().warn("Requested " + key + " property was not found."
+                                + "\n\t\tPossible reasons are:\n"
+                                + "\t\t- the property is missed in properties file provided into the "
+                                + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
+                                + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
+                                + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             return "";
+        }
+    }
+
+    public static void gatherPropertiesFromJSON() throws NullPointerException {
+
+        RestApiController controller = new RestApiController();
+
+        try {
+            Map<String, String> props = controller.processLocatorProperties("/src/main/resources/data/bpp/test.properties/Locators.json");
+            properties.putAll(props);
+        } catch (NullPointerException e2) {
+            reporter.info("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString());
+            BPPLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString(), e2);
+            throw new NullPointerException();
+        } catch (Exception e3) {
+            reporter.info("Failed to gather properties");
+            BPPLogManager.getLogger().error("Failed to gather properties", e3);
+            throw new NullPointerException();
         }
     }
 }

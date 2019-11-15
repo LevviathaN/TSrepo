@@ -1,0 +1,10 @@
+{
+  "PRODUCT_FACTORY_WORK_LINK": "xpath=//div[@title='Programme']//span[text()='work']",
+  "PRODUCT_FACTORY_BODY_LINK": "xpath=//div[@title='Bodies']//span[text()='collections_bookmark']",
+  "PRODUCT_FACTORY_CREATE_BUTTON": "xpath=//button[normalize-space()='Create']",
+  "PRODUCT_FACTORY_SHORTNAME_TEXT_FIELD": "xpath=//label[normalize-space()='Short Name']/following::input[1]",
+  "PRODUCT_FACTORY_NAME_TEXT_FIELD": "xpath=//label[normalize-space()='Name']/following::input[1]",
+  "PRODUCT_FACTORY_CHANGE_BUTTON": "xpath=//button[normalize-space()='Change']",
+  "PRODUCT_FACTORY_SELECT_DROPDOWN": "xpath=//button[normalize-space()='Select'])[1]",
+  "PRODUCT_FACTORY_SAVE_BUTTON": "xpath=//button[normalize-space()='Save']"
+}
