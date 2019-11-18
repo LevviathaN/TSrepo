@@ -28,7 +28,7 @@ public class BaseTest {
         preProcessFiles = new PreProcessFiles();
 
         try {
-            reporter.info("Driver creation");
+            BPPLogManager.getLogger().info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
         } catch (Exception e) {
             reporter.fail("Before test failure during Driver creation", e);

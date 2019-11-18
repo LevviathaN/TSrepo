@@ -6,7 +6,7 @@ Feature: Product Factory Bodies
 
   Background:
     Given I execute "Log In" reusable step
-#    And I execute "Create Body Financial Dimension" reusable step
+    And I execute "Create Body Financial Dimension" reusable step
 
   @Test
   Scenario: Create New Body
