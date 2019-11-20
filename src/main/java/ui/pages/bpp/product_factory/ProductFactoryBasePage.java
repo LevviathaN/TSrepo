@@ -44,15 +44,6 @@ public class ProductFactoryBasePage extends BasePage {
         }
     }
 
-    public void createNewBody(String bodyShortName, String bodyName){
-        reporter.info("Creating new body: " + bodyName + " (" + bodyShortName + ")");
-        clickByText("Bodies");
-        clickByText("Create");
-        setText(pfField("Short Name"), bodyShortName);
-        setText(pfField("Name"), bodyName);
-        clickByText("Save");
-    }
-
     public By pfField(String fieldName){
         return By.xpath("//label[text()='" + fieldName + "']/following-sibling::div/input");
     }
@@ -61,12 +52,16 @@ public class ProductFactoryBasePage extends BasePage {
         return By.xpath("//td[text()='" + fieldName + "']/following-sibling::td/button");
     }
 
+    public By pfChangeButton(String fieldName){
+        return By.xpath("//span[text()='" + fieldName + "']/following-sibling::button");
+    }
+
     public void pfSelectFromModal(String value){
         clickOnElement(By.xpath("//td[text()='" + value + "']/following-sibling::td/button/span[text()='Select']"));
     }
 
     public void pfCheckbox(String element, boolean shouldBeChecked){
-        WebElement checkbox = findElement(By.xpath("//td[text()='" + element + "']/preceding-sibling::td/span/span/input"));
+        WebElement checkbox = findElement(By.xpath("//td[text()='" + element + "']/preceding-sibling::td/span"));
         if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
             checkbox.click();
         }

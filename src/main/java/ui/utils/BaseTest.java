@@ -1,5 +1,6 @@
 package ui.utils;
 
+import api.RestApiController;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -21,11 +22,13 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
+        RestApiController apiController = new RestApiController();
 
         //init reporter
         reporter = ReporterManager.Instance;
         reporter.startReporting(method, data);
         preProcessFiles = new PreProcessFiles();
+        BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/SpecialLocators.json");
 
         try {
             reporter.info("Driver creation");

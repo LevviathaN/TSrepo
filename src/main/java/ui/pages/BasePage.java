@@ -4,10 +4,8 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 import com.google.common.base.Function;
 import org.apache.log4j.Logger;
@@ -15,6 +13,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import ui.utils.*;
+import ui.utils.bpp.PropertiesHandler;
+import ui.utils.bpp.TestParametersController;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -29,6 +29,7 @@ public class BasePage {
     public String pageURL = "";
     public String pageTitle = "";
     Robot robot;
+    public static Map<String,String> specialLocatorsMap;
 
     //needed because of mac and windows have different Ctrl keys
     int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
@@ -350,6 +351,17 @@ public class BasePage {
             reporter.info("Got exception. Exception is expected and ignored.");
         }
         return null;
+    }
+
+    public By initElementLocator(String element){
+        String locatorFromFile = PropertiesHandler.getPropertyByKey(element);
+        //if direct locator
+        if(element.startsWith("xpath")|element.startsWith("css"))
+            return TestParametersController.initElementByLocator(element);
+        else if(!element.equals(locatorFromFile))
+            return TestParametersController.initElementByLocator(locatorFromFile);
+        else
+            return byText(TestParametersController.checkIfSpecialParameter(element));
     }
 
     public String getAttributeID(By element, int... timeout) {

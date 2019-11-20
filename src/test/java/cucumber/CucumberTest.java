@@ -8,7 +8,7 @@ import ui.utils.BaseTest;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@Create"},
+        tags = {"@NewLocators"},
         plugin = {"pretty"})
 
 public class CucumberTest  extends BaseTest {
@@ -30,7 +30,7 @@ public class CucumberTest  extends BaseTest {
         this.testNGCucumberRunner.runScenario(pickleWrapper.getPickleEvent());
     }
 
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] scenarios() {
         return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }
