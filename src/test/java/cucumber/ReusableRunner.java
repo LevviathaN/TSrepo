@@ -24,19 +24,20 @@ public class ReusableRunner {
     private static ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
     private static String step = "";
     private static ArrayList<String> reusable;
+    private static ReporterManager reporter = ReporterManager.Instance;
 
     public static void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps){
         StepDefinitions stepDefs = new StepDefinitions();
         ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
-        System.out.println("Start executing \"" + reusableName + "\" reusable step");
-        System.out.println("it contains " + getReusableReusableSteps(reusableName).size() + " reusable step");
+        reporter.info("Start executing \"" + reusableName + "\" reusable step");
+        reporter.info("it contains " + getReusableReusableSteps(reusableName).size() + " reusable step");
 
         reusable = getReusableReusableSteps(reusableName);
 
         for(int i = 0; i<reusable.size(); i++){
-            System.out.println("Executing: " + step);
+            reporter.info("Executing: " + step);
             if(subSteps.containsKey(i)){
-                ReporterManager.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
+                reporter.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
             }
 
@@ -47,19 +48,19 @@ public class ReusableRunner {
     public static void executeReusable(String reusableName){
         StepDefinitions stepDefs = new StepDefinitions();
         ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
-        System.out.println("Start executing \"" + reusableName + "\" reusable step");
-        System.out.println("it contains " + getReusableReusableSteps(reusableName).size() + " reusable step");
+        reporter.info("Start executing \"" + reusableName + "\" reusable step");
+        reporter.info("it contains " + getReusableReusableSteps(reusableName).size() + " reusable step");
 
         reusable = getReusableReusableSteps(reusableName);
 
         for(int i = 0; i<reusable.size(); i++){
-            System.out.println("Executing: " + step);
+            reporter.info("Executing: " + step);
 
             executeStep(i);
         }
     }
 
-    static void executeStep(int i){
+    private static void executeStep(int i){
         step = reusable.get(i);
         String arg1 = "";
         String arg2 = "";
@@ -164,10 +165,10 @@ public class ReusableRunner {
                 }
             }
             if(!isReusableExist){
-                System.out.println(reusableName + " reusable step does not exist");
-                System.out.println("Here is a list of available reusable steps:");
+                reporter.info(reusableName + " reusable step does not exist");
+                reporter.info("Here is a list of available reusable steps:");
                 for(String availStep : availableReusableStepsList){
-                    System.out.println("  " + availStep);
+                    reporter.info("  " + availStep);
                 }
             }
         }catch (Exception e){

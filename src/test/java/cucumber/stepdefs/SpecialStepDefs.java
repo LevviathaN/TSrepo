@@ -76,7 +76,7 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            Assert.assertTrue(isElementPresent(By.xpath(resultingXpath)));
+            Assert.assertTrue(isElementPresentAndDisplay(By.xpath(resultingXpath)));
         } else {
             reporter.fail("No such locator template key");
         }

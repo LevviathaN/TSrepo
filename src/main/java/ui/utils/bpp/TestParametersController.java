@@ -187,7 +187,7 @@ public class TestParametersController {
                 }
             }
             ExecutionContextHandler.setExecutionContextValueByKey(ecVarName.toString(),resultingValue.toString());
-            System.out.println("Execution Context variable '" + ecVarName +
+            reporter.info("Execution Context variable '" + ecVarName +
                     "' was automatically created with value '" + resultingValue.toString() + "'");
             return resultingValue.toString();
         //otherwise check if contains EC_ value

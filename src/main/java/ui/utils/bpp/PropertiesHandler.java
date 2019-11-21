@@ -91,14 +91,15 @@ public class PropertiesHandler {
      */
     public static String getPropertyByKey(String key) {
         if (properties.containsKey(key)) {
+            reporter.info(key + " - is a key from LocatorProperties file, with value: " + properties.get(key));
             return properties.get(key);
         } else {
-            reporter.info("Requested " + key + " property was not found. "
-                    + "\n\t\tPossible reasons are:\n"
-                    + "\t\t- the property is missed in properties file provided into the "
-                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
-                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
-                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+//            reporter.info("Requested " + key + " property was not found. "
+//                    + "\n\t\tPossible reasons are:\n"
+//                    + "\t\t- the property is missed in properties file provided into the "
+//                    + PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH + "/ folder path\n"
+//                    + "\t\t- the requested property is misspelled in the excel spreadsheet provided into the "
+//                    + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             BPPLogManager.getLogger().warn("Requested " + key + " property was not found. "
                                 + "\n\t\tPossible reasons are:\n"
                                 + "\t\t- the property is missed in properties file provided into the "

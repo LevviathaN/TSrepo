@@ -30,7 +30,7 @@ public class CucumberTest  extends BaseTest {
         this.testNGCucumberRunner.runScenario(pickleWrapper.getPickleEvent());
     }
 
-    @DataProvider(parallel = false)
+    @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }

@@ -11,8 +11,6 @@ import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHandler;
 import ui.utils.bpp.TestParametersController;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,10 +44,17 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
-        clickOnAnyElement(initElementLocator(element));
+        clickOnFirstVisibleElement(initElementLocator(element));
         waitForPageToLoad();
     }
 
+    /**
+     * Definition to click an element which is N of elements found on the page using specified locator
+     *
+     * @author Ruslan Levytskyi
+     * @param element locator for element you want to click on
+
+     */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")
     public void i_click_on_the_n_button(String element, String nmb) {
         clickOnElement(By.xpath("//body/descendant::*[text()='" +
@@ -58,11 +63,6 @@ public class StepDefinitions extends BasePage {
 
     /**
      * Definition to send some text into some text input field
-     *
-     * initElementLocator builds locator, depending on input parameter:
-     * 1. Starts with "xpath" or "css" - locator is passed directly into a method
-     * 2. Parameter exists in locators document - locator value is returned from document
-     * 3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
      *
      * @author Ruslan Levytskyi
      * @param element locator for element you want to send text to
@@ -89,11 +89,6 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to send some text into some text input field
      *
-     * initElementLocator builds locator, depending on input parameter:
-     * 1. Starts with "xpath" or "css" - locator is passed directly into a method
-     * 2. Parameter exists in locators document - locator value is returned from document
-     * 3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
-     *
      * @author Ruslan Levytskyi
      * @param seconds amount of seconds you want to wait
      *             Here we also check if text is EC_ or MD_ of KW_
@@ -106,11 +101,6 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to hover over element
      *
-     * initElementLocator builds locator, depending on input parameter:
-     * 1. Starts with "xpath" or "css" - locator is passed directly into a method
-     * 2. Parameter exists in locators document - locator value is returned from document
-     * 3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
-     *
      * @author Ruslan Levytskyi
      * @param element locator of element you want to hover over
      *             Here we also check if text is EC_ or MD_ of KW_
@@ -122,11 +112,6 @@ public class StepDefinitions extends BasePage {
 
     /**
      * Definition to check visibility of the element
-     *
-     * initElementLocator builds locator, depending on input parameter:
-     * 1. Starts with "xpath" or "css" - locator is passed directly into a method
-     * 2. Parameter exists in locators document - locator value is returned from document
-     * 3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
      *
      * @author Ruslan Levytskyi
      * @param element locator of element you want to check if it's visible
@@ -152,13 +137,19 @@ public class StepDefinitions extends BasePage {
      */
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
-        System.out.println("Current page is " + driver().getTitle());
+        reporter.info("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
         Assert.assertEquals(driver().getTitle(), TestParametersController.checkIfSpecialParameter(pageTitle),
                 "Current page is " + TestParametersController.checkIfSpecialParameter(pageTitle));
     }
 
-
+    /**
+     * Definition to execute reusable steps
+     *
+     * @author Ruslan Levytskyi
+     * @param reusableName name of reusable step (Scenario in ReusableSteps.feature) you want to execute
+     *             Here we also check if text is EC_ or MD_ of KW_
+     */
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
         ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));

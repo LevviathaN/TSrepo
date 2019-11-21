@@ -13,9 +13,9 @@ Feature: Product Factory Random Bodies
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     Then I click on the "Product Factory create button"
-    And I set "AutoBodyShortName[####]" text to the "Short Name" "Product Factory text field"
-    And I set "AutoBodyName[####]" text to the "Name" "Product Factory text field"
+    And I set "BodyShortName[####]" text to the "Short Name" "Product Factory text field"
+    And I set "BodyName[####]" text to the "Name" "Product Factory text field"
     And I click on the "Change" "button"
     And I click on the "EC_FD_CODE" "Product Factory change modal option"
     And I click on the "Save" "button"
-    Then I should see the "EC_AUTO_BODY_SHORT_NAME" element
+    Then I should see the "EC_BODY_SHORT_NAME" element

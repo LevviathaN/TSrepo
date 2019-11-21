@@ -16,8 +16,8 @@ import java.net.MalformedURLException;
 
 public class BaseTest {
 
-    ReporterManager reporter;
-    PreProcessFiles preProcessFiles;
+    private ReporterManager reporter;
+    private PreProcessFiles preProcessFiles;
     protected String sessionId;
 
     @BeforeMethod
