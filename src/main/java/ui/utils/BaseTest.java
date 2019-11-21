@@ -31,7 +31,7 @@ public class BaseTest {
         BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/SpecialLocators.json");
 
         try {
-            reporter.info("Driver creation");
+            BPPLogManager.getLogger().info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
         } catch (Exception e) {
             reporter.fail("Before test failure during Driver creation", e);

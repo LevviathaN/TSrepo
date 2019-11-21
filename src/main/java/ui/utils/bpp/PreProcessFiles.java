@@ -96,7 +96,6 @@ public class PreProcessFiles {
 			}
 
 			if (generateBeansXmlFile) {
-				logger.info("Current Project Version: " + propertiesHelper.getProperties().getProperty("build.version"));
 			}
 			else {
 				return false;

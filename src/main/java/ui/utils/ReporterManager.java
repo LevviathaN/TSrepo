@@ -1,5 +1,6 @@
 package ui.utils;
 
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.relevantcodes.extentreports.*;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.FileAppender;
@@ -25,6 +27,10 @@ import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.testng.reporters.Files;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+
+import javax.imageio.ImageIO;
 
 public class ReporterManager {
 
@@ -33,6 +39,7 @@ public class ReporterManager {
     public static String filename;
     static String Report_folder = "report";
     private static Path logFolder;
+    private static Path screenshotFolder = Paths.get(Report_folder, "screenshots");
 
     ReporterManager() {
 
@@ -167,7 +174,7 @@ public class ReporterManager {
         report().log(LogStatus.PASS, details);
     }
 
-    public void fail(String details) {
+    public static synchronized void fail(String details) {
         String screenshotFile;
         String message = "<pre>" + details + "</pre>";
         logger.error(details);
@@ -183,7 +190,7 @@ public class ReporterManager {
 
     public void fail(String details, Throwable e) {
         String exceptionString = Tools.getStackTrace(e);
-        fail(details + "\n\n" + exceptionString);
+        fatalFail(details + "\n\n" + exceptionString);
     }
 
     public void fatalFail(String message) {
@@ -216,8 +223,8 @@ public class ReporterManager {
     }
 
     // a test name to be displayed on BrowserStack
-    public static synchronized String getTestName (){
-        String testName=testThread.get(Thread.currentThread().getId()).getTest().getName();
+    public static synchronized String getTestName() {
+        String testName = testThread.get(Thread.currentThread().getId()).getTest().getName();
         return testName;
     }
 
@@ -274,7 +281,7 @@ public class ReporterManager {
             osw.close();
 
             if (connection.getResponseCode() == 200) {
-               logger.info("BrowserStack job has been updated successfully");
+                logger.info("BrowserStack job has been updated successfully");
             } else {
                 logger.info("BrowserStack job has NOT been updated");
             }
@@ -296,6 +303,7 @@ public class ReporterManager {
         String link = String.format("<a target='_blank' href='%s'>Screencast Link</a>", ref);
         node(link);
     }
+
     public static String getScreencastLinkFromBrowserStack(String sessionId) {
         return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
     }
