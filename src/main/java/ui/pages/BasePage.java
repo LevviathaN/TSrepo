@@ -1,19 +1,24 @@
 package ui.pages;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.util.*;
-import java.util.List;
-
-import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import ui.utils.*;
+import ui.utils.DriverProvider;
+import ui.utils.FileIO;
+import ui.utils.ReporterManager;
+import ui.utils.Tools;
 import ui.utils.bpp.PropertiesHandler;
 import ui.utils.bpp.TestParametersController;
+
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by odiachuk on 07.07.17.
@@ -88,9 +93,9 @@ public class BasePage {
         boolean result = false;
         reporter.info("Page title is: " + driver().getTitle());
         reporter.info("Page URL is: " + driver().getCurrentUrl());
-        if (driver().getTitle().contains(title))
+        if (driver().getTitle().contains(title)) {
             result = true;
-        else {
+        } else {
             reporter.info("Expected title: " + title + " but was: " + driver().getTitle());
             result = false;
         }
@@ -397,12 +402,12 @@ public class BasePage {
      * @param element string locator fo find element
      * @return element By locator
      */
-    public By initElementLocator(String element){
+    public By initElementLocator(String element) {
         String locatorFromFile = PropertiesHandler.getPropertyByKey(element);
         //if direct locator
-        if(element.startsWith("xpath")|element.startsWith("css"))
+        if (element.startsWith("xpath")| element.startsWith("css")) {
             return TestParametersController.initElementByLocator(element);
-        else if(!element.equals(locatorFromFile))
+        } else if(!element.equals(locatorFromFile))
             return TestParametersController.initElementByLocator(locatorFromFile);
         else
             return byText(TestParametersController.checkIfSpecialParameter(element));
@@ -470,15 +475,13 @@ public class BasePage {
      */
     static void waitForAlert(int timeout) {
         int i = 0;
-        while (i++ < timeout) {
-            try {
-                Alert alert = driver().switchTo().alert();
-                break;
-            } catch (NoAlertPresentException e)  // wait for second
-            {
-                sleepFor(1);
-                continue;
-            }
+        while (i++ < timeout) try {
+            Alert alert = driver().switchTo().alert();
+            break;
+        } catch (NoAlertPresentException e)  // wait for second
+        {
+            sleepFor(1);
+            continue;
         }
     }
 
@@ -580,7 +583,7 @@ public class BasePage {
      * That causes browser window do loose focus. To continue execution this method is called
      */
     public void bringToFocus() {
-        if(robot==null){
+        if(robot == null) {
             try { robot = new Robot(); }
             catch (Exception e) { e.printStackTrace(); }
         }

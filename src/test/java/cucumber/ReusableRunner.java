@@ -48,8 +48,8 @@ public class ReusableRunner {
     public static void executeReusable(String reusableName){
         StepDefinitions stepDefs = new StepDefinitions();
         ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
-        reporter.info("Start executing \"" + reusableName + "\" reusable step");
-        reporter.info("it contains " + getReusableReusableSteps(reusableName).size() + " reusable step");
+        reporter.info("Start executing \"" + reusableName + "\" reusable step. " +
+                "It contains" + getReusableReusableSteps(reusableName).size() + " reusable steps");
 
         reusable = getReusableReusableSteps(reusableName);
 

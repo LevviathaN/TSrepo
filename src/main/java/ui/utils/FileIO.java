@@ -1,9 +1,11 @@
 package ui.utils;
 
-import java.io.*;
-
 
 import java.io.File;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Properties;
 
 // CSV
@@ -56,9 +58,9 @@ public class FileIO {
     }
 
     public static String getDataFile(String filename) {
-        if (FileIO.getConfigProperty("EnvType").equals("PROD"))
+        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
             return PROD_DATA_RESOURCES + filename;
-        else
+        } else
             return DATA_RESOURCES + filename;
     }
 }

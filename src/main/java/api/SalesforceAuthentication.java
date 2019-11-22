@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.not;
  * Class to get Access Token for Salesforce using OAuth 2.0
  */
 
-class SalesforceAuthentication {
+public class SalesforceAuthentication {
 
     private static String token;
 
@@ -43,8 +43,9 @@ class SalesforceAuthentication {
 
     public static SalesforceAuthentication getInstance() {
 
-        if (instance == null)
+        if (instance == null) {
             instance = new SalesforceAuthentication();
+        }
 
         return instance;
     }

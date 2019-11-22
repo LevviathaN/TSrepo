@@ -19,7 +19,7 @@
         <scripts>
             <![CDATA[
         $(document).ready(function() {
-
+            $('#test-details-wrapper ul.node-list>li>div:last-child').remove();
         });
       ]]>
         </scripts>
@@ -28,6 +28,14 @@
         <styles>
             <![CDATA[
 
+.test-body .collapsible {
+	border: 1px solid #ddd !important;
+}
+
+#test-details-wrapper ul.node-list>li>div {
+	background: #29323c;
+	margin-bottom: 0;
+}
       ]]>
         </styles>
     </configuration>

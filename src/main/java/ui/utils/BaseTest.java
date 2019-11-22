@@ -4,7 +4,9 @@ import api.RestApiController;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import ui.pages.BasePage;
 import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.MetaDataHandler;
@@ -18,7 +20,7 @@ public class BaseTest {
 
     private ReporterManager reporter;
     private PreProcessFiles preProcessFiles;
-    protected String sessionId;
+    private String sessionId;
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
@@ -62,11 +64,7 @@ public class BaseTest {
                 sessionId = ((RemoteWebDriver) DriverProvider.getDriver()).getSessionId().toString();
                 reporter.addLinkToReport(reporter.getScreencastLinkFromBrowserStack(sessionId));
 
-                if (testResult.toString().contains("FAILURE")) {
-                    reporter.updateBrowserStackJob("fail", sessionId);
-                }else {
-                    reporter.updateBrowserStackJob("pass", sessionId);
-                }
+                reporter.updateBrowserStackJob(testResult.toString().contains("FAILURE") ? "fail" : "pass", sessionId);
                 BasePage.driver().quit();
                 DriverProvider.closeDriver();
             } else {

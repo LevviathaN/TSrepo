@@ -9,8 +9,6 @@ import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHelper;
 
 import java.util.ArrayList;
-import java.util.Random;
-
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;

@@ -12,9 +12,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.relevantcodes.extentreports.*;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import com.relevantcodes.extentreports.NetworkMode;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.PatternLayout;
@@ -27,10 +28,7 @@ import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.testng.reporters.Files;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
 
-import javax.imageio.ImageIO;
 
 public class ReporterManager {
 
@@ -64,9 +62,9 @@ public class ReporterManager {
         Long threadID = Thread.currentThread().getId();
 
         ExtentTest test = getInstance().startTest(testName, testDescription);
-        //test.assignCategory(DriverProvider.getCurrentBrowserName());
         for (String gr : getTestGroups(m)) {
             test.assignCategory(gr);
+            test.assignCategory(DriverProvider.getCurrentBrowserName().toUpperCase().concat("<span>&nbsp;-&nbsp;Browser</span>"));
         }
         testThread.put(threadID, test);
         return testThread;
@@ -156,12 +154,13 @@ public class ReporterManager {
     public void stopReporting(ITestResult result) {
         closeTest();
 
-        if (result.getStatus() == ITestResult.FAILURE)
+        if (result.getStatus() == ITestResult.FAILURE) {
             fail("Test failed", result.getThrowable());
-        else if (result.getStatus() == ITestResult.SKIP)
+        } else if (result.getStatus() == ITestResult.SKIP) {
             info("Test skiped");
-        else
+        } else {
             pass("Test passed");
+        }
     }
 
     public static synchronized void info(String details) {
