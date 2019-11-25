@@ -40,15 +40,17 @@ public class BasePage {
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
-    /**____________________________________________Timeouts section__________________________________________________*/
+    /**
+     * ____________________________________________Timeouts section__________________________________________________
+     */
 
     public static final int DEFAULT_TIMEOUT = getTimeout();
     public static final int SHORT_TIMEOUT = getShortTimeout();
-    public static final int STATIC_TIMEOUT =  getStaticTimeout();
+    public static final int STATIC_TIMEOUT = getStaticTimeout();
 
     private static int getTimeout() {
         String timeout = FileIO.getConfigProperty("DefaultTimeoutInSeconds");
-        if (timeout == null ) {
+        if (timeout == null) {
             reporter.fatalFail("DefaultTimeoutInSeconds parameter was not found");
             timeout = "15";
         }
@@ -58,7 +60,7 @@ public class BasePage {
 
     private static int getShortTimeout() {
         String timeout = FileIO.getConfigProperty("ShortTimeoutInSeconds");
-        if (timeout == null ) {
+        if (timeout == null) {
             timeout = "3";
         }
 
@@ -67,30 +69,33 @@ public class BasePage {
 
     private static int getStaticTimeout() {
         String timeout = FileIO.getConfigProperty("StaticTimeoutMilliseconds");
-            if (timeout == null ) {
-                    timeout = "1000";
-            }
+        if (timeout == null) {
+            timeout = "1000";
+        }
         return Integer.parseInt(timeout);
     }
 
-    /**____________________________________________________________________________________________________________*/
+    /**
+     * ____________________________________________________________________________________________________________
+     */
 
     //constructor
     public BasePage() {
-        try{
+        try {
             robot = new Robot();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-       // waitForPageToLoad();
     }
 
     //Getter, that ensures only one driver instance exists in project
-    public static WebDriver driver(){
+    public static WebDriver driver() {
         return driver.get();
     }
 
-    /**_______________________________________________Basic Assertions_______________________________________________*/
+    /**
+     * _______________________________________________Basic Assertions_______________________________________________
+     */
 
     public boolean isPageLoaded() {
         boolean result = false;
@@ -159,7 +164,9 @@ public class BasePage {
         }
     }
 
-    /**_______________________________________________Basic Actions__________________________________________________*/
+    /**
+     * _______________________________________________Basic Actions__________________________________________________
+     */
 
     public void reloadPage() {
         reporter.info("Refreshing the page: " + "\"" + BASE_URL + pageURL + "\"");
@@ -169,18 +176,9 @@ public class BasePage {
     public void open() {
         reporter.info("Opening the page: " + "\"" + BASE_URL + pageURL + "\"");
         driver().get(BASE_URL + pageURL);
-        /*Commented below is example of putting Login and Pass for login popup as the parameters right into url
-        * and also usage of cookies:
-        *
-        driver().get("https://bettersleep:stg-tsleep-@45@staging.tomorrowsleep.com" + pageURL);
-        Cookie A_B_test = new Cookie("cxl_exp_1564305_var", "0");
-        Cookie notFirstVisit = new Cookie("notFirstVisit", "true");
-        driver().manage().addCookie(notFirstVisit);
-        driver().manage().addCookie(A_B_test);
-        */
     }
 
-    public static String getSource(){
+    public static String getSource() {
         String s = driver().getPageSource();
         return s;
     }
@@ -209,7 +207,7 @@ public class BasePage {
         findElement(By.cssSelector(cssSelector)).sendKeys(text);
     }
 
-    public void setText(By element, String value){
+    public void setText(By element, String value) {
         if (value != null) {
             findElement(element).clear();
             findElement(element).sendKeys(value);
@@ -221,28 +219,28 @@ public class BasePage {
     }
 
 
-    public void selectFromDropdown(By element, String value){
+    public void selectFromDropdown(By element, String value) {
         reporter.info("Selecting '" + value + "' from dropdown");
         Select dropdown = new Select(findElement(element));
         dropdown.selectByVisibleText(value);
     }
 
     //todo: refactor all findBy and clickBy element using click(bySomething)
-    public WebElement findByText(String element){
+    public WebElement findByText(String element) {
         reporter.info("finding '" + element + "' element");
         return findElement(byText(element));
     }
 
-    public void clickByText(String text){
-        reporter.info("Clickng on element with text '"+text+"'");
+    public void clickByText(String text) {
+        reporter.info("Clickng on element with text '" + text + "'");
         findElement(byText(text)).click();
     }
 
-    public By byText(String element){
+    public By byText(String element) {
         return By.xpath("//*[text()='" + element + "']");
     }
 
-    public By byAttribute(String attributeName, String attributeValue){
+    public By byAttribute(String attributeName, String attributeValue) {
         return By.xpath("//*[@" + attributeName + "='" + attributeValue + "']");
     }
 
@@ -261,17 +259,17 @@ public class BasePage {
 
     //todo: rename to clickOnFirstVisibleElement and create another method called clickOnFirstInteractibleElement
     //actually, if you have second, you don't need first
-    public void clickOnAnyElement(By element, int... elementNumber){
+    public void clickOnAnyElement(By element, int... elementNumber) {
         waitForPageToLoad();
         List<WebElement> elements = findElements(element);
-        if(elementNumber.length>0){
+        if (elementNumber.length > 0) {
             elements.get(elementNumber[0]).click();
-        } else{
-            for (WebElement elem : elements){
-                try{
+        } else {
+            for (WebElement elem : elements) {
+                try {
                     elem.click();
                     break;
-                } catch (Exception e){
+                } catch (Exception e) {
                     //nothing
                 }
             }
@@ -298,7 +296,6 @@ public class BasePage {
                     .until(ExpectedConditions.presenceOfElementLocated(element));
             return driver().findElements(element);
         } catch (Exception e) {
-            //reporter.info("Got exception. Exception is expected and ignored.");
             return new ArrayList<WebElement>();
         }
     }
@@ -310,16 +307,15 @@ public class BasePage {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             reporter.fail(Tools.getStackTrace(e));
-            throw new RuntimeException("Failure clicking on element" );
+            throw new RuntimeException("Failure clicking on element");
         }
         waitForPageToLoad();
     }
 
-    public static void clickWithJS(WebElement element){
-        JavascriptExecutor executor = (JavascriptExecutor)driver();
+    public static void clickWithJS(WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver();
         executor.executeScript("arguments[0].click();", element);
     }
 
@@ -385,39 +381,35 @@ public class BasePage {
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public static void scrollToBottomOfPage(){
+    public static void scrollToBottomOfPage() {
         waitForPageToLoad();
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForPageToLoad();
     }
 
-    public static void waitForPageToLoad(){
+    public static void waitForPageToLoad() {
         sleepFor(STATIC_TIMEOUT); // todo fixme
         ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver)
-            {
+            public Boolean apply(WebDriver driver) {
                 return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
             }
         };
 
         Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
 
-        try
-        {
+        try {
             wait.until(expectation);
-        } catch (Exception error)
-        {
+        } catch (Exception error) {
             reporter.fail("JavaScript readyState query timeout - The page has not finished loading");
         }
     }
 
-    static void waitForElement(By by){
+    static void waitForElement(By by) {
         WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
-    public static void sleepFor(int msTimeout){
-//        reporter.info("Sleep for " + msTimeout + " ms"); todo remove it in next commit
+    public static void sleepFor(int msTimeout) {
         try {
             Thread.sleep(msTimeout);
         } catch (InterruptedException e) {
@@ -439,7 +431,7 @@ public class BasePage {
     }
 
     // Does not work because of geckodriver bug - https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
-    public void hoverItem(By element){
+    public void hoverItem(By element) {
         //reporter.info("Put mouse pointer over element: " + element.toString());
         Actions action = new Actions(driver());
         action.moveToElement(findElement(element)).build().perform();
@@ -450,13 +442,13 @@ public class BasePage {
         driver().switchTo().frame(findElement(xpath));
     }
 
-    public void switchToDefaultContent(){
+    public void switchToDefaultContent() {
         reporter.info("Switch to default content");
         driver().switchTo().defaultContent();
     }
 
     public void handleMultipleWindows(String windowTitle) {
-        Set <String> windows = driver().getWindowHandles();
+        Set<String> windows = driver().getWindowHandles();
 
         for (String window : windows) {
             driver().switchTo().window(window);
@@ -466,17 +458,17 @@ public class BasePage {
         }
     }
 
-    public void uploadFile(String path){
+    public void uploadFile(String path) {
 //        try {
-            //File Need to be imported
-            File file = new File(path);
-            StringSelection stringSelection= new StringSelection(file.getAbsolutePath());
+        //File Need to be imported
+        File file = new File(path);
+        StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
 
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 //            Robot robot = new Robot();
-            robot.delay(2000);
-            //Open Goto window
-        if(DriverProvider.OS_EXTENTION.equals("_mac")){
+        robot.delay(2000);
+        //Open Goto window
+        if (DriverProvider.OS_EXTENTION.equals("_mac")) {
             reporter.info("Opening Goto Window");
             robot.keyPress(systemControllKey);
             robot.keyPress(KeyEvent.VK_SHIFT);
@@ -486,20 +478,20 @@ public class BasePage {
             robot.keyRelease(KeyEvent.VK_G);
         }
 
-            //Paste the clipboard value
-            reporter.info("Pasting from clipboard");
-            robot.keyPress(systemControllKey);
-            robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(systemControllKey);
-            robot.keyRelease(KeyEvent.VK_V);
+        //Paste the clipboard value
+        reporter.info("Pasting from clipboard");
+        robot.keyPress(systemControllKey);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.keyRelease(systemControllKey);
+        robot.keyRelease(KeyEvent.VK_V);
 
-            //Press Enter key to close the Goto window and Upload window
-            reporter.info("\"Executing Cmd + Tab\"");
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-            robot.delay(2000);
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
+        //Press Enter key to close the Goto window and Upload window
+        reporter.info("\"Executing Cmd + Tab\"");
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(2000);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
 //        }
 //        catch(Exception e){
 //            e.printStackTrace();
@@ -507,7 +499,7 @@ public class BasePage {
 //        }
     }
 
-    public void bringToFocus(){
+    public void bringToFocus() {
         // Cmd + Tab is needed since it launches a Java app and the browser looses focus
 //        reporter.info("Executing Cmd + Tab");
         robot.keyPress(systemControllKey);

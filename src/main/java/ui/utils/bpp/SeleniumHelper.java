@@ -2,7 +2,6 @@ package ui.utils.bpp;
 
 //import com.apolloglobal.testing.api.util.webdriver.WebDriverThread;
 import com.google.common.base.Function;
-import com.isomorphic.webdriver.ByScLocator;
 import org.hamcrest.Matcher;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -251,9 +250,7 @@ public class SeleniumHelper {
             return By.className(locator.substring(10));
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
-        } else if (locator.startsWith("scLocator")) {
-            return ByScLocator.scLocator(locator);
-        } else {
+        }  else {
             reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             //Reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             return By.linkText(locator);

@@ -11,7 +11,7 @@ import ui.utils.bpp.PreProcessFiles;
 import java.lang.reflect.Method;
 
 
-public class BaseTest{
+public class BaseTest {
 
     ReporterManager reporter;
     PreProcessFiles preProcessFiles;
@@ -26,20 +26,19 @@ public class BaseTest{
         reporter.startReporting(method, data);
         preProcessFiles = new PreProcessFiles();
 
-        //init threadlocal driver
         try {
             reporter.info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
-        }catch (Exception e){
+        } catch (Exception e) {
             reporter.fail("Before test failure during Driver creation", e);
             reporter.stopReporting();
             reporter.closeReporter();
             Assert.fail();
         }
 
-        try{
+        try {
             startTestExecution = preProcessFiles.preProcessTestConfiguration();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -49,7 +48,7 @@ public class BaseTest{
     }
 
     @AfterMethod
-    public void endTest(ITestResult testResult){
+    public void endTest(ITestResult testResult) {
 
         // close reporter
         reporter.stopReporting(testResult);

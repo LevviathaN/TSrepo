@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>test_framework</groupId>
-    <artifactId>test_framework</artifactId>
+    <groupId>bdd_automation_framework</groupId>
+    <artifactId>bdd_automation_framework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -24,7 +24,7 @@
                 </configuration>
             </plugin>
 
-<!-- allows to run test using mvn clean install -Dconfig=<configuration> -->
+            <!-- allows to run test using mvn clean install -Dconfig=<configuration> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -45,12 +45,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.6.0</version>
-            <!--<exclusions>-->
-                <!--<exclusion>  &lt;!&ndash; declare the exclusion here &ndash;&gt;-->
-                    <!--<groupId>com.google.code.gson</groupId>-->
-                    <!--<artifactId>gson</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
         </dependency>
 
         <dependency>
@@ -142,12 +136,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>4.7.4</version>
-            <scope>test</scope>
-        </dependency>
 
         <!-- dependency used for XLSX file format -->
         <dependency>
@@ -166,11 +154,6 @@
 
         <!-- Old BPP Dependencies -->
         <!-- todo: REFACTOR ALL CODE RELATED TO THESE DEPENDENCIES -->
-        <dependency>
-            <groupId>com.isomorphic.webdriver</groupId>
-            <artifactId>IsomorphicSoftware</artifactId>
-            <version>10.1p</version>
-        </dependency>
 
         <dependency>
             <groupId>DataGen</groupId>
@@ -203,11 +186,11 @@
             <version>4.1</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>log4j</groupId>-->
-<!--            <artifactId>log4j</artifactId>-->
-<!--            <version>1.2.12</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.12</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.ws.rs</groupId>

@@ -222,6 +222,8 @@ public class DriverProvider {
                 BROWSER_TYPE = BrowserType.CHROME;
             } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("BSTACK_CHROME")) {
                 BROWSER_TYPE = "BSTACK_CHROME";
+            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("BSTACK_FIREFOX")) {
+                BROWSER_TYPE = "BSTACK_FIREFOX";
             }
 
         return BROWSER_TYPE;
