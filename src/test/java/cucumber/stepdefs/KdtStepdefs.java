@@ -145,7 +145,7 @@ public class KdtStepdefs extends BasePage {
     @When("^I SmartClient click on BPP element \"([^\"]*)\"$")
     public void i_smart_click(String element) {
         element = TestParametersController.checkIfSpecialParameter(element);
-        clickOnAnyElement(TestParametersController.initElementByLocator(PropertiesHandler.getPropertyByKey(element)));
+        clickOnFirstVisibleElement(TestParametersController.initElementByLocator(PropertiesHandler.getPropertyByKey(element)));
     }
 
     @When("^I confirm BPP JS Alert \"([^\"]*)\"$")

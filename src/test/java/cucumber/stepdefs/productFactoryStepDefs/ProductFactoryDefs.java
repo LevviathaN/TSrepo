@@ -37,7 +37,7 @@ public class ProductFactoryDefs extends ProductFactoryBasePage {
         boolean state = true;
         if(value.equals("check")){state = true;}
         else if(value.equals("uncheck")){state = false;}
-        pfCheckbox(element,state);
+        pfCheckbox(TestParametersController.checkIfSpecialParameter(element),state);
     }
 
     @When("^I turn \"([^\"]*)\" PF toggle \"([^\"]*)\"$")
@@ -54,5 +54,10 @@ public class ProductFactoryDefs extends ProductFactoryBasePage {
 
         ExecutionContextHandler.setExecutionContextValueByKey(varName,
                 findElement(pfField(element)).getText());
+    }
+
+    @When("^I change \"([^\"]*)\" PF value$")
+    public void i_change(String value){
+        clickOnElement(pfChangeButton(TestParametersController.checkIfSpecialParameter(value)));
     }
 }

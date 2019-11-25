@@ -1,4 +1,3 @@
-@Ignore
 @Reusable
 Feature: Product Factory
   As a product setter
@@ -26,3 +25,44 @@ Feature: Product Factory
     And I click on the "Body" option
     And I click on the "Save" button
     Then I should see the "EC_FD_CODE" element
+
+  Scenario: Create Body
+    When I click on the "work" link
+    When I click on the "Bodies" link
+    Then I click on the "Create" button
+    And I remember "AutoBodyShortName<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_BODY_SHORT_NAME" variable
+    And I fill the "Short Name" PF field with "EC_BODY_SHORT_NAME"
+    And I remember "AutoBodyName<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_BODY_NAME" variable
+    And I fill the "Name" PF field with "EC_BODY_NAME"
+    And I click on the "Change" button
+    And I select "EC_FD_CODE" from PF dialog
+    And I click on the "Save" button
+    Then I should see the "EC_BODY_SHORT_NAME" element
+
+  Scenario: Create Sitting
+    When I click on the "commute" link
+    When I click on the "Sittings" link
+    Then I click on the "Create" button
+    And I remember "AutoSittingName<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_SITTING_NAME" variable
+    And I fill the "Name" PF field with "EC_SITTING_NAME"
+    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
+    And I fill the "Start Date" PF field with "EC_SITTING_START_DATE"
+    And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
+    And I fill the "End Date" PF field with "EC_SITTING_END_DATE"
+    And I "check" "EC_BODY_NAME" PF checkbox
+    And I click on the "Save" button
+    Then I should see the "EC_SITTING_NAME" element
+
+  Scenario: Create Pricing Matrix
+    When I click on the "attach_money" link
+    When I click on the "Prices" link
+    Then I click on the "Create" button
+    And I remember "AutoSittingName<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_SITTING_NAME" variable
+    And I fill the "Name" PF field with "EC_SITTING_NAME"
+    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
+    And I fill the "Start Date" PF field with "EC_SITTING_START_DATE"
+    And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
+    And I fill the "End Date" PF field with "EC_SITTING_END_DATE"
+    And I "check" "EC_BODY_NAME" PF checkbox
+    And I click on the "Save" button
+    Then I should see the "EC_SITTING_NAME" element

@@ -1,7 +1,7 @@
 package ui.utils.bpp;
 
 import datageneration.execution.ExecutionContext;
-//import ui.utils.bpp.NoahLogManager;
+import org.apache.log4j.Logger;
 import ui.utils.ReporterManager;
 //import ui.utils.bpp.Reporter;
 
@@ -18,7 +18,7 @@ public class ExecutionContextHandler {
 
     static ReporterManager reporter = ReporterManager.Instance;
 
-    //private static final Logger log = Logger.getLogger(ExecutionContextHandler.class);
+    private static final org.apache.log4j.Logger logger = Logger.getLogger(ExecutionContextHandler.class);
 
     private static final String PREFIX = "EC_";
 
@@ -34,7 +34,7 @@ public class ExecutionContextHandler {
         if (executionContext.getValues().containsKey(key)) {
             return executionContext.getValue(key);
         } else {
-            reporter.info("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
+            logger.warn("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- some previous CaptureData action(s) failed;\n" +
                     "\t\t- the requested key is misspelled in the excel spreadsheet located in the " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             reporter.info("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +

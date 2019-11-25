@@ -2,6 +2,7 @@ package ui.utils.bpp;
 
 import datageneration.metadata.MetaData;
 import datageneration.metadata.MetaDataManager;
+import ui.utils.BPPLogManager;
 import ui.utils.ReporterManager;
 //import ui.utils.bpp.NoahLogManager;
 //import ui.utils.bpp.Reporter;
@@ -48,8 +49,8 @@ public class MetaDataHandler {
                 metaDataManager = new MetaDataManager(METADATA_FILE_PATH, PREFIX);
             }
         } catch (NullPointerException e) {
-            reporter.info("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString());
-            reporter.fail("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString() + "<br>Please read the log file to get more information");
+            BPPLogManager.getLogger().error("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString());
+            //reporter.fail("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString() + "<br>Please read the log file to get more information");
             throw new NullPointerException("Failed to read metadata file.");
         }
     }
@@ -62,7 +63,7 @@ public class MetaDataHandler {
         if ((metadataKeyExists(metadataKey))) {
             return metaDataManager.getMetaData(metadataKey).getValue();
         } else {
-            reporter.info("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
+            BPPLogManager.getLogger().error("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- the requested key is misspelled in the excel file where the tests are defined. File location: " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH +
                     "\n\t\t- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.\n" +

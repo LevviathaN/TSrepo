@@ -1,5 +1,4 @@
-@Ignore
-@PricingMatrices
+@ProductFactory @PricingMatrices
 
 Feature: Product Factory Pricing Matrices
   As a product setter
@@ -7,4 +6,7 @@ Feature: Product Factory Pricing Matrices
   In order to (just cause)
 
   Scenario: Create Pricing Matrix
-    Given I am logged into Product Factory as "Senior Product Setter"
+    Given I execute "Log In" reusable step
+    When I execute "Create Body Financial Dimension" reusable step
+    And I execute "Create Body" reusable step
+    And I execute "Create Sitting" reusable step

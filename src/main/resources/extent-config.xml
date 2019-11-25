@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+
+        <theme>dark</theme>
+        <encoding>UTF-8</encoding>
+        <protocol>https</protocol>
+        <documentTitle>BPP Automation</documentTitle>
+        <reportName>Automation Report</reportName>
+        <!-- report headline - displayed at top-nav, after reportHeadline -->
+        <reportHeadline/>
+        <!-- global date format override -->
+        <!-- defaults to yyyy-MM-dd -->
+        <dateFormat>yyyy-MM-dd</dateFormat>
+        <!-- global time format override -->
+        <!-- defaults to HH:mm:ss -->
+        <timeFormat>HH:mm:ss</timeFormat>
+        <!-- custom javascript -->
+        <scripts>
+            <![CDATA[
+        $(document).ready(function() {
+            $('#test-details-wrapper ul.node-list>li>div:last-child').remove();
+        });
+      ]]>
+        </scripts>
+
+        <!-- custom styles -->
+        <styles>
+            <![CDATA[
+
+.test-body .collapsible {
+	border: 1px solid #ddd !important;
+}
+
+#test-details-wrapper ul.node-list>li>div {
+	background: #29323c;
+	margin-bottom: 0;
+}
+      ]]>
+        </styles>
+    </configuration>
+</extentreports>

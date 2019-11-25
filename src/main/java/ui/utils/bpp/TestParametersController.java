@@ -1,6 +1,5 @@
 package ui.utils.bpp;
 
-import com.isomorphic.webdriver.ByScLocator;
 import org.openqa.selenium.By;
 import ui.utils.ReporterManager;
 
@@ -42,11 +41,12 @@ public class TestParametersController {
 
     private static final Pattern ACCEPTABLE_METADATA_PATTERN = Pattern.compile("^MD_([A-Z]+_){2}[A-Z]+$");
     private static final Pattern ACCEPTABLE_KEYWORD_PATTERN = Pattern.compile("^([A-Za-z\\d-_.]*<?KW_AUTO_[A-Z]+(\\b|[|])[~:)(/A-Za-z._#?-]*>?[/A-Za-z\\d@._-]*)+$");
-    private static final Pattern ACCEPTABLE_EXECUTION_CONTEXT_PATTERN = Pattern.compile("^([A-Za-z\\d\\s:\\-\\/\\\\|@_.=]*<?EC_([A-Z]+_*)+[A-Z]*>?[A-Za-z\\d\\s:\\-\\/\\\\|@_.]*)+$|" +
+    private static final Pattern ACCEPTABLE_EXECUTION_CONTEXT_PATTERN = Pattern.compile("^([A-Za-z\\d\\s:\\-/\\\\|@_.=]*<?EC_([A-Z]+_*)+[A-Z]*>?[A-Za-z\\d\\s:\\-/\\|.]*)+$|" +
             "EC_([A-Z]+_*)+[A-Z]+$");
     private static final Pattern GENERAL_METADATA_PATTERN = Pattern.compile("^MD_.+$");
     private static final Pattern GENERAL_KEYWORD_PATTERN = Pattern.compile("^.*KW_.+$");
     private static final Pattern GENERAL_EXECUTION_CONTEXT_PATTERN = Pattern.compile("^(.|.+)?EC_.+$");
+    private static final Pattern GENERAL_SIMPLIFIED_RANDOM_PATTERN = Pattern.compile("^([A-Za-z\\d-_.]*\\[?[~:)(/A-Za-z._#?-]*\\]?)+$");
 
     private static final String KEYWORD_NAME_PREFIX = "KW_AUTO_";
     private static final String EXECUTION_CONTEXT_PREFIX = "EC_";
@@ -140,6 +140,15 @@ public class TestParametersController {
         return false;
     }
 
+
+    private static boolean isSimplifiedRandom(String value){
+//        Matcher possibleSimplifiedRandomMatcher = GENERAL_SIMPLIFIED_RANDOM_PATTERN.matcher(value);
+        if(value.contains("[##")){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * The method checks whether passed parameter is any of keyword, metadata or executions context key.
      *
@@ -147,24 +156,41 @@ public class TestParametersController {
      * @return converted value by provided parameter. Otherwise returns the unmodified parameter that was passed from excel sheet.
      */
     public static String checkIfSpecialParameter(String parameter) {
+        //if metadata (starts with MD_, for instance MD_CREDENTIALS_BPPUSER)
         if (isMetaData(parameter)) {
+            //get metadata from document (MD_CREDENTIALS_BPPUSER returns username, MD_LINKS_BPPURL returns Url etc.)
             return MetaDataHandler.getMetaDataValue(parameter);
+        //otherwise if keyword (contains KW_ or KW_AUTO, for instance AutoName<KW_AUTO_RANDOMNUMBER|####>)
         } else if (isKeyword(parameter)) {
+            //check if equals KW_AUTO_SELECT
             if (parameter.equals(KEYWORD_NAME_TO_SKIP)){
+                //just return input parameter without changes
                 return parameter;
+            //check if equals KW_AUTO_RUT
             }if (parameter.equals(KEYWORD_RUT)) {
+                //return random number
                 return KeywordsHandler.randomRutNumber();
             }
             String[] splitArray = parameter.split("[<>]");
             StringBuilder resultingValue = new StringBuilder();
+            StringBuilder ecVarName = new StringBuilder();
             for (String element : splitArray) {
                 if (element.startsWith(KEYWORD_NAME_PREFIX)) {
                     resultingValue.append(KeywordsHandler.getValueByKeyword(element.substring(3)));
                 } else {
                     resultingValue.append(element);
+                    ecVarName.append("EC");
+                    for(String w : element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")){
+                        ecVarName.append("_");
+                        ecVarName.append(w.toUpperCase());
+                    }
                 }
             }
+            ExecutionContextHandler.setExecutionContextValueByKey(ecVarName.toString(),resultingValue.toString());
+            reporter.info("Execution Context variable '" + ecVarName +
+                    "' was automatically created with value '" + resultingValue.toString() + "'");
             return resultingValue.toString();
+        //otherwise check if contains EC_ value
         } else if (isExecutionContextKey(parameter)) {
 
             String[] splitArray = parameter.split("[<>]");
@@ -172,10 +198,16 @@ public class TestParametersController {
             for (String element : splitArray)
                 if (element.startsWith(EXECUTION_CONTEXT_PREFIX)) {
                     splittedValue.append(ExecutionContextHandler.getExecutionContextValueByKey(element));
-        } else {
+                } else {
                     splittedValue.append(element);
-                }
+            }
             return splittedValue.toString();
+        //If it is simplified random generation
+        } else if (isSimplifiedRandom(parameter)) {
+            String[] splitArray = parameter.split("[\\[\\]]");
+            String transformedValue = parameter.replace(splitArray[1], "KW_AUTO_RANDOMNUMBER|" + splitArray[1]);
+            return checkIfSpecialParameter(transformedValue.replace("[","<").replace("]",">"));
+        //If contains no special parameters, then just return input value
         } else {
             return parameter;
         }
@@ -196,8 +228,6 @@ public class TestParametersController {
             return By.className(locator.substring(10));
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
-        } else if (locator.startsWith("scLocator")) {
-            return ByScLocator.scLocator(locator);
         } else {
             reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             return By.linkText(locator);
