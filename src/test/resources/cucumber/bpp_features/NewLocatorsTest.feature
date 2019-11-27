@@ -1,5 +1,5 @@
 @ProductFactory @Bodies @NewLocators
-Feature: Product Factory Random Bodies
+Feature: New Locators Demonstration
   As a product setter
   I want to be able to create Bodies with random names in Product Factory
   In order to (just cause)
@@ -9,7 +9,7 @@ Feature: Product Factory Random Bodies
     And I execute "Create Body Financial Dimension" reusable step without some steps
 
   @Create @Random @Single
-  Scenario: Create New Body Using Random Data
+  Scenario: Create New Body Using Random Data And New Locators
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     Then I click on the "Product Factory create button"
