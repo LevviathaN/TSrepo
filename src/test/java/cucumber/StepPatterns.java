@@ -6,7 +6,23 @@ import java.util.Map;
 public enum StepPatterns {
 
     I_AM_ON_URL("^I am on \"([^\"]*)\" URL$"),
-    I_CLICK_ON_THE_BUTTON("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$");
+    I_CLICK_ON_THE_N_BUTTON("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$"),
+    I_CLICK_ON_THE_BUTTON("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$"),
+    FILL_THE_FIELD("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$"),
+    WAIT_FOR("^I wait for \"([^\"]*)\" seconds$"),
+    HOVER_OVER("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$"),
+    I_SHOULD_SEE_THE_TEXT("^I should see the \"([^\"]*)\" (?:button|message|element)$"),
+    I_SHOULD_BE_REDIRECTED_TO_THE_PAGE("^I should be redirected to the \"([^\"]*)\" page$"),
+    I_EXECUTE_REUSABLE_STEP("^I execute \"([^\"]*)\" reusable step$"),
+    I_REMEMBER_TEXT("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$"),
+    I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL("^I click on the \"([^\"]*)\" \"([^\"]*)\"$"),
+    I_CLICK_ON_ELEMENT_SPECIAL("^I click on the \"([^\"]*)\"$"),
+    I_SET_TEXT_SPECIAL("^I set \"([^\"]*)\" text to the \"([^\"]*)\" \"([^\"]*)\"$"),
+    I_SHOULD_SEE_SPECIAL("^I should see \"([^\"]*)\" \"([^\"]*)\"$"),
+    I_AM_LOGGED_IN_PF_AS("^I am logged into Product Factory as \"([^\"]*)\"$"),
+    I_FILL_PF_FIELD("^I fill the \"([^\"]*)\" PF field with \"([^\"]*)\"$"),
+    I_SELECT_FROM_DIALOG("^I select \"([^\"]*)\" from PF dialog$"),
+    CHECK_UNCHECK("^I \"([^\"]*)\" \"([^\"]*)\" PF checkbox$");
 
     private final String pattern;
 

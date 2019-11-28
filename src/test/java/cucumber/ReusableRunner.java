@@ -16,9 +16,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import static cucumber.StepPatterns.*;
 
 
-//todo: bliadokod. Refactor this please
 public class ReusableRunner {
 
     private static StepDefinitions stepDefs = new StepDefinitions();
@@ -76,28 +76,28 @@ public class ReusableRunner {
         }
 
         //General stepdefs
-        stepDefsMap.put("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$",() -> stepDefs.i_click_on_the_button(arg1));
-        stepDefsMap.put("^I am on \"([^\"]*)\" URL$",() -> stepDefs.i_am_on_url(arg1));
-        stepDefsMap.put("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$",() -> stepDefs.i_click_on_the_n_button(arg1, arg2));
-        stepDefsMap.put("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$",() -> stepDefs.fill_field(arg1, arg2));
-        stepDefsMap.put("^I wait for \"([^\"]*)\" seconds$",() -> stepDefs.wait_for(arg1));
-        stepDefsMap.put("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$",() -> stepDefs.hover_over(arg1));
-        stepDefsMap.put("^I should see the \"([^\"]*)\" (?:button|message|element)$",() -> stepDefs.i_should_see_the_text(arg1));
-        stepDefsMap.put("^I should be redirected to the \"([^\"]*)\" page$",() -> stepDefs.i_should_be_redirected_to_page(arg1));
-        stepDefsMap.put("^I execute \"([^\"]*)\" reusable step$",() -> stepDefs.i_execute_reusable_step(arg1));
-        stepDefsMap.put("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$",() -> stepDefs.i_remember_text(arg1, arg2));
+        stepDefsMap.put(I_CLICK_ON_THE_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_button(arg1));
+        stepDefsMap.put(I_AM_ON_URL.getPattern(),() -> stepDefs.i_am_on_url(arg1));
+        stepDefsMap.put(I_CLICK_ON_THE_N_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_n_button(arg1, arg2));
+        stepDefsMap.put(FILL_THE_FIELD.getPattern(),() -> stepDefs.fill_field(arg1, arg2));
+        stepDefsMap.put(WAIT_FOR.getPattern(),() -> stepDefs.wait_for(arg1));
+        stepDefsMap.put(HOVER_OVER.getPattern(),() -> stepDefs.hover_over(arg1));
+        stepDefsMap.put(I_SHOULD_SEE_THE_TEXT.getPattern(),() -> stepDefs.i_should_see_the_text(arg1));
+        stepDefsMap.put(I_SHOULD_BE_REDIRECTED_TO_THE_PAGE.getPattern(),() -> stepDefs.i_should_be_redirected_to_page(arg1));
+        stepDefsMap.put(I_EXECUTE_REUSABLE_STEP.getPattern(),() -> stepDefs.i_execute_reusable_step(arg1));
+        stepDefsMap.put(I_REMEMBER_TEXT.getPattern(),() -> stepDefs.i_remember_text(arg1, arg2));
 
         //Special stepdefs
-        stepDefsMap.put("^I click on the \"([^\"]*)\" \"([^\"]*)\"$",() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
-        stepDefsMap.put("^I click on the \"([^\"]*)\"$",() -> specialStepDefs.i_click_on_element_special(arg1));
-        stepDefsMap.put("^I set \"([^\"]*)\" text to the \"([^\"]*)\" \"([^\"]*)\"$",() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
-        stepDefsMap.put("^I should see \"([^\"]*)\" \"([^\"]*)\"$",() -> specialStepDefs.i_should_see_special(arg1, arg2));
+        stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
+        stepDefsMap.put(I_CLICK_ON_ELEMENT_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_special(arg1));
+        stepDefsMap.put(I_SET_TEXT_SPECIAL.getPattern(),() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
+        stepDefsMap.put(I_SHOULD_SEE_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_special(arg1, arg2));
 
         //Product Factory stepdefs
-        stepDefsMap.put("^I am logged into Product Factory as \"([^\"]*)\"$",() -> pfStepDefs.log_in_as(arg1));
-        stepDefsMap.put("^I fill the \"([^\"]*)\" PF field with \"([^\"]*)\"$",() -> pfStepDefs.fill_pf_field(arg1, arg2));
-        stepDefsMap.put("^I select \"([^\"]*)\" from PF dialog$",() -> pfStepDefs.select_from_dialog(arg1));
-        stepDefsMap.put("^I \"([^\"]*)\" \"([^\"]*)\" PF checkbox$",() -> pfStepDefs.check_uncheck(arg1, arg2));
+        stepDefsMap.put(I_AM_LOGGED_IN_PF_AS.getPattern(),() -> pfStepDefs.log_in_as(arg1));
+        stepDefsMap.put(I_FILL_PF_FIELD.getPattern(),() -> pfStepDefs.fill_pf_field(arg1, arg2));
+        stepDefsMap.put(I_SELECT_FROM_DIALOG.getPattern(),() -> pfStepDefs.select_from_dialog(arg1));
+        stepDefsMap.put(CHECK_UNCHECK.getPattern(),() -> pfStepDefs.check_uncheck(arg1, arg2));
 
         for(String regx : stepDefsMap.keySet()){
             if (reusable.get(i).matches(regx)){
