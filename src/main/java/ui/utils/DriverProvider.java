@@ -20,8 +20,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by odiachuk on 13.12.16.
+ * Enables to create webdriver isntance passed from System Property variable as driver=BSTACK_CHROME
+ *
+ * @author yzosin
  */
+
 public class DriverProvider {
 
     public static String OS_EXTENTION = (System.getProperty("os.name").toLowerCase().contains("win")) ? ".exe" :

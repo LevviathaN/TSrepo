@@ -11,7 +11,10 @@ import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.PreProcessFiles;
 
 import java.lang.reflect.Method;
-
+/**
+ * Base test class for all api tests.
+ * @author yzosin
+ */
 public class BaseApiTest {
 
     public ReporterManager reporter;

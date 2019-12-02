@@ -15,7 +15,10 @@ import ui.utils.bpp.PreProcessFiles;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
-
+/**
+ * Base test class for all ui tests.
+ * @author yzosin
+ */
 public class BaseTest {
 
     private ReporterManager reporter;

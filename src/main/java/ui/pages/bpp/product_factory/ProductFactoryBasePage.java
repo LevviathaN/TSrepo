@@ -3,7 +3,12 @@ package ui.pages.bpp.product_factory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import ui.pages.BasePage;
-
+/**
+ * Page object class to perform Selenium-specific
+ * operations related only to Prodcut Factory scenarios.
+ *
+ * @author rlevytskyi
+ */
 public class ProductFactoryBasePage extends BasePage {
 
     private static ProductFactoryBasePage instance;

@@ -36,8 +36,8 @@ public class ReusableRunner {
     private static String arg3 = "";
 
     public static void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps){
-        reporter.info("Start executing \"" + reusableName + "\" reusable step. " +
-                "It contains" + getReusableReusableSteps(reusableName).size() + " reusable steps");
+        reporter.info("Start executing \"" + reusableName + "\" reusable scenario. " +
+                "It contains " + getReusableReusableSteps(reusableName).size() + " reusable steps");
 
         reusable = getReusableReusableSteps(reusableName);
 

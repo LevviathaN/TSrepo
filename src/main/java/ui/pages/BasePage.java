@@ -21,7 +21,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by odiachuk on 07.07.17.
+ * Base class for all page objects.
+ * A class to store Selenium-specific operations.
+ * @author rlevytskyi
  */
 
 public class BasePage {

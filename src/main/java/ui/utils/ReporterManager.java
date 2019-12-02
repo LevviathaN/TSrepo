@@ -1,6 +1,5 @@
 package ui.utils;
 
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,7 +28,10 @@ import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.testng.reporters.Files;
 
-
+/**
+ * Provides the reporting architecture
+ * @author yzosin
+ */
 public class ReporterManager {
 
     private static ReporterManager instance;

@@ -10,7 +10,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * Class to store custom methods
+ *
+ * @author rlevytskyi
+ */
 
 public class Tools {
 

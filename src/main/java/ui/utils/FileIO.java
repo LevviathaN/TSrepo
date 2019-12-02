@@ -8,12 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-// CSV
-// Properties
-// XML
-
 /**
- * Used to read/write properties from properties files and taking screenshots
+ * Used to read/write properties from properties files
+ * @author rlevytskyi
  */
 public class FileIO {
 
