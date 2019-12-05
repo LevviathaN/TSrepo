@@ -28,6 +28,8 @@ import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.testng.reporters.Files;
 
+import static com.relevantcodes.extentreports.LogStatus.*;
+
 /**
  * Provides the reporting architecture
  * @author yzosin
@@ -40,6 +42,7 @@ public class ReporterManager {
     static String Report_folder = "report";
     private static Path logFolder;
     private static Path screenshotFolder = Paths.get(Report_folder, "screenshots");
+    private static String browserLink;
 
     ReporterManager() {
 
@@ -167,12 +170,12 @@ public class ReporterManager {
 
     public static synchronized void info(String details) {
         logger.info(details);
-        report().log(LogStatus.INFO, details);
+        report().log(INFO, details);
     }
 
     public static synchronized void pass(String details) {
         logger.info(details);
-        report().log(LogStatus.PASS, details);
+        report().log(PASS, details);
     }
 
     public static synchronized void fail(String details) {
@@ -186,7 +189,7 @@ public class ReporterManager {
         } catch (Exception e) {
             // processing of problem with taking screenshot
         }
-        report().log(LogStatus.FAIL, message);
+        report().log(FAIL, message);
     }
 
     public void fail(String details, Throwable e) {
@@ -196,12 +199,12 @@ public class ReporterManager {
 
     public void fatalFail(String message) {
         logger.error(message);
-        report().log(LogStatus.FAIL, message);
+        report().log(FAIL, message);
     }
 
     public void skip(String message) {
         logger.info(message);
-        report().log(LogStatus.SKIP, message);
+        report().log(SKIP, message);
         throw new SkipException(message);
     }
 
@@ -307,5 +310,52 @@ public class ReporterManager {
 
     public static String getScreencastLinkFromBrowserStack(String sessionId) {
         return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
+    }
+
+    public static synchronized void addApiTest(String testName) {
+
+        ExtentTest test = extent.startTest(testName);
+        testThread.put(Thread.currentThread().getId(), test);
+        browserLink = "<img src='https://i.imgur.com/zXAnKwH.png' class='BrowserLogo'>";
+        test.assignCategory(browserLink);
+    }
+
+    public static synchronized void stopReportingAPI(ITestResult result) {
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+            fail("Test failed");
+            System.out.println("FAILED");
+        }else if (result.getStatus() == ITestResult.SKIP)
+            info("Test: " + testThread.get(Thread.currentThread().getId()).toString() + " skipped");
+        else
+            passApi("Test passed!");
+    }
+
+    public static synchronized void passApi (String log) {
+        pass(log);
+    }
+
+    public synchronized Map<Long, ExtentTest> startAPITest(Method m, String testName, String testDescription) {
+        Long threadID = Thread.currentThread().getId();
+
+        ExtentTest test = getInstance().startTest(testName, testDescription);
+        for (String gr : getTestGroups(m)) {
+            test.assignCategory(gr);
+            browserLink = "<img src='https://i.imgur.com/zXAnKwH.png' class='BrowserLogo'>";
+            test.assignCategory(browserLink);
+        }
+        testThread.put(threadID, test);
+        return testThread;
+    }
+
+    public void startReportingAPI(Method m, Object[] data) {
+        startAPITest(m, getTestName(m, data), getTestDescription(m));
+        String testGroups = "";
+        for (String gr : getTestGroups(m)) {
+            testGroups = testGroups + gr + "; ";
+        }
+        logger.info(
+                "--------------------------------------------------------------------------------------------------------");
+        logger.info("Started test '" + getTestName(m, data) + "' Groups: '" + testGroups.trim() + "'");
     }
 }

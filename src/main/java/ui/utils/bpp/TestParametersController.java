@@ -52,6 +52,7 @@ public class TestParametersController {
     private static final String EXECUTION_CONTEXT_PREFIX = "EC_";
     private static final String KEYWORD_NAME_TO_SKIP = "KW_AUTO_SELECT";
     private static final String KEYWORD_RUT = "KW_AUTO_RUT";
+    private static final String KEYWORD_SF_DATE = "KW_AUTO_SFDATE";
     /**
      * The method performs two-levels verification of passed value to be a metadata key.
      * First level checkup is based on determining whether the passed value starts with 'MD_' prefix.
@@ -170,6 +171,8 @@ public class TestParametersController {
             }if (parameter.equals(KEYWORD_RUT)) {
                 //return random number
                 return KeywordsHandler.randomRutNumber();
+            } if (parameter.equals(KEYWORD_SF_DATE)) {
+                return String.valueOf(KeywordsHandler.salesForceDateAPIdateFormat());
             }
             String[] splitArray = parameter.split("[<>]");
             StringBuilder resultingValue = new StringBuilder();

@@ -8,7 +8,11 @@ import ui.utils.ReporterManager;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Functionality requested in AGQA-813
@@ -89,5 +93,22 @@ public class KeywordsHandler {
         else {
             return String.valueOf(i) + "-" + String.valueOf(checkLastDigit);
         }
+    }
+
+    /**
+     * Used to create keyword special for Salesforce API date format
+     *
+     */
+    public static String salesForceDateAPIdateFormat() {
+        LocalDate startDate = LocalDate.of(1940,1,1);
+        LocalDate endDate = LocalDate.of(2001,1,1);
+        long start = startDate.toEpochDay();
+        long end = endDate.toEpochDay();
+        Date randomDate = new Date(ThreadLocalRandom.current()
+                .nextLong(start, end));
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(randomDate);
+        return date;
     }
 }

@@ -78,7 +78,7 @@ public class Utilities {
 
         StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.dir"));
-        path.append("/src/main/resources/requestBody/");
+        path.append("/src/main/resources/api/requestBody/");
         path.append(requestTemplate);
         path.append(".json");
 
@@ -103,7 +103,7 @@ public class Utilities {
 
         StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.dir"));
-        path.append("/src/main/resources/soapActions/");
+        path.append("/src/main/resources/api/soapActions/");
         path.append(soapRequestTemplate);
         path.append(".xml");
 

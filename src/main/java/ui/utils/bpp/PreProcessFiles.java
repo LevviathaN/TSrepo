@@ -38,27 +38,30 @@ public class PreProcessFiles {
 	 * The method is used for providing the right paths to the NoahClient's and the Noah's resources folders
 	 * - argument that come from command line
 	 */
-	public void initPaths(){
+	public void initPaths(boolean moduleUI){
 		String rootFolder = System.getProperty("user.dir").replace("\\", "/");
 		if (!classJar.startsWith("jar:")) {
-			TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/input";
+
+			ROOT_FOLDER_PATH = rootFolder;
 			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/keywords.metadata";
-			TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/test.properties";
 			TEST_RESOURCES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/";
-            ROOT_FOLDER_PATH = rootFolder;
-			IMAGES_FOLDER_PATH = rootFolder + "/images";
+
+			if(moduleUI){
+			TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/input";
+			TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/test.properties";
 			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
+			}
 		}
 		else {
-			TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/input";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
-			TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/resources/test.properties";
-			TEST_RESOURCES_FOLDER_PATH = rootFolder + "/resources";
 			ROOT_FOLDER_PATH = rootFolder;
-			IMAGES_FOLDER_PATH = rootFolder + "/images";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
 			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
+			if (moduleUI) {
+				TEST_INPUT_FILES_FOLDER_PATH = rootFolder + "/input";
+				TEST_PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/resources/test.properties";
+				TEST_RESOURCES_FOLDER_PATH = rootFolder + "/resources";
+			}
 		}
-
 	}
 
 
@@ -79,7 +82,7 @@ public class PreProcessFiles {
 	public boolean preProcessTestConfiguration(String... args) throws IOException {
 
 		try {
-			initPaths();
+			initPaths(true);
 			PropertiesHandler.gatherProperties();
 			//PropertiesHandler.gatherPropertiesFromJSON();
 

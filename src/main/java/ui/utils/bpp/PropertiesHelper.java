@@ -1,5 +1,7 @@
 package ui.utils.bpp;
 
+import ui.utils.FileIO;
+
 import java.io.*;
 import java.util.Formatter;
 import java.util.Locale;
@@ -29,7 +31,7 @@ public class PropertiesHelper {
         properties = new Properties();
         InputStream inputStream;
         try {
-            inputStream = new FileInputStream(PreProcessFiles.TEST_RESOURCES_FOLDER_PATH + "/configuration.properties");
+            inputStream = new FileInputStream(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/api/configuration.properties");
             properties.load(inputStream);
             inputStream.close();
         } catch (FileNotFoundException e) {
