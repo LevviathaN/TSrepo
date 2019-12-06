@@ -6,5 +6,5 @@
   "PRODUCT_FACTORY_NAME_TEXT_FIELD": "xpath=//label[normalize-space()='Name']/following::input[1]",
   "PRODUCT_FACTORY_CHANGE_BUTTON": "xpath=//button[normalize-space()='Change']",
   "PRODUCT_FACTORY_SELECT_DROPDOWN": "xpath=//button[normalize-space()='Select'][1]",
-  "PRODUCT_FACTORY_SAVE_BUTTON": "xpath=//button[normalize-space()='Save']"
+  "PRODUCT_FACTORY_SAVE_BUTTON": "//span[text()='Save']/.."
 }

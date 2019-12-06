@@ -21,7 +21,7 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            clickOnElement(By.xpath(resultingXpath));
+            clickOnElement(By.xpath(resultingXpath),10000);
         } else {
             reporter.fail("No such locator template key");
         }
@@ -37,7 +37,8 @@ public class SpecialStepDefs extends BasePage {
     public void i_click_on_element_special(String elementType) {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpath = specialLocatorsMap.get(elementType);
-            clickOnElement(By.xpath(xpath));
+            sleepFor(2000);
+            clickOnElement(By.xpath(xpath),10000);
         } else {
             reporter.fail("No such locator key");
         }
@@ -77,6 +78,27 @@ public class SpecialStepDefs extends BasePage {
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(isElementPresentAndDisplay(By.xpath(resultingXpath)));
+        } else {
+            reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
+     * Definition to verify presence of element on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param attributeName name of attribute of element you want to check
+     * @param elementLocator name or value of needed element
+     * @param elementType xpath template of needed element
+     * @param attributeValue value that tested attribute should have
+     */
+    @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$")
+    public void elements_attribute_should_have_value_special(String attributeName, String elementLocator, String elementType, String attributeValue) {
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replace("PARAMETER",
+                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
         } else {
             reporter.fail("No such locator template key");
         }

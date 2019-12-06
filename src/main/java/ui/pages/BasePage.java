@@ -31,6 +31,7 @@ public class BasePage {
     public static ReporterManager reporter = ReporterManager.Instance;
     private Robot robot;
     public static Map<String,String> specialLocatorsMap;
+    public static Map<String,String> locatorsMap;
 
     //needed because of mac and windows have different Ctrl keys
     int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
@@ -304,6 +305,10 @@ public class BasePage {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
+        } catch(ElementClickInterceptedException clk){
+            reporter.info("Looks like some other element received a click. Wait for " + timeout + " milliseconds, then try again");
+            sleepFor(timeout[0]);
+            driver().findElement(element).click();
         } catch (Exception e) {
             reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");
@@ -405,14 +410,18 @@ public class BasePage {
      * @return element By locator
      */
     public By initElementLocator(String element) {
-        String locatorFromFile = PropertiesHandler.getPropertyByKey(element);
+        String locatorFromExcel = PropertiesHandler.getPropertyByKey(element);
         //if direct locator
         if (element.startsWith("xpath")| element.startsWith("css")) {
             return TestParametersController.initElementByLocator(element);
-        } else if(!element.equals(locatorFromFile))
-            return TestParametersController.initElementByLocator(locatorFromFile);
-        else
+        } else if(!element.equals(locatorFromExcel)) {
+            return TestParametersController.initElementByLocator(locatorFromExcel);
+        } else if(locatorsMap.containsKey(element)) {
+            return By.xpath(locatorsMap.get(element));
+        }
+        else {
             return byText(TestParametersController.checkIfSpecialParameter(element));
+        }
     }
 
     /**

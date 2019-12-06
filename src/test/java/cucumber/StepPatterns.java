@@ -22,7 +22,9 @@ public enum StepPatterns {
     I_AM_LOGGED_IN_PF_AS("^I am logged into Product Factory as \"([^\"]*)\"$"),
     I_FILL_PF_FIELD("^I fill the \"([^\"]*)\" PF field with \"([^\"]*)\"$"),
     I_SELECT_FROM_DIALOG("^I select \"([^\"]*)\" from PF dialog$"),
-    CHECK_UNCHECK("^I \"([^\"]*)\" \"([^\"]*)\" PF checkbox$");
+    CHECK_UNCHECK("^I \"([^\"]*)\" \"([^\"]*)\" PF checkbox$"),
+    ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"),
+    ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$");
 
     private final String pattern;
 

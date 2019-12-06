@@ -1,42 +1,43 @@
 @ProductFactory @Bodies
-Feature: Product Factory Random Bodies
-    As a product setter
-    I want to be able to create Bodies with random names in Product Factory
-    In order to (just cause)
+Feature: Reference Data - Body - BPP-369
+  As a Senior Product Setter
+  I need to create a new Body (Professional Body / Awarding Body)
+  So that I can associate new Courses to that Body
 
   Background:
     Given I execute "Log In" reusable step
     And I execute "Create Body Financial Dimension" reusable step
 
-  @Create @Random
-  Scenario: Create New Body Using Random Data
-    When I click on the "work" link
-    When I click on the "Bodies" link
-    Then I click on the "Create" button
-    And I remember "AutoBodyShortName<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_BODY_SHORT_NAME" variable
-    And I fill the "Short Name" PF field with "EC_BODY_SHORT_NAME"
-    And I remember "AutoBodyName<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_BODY_NAME" variable
-    And I fill the "Name" PF field with "EC_BODY_NAME"
-    And I click on the "Change" button
-    And I select "EC_FD_CODE" from PF dialog
-    And I click on the "Save" button
+  @Positive @Create
+  Scenario: Add a new body using a modal
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Bodies" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "BodyShortName[####]" text to the "Short Name" "Product Factory text field"
+    And I set "BodyName[####]" text to the "Name" "Product Factory text field"
+    And I click on the "Change" "Product Factory button"
+    And I click on the "EC_FD_CODE" "Product Factory change modal option"
+    And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
-  @Create @Random
-  Scenario Outline: Create New Bodies Using Random Data
-    When I click on the "work" link
-    When I click on the "Bodies" link
-    Then I click on the "Create" button
-    And I remember "<short_name>" text as "EC_BODY_SHORT_NAME" variable
-    And I fill the "Short Name" PF field with "EC_BODY_SHORT_NAME"
-    And I remember "<name>" text as "EC_BODY_NAME" variable
-    And I fill the "Name" PF field with "EC_BODY_NAME"
-    And I click on the "Change" button
-    And I select "EC_FD_CODE" from PF dialog
-    And I click on the "Save" button
-    Then I should see the "EC_BODY_SHORT_NAME" element
+  @Negative
+  Scenario: Submitting incomplete fields
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Bodies" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "Change" "Product Factory button"
+    And I click on the "EC_FD_CODE" "Product Factory change modal option"
+    Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-    Examples:
-      |short_name                                      |name                                       |
-      |AutoBodyShortName<KW_AUTO_RANDOMNUMBER\|#######>|AutoBodyName<KW_AUTO_RANDOMNUMBER\|#######>|
-      |AutoBodyShortName<KW_AUTO_RANDOMNUMBER\|#######>|AutoBodyName<KW_AUTO_RANDOMNUMBER\|#######>|
+  @Negative @ErrorChecking
+  Scenario: Add a body where Short Name already exists
+    When I execute "Create Body" reusable step
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Bodies" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Short Name" "Product Factory text field"
+    And I set "BodyName[####]" text to the "Name" "Product Factory text field"
+    And I click on the "Change" "Product Factory button"
+    And I click on the "EC_FD_CODE" "Product Factory change modal option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "Short Name must be unique" "message"

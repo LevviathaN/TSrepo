@@ -2,10 +2,13 @@
   "button": "//*[text()='PARAMETER']",
   "link": "//*[text()='PARAMETER']",
   "text": "//*[text()='PARAMETER']",
+  "message": "//*[text()='PARAMETER']",
 
   "Product Factory navigation item": "//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
-  "Product Factory create button": "//button[normalize-space()='Create']",
-  "Product Factory text field": "//label[normalize-space()='PARAMETER']/following::input[1]",
-  "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']"
+  "Product Factory button": "//span[text()='PARAMETER']/..",
+  "Product Factory text field": "//label[text()='PARAMETER']/following::input[1]",
+  "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
+  "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
+  "Product Factory select button": "//td[text()='PARAMETER']/following-sibling::td/button"
 }

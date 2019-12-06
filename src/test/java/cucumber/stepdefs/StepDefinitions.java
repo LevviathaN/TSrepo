@@ -171,9 +171,30 @@ public class StepDefinitions extends BasePage {
         ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
     }
 
+    /**
+     * Definition to execute reusable steps
+     *
+     * @author Ruslan Levytskyi
+     * @param text text you want to save into a variable
+     * @param varName name of variable in which you want to save text
+     */
     //todo: create EC_ variable each time any random value is generated
     @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
+    }
+
+    /**
+     * Definition to verify presence of element on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param attributeName name of attribute of element you want to check
+     * @param elementLocator name or value of needed element
+     * @param attributeValue value that tested attribute should have
+     */
+    @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
+    public void elements_attribute_should_have_value(String attributeName, String elementLocator, String attributeValue) {
+
+        Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
     }
 }

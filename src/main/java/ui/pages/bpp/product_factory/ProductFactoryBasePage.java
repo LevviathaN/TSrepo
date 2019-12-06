@@ -62,7 +62,7 @@ public class ProductFactoryBasePage extends BasePage {
     }
 
     public void pfSelectFromModal(String value){
-        clickOnElement(By.xpath("//td[text()='" + value + "']/following-sibling::td/button/span[text()='Select']"));
+        clickOnElement(By.xpath("//td[text()='" + value + "']/following-sibling::td/button/span[text()='Select']"), 3000);
     }
 
     public void pfCheckbox(String element, boolean shouldBeChecked){

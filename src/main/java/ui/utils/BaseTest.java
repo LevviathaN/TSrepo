@@ -34,6 +34,7 @@ public class BaseTest {
         reporter.startReporting(method, data);
         preProcessFiles = new PreProcessFiles();
         BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/SpecialLocators.json");
+        BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/Locators.json");
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
