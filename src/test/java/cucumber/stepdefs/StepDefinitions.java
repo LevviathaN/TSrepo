@@ -197,4 +197,20 @@ public class StepDefinitions extends BasePage {
 
         Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
     }
+
+    /**
+     * Definition to check or uncheck the checkbox
+     * If svalue is check, but the checkbox is unchecked, than this method checks the checkbox
+     * Vice versa.
+     *
+     * @param value = value to set a statement to the checkbox. Can be "check" or "uncheck"
+     * @param element By locator of checkbox
+     */
+    @When("^I \"(check|uncheck)\" \"([^\"]*)\" checkbox$")
+    public void i_check_uncheck(String value, String element){
+        boolean state = true;
+        if(value.equals("check")){state = true;}
+        else if(value.equals("uncheck")){state = false;}
+        checkCheckbox(initElementLocator(element),state);
+    }
 }

@@ -425,6 +425,21 @@ public class BasePage {
     }
 
     /**
+     * Method to check or uncheck the checkbox
+     * If shouldBeChecked is true, but the checkbox is unchecked, than this method checks the checkbox
+     * Vice versa.
+     *
+     * @param shouldBeChecked = boolean to set a statement to the checkbox
+     * @param element By locator of checkbox
+     */
+    public void checkCheckbox(By element, boolean shouldBeChecked){
+        WebElement checkbox = findElement(element);
+        if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
+            checkbox.click();
+        }
+    }
+
+    /**
      * Method to scroll to the element
      * Scrolls down until element is in a view
      *

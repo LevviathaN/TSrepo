@@ -1,7 +1,6 @@
 package cucumber;
 
 import cucumber.stepdefs.SpecialStepDefs;
-import cucumber.stepdefs.productFactoryStepDefs.ProductFactoryDefs;
 import cucumber.stepdefs.StepDefinitions;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,7 +23,6 @@ public class ReusableRunner {
 
     private static StepDefinitions stepDefs = new StepDefinitions();
     private static SpecialStepDefs specialStepDefs = new SpecialStepDefs();
-    private static ProductFactoryDefs pfStepDefs = new ProductFactoryDefs();
 
     private static ArrayList<String> reusable;
     private static ReporterManager reporter = ReporterManager.Instance;
@@ -122,6 +120,7 @@ public class ReusableRunner {
         stepDefsMap.put(I_EXECUTE_REUSABLE_STEP.getPattern(),() -> stepDefs.i_execute_reusable_step(arg1));
         stepDefsMap.put(I_REMEMBER_TEXT.getPattern(),() -> stepDefs.i_remember_text(arg1, arg2));
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE.getPattern(),() -> stepDefs.elements_attribute_should_have_value(arg1, arg2, arg3));
+        stepDefsMap.put(I_CHECK_UNCHECK.getPattern(),() -> stepDefs.i_check_uncheck(arg1, arg2));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
@@ -129,12 +128,7 @@ public class ReusableRunner {
         stepDefsMap.put(I_SET_TEXT_SPECIAL.getPattern(),() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
         stepDefsMap.put(I_SHOULD_SEE_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_special(arg1, arg2));
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL.getPattern(),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));
-
-        //Product Factory stepdefs
-        stepDefsMap.put(I_AM_LOGGED_IN_PF_AS.getPattern(),() -> pfStepDefs.log_in_as(arg1));
-        stepDefsMap.put(I_FILL_PF_FIELD.getPattern(),() -> pfStepDefs.fill_pf_field(arg1, arg2));
-        stepDefsMap.put(I_SELECT_FROM_DIALOG.getPattern(),() -> pfStepDefs.select_from_dialog(arg1));
-        stepDefsMap.put(CHECK_UNCHECK.getPattern(),() -> pfStepDefs.check_uncheck(arg1, arg2));
+        stepDefsMap.put(I_CHECK_UNCHECK_SPECIAL.getPattern(),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));
 
         for(String regx : stepDefsMap.keySet()){
             if (reusable.get(i).matches(regx)){

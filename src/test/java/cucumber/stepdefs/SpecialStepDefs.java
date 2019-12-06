@@ -38,7 +38,7 @@ public class SpecialStepDefs extends BasePage {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpath = specialLocatorsMap.get(elementType);
             sleepFor(2000);
-            clickOnElement(By.xpath(xpath),10000);
+            clickOnElement(By.xpath(xpath),5000);
         } else {
             reporter.fail("No such locator key");
         }
@@ -99,6 +99,29 @@ public class SpecialStepDefs extends BasePage {
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
+        } else {
+            reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
+     * Definition to check or uncheck the checkbox
+     * If svalue is check, but the checkbox is unchecked, than this method checks the checkbox
+     * Vice versa.
+     *
+     * @param value = value to set a statement to the checkbox. Can be "check" or "uncheck"
+     * @param elementLocator locator of checkbox
+     */
+    @When("^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_check_uncheck_special(String value, String elementLocator, String elementType){
+        boolean state = true;
+        if(value.equals("check")){state = true;}
+        else if(value.equals("uncheck")){state = false;}
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replace("PARAMETER",
+                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            checkCheckbox(By.xpath(resultingXpath),state);
         } else {
             reporter.fail("No such locator template key");
         }

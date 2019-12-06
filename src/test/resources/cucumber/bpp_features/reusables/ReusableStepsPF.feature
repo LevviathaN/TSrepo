@@ -5,10 +5,10 @@ Feature: Product Factory
   In order to (just cause)
 
   Scenario: Log In
-    Given I am on "http://qa-products.bpp.com" URL
+    Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYURL" URL
     When I click on the "Sign in with Auth0" button
-    And I fill the "email" field with "samuelslade@bpp.com"
-    And I fill the "password" field with "Password1"
+    And I fill the "email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYUSER"
+    And I fill the "password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYPASSWORD"
     And I click on the "Login" button which is "2"
     When I wait for "4" seconds
     Then I should be redirected to the "Product Factory" page
@@ -44,7 +44,7 @@ Feature: Product Factory
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
     And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
-    And I "check" "EC_BODY_NAME" PF checkbox
+    And I "check" "EC_BODY_NAME" checkbox
     And I click on the "Save" "button"
     Then I should see the "EC_SITTING_NAME" element
 
