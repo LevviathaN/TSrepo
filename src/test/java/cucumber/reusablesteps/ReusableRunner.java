@@ -1,4 +1,4 @@
-package cucumber;
+package cucumber.reusablesteps;
 
 import cucumber.stepdefs.SpecialStepDefs;
 import cucumber.stepdefs.StepDefinitions;
@@ -52,7 +52,7 @@ public class ReusableRunner {
         reusable = getStepsOfReusableScenario(reusableName);
 
         for(int i = 0; i<reusable.size(); i++){
-            reporter.info("Executing: " + step);
+            reporter.info("<pre>Executing " + step + " step</pre>");
             if(subSteps.containsKey(i)){
                 reporter.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
@@ -70,14 +70,13 @@ public class ReusableRunner {
      *                     This scenario must be in src/main/resources/data/bpp/ReusableTestSteps.xml
      */
     public static void executeReusable(String reusableName){
-        reporter.info("Start executing \"" + reusableName + "\" reusable step. " +
-                "It contains" + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
+        reporter.info("<pre>Start executing \"" + reusableName + "\" reusable step. " +
+                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
 
         reusable = getStepsOfReusableScenario(reusableName);
 
         for(int i = 0; i<reusable.size(); i++){
-            reporter.info("Executing: " + step);
-
+            reporter.info("Executing " + step + " step");
             executeStep(i);
         }
     }

@@ -1,6 +1,6 @@
 package cucumber.stepdefs;
 
-import cucumber.ReusableRunner;
+import cucumber.reusablesteps.ReusableRunner;
 import cucumber.api.java.en.*;
 //import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
@@ -8,7 +8,6 @@ import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.PropertiesHandler;
 import ui.utils.bpp.TestParametersController;
 
 import java.util.Map;
@@ -30,6 +29,7 @@ public class StepDefinitions extends BasePage {
     @Given("^I am on \"([^\"]*)\" URL$")
     public void i_am_on_url(String url) {
         driver().get(TestParametersController.checkIfSpecialParameter(url));
+        waitForPageToLoad();
     }
 
     /**
@@ -74,12 +74,9 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
     public void fill_field(String element, String text){
-        String specialElement = PropertiesHandler.getPropertyByKey(element);
+
         if(element.startsWith("xpath")|element.startsWith("css"))
             findElement(TestParametersController.initElementByLocator(element))
-                    .sendKeys(TestParametersController.checkIfSpecialParameter(text));
-        else if(!element.equals(specialElement))
-            findElement(TestParametersController.initElementByLocator(specialElement))
                     .sendKeys(TestParametersController.checkIfSpecialParameter(text));
         else
             findElement(By.xpath("//input[@name='" + TestParametersController.checkIfSpecialParameter(element) +
@@ -153,23 +150,17 @@ public class StepDefinitions extends BasePage {
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
         ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
-    }
-
-    //todo next three definitions of Reusables soon
-    @Then("^I execute \"([^\"]*)\" reusable step without some steps$")
-    public void i_execute_reusable_step_without(String reusableName) {
-        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+        this.value = TestParametersController.checkIfSpecialParameter(reusableName);
+        reporter.info("[input test parameter] '" + reusableName + "' -> '" + this.value + "' [output value]");
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step with some additional steps$")
     public void i_execute_reusable_step_with(String reusableName, Map<Integer, String> steps) {
         ReusableRunner.executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
+        this.value = TestParametersController.checkIfSpecialParameter(reusableName);
+        reporter.info("[input test parameter] '" + reusableName + "' -> '" + this.value + "' [output value]");
     }
 
-    @Then("^I execute \"([^\"]*)\" reusable step replacing some steps$")
-    public void i_execute_reusable_step_replace(String reusableName) {
-        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
-    }
 
     /**
      * Definition to execute reusable steps

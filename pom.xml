@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.6.0</version>
+            <version>3.141.5</version>
         </dependency>
 
         <dependency>
@@ -153,12 +153,6 @@
 
 
         <dependency>
-            <groupId>com.github.hemano</groupId>
-            <artifactId>ReadExcelsAnywhere</artifactId>
-            <version>13b79f7</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>4.1</version>
@@ -178,11 +172,6 @@
 
         <!-- Dependencies needed only for datageneration
          todo: REPLACE IT with something simpler. Following springframework dependency causes strange logs-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>4.3.5.RELEASE</version>
-        </dependency>
 
         <dependency>
             <groupId>joda-time</groupId>

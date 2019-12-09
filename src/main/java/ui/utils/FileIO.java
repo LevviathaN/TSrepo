@@ -15,8 +15,6 @@ import java.util.Properties;
 public class FileIO {
 
     static String TARGET_FOLDER = "target";
-    static String DATA_RESOURCES = "src/main/resources/data/staging/";
-    static String PROD_DATA_RESOURCES = "src/main/resources/data/production/";
     static String CONFIG_FILE = System.getProperty("config");
     static String PROPERTIES = "src/main/resources/" + ((CONFIG_FILE == null) ? "default" : CONFIG_FILE) + ".properties";
     static String EXTENT_CONFIG = "src/main/resources/extent-config.xml";
@@ -52,13 +50,6 @@ public class FileIO {
             ReporterManager.Instance.fatalFail("Field was not found: " + fieldName);
         }
         return result;
-    }
-
-    public static String getDataFile(String filename) {
-        if (FileIO.getConfigProperty("EnvType").equals("PROD")) {
-            return PROD_DATA_RESOURCES + filename;
-        } else
-            return DATA_RESOURCES + filename;
     }
 }
 

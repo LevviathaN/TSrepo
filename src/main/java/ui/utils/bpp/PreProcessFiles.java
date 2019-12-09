@@ -83,8 +83,7 @@ public class PreProcessFiles {
 
 		try {
 			initPaths(true);
-			PropertiesHandler.gatherProperties();
-			//PropertiesHandler.gatherPropertiesFromJSON();
+			PropertiesHelper.gatherPropertiesFromJSON();
 
 			boolean generateBeansXmlFile = true;
 			if (args.length > 0) {

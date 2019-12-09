@@ -9,8 +9,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -32,6 +35,7 @@ import static com.relevantcodes.extentreports.LogStatus.*;
 
 /**
  * Provides the reporting architecture
+ *
  * @author yzosin
  */
 public class ReporterManager {
@@ -42,7 +46,8 @@ public class ReporterManager {
     static String Report_folder = "report";
     private static Path logFolder;
     private static Path screenshotFolder = Paths.get(Report_folder, "screenshots");
-    private static String browserLink;
+    protected String logName;
+    protected String testLogName;
 
     ReporterManager() {
 
@@ -51,7 +56,7 @@ public class ReporterManager {
     private static Map<Long, ExtentTest> testThread = new ConcurrentHashMap<Long, ExtentTest>();
     private static ExtentReports extent;
 
-    public static Logger logger = LogManager.getLogger(ReporterManager.class);
+    //public static Logger logger = LogManager.getLogger(ReporterManager.class);
 
     private synchronized static ExtentReports getInstance() {
 
@@ -147,9 +152,8 @@ public class ReporterManager {
         for (String gr : getTestGroups(m)) {
             testGroups = testGroups + gr + "; ";
         }
-        logger.info(
-                "--------------------------------------------------------------------------------------------------------");
-        logger.info("Started test '" + getTestName(m, data) + "' Groups: '" + testGroups.trim() + "'");
+        //logger.info("Started test '" + getTestName(m, data) + "' Groups: '" + testGroups.trim() + "'");
+        BPPLogManager.getLogger().info("Started test '" + getTestName(m, data) + "' Groups: '" + testGroups.trim() + "'");
     }
 
     public void stopReporting() {
@@ -169,19 +173,22 @@ public class ReporterManager {
     }
 
     public static synchronized void info(String details) {
-        logger.info(details);
+        //logger.info(details);
+        BPPLogManager.getLogger().info(details);
         report().log(INFO, details);
     }
 
     public static synchronized void pass(String details) {
-        logger.info(details);
+        //logger.info(details);
+        BPPLogManager.getLogger().info(details);
         report().log(PASS, details);
     }
 
     public static synchronized void fail(String details) {
         String screenshotFile;
         String message = "<pre>" + details + "</pre>";
-        logger.error(details);
+        //logger.error(details);
+        BPPLogManager.getLogger().error(details);
         try {
             screenshotFile = takeScreenshot(DriverProvider.getDriver());
             message = message + "<br><a href=\"" + screenshotFile + "\" target=_blank alt>"
@@ -198,12 +205,14 @@ public class ReporterManager {
     }
 
     public void fatalFail(String message) {
-        logger.error(message);
+        //logger.error(message);
+        BPPLogManager.getLogger().error(message);
         report().log(FAIL, message);
     }
 
     public void skip(String message) {
-        logger.info(message);
+        //logger.info(message);
+        BPPLogManager.getLogger().info(message);
         report().log(SKIP, message);
         throw new SkipException(message);
     }
@@ -285,11 +294,10 @@ public class ReporterManager {
             osw.close();
 
             if (connection.getResponseCode() == 200) {
-                logger.info("BrowserStack job has been updated successfully");
+                BPPLogManager.getLogger().info("BrowserStack job has been updated successfully");
             } else {
-                logger.info("BrowserStack job has NOT been updated");
+                BPPLogManager.getLogger().info("BrowserStack job has NOT been updated");
             }
-
             System.err.println(connection.getResponseCode());
         } catch (IOException e) {
             e.printStackTrace();
@@ -312,12 +320,22 @@ public class ReporterManager {
         return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
     }
 
+    //get the name of the log file for further usage in the report
+    public void setLogName(String testLogName) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy_HH.mm");
+        LocalDateTime dateTime = LocalDateTime.now();
+        String formattedDateTime = dateTime.format(formatter);
+
+        String tempName = getTestName();
+        logName = tempName.replaceAll("\"", "_");
+        this.testLogName = logName + formattedDateTime + ".log";
+    }
+
+    //Methods specially for API tests
     public static synchronized void addApiTest(String testName) {
 
         ExtentTest test = extent.startTest(testName);
         testThread.put(Thread.currentThread().getId(), test);
-        browserLink = "<img src='https://i.imgur.com/zXAnKwH.png' class='BrowserLogo'>";
-        test.assignCategory(browserLink);
     }
 
     public static synchronized void stopReportingAPI(ITestResult result) {
@@ -325,13 +343,13 @@ public class ReporterManager {
         if (result.getStatus() == ITestResult.FAILURE) {
             fail("Test failed");
             System.out.println("FAILED");
-        }else if (result.getStatus() == ITestResult.SKIP)
+        } else if (result.getStatus() == ITestResult.SKIP)
             info("Test: " + testThread.get(Thread.currentThread().getId()).toString() + " skipped");
         else
             passApi("Test passed!");
     }
 
-    public static synchronized void passApi (String log) {
+    public static synchronized void passApi(String log) {
         pass(log);
     }
 
@@ -341,8 +359,7 @@ public class ReporterManager {
         ExtentTest test = getInstance().startTest(testName, testDescription);
         for (String gr : getTestGroups(m)) {
             test.assignCategory(gr);
-            browserLink = "<img src='https://i.imgur.com/zXAnKwH.png' class='BrowserLogo'>";
-            test.assignCategory(browserLink);
+            test.assignCategory("API");
         }
         testThread.put(threadID, test);
         return testThread;
@@ -354,8 +371,5 @@ public class ReporterManager {
         for (String gr : getTestGroups(m)) {
             testGroups = testGroups + gr + "; ";
         }
-        logger.info(
-                "--------------------------------------------------------------------------------------------------------");
-        logger.info("Started test '" + getTestName(m, data) + "' Groups: '" + testGroups.trim() + "'");
     }
 }

@@ -7,6 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import ui.pages.BasePage;
 import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.MetaDataHandler;
@@ -32,6 +33,9 @@ public class BaseTest {
         //init reporter
         reporter = ReporterManager.Instance;
         reporter.startReporting(method, data);
+        reporter.setLogName(method.getAnnotation(Test.class).testName());
+        reporter.logForEveryTest(reporter.testLogName);
+
         preProcessFiles = new PreProcessFiles();
         BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/SpecialLocators.json");
         BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/Locators.json");

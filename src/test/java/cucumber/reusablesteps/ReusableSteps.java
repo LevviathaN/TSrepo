@@ -1,4 +1,4 @@
-package cucumber;
+package cucumber.reusablesteps;
 
 import gherkin.pickles.Pickle;
 import gherkin.pickles.PickleStep;

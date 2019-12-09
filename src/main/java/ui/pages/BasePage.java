@@ -1,5 +1,6 @@
 package ui.pages;
 
+import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -7,7 +8,6 @@ import ui.utils.DriverProvider;
 import ui.utils.FileIO;
 import ui.utils.ReporterManager;
 import ui.utils.Tools;
-import ui.utils.bpp.PropertiesHandler;
 import ui.utils.bpp.TestParametersController;
 
 import java.awt.Robot;
@@ -32,6 +32,7 @@ public class BasePage {
     private Robot robot;
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
+    protected String value;
 
     //needed because of mac and windows have different Ctrl keys
     int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
@@ -246,7 +247,7 @@ public class BasePage {
                     elem.click();
                     break;
                 } catch (Exception e) {
-                    //nothing
+                    e.printStackTrace();
                 }
             }
         }
@@ -410,12 +411,10 @@ public class BasePage {
      * @return element By locator
      */
     public By initElementLocator(String element) {
-        String locatorFromExcel = PropertiesHandler.getPropertyByKey(element);
+
         //if direct locator
         if (element.startsWith("xpath")| element.startsWith("css")) {
             return TestParametersController.initElementByLocator(element);
-        } else if(!element.equals(locatorFromExcel)) {
-            return TestParametersController.initElementByLocator(locatorFromExcel);
         } else if(locatorsMap.containsKey(element)) {
             return By.xpath(locatorsMap.get(element));
         }
@@ -461,14 +460,24 @@ public class BasePage {
     /**
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
-    public static void waitForPageToLoad() {
-        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
-        try {
-            wait.until(expectation);
-        } catch (Exception error) {
-            reporter.fail("JavaScript readyState query timeout - The page has not finished loading");
-        }
+//    public static void waitForPageToLoad() {
+//        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+//        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
+//        try {
+//            wait.until(expectation);
+//        } catch (Exception error) {
+//            reporter.fail("JavaScript readyState query timeout - The page has not finished loading");
+//        }
+//    }
+
+    public static void waitForPageToLoad(){
+        Wait<WebDriver> wait = new WebDriverWait(driver(), STATIC_TIMEOUT).ignoring(WebDriverException.class);
+        wait.until(new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
+                        .equals("complete");
+            }
+        });
     }
 
     /**
