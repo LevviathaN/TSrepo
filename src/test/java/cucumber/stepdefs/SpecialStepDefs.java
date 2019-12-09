@@ -21,6 +21,7 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
+            isElementPresentAndDisplay(By.xpath(resultingXpath));
             clickOnElement(By.xpath(resultingXpath),10000);
         } else {
             reporter.fail("No such locator template key");
@@ -37,7 +38,7 @@ public class SpecialStepDefs extends BasePage {
     public void i_click_on_element_special(String elementType) {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpath = specialLocatorsMap.get(elementType);
-            sleepFor(2000);
+            isElementPresentAndDisplay(By.xpath(xpath));
             clickOnElement(By.xpath(xpath),5000);
         } else {
             reporter.fail("No such locator key");

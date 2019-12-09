@@ -150,8 +150,6 @@ public class StepDefinitions extends BasePage {
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
         ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
-        this.value = TestParametersController.checkIfSpecialParameter(reusableName);
-        reporter.info("[input test parameter] '" + reusableName + "' -> '" + this.value + "' [output value]");
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step with some additional steps$")
