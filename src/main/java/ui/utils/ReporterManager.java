@@ -42,6 +42,7 @@ public class ReporterManager {
 
     private static ReporterManager instance;
     public static ReporterManager Instance = (instance != null) ? instance : new ReporterManager();
+
     public static String filename;
     static String Report_folder = "report";
     private static Path logFolder;
@@ -56,7 +57,7 @@ public class ReporterManager {
     private static Map<Long, ExtentTest> testThread = new ConcurrentHashMap<Long, ExtentTest>();
     private static ExtentReports extent;
 
-    //public static Logger logger = LogManager.getLogger(ReporterManager.class);
+    public static Logger logger = LogManager.getLogger(ReporterManager.class);
 
     private synchronized static ExtentReports getInstance() {
 
@@ -173,22 +174,22 @@ public class ReporterManager {
     }
 
     public static synchronized void info(String details) {
-        //logger.info(details);
-        BPPLogManager.getLogger().info(details);
+        logger.info(details);
+        //BPPLogManager.getLogger().info(details);
         report().log(INFO, details);
     }
 
     public static synchronized void pass(String details) {
-        //logger.info(details);
-        BPPLogManager.getLogger().info(details);
+        logger.info(details);
+        //BPPLogManager.getLogger().info(details);
         report().log(PASS, details);
     }
 
     public static synchronized void fail(String details) {
         String screenshotFile;
         String message = "<pre>" + details + "</pre>";
-        //logger.error(details);
-        BPPLogManager.getLogger().error(details);
+        logger.error(details);
+        //BPPLogManager.getLogger().error(details);
         try {
             screenshotFile = takeScreenshot(DriverProvider.getDriver());
             message = message + "<br><a href=\"" + screenshotFile + "\" target=_blank alt>"
@@ -205,14 +206,14 @@ public class ReporterManager {
     }
 
     public void fatalFail(String message) {
-        //logger.error(message);
-        BPPLogManager.getLogger().error(message);
+        logger.error(message);
+        //BPPLogManager.getLogger().error(message);
         report().log(FAIL, message);
     }
 
     public void skip(String message) {
-        //logger.info(message);
-        BPPLogManager.getLogger().info(message);
+        logger.info(message);
+        //BPPLogManager.getLogger().info(message);
         report().log(SKIP, message);
         throw new SkipException(message);
     }

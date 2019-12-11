@@ -110,7 +110,6 @@ public class ReusableRunner {
         //General stepdefs
         stepDefsMap.put(I_CLICK_ON_THE_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_button(arg1));
         stepDefsMap.put(I_AM_ON_URL.getPattern(),() -> stepDefs.i_am_on_url(arg1));
-        stepDefsMap.put(I_CLICK_ON_THE_N_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_n_button(arg1, arg2));
         stepDefsMap.put(FILL_THE_FIELD.getPattern(),() -> stepDefs.fill_field(arg1, arg2));
         stepDefsMap.put(WAIT_FOR.getPattern(),() -> stepDefs.wait_for(arg1));
         stepDefsMap.put(HOVER_OVER.getPattern(),() -> stepDefs.hover_over(arg1));
@@ -123,7 +122,6 @@ public class ReusableRunner {
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
-        stepDefsMap.put(I_CLICK_ON_ELEMENT_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_special(arg1));
         stepDefsMap.put(I_SET_TEXT_SPECIAL.getPattern(),() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
         stepDefsMap.put(I_SHOULD_SEE_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_special(arg1, arg2));
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL.getPattern(),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));

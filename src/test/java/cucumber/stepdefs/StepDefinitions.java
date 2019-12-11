@@ -49,38 +49,19 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
-     * Definition to click an element which is N of elements found on the page using specified locator
-     *
-     * @author Ruslan Levytskyi
-     * @param element locator for element you want to click on
-
-     */
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$")
-    public void i_click_on_the_n_button(String element, String nmb) {
-        clickOnElement(By.xpath("//body/descendant::*[text()='" +
-                TestParametersController.checkIfSpecialParameter(element) + "'][" + Integer.parseInt(nmb) + "]"));
-    }
-
-    /**
      * Definition to send some text into some text input field
      *
      * @author Ruslan Levytskyi
      * @param element locator for element you want to send text to
-     *      1. Starts with "xpath" or "css" - locator is passed directly into a method
-     *      2. Parameter exists in locators document - locator value is returned from document
-     *      3. None of above - parameter is treated as text value of element: //input[@name='parameter')]
+     *       Parameter exists in locators document - locator value is returned from document
      * @param text text you want to send to element
      *             Here we also check if text is EC_ or MD_ of KW_
      */
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
-    public void fill_field(String element, String text){
+    public void fill_field(String element, String text) {
 
-        if(element.startsWith("xpath")|element.startsWith("css"))
-            findElement(TestParametersController.initElementByLocator(element))
-                    .sendKeys(TestParametersController.checkIfSpecialParameter(text));
-        else
-            findElement(By.xpath("//input[@name='" + TestParametersController.checkIfSpecialParameter(element) +
-                "']")).sendKeys(TestParametersController.checkIfSpecialParameter(text));
+        findElement(initElementLocator(element))
+                .sendKeys(TestParametersController.checkIfSpecialParameter(text));
     }
 
     /**
@@ -134,6 +115,7 @@ public class StepDefinitions extends BasePage {
      */
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
+        waitForPageToLoad();
         reporter.info("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
         Assert.assertEquals(driver().getTitle(), TestParametersController.checkIfSpecialParameter(pageTitle),

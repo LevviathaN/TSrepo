@@ -1,10 +1,13 @@
 {
-  "PRODUCT_FACTORY_WORK_LINK": "xpath=//div[@title='Programme']//span[text()='work']",
-  "PRODUCT_FACTORY_BODY_LINK": "xpath=//div[@title='Bodies']//span[text()='collections_bookmark']",
-  "PRODUCT_FACTORY_CREATE_BUTTON": "xpath=//button[normalize-space()='Create']",
-  "PRODUCT_FACTORY_SHORTNAME_TEXT_FIELD": "xpath=//label[normalize-space()='Short Name']/following::input[1]",
-  "PRODUCT_FACTORY_NAME_TEXT_FIELD": "xpath=//label[normalize-space()='Name']/following::input[1]",
-  "PRODUCT_FACTORY_CHANGE_BUTTON": "xpath=//button[normalize-space()='Change']",
-  "PRODUCT_FACTORY_SELECT_DROPDOWN": "xpath=//button[normalize-space()='Select'][1]",
-  "PRODUCT_FACTORY_SAVE_BUTTON": "//span[text()='Save']"
+  "Product Factory Login": "xpath=//button[@name='submit']",
+  "Product Factory Email": "xpath=//input[@placeholder='Email']",
+  "Product Factory Password": "xpath=//input[@placeholder='Password']",
+  "Product Factory Work Link": "xpath=//div[@title='Programme']//span[text()='work']",
+  "Product Factory Body Link": "xpath=//div[@title='Bodies']//span[text()='collections_bookmark']",
+  "Product Factory Create Button": "xpath=//button[normalize-space()='Create']",
+  "Product Factory Short Name Text Field": "xpath=//label[normalize-space()='Short Name']/following::input[1]",
+  "Product Factory Name Text Field": "xpath=//label[normalize-space()='Name']/following::input[1]",
+  "Product Factory Change Button": "xpath=//button[normalize-space()='Change']",
+  "Product Factory Select Dropdown": "xpath=//button[normalize-space()='Select'][1]",
+  "Product Factory Save Button": "xpath=//span[text()='Save']"
 }

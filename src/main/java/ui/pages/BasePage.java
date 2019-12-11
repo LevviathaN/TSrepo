@@ -4,15 +4,10 @@ import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import ui.utils.DriverProvider;
-import ui.utils.FileIO;
-import ui.utils.ReporterManager;
-import ui.utils.Tools;
+import ui.utils.*;
 import ui.utils.bpp.TestParametersController;
 
 import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
@@ -245,7 +240,9 @@ public class BasePage {
             for (WebElement elem : elements) {
                 try {
                     elem.click();
-                    break;
+                }  catch(ElementClickInterceptedException clk){
+                    BPPLogManager.getLogger().info("Looks like some other element received a click. Will try again");
+                    driver().findElement(element).click();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -412,13 +409,9 @@ public class BasePage {
      */
     public By initElementLocator(String element) {
 
-        //if direct locator
-        if (element.startsWith("xpath")| element.startsWith("css")) {
-            return TestParametersController.initElementByLocator(element);
-        } else if(locatorsMap.containsKey(element)) {
-            return By.xpath(locatorsMap.get(element));
-        }
-        else {
+        if (locatorsMap.containsKey(element)) {
+            return TestParametersController.initElementByLocator(locatorsMap.get(element));
+        } else {
             return byText(TestParametersController.checkIfSpecialParameter(element));
         }
     }
@@ -564,50 +557,6 @@ public class BasePage {
                 return;
             }
         }
-    }
-
-    /**
-     * Method to upload the file from your machine, using upload window of your browser (Chrome recomended)
-     * Method should be called after upload button on site page is clicked
-     *
-     * @param path path to file on your machine, that you want to upload
-     */
-    public void uploadFile(String path) {
-        if(robot==null){
-            try { robot = new Robot(); }
-            catch (Exception e) { e.printStackTrace(); }
-        }
-
-        File file = new File(path);
-        StringSelection stringSelection = new StringSelection(file.getAbsolutePath());
-
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-        robot.delay(2000);
-
-        if (DriverProvider.OS_EXTENTION.equals("_mac")) {
-            reporter.info("Opening Goto Window");
-            robot.keyPress(systemControllKey);
-            robot.keyPress(KeyEvent.VK_SHIFT);
-            robot.keyPress(KeyEvent.VK_G);
-            robot.keyRelease(systemControllKey);
-            robot.keyRelease(KeyEvent.VK_SHIFT);
-            robot.keyRelease(KeyEvent.VK_G);
-        }
-
-        //Paste the clipboard value
-        reporter.info("Pasting from clipboard");
-        robot.keyPress(systemControllKey);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(systemControllKey);
-        robot.keyRelease(KeyEvent.VK_V);
-
-        //Press Enter key to close the Goto window and Upload window
-        reporter.info("\"Executing Cmd + Tab\"");
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(2000);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
     /**

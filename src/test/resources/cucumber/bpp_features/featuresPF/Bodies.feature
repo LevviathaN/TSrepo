@@ -8,7 +8,7 @@ Feature: Reference Data - Body - BPP-369
     Given I execute "Log In" reusable step
     And I execute "Create Body Financial Dimension" reusable step
 
-  @Positive @Create
+  @Positive @Regression @P1
   Scenario: Add a new body using a modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
@@ -20,7 +20,7 @@ Feature: Reference Data - Body - BPP-369
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
-  @Negative
+  @Negative @P2
   Scenario: Submitting incomplete fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
@@ -29,7 +29,7 @@ Feature: Reference Data - Body - BPP-369
     And I click on the "EC_FD_CODE" "Product Factory change modal option"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @ErrorChecking
+  @Negative @P2
   Scenario: Add a body where Short Name already exists
     When I execute "Create Body" reusable step
     When I click on the "Programme" "Product Factory navigation item"

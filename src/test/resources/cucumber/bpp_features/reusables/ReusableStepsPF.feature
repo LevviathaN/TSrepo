@@ -7,10 +7,9 @@ Feature: Product Factory
   Scenario: Log In
     Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYURL" URL
     When I click on the "Sign in with Auth0" button
-    And I fill the "email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYUSER"
-    And I fill the "password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYPASSWORD"
-    And I click on the "Login" button which is "2"
-    When I wait for "4" seconds
+    And I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYUSER"
+    And I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYPASSWORD"
+    And I click on the "Product Factory Login" button
     Then I should be redirected to the "Product Factory" page
 
   Scenario: Create Body Financial Dimension
@@ -38,7 +37,7 @@ Feature: Product Factory
   Scenario: Create Sitting
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
-    Then I click on the "Product Factory create button"
+    Then I click on the "PRODUCT_FACTORY_CREATE_BUTTON" button
     And I set "SittingName[####]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
@@ -51,7 +50,7 @@ Feature: Product Factory
   Scenario: Create Pricing Matrix
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
-    Then I click on the "Product Factory create button"
+    Then I click on the "PRODUCT_FACTORY_CREATE_BUTTON" button
     And I click on the "Body" "Product Factory change modal option"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory select button"
     And I click on the "Sitting" "Product Factory change modal option"

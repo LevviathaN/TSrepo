@@ -12,7 +12,7 @@ public class SpecialStepDefs extends BasePage {
      * Definition to click an element on the page
      *
      * @author Ruslan Levytskyi
-     * @param elementLocator name or value of needed element
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
      * @param elementType xpath template of needed element
      */
     @When("^I click on the \"([^\"]*)\" \"([^\"]*)\"$")
@@ -25,23 +25,6 @@ public class SpecialStepDefs extends BasePage {
             clickOnElement(By.xpath(resultingXpath),10000);
         } else {
             reporter.fail("No such locator template key");
-        }
-    }
-
-    /**
-     * Definition to click an element on the page
-     *
-     * @author Ruslan Levytskyi
-     * @param elementType xpath template of needed element
-     */
-    @When("^I click on the \"([^\"]*)\"$")
-    public void i_click_on_element_special(String elementType) {
-        if(specialLocatorsMap.containsKey(elementType)) {
-            String xpath = specialLocatorsMap.get(elementType);
-            isElementPresentAndDisplay(By.xpath(xpath));
-            clickOnElement(By.xpath(xpath),5000);
-        } else {
-            reporter.fail("No such locator key");
         }
     }
 
