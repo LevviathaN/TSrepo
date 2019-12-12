@@ -4,14 +4,11 @@ package ui.utils.bpp;
 
 
 import org.apache.log4j.Logger;
-import ui.utils.ReporterManager;
 
 import java.io.IOException;
 
 public class PreProcessFiles {
 
-	//New reporter
-	public static ReporterManager reporter = ReporterManager.Instance;
 
 	public static org.apache.log4j.Logger logger = Logger.getLogger(PreProcessFiles.class);
 

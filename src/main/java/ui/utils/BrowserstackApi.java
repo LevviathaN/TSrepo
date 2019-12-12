@@ -9,7 +9,6 @@ import java.net.URL;
 
 public class BrowserstackApi {
 
-    public static ReporterManager reporter = ReporterManager.Instance;
 
     public static void updateBrowserStackJob(String jobStatus, String sessionId) {
         try {
@@ -38,9 +37,9 @@ public class BrowserstackApi {
             osw.close();
 
             if (connection.getResponseCode() == 200) {
-                reporter.info("BrowserStack job has been updated successfully");
+                Reporter.log("BrowserStack job has been updated successfully");
             } else {
-                reporter.info("BrowserStack job has NOT been updated");
+                Reporter.log("BrowserStack job has NOT been updated");
             }
 
             System.err.println(connection.getResponseCode());

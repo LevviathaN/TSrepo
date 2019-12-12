@@ -3,7 +3,7 @@ package cucumber;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.*;
 import org.testng.annotations.*;
-import ui.utils.BaseTest;
+import ui.utils.BaseUITest;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
@@ -11,10 +11,10 @@ import ui.utils.BaseTest;
         tags = {"@Bodies"},
         plugin = {"pretty"})
 
-public class CucumberTest  extends BaseTest {
+public class CucumberUITest extends BaseUITest {
     private TestNGCucumberRunner testNGCucumberRunner;
 
-    public CucumberTest() {
+    public CucumberUITest() {
     }
 
     @BeforeClass(alwaysRun = true)

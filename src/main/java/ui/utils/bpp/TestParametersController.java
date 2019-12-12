@@ -1,7 +1,7 @@
 package ui.utils.bpp;
 
 import org.openqa.selenium.By;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,7 +36,6 @@ import java.util.regex.Pattern;
  */
 public class TestParametersController {
 
-    static ReporterManager reporter = ReporterManager.Instance;
     //private static final Logger log = Logger.getLogger(TestParametersController.class);
 
     private static final Pattern ACCEPTABLE_METADATA_PATTERN = Pattern.compile("^MD_([A-Z]+_){2}[A-Z]+$");
@@ -73,8 +72,8 @@ public class TestParametersController {
                         "\t\tFile name, sheet and key should be a word in uppercase.";
                 String messageToReport = "<pre>Acceptable metadata format is 'MD_FILE_SHEET_KEY'.<br>" +
                         "File name, sheet and key should be a word in uppercase.</pre>";
-                reporter.info("Passed \"" + value + "\" parameter looks like a metadata key but it's format is not acceptable." + messageToLog);
-                reporter.info("Passed \"" + value + "\" parameter looks like a metadata key but it's format is not acceptable." + messageToReport);
+                Reporter.log("Passed \"" + value + "\" parameter looks like a metadata key but it's format is not acceptable." + messageToLog);
+                Reporter.log("Passed \"" + value + "\" parameter looks like a metadata key but it's format is not acceptable." + messageToReport);
                 return false;
             }
         }
@@ -105,8 +104,8 @@ public class TestParametersController {
                         "Each keyword may be combined with pre-pending and/or post-pending text. Format: 'pre-pending text&lt;KEYWORD&gt;post-pending text'.<br>" +
                         "Pre-pending and post-pending texts are optional and may contain upper- and lowercase letters, digits, '_', '-', '@', '.'<br>" +
                         "Input value may contain several keywords.</pre>";
-                reporter.info("Passed \"" + value + "\" parameter looks like a keyword but it's format is not acceptable." + messageToLog);
-                reporter.info("Passed \"" + value + "\" parameter looks like a keyword but it's format is not acceptable." + messageToReport);
+                Reporter.log("Passed \"" + value + "\" parameter looks like a keyword but it's format is not acceptable." + messageToLog);
+                Reporter.log("Passed \"" + value + "\" parameter looks like a keyword but it's format is not acceptable." + messageToReport);
                 return false;
             }
         }
@@ -133,8 +132,8 @@ public class TestParametersController {
                         "\t\tExecution context key should contain 'EC' prefix and any number of words in uppercase separated by '_'.";
                 String messageToReport = "<pre>Acceptable execution context format is 'EC_PART-1..._PART-N'.<br>" +
                         "Execution context key should contain 'EC' prefix and any number of words in uppercase separated by '_'.</pre>";
-                reporter.info("Passed \"" + value + "\" parameter looks like a execution context key but it's format is not acceptable." + messageToLog);
-                reporter.info("Passed \"" + value + "\" parameter looks like a execution context key but it's format is not acceptable." + messageToReport);
+                Reporter.log("Passed \"" + value + "\" parameter looks like a execution context key but it's format is not acceptable." + messageToLog);
+                Reporter.log("Passed \"" + value + "\" parameter looks like a execution context key but it's format is not acceptable." + messageToReport);
                 return false;
             }
         }
@@ -190,7 +189,7 @@ public class TestParametersController {
                 }
             }
             ExecutionContextHandler.setExecutionContextValueByKey(ecVarName.toString(),resultingValue.toString());
-            reporter.info("Execution Context variable '" + ecVarName +
+            Reporter.log("Execution Context variable '" + ecVarName +
                     "' was automatically created with value '" + resultingValue.toString() + "'");
             return resultingValue.toString();
         //otherwise check if contains EC_ value
@@ -232,7 +231,7 @@ public class TestParametersController {
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
         } else {
-            reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
+            Reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             return By.linkText(locator);
         }
     }

@@ -2,7 +2,7 @@ package ui.utils.bpp;
 
 import datageneration.keywords.KeywordManager;
 import ui.utils.BPPLogManager;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 //import ui.utils.bpp.NoahLogManager;
 //import ui.utils.bpp.Reporter;
 
@@ -24,8 +24,6 @@ import java.util.concurrent.ThreadLocalRandom;
 //TODO improve the flexibility of providing the keywords' folder path by end user
 public class KeywordsHandler {
 
-    static ReporterManager reporter = ReporterManager.Instance;
-
     //private static final Logger log = Logger.getLogger(KeywordsHandler.class);
 
     private static KeywordManager keywordManager = null;
@@ -36,7 +34,7 @@ public class KeywordsHandler {
             keywordManager = new KeywordManager(KEYWORDS_FILE_PATH);
         } catch (NullPointerException e1) {
             BPPLogManager.getLogger().error("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString());
-            reporter.fail("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString()
+            Reporter.fail("Failed to read keywords file located in the " + KEYWORDS_FILE_PATH.toString()
                     + "<br>Please read the log file to get more information");
             throw new NullPointerException();
         }
@@ -53,7 +51,7 @@ public class KeywordsHandler {
         } catch (Exception e2) {
             BPPLogManager.getLogger().error("Failed to generate a value by provided keyword: " + keyword
                     + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading");
-            reporter.fail("Failed to generate a value by provided keyword: " + keyword
+            Reporter.fail("Failed to generate a value by provided keyword: " + keyword
                     + ". The most likely that the path to the needed .dat file is wrong. Or an issue occurred during the .dat file reading" +
                     "<br>Please read the log file to get more information");
             throw new NullPointerException();

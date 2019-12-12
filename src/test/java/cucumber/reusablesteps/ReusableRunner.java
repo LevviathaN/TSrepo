@@ -6,7 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 import ui.utils.Tools;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -25,7 +25,6 @@ public class ReusableRunner {
     private static SpecialStepDefs specialStepDefs = new SpecialStepDefs();
 
     private static ArrayList<String> reusable;
-    private static ReporterManager reporter = ReporterManager.Instance;
 
     public static HashMap<String, RunReusable> stepDefsMap = new HashMap<>();
 
@@ -46,15 +45,16 @@ public class ReusableRunner {
      *                 and value - step, written in gherkin notation
      */
     public static void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps){
-        reporter.info("Start executing \"" + reusableName + "\" reusable scenario. " +
-                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
-
+        Reporter.log("<pre>Start executing \"" + reusableName + "\" reusable step. " +
+                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
         reusable = getStepsOfReusableScenario(reusableName);
 
         for(int i = 0; i<reusable.size(); i++){
-            reporter.info("<pre>Executing " + step + " step</pre>");
+            //reporter.info("<pre>Executing " + step + " step</pre>");
+            Reporter.log("<pre>Start executing \"" + reusableName + "\" reusable step. " +
+                    "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
             if(subSteps.containsKey(i)){
-                reporter.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
+                //reporter.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
             }
 
@@ -70,13 +70,13 @@ public class ReusableRunner {
      *                     This scenario must be in src/main/resources/data/bpp/ReusableTestSteps.xml
      */
     public static void executeReusable(String reusableName){
-        reporter.info("<pre>Start executing \"" + reusableName + "\" reusable step. " +
+        Reporter.log("<pre>Start executing \"" + reusableName + "\" reusable step. " +
                 "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
 
         reusable = getStepsOfReusableScenario(reusableName);
 
         for(int i = 0; i<reusable.size(); i++){
-            reporter.info("Executing " + step + " step");
+            Reporter.log("Executing " + step + " step");
             executeStep(i);
         }
     }
@@ -171,10 +171,10 @@ public class ReusableRunner {
                 }
             }
             if(!isReusableExist){
-                reporter.info(reusableName + " reusable step does not exist");
-                reporter.info("Here is a list of available reusable steps:");
+                Reporter.log(reusableName + " reusable step does not exist");
+                Reporter.log("Here is a list of available reusable steps:");
                 for(String availStep : availableReusableStepsList){
-                    reporter.info("  " + availStep);
+                    Reporter.log("  " + availStep);
                 }
             }
         }catch (Exception e){

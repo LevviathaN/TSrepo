@@ -20,19 +20,19 @@ import java.net.MalformedURLException;
  * Base test class for all ui tests.
  * @author yzosin
  */
-public class BaseTest {
+public class BaseUITest {
 
-    private ReporterManager reporter;
     private PreProcessFiles preProcessFiles;
     private String sessionId;
+    Reporter reporter = new Reporter();
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
         RestApiController apiController = new RestApiController();
 
         //init reporter
-        reporter = ReporterManager.Instance;
-        reporter.startReporting(method, data);
+        Reporter.instantiate();
+        Reporter.startReporting(method, data);
         reporter.setLogName(method.getAnnotation(Test.class).testName());
         reporter.logForEveryTest(reporter.testLogName);
 
@@ -44,9 +44,8 @@ public class BaseTest {
             BPPLogManager.getLogger().info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
         } catch (Exception e) {
-            reporter.fail("Before test failure during Driver creation", e);
-            reporter.stopReporting();
-            reporter.closeReporter();
+            Reporter.fail("Before test failure during Driver creation");
+            Reporter.flush();
             Assert.fail();
         }
 
@@ -65,14 +64,14 @@ public class BaseTest {
     public void endTest(ITestResult testResult) {
 
         // close reporter
-        reporter.stopReporting(testResult);
+        Reporter.stopReporting(testResult);
 
         try {
             if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK")) {
                 sessionId = ((RemoteWebDriver) DriverProvider.getDriver()).getSessionId().toString();
-                reporter.addLinkToReport(reporter.getScreencastLinkFromBrowserStack(sessionId));
+                Reporter.addLinkToReport(Reporter.getScreencastLinkFromBrowserStack(sessionId));
 
-                reporter.updateBrowserStackJob(testResult.toString().contains("FAILURE") ? "fail" : "pass", sessionId);
+                Reporter.updateBrowserStackJob(testResult.toString().contains("FAILURE") ? "fail" : "pass", sessionId);
                 BasePage.driver().quit();
                 DriverProvider.closeDriver();
             } else {
@@ -86,6 +85,6 @@ public class BaseTest {
 
     @AfterSuite(alwaysRun = true)
     public void flushReporter() {
-        reporter.closeReporter();
+        Reporter.flush();
     }
 }

@@ -23,7 +23,6 @@ import java.util.Set;
 
 public class BasePage {
 
-    public static ReporterManager reporter = ReporterManager.Instance;
     private Robot robot;
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
@@ -43,7 +42,7 @@ public class BasePage {
     private static int getTimeout() {
         String timeout = FileIO.getConfigProperty("DefaultTimeoutInSeconds");
         if (timeout == null) {
-            reporter.fail("DefaultTimeoutInSeconds parameter was not found");
+            Reporter.fail("DefaultTimeoutInSeconds parameter was not found");
             timeout = "15";
         }
         return Integer.parseInt(timeout);
@@ -52,7 +51,7 @@ public class BasePage {
     private static int getShortTimeout() {
         String timeout = FileIO.getConfigProperty("ShortTimeoutInSeconds");
         if (timeout == null) {
-            reporter.fail("ShortTimeoutInSeconds parameter was not found");
+            Reporter.fail("ShortTimeoutInSeconds parameter was not found");
             timeout = "3";
         }
         return Integer.parseInt(timeout);
@@ -61,7 +60,7 @@ public class BasePage {
     private static int getStaticTimeout() {
         String timeout = FileIO.getConfigProperty("StaticTimeoutMilliseconds");
         if (timeout == null) {
-            reporter.fail("StaticTimeoutMilliseconds parameter was not found");
+            Reporter.fail("StaticTimeoutMilliseconds parameter was not found");
             timeout = "1000";
         }
         return Integer.parseInt(timeout);
@@ -90,19 +89,19 @@ public class BasePage {
      */
     public boolean isPageLoaded(String title, String url) {
         boolean result = false;
-        reporter.info("Page title is: " + driver().getTitle());
-        reporter.info("Page URL is: " + driver().getCurrentUrl());
+        Reporter.log("Page title is: " + driver().getTitle());
+        Reporter.log("Page URL is: " + driver().getCurrentUrl());
         if (driver().getTitle().contains(title)) {
             result = true;
         } else {
-            reporter.info("Expected title: " + title + " but was: " + driver().getTitle());
+            Reporter.log("Expected title: " + title + " but was: " + driver().getTitle());
             result = false;
         }
 
         if (driver().getCurrentUrl().contains(url))
             result = true;
         else {
-            reporter.info("Expected url: " + url + " but was: " + driver().getCurrentUrl());
+            Reporter.log("Expected url: " + url + " but was: " + driver().getCurrentUrl());
             result = false;
         }
 
@@ -138,7 +137,7 @@ public class BasePage {
     //________________________________________________Basic Actions___________________________________________________
 
     public void reloadPage() {
-        reporter.info("Refreshing the page: " + "\"" + driver().getTitle() + "\"");
+        Reporter.log("Refreshing the page: " + "\"" + driver().getTitle() + "\"");
         driver().navigate().refresh();
     }
 
@@ -148,22 +147,22 @@ public class BasePage {
     }
 
     public void openUrl(String url) {
-        reporter.info("Opening the: " + url);
+        Reporter.log("Opening the: " + url);
         driver().get(url);
     }
 
     public void close() {
-        reporter.info("Closing the browser");
+        Reporter.log("Closing the browser");
         driver().close();
     }
 
     public String getTitle() {
-        reporter.info("The page title is: " + "\"" + driver().getTitle() + "\"");
+        Reporter.log("The page title is: " + "\"" + driver().getTitle() + "\"");
         return driver().getTitle();
     }
 
     public String getURL() {
-        reporter.info("The requested URL is: " + driver().getCurrentUrl());
+        Reporter.log("The requested URL is: " + driver().getCurrentUrl());
         return driver().getCurrentUrl();
     }
 
@@ -175,7 +174,7 @@ public class BasePage {
     }
 
     public void selectFromDropdown(By element, String value) {
-        reporter.info("Selecting '" + value + "' from dropdown");
+        Reporter.log("Selecting '" + value + "' from dropdown");
         Select dropdown = new Select(findElement(element));
         dropdown.selectByVisibleText(value);
     }
@@ -185,7 +184,7 @@ public class BasePage {
     }
 
     public void clickByText(String text) {
-        reporter.info("Clicking on element with text '" + text + "'");
+        Reporter.log("Clicking on element with text '" + text + "'");
         findElement(byText(text)).click();
     }
 
@@ -304,11 +303,11 @@ public class BasePage {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
         } catch(ElementClickInterceptedException clk){
-            reporter.info("Looks like some other element received a click. Wait for " + timeout + " milliseconds, then try again");
+            Reporter.log("Looks like some other element received a click. Wait for " + timeout + " milliseconds, then try again");
             sleepFor(timeout[0]);
             driver().findElement(element).click();
         } catch (Exception e) {
-            reporter.fail(Tools.getStackTrace(e));
+            Reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");
         }
         waitForPageToLoad();
@@ -330,7 +329,7 @@ public class BasePage {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver().findElement(element);
         } catch (Exception e) {
-            reporter.fail(Tools.getStackTrace(e));
+            Reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding element");
         }
     }
@@ -351,7 +350,7 @@ public class BasePage {
                     .until(ExpectedConditions.presenceOfElementLocated(element));
             return driver().findElements(element);
         } catch (Exception e) {
-            reporter.fail(Tools.getStackTrace(e));
+            Reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding elements");
         }
     }
@@ -370,7 +369,7 @@ public class BasePage {
         try {
             return getElementAttribute(element, attributeName, timeout[0]);
         } catch (RuntimeException e) {
-            reporter.info("Got exception. Exception is expected and ignored.");
+            Reporter.log("Got exception. Exception is expected and ignored.");
         }
         return null;
     }
@@ -518,7 +517,7 @@ public class BasePage {
      *
      * @param element locator of element to hover over
      */
-    // Does not work in Firefox because of geckodriver bug
+    // Does not work in Firefox because of geckodriver_mac bug
     // https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
     public void hoverItem(By element) {
         Actions action = new Actions(driver());
@@ -531,7 +530,7 @@ public class BasePage {
      * @param xpath xpath of iFrame you need to switch to
      */
     public void switchToFrame(By xpath) {
-        reporter.info("Switch to frame: " + xpath.toString());
+        Reporter.log("Switch to frame: " + xpath.toString());
         driver().switchTo().frame(findElement(xpath));
     }
 
@@ -539,7 +538,7 @@ public class BasePage {
      * Method to switch back from iFrame to default page content
      */
     public void switchToDefaultContent() {
-        reporter.info("Switch to default content");
+        Reporter.log("Switch to default content");
         driver().switchTo().defaultContent();
     }
 

@@ -17,7 +17,6 @@ public class FileIO {
     static String TARGET_FOLDER = "target";
     static String CONFIG_FILE = System.getProperty("config");
     static String PROPERTIES = "src/main/resources/" + ((CONFIG_FILE == null) ? "default" : CONFIG_FILE) + ".properties";
-    static String EXTENT_CONFIG = "src/main/resources/extent-config.xml";
 
     public static String filename;
 
@@ -41,13 +40,13 @@ public class FileIO {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            ReporterManager.Instance.fatalFail("Config was not found");
+            BPPLogManager.getLogger().error("Config was not found");
         } catch (IOException e) {
             e.printStackTrace();
-            ReporterManager.Instance.fatalFail("Config was not opened");
+            BPPLogManager.getLogger().error("Config was not opened");
         } catch (Exception e) {
             e.printStackTrace();
-            ReporterManager.Instance.fatalFail("Field was not found: " + fieldName);
+            BPPLogManager.getLogger().error("Field was not found: " + fieldName);
         }
         return result;
     }

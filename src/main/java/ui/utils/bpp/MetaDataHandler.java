@@ -3,7 +3,7 @@ package ui.utils.bpp;
 import datageneration.metadata.MetaData;
 import datageneration.metadata.MetaDataManager;
 import ui.utils.BPPLogManager;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 //import ui.utils.bpp.NoahLogManager;
 //import ui.utils.bpp.Reporter;
 
@@ -24,8 +24,6 @@ import java.util.TreeSet;
 
 //TODO improve the flexibility of providing the metadata folder path by end user
 public class MetaDataHandler {
-
-    static ReporterManager reporter = ReporterManager.Instance;
 
     //private static final Logger log = Logger.getLogger(MetaDataHandler.class);
 
@@ -68,7 +66,7 @@ public class MetaDataHandler {
                     "\n\t\t- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.\n" +
                     "\t\tPlease check the excel spreadsheets.\n\t\tCannot proceed with the test execution.");
-            reporter.fail("Requested " + metadataKey + " metadata key is absent.<pre>Possible reasons are:<br>" +
+            Reporter.fail("Requested " + metadataKey + " metadata key is absent.<pre>Possible reasons are:<br>" +
                     "- the requested key is misspelled in the excel file where the tests are defined. File location: " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "<br>" +
                     "- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.<br>" +

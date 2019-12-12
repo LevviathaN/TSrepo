@@ -2,8 +2,7 @@ package ui.utils.bpp;
 
 import api.RestApiController;
 import ui.utils.BPPLogManager;
-import ui.utils.FileIO;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 
 import java.io.*;
 import java.util.*;
@@ -22,7 +21,6 @@ public class PropertiesHelper {
     private static Map<String, String> locatorProperties = new TreeMap<String, String>();
 
     private static final String PROPERTIES_FOLDER = PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH;
-    public static ReporterManager reporter = ReporterManager.Instance;
 
     public static String getConfiguration(String configuration, String key) {
         if (configuration.equalsIgnoreCase("TestBeans")) {
@@ -84,11 +82,11 @@ public class PropertiesHelper {
             Map<String, String> props = controller.processLocatorProperties("/src/main/resources/data/bpp/test.properties/Locators.json");
             locatorProperties.putAll(props);
         } catch (NullPointerException e2) {
-            reporter.info("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString());
+            Reporter.log("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString());
             BPPLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString(), e2);
             throw new NullPointerException();
         } catch (Exception e3) {
-            reporter.info("Failed to gather properties");
+            Reporter.log("Failed to gather properties");
             BPPLogManager.getLogger().error("Failed to gather properties", e3);
             throw new NullPointerException();
         }

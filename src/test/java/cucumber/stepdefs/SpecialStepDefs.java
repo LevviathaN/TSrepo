@@ -4,6 +4,7 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
+import ui.utils.Reporter;
 import ui.utils.bpp.TestParametersController;
 
 public class SpecialStepDefs extends BasePage {
@@ -24,7 +25,7 @@ public class SpecialStepDefs extends BasePage {
             isElementPresentAndDisplay(By.xpath(resultingXpath));
             clickOnElement(By.xpath(resultingXpath),10000);
         } else {
-            reporter.fail("No such locator template key");
+            Reporter.fail("No such locator template key");
         }
     }
 
@@ -44,7 +45,7 @@ public class SpecialStepDefs extends BasePage {
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             setText(By.xpath(resultingXpath), TestParametersController.checkIfSpecialParameter(text));
         } else {
-            reporter.fail("No such locator template key");
+            Reporter.fail("No such locator template key");
         }
     }
 
@@ -63,7 +64,7 @@ public class SpecialStepDefs extends BasePage {
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(isElementPresentAndDisplay(By.xpath(resultingXpath)));
         } else {
-            reporter.fail("No such locator template key");
+            Reporter.fail("No such locator template key");
         }
     }
 
@@ -84,7 +85,7 @@ public class SpecialStepDefs extends BasePage {
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
         } else {
-            reporter.fail("No such locator template key");
+            Reporter.fail("No such locator template key");
         }
     }
 
@@ -107,7 +108,7 @@ public class SpecialStepDefs extends BasePage {
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             checkCheckbox(By.xpath(resultingXpath),state);
         } else {
-            reporter.fail("No such locator template key");
+            Reporter.fail("No such locator template key");
         }
     }
 

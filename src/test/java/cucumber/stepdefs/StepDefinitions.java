@@ -17,8 +17,6 @@ import java.util.Map;
  */
 public class StepDefinitions extends BasePage {
 
-    ReporterManager reporter = ReporterManager.Instance;
-
     /**
      * Definition to go to specified url.
      * Also checks if the parameter is Meta Data or Execution Context value
@@ -116,7 +114,7 @@ public class StepDefinitions extends BasePage {
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
         waitForPageToLoad();
-        reporter.info("Current page is " + driver().getTitle());
+        Reporter.log("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
         Assert.assertEquals(driver().getTitle(), TestParametersController.checkIfSpecialParameter(pageTitle),
                 "Current page is " + TestParametersController.checkIfSpecialParameter(pageTitle));
@@ -138,7 +136,6 @@ public class StepDefinitions extends BasePage {
     public void i_execute_reusable_step_with(String reusableName, Map<Integer, String> steps) {
         ReusableRunner.executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
         this.value = TestParametersController.checkIfSpecialParameter(reusableName);
-        reporter.info("[input test parameter] '" + reusableName + "' -> '" + this.value + "' [output value]");
     }
 
 

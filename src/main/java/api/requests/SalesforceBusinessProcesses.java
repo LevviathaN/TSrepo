@@ -4,7 +4,7 @@ import api.RestApiController;
 import api.SoapApiController;
 import api.Utilities;
 import io.restassured.response.Response;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHelper;
 
@@ -40,7 +40,7 @@ public class SalesforceBusinessProcesses {
         assertThat(facultyResponse.getBody().asString(), containsString("success"));
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_FACULTY_ID", new Utilities().getResponseProperty(facultyResponse, "id"));
-        ReporterManager.info("<pre>" + "Faculty Id: " + facultyResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Faculty Id: " + facultyResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -70,7 +70,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewAccount"));
 
         assertThat(accountResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Account Id: " + accountResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Account Id: " + accountResponse.getBody().asString() + "</pre>");
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_ACCOUNT_ID", new Utilities().getResponseProperty(accountResponse, "id"));
 
@@ -83,7 +83,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewAddress"));
 
         assertThat(addressResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Address Id: " + addressResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Address Id: " + addressResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -104,7 +104,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewOpportunity"));
 
         assertThat(opportunityResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Opportunity Id: " + opportunityResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Opportunity Id: " + opportunityResponse.getBody().asString() + "</pre>");
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_OPPORTUNITY_ID", new Utilities().getResponseProperty(opportunityResponse, "id"));
 
@@ -117,7 +117,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewProductItem"));
 
         assertThat(offeringResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Offering Id: " + offeringResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Offering Id: " + offeringResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -144,7 +144,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewBusinessAccount"));
 
         assertThat(businessAccountResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Business Account Id: " + businessAccountResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Business Account Id: " + businessAccountResponse.getBody().asString() + "</pre>");
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_BUSINESS_ACCOUNT_ID", new Utilities().getResponseProperty(businessAccountResponse, "id"));
 
@@ -157,7 +157,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewTrainingManager"));
 
         assertThat(trainingManagerResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Training Manager Id: " + trainingManagerResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Training Manager Id: " + trainingManagerResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -168,7 +168,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewBusinessAccountAddress"));
 
         assertThat(businessAccountAddressResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Business Account Address Id: " + businessAccountAddressResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Business Account Address Id: " + businessAccountAddressResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -199,7 +199,7 @@ public class SalesforceBusinessProcesses {
                 restController.processProperties("addNewSponsorship"));
 
         assertThat(sponsorshipResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Sponsorship Id: " + sponsorshipResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Sponsorship Id: " + sponsorshipResponse.getBody().asString() + "</pre>");
 
         return this;
     }

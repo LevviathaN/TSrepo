@@ -5,22 +5,13 @@ import gherkin.pickles.PickleStep;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.*;
 import org.testng.annotations.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import ui.utils.BaseTest;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+
 
 import static java.nio.file.StandardOpenOption.CREATE;
 

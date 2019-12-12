@@ -4,7 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 //import ui.utils.bpp.NoahLogManager;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 //import ui.utils.bpp.Reporter;
 
 import java.util.concurrent.TimeUnit;
@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class JavaScriptHelper {
 
-    //New reporter
-    public static ReporterManager reporter = ReporterManager.Instance;
 
     //private static final Logger log = Logger.getLogger(JavaScriptHelper.class);
 
@@ -28,9 +26,9 @@ public class JavaScriptHelper {
      */
     public static void waitForJavaScriptToRun(WebDriver driver, int timeSeconds) {
         try {
-            reporter.info("Waiting for JavaScript to updated the DOM");
+            Reporter.log("Waiting for JavaScript to updated the DOM");
             //NoahLogManager.getLogger().info("Waiting for JavaScript to updated the DOM");
-            reporter.info("Waiting for JavaScript to updated the DOM");
+            Reporter.log("Waiting for JavaScript to updated the DOM");
             //Reporter.log("Waiting for JavaScript to updated the DOM");
 
             JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -42,15 +40,15 @@ public class JavaScriptHelper {
                     "callback();" +
                     "});");
 
-            reporter.info("JavaScript has updated the DOM");
+            Reporter.log("JavaScript has updated the DOM");
             //NoahLogManager.getLogger().info("JavaScript has updated the DOM");
-            reporter.info("JavaScript has updated the DOM");
+            Reporter.log("JavaScript has updated the DOM");
             //Reporter.log("JavaScript has updated the DOM");
             driver.manage().timeouts().setScriptTimeout(0, TimeUnit.MICROSECONDS);
         } catch (Exception e) {
-            reporter.info("Seems like JS has already updated the DOM");
+            Reporter.log("Seems like JS has already updated the DOM");
             //NoahLogManager.getLogger().info("Seems like JS has already updated the DOM");
-            reporter.info("Seems like JS has already updated the DOM");
+            Reporter.log("Seems like JS has already updated the DOM");
             //Reporter.log("Seems like JS has already updated the DOM");
         }
 
@@ -64,9 +62,9 @@ public class JavaScriptHelper {
      */
     public static void waitForJavaScriptToRun(WebDriver driver, WebElement element, int timeSeconds) {
         try {
-            reporter.info("Waiting for JavaScript to updated the passed element along with its descendants");
+            Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
             //NoahLogManager.getLogger().info("Waiting for JavaScript to updated the passed element along with its descendants");
-            reporter.info("Waiting for JavaScript to updated the passed element along with its descendants");
+            Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
             //Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
 
             JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -88,15 +86,15 @@ public class JavaScriptHelper {
                 "callback();" +
                 "});", element);*/
 
-            reporter.info("JS has updated the expected web element");
+            Reporter.log("JS has updated the expected web element");
             //NoahLogManager.getLogger().info("JS has updated the expected web element");
-            reporter.info("JS has updated the expected web element");
+            Reporter.log("JS has updated the expected web element");
             //Reporter.log("JS has updated the expected web element");
             driver.manage().timeouts().setScriptTimeout(0, TimeUnit.MICROSECONDS);
         } catch (Exception e) {
-            reporter.info("Seems like the expected web element has already been updated by JS");
+            Reporter.log("Seems like the expected web element has already been updated by JS");
             //NoahLogManager.getLogger().info("Seems like the expected web element has already been updated by JS");
-            reporter.info("Seems like the expected web element has already been updated by JS");
+            Reporter.log("Seems like the expected web element has already been updated by JS");
             //Reporter.log("Seems like the expected web element has already been updated by JS");
         }
 

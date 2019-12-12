@@ -2,7 +2,7 @@ package api;
 
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.MetaDataHandler;
 import ui.utils.bpp.PreProcessFiles;
@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class BaseApiTest {
 
-    private ReporterManager reporter;
+
     private PreProcessFiles preProcessFiles;
     private String sessionId;
 
@@ -30,21 +30,21 @@ public class BaseApiTest {
         MetaDataHandler.instantiate();
 
         //init reporter
-        reporter = ReporterManager.Instance;
-        reporter.startReportingAPI(method, data);
+        Reporter.instantiate();
+        Reporter.addApiTest(method.getAnnotation(Test.class).testName());
 
     }
 
     @AfterMethod
     public void flushProcesses(ITestResult testResult) {
 
-        reporter.stopReportingAPI(testResult);
+        Reporter.stopReportingAPI(testResult);
     }
 
     @AfterSuite(alwaysRun = true)
     public void flushReporter() {
         //ExcelResultsWriter.createApiExcel();
-        reporter.closeReporter();
+        Reporter.flush();
         System.out.println("EXECUTIONS HAVE FINISHED");
     }
 }
