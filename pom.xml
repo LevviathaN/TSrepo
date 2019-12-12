@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <tests>smoke_cucumber_bpp.xml</tests>
+        <tests>smoke.xml</tests>
     </properties>
 
     <repositories>
