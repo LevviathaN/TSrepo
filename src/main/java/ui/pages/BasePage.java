@@ -297,14 +297,15 @@ public class BasePage {
      */
     public static void clickOnElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        waitForPageToLoad();
+        WebDriverWait wait = new WebDriverWait(driver(), timeoutForFindElement,300);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
         } catch(ElementClickInterceptedException clk){
             Reporter.log("Looks like some other element received a click. Wait for " + timeout + " milliseconds, then try again");
-            sleepFor(timeout[0]);
+            //todo: remove spinner handling from BasePage
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
             driver().findElement(element).click();
         } catch (Exception e) {
             Reporter.fail(Tools.getStackTrace(e));

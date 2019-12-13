@@ -9,5 +9,6 @@
   "Product Factory Name Text Field": "xpath=//label[normalize-space()='Name']/following::input[1]",
   "Product Factory Change Button": "xpath=//button[normalize-space()='Change']",
   "Product Factory Select Dropdown": "xpath=//button[normalize-space()='Select'][1]",
-  "Product Factory Save Button": "xpath=//span[text()='Save']"
+  "Product Factory Save Button": "xpath=//span[text()='Save']",
+  "Product Factory Spinner": "xpath=//div[@role='progressbar']"
 }

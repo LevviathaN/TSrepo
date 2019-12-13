@@ -9,6 +9,8 @@ import ui.utils.bpp.TestParametersController;
 
 public class SpecialStepDefs extends BasePage {
 
+    TestParametersController parametersController = new TestParametersController();
+
     /**
      * Definition to click an element on the page
      *
@@ -21,9 +23,9 @@ public class SpecialStepDefs extends BasePage {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
+                    parametersController.checkIfSpecialParameter(elementLocator));
             isElementPresentAndDisplay(By.xpath(resultingXpath));
-            clickOnElement(By.xpath(resultingXpath),10000);
+            clickOnElement(By.xpath(resultingXpath));
         } else {
             Reporter.fail("No such locator template key");
         }
@@ -42,8 +44,8 @@ public class SpecialStepDefs extends BasePage {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
-            setText(By.xpath(resultingXpath), TestParametersController.checkIfSpecialParameter(text));
+                    parametersController.checkIfSpecialParameter(elementLocator));
+            setText(By.xpath(resultingXpath), parametersController.checkIfSpecialParameter(text));
         } else {
             Reporter.fail("No such locator template key");
         }
@@ -61,7 +63,7 @@ public class SpecialStepDefs extends BasePage {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
+                    parametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(isElementPresentAndDisplay(By.xpath(resultingXpath)));
         } else {
             Reporter.fail("No such locator template key");
@@ -82,7 +84,7 @@ public class SpecialStepDefs extends BasePage {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
+                    parametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
         } else {
             Reporter.fail("No such locator template key");
@@ -105,7 +107,7 @@ public class SpecialStepDefs extends BasePage {
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
+                    parametersController.checkIfSpecialParameter(elementLocator));
             checkCheckbox(By.xpath(resultingXpath),state);
         } else {
             Reporter.fail("No such locator template key");

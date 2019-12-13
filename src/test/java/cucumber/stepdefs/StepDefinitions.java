@@ -17,6 +17,8 @@ import java.util.Map;
  */
 public class StepDefinitions extends BasePage {
 
+    ReusableRunner reusableRunner = ReusableRunner.Instance;
+
     /**
      * Definition to go to specified url.
      * Also checks if the parameter is Meta Data or Execution Context value
@@ -42,7 +44,7 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
-        clickOnFirstVisibleElement(initElementLocator(element));
+        clickOnElement(initElementLocator(element));
         waitForPageToLoad();
     }
 
@@ -129,12 +131,12 @@ public class StepDefinitions extends BasePage {
      */
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
-        ReusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+        reusableRunner.executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step with some additional steps$")
     public void i_execute_reusable_step_with(String reusableName, Map<Integer, String> steps) {
-        ReusableRunner.executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
+        reusableRunner.executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
         this.value = TestParametersController.checkIfSpecialParameter(reusableName);
     }
 

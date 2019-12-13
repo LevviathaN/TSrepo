@@ -15,6 +15,7 @@ import ui.utils.bpp.PreProcessFiles;
 
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Base test class for all ui tests.
@@ -43,6 +44,7 @@ public class BaseUITest {
         try {
             BPPLogManager.getLogger().info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
+            BasePage.driver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         } catch (Exception e) {
             Reporter.fail("Before test failure during Driver creation");
             Reporter.flush();

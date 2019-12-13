@@ -10,7 +10,7 @@ Feature: Product Factory
     And I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYUSER"
     And I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYPASSWORD"
     And I click on the "Product Factory Login" button
-    Then I should be redirected to the "Product Factory" page
+#    Then I should be redirected to the "Product Factory" page
 
   Scenario: Create Body Financial Dimension
     When I click on the "Financials" "Product Factory navigation item"
@@ -19,7 +19,7 @@ Feature: Product Factory
     And I set "FDCode[####]" text to the "Code" "Product Factory text field"
     And I set "FDDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Body" option
+    And I click on the "Body" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
 
