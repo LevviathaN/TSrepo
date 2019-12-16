@@ -42,7 +42,7 @@ public class BasePage {
     private static int getTimeout() {
         String timeout = FileIO.getConfigProperty("DefaultTimeoutInSeconds");
         if (timeout == null) {
-            Reporter.fail("DefaultTimeoutInSeconds parameter was not found");
+            Reporter.failTryTakingScreenshot("DefaultTimeoutInSeconds parameter was not found");
             timeout = "15";
         }
         return Integer.parseInt(timeout);
@@ -51,7 +51,7 @@ public class BasePage {
     private static int getShortTimeout() {
         String timeout = FileIO.getConfigProperty("ShortTimeoutInSeconds");
         if (timeout == null) {
-            Reporter.fail("ShortTimeoutInSeconds parameter was not found");
+            Reporter.failTryTakingScreenshot("ShortTimeoutInSeconds parameter was not found");
             timeout = "3";
         }
         return Integer.parseInt(timeout);
@@ -60,7 +60,7 @@ public class BasePage {
     private static int getStaticTimeout() {
         String timeout = FileIO.getConfigProperty("StaticTimeoutMilliseconds");
         if (timeout == null) {
-            Reporter.fail("StaticTimeoutMilliseconds parameter was not found");
+            Reporter.failTryTakingScreenshot("StaticTimeoutMilliseconds parameter was not found");
             timeout = "1000";
         }
         return Integer.parseInt(timeout);
@@ -295,7 +295,7 @@ public class BasePage {
      * @param element locator of element to click on
      * @param timeout optional value of timeout for finding specified element
      */
-    public static void clickOnElement(By element, int... timeout) {
+    public static synchronized void clickOnElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         WebDriverWait wait = new WebDriverWait(driver(), timeoutForFindElement,300);
         try {
@@ -303,12 +303,12 @@ public class BasePage {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
         } catch(ElementClickInterceptedException clk){
-            Reporter.log("Looks like some other element received a click. Wait for " + timeout + " milliseconds, then try again");
+            Reporter.log("Looks like some other element received a click. Wait for " + timeoutForFindElement + " milliseconds, then try again");
             //todo: remove spinner handling from BasePage
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
             driver().findElement(element).click();
         } catch (Exception e) {
-            Reporter.fail(Tools.getStackTrace(e));
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");
         }
         waitForPageToLoad();
@@ -330,7 +330,7 @@ public class BasePage {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver().findElement(element);
         } catch (Exception e) {
-            Reporter.fail(Tools.getStackTrace(e));
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding element");
         }
     }
@@ -351,7 +351,7 @@ public class BasePage {
                     .until(ExpectedConditions.presenceOfElementLocated(element));
             return driver().findElements(element);
         } catch (Exception e) {
-            Reporter.fail(Tools.getStackTrace(e));
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding elements");
         }
     }

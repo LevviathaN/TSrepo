@@ -6,7 +6,6 @@ import java.util.Map;
 public enum StepPatterns {
 
     I_AM_ON_URL("^I am on \"([^\"]*)\" URL$"),
-    I_CLICK_ON_THE_N_BUTTON("^I click on the \"([^\"]*)\" (?:button|link|option) which is \"([^\"]*)\"$"),
     I_CLICK_ON_THE_BUTTON("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$"),
     FILL_THE_FIELD("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$"),
     WAIT_FOR("^I wait for \"([^\"]*)\" seconds$"),

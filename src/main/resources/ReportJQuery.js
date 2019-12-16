@@ -8,6 +8,19 @@ $(document).ready(function(){
  		var rawLinks = $(".category-list>.category>a");
  		var rawCategories = $('#category-toggle>li>a');
 
+       /* var categoriesRemove = $("ul#category-collection>li");
+        var flag = true;
+
+        categoriesRemove.each(function() {
+            if (flag) {
+                flag = false;
+                continue;
+            }
+
+            $(this).remove();
+        }); */
+
+
  		/*turn log links categories in the links to the log files*/
  		rawLinks.each(function() {
  			$(this).attr({
@@ -38,7 +51,11 @@ $(document).ready(function(){
 
  		/*remove excessive categories on the "Categories" and "Dashboard" tab*/
  			$('#category-collection>li.category>div.category-heading>span.category-name>a:contains("Logs")').parents('li').remove();
+ 			$('#category-collection>li.category>div.category-heading>span.category-name>a:contains("null")').parents('li').remove();
+ 			$('#category-collection>li.category>div.category-heading>span.category-name>a:contains("com.aventstack.extentreports")').parents('li').remove();
  			$('.card-panel>table>tbody>tr>td>a:contains(".log")').parents('tr').remove();
+ 			$('.card-panel>table>tbody>tr>td:contains("null")').parents('tr').remove();
+ 			$('.card-panel>table>tbody>tr>td:contains("com.aventstack.extentreports")').parents('tr').remove();
 
          /*Add Logos*/
              $('div.test-heading>span.test-name').addClass("test-name-list");

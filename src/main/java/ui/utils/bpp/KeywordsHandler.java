@@ -24,8 +24,6 @@ import java.util.concurrent.ThreadLocalRandom;
 //TODO improve the flexibility of providing the keywords' folder path by end user
 public class KeywordsHandler {
 
-    //private static final Logger log = Logger.getLogger(KeywordsHandler.class);
-
     private static KeywordManager keywordManager = null;
     private static final Path KEYWORDS_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/keywords");
 
@@ -84,12 +82,12 @@ public class KeywordsHandler {
         int checkLastDigit = 11 - remainder;
 
         if (checkLastDigit == 10) {
-            return String.valueOf(i) + "-k";
+            return i + "-k";
         } else if (checkLastDigit == 11){
-            return String.valueOf(i) + "-0";
+            return i + "-0";
         }
         else {
-            return String.valueOf(i) + "-" + String.valueOf(checkLastDigit);
+            return i + "-" + checkLastDigit;
         }
     }
 

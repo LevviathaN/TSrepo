@@ -143,10 +143,7 @@ public class TestParametersController {
 
     private static boolean isSimplifiedRandom(String value){
 //        Matcher possibleSimplifiedRandomMatcher = GENERAL_SIMPLIFIED_RANDOM_PATTERN.matcher(value);
-        if(value.contains("[##")){
-            return true;
-        }
-        return false;
+        return value.contains("[##");
     }
 
     /**
@@ -231,7 +228,7 @@ public class TestParametersController {
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
         } else {
-            Reporter.fail("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
+            Reporter.failTryTakingScreenshot("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             return By.linkText(locator);
         }
     }

@@ -2,6 +2,7 @@ package ui.utils.bpp;
 
 import datageneration.execution.ExecutionContext;
 import org.apache.log4j.Logger;
+import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
 //import ui.utils.bpp.Reporter;
 
@@ -16,8 +17,6 @@ import java.util.Map;
 public class ExecutionContextHandler {
 
 
-    private static final org.apache.log4j.Logger logger = Logger.getLogger(ExecutionContextHandler.class);
-
     private static final String PREFIX = "EC_";
 
     private static final ThreadLocal<ExecutionContext> handler = new ThreadLocal<ExecutionContext>() {
@@ -27,12 +26,12 @@ public class ExecutionContextHandler {
         }
     };
 
-    public static String getExecutionContextValueByKey(String key) {
+    public static synchronized String getExecutionContextValueByKey(String key) {
         ExecutionContext executionContext  = handler.get();
         if (executionContext.getValues().containsKey(key)) {
             return executionContext.getValue(key);
         } else {
-            logger.warn("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
+            BPPLogManager.getLogger().warn("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- some previous CaptureData action(s) failed;\n" +
                     "\t\t- the requested key is misspelled in the excel spreadsheet located in the " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
             Reporter.log("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +
@@ -42,7 +41,7 @@ public class ExecutionContextHandler {
         }
     }
 
-    public static void setExecutionContextValueByKey(String key, String value){
+    public static synchronized void setExecutionContextValueByKey(String key, String value){
         handler.get().setValue(key, value);
     }
 

@@ -25,8 +25,6 @@ import java.util.TreeSet;
 //TODO improve the flexibility of providing the metadata folder path by end user
 public class MetaDataHandler {
 
-    //private static final Logger log = Logger.getLogger(MetaDataHandler.class);
-
     private static MetaDataManager metaDataManager = null;
     private static final Path METADATA_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/metadata");
     private static final Path METADATA_STAGING_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/metadata/staging");
@@ -57,7 +55,7 @@ public class MetaDataHandler {
      * @param metadataKey - the metadata name that comes from test excel sheet
      * @return the value that was got by metadata name of such metadata exists. Otherwise it returns the same metadata name back
      */
-    public static String getMetaDataValue(String metadataKey) {
+    public static synchronized String getMetaDataValue(String metadataKey) {
         if ((metadataKeyExists(metadataKey))) {
             return metaDataManager.getMetaData(metadataKey).getValue();
         } else {

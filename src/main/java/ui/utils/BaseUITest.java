@@ -9,10 +9,12 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ui.pages.BasePage;
+import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.MetaDataHandler;
 import ui.utils.bpp.PreProcessFiles;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +37,8 @@ public class BaseUITest {
         Reporter.instantiate();
         Reporter.startReporting(method, data);
         reporter.setLogName(method.getAnnotation(Test.class).testName());
-        reporter.logForEveryTest(reporter.testLogName);
+        //reporter.logForEveryTest(reporter.testLogName);
+        reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
 
         preProcessFiles = new PreProcessFiles();
         BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/SpecialLocators.json");
@@ -67,6 +70,12 @@ public class BaseUITest {
 
         // close reporter
         Reporter.stopReporting(testResult);
+        try {
+            Reporter.writeToFile();
+            Reporter.saveAllECToFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try {
             if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK")) {
@@ -88,5 +97,14 @@ public class BaseUITest {
     @AfterSuite(alwaysRun = true)
     public void flushReporter() {
         Reporter.flush();
+        try {
+            Reporter.writeToFile();
+            Reporter.saveAllECToFile();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ExecutionContextHandler.resetExecutionContextValues();
     }
 }

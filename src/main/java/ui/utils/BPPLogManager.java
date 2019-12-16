@@ -8,7 +8,7 @@ public class BPPLogManager {
     private static final ConcurrentHashMap<Long, Logger> loggers = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<Long, FileAppender> appenders = new ConcurrentHashMap<>();
 
-    public static Logger getLogger() {
+    public static synchronized Logger getLogger() {
         if (loggers.containsKey(Thread.currentThread().getId())) {
             return loggers.get(Thread.currentThread().getId());
         } else {

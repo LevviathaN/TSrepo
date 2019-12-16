@@ -23,7 +23,7 @@ public class ReusableRunner {
     private static ReusableRunner instance;
     public static ReusableRunner Instance = (instance != null) ? instance : new ReusableRunner();
 
-    public ReusableRunner(){
+    public ReusableRunner() {
 
         //General stepdefs
         stepDefsMap.put(I_CLICK_ON_THE_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_button(arg1));
@@ -62,23 +62,23 @@ public class ReusableRunner {
     /**
      * Execute reusable scenario with some additional steps
      *
-     * @author Ruslan Levytskyi
      * @param reusableName name of scenario, that you want to use as a reusable step.
      *                     This scenario must be in src/main/resources/data/bpp/ReusableTestSteps.xml
-     * @param subSteps Map of steps you want to add to scenario beside it's own,
-     *                 where key - index in scenario whe you want to insert your additional step
-     *                 and value - step, written in gherkin notation
+     * @param subSteps     Map of steps you want to add to scenario beside it's own,
+     *                     where key - index in scenario whe you want to insert your additional step
+     *                     and value - step, written in gherkin notation
+     * @author Ruslan Levytskyi
      */
-    public void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps){
-        Reporter.log("<pre>Start executing \"" + reusableName + "\" reusable step. " +
-                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
+    public void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps) {
+        Reporter.node("Executing " + reusableName + " reusable scenario. ",
+                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
         reusable = getStepsOfReusableScenario(reusableName);
 
-        for(int i = 0; i<reusable.size(); i++){
-            //reporter.info("<pre>Executing " + step + " step</pre>");
-            Reporter.log("<pre>Start executing \"" + reusableName + "\" reusable step. " +
-                    "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
-            if(subSteps.containsKey(i)){
+        for (int i = 0; i < reusable.size(); i++) {
+
+            Reporter.node("Executing " + reusableName + " reusable scenario. ",
+                    "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
+            if (subSteps.containsKey(i)) {
                 //reporter.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
             }
@@ -90,18 +90,18 @@ public class ReusableRunner {
     /**
      * Execute reusable scenario
      *
-     * @author Ruslan Levytskyi
      * @param reusableName name of scenario, that you want to use as a reusable step.
      *                     This scenario must be in src/main/resources/data/bpp/ReusableTestSteps.xml
+     * @author Ruslan Levytskyi
      */
-    public void executeReusable(String reusableName){
-        Reporter.log("<pre>Start executing \"" + reusableName + "\" reusable step. " +
-                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps</pre>");
+    public void executeReusable(String reusableName) {
 
+        Reporter.node("Executing " + reusableName + " reusable scenario. ",
+                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
         reusable = getStepsOfReusableScenario(reusableName);
 
-        for(int i = 0; i<reusable.size(); i++){
-            Reporter.log("Executing " + step + " step");
+        for (int i = 0; i < reusable.size(); i++) {
+            Reporter.log("Executing: " + step);
             executeStep(i);
         }
     }
@@ -109,31 +109,31 @@ public class ReusableRunner {
     /**
      * Execute i-th step of reusable scenario
      *
-     * @author Ruslan Levytskyi
      * @param i index of step of reusable scenario to execute
+     * @author Ruslan Levytskyi
      */
-    private void executeStep(int i){
+    private void executeStep(int i) {
         step = reusable.get(i);
         arg1 = Tools.getQuotet(step, '"').get(0);
         List<String> arguments = Tools.getQuotet(step, '"');
-        if(arguments.toArray().length==1){
+        if (arguments.toArray().length == 1) {
             arg1 = arguments.get(0);
-        } else if(arguments.toArray().length==2){
+        } else if (arguments.toArray().length == 2) {
             arg1 = arguments.get(0);
             arg2 = arguments.get(1);
-        } else if(arguments.toArray().length==3){
+        } else if (arguments.toArray().length == 3) {
             arg1 = arguments.get(0);
             arg2 = arguments.get(1);
             arg3 = arguments.get(2);
-        } else if(arguments.toArray().length==4){
+        } else if (arguments.toArray().length == 4) {
             arg1 = arguments.get(0);
             arg2 = arguments.get(1);
             arg3 = arguments.get(2);
             arg4 = arguments.get(3);
         }
 
-        for(String regx : stepDefsMap.keySet()){
-            if (reusable.get(i).matches(regx)){
+        for (String regx : stepDefsMap.keySet()) {
+            if (reusable.get(i).matches(regx)) {
                 stepDefsMap.get(regx).runReusable();
             }
         }
@@ -142,15 +142,15 @@ public class ReusableRunner {
     /**
      * Get list of steps of reusable scenario with specified name
      *
-     * @author Ruslan Levytskyi
      * @param reusableName name of reusable scenario, steps of which you want to get.
      * @return list of steps of reusable scenario with specified name
+     * @author Ruslan Levytskyi
      */
-    private synchronized ArrayList<String> getStepsOfReusableScenario(String reusableName){
+    private synchronized ArrayList<String> getStepsOfReusableScenario(String reusableName) {
 
         ArrayList<String> stepsList = new ArrayList<>();
 
-        try{
+        try {
             File inputFile = new File("src/main/resources/data/bpp/ReusableTestSteps.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -167,22 +167,22 @@ public class ReusableRunner {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
                 availableReusableStepsList.add("Hi");
-                if(reusableElement.getAttribute("name").equals(reusableName)){
+                if (reusableElement.getAttribute("name").equals(reusableName)) {
                     NodeList steps = reusableElement.getElementsByTagName("step");
-                    for (int j = 0; j < steps.getLength(); j++){
+                    for (int j = 0; j < steps.getLength(); j++) {
                         stepsList.add(steps.item(j).getTextContent());
                     }
                     isReusableExist = true;
                 }
             }
-            if(!isReusableExist){
-                Reporter.log(reusableName + " reusable step does not exist");
-                Reporter.log("Here is a list of available reusable steps:");
-                for(String availStep : availableReusableStepsList){
+            if (!isReusableExist) {
+                Reporter.warn(reusableName + " reusable step does not exist. " +
+                        "Here is a list of available reusable steps: ");
+                for (String availStep : availableReusableStepsList) {
                     Reporter.log("  " + availStep);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return stepsList;

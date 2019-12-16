@@ -42,7 +42,7 @@ public class Reporter {
 
     private static ExtentReports extent;
     private static String root = System.getProperty("user.dir");
-    private static String filePath = "extentreport.html";
+    private static String filePath = "report.html";
     private static Path reportPath;
     private static Path screenshotFolder;
     private static Path ecFolder;
@@ -50,8 +50,8 @@ public class Reporter {
     private static StringBuilder htmlStringBuilder = new StringBuilder();
     private static boolean buildStatus = true;
     private static ArrayList failuresBucket = new ArrayList<String>();
-    protected String testLogName;
     protected String logName;
+    protected String testLogName;
     private static String browserLink;
 
     private static ConcurrentHashMap<Long, ExtentTest> testStorage = new ConcurrentHashMap<>();
@@ -91,7 +91,7 @@ public class Reporter {
 
             // report configuration
             htmlReporter.config().setChartVisibilityOnOpen(false);
-            htmlReporter.config().setDocumentTitle("Noah Automation");
+            htmlReporter.config().setDocumentTitle("BPP Automation");
             htmlReporter.config().setReportName("Regression cycle");
             htmlReporter.config().setTheme(Theme.DARK);
 
@@ -128,15 +128,33 @@ public class Reporter {
         return testName;
     }
 
-    /**
-     * <p>
-     * Returns the path of the report folder created
-     * </p>
-     *
-     * @return reportPath path of the report to be written to
-     */
-    public static Path getReportPath() {
-        return reportPath;
+    public static synchronized String getTestName(Method m, Object[] data) {
+        String testName = null;
+        String address = null;
+
+        String[] testGroups = m.getAnnotation(Test.class).groups();
+        for (int i = 0; i < testGroups.length; i++) {
+            if (testGroups[i].startsWith("http")) {
+                address = testGroups[i];
+            }
+        }
+        if (address != null) {
+            testName = "<a href=" + "\"" + address + "\""
+                    + "target=_blank alt=This test is linked to test case. Click to open it>"
+                    + m.getAnnotation(Test.class).testName() + "</a>";
+        } else {
+            try {
+                testName = m.getAnnotation(Test.class).testName(); // get name from annotation
+                testName = testName + data[0].toString(); // add value from first DataProvider parameter ot test name
+            } catch (Exception e) {
+                //no TestName specified
+            }
+        }
+
+        if (testName == null || testName.equals("")) {
+            testName = m.getName();
+        }
+        return testName.replaceAll("\"", " ");
     }
 
     /**
@@ -161,17 +179,17 @@ public class Reporter {
      *
      * @param testName name of the test executing
      */
-    public static void addTest(Method m, String testName) {
+    public static void addTest(Method m, String testName, String logFileName) {
 
         String browserName = DriverProvider.getCurrentBrowserName().toUpperCase();
 
-        if (browserName.equalsIgnoreCase("chrome")|| browserName.equalsIgnoreCase("bstack_chrome")) {
+        if (browserName.equalsIgnoreCase("chrome") || browserName.equalsIgnoreCase("bstack_chrome")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/chrome_12-48/chrome_12-48_64x64.png' class='BrowserLogo'>";
-        } else if (browserName.equalsIgnoreCase("firefox")|| browserName.equalsIgnoreCase("bstack_firefox")) {
+        } else if (browserName.equalsIgnoreCase("firefox") || browserName.equalsIgnoreCase("bstack_firefox")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/firefox_1/firefox_1_64x64.png' class='BrowserLogo'>";
-        } else if (browserName.equalsIgnoreCase("ie")|| browserName.equalsIgnoreCase("bstack_ie")) {
+        } else if (browserName.equalsIgnoreCase("ie") || browserName.equalsIgnoreCase("bstack_ie")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/internet-explorer_9-11/internet-explorer_9-11_64x64.png' class='BrowserLogo'>";
-        } else if (browserName.equalsIgnoreCase("safari")|| browserName.equalsIgnoreCase("bstack_safari")) {
+        } else if (browserName.equalsIgnoreCase("safari") || browserName.equalsIgnoreCase("bstack_safari")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/safari_1-7/safari_1-7_64x64.png' class='BrowserLogo'>";
         }
 
@@ -181,49 +199,19 @@ public class Reporter {
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
 
         //pass the log file name to the final report
-        String logName = "Logs";
-        test.assignCategory("<a>" + logName + "</a>");
+        test.assignCategory("<a>" + logFileName + "</a>");
 
         //info message for grabbing logo.
         test.info(browserLink);
     }
 
 
-    public static  synchronized void startReporting(Method m, Object[] data) {
-        addTest(m,getTestName(m, data));
-        BPPLogManager.getLogger().info("Started test '" + getTestName(m, data));
+    public static synchronized void startReporting(Method m, Object[] data) {
+        addTest(m, getTestName(m, data), getTestName());
+        BPPLogManager.getLogger().info("Started test: " + getTestName(m, data));
     }
 
 
-    public static synchronized String getTestName(Method m, Object[] data) {
-        String testName = null;
-        String address = null;
-
-        String[] testGroups = m.getAnnotation(Test.class).groups();
-        for (int i = 0; i < testGroups.length; i++) {
-            if (testGroups[i].startsWith("http")) {
-                address = testGroups[i];
-            }
-        }
-        if (address != null) {
-            testName = "<a href=" + "\"" + address + "\""
-                    + "target=_blank alt=This test is linked to test case. Click to open it>"
-                    + m.getAnnotation(Test.class).testName() + "</a>";
-        } else {
-            try {
-                testName = m.getAnnotation(Test.class).testName(); // get name from annotation
-                testName = testName + data[0].toString(); // add value from first DataProvider parameter ot test name
-            } catch (Exception e) {
-                //no TestName specified
-            }
-            ;
-        }
-
-        if (testName == null || testName.equals("")) {
-            testName = m.getName();
-        }
-        return testName;
-    }
     /**
      * Used in DriverType to launch a web driver via Browser Stack
      *
@@ -241,8 +229,7 @@ public class Reporter {
      * @param log identify the log for test execution
      */
     public static void log(String log) {
-        //testNodesStorage.get(Thread.currentThread().getId()).info(log);
-        testStorage.get(Thread.currentThread().getId()).info(log);
+        testNodesStorage.get(Thread.currentThread().getId()).info(log);
     }
 
     /**
@@ -285,11 +272,7 @@ public class Reporter {
      * @param log identify the log for test execution
      */
     public static void pass(String log) {
-        try {
-            testStorage.get(Thread.currentThread().getId()).pass(log, MediaEntityBuilder.createScreenCaptureFromPath(takeScreenshot()).build());
-        } catch (IOException e) {
-            testStorage.get(Thread.currentThread().getId()).pass(log);
-        }
+        testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 
     /**
@@ -299,12 +282,11 @@ public class Reporter {
      *
      * @param log identify the log for test execution
      */
-    public static void fail(String log) {
+    public static synchronized void fail(String log) {
         try {
-            //String screenshotPath = takeScreenshot().substring(takeScreenshot().indexOf("screenshots"));
             String screenshotPath = takeScreenshot();
             screenshotPath = screenshotPath.substring(screenshotPath.indexOf("screenshots"));
-            testStorage.get(Thread.currentThread().getId()).fail(log, MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            testNodesStorage.get(Thread.currentThread().getId()).fail(log, MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
             buildStatus = false;
             failuresBucket.add(log);
         } catch (Exception e) {
@@ -389,7 +371,7 @@ public class Reporter {
      */
     private static String takeScreenshot() {
 
-        String testCaseName = testStorage.get(Thread.currentThread().getId()).getModel().getName();
+        String testCaseName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
 
         try {
             // now copy the screenshot to desired location using copyFile method
@@ -408,8 +390,8 @@ public class Reporter {
             //shooting strategy work for Chrome Only.
             String driver_id = System.getProperties().getProperty("driver");
 
-           boolean hasDriverId = System.getProperties().contains("driver");
-           boolean hasChrome = false;
+            boolean hasDriverId = System.getProperties().contains("driver");
+            boolean hasChrome = false;
             if (hasDriverId) {
                 hasChrome = System.getProperty("driver").contains("CHROME");
             }
@@ -443,7 +425,7 @@ public class Reporter {
     public static synchronized void stopReporting(ITestResult result) {
 
         if (result.getStatus() == ITestResult.FAILURE)
-            fail("Test failed because of: " + result.getThrowable().getMessage().toString());
+            fail("Test failed because of: " + Tools.getStackTrace(result.getThrowable()));
         else if (result.getStatus() == ITestResult.SKIP)
             log("Test: " + testStorage.get(Thread.currentThread().getId()).toString() + " skipped");
         else
@@ -498,7 +480,7 @@ public class Reporter {
             return;
         }
 
-        String testCaseName = testStorage.get(Thread.currentThread().getId()).getModel().getName();
+        String testCaseName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
 
         BPPLogManager.getLogger().info("Saving the EC values as HTML report for the test: " + testCaseName);
 
@@ -524,7 +506,7 @@ public class Reporter {
             BPPLogManager.getLogger().info("Unable to create folder to store EC variables");
         }
 
-        String fileName = "EC_" + "Test_" + testCaseName.replace(" ", "_") + "_" + formattedDateTime + ".html";
+        String fileName = "EC_" + "Test" + testCaseName.replace("\"", "_") + "_" + formattedDateTime + ".html";
         String tempFile = ecFolder + File.separator + fileName;
         File file = new File(tempFile);
 
@@ -585,9 +567,10 @@ public class Reporter {
         LocalDateTime dateTime = LocalDateTime.now();
         String formattedDateTime = dateTime.format(formatter);
 
-        String tempName = getTestName();
-        logName = tempName.replaceAll("\"", "_");
-        this.testLogName = logName + formattedDateTime + ".log";
+        //String tempName = getCurrentTestName();
+        String tempName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
+        logName = tempName.replace("\"", "_");
+        this.testLogName = logName + "_" + formattedDateTime + ".log";
         //this.logName = testName.replace(" ", "_") + "_" + formattedDateTime + ".log";
     }
 
@@ -598,7 +581,7 @@ public class Reporter {
      * </p>
      */
 
-    public synchronized static void logForEveryTest(String fileName) {
+    public void logForEveryTest(String fileName) {
 
         logFolder = Paths.get(reportPath.toString(), "Logs");
         try {
@@ -609,7 +592,9 @@ public class Reporter {
             BPPLogManager.getLogger().info("Unable to create logs folder");
         }
         FileAppender fileApp = new FileAppender();
-        fileApp.setFile(logFolder + "/" + fileName);
+        //String file = fileName.replaceAll("\"", "_");
+        //testLogName = fileName.replaceAll("\"", "_");
+        fileApp.setFile(logFolder + "/" + testLogName.replace(" ", "_"));
         fileApp.setLayout(new PatternLayout("%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %C{1}:%L - %m%n"));
         fileApp.setAppend(true);
         fileApp.activateOptions();
@@ -630,7 +615,7 @@ public class Reporter {
 
     public static void updateBrowserStackJob(String jobStatus, String sessionId) {
         try {
-            String payload = new String();
+            String payload = "";
             if (jobStatus.contains("pass")) {
                 payload = String.format("{\"status\":\"passed\"}");
             } else {
@@ -693,7 +678,7 @@ public class Reporter {
             passApi("Test passed!");
     }
 
-    public static synchronized void passApi (String log) {
+    public static synchronized void passApi(String log) {
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 
