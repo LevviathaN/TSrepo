@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.Reporter;
+import ui.utils.UiHandlers;
 import ui.utils.bpp.TestParametersController;
 
 public class SpecialStepDefs extends BasePage {
@@ -25,7 +26,7 @@ public class SpecialStepDefs extends BasePage {
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     parametersController.checkIfSpecialParameter(elementLocator));
             isElementPresentAndDisplay(By.xpath(resultingXpath));
-            clickOnElement(By.xpath(resultingXpath));
+            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER);
         } else {
             Reporter.fail("No such locator template key");
         }

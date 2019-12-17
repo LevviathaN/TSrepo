@@ -297,19 +297,32 @@ public class BasePage {
      */
     public static synchronized void clickOnElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        WebDriverWait wait = new WebDriverWait(driver(), timeoutForFindElement,300);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
-        } catch(ElementClickInterceptedException clk){
-            Reporter.log("Looks like some other element received a click. Wait for " + timeoutForFindElement + " milliseconds, then try again");
-            //todo: remove spinner handling from BasePage
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
-            driver().findElement(element).click();
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");
+        }
+        waitForPageToLoad();
+    }
+
+    /**
+     * Method to click on element
+     *
+     * @param element locator of element to click on
+     * @param handlers code from UiHandlers enum, that will be executed, when exception occurs
+     */
+    public static void clickOnElement(By element, UiHandlers... handlers) {
+        try {
+            (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
+                    .until(ExpectedConditions.visibilityOfElementLocated(element));
+            driver().findElement(element).click();
+        } catch (Exception e) {
+            for(UiHandlers handler : handlers){
+                handler.getHandler().handle(element, e);
+            }
         }
         waitForPageToLoad();
     }

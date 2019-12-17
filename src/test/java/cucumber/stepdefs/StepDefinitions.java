@@ -44,7 +44,7 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
-        clickOnElement(initElementLocator(element));
+        clickOnElement(initElementLocator(element), UiHandlers.PF_SPINNER_HANDLER);
         waitForPageToLoad();
     }
 
