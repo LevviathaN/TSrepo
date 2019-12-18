@@ -4,10 +4,7 @@ import api.RestApiController;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ui.pages.BasePage;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.KeywordsHandler;
@@ -37,19 +34,18 @@ public class BaseUITest {
         Reporter.instantiate();
         Reporter.startReporting(method, data);
         reporter.setLogName(method.getAnnotation(Test.class).testName());
-        //reporter.logForEveryTest(reporter.testLogName);
         reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
 
         preProcessFiles = new PreProcessFiles();
-        BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/SpecialLocators.json");
-        BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/data/bpp/test.properties/Locators.json");
+        BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
+        BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
             BasePage.driver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         } catch (Exception e) {
-            Reporter.fail("Before test failure during Driver creation");
+            Reporter.failTryTakingScreenshot("Before test failure during Driver creation");
             Reporter.flush();
             Assert.fail();
         }
@@ -94,17 +90,9 @@ public class BaseUITest {
         }
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void flushReporter() {
         Reporter.flush();
-        try {
-            Reporter.writeToFile();
-            Reporter.saveAllECToFile();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         ExecutionContextHandler.resetExecutionContextValues();
     }
 }

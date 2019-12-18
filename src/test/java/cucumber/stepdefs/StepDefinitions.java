@@ -29,6 +29,7 @@ public class StepDefinitions extends BasePage {
     @Given("^I am on \"([^\"]*)\" URL$")
     public void i_am_on_url(String url) {
         driver().get(TestParametersController.checkIfSpecialParameter(url));
+        Reporter.log("<pre>[input test parameter] " + url + "' -> '" + TestParametersController.checkIfSpecialParameter(url) + "' [output value]</pre>");
         waitForPageToLoad();
     }
 
@@ -62,6 +63,7 @@ public class StepDefinitions extends BasePage {
 
         findElement(initElementLocator(element))
                 .sendKeys(TestParametersController.checkIfSpecialParameter(text));
+        Reporter.log("<pre>[input test parameter] " + text + "' -> '" + TestParametersController.checkIfSpecialParameter(text) + " [output value]</pre>");
     }
 
     /**
@@ -120,6 +122,7 @@ public class StepDefinitions extends BasePage {
         System.out.println("Expected page is " + pageTitle);
         Assert.assertEquals(driver().getTitle(), TestParametersController.checkIfSpecialParameter(pageTitle),
                 "Current page is " + TestParametersController.checkIfSpecialParameter(pageTitle));
+        Reporter.log("<pre>[input test parameter] " + pageTitle + "' -> '" + TestParametersController.checkIfSpecialParameter(pageTitle) + " [output value]</pre>");
     }
 
     /**

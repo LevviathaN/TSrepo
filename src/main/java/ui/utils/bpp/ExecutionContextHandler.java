@@ -33,10 +33,10 @@ public class ExecutionContextHandler {
         } else {
             BPPLogManager.getLogger().warn("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- some previous CaptureData action(s) failed;\n" +
-                    "\t\t- the requested key is misspelled in the excel spreadsheet located in the " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.");
+                    "\t\t- the requested key is misspelled");
             Reporter.log("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +
                     "- some previous CaptureData action(s) failed;<br>" +
-                    "- the requested key is misspelled in the excel spreadsheet located in the " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "/ folder path.</pre>");
+                    "- the requested key is misspelled");
             return key;
         }
     }

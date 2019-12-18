@@ -94,14 +94,14 @@ public class BasePage {
         if (driver().getTitle().contains(title)) {
             result = true;
         } else {
-            Reporter.log("Expected title: " + title + " but was: " + driver().getTitle());
+            Reporter.failTryTakingScreenshot("Expected title: " + title + " but was: " + driver().getTitle());
             result = false;
         }
 
         if (driver().getCurrentUrl().contains(url))
             result = true;
         else {
-            Reporter.log("Expected url: " + url + " but was: " + driver().getCurrentUrl());
+            Reporter.failTryTakingScreenshot("Expected url: " + url + " but was: " + driver().getCurrentUrl());
             result = false;
         }
 
@@ -303,6 +303,7 @@ public class BasePage {
             driver().findElement(element).click();
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");
         }
         waitForPageToLoad();
@@ -344,6 +345,7 @@ public class BasePage {
             return driver().findElement(element);
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding element");
         }
     }
@@ -365,6 +367,7 @@ public class BasePage {
             return driver().findElements(element);
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding elements");
         }
     }
@@ -405,6 +408,7 @@ public class BasePage {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return findElement(element).getAttribute(attributeName);
         } catch (Exception e) {
+            Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
             throw new RuntimeException("Failure getting attribute id of an element");
         }
     }
@@ -466,16 +470,6 @@ public class BasePage {
     /**
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
-//    public static void waitForPageToLoad() {
-//        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-//        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
-//        try {
-//            wait.until(expectation);
-//        } catch (Exception error) {
-//            reporter.fail("JavaScript readyState query timeout - The page has not finished loading");
-//        }
-//    }
-
     public static void waitForPageToLoad(){
         Wait<WebDriver> wait = new WebDriverWait(driver(), STATIC_TIMEOUT).ignoring(WebDriverException.class);
         wait.until(new Function<WebDriver, Boolean>() {

@@ -20,7 +20,7 @@ public class PropertiesHelper {
     //Map is needed to store the web-elements' locator ('xpath', 'css-selector' etc.)
     private static Map<String, String> locatorProperties = new TreeMap<String, String>();
 
-    private static final String PROPERTIES_FOLDER = PreProcessFiles.TEST_PROPERTIES_FILES_FOLDER_PATH;
+    private static final String PROPERTIES_FOLDER = PreProcessFiles.PROPERTIES_FILES_FOLDER_PATH;
 
     public static String getConfiguration(String configuration, String key) {
         if (configuration.equalsIgnoreCase("TestBeans")) {
@@ -30,6 +30,11 @@ public class PropertiesHelper {
         return "Configuration not found";
     }
 
+    /**
+     * <p>This function used to get properties for API requests </p>
+     *
+     * @author yzosin
+     */
     public Properties getProperties() {
 
         properties = new Properties();
@@ -48,7 +53,7 @@ public class PropertiesHelper {
 
     /**
      * <p>It returns the property value specified in either environment variable or configuration.properties
-     * It gives priority to the property specified in Java environment variable For e.g. -Ddriver_id=FIREFOX
+     * It gives priority to the property specified in Java environment variable For e.g. -Ddriver=FIREFOX
      *
      * @param key used to search for property
      * @return </p>
@@ -79,11 +84,11 @@ public class PropertiesHelper {
         RestApiController controller = new RestApiController();
 
         try {
-            Map<String, String> props = controller.processLocatorProperties("/src/main/resources/data/bpp/test.properties/Locators.json");
+            Map<String, String> props = controller.processLocatorProperties("/src/main/resources/Locators.json");
             locatorProperties.putAll(props);
         } catch (NullPointerException e2) {
-            Reporter.log("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString());
-            BPPLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER.toString(), e2);
+            Reporter.log("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER);
+            BPPLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER, e2);
             throw new NullPointerException();
         } catch (Exception e3) {
             Reporter.log("Failed to gather properties");

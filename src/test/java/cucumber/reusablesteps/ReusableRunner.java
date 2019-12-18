@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
 import ui.utils.Tools;
 
@@ -70,19 +71,17 @@ public class ReusableRunner {
      * @author Ruslan Levytskyi
      */
     public void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps) {
-        Reporter.node("Executing " + reusableName + " reusable scenario. ",
-                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
+
+        BPPLogManager.getLogger().info("Executing " + reusableName + " reusable scenario. It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
         reusable = getStepsOfReusableScenario(reusableName);
 
         for (int i = 0; i < reusable.size(); i++) {
 
-            Reporter.node("Executing " + reusableName + " reusable scenario. ",
-                    "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
             if (subSteps.containsKey(i)) {
-                //reporter.info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
+                BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
             }
-
+            Reporter.log("Executing: " + step);
             executeStep(i);
         }
     }
@@ -96,8 +95,7 @@ public class ReusableRunner {
      */
     public void executeReusable(String reusableName) {
 
-        Reporter.node("Executing " + reusableName + " reusable scenario. ",
-                "It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
+        BPPLogManager.getLogger().info("Executing " + reusableName + " reusable scenario. It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
         reusable = getStepsOfReusableScenario(reusableName);
 
         for (int i = 0; i < reusable.size(); i++) {

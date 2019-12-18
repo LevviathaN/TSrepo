@@ -4,6 +4,7 @@ import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.*;
 import org.testng.annotations.*;
 import ui.utils.BaseUITest;
+import ui.utils.Reporter;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
@@ -13,6 +14,7 @@ import ui.utils.BaseUITest;
 
 public class CucumberUITest extends BaseUITest {
     private TestNGCucumberRunner testNGCucumberRunner;
+    public String scenarioName;
 
     public CucumberUITest() {
     }
@@ -27,6 +29,9 @@ public class CucumberUITest extends BaseUITest {
             dataProvider = "scenarios"
     )
     public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
+        scenarioName = pickleWrapper.getPickleEvent().pickle.getName();
+        Reporter.node("Executing: " + scenarioName + " scenario",
+                "It contains " + pickleWrapper.getPickleEvent().pickle.getSteps().size() + " steps");
         this.testNGCucumberRunner.runScenario(pickleWrapper.getPickleEvent());
     }
 

@@ -38,8 +38,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Reporter {
 
-    //protected final Logger logger = Logger.getLogger(Reporter.class);
-
     private static ExtentReports extent;
     private static String root = System.getProperty("user.dir");
     private static String filePath = "report.html";
@@ -199,7 +197,7 @@ public class Reporter {
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
 
         //pass the log file name to the final report
-        test.assignCategory("<a>" + logFileName + "</a>");
+        //test.assignCategory("<a>" + logFileName + "</a>");
 
         //info message for grabbing logo.
         test.info(browserLink);
@@ -228,7 +226,7 @@ public class Reporter {
      *
      * @param log identify the log for test execution
      */
-    public static void log(String log) {
+    public static synchronized void log(String log) {
         testNodesStorage.get(Thread.currentThread().getId()).info(log);
     }
 

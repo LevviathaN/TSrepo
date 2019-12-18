@@ -60,12 +60,12 @@ public class MetaDataHandler {
             return metaDataManager.getMetaData(metadataKey).getValue();
         } else {
             BPPLogManager.getLogger().error("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
-                    "\t\t- the requested key is misspelled in the excel file where the tests are defined. File location: " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH +
+                    "\t\t- the requested key is misspelled" +
                     "\n\t\t- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.\n" +
                     "\t\tPlease check the excel spreadsheets.\n\t\tCannot proceed with the test execution.");
             Reporter.fail("Requested " + metadataKey + " metadata key is absent.<pre>Possible reasons are:<br>" +
-                    "- the requested key is misspelled in the excel file where the tests are defined. File location: " + PreProcessFiles.TEST_INPUT_FILES_FOLDER_PATH + "<br>" +
+                    "- the requested key is misspelled" + "<br>" +
                     "- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.<br>" +
                     "Please check the excel spreadsheets.<br>Cannot proceed with the test execution.</pre>");
