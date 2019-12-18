@@ -90,7 +90,6 @@ public static ReusableRunner getInstance() {
                 BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
             }
-            Reporter.log("Executing: " + step);
             executeStep(i);
         }
     }
@@ -108,7 +107,6 @@ public static ReusableRunner getInstance() {
         reusable = getStepsOfReusableScenario(reusableName);
 
         for (int i = 0; i < reusable.size(); i++) {
-            Reporter.log("Executing: " + step);
             executeStep(i);
         }
     }
@@ -121,6 +119,7 @@ public static ReusableRunner getInstance() {
      */
     private void executeStep(int i) {
         step = reusable.get(i);
+        Reporter.log("Executing: " + step);
         arg1 = Tools.getQuotet(step, '"').get(0);
         List<String> arguments = Tools.getQuotet(step, '"');
         if (arguments.toArray().length == 1) {

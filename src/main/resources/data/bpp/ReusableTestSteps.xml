@@ -28,7 +28,7 @@
         <step>I click on the "Save" "Product Factory button"</step>
         <step>I should see the "EC_BODY_SHORT_NAME" element</step>
     </reusable>
-    <reusable name="Create Sitting">
+    <reusable name="Create Level"><step>I click on the "Programme" "Product Factory navigation item"</step><step>I click on the "Levels" "Product Factory navigation sub item"</step><step>I click on the "Create" "Product Factory button"</step><step>I set "LevelShortName[####]" text to the "Short Name" "Product Factory text field"</step><step>I set "LevelName[####]" text to the "Name" "Product Factory text field"</step><step>I click on the "Save" "Product Factory button"</step><step>I should see the "EC_LEVEL_SHORT_NAME" element</step></reusable><reusable name="Create Paper"><step>I click on the "Programme" "Product Factory navigation item"</step><step>I click on the "Papers" "Product Factory navigation sub item"</step><step>I click on the "Create" "Product Factory button"</step><step>I set "PaperDescription[####]" text to the "Description" "Product Factory text field"</step><step>I click on the "Save" "Product Factory button"</step><step>I should see the "EC_PAPER_DESCRIPTION" element</step></reusable><reusable name="Create Sitting">
         <step>I click on the "Delivery" "Product Factory navigation item"</step>
         <step>I click on the "Sittings" "Product Factory navigation sub item"</step>
         <step>I click on the "PRODUCT_FACTORY_CREATE_BUTTON" button</step>

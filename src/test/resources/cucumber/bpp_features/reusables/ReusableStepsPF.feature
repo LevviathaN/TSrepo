@@ -34,17 +34,34 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
+  Scenario: Create Level
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Levels" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "LevelShortName[####]" text to the "Short Name" "Product Factory text field"
+    And I set "LevelName[####]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_LEVEL_SHORT_NAME" element
+
+  Scenario: Create Paper
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Papers" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "PaperDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_PAPER_DESCRIPTION" element
+
   Scenario: Create Sitting
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
-    Then I click on the "PRODUCT_FACTORY_CREATE_BUTTON" button
+    Then I click on the "Create" "Product Factory button"
     And I set "SittingName[####]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
     And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I "check" "EC_BODY_NAME" checkbox
-    And I click on the "Save" "button"
+    And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SITTING_NAME" element
 
   Scenario: Create Pricing Matrix
