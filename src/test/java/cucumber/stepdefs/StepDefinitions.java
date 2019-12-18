@@ -26,8 +26,9 @@ public class StepDefinitions extends BasePage {
      */
     @Given("^I am on \"([^\"]*)\" URL$")
     public void i_am_on_url(String url) {
-        driver().get(TestParametersController.checkIfSpecialParameter(url));
-        Reporter.log("<pre>[input test parameter] " + url + "' -> '" + TestParametersController.checkIfSpecialParameter(url) + "' [output value]</pre>");
+        String processedUrl = TestParametersController.checkIfSpecialParameter(url);
+        driver().get(processedUrl);
+        Reporter.log("<pre>[input test parameter] " + url + "' -> '" + processedUrl + "' [output value]</pre>");
         waitForPageToLoad();
     }
 
@@ -58,10 +59,10 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
     public void fill_field(String element, String text) {
-
+        String processedText = TestParametersController.checkIfSpecialParameter(text);
         findElement(initElementLocator(element))
-                .sendKeys(TestParametersController.checkIfSpecialParameter(text));
-        Reporter.log("<pre>[input test parameter] " + text + "' -> '" + TestParametersController.checkIfSpecialParameter(text) + " [output value]</pre>");
+                .sendKeys(processedText);
+        Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
     }
 
     /**
@@ -116,11 +117,12 @@ public class StepDefinitions extends BasePage {
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
         waitForPageToLoad();
+        String processedPageTitle = TestParametersController.checkIfSpecialParameter(pageTitle);
         Reporter.log("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
-        Assert.assertEquals(driver().getTitle(), TestParametersController.checkIfSpecialParameter(pageTitle),
-                "Current page is " + TestParametersController.checkIfSpecialParameter(pageTitle));
-        Reporter.log("<pre>[input test parameter] " + pageTitle + "' -> '" + TestParametersController.checkIfSpecialParameter(pageTitle) + " [output value]</pre>");
+        Assert.assertEquals(driver().getTitle(), processedPageTitle,
+                "Current page is " + processedPageTitle);
+        Reporter.log("<pre>[input test parameter] " + pageTitle + "' -> '" + processedPageTitle + " [output value]</pre>");
     }
 
     /**

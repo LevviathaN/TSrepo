@@ -43,11 +43,12 @@ public class SpecialStepDefs extends BasePage {
     @When("^I set \"([^\"]*)\" text to the \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_set_text_special(String text, String elementLocator, String elementType) {
         if(specialLocatorsMap.containsKey(elementType)) {
+            String processedText = TestParametersController.checkIfSpecialParameter(text);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replace("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            setText(By.xpath(resultingXpath), TestParametersController.checkIfSpecialParameter(text));
-            Reporter.log("<pre>[input test parameter] " + text + "' -> '" + TestParametersController.checkIfSpecialParameter(text) + "' [output value]</pre>");
+            setText(By.xpath(resultingXpath), processedText);
+            Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + "' [output value]</pre>");
         } else {
             Reporter.fail("No such locator template key");
         }
