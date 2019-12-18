@@ -423,7 +423,8 @@ public class Reporter {
     public static synchronized void stopReporting(ITestResult result) {
 
         if (result.getStatus() == ITestResult.FAILURE)
-            fail("Test failed because of: " + Tools.getStackTrace(result.getThrowable()));
+            //fail("Test failed because of: " + Tools.getStackTrace(result.getThrowable()));
+            fail("Test failed. Please see attached screenshot below");
         else if (result.getStatus() == ITestResult.SKIP)
             log("Test: " + testStorage.get(Thread.currentThread().getId()).toString() + " skipped");
         else

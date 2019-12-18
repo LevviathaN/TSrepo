@@ -21,10 +21,19 @@ import static cucumber.StepPatterns.*;
 
 
 public class ReusableRunner {
-    private static ReusableRunner instance;
-    public static ReusableRunner Instance = (instance != null) ? instance : new ReusableRunner();
 
-    public ReusableRunner() {
+private static final ThreadLocal<ReusableRunner> instance = new ThreadLocal<ReusableRunner>() {
+    @Override
+    protected ReusableRunner initialValue() {
+        return new ReusableRunner();
+    }
+};
+
+public static ReusableRunner getInstance() {
+    return instance.get();
+}
+
+    private ReusableRunner() {
 
         //General stepdefs
         stepDefsMap.put(I_CLICK_ON_THE_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_button(arg1));
