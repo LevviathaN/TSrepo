@@ -43,17 +43,16 @@ public class DriverProvider {
         System.setProperty("webdriver.gecko.driver", FIREFOX_PATH);
 
         try {
-            DesiredCapabilities capabilities = new DesiredCapabilities().firefox();
+
             FirefoxProfile profile = new FirefoxProfile();
+            profile.setPreference("browser.download.folderList", 2);
             profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
                     "image/jpeg, application/pdf, application/octet-stream, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             profile.setPreference("pdfjs.disabled", true);
-            profile.setPreference("browser.download.folderList", 2);
 
-            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 
-            FirefoxOptions options =
-                    new FirefoxOptions();
+            FirefoxOptions options = new FirefoxOptions();
+            options.setCapability(FirefoxDriver.PROFILE, profile);
 
             return new FirefoxDriver(options);
         } catch (Exception e) {

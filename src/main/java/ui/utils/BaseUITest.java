@@ -14,6 +14,8 @@ import ui.utils.bpp.PreProcessFiles;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -25,6 +27,8 @@ public class BaseUITest {
     private PreProcessFiles preProcessFiles;
     private String sessionId;
     Reporter reporter = new Reporter();
+    private static final Map<String, String> executionEnvironment = new HashMap<>();
+    private static final Object lock = new Object();
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
@@ -34,7 +38,7 @@ public class BaseUITest {
         Reporter.instantiate();
         Reporter.startReporting(method, data);
         reporter.setLogName(method.getAnnotation(Test.class).testName());
-        reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
+        Reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
 
         preProcessFiles = new PreProcessFiles();
         BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
@@ -58,7 +62,7 @@ public class BaseUITest {
 
         KeywordsHandler.instantiate();
         MetaDataHandler.instantiate();
-
+        setExecutionEnvironmentInfo();
     }
 
     @AfterMethod
@@ -92,7 +96,17 @@ public class BaseUITest {
 
     @AfterClass(alwaysRun = true)
     public void flushReporter() {
+        Reporter.setSystemInfo(executionEnvironment);
         Reporter.flush();
         ExecutionContextHandler.resetExecutionContextValues();
+    }
+
+    public static void setExecutionEnvironmentInfo() {
+        synchronized (lock) {
+            if (!executionEnvironment.isEmpty()) {
+                return;
+            }
+            executionEnvironment.put("Operating System", System.getProperty("os.name"));
+        }
     }
 }

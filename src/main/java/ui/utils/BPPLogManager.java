@@ -18,7 +18,7 @@ public class BPPLogManager {
         }
     }
 
-    public static void addFileAppender(FileAppender appender) {
+    public static synchronized void addFileAppender(FileAppender appender) {
         getLogger().removeAppender(appenders.get(Thread.currentThread().getId()));
         appenders.put(Thread.currentThread().getId(), appender);
         getLogger().addAppender(appender);

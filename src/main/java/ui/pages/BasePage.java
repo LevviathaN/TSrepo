@@ -168,6 +168,7 @@ public class BasePage {
 
     public void setText(By element, String value) {
         if (value != null) {
+            BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
             findElement(element).clear();
             findElement(element).sendKeys(value);
         }
@@ -180,6 +181,7 @@ public class BasePage {
     }
 
     public WebElement findByText(String element) {
+        BPPLogManager.getLogger().info("Trying to find element: " + element );
         return findElement(byText(element));
     }
 
@@ -444,6 +446,7 @@ public class BasePage {
     public void checkCheckbox(By element, boolean shouldBeChecked){
         WebElement checkbox = findElement(element);
         if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
+            BPPLogManager.getLogger().info("Checking the checkbox " + checkbox);
             checkbox.click();
         }
     }
@@ -528,6 +531,7 @@ public class BasePage {
     // Does not work in Firefox because of geckodriver_mac bug
     // https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
     public void hoverItem(By element) {
+        BPPLogManager.getLogger().info("Hover over an alement: " + element);
         Actions action = new Actions(driver());
         action.moveToElement(findElement(element)).build().perform();
     }
@@ -559,6 +563,7 @@ public class BasePage {
         Set<String> windows = driver().getWindowHandles();
 
         for (String window : windows) {
+            BPPLogManager.getLogger().info("Swtiching to window: " + window);
             driver().switchTo().window(window);
             if (driver().getTitle().contains(tabTitle)) {
                 return;
