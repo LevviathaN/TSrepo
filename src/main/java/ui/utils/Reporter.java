@@ -49,7 +49,7 @@ public class Reporter {
     private static boolean buildStatus = true;
     private static ArrayList failuresBucket = new ArrayList<String>();
     protected String logName;
-    protected String testLogName;
+    protected static String testLogName;
     private static String browserLink;
 
     private static ConcurrentHashMap<Long, ExtentTest> testStorage = new ConcurrentHashMap<>();
@@ -569,7 +569,7 @@ public class Reporter {
         //String tempName = getCurrentTestName();
         String tempName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
         logName = tempName.replace("\"", "_");
-        this.testLogName = logName + "_" + formattedDateTime + ".log";
+        Reporter.testLogName = logName + "_" + formattedDateTime + ".log";
         //this.logName = testName.replace(" ", "_") + "_" + formattedDateTime + ".log";
     }
 
@@ -580,7 +580,7 @@ public class Reporter {
      * </p>
      */
 
-    public void logForEveryTest(String fileName) {
+    public synchronized static void logForEveryTest(String fileName) {
 
         logFolder = Paths.get(reportPath.toString(), "Logs");
         try {
