@@ -7,9 +7,10 @@
   "Product Factory navigation item": "//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
   "Product Factory button": "//span[text()='PARAMETER']/..",
-  "Product Factory text field": "//label[text()='PARAMETER']/following::input[1]",
+  "Product Factory text field": "//label[text()='PARAMETER']/following::div/input[@type='text']|//label[text()='PARAMETER']/following::textarea",
   "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "//td[text()='PARAMETER']/following-sibling::td/button",
   "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
-  "Product Factory dropdown option": "//li[@data-value='PARAMETER']"
+  "Product Factory dropdown option": "//li[text()='PARAMETER']",
+  "Product Factory dialog checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]"
 }

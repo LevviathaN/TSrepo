@@ -26,9 +26,12 @@ public class StepDefinitions extends BasePage {
      */
     @Given("^I am on \"([^\"]*)\" URL$")
     public void i_am_on_url(String url) {
+        Reporter.log("Executing step: I am on '" + url + "' url");
         String processedUrl = TestParametersController.checkIfSpecialParameter(url);
         driver().get(processedUrl);
-        Reporter.log("<pre>[input test parameter] " + url + "' -> '" + processedUrl + "' [output value]</pre>");
+        if(!url.equals(processedUrl)){
+            Reporter.log("<pre>[input test parameter] " + url + "' -> '" + processedUrl + "' [output value]</pre>");
+        }
         waitForPageToLoad();
     }
 
@@ -44,6 +47,7 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
+        Reporter.log("Executing step: I click on the '" + element + "' element");
         clickOnElement(initElementLocator(element), UiHandlers.PF_SPINNER_HANDLER);
         waitForPageToLoad();
     }
@@ -59,10 +63,12 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
     public void fill_field(String element, String text) {
+        Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
         String processedText = TestParametersController.checkIfSpecialParameter(text);
-        findElement(initElementLocator(element))
-                .sendKeys(processedText);
-        Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
+        findElement(initElementLocator(element)).sendKeys(processedText);
+        if(!text.equals(processedText)){
+            Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
+        }
     }
 
     /**
@@ -74,6 +80,7 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I wait for \"([^\"]*)\" seconds$")
     public void wait_for(String seconds) {
+        Reporter.log("Executing step: I wait for " + seconds + " seconds");
         sleepFor(Integer.parseInt(TestParametersController.checkIfSpecialParameter(seconds))*1000);
     }
 
@@ -86,6 +93,7 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$")
     public void hover_over(String element) {
+        Reporter.log("Executing step: I hover over the '" + element + "' element");
         hoverItem(initElementLocator(element));
     }
 
@@ -98,6 +106,7 @@ public class StepDefinitions extends BasePage {
      */
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
+        Reporter.log("Executing step: I should see the '" + element + "' element");
         boolean isDisplayed = false;
         for(int i = 0; i<findElements(initElementLocator(element)).size(); i++){
             if(findElements(initElementLocator(element)).get(i).isDisplayed()){
@@ -116,13 +125,15 @@ public class StepDefinitions extends BasePage {
      */
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
+        Reporter.log("Executing step: I should be redirected to the '" + pageTitle + "' page");
         waitForPageToLoad();
         String processedPageTitle = TestParametersController.checkIfSpecialParameter(pageTitle);
         Reporter.log("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
-        Assert.assertEquals(driver().getTitle(), processedPageTitle,
-                "Current page is " + processedPageTitle);
-        Reporter.log("<pre>[input test parameter] " + pageTitle + "' -> '" + processedPageTitle + " [output value]</pre>");
+        Assert.assertEquals(driver().getTitle(), processedPageTitle, "Current page is " + processedPageTitle);
+        if(!pageTitle.equals(processedPageTitle)){
+            Reporter.log("<pre>[input test parameter] " + pageTitle + "' -> '" + processedPageTitle + " [output value]</pre>");
+        }
     }
 
     /**
@@ -134,13 +145,14 @@ public class StepDefinitions extends BasePage {
      */
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
+        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step");
         ReusableRunner.getInstance().executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
     }
 
     @Then("^I execute \"([^\"]*)\" reusable step with some additional steps$")
     public void i_execute_reusable_step_with(String reusableName, Map<Integer, String> steps) {
+        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with some additional steps");
         ReusableRunner.getInstance().executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
-        this.value = TestParametersController.checkIfSpecialParameter(reusableName);
     }
 
 
@@ -154,6 +166,7 @@ public class StepDefinitions extends BasePage {
     //todo: create EC_ variable each time any random value is generated
     @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
+        Reporter.log("Executing step: I remember '" + text + "' text as '" + varName + "' variable");
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
     }
 
@@ -167,7 +180,7 @@ public class StepDefinitions extends BasePage {
      */
     @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
     public void elements_attribute_should_have_value(String attributeName, String elementLocator, String attributeValue) {
-
+        Reporter.log("Executing step: Attribute '" + attributeName + "' of '" + elementLocator + "' should have value '" + attributeValue + "'");
         Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
     }
 
@@ -181,9 +194,14 @@ public class StepDefinitions extends BasePage {
      */
     @When("^I \"(check|uncheck)\" \"([^\"]*)\" checkbox$")
     public void i_check_uncheck(String value, String element){
+        Reporter.log("Executing step: I " + value + " '" + element + "' checkbox");
+        String processedElement = TestParametersController.checkIfSpecialParameter(element);
         boolean state = true;
         if(value.equals("check")){state = true;}
         else if(value.equals("uncheck")){state = false;}
         checkCheckbox(initElementLocator(element),state);
+        if(!element.equals(processedElement)){
+            Reporter.log("<pre>[input test parameter] " + element + "' -> '" + processedElement + " [output value]</pre>");
+        }
     }
 }

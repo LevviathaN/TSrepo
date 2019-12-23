@@ -21,12 +21,16 @@ public class SpecialStepDefs extends BasePage {
      */
     @When("^I click on the \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_click_on_element_with_parameter_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I click on the '" + elementLocator + "' " + elementType);
         if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
-            String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(By.xpath(resultingXpath));
             clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER);
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
         } else {
             Reporter.fail("No such locator template key");
         }
@@ -42,13 +46,17 @@ public class SpecialStepDefs extends BasePage {
      */
     @When("^I set \"([^\"]*)\" text to the \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_set_text_special(String text, String elementLocator, String elementType) {
+        Reporter.log("Executing step: I set '" + text + "' text to '" + elementLocator + "' " + elementType);
+        //Todo: simplify random dates generation and automatically create EC
         if(specialLocatorsMap.containsKey(elementType)) {
             String processedText = TestParametersController.checkIfSpecialParameter(text);
             String xpathTemplate = specialLocatorsMap.get(elementType);
-            String resultingXpath = xpathTemplate.replace("PARAMETER",
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             setText(By.xpath(resultingXpath), processedText);
-            Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + "' [output value]</pre>");
+            if(!text.equals(processedText)){
+                Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + "' [output value]</pre>");
+            }
         } else {
             Reporter.fail("No such locator template key");
         }
@@ -63,9 +71,10 @@ public class SpecialStepDefs extends BasePage {
      */
     @When("^I should see the \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_should_see_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I click on the '" + elementLocator + "' " + elementType);
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
-            String resultingXpath = xpathTemplate.replace("PARAMETER",
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(isElementPresentAndDisplay(By.xpath(resultingXpath)));
         } else {
@@ -84,9 +93,10 @@ public class SpecialStepDefs extends BasePage {
      */
     @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$")
     public void elements_attribute_should_have_value_special(String attributeName, String elementLocator, String elementType, String attributeValue) {
+        Reporter.log("Executing step: Attribute '" + attributeName + "' of '" + elementLocator + "' " + elementType + " should have value '" + attributeValue + "'");
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
-            String resultingXpath = xpathTemplate.replace("PARAMETER",
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
         } else {
@@ -104,14 +114,18 @@ public class SpecialStepDefs extends BasePage {
      */
     @When("^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_check_uncheck_special(String value, String elementLocator, String elementType){
+        Reporter.log("Executing step: I " + value + " '" + elementLocator + "' " + elementType);
         boolean state = true;
         if(value.equals("check")){state = true;}
         else if(value.equals("uncheck")){state = false;}
         if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
-            String resultingXpath = xpathTemplate.replace("PARAMETER",
-                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             checkCheckbox(By.xpath(resultingXpath),state);
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
         } else {
             Reporter.fail("No such locator template key");
         }

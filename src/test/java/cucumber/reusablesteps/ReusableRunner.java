@@ -81,7 +81,6 @@ public static ReusableRunner getInstance() {
      */
     public void executeReusableAddSteps(String reusableName, Map<Integer, String> subSteps) {
 
-        BPPLogManager.getLogger().info("Executing " + reusableName + " reusable scenario. It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
         reusable = getStepsOfReusableScenario(reusableName);
 
         for (int i = 0; i < reusable.size(); i++) {
@@ -103,7 +102,6 @@ public static ReusableRunner getInstance() {
      */
     public void executeReusable(String reusableName) {
 
-        BPPLogManager.getLogger().info("Executing " + reusableName + " reusable scenario. It contains " + getStepsOfReusableScenario(reusableName).size() + " reusable steps");
         reusable = getStepsOfReusableScenario(reusableName);
 
         for (int i = 0; i < reusable.size(); i++) {
@@ -119,7 +117,6 @@ public static ReusableRunner getInstance() {
      */
     private void executeStep(int i) {
         step = reusable.get(i);
-        Reporter.log("Executing: " + step);
         arg1 = Tools.getQuotet(step, '"').get(0);
         List<String> arguments = Tools.getQuotet(step, '"');
         if (arguments.toArray().length == 1) {
@@ -172,7 +169,7 @@ public static ReusableRunner getInstance() {
             for (int i = 0; i < reusablesList.getLength(); i++) {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
-                availableReusableStepsList.add("Hi");
+                availableReusableStepsList.add(reusableElement.getAttribute("name"));
                 if (reusableElement.getAttribute("name").equals(reusableName)) {
                     NodeList steps = reusableElement.getElementsByTagName("step");
                     for (int j = 0; j < steps.getLength(); j++) {

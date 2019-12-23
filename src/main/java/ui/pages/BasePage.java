@@ -26,7 +26,6 @@ public class BasePage {
     private Robot robot;
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
-    protected String value;
 
     //needed because of mac and windows have different Ctrl keys
     int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
