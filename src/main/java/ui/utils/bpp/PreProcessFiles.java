@@ -1,22 +1,16 @@
 package ui.utils.bpp;
 
-//import com.apolloglobal.testing.api.util.*;
-
-
-import org.apache.log4j.Logger;
-
 import java.io.IOException;
 
 public class PreProcessFiles {
 
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("MS_PKGPROTECT")
 	public static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
 	public static String PROPERTIES_FILES_FOLDER_PATH = null;
 	public static String ROOT_FOLDER_PATH = null;
 	public static String TEST_FILES_FOLDER_PATH = null;
 
-	PropertiesHelper propertiesHelper;
 	public PreProcessFiles(){
-        this.propertiesHelper = new PropertiesHelper();
     }
 
 	String className = this.getClass().getName().replace('.', '/');

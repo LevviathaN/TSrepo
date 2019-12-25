@@ -55,7 +55,7 @@ public class BaseUITest {
         }
 
         try {
-            boolean startTestExecution = preProcessFiles.preProcessTestConfiguration();
+           preProcessFiles.preProcessTestConfiguration();
         } catch (Exception e) {
             e.printStackTrace();
         }

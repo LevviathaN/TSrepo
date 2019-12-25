@@ -1,5 +1,6 @@
 package ui.utils;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -27,7 +28,7 @@ import java.util.Map;
 
 public class DriverProvider {
 
-    public static String OS_EXTENTION = (System.getProperty("os.name").toLowerCase().contains("win")) ? ".exe" :
+    public static final String OS_EXTENTION = (System.getProperty("os.name").toLowerCase().contains("win")) ? ".exe" :
             (System.getProperty("os.name").toLowerCase().contains("mac")) ? "_mac" :
                     "_linux";
     static String FIREFOX_PATH = "drivers/geckodriver_mac" + OS_EXTENTION;
@@ -60,11 +61,15 @@ public class DriverProvider {
         }
     }
 
+    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     static public ChromeDriver getChrome() {
 
         try {
             File folder = new File("downloads");
-            folder.mkdir();
+            if(folder!=null) {
+                folder.mkdir();
+            }
+
             System.setProperty("webdriver.chrome.driver", CHROME_PATH);
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
@@ -100,12 +105,14 @@ public class DriverProvider {
         }
     }
 
+    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     static public RemoteWebDriver getChromeBrowserStack() {
 
         try {
             File folder = new File("downloads");
-            folder.mkdir();
-
+            if(folder!=null) {
+                folder.mkdir();
+            }
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
             prefs.put("credentials_enable_service", false);

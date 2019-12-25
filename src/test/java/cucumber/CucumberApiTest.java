@@ -9,15 +9,17 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import ui.utils.Reporter;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features/api",
-        glue = {"cucumber"},
+        glue = {"cucumber.api"},
         tags = {"@API"},
         plugin = {"pretty"})
 
 public class CucumberApiTest extends BaseApiTest {
     private TestNGCucumberRunner testNGCucumberRunner;
+    public String scenarioName;
 
     public CucumberApiTest() {
     }
@@ -32,6 +34,9 @@ public class CucumberApiTest extends BaseApiTest {
             dataProvider = "scenarios"
     )
     public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
+        scenarioName = pickleWrapper.getPickleEvent().pickle.getName();
+        Reporter.node("Executing: " + scenarioName + " scenario",
+                "It contains " + pickleWrapper.getPickleEvent().pickle.getSteps().size() + " steps");
         this.testNGCucumberRunner.runScenario(pickleWrapper.getPickleEvent());
     }
 

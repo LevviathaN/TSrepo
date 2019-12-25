@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.PatternLayout;
@@ -21,6 +22,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -36,6 +38,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Provides the reporting interface
  * </p>
  */
+@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class Reporter {
 
     private static ExtentReports extent;
@@ -60,7 +63,7 @@ public class Reporter {
      * Instantiate the Extend report with report configurations
      * </p>
      */
-    public static void instantiate() {
+    public static synchronized void instantiate() {
 
         if (extent != null) {
             return;
@@ -145,7 +148,7 @@ public class Reporter {
                 testName = m.getAnnotation(Test.class).testName(); // get name from annotation
                 testName = testName + data[0].toString(); // add value from first DataProvider parameter ot test name
             } catch (Exception e) {
-                //no TestName specified
+                e.printStackTrace();
             }
         }
 
@@ -177,7 +180,7 @@ public class Reporter {
      *
      * @param testName name of the test executing
      */
-    public static void addTest(Method m, String testName, String logFileName) {
+    public static void addTest(Method m, String testName) {
 
         String browserName = DriverProvider.getCurrentBrowserName().toUpperCase();
 
@@ -197,7 +200,6 @@ public class Reporter {
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
 
         //pass the log file name to the final report
-        //test.assignCategory("<a>" + logFileName + "</a>");
 
         //info message for grabbing logo.
         test.info(browserLink);
@@ -205,10 +207,14 @@ public class Reporter {
 
 
     public static synchronized void startReporting(Method m, Object[] data) {
-        addTest(m, getTestName(m, data), getTestName());
+        addTest(m, getTestName(m, data));
         BPPLogManager.getLogger().info("Started test: " + getTestName(m, data));
     }
 
+    public static synchronized void startReportingAPI(Method m, Object[] data) {
+        addApiTest(m, getTestName(m, data));
+        BPPLogManager.getLogger().info("Started test: " + getTestName(m, data));
+    }
 
     /**
      * Used in DriverType to launch a web driver via Browser Stack
@@ -386,8 +392,6 @@ public class Reporter {
             Screenshot screenshot = null;
 
             //shooting strategy work for Chrome Only.
-            String driver_id = System.getProperties().getProperty("driver");
-
             boolean hasDriverId = System.getProperties().contains("driver");
             boolean hasChrome = false;
             if (hasDriverId) {
@@ -431,16 +435,6 @@ public class Reporter {
             pass("Test passed!");
 
         flush();
-    }
-
-    private static File targetDir() {
-
-        String relPath = Reporter.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-        File targetDir = new File(relPath + "../../target");
-        if (!targetDir.exists()) {
-            targetDir.mkdir();
-        }
-        return targetDir;
     }
 
     /**
@@ -654,12 +648,12 @@ public class Reporter {
     private static String getBasicAuthenticationEncoding(String username, String password) {
 
         String userPassword = username + ":" + password;
-        return new String(Base64.encodeBase64(userPassword.getBytes()));
+        return new String(Base64.encodeBase64(userPassword.getBytes(StandardCharsets.UTF_8)));
     }
 
     //Methods required only for API tests
 
-    public static synchronized void addApiTest(String testName) {
+    public static synchronized void addApiTest(Method m,String testName) {
 
         ExtentTest test = extent.createTest(testName);
         testStorage.put(Thread.currentThread().getId(), test);
@@ -681,8 +675,4 @@ public class Reporter {
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 
-    public static synchronized void nodeApi(String businessProcess) {
-        ExtentTest childNode = testStorage.get(Thread.currentThread().getId()).createNode(businessProcess);
-        testNodesStorage.put(Thread.currentThread().getId(), childNode);
-    }
 }

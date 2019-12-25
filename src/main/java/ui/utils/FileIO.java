@@ -14,11 +14,8 @@ import java.util.Properties;
  */
 public class FileIO {
 
-    static String TARGET_FOLDER = "target";
     static String CONFIG_FILE = System.getProperty("config");
     static String PROPERTIES = "src/main/resources/" + ((CONFIG_FILE == null) ? "default" : CONFIG_FILE) + ".properties";
-
-    public static String filename;
 
     public static String getConfigProperty(String fieldName) {
         String fileLocation = PROPERTIES;

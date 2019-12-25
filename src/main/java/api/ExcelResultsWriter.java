@@ -1,5 +1,6 @@
 package api;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -24,6 +25,7 @@ public class ExcelResultsWriter {
 
     static void createApiExcel() {
 
+        FileOutputStream fileOut = null;
         Workbook workbook = new XSSFWorkbook();
 
         Font headerFont = workbook.createFont();
@@ -68,10 +70,8 @@ public class ExcelResultsWriter {
         });
 
         try {
-            //FileOutputStream fileOut = new FileOutputStream(Reporter.getReportPath().toString().concat("\\generated-data.xlsx"));
-            FileOutputStream fileOut = new FileOutputStream("\\generated-data.xlsx");
-            workbook.write(fileOut);
-            fileOut.close();
+            fileOut = new FileOutputStream("\\generated-data.xlsx");
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -82,11 +82,13 @@ public class ExcelResultsWriter {
 
         Set<String> set = new HashSet<>();
 
-        HashMap<String, Object> global = null; //= GlobalDataBridge.getInstance().getDataBuffer();
+        HashMap<String, Object> global = new HashMap<>();
 
-        global.entrySet().forEach(entry -> {
-            set.add(entry.getKey().replaceAll("[0-9]", ""));
-        });
+        if (global != null) {
+            global.entrySet().forEach(entry -> {
+                set.add(entry.getKey().replaceAll("[0-9]", ""));
+            });
+        }
 
         HashMap<String, ArrayList<ArrayList<String>>> hash = new HashMap<>();
 
@@ -106,6 +108,7 @@ public class ExcelResultsWriter {
         return hash;
     }
 
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     private static ArrayList<String> getColumnHeaders(String schema) {
 
         JSONParser parser = new JSONParser();

@@ -16,10 +16,7 @@ import java.lang.reflect.Method;
  */
 public class BaseApiTest {
 
-
-    private PreProcessFiles preProcessFiles;
-    private String sessionId;
-
+    Reporter reporter = new Reporter();
     @BeforeMethod
     public void preProcess(Method method, Object[] data) {
 
@@ -31,7 +28,9 @@ public class BaseApiTest {
 
         //init reporter
         Reporter.instantiate();
-        Reporter.addApiTest(method.getAnnotation(Test.class).testName());
+        Reporter.startReportingAPI(method,data);
+        reporter.setLogName(method.getAnnotation(Test.class).testName());
+        Reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
 
     }
 

@@ -23,19 +23,14 @@ import java.util.Set;
 
 public class BasePage {
 
-    private Robot robot;
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
-
-    //needed because of mac and windows have different Ctrl keys
-    int systemControllKey = DriverProvider.OS_EXTENTION.equals("_mac") ? KeyEvent.VK_META : KeyEvent.VK_CONTROL;
 
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     //____________________________________________Timeouts section__________________________________________________
 
     public static final int DEFAULT_TIMEOUT = getTimeout();
-    public static final int SHORT_TIMEOUT = getShortTimeout();
     public static final int STATIC_TIMEOUT = getStaticTimeout();
 
     private static int getTimeout() {
@@ -217,7 +212,7 @@ public class BasePage {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
         } catch (Exception e) {
-            // nothing
+            e.printStackTrace();
         }
         waitForPageToLoad();
     }
@@ -513,7 +508,7 @@ public class BasePage {
     static void waitForAlert(int timeout) {
         int i = 0;
         while (i++ < timeout) try {
-            Alert alert = driver().switchTo().alert();
+            driver().switchTo().alert();
             break;
         } catch (NoAlertPresentException e)  // wait for second
         {
@@ -568,25 +563,5 @@ public class BasePage {
                 return;
             }
         }
-    }
-
-    /**
-     * Method to bring your browser window back to focus
-     * in case of some other application, that will need to be opened during test, take the focus off
-     *
-     * In particular case, java Robot opens Java application in the middle of test execution
-     * That causes browser window do loose focus. To continue execution this method is called
-     */
-    public void bringToFocus() {
-        if(robot == null) {
-            try { robot = new Robot(); }
-            catch (Exception e) { e.printStackTrace(); }
-        }
-
-        robot.keyPress(systemControllKey);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(systemControllKey);
-        robot.keyRelease(KeyEvent.VK_TAB);
-        robot.delay(2000);
     }
 }

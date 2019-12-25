@@ -79,7 +79,7 @@ public class MetaDataHandler {
      * @param metadataKey - requested key that needs to be checked
      * @return true if the key exists and false if does not
      */
-    private static boolean metadataKeyExists(String metadataKey) {
+    private static synchronized boolean metadataKeyExists(String metadataKey) {
         if (metadataKeysSet == null) {
             metadataKeysSet = new TreeSet<String>();
             String combinedKey;
