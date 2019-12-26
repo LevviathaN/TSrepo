@@ -21,9 +21,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Enables to create webdriver isntance passed from System Property variable as driver=BSTACK_CHROME
- *
  * @author yzosin
+ * <p> Enables to create webdriver isntance passed from System Property variable as driver=BSTACK_CHROME </p>
+ *
  */
 
 public class DriverProvider {
@@ -35,7 +35,7 @@ public class DriverProvider {
     static String CHROME_PATH = "drivers/chromedriver" + OS_EXTENTION;
 
     //private static WebDriver instance;
-    public static ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
+    public static final ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
 
     static String BROWSER_TYPE;
 

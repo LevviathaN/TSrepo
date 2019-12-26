@@ -2,16 +2,26 @@ package ui.utils.bpp;
 
 import java.io.IOException;
 
+/**
+ * @author yzosin
+ * <p>
+ * The class defines apropriate paths to framework resources
+ * </p>
+ */
 public class PreProcessFiles {
 
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("MS_PKGPROTECT")
-	public static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
-	public static String PROPERTIES_FILES_FOLDER_PATH = null;
-	public static String ROOT_FOLDER_PATH = null;
-	public static String TEST_FILES_FOLDER_PATH = null;
+	protected static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
+	protected static String PROPERTIES_FILES_FOLDER_PATH = null;
+	protected static String ROOT_FOLDER_PATH = null;
+	protected static String TEST_FILES_FOLDER_PATH = null;
 
 	public PreProcessFiles(){
     }
+
+    public static synchronized String setPropertiesFiles() {
+		return PROPERTIES_FILES_FOLDER_PATH;
+	}
 
 	String className = this.getClass().getName().replace('.', '/');
 	String classJar =
@@ -19,7 +29,7 @@ public class PreProcessFiles {
 
 
 	/**
-	 * The method is used for providing the right paths to the NoahClient's and the Noah's resources folders
+	 * The method is used for providing the right paths to the client's and the developer's resources folders
 	 * - argument that come from command line
 	 */
 	public void initPaths(boolean moduleUI){
@@ -50,12 +60,9 @@ public class PreProcessFiles {
 	 * Determines if arguments have been provided to run tests locally from the
 	 * project level rather than expectedly the NoahClient. The files are
 	 * expected to be located locally from the current directory under a folder
-	 * named, "input." Default values to run the test execution are Test.xlsx
-	 * and sheet name "Test". The end user is expected to configure their test
-	 * execution (change files and sheets) through the batch file in the NoahClient.
 	 *
 	 * @author tchin
-	 * @param args criteria specified by the end user in the NoahClient project
+	 * @param args criteria specified by manual qa
 	 * @throws IOException will throw exception ending the test execution if invalid information is available
 	 * @return returns true if all test configurations are correct and normal test execution can proceed
 	 */

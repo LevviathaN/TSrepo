@@ -10,7 +10,7 @@ import ui.utils.bpp.PreProcessFiles;
 import java.lang.reflect.Method;
 
 /**
- * Base test class for all api tests.
+ * <p>Base test class for all api tests.</p>
  *
  * @author yzosin
  */
@@ -42,7 +42,7 @@ public class BaseApiTest {
 
     @AfterSuite(alwaysRun = true)
     public void flushReporter() {
-        //ExcelResultsWriter.createApiExcel();
+        ExcelResultsWriter.createApiExcel();
         Reporter.flush();
         System.out.println("EXECUTIONS HAVE FINISHED");
     }

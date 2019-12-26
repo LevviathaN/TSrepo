@@ -10,8 +10,6 @@ import ui.utils.bpp.TestParametersController;
 
 public class SpecialStepDefs extends BasePage {
 
-    TestParametersController parametersController = new TestParametersController();
-
     /**
      * Definition to click an element on the page
      *

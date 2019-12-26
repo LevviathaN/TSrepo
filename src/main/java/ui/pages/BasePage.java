@@ -16,8 +16,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Base class for all page objects.
- * A class to store Selenium-specific operations.
+ * <p> Base class for all page objects.
+ * A class to store Selenium-specific operations </p>.
  * @author rlevytskyi
  */
 
@@ -26,7 +26,7 @@ public class BasePage {
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
 
-    public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     //____________________________________________Timeouts section__________________________________________________
 
@@ -335,6 +335,7 @@ public class BasePage {
     public WebElement findElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
+        BPPLogManager.getLogger().info("Finding an element: " + element);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -357,6 +358,7 @@ public class BasePage {
     public List<WebElement> findElements(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
+        BPPLogManager.getLogger().info("Finding elements: " + element);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.presenceOfElementLocated(element));
@@ -399,6 +401,7 @@ public class BasePage {
     public String getElementAttribute(By element, String attributeName, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
+        BPPLogManager.getLogger().info("Getting an: " + element + " by attribute: " + attributeName);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -453,6 +456,7 @@ public class BasePage {
      */
     public static void scrollToElement(WebElement element) {
         waitForPageToLoad();
+        BPPLogManager.getLogger().info("Scrolling to element: " + element);
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
@@ -460,6 +464,7 @@ public class BasePage {
      * Method to scroll to the bottom of the page
      */
     public static void scrollToBottomOfPage() {
+        BPPLogManager.getLogger().info("Scrolling to bottom of the page.");
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForPageToLoad();
     }
@@ -469,6 +474,7 @@ public class BasePage {
      */
     public static void waitForPageToLoad(){
         Wait<WebDriver> wait = new WebDriverWait(driver(), STATIC_TIMEOUT).ignoring(WebDriverException.class);
+        BPPLogManager.getLogger().info("Waiting for page to load");
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
@@ -485,6 +491,7 @@ public class BasePage {
     //unused functionality. To be removed in next commits
     static void waitForElement(By by) {
         WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
+        BPPLogManager.getLogger().info("Waiting for element: " + by);
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
@@ -507,6 +514,7 @@ public class BasePage {
      */
     static void waitForAlert(int timeout) {
         int i = 0;
+        BPPLogManager.getLogger().info("Waiting for alert");
         while (i++ < timeout) try {
             driver().switchTo().alert();
             break;

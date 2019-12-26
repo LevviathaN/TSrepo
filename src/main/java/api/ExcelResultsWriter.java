@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import ui.utils.bpp.PreProcessFiles;
 
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -21,6 +22,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author astepaniuk
+ * <p>
+ * The class write data from JSON response into excel file
+ * </p>
+ */
 public class ExcelResultsWriter {
 
     static void createApiExcel() {
@@ -66,12 +73,12 @@ public class ExcelResultsWriter {
                     row.createCell(cellNum++).setCellValue(listItem);
                 }
             }
-
         });
 
         try {
-            fileOut = new FileOutputStream("\\generated-data.xlsx");
-
+            fileOut = new FileOutputStream( "//generated-data.xlsx");
+            workbook.write(fileOut);
+            fileOut.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

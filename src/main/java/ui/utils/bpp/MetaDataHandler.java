@@ -14,7 +14,7 @@ import java.util.TreeSet;
 
 /**
  * Functionality requested in AGQA-813
- * Created by Nick B. on 4/21/2017.
+ * Created by Nick B.
  * <p>The class is used for handling the metadata passed as test parameters.
  * This class is implemented using the DataManagementUtil-1.5.1 library provided by UTOPIA SOLUTIONS.
  * Note: The class handles two scenarios when metadata key cannot be used:
@@ -22,7 +22,6 @@ import java.util.TreeSet;
  * - when metadata file(s) is(are) missing required data;</p>
  */
 
-//TODO improve the flexibility of providing the metadata folder path by end user
 public class MetaDataHandler {
 
     private static MetaDataManager metaDataManager = null;

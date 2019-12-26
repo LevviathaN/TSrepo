@@ -16,12 +16,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Functionality requested in AGQA-813
- * Created by Nick B. on 4/24/2017.
+ * @author nick
  * <p>The class is used for handling the keywords passed as test parameters.
- * This class is implemented using the DataManagementUtil-1.5.1 library provided by UTOPIA SOLUTIONS </p>
+ * This class is implemented using the DataManagementUtil-2.8.2 library provided by UTOPIA SOLUTIONS </p>
  */
 
-//TODO improve the flexibility of providing the keywords' folder path by end user
 public class KeywordsHandler {
 
     private static KeywordManager keywordManager = null;

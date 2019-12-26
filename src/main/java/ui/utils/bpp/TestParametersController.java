@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Nick B. on 4/24/2017.
+ * @author nick.
  *
  * <p>This class provides an ability to check whether the passed from excel sheet parameter is
  * a keyword, a metadata or an execution context key and convert such appropriately.</p>

@@ -7,7 +7,12 @@ import ui.pages.BasePage;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author rlevytskyi
+ * <p>
+ * Enum to handle spinners and modules that may overlay ui elements
+ * </p>
+ */
 public enum UiHandlers {
 
     PF_SPINNER_HANDLER((element, e) -> {

@@ -10,14 +10,12 @@ import ui.utils.Reporter;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The class is used to handle the JavaScript behavior
+ * <p> The class is used to handle the JavaScript behavior </p>
  *
- * Author: Nick Berezitskyi
+ * Author: Nick
  */
 public class JavaScriptHelper {
 
-
-    //private static final Logger log = Logger.getLogger(JavaScriptHelper.class);
 
     /**
      *

@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Base test class for all ui tests.
+ * <p>Base test class for all ui tests.</p>
  * @author yzosin
  */
 public class BaseUITest {

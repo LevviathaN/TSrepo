@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Functionality requested in AGQA-865
  * <p>The class is used for handling the execution context variables during the tests running.
- * This class is implemented using the DataManagementUtil-1.5.1 library provided by UTOPIA SOLUTIONS </p>
+ * This class is implemented using the DataManagementUtil-2.8.2 library provided by UTOPIA SOLUTIONS </p>
  */
 
 public class ExecutionContextHandler {

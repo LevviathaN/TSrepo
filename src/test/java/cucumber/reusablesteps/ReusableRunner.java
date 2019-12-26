@@ -19,7 +19,10 @@ import java.util.List;
 import java.util.Map;
 import static cucumber.StepPatterns.*;
 
-
+/**
+ * @author Ruslan Levytskyi
+ * <p>The class is used to handle all reusable scenarios and match them with apropriate step definitions</p>
+ */
 public class ReusableRunner {
 
 private static final ThreadLocal<ReusableRunner> instance = new ThreadLocal<ReusableRunner>() {

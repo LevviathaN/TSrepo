@@ -8,10 +8,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * <p>This function uses a Java util, ResourceBundle, to identify file name located in src.
- * This returns a String value identified by the key in the property file </p>
- *
- * @author tchin
+ * @author yzosin
+ * <p>
+ * The class to get locator properties for web-elements
+ * </p>
  */
 public class PropertiesHelper {
 
@@ -21,14 +21,6 @@ public class PropertiesHelper {
     private static Map<String, String> locatorProperties = new TreeMap<String, String>();
 
     private static final String PROPERTIES_FOLDER = PreProcessFiles.PROPERTIES_FILES_FOLDER_PATH;
-
-    public static String getConfiguration(String configuration, String key) {
-        if (configuration.equalsIgnoreCase("TestBeans")) {
-            return ResourceBundle.getBundle("configuration", Locale.getDefault()).getString(key);
-        }
-
-        return "Configuration not found";
-    }
 
     /**
      * <p>This function used to get properties for API requests </p>

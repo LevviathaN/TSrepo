@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author hemantojha
+ * @author yzosin
  * <p>
  * Provides the reporting interface
  * </p>
@@ -393,13 +393,11 @@ public class Reporter {
 
             //shooting strategy work for Chrome Only.
             boolean hasDriverId = System.getProperties().contains("driver");
-            boolean hasChrome = false;
             if (hasDriverId) {
-                hasChrome = System.getProperty("driver").contains("CHROME");
+                System.getProperty("driver").contains("CHROME");
             }
 
             //verify if Chrome is specified from maven or config.properties
-
             if (System.getProperties().containsKey("driver") && System.getProperties().getProperty("driver").contains("CHROME")) {
                 BPPLogManager.getLogger().info("Taking Screen Shot For Chrome ");
                 screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100))
@@ -427,7 +425,6 @@ public class Reporter {
     public static synchronized void stopReporting(ITestResult result) {
 
         if (result.getStatus() == ITestResult.FAILURE)
-            //fail("Test failed because of: " + Tools.getStackTrace(result.getThrowable()));
             fail("Test failed. Please see attached screenshot below");
         else if (result.getStatus() == ITestResult.SKIP)
             log("Test: " + testStorage.get(Thread.currentThread().getId()).toString() + " skipped");
@@ -538,6 +535,7 @@ public class Reporter {
             String fileName = "Execution_Context_Variables" + ".txt";
             String tempFile = ecFolder + File.separator + fileName;
             File file = new File(tempFile);
+            if (file!=null)
             if (!file.exists()) {
                 file.createNewFile();
                 FileWriter writer = new FileWriter(file, true);
@@ -563,7 +561,8 @@ public class Reporter {
         //String tempName = getCurrentTestName();
         String tempName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
         logName = tempName.replace("\"", "_");
-        Reporter.testLogName = logName + "_" + formattedDateTime + ".log";
+        synchronized (testLogName) {
+        Reporter.testLogName = logName + "_" + formattedDateTime + ".log";}
         //this.logName = testName.replace(" ", "_") + "_" + formattedDateTime + ".log";
     }
 

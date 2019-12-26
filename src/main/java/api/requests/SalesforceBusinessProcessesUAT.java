@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.containsString;
 
 /**
- * Class will contain all methods required for main Salesforce API calls: e.g. Create Faculty, Student Account, Add Address.
+ * <p> Contains all methods required for main Salesforce API calls in UAT: e.g. Create Faculty, Student Account, Add Address.</p>
  */
 
 public class SalesforceBusinessProcessesUAT {
