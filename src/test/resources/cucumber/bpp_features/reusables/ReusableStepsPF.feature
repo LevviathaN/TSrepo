@@ -45,6 +45,17 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_REGION_FD_CODE" element
 
+  Scenario: Create Course Type Financial Dimension
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "CourseTypeFDCode[####]" text to the "Code" "Product Factory text field"
+    And I set "CourseTypeFDDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Applies To" "Product Factory dropdown"
+    And I click on the "Course Type" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_COURSE_TYPE_FD_CODE" element
+
   Scenario: Create Body
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
@@ -109,6 +120,28 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_REGION_NAME" element
 
+  Scenario: Create Course Type
+    When I click on the "Types" "Product Factory navigation item"
+    When I click on the "Course Types" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "CourseTypeDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "VAT Rule" "Product Factory change button"
+    And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
+    And I click on the "Cost Centre Financial Dimension" "Product Factory change button"
+    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
+    And I click on the "Project Financial Dimension" "Product Factory change button"
+    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
+
+  Scenario: Create Client
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Clients" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "ClientName[####]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_CLIENT_NAME" element
+
   Scenario: Create Pricing Matrix
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
@@ -119,3 +152,12 @@ Feature: Product Factory
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
     And I click on the "Save" button
     Then I should see the "EC_SITTING_NAME" element
+
+  Scenario: Create VAT Rule
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "VAT Rules" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "VatRuleCode[####]" text to the "Code" "Product Factory text field"
+    And I set "VatRuleDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_VAT_RULE_CODE" element

@@ -182,7 +182,7 @@ public static ReusableRunner getInstance() {
                 }
             }
             if (!isReusableExist) {
-                Reporter.warn(reusableName + " reusable step does not exist. " +
+                Reporter.fail(reusableName + " reusable step does not exist. " +
                         "Here is a list of available reusable steps: ");
                 for (String availStep : availableReusableStepsList) {
                     Reporter.log("  " + availStep);

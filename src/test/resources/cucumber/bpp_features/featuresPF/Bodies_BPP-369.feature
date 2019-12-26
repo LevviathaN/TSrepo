@@ -15,7 +15,7 @@ Feature: Reference Data - Body - BPP-369
     Then I click on the "Create" "Product Factory button"
     And I set "BodyShortName[####]" text to the "Short Name" "Product Factory text field"
     And I set "BodyName[####]" text to the "Name" "Product Factory text field"
-    And I click on the "Change" "Product Factory button"
+    And I click on the "Financial Dimension" "Product Factory change button"
     And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
@@ -25,7 +25,7 @@ Feature: Reference Data - Body - BPP-369
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I click on the "Change" "Product Factory button"
+    And I click on the "Financial Dimension" "Product Factory change button"
     And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
@@ -37,7 +37,7 @@ Feature: Reference Data - Body - BPP-369
     Then I click on the "Create" "Product Factory button"
     And I set "EC_BODY_SHORT_NAME" text to the "Short Name" "Product Factory text field"
     And I set "BodyName[####]" text to the "Name" "Product Factory text field"
-    And I click on the "Change" "Product Factory button"
+    And I click on the "Financial Dimension" "Product Factory change button"
     And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Short Name must be unique" "message"

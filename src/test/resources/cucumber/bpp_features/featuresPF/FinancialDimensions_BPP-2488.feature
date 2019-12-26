@@ -1,8 +1,8 @@
 @ProductFactory @FinancialDimensions
-Feature: Product Factory Financial Dimensions
-  As a product setter
-  I want to be able to create Bodies in Product Factory
-  In order to (just cause)
+Feature: Financial Dimension - Reference Data Create Record - BPP-2488
+  As a Senior Product Setter
+  I want to be able to create new Financial Dimension records
+  so that I can setup appropriate codes for accounting purposes.
 
   Background:
     Given I execute "Log In" reusable step
