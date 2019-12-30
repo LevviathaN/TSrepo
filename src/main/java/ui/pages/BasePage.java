@@ -572,4 +572,23 @@ public class BasePage {
             }
         }
     }
+
+    /**
+     * Action to imitate key press from keyboard
+     *
+     * @param value: value to be entered in appropriate field using metadata values
+     * @param element By locator of element to press the key for
+     */
+    public void pressKeyFromKeyboard(By element, String value) {
+        if (!value.equals("")) {
+            try {
+                WebElement keyItem = findElement(element);
+                keyItem.sendKeys(Keys.valueOf(value));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            BPPLogManager.getLogger().error("No value defined for 'PressKey'. Check your parameters");
+        }
+    }
 }

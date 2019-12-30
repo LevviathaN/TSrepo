@@ -1,7 +1,6 @@
 @Reusable
 Feature: Salesforce
 
-  @SF
   Scenario: Log In To Salesforce
     Given I am on "MD_COMMON_LINKS_SALESFORCEURL" URL
     Then I fill the "Salesforce Username" field with "MD_COMMON_CREDENTIALS_BPPADMINUSER"

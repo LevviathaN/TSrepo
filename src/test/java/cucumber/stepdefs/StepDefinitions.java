@@ -205,4 +205,17 @@ public class StepDefinitions extends BasePage {
             Reporter.log("<pre>[input test parameter] " + element + "' -> '" + processedElement + " [output value]</pre>");
         }
     }
+
+    /**
+     * Definition to imitate key press from keyboard
+     *
+     * @param fieldValue : value to be entered in appropriate field using metadata values
+     * @param element
+     */
+    @Then("^I press \"([^\"]*)\" for \"([^\"]*)\"$")
+    public void i_press_from_keyboard(String fieldValue, String element) {
+        Reporter.log("Executing step: I press the " + fieldValue + " from keyboard");
+        pressKeyFromKeyboard(initElementLocator(element), TestParametersController.checkIfSpecialParameter(fieldValue));
+        waitForPageToLoad();
+    }
 }

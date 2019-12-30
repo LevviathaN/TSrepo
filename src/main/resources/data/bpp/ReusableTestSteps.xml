@@ -1,4 +1,16 @@
 <reusables>
+    <reusable name="Log In To Banner">
+        <step>I am on "MD_COMMON_LINKS_BPPBANNERURL" URL</step>
+        <step>I click on the "Banner Application Navigator" link</step>
+        <step>I fill the "Banner Username" field with "MD_COMMON_CREDENTIALS_BPPBANNERUSER"</step>
+        <step>I fill the "Banner Password" field with "MD_COMMON_CREDENTIALS_BPPBANNERPASSWORD"</step>
+        <step>I click on the "Banner Login" button</step>
+        <step>I should see the "Banner User Menu Icon" element</step>
+    </reusable>
+    <reusable name="Navigate To Form">
+        <step>I fill the "Banner Go To Form" field with "SAADCRV"</step>
+        <step>I press "MD_COMMON_KEYBOARD_ENTER" for "Banner Go To Form"</step>
+    </reusable>
     <reusable name="Log In">
         <step>I am on "MD_COMMON_LINKS_PRODUCTFACTORYURL" URL</step>
         <step>I click on the "Sign in with Auth0" button</step>
