@@ -107,6 +107,7 @@ public class StepDefinitions extends BasePage {
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
+        waitForPageToLoad();
         boolean isDisplayed = false;
         for(int i = 0; i<findElements(initElementLocator(element)).size(); i++){
             if(findElements(initElementLocator(element)).get(i).isDisplayed()){
@@ -203,5 +204,18 @@ public class StepDefinitions extends BasePage {
         if(!element.equals(processedElement)){
             Reporter.log("<pre>[input test parameter] " + element + "' -> '" + processedElement + " [output value]</pre>");
         }
+    }
+
+    /**
+     * Definition to imitate key press from keyboard
+     *
+     * @param fieldValue : value to be entered in appropriate field using metadata values
+     * @param element
+     */
+    @Then("^I press \"([^\"]*)\" for \"([^\"]*)\"$")
+    public void i_press_from_keyboard(String fieldValue, String element) {
+        Reporter.log("Executing step: I press the " + fieldValue + " from keyboard");
+        pressKeyFromKeyboard(initElementLocator(element), TestParametersController.checkIfSpecialParameter(fieldValue));
+        waitForPageToLoad();
     }
 }

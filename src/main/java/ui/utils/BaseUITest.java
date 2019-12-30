@@ -47,7 +47,7 @@ public class BaseUITest {
         try {
             BPPLogManager.getLogger().info("Driver creation");
             BasePage.driver.set(DriverProvider.getDriver());
-            BasePage.driver().manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            BasePage.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (Exception e) {
             Reporter.failTryTakingScreenshot("Before test failure during Driver creation");
             Reporter.flush();

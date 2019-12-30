@@ -24,7 +24,8 @@ public enum StepPatterns {
     I_CHECK_UNCHECK("^I \"(check|uncheck)\" \"([^\"]*)\" checkbox$"),
     I_CHECK_UNCHECK_SPECIAL("^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$"),
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"),
-    ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$");
+    ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$"),
+    I_PRESS_KEY("^I press \"([^\"]*)\" for \"([^\"]*)\"$");
 
     private final String pattern;
 
