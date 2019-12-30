@@ -156,4 +156,15 @@
         <step>I click on the "Save" "Product Factory button"</step>
         <step>I should see the "EC_VAT_RULE_CODE" element</step>
     </reusable>
+    <reusable name="Log In To Salesforce">
+        <step>I am on "MD_COMMON_LINKS_SALESFORCEURL" URL</step>
+        <step>I fill the "Salesforce Username" field with "MD_COMMON_CREDENTIALS_BPPADMINUSER"</step>
+        <step>I fill the "Salesforce Password" field with "MD_COMMON_CREDENTIALS_BPPADMINPASSWORD"</step>
+        <step>I click on the "Salesforce Login" button</step>
+        <step>I should see the "Salesforce Context Bar Menu" element</step>
+    </reusable>
+    <reusable name="Log Out Salesforce">
+        <step>I click on the "Salesforce User Menu Icon" button</step>
+        <step>I click on the "Salesforce Log Out" button</step>
+    </reusable>
 </reusables>

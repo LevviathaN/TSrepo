@@ -10,5 +10,12 @@
   "Product Factory Change Button": "xpath=//button[normalize-space()='Change']",
   "Product Factory Select Dropdown": "xpath=//button[normalize-space()='Select'][1]",
   "Product Factory Save Button": "xpath=//span[text()='Save']",
-  "Product Factory Spinner": "xpath=//div[@role='progressbar']"
+  "Product Factory Spinner": "xpath=//div[@role='progressbar']",
+
+  "Salesforce Username": "id=username",
+  "Salesforce Password": "id=password",
+  "Salesforce Login": "id=Login",
+  "Salesforce Context Bar Menu": "xpath=//div[@class='slds-context-bar']",
+  "Salesforce User Menu Icon": "xpath=//span[contains(@class,'forceSocialPhoto')]",
+  "Salesforce Log Out": "xpath=//a[contains(.,'Log Out')]"
 }

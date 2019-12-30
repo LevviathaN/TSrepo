@@ -107,6 +107,7 @@ public class StepDefinitions extends BasePage {
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
+        waitForPageToLoad();
         boolean isDisplayed = false;
         for(int i = 0; i<findElements(initElementLocator(element)).size(); i++){
             if(findElements(initElementLocator(element)).get(i).isDisplayed()){
