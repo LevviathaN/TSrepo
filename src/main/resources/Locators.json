@@ -1,0 +1,28 @@
+{
+  "Product Factory Login": "xpath=//button[@name='submit']",
+  "Product Factory Email": "xpath=//input[@placeholder='Email']",
+  "Product Factory Password": "xpath=//input[@placeholder='Password']",
+  "Product Factory Work Link": "xpath=//div[@title='Programme']//span[text()='work']",
+  "Product Factory Body Link": "xpath=//div[@title='Bodies']//span[text()='collections_bookmark']",
+  "Product Factory Create Button": "xpath=//button[normalize-space()='Create']",
+  "Product Factory Short Name Text Field": "xpath=//label[normalize-space()='Short Name']/following::input[1]",
+  "Product Factory Name Text Field": "xpath=//label[normalize-space()='Name']/following::input[1]",
+  "Product Factory Change Button": "xpath=//button[normalize-space()='Change']",
+  "Product Factory Select Dropdown": "xpath=//button[normalize-space()='Select'][1]",
+  "Product Factory Save Button": "xpath=//span[text()='Save']",
+  "Product Factory Spinner": "xpath=//div[@role='progressbar']",
+
+  "Salesforce Username": "id=username",
+  "Salesforce Password": "id=password",
+  "Salesforce Login": "id=Login",
+  "Salesforce Context Bar Menu": "xpath=//div[@class='slds-context-bar']",
+  "Salesforce User Menu Icon": "xpath=//span[contains(@class,'forceSocialPhoto')]",
+  "Salesforce Log Out": "xpath=//a[contains(.,'Log Out')]",
+
+  "Banner Username": "xpath=//*[@id='username']",
+  "Banner Password": "xpath=//*[@id='password']",
+  "Banner Login": "xpath=//*[@value='LOGIN']",
+  "Banner Application Navigator": "xpath=//a[contains(text(),'Application Navigator')]",
+  "Banner User Menu Icon": "id=user-info-toggle",
+  "Banner Go To Form": "id=search-landing"
+}

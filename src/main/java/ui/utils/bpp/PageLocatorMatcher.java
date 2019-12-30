@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Nick B. on 4/7/2017.
+ * @author yzosin
  * <p>Class contains static methods that check whether passed string locator matches any of CSS, XPATH or ID pattern </p>
  */
 public class PageLocatorMatcher {
