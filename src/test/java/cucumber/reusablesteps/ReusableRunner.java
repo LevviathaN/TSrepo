@@ -98,6 +98,31 @@ public static ReusableRunner getInstance() {
     }
 
     /**
+     * Execute reusable scenario replacing some steps
+     *
+     * @param reusableName name of scenario, that you want to use as a reusable step.
+     *                     This scenario must be in src/main/resources/data/bpp/ReusableTestSteps.xml
+     * @param subSteps     Map of steps you want to to replace existing steps with,
+     *                     where key - index of step in scenario you want to replace with a new step
+     *                     and value - step, written in gherkin notation
+     * @author Ruslan Levytskyi
+     */
+    public void executeReusableReplaceStep(String reusableName, Map<Integer, String> subSteps) {
+
+        reusable = getStepsOfReusableScenario(reusableName);
+
+        for (int i = 0; i < reusable.size(); i++) {
+
+            if (subSteps.containsKey(i+1)) {
+                BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
+                reusable.remove(i);
+                reusable.add(i, subSteps.get(i+1));
+            }
+            executeStep(i);
+        }
+    }
+
+    /**
      * Execute reusable scenario
      *
      * @param reusableName name of scenario, that you want to use as a reusable step.

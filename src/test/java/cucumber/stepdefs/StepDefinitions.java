@@ -156,6 +156,12 @@ public class StepDefinitions extends BasePage {
         ReusableRunner.getInstance().executeReusableAddSteps(TestParametersController.checkIfSpecialParameter(reusableName), steps);
     }
 
+    @Then("^I execute \"([^\"]*)\" reusable step replacing some steps$")
+    public void i_execute_reusable_step_replace(String reusableName, Map<Integer, String> steps) {
+        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
+        ReusableRunner.getInstance().executeReusableReplaceStep(TestParametersController.checkIfSpecialParameter(reusableName), steps);
+    }
+
 
     /**
      * Definition to execute reusable steps

@@ -5,7 +5,9 @@ Feature: Reference Data - Body - BPP-369
   So that I can associate new Courses to that Body
 
   Background:
-    Given I execute "Log In" reusable step
+    Given I execute "Log In" reusable step replacing some steps
+    |3|I fill the "Product Factory Email" field with "samuelslade@bpp.com"|
+    |4|I fill the "Product Factory Password" field with "Password1"|
     And I execute "Create Body Financial Dimension" reusable step
 
   @Positive @Regression @P1
