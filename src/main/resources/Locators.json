@@ -24,5 +24,11 @@
   "Banner Login": "xpath=//*[@value='LOGIN']",
   "Banner Application Navigator": "xpath=//a[contains(text(),'Application Navigator')]",
   "Banner User Menu Icon": "id=user-info-toggle",
-  "Banner Go To Form": "id=search-landing"
+  "Banner Go To Form": "id=search-landing",
+  "Banner Id Text": "id=inp:id",
+  "Banner Term Code": "xpath=//label[text()='Term']/following-sibling::input",
+  "Banner Go": "xpath=//span[text()='Go']/..",
+  "Banner SAADCRV Set Desicison Insert Button": "xpath=//div[@id='tabSaadcrv2TabCanvas-page_applDecisions']//span[text()='Insert']/ancestor::a",
+  "Banner Frame": "id=bannerHS",
+  "Banner Decision Code": "xpath=//div[@id='page_applDecisions_grdSarappd']/div[4]/div[3]/div/div[2]/div[1]/div/input"
 }
