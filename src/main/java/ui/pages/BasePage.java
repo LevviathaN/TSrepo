@@ -10,6 +10,8 @@ import ui.utils.bpp.TestParametersController;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -199,25 +201,6 @@ public class BasePage {
     //_______________________________________________Complex Actions__________________________________________________
 
     /**
-     * Method to click on element and continue execution if element is not found
-     *
-     * @param element locator of element to find
-     * @param timeout optional value of timeout for finding specified element
-     */
-    public static void clickOnElementIgnoreException(By element, int... timeout) {
-        waitForPageToLoad();
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.visibilityOfElementLocated(element));
-            driver().findElement(element).click();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        waitForPageToLoad();
-    }
-
-    /**
      * Method to click on first visible element by specified locator
      *
      * @param element locator of element to find
@@ -266,46 +249,6 @@ public class BasePage {
     }
 
     /**
-     * Method to find group elements and continue execution if element is not found
-     *
-     * @param element locator of element to find
-     * @param timeout optional value of timeout for finding specified element
-     *
-     * @return list of WebElements
-     */
-    public static List<WebElement> findElementsIgnoreException(By element, int... timeout) {
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        waitForPageToLoad();
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.presenceOfElementLocated(element));
-            return driver().findElements(element);
-        } catch (Exception e) {
-            return new ArrayList<WebElement>();
-        }
-    }
-
-    /**
-     * Method to click on element
-     *
-     * @param element locator of element to click on
-     * @param timeout optional value of timeout for finding specified element
-     */
-    public static synchronized void clickOnElement(By element, int... timeout) {
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.visibilityOfElementLocated(element));
-            driver().findElement(element).click();
-        } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
-            Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
-            throw new RuntimeException("Failure clicking on element");
-        }
-        waitForPageToLoad();
-    }
-
-    /**
      * Method to click on element
      *
      * @param element locator of element to click on
@@ -347,6 +290,30 @@ public class BasePage {
         }
     }
 
+    /**
+     * Method to find element by locator checking presence of element (not visibility)
+     *
+     * @param element locator of element to find
+     * @param timeout optional value of timeout for finding selected element
+     *
+     * @return list of WebElements found by specified locator
+     */
+    public WebElement findPresentElement(By element, int... timeout) {
+        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
+        waitForPageToLoad();
+        try {
+            (new WebDriverWait(driver(), timeoutForFindElement))
+                    .until(ExpectedConditions.presenceOfElementLocated(element));
+            return driver().findElement(element);
+        } catch (TimeoutException e) {
+            BPPLogManager.getLogger().info("Exception caught. Trying to find an element again.");
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(10, ChronoUnit.SECONDS))
+                    .pollingEvery(Duration.ofMillis(2000))
+                    .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
+                    .until(ExpectedConditions.presenceOfElementLocated(element));
+            return driver().findElement(element);
+        }
+    }
     /**
      * Method to find elements by locator
      *
@@ -473,8 +440,7 @@ public class BasePage {
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
     public static void waitForPageToLoad(){
-        Wait<WebDriver> wait = new WebDriverWait(driver(), STATIC_TIMEOUT).ignoring(WebDriverException.class);
-        BPPLogManager.getLogger().info("Waiting for page to load");
+        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT).ignoring(WebDriverException.class);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
@@ -541,11 +507,18 @@ public class BasePage {
     /**
      * Method to switch to iFrame on the page
      *
-     * @param xpath xpath of iFrame you need to switch to
+     * @param frameName locator of iFrame you need to switch to
      */
-    public void switchToFrame(By xpath) {
-        Reporter.log("Switch to frame: " + xpath.toString());
-        driver().switchTo().frame(findElement(xpath));
+    public void switchToFrame(By frameName) {
+        BPPLogManager.getLogger().info("Switching to frame: " + frameName);
+        WebDriverWait wait = new WebDriverWait(driver(), 20);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
+        sleepFor(5);
+        try {
+            driver().switchTo().frame(findPresentElement(frameName, 20));
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     /**

@@ -216,12 +216,24 @@ public class StepDefinitions extends BasePage {
      * Definition to imitate key press from keyboard
      *
      * @param fieldValue : value to be entered in appropriate field using metadata values
-     * @param element
+     * @param element: By locator of element to press key
      */
     @Then("^I press \"([^\"]*)\" for \"([^\"]*)\"$")
     public void i_press_from_keyboard(String fieldValue, String element) {
         Reporter.log("Executing step: I press the " + fieldValue + " from keyboard");
         pressKeyFromKeyboard(initElementLocator(element), TestParametersController.checkIfSpecialParameter(fieldValue));
+        waitForPageToLoad();
+    }
+
+    /**
+     * Definition to switch into frame
+     *
+     * @param element: By locator of  a frame
+     */
+    @Given("I switch to \"([^\"]*)\" frame")
+    public void i_switch_to_frame(String element) {
+        Reporter.log("Executing step: I switch to " + element + " frame");
+        switchToFrame(initElementLocator(element));
         waitForPageToLoad();
     }
 }
