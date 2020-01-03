@@ -56,6 +56,17 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_FD_CODE" element
 
+  Scenario: Create Material Type Financial Dimension
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "MaterialTypeFDCode[####]" text to the "Code" "Product Factory text field"
+    And I set "MaterialTypeFDDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Applies To" "Product Factory dropdown"
+    And I click on the "Material Type" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_MATERIAL_TYPE_FD_CODE" element
+
   Scenario: Create Body
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
@@ -83,6 +94,13 @@ Feature: Product Factory
     And I set "PaperDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
+
+  Scenario: Link Body To Paper
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Papers" "Product Factory navigation sub item"
+    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
+    And I click on the "EC_BODY_NAME" "Product Factory select button"
+    Then I click on the "Yes" "button"
 
   Scenario: Create Sitting
     When I click on the "Delivery" "Product Factory navigation item"
@@ -145,13 +163,13 @@ Feature: Product Factory
   Scenario: Create Pricing Matrix
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
-    Then I click on the "PRODUCT_FACTORY_CREATE_BUTTON" button
-    And I click on the "Body" "Product Factory change modal option"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory select button"
-    And I click on the "Sitting" "Product Factory change modal option"
-    And I click on the "EC_SITTING_NAME" "Product Factory select button"
-    And I click on the "Save" button
-    Then I should see the "EC_SITTING_NAME" element
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "Body" "Product Factory change button"
+    And I click on the "EC_BODY_NAME" "Product Factory change modal option"
+    And I click on the "Sitting" "Product Factory change button"
+    And I click on the "EC_SITTING_NAME" "Product Factory change modal option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_BODY_NAME" element
 
   Scenario: Create VAT Rule
     When I click on the "Financials" "Product Factory navigation item"
@@ -161,3 +179,15 @@ Feature: Product Factory
     And I set "VatRuleDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_VAT_RULE_CODE" element
+
+  Scenario: Link Body To Level
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Bodies" "Product Factory navigation sub item"
+    Then I click on the "EC_BODY_NAME" "Product Factory Link Levels button"
+    And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
+    And I click on the "Save" "Product Factory button"
+
+  Scenario: Link Body To Level
+    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
+    And I click on the "EC_BODY_NAME" "Product Factory select button"
+    And I click on the "Yes" "button"
