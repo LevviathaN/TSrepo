@@ -263,6 +263,7 @@ public class BasePage {
             for(UiHandlers handler : handlers){
                 handler.getHandler().handle(element, e);
             }
+            driver().findElement(element).click();
         }
         waitForPageToLoad();
     }

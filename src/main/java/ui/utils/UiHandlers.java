@@ -19,7 +19,13 @@ public enum UiHandlers {
         BasePage page = new BasePage();
         WebDriverWait wait = new WebDriverWait(BasePage.driver(), BasePage.DEFAULT_TIMEOUT,300);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
-        page.findElement(element).click();
+    }),
+
+    PF_SCROLL_HANDLER((element, e) -> {
+        BasePage page = new BasePage();
+        if(e.getMessage().contains("Other element would receive the click: <button")){
+            BasePage.scrollToBottomOfPage();
+        }
     }),
 
     DEFAULT_HANDLER((element, e) -> {

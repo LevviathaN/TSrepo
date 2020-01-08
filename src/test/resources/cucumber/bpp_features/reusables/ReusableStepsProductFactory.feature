@@ -152,6 +152,17 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
 
+  Scenario: Create Material Type
+    When I click on the "Types" "Product Factory navigation item"
+    When I click on the "Material Types" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "MaterialTypeName[####]" text to the "Name" "Product Factory text field"
+    And I set "MaterialTypeDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Financial Dimension" "Product Factory change button"
+    And I click on the "EC_MATERIAL_TYPE_FD_CODE" "Product Factory select button"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_MATERIAL_TYPE_DESCRIPTION" element
+
   Scenario: Create Client
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"
