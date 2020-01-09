@@ -25,10 +25,11 @@
   "Banner Application Navigator": "xpath=//a[contains(text(),'Application Navigator')]",
   "Banner User Menu Icon": "id=user-info-toggle",
   "Banner Go To Form": "id=search-landing",
-  "Banner Id Text": "id=inp:id",
-  "Banner Term Code": "xpath=//label[text()='Term']/following-sibling::input",
-  "Banner Go": "xpath=//span[text()='Go']/..",
-  "Banner SAADCRV Set Desicison Insert Button": "xpath=//div[@id='tabSaadcrv2TabCanvas-page_applDecisions']//span[text()='Insert']/ancestor::a",
+  "Banner Id Text": "inframe=Banner Frame>xpath=//input[@name='id']",
+  "Banner Term Code": "inframe=Banner Frame>xpath=//label[text()='Term']/following-sibling::input",
+  "Banner Go": "inframe=Banner Frame>xpath=//span[text()='Go']/..",
+  "Banner SAADCRV Set Desicison Insert Button": "inframe=Banner Frame>xpath=//div[@id='tabSaadcrv2TabCanvas-page_applDecisions']//span[text()='Insert']/ancestor::a",
   "Banner Frame": "id=bannerHS",
-  "Banner Decision Code": "xpath=//div[@id='page_applDecisions_grdSarappd']/div[4]/div[3]/div/div[2]/div[1]/div/input"
+  "Banner Decision Code": "inframe=Banner Frame>xpath=//div[@id='page_applDecisions_grdSarappd']/div[4]/div[3]/div/div[2]/div[1]/div/input",
+  "Banner Save": "inframe=Banner Frame>xpath=//*[text()='Save']"
 }

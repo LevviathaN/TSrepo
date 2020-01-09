@@ -1,6 +1,7 @@
 package ui.utils.bpp;
 
 import org.openqa.selenium.By;
+import ui.pages.BasePage;
 import ui.utils.Reporter;
 
 import java.util.regex.Matcher;
@@ -212,6 +213,21 @@ public class TestParametersController {
         }
     }
 
+    /**
+     * The method switches to frame
+     *
+     * @param locatorInFrame element located in frame
+     * @return an element after frame name is defined and trimmed from xpath locator
+     */
+    public static By getFrame(String locatorInFrame) {
+        String[] elements = locatorInFrame.split(">");
+        String frameName = elements[0].substring(8);
+        BasePage page = new BasePage();
+        By element = page.initElementLocator(frameName);
+        page.switchToFrame(element);
+        return By.xpath(elements[1].substring(6));
+    }
+
     public static By initElementByLocator(String locator) {
         if (PageLocatorMatcher.isXpath(locator)) {
             return By.xpath(locator.substring(6));
@@ -227,6 +243,8 @@ public class TestParametersController {
             return By.className(locator.substring(10));
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
+        }  else if (PageLocatorMatcher.isInFrame(locator)) {
+            return getFrame(locator);
         } else {
             Reporter.failTryTakingScreenshot("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");
             return By.linkText(locator);
