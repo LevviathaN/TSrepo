@@ -1,5 +1,6 @@
 package cucumber.stepdefs;
 
+import cucumber.api.java.AfterStep;
 import cucumber.reusablesteps.ReusableRunner;
 import cucumber.api.java.en.*;
 //import io.cucumber.java.en.*;
@@ -16,6 +17,12 @@ import java.util.Map;
  * Created by Ruslan Levytskyi on 15/3/2019.
  */
 public class StepDefinitions extends BasePage {
+
+
+    @AfterStep
+    public void postActions() {
+        driver().switchTo().defaultContent();
+    }
 
     /**
      * Definition to go to specified url.
@@ -226,14 +233,17 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
-     * Definition to switch into frame
+     * Definition to check visibility of the element located in frame
      *
-     * @param element: By locator of  a frame
+     * @param element locator of element you want to check if it's visible
+     *             Here we also check if text is EC_ or MD_ of KW_
+     * @param frame frame name to switch
      */
-    @Given("I switch to \"([^\"]*)\" frame")
-    public void i_switch_to_frame(String element) {
-        Reporter.log("Executing step: I switch to " + element + " frame");
-        switchToFrame(initElementLocator(element));
+    @Then("^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$")
+    public void i_should_see_the_message_in_frame(String element, String frame) {
+        Reporter.log("Executing step: I should see the " + element + " element located in frame");
         waitForPageToLoad();
+        switchToFrame(initElementLocator(frame));
+        findElements(initElementLocator(element));
     }
 }

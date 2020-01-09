@@ -45,13 +45,13 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(WAIT_FOR.getPattern(),() -> stepDefs.wait_for(arg1));
         stepDefsMap.put(HOVER_OVER.getPattern(),() -> stepDefs.hover_over(arg1));
         stepDefsMap.put(I_SHOULD_SEE_THE_TEXT.getPattern(),() -> stepDefs.i_should_see_the_text(arg1));
+        stepDefsMap.put(I_SHOULD_SEE_THE_MESSAGE_LOCATED_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
         stepDefsMap.put(I_SHOULD_BE_REDIRECTED_TO_THE_PAGE.getPattern(),() -> stepDefs.i_should_be_redirected_to_page(arg1));
         stepDefsMap.put(I_EXECUTE_REUSABLE_STEP.getPattern(),() -> stepDefs.i_execute_reusable_step(arg1));
         stepDefsMap.put(I_REMEMBER_TEXT.getPattern(),() -> stepDefs.i_remember_text(arg1, arg2));
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE.getPattern(),() -> stepDefs.elements_attribute_should_have_value(arg1, arg2, arg3));
         stepDefsMap.put(I_CHECK_UNCHECK.getPattern(),() -> stepDefs.i_check_uncheck(arg1, arg2));
         stepDefsMap.put(I_PRESS_KEY.getPattern(),() -> stepDefs.i_press_from_keyboard(arg1, arg2));
-        stepDefsMap.put(I_SWITCH_TO_FRAME.getPattern(), () -> stepDefs.i_switch_to_frame(arg1));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));

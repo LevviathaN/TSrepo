@@ -511,11 +511,11 @@ public class BasePage {
      */
     public void switchToFrame(By frameName) {
         BPPLogManager.getLogger().info("Switching to frame: " + frameName);
-        WebDriverWait wait = new WebDriverWait(driver(), 20);
+        WebDriverWait wait = new WebDriverWait(driver(), 10);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
         sleepFor(5);
         try {
-            driver().switchTo().frame(findPresentElement(frameName, 20));
+            driver().switchTo().frame(findPresentElement(frameName, 10));
         } catch (Exception e) {
             e.getMessage();
         }

@@ -11,6 +11,7 @@ public enum StepPatterns {
     WAIT_FOR("^I wait for \"([^\"]*)\" seconds$"),
     HOVER_OVER("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$"),
     I_SHOULD_SEE_THE_TEXT("^I should see the \"([^\"]*)\" (?:button|message|element)$"),
+    I_SHOULD_SEE_THE_MESSAGE_LOCATED_IN_FRAME("^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$"),
     I_SHOULD_BE_REDIRECTED_TO_THE_PAGE("^I should be redirected to the \"([^\"]*)\" page$"),
     I_EXECUTE_REUSABLE_STEP("^I execute \"([^\"]*)\" reusable step$"),
     I_REMEMBER_TEXT("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$"),
@@ -25,8 +26,7 @@ public enum StepPatterns {
     I_CHECK_UNCHECK_SPECIAL("^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$"),
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"),
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$"),
-    I_PRESS_KEY("^I press \"([^\"]*)\" for \"([^\"]*)\"$"),
-    I_SWITCH_TO_FRAME("I switch to \"([^\"]*)\" frame");
+    I_PRESS_KEY("^I press \"([^\"]*)\" for \"([^\"]*)\"$");
 
     private final String pattern;
 
