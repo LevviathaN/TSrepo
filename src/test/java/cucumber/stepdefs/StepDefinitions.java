@@ -255,7 +255,7 @@ public class StepDefinitions extends BasePage {
      *
      */
     @Then("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
-    public void iShouldnTSeeTheElement(String element) {
+    public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
         waitForPageToLoad();
             if(checkIfElementNotExist(initElementLocator(element))) {
