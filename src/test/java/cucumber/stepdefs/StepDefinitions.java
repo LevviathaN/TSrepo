@@ -246,4 +246,22 @@ public class StepDefinitions extends BasePage {
         switchToFrame(initElementLocator(frame));
         findElements(initElementLocator(element));
     }
+
+    /**
+     * Definition to check invisibility of the element
+     *
+     * @author Andrii Yakymchuk
+     * @param element:  By locator of a element
+     *
+     */
+    @Then("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
+    public void iShouldnTSeeTheElement(String element) {
+        Reporter.log("Executing step: I should see the '" + element + "' element");
+        waitForPageToLoad();
+            if(checkIfElementNotExist(initElementLocator(element))) {
+                Assert.assertTrue(false, "Element with " + element + " text is not displayed");
+            } else {
+                Assert.assertTrue(true, "Element with " + element + " Shouldn't be displayed");
+            }
+        }
 }

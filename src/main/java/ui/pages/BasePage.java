@@ -564,4 +564,20 @@ public class BasePage {
             BPPLogManager.getLogger().error("No value defined for 'PressKey'. Check your parameters");
         }
     }
+
+    /**
+     * Action to verify that element is not present
+     *
+     * @param element By locator of element to press the key for
+     */
+    public boolean checkIfElementNotExist(By element) {
+        waitForPageToLoad();
+        if (driver().findElements(element).size() != 0) {
+            BPPLogManager.getLogger().info("Element: " + element + " is not displayed");
+            return true;
+        } else {
+            BPPLogManager.getLogger().info("Element: " + element + " is displayed");
+            return false;
+        }
+    }
 }
