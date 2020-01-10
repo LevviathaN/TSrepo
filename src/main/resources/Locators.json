@@ -31,5 +31,14 @@
   "Banner SAADCRV Set Desicison Insert Button": "inframe=Banner Frame>xpath=//div[@id='tabSaadcrv2TabCanvas-page_applDecisions']//span[text()='Insert']/ancestor::a",
   "Banner Frame": "id=bannerHS",
   "Banner Decision Code": "inframe=Banner Frame>xpath=//div[@id='page_applDecisions_grdSarappd']/div[4]/div[3]/div/div[2]/div[1]/div/input",
-  "Banner Save": "inframe=Banner Frame>xpath=//*[text()='Save']"
+  "Banner Save": "inframe=Banner Frame>xpath=//*[text()='Save']",
+
+
+  "Direct App Admin Email": "xpath=//input[@type='email']",
+  "Direct App Admin Password": "xpath=//input[@type='password']",
+  "Direct App Register": "xpath=//button[contains(.,'Register')]",
+  "Direct App Register Link on Login Page": "xpath=//a[contains(.,'Register')]",
+  "Direct App Login Button": "xpath=//button[@name='submit']",
+  "Direct App I Am Happy To Receive Information": "xpath=//label[normalize-space()='I am happy to receive information from BPP']",
+  "Direct App Accept Cookie": "id=cookieButton"
 }

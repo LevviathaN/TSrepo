@@ -178,7 +178,7 @@ public class StepDefinitions extends BasePage {
      * @param varName name of variable in which you want to save text
      */
     //todo: create EC_ variable each time any random value is generated
-    @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
+    @Then("I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         Reporter.log("Executing step: I remember '" + text + "' text as '" + varName + "' variable");
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
