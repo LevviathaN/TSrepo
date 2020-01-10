@@ -21,19 +21,18 @@ import java.util.regex.Pattern;
  *     - each input value will be considered as a keyword if it contains 'KW_'.
  *     - input value may contain several keywords.
  * </pre>
- *
- *  Metadata:
+ * <p>
+ * Metadata:
  * <pre>
  *     - acceptable metadata format is <b>MD_FILE_SHEET_KEY</b>. File name, sheet and key should be a word in uppercase.
  *     - each input value will be considered as a metadata key if it starts with 'MD_'.
  * </pre>
- *
- *  Execution Context:
+ * <p>
+ * Execution Context:
  * <pre>
  *     - acceptable execution context format is <b>EC_part1..._partN</b>. Execution context key should contain 'EC' prefix and any number of words in uppercase separated by '_'.
  *     - each input value will be considered as an execution context key if it starts with 'EC_'.
  * </pre>
- *
  */
 public class TestParametersController {
 
@@ -53,6 +52,7 @@ public class TestParametersController {
     private static final String KEYWORD_NAME_TO_SKIP = "KW_AUTO_SELECT";
     private static final String KEYWORD_RUT = "KW_AUTO_RUT";
     private static final String KEYWORD_SF_DATE = "KW_AUTO_SFDATE";
+
     /**
      * The method performs two-levels verification of passed value to be a metadata key.
      * First level checkup is based on determining whether the passed value starts with 'MD_' prefix.
@@ -61,14 +61,13 @@ public class TestParametersController {
      * @param value value that needs to be checked
      * @return true if the parameter is acceptable metadata
      */
-    private static boolean isMetaData(String value){
+    private static boolean isMetaData(String value) {
         Matcher acceptableMetaDataMatcher = ACCEPTABLE_METADATA_PATTERN.matcher(value);
         Matcher possibleMetaDataMatcher = GENERAL_METADATA_PATTERN.matcher(value);
-        if(possibleMetaDataMatcher.matches()){
-            if (acceptableMetaDataMatcher.matches()){
+        if (possibleMetaDataMatcher.matches()) {
+            if (acceptableMetaDataMatcher.matches()) {
                 return true;
-            }
-            else {
+            } else {
                 String messageToLog = "\n\t\tAcceptable metadata format is MD_FILE_SHEET_KEY.\n" +
                         "\t\tFile name, sheet and key should be a word in uppercase.";
                 String messageToReport = "<pre>Acceptable metadata format is 'MD_FILE_SHEET_KEY'.<br>" +
@@ -89,14 +88,13 @@ public class TestParametersController {
      * @param value value that needs to be checked
      * @return true if the parameter is acceptable keyword
      */
-    private static boolean isKeyword(String value){
+    private static boolean isKeyword(String value) {
         Matcher acceptableKeywordMatcher = ACCEPTABLE_KEYWORD_PATTERN.matcher(value);
         Matcher possibleKeywordMatcher = GENERAL_KEYWORD_PATTERN.matcher(value);
-        if(possibleKeywordMatcher.matches()){
-            if (acceptableKeywordMatcher.matches()){
+        if (possibleKeywordMatcher.matches()) {
+            if (acceptableKeywordMatcher.matches()) {
                 return true;
-            }
-            else {
+            } else {
                 String messageToLog = "\n\t\tAcceptable single keyword format is 'KW_AUTO_keyword name|modifier if needed'. Keyword name should be a word in uppercase.\n" +
                         "\t\tEach keyword may be combined with pre-pending and/or post-pending text. Format: 'pre-pending text<KEYWORD>post-pending text'.\n" +
                         "\t\tPre-pending and post-pending texts are optional and may contain upper- and lowercase letters, digits, '_', '-', '@', '.'\n" +
@@ -121,14 +119,13 @@ public class TestParametersController {
      * @param value value that needs to be checked
      * @return true if the parameter is acceptable execution context key
      */
-    private static boolean isExecutionContextKey(String value){
+    private static boolean isExecutionContextKey(String value) {
         Matcher acceptableExecutionContextMatcher = ACCEPTABLE_EXECUTION_CONTEXT_PATTERN.matcher(value);
         Matcher possibleExecutionContextMatcher = GENERAL_EXECUTION_CONTEXT_PATTERN.matcher(value);
-        if(possibleExecutionContextMatcher.matches()){
-            if (acceptableExecutionContextMatcher.matches()){
+        if (possibleExecutionContextMatcher.matches()) {
+            if (acceptableExecutionContextMatcher.matches()) {
                 return true;
-            }
-            else {
+            } else {
                 String messageToLog = "\n\t\tAcceptable execution context format is EC_PART-1..._PART-N.\n" +
                         "\t\tExecution context key should contain 'EC' prefix and any number of words in uppercase separated by '_'.";
                 String messageToReport = "<pre>Acceptable execution context format is 'EC_PART-1..._PART-N'.<br>" +
@@ -142,7 +139,7 @@ public class TestParametersController {
     }
 
 
-    private static boolean isSimplifiedRandom(String value){
+    private static boolean isSimplifiedRandom(String value) {
 //        Matcher possibleSimplifiedRandomMatcher = GENERAL_SIMPLIFIED_RANDOM_PATTERN.matcher(value);
         return value.contains("[##");
     }
@@ -158,17 +155,19 @@ public class TestParametersController {
         if (isMetaData(parameter)) {
             //get metadata from document (MD_CREDENTIALS_BPPUSER returns username, MD_LINKS_BPPURL returns Url etc.)
             return MetaDataHandler.getMetaDataValue(parameter);
-        //otherwise if keyword (contains KW_ or KW_AUTO, for instance AutoName<KW_AUTO_RANDOMNUMBER|####>)
+            //otherwise if keyword (contains KW_ or KW_AUTO, for instance AutoName<KW_AUTO_RANDOMNUMBER|####>)
         } else if (isKeyword(parameter)) {
             //check if equals KW_AUTO_SELECT
-            if (parameter.equals(KEYWORD_NAME_TO_SKIP)){
+            if (parameter.equals(KEYWORD_NAME_TO_SKIP)) {
                 //just return input parameter without changes
                 return parameter;
-            //check if equals KW_AUTO_RUT
-            }if (parameter.equals(KEYWORD_RUT)) {
+                //check if equals KW_AUTO_RUT
+            }
+            if (parameter.equals(KEYWORD_RUT)) {
                 //return random number
                 return KeywordsHandler.randomRutNumber();
-            } if (parameter.equals(KEYWORD_SF_DATE)) {
+            }
+            if (parameter.equals(KEYWORD_SF_DATE)) {
                 return String.valueOf(KeywordsHandler.salesForceDateAPIdateFormat());
             }
             String[] splitArray = parameter.split("[<>]");
@@ -178,19 +177,24 @@ public class TestParametersController {
                 if (element.startsWith(KEYWORD_NAME_PREFIX)) {
                     resultingValue.append(KeywordsHandler.getValueByKeyword(element.substring(3)));
                 } else {
-                    resultingValue.append(element);
-                    ecVarName.append("EC");
-                    for(String w : element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")){
-                        ecVarName.append("_");
-                        ecVarName.append(w.toUpperCase());
+                    if (element.contains("/")) {
+                        String updateElement = element.replace("/", "");
+                        resultingValue.append(updateElement);
+                    } else {
+                        resultingValue.append(element);
+                        ecVarName.append("EC");
+                        for (String w : element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
+                            ecVarName.append("_");
+                            ecVarName.append(w.toUpperCase());
+                        }
                     }
                 }
             }
-            ExecutionContextHandler.setExecutionContextValueByKey(ecVarName.toString(),resultingValue.toString());
+            ExecutionContextHandler.setExecutionContextValueByKey(ecVarName.toString(), resultingValue.toString());
             Reporter.log("Execution Context variable '" + ecVarName +
                     "' was automatically created with value '" + resultingValue.toString() + "'");
             return resultingValue.toString();
-        //otherwise check if contains EC_ value
+            //otherwise check if contains EC_ value
         } else if (isExecutionContextKey(parameter)) {
 
             String[] splitArray = parameter.split("[<>]");
@@ -200,14 +204,14 @@ public class TestParametersController {
                     splittedValue.append(ExecutionContextHandler.getExecutionContextValueByKey(element));
                 } else {
                     splittedValue.append(element);
-            }
+                }
             return splittedValue.toString();
-        //If it is simplified random generation
+            //If it is simplified random generation
         } else if (isSimplifiedRandom(parameter)) {
             String[] splitArray = parameter.split("[\\[\\]]");
             String transformedValue = parameter.replace(splitArray[1], "KW_AUTO_RANDOMNUMBER|" + splitArray[1]);
-            return checkIfSpecialParameter(transformedValue.replace("[","<").replace("]",">"));
-        //If contains no special parameters, then just return input value
+            return checkIfSpecialParameter(transformedValue.replace("[", "<").replace("]", ">"));
+            //If contains no special parameters, then just return input value
         } else {
             return parameter;
         }
@@ -243,7 +247,7 @@ public class TestParametersController {
             return By.className(locator.substring(10));
         } else if (PageLocatorMatcher.isLink(locator)) {
             return By.linkText(locator.substring(5));
-        }  else if (PageLocatorMatcher.isInFrame(locator)) {
+        } else if (PageLocatorMatcher.isInFrame(locator)) {
             return getFrame(locator);
         } else {
             Reporter.failTryTakingScreenshot("Cannot initialize " + locator + " as an accepted type of value. Property item cannot be found!");

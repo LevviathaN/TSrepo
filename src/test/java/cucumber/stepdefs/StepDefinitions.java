@@ -178,7 +178,7 @@ public class StepDefinitions extends BasePage {
      * @param varName name of variable in which you want to save text
      */
     //todo: create EC_ variable each time any random value is generated
-    @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
+    @Then("I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         Reporter.log("Executing step: I remember '" + text + "' text as '" + varName + "' variable");
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
@@ -255,7 +255,7 @@ public class StepDefinitions extends BasePage {
      *
      */
     @Then("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
-    public void iShouldnTSeeTheElement(String element) {
+    public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
         waitForPageToLoad();
             if(checkIfElementNotExist(initElementLocator(element))) {
