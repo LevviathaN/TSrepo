@@ -138,6 +138,14 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_REGION_NAME" element
 
+  Scenario: Create Session Duration
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Session Durations" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "SessionDurationDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element
+
   Scenario: Create Course Type
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
@@ -171,6 +179,14 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
 
+  Scenario: Create Deactivation Reason
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "DeactivationReasonDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_DEACTIVATION_REASON_DESCRIPTION" element
+
   Scenario: Create Pricing Matrix
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
@@ -181,6 +197,18 @@ Feature: Product Factory
     And I click on the "EC_SITTING_NAME" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_NAME" element
+
+  Scenario: Create Pricing Matrix Full
+    When I click on the "EC_BODY_NAME" "Product Factory edit button"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
+    And I "check" "EC_REGION_NAME" "Product Factory dialog checkbox"
+    And I click on the "Next" button
+    And I "check" "EC_PAPER_DESCRIPTION" "Product Factory dialog checkbox"
+    And I click on the "Next" button
+    And I set "1000" text to the "Enter a Price (£)" "Product Factory text field"
+    And I click on the "Next" button
+    And I click on the "Finish" button
 
   Scenario: Create VAT Rule
     When I click on the "Financials" "Product Factory navigation item"
@@ -198,7 +226,26 @@ Feature: Product Factory
     And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
 
-  Scenario: Link Body To Level
-    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
+  Scenario: Create Material
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Materials" "Product Factory navigation sub item"
+    And I click on the "Create" "Product Factory button"
+    And I click on the "BPP Learning Media" "Product Factory button"
+    And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
+    And I set "1000" text to the "Price (£)" "Product Factory text field"
+    And I set "10" text to the "Weight (kg)" "Product Factory text field"
+    And I set "123" text to the "ISBN" "Product Factory text field"
+    And I set "10/10/2022" text to the "Expiry Date" "Product Factory text field"
+    And I click on the "Learning Media VAT Rule" "Product Factory change button"
+    And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
+    And I click on the "Course Material VAT Rule" "Product Factory change button"
+    And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Choose a Body" "button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"
-    And I click on the "Yes" "button"
+    And I click on the "Next" "Product Factory button"
+    And I "check" "EC_LEVEL_NAME" "Product Factory checkbox"
+    And I click on the "Next" "Product Factory button"
+    And I "check" "EC_SITTING_NAME" "Product Factory checkbox"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"

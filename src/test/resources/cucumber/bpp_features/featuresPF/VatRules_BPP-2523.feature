@@ -12,7 +12,7 @@ Feature: Reference Data - Vat Rules - Create Record - BPP-2523
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "VAT Rules" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "VatCode[####]" text to the "Code" "Product Factory text field"
-    And I set "VatDescription[####]" text to the "Description" "Product Factory text field"
+    And I set "VatRuleCode[####]" text to the "Code" "Product Factory text field"
+    And I set "VatRuleDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_VAT_CODE" element
+    Then I should see the "EC_VAT_RULE_CODE" element

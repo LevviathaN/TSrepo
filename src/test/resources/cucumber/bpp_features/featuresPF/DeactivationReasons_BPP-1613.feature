@@ -15,3 +15,13 @@ Feature: Reference Data - Course Deactivation Reasons - BPP-1613
     And I set "DeactivationReasonDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_DEACTIVATION_REASON_DESCRIPTION" element
+
+  @Positive @Regression @P1 @Amend
+  Scenario: Amend a Deactivation Reason Using a Modal
+    When I execute "Create Deactivation Reason" reusable step
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
+    Then I click on the "EC_DEACTIVATION_REASON_DESCRIPTION" "Product Factory edit button"
+    And I set "DeactivationReasonDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_DEACTIVATION_REASON_DESCRIPTION" element
