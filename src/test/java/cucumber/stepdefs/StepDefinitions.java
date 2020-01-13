@@ -264,4 +264,16 @@ public class StepDefinitions extends BasePage {
                 Assert.assertTrue(true, "Element with " + element + " Shouldn't be displayed");
             }
         }
+
+    /**
+     * Definition scroll the page to the bottom after page is loaded
+     *
+     * @author Andrii Yakymchuk
+     */
+    @And("^I should scroll to bottom of the page$")
+    public void iShouldScrollToBottomOfThePage() {
+        Reporter.log("Executing step: I should scroll to bottom of the page");
+        waitForPageToLoad();
+        scrollToBottomOfPage();
+    }
 }
