@@ -22,6 +22,13 @@ public enum UiHandlers {
         page.findElement(element).click();
     }),
 
+    PF_SCROLL_HANDLER((element, e) -> {
+        BasePage page = new BasePage();
+        if(e.getMessage().contains("Other element would receive the click: <")){
+            BasePage.scrollToBottomOfPage();
+        }
+    }),
+
     DEFAULT_HANDLER((element, e) -> {
         Reporter.fail(Tools.getStackTrace(e));
         throw new RuntimeException("Failure clicking on element");
