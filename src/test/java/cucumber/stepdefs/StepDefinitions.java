@@ -264,4 +264,17 @@ public class StepDefinitions extends BasePage {
                 Assert.assertTrue(true, "Element with " + element + " Shouldn't be displayed");
             }
         }
+
+    /**
+     * Action to upload a file
+     *
+     * @param element: locator type to be used to locate the element for uploading a file
+     * @param fileName: file that should be uploaded to element on the page
+     */
+    @Then("I upload \"([^\"]*)\" file to \"([^\"]*)\" element")
+    public void i_upload_file_to_element(String fileName, String element) {
+        Reporter.log("Executing step: I upload the " + fileName + " to: " + element);
+        fileUpload(initElementLocator(element), fileName);
+        waitForPageToLoad();
+    }
 }

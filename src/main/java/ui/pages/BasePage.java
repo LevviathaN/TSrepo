@@ -3,8 +3,11 @@ package ui.pages;
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.*;
 import ui.utils.*;
+import ui.utils.bpp.PreProcessFiles;
 import ui.utils.bpp.TestParametersController;
 
 import java.awt.Robot;
@@ -29,6 +32,7 @@ public class BasePage {
     public static Map<String,String> locatorsMap;
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
 
     //____________________________________________Timeouts section__________________________________________________
 
@@ -278,7 +282,7 @@ public class BasePage {
     public WebElement findElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        BPPLogManager.getLogger().info("Finding an element: " + element);
+        //BPPLogManager.getLogger().info("Finding an element: " + element);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -579,5 +583,16 @@ public class BasePage {
             BPPLogManager.getLogger().info("Element: " + element + " is displayed");
             return false;
         }
+    }
+
+    /**
+     * Action to upload a file
+     *
+     * @param locator: locator type to be used to locate the element for uploading a file
+     */
+    public void fileUpload(By locator, String filename) {
+        WebElement webelement = findPresentElement(locator);
+        ((RemoteWebElement) webelement ).setFileDetector(new LocalFileDetector());
+        webelement.sendKeys(fileUploadPath + "/" + filename);
     }
 }

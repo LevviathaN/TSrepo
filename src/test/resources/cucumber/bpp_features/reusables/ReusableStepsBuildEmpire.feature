@@ -4,12 +4,9 @@ Feature: BuildEmpire
   Scenario: Register New Student Account
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     Then I click on the "Direct App Register Link on Login Page" button
-    Then I remember "Auto<KW_AUTO_FIRSTNAME>" text as "EC_FIRSTNAME" variable
-    And I set "EC_FIRSTNAME" text to the "First name" "Build Empire text field"
-    Then I remember "Auto<KW_AUTO_LASTNAME>" text as "EC_LASTNAME" variable
-    And I set "EC_LASTNAME" text to the "Surname" "Build Empire text field"
-    Then I remember "Auto1<KW_AUTO_FIRSTNAME>/@/harakirimail.com" text as "EC_EMAIL_ADDRESS" variable
-    And I set "EC_EMAIL_ADDRESS" text to the "Email" "Build Empire text field"
+    And I set "AutoFirstName[####]" text to the "First name" "Build Empire text field"
+    And I set "AutoLastName[####]" text to the "Surname" "Build Empire text field"
+    And I set "EmailAuto<KW_AUTO_FIRSTNAME>/@/harakirimail.com" text to the "Email" "Build Empire text field"
     Then I remember "0913<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_PHONENUMBER" variable
     And I set "EC_PHONENUMBER" text to the "Telephone number" "Build Empire text field"
     Then I remember "A@polloGlobal2018" text as "EC_PASSWORD" variable
@@ -28,3 +25,20 @@ Feature: BuildEmpire
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINUSER"
     And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINPASSWORD"
     Then I click on the "Direct App Login Button" button
+
+  Scenario: Create Scholarships Application
+    Given I click on the "Direct App My Applications Left Menu Link" button
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP University Scholarships" "Build Empire application type"
+    And I click on the "Diret App Scholarship Dropdown" element
+    Then I click on the "Career Guarantee Scholarship" "Build Empire application type"
+    And I click on the "Direct App Programme Dropdown" element
+    Then I click on the "Legal Practice Course (LPC)" "Build Empire application type"
+    And I click on the "Direct App Create Application" button
+
+  Scenario: Submit Application Hub
+    Given I click on the "Direct App Submit Application" button
+    And I click on the "Direct App Confirm Application Radiobutton" button
+    And I click on the "Direct App Submit Application on Confirmation Page" button
+    #Then I click on the "Direct App Application Progress Percentage" button
+    Given I should see the "Thank you for submitting your application. Our team are reviewing your application and will get back to you shortly." message
