@@ -40,5 +40,4 @@ Feature: BuildEmpire
     Given I click on the "Direct App Submit Application" button
     And I click on the "Direct App Confirm Application Radiobutton" button
     And I click on the "Direct App Submit Application on Confirmation Page" button
-    #Then I click on the "Direct App Application Progress Percentage" button
-    Given I should see the "Thank you for submitting your application. Our team are reviewing your application and will get back to you shortly." message
+    Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element

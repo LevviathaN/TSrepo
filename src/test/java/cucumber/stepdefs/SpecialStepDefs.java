@@ -25,7 +25,7 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(By.xpath(resultingXpath));
-            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.JAVASCRIPT_TO_UPDATE);
+            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.PF_SCROLL_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
             }

@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ui.pages.BasePage;
-import ui.utils.bpp.JavaScriptHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +22,11 @@ public enum UiHandlers {
         page.findElement(element).click();
     }),
 
-    JAVASCRIPT_TO_UPDATE((element, e) -> {
-        JavaScriptHelper.waitForJavaScriptToRun(BasePage.driver(),10);
+    PF_SCROLL_HANDLER((element, e) -> {
+        BasePage page = new BasePage();
+        if(e.getMessage().contains("Other element would receive the click: <")){
+            BasePage.scrollToBottomOfPage();
+        }
     }),
 
     DEFAULT_HANDLER((element, e) -> {

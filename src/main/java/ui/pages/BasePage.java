@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 /**
  * <p> Base class for all page objects.
@@ -169,8 +170,38 @@ public class BasePage {
     public void setText(By element, String value) {
         if (value != null) {
             BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
-            findElement(element).clear();
+//            findElement(element).clear();
+            clearEntireField(element);
             findElement(element).sendKeys(value);
+        }
+    }
+
+    /**
+     * Action clears the entire  text field as Selenium's clear() refuses to work on new chrome versions
+     *
+     * @param element: locator type to be used to locate the button element
+     */
+    //Todo: Fix click in the middle issue
+    //cursor is set in the middle of the field, so if text in field is bigger than the half of the field, text
+    //will not be erased completely. Temporary fixed, but the method needs refactoring
+    public void clearEntireField(By element) {
+        WebElement textField = findElement(element);
+        String backSpace = Keys.BACK_SPACE.toString();
+        try {
+            textField.click();
+            int size = textField.getAttribute("value").length();
+
+            if (size != 0) {
+                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+            }
+            textField.click();
+            size = textField.getAttribute("value").length();
+            if (size != 0) {
+                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+            }
+
+        } catch (InvalidElementStateException e) {
+            textField.sendKeys("");
         }
     }
 
@@ -267,8 +298,14 @@ public class BasePage {
             for(UiHandlers handler : handlers){
                 handler.getHandler().handle(element, e);
             }
+//            driver().findElement(element).click();
         }
         waitForPageToLoad();
+    }
+
+    public static void clickWithJS(WebElement element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript("arguments[0].click();", element);
     }
 
     /**
@@ -594,5 +631,26 @@ public class BasePage {
         WebElement webelement = findPresentElement(locator);
         ((RemoteWebElement) webelement ).setFileDetector(new LocalFileDetector());
         webelement.sendKeys(fileUploadPath + "/" + filename);
+    }
+
+    /**
+     * Action to validate text data from an element
+     *
+     * @param locator: locator type to be used to locate the radio button element
+     * @return String webelement text
+     */
+    public String getTextValueFromField(By locator) {
+
+        WebElement webelement = driver().findElement(locator);
+        String data = webelement.getText().trim();
+        if (data.isEmpty()) {
+            try {
+                BPPLogManager.getLogger().info("Getting text from value attribute");
+                data = webelement.getAttribute("value").trim();
+            } catch (Exception e) {
+                data = "";
+            }
+        }
+        return data;
     }
 }

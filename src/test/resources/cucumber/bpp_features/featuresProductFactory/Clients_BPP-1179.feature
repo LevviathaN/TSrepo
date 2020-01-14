@@ -32,3 +32,13 @@ Feature: Reference Data - Client - BPP-1179
     And I set "EC_CLIENT_NAME" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Name must be unique" "message"
+
+  @Positive @Regression @P1 @Amend
+  Scenario: Amend a Client Using a Modal
+    When I execute "Create Client" reusable step
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Clients" "Product Factory navigation sub item"
+    Then I click on the "EC_CLIENT_NAME" "Product Factory edit button"
+    And I set "ClientName[####]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_CLIENT_NAME" element
