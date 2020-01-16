@@ -33,7 +33,7 @@ Feature: Reference Data - Course Type - BPP-400
 
   @Negative @P2
   Scenario: Add a Course Type Where Description Already Exists
-    When I execute "Course Type" reusable step
+    When I execute "Create Course Type" reusable step
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"

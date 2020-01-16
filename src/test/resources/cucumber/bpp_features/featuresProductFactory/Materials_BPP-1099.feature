@@ -17,7 +17,8 @@ Feature: Materials - Create Materials - BPP-1099
     And I execute "Link Body To Paper" reusable step
 
   @Positive @P1
-  Scenario: Wizard Traversal
+  Scenario: Create Material Wizard
+#   TODO Handle one-time Material System Settings (preferably using conditional step definitions)
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Materials" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
@@ -40,16 +41,3 @@ Feature: Materials - Create Materials - BPP-1099
     And I "check" "EC_SITTING_NAME" "Product Factory checkbox"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
-
-
-#  Scenario: Choosing a Paper
-#    When I click on the "Programme" "Product Factory navigation item"
-#    When I click on the "Bodies" "Product Factory navigation sub item"
-#
-#  Scenario: Choosing a Body
-#    When I click on the "Programme" "Product Factory navigation item"
-#    When I click on the "Bodies" "Product Factory navigation sub item"
-#
-#  Scenario: Material Type Constraints
-#    When I click on the "Programme" "Product Factory navigation item"
-#    When I click on the "Bodies" "Product Factory navigation sub item"

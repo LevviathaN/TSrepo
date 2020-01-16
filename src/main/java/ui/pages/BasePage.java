@@ -188,13 +188,15 @@ public class BasePage {
         WebElement textField = findElement(element);
         String backSpace = Keys.BACK_SPACE.toString();
         try {
-            textField.click();
+            clickOnElement(element, UiHandlers.PF_SPINNER_HANDLER);
+//            textField.click();
             int size = textField.getAttribute("value").length();
 
             if (size != 0) {
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
-            textField.click();
+            clickOnElement(element, UiHandlers.PF_SPINNER_HANDLER);
+//            textField.click();
             size = textField.getAttribute("value").length();
             if (size != 0) {
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
@@ -663,6 +665,5 @@ public class BasePage {
 
         Reporter.log("Expected:" + alertMsg + " popup appeared");
         jsalert.accept();
-        //return alertMsg;
     }
 }
