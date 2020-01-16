@@ -4,6 +4,7 @@ import cucumber.api.java.AfterStep;
 import cucumber.reusablesteps.ReusableRunner;
 import cucumber.api.java.en.*;
 //import io.cucumber.java.en.*;
+import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
@@ -13,11 +14,16 @@ import ui.utils.bpp.TestParametersController;
 
 import java.util.Map;
 
+import static com.jcabi.matchers.RegexMatchers.matchesPattern;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.not;
+
 /**
  * Created by Ruslan Levytskyi on 15/3/2019.
  */
 public class StepDefinitions extends BasePage {
 
+    String actualValue = "";
 
     @AfterStep
     public void postActions() {
@@ -264,6 +270,62 @@ public class StepDefinitions extends BasePage {
                 Assert.assertTrue(true, "Element with " + element + " is displayed, but it shouldn't");
             }
         }
+
+    /**
+     * Action to upload a file
+     *
+     * @param element: locator type to be used to locate the element for uploading a file
+     * @param fileName: file that should be uploaded to element on the page
+     */
+    @Then("I upload \"([^\"]*)\" file to \"([^\"]*)\" element")
+    public void i_upload_file_to_element(String fileName, String element) {
+        Reporter.log("Executing step: I upload the " + fileName + " to: " + element);
+        fileUpload(initElementLocator(element), fileName);
+        waitForPageToLoad();
+    }
+
+    @Then("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$")
+    public void i_validate_text_to_be_displayed_for_element(String text, String element) {
+        Reporter.log("Executing step: I validate " + text + " to be displayed for: " + element);
+        actualValue = getTextValueFromField(initElementLocator(element));
+        String newValue = text;
+        if (text.toUpperCase().trim().startsWith("RE=")) {
+            newValue = newValue.substring("RE=".length());
+            assertThat(actualValue.trim(), matchesPattern(newValue ));
+            Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" +newValue +"'</pre>");
+        } else if (text.toUpperCase().startsWith("CONTAINS=")) {
+            newValue = newValue.substring("CONTAINS=".length());
+            if (text.contains("EC")) {
+                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(executionContextValue.toLowerCase()));
+            } else {
+                assertThat(actualValue.trim(), Matchers.containsString(newValue));
+                Reporter.log("<pre>Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'</pre>");
+            }
+        } else if(text.toUpperCase().startsWith("NOT_CONTAINS=")) {
+            newValue = newValue.substring("NOT_CONTAINS=".length());
+            if (text.contains("EC")) {
+                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                assertThat(actualValue.trim(), not(Matchers.containsString(executionContextValue)));
+            } else {
+                assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
+                Reporter.log("<pre>Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'</pre>");
+            }
+        } else if (text.toUpperCase().startsWith("CASE=")) {
+            newValue = newValue.substring("CASE=".length());
+            assertThat(actualValue.trim(), Matchers.equalTo(newValue));
+            Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" +newValue +"'</pre>");
+        } else if (text.toUpperCase().contains("STARTS-WITH=")) {
+            newValue = newValue.substring("STARTS-WITH=".length());
+            assertThat(actualValue.trim(), Matchers.startsWith(newValue));
+            Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" +newValue +"'</pre>");
+        }else {
+            assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
+            Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" +newValue +"'</pre>");
+        }
+        waitForPageToLoad();
+    }
+
 
     /**
      * Definition scroll the page to the bottom after page is loaded

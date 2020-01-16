@@ -8,7 +8,7 @@
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
   "Product Factory button": "//span[text()='PARAMETER']/..",
   "Product Factory text field": "//label[text()='PARAMETER']/following::div/input|//label[text()='PARAMETER']/following::textarea",
-  "Product Factory change button": "//span[text()='PARAMETER']/following-sibling::button",
+  "Product Factory change button": "//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "//td[text()='PARAMETER']/following-sibling::td/button",
   "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
@@ -19,5 +19,10 @@
   "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]",
   "Product Factory button title": "//button[@title='PARAMETER']",
 
-  "Build Empire text field": "//input[@placeholder='PARAMETER']"
+  "Build Empire text field": "//input[@placeholder='PARAMETER']",
+  "Build Empire application type":"//li[text()='PARAMETER']",
+  "Build Empire application section":"//a[contains(.,'PARAMETER')]",
+  "Build Empire employment element":"//label[contains(.,'PARAMETER')]//following-sibling::div//input",
+  "Build Empire scholarship evidence element":"//label[contains(.,'PARAMETER')]//following-sibling::div//input",
+  "Build Empire education element":"//label[contains(text(),'PARAMETER')]/..//input"
 }

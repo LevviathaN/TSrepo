@@ -18,6 +18,8 @@ Feature: Create Course Instance - BPP-429
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Level" reusable step
+    And I execute "Link Body To Paper" reusable step
+    And I execute "Link Paper To Level" reusable step
     And I execute "Create Sitting" reusable step
     And I execute "Create Pricing Matrix" reusable step
     And I execute "Create Pricing Matrix Full" reusable step

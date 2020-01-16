@@ -102,6 +102,13 @@ Feature: Product Factory
     And I click on the "EC_BODY_NAME" "Product Factory select button"
     Then I click on the "Yes" "button"
 
+  Scenario: Link Paper To Level
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "Papers" "Product Factory navigation sub item"
+    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Link Levels button"
+    And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
+    And I click on the "Save" "Product Factory button"
+
   Scenario: Create Sitting
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
@@ -244,8 +251,8 @@ Feature: Product Factory
     And I click on the "Choose a Body" "button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"
     And I click on the "Next" "Product Factory button"
-    And I "check" "EC_LEVEL_NAME" "Product Factory checkbox"
+    And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" "Product Factory button"
-    And I "check" "EC_SITTING_NAME" "Product Factory checkbox"
+    And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"

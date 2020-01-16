@@ -34,3 +34,21 @@ Feature: Amend Reference Data - Paper - BPP-660
     And I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Description must be unique" "message"
+
+  @Positive @Regression @P1
+  Scenario: Amend a Paper Changing Body And Level
+    When I execute "Create Body Financial Dimension" reusable step
+    When I execute "Create Body" reusable step
+    When I execute "Create Body" reusable step replacing some steps
+      |4|I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
+      |5|I set "BodyNameNew[####]" text to the "Name" "Product Factory text field"           |
+    When I execute "Create Level" reusable step
+    When I execute "Create Level" reusable step replacing some steps
+      |4|I set "LevelShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
+      |5|I set "LevelNameNew[####]" text to the "Name" "Product Factory text field"           |
+    When I execute "Link Body To Paper" reusable step
+    When I execute "Link Paper To Level" reusable step
+    When I execute "Link Body To Paper" reusable step replacing some steps
+      |4|I click on the "EC_BODY_NAME_NEW" "Product Factory select button"|
+    When I execute "Link Paper To Level" reusable step replacing some steps
+      |4|I "check" "EC_LEVEL_NAME_NEW" "Product Factory dialog checkbox"|
