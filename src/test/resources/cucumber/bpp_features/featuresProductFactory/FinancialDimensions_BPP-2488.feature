@@ -8,7 +8,7 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
     Given I execute "Log In" reusable step
 
   @Positive @Regression @P1
-  Scenario Outline: Create All Financial Dimensions
+  Scenario Outline: Create Financial Dimensions record <type> item
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"

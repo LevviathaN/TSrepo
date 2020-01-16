@@ -17,6 +17,7 @@
   "Product Factory Link Levels button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Link Levels')]",
   "Product Factory Change Body button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
   "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]",
+  "Product Factory button title": "//button[@title='PARAMETER']",
 
   "Build Empire text field": "//input[@placeholder='PARAMETER']",
   "Build Empire application type":"//li[text()='PARAMETER']",
