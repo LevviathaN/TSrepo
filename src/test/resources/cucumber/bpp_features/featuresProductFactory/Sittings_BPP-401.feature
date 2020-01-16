@@ -25,12 +25,9 @@ Feature: Reference Data - Sitting - BPP-401
 
   @Positive @Regression @P2
   Scenario: Add a New Sitting Using a Modal (Link to Multiple Bodies)
-
     Then I click on the "Create" "Product Factory button"
-    And I remember "BodyShortName<KW_AUTO_RANDOMNUMBER|###>" text as "EC_BODY_SHORT_NAME_2" variable
-    And I set "EC_BODY_SHORT_NAME_2" text to the "Short Name" "Product Factory text field"
-    And I remember "BodyName<KW_AUTO_RANDOMNUMBER|###>" text as "EC_BODY_NAME_2" variable
-    And I set "EC_BODY_NAME_2" text to the "Name" "Product Factory text field"
+    And I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"
+    And I set "BodyNameNew[####]" text to the "Name" "Product Factory text field"
     And I click on the "Change" "button"
     And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
@@ -44,7 +41,7 @@ Feature: Reference Data - Sitting - BPP-401
     And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
-    And I "check" "EC_BODY_NAME_2" "Product Factory dialog checkbox"
+    And I "check" "EC_BODY_NAME_NEW" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SITTING_NAME" element
 

@@ -8,7 +8,7 @@
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
   "Product Factory button": "//span[text()='PARAMETER']/..",
   "Product Factory text field": "//label[text()='PARAMETER']/following::div/input|//label[text()='PARAMETER']/following::textarea",
-  "Product Factory change button": "//span[text()='PARAMETER']/following-sibling::button",
+  "Product Factory change button": "//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "//td[text()='PARAMETER']/following-sibling::td/button",
   "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
