@@ -18,7 +18,7 @@ Feature: Reference Data - Vat Rules - Update Record - BPP-2524
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_VAT_RULE_CODE" element
 
-  @Negative @P2
+  @Negative @P2 @NoQTest
   Scenario: Submitting Unchanged VAT Rule Fields
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "VAT Rules" "Product Factory navigation sub item"

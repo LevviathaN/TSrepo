@@ -23,14 +23,14 @@ Feature: Amend Reference Data - Sitting - BPP-662
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SITTING_NAME" element
 
-  @Negative @P2
+  @Negative @P2 @NoQTest
   Scenario: Submitting Unchanged Sitting Fields
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
     When I click on the "EC_SITTING_NAME" "Product Factory edit button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 @NoQTest
   Scenario: Amend a Sitting Where Name Already Exists
     Given I execute "Create Sitting" reusable step replacing some steps
       |4|I set "SittingNameNew[####]" text to the "Name" "Product Factory text field"|
