@@ -18,5 +18,10 @@
   "Product Factory Change Body button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
   "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]",
 
-  "Build Empire text field": "//input[@placeholder='PARAMETER']"
+  "Build Empire text field": "//input[@placeholder='PARAMETER']",
+  "Build Empire application type":"//li[text()='PARAMETER']",
+  "Build Empire application section":"//a[contains(.,'PARAMETER')]",
+  "Build Empire employment element":"//label[contains(.,'PARAMETER')]//following-sibling::div//input",
+  "Build Empire scholarship evidence element":"//label[contains(.,'PARAMETER')]//following-sibling::div//input",
+  "Build Empire education element":"//label[contains(text(),'PARAMETER')]/..//input"
 }

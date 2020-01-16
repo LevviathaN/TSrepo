@@ -52,6 +52,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE.getPattern(),() -> stepDefs.elements_attribute_should_have_value(arg1, arg2, arg3));
         stepDefsMap.put(I_CHECK_UNCHECK.getPattern(),() -> stepDefs.i_check_uncheck(arg1, arg2));
         stepDefsMap.put(I_PRESS_KEY.getPattern(),() -> stepDefs.i_press_from_keyboard(arg1, arg2));
+        stepDefsMap.put(I_VALIDATE_TEXT.getPattern(),() -> stepDefs.i_validate_text_to_be_displayed_for_element(arg1, arg2));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
