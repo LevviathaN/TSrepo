@@ -72,3 +72,4 @@ Feature: Complete BPP University Scholarship Application
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
     Then I execute "Submit Application Hub" reusable step
+    And I execute "Log Out from Hub Student" reusable step
