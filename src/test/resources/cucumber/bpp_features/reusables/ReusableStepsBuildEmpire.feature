@@ -41,3 +41,28 @@ Feature: BuildEmpire
     And I click on the "Direct App Confirm Application Radiobutton" button
     And I click on the "Direct App Submit Application on Confirmation Page" button
     Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element
+
+  Scenario: Log Out from Hub Student
+    Given I click on the "Direct App User Icon Menu" button
+    And I click on the "Direct App Logout" link
+
+  Scenario: Log Out from Hub Admin
+    Given I click on the "Direct App User Icon Menu Admin" button
+    And I click on the "Direct App Admin Logout" link
+
+  Scenario: Create Academic Appeals Application
+    Given I click on the "Direct App My Applications Left Menu Link" button
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP University Academic Appeals" "Build Empire application type"
+    And I click on the "Direct App Create Application" button
+
+  Scenario: Accept Academic Appeals As Admin
+    Given I click on the "Direct App Admin Apps Top Link" button
+    And I click on the "Direct App Admin Direct Apps List Option" element
+    Then I click on the "Academic Appeals" "Build Empire admin applications tab"
+    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
+    And I click on the "Show" "button"
+    Then I click on the "Begin review" "Build Empire admin applications tab"
+    Then I click on the "Submit" "button"
+    Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Academic Appeals" element

@@ -134,7 +134,7 @@ public static ReusableRunner getInstance() {
     public void executeReusable(String reusableName) {
 
         reusable = getStepsOfReusableScenario(reusableName);
-
+        BPPLogManager.getLogger().info("Executing: " + reusableName + " reusable step");
         for (int i = 0; i < reusable.size(); i++) {
             executeStep(i);
         }

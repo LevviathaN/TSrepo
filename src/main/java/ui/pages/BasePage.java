@@ -294,13 +294,12 @@ public class BasePage {
             (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
+            waitForPageToLoad();
         } catch (Exception e) {
             for(UiHandlers handler : handlers){
                 handler.getHandler().handle(element, e);
             }
-//            driver().findElement(element).click();
         }
-        waitForPageToLoad();
     }
 
     public static void clickWithJS(WebElement element){
@@ -319,7 +318,6 @@ public class BasePage {
     public WebElement findElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        //BPPLogManager.getLogger().info("Finding an element: " + element);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -525,7 +523,7 @@ public class BasePage {
         while (i++ < timeout) try {
             driver().switchTo().alert();
             break;
-        } catch (NoAlertPresentException e)  // wait for second
+        } catch (NoAlertPresentException e)
         {
             sleepFor(1);
             continue;
@@ -652,5 +650,19 @@ public class BasePage {
             }
         }
         return data;
+    }
+
+    /**
+     * Action to accept alert / error message on the web page
+     *
+     * @return String webelement text with information provided in the Popup Window
+     */
+    public void acceptAlertMessage() {
+        Alert jsalert = new WebDriverWait(driver(), 5).until(ExpectedConditions.alertIsPresent());
+        String alertMsg = jsalert.getText();
+
+        Reporter.log("Expected:" + alertMsg + " popup appeared");
+        jsalert.accept();
+        //return alertMsg;
     }
 }
