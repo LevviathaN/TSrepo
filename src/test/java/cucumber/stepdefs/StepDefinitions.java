@@ -256,12 +256,12 @@ public class StepDefinitions extends BasePage {
      */
     @Then("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
     public void i_should_not_see_the_element(String element) {
-        Reporter.log("Executing step: I should see the '" + element + "' element");
+        Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
         waitForPageToLoad();
             if(checkIfElementNotExist(initElementLocator(element))) {
                 Assert.assertTrue(false, "Element with " + element + " text is not displayed");
             } else {
-                Assert.assertTrue(true, "Element with " + element + " Shouldn't be displayed");
+                Assert.assertTrue(true, "Element with " + element + " is displayed, but it shouldn't");
             }
         }
 
@@ -270,7 +270,7 @@ public class StepDefinitions extends BasePage {
      *
      * @author Andrii Yakymchuk
      */
-    @And("^I should scroll to bottom of the page$")
+    @And("^I should scroll to the bottom of the page$")
     public void iShouldScrollToBottomOfThePage() {
         Reporter.log("Executing step: I should scroll to bottom of the page");
         waitForPageToLoad();
