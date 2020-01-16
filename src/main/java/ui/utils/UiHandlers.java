@@ -29,6 +29,12 @@ public enum UiHandlers {
         }
     }),
 
+    ACCEPT_ALERT((element, e) -> {
+        BasePage page = new BasePage();
+        if (e.getCause().toString().contains(" Are you sure want to review this application?")) {
+        page.acceptAlertMessage();}
+    }),
+
     DEFAULT_HANDLER((element, e) -> {
         Reporter.fail(Tools.getStackTrace(e));
         throw new RuntimeException("Failure clicking on element");
