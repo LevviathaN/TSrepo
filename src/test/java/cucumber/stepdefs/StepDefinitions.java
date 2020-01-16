@@ -16,6 +16,7 @@ import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
 /**
@@ -34,15 +35,15 @@ public class StepDefinitions extends BasePage {
      * Definition to go to specified url.
      * Also checks if the parameter is Meta Data or Execution Context value
      *
-     * @author Ruslan Levytskyi
      * @param url url where you want navigate to
+     * @author Ruslan Levytskyi
      */
     @Given("^I am on \"([^\"]*)\" URL$")
     public void i_am_on_url(String url) {
         Reporter.log("Executing step: I am on '" + url + "' url");
         String processedUrl = TestParametersController.checkIfSpecialParameter(url);
         driver().get(processedUrl);
-        if(!url.equals(processedUrl)){
+        if (!url.equals(processedUrl)) {
             Reporter.log("<pre>[input test parameter] " + url + "' -> '" + processedUrl + "' [output value]</pre>");
         }
         waitForPageToLoad();
@@ -51,35 +52,35 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to click an element on the page
      *
-     * @author Ruslan Levytskyi
      * @param element locator for element you want to click on
-     *      initElementLocator builds locator, depending on input parameter:
-     *      1. Starts with "xpath" or "css" - locator is passed directly into a method
-     *      2. Parameter exists in locators document - locator value is returned from document
-     *      3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     *                initElementLocator builds locator, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @author Ruslan Levytskyi
      */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element");
-        clickOnElement(initElementLocator(element), UiHandlers.PF_SPINNER_HANDLER);
+        clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
         waitForPageToLoad();
     }
 
     /**
      * Definition to send some text into some text input field
      *
-     * @author Ruslan Levytskyi
      * @param element locator for element you want to send text to
-     *       Parameter exists in locators document - locator value is returned from document
-     * @param text text you want to send to element
-     *             Here we also check if text is EC_ or MD_ of KW_
+     *                Parameter exists in locators document - locator value is returned from document
+     * @param text    text you want to send to element
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
      */
     @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$")
     public void fill_field(String element, String text) {
         Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
         String processedText = TestParametersController.checkIfSpecialParameter(text);
         findElement(initElementLocator(element)).sendKeys(processedText);
-        if(!text.equals(processedText)){
+        if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
         }
     }
@@ -87,22 +88,22 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to send some text into some text input field
      *
-     * @author Ruslan Levytskyi
      * @param seconds amount of seconds you want to wait
-     *             Here we also check if text is EC_ or MD_ of KW_
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
      */
     @When("^I wait for \"([^\"]*)\" seconds$")
     public void wait_for(String seconds) {
         Reporter.log("Executing step: I wait for " + seconds + " seconds");
-        sleepFor(Integer.parseInt(TestParametersController.checkIfSpecialParameter(seconds))*1000);
+        sleepFor(Integer.parseInt(TestParametersController.checkIfSpecialParameter(seconds)) * 1000);
     }
 
     /**
      * Definition to hover over element
      *
-     * @author Ruslan Levytskyi
      * @param element locator of element you want to hover over
-     *             Here we also check if text is EC_ or MD_ of KW_
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
      */
     @When("^I hover over the \"([^\"]*)\" (?:button|link|option|element)$")
     public void hover_over(String element) {
@@ -113,17 +114,17 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to check visibility of the element
      *
-     * @author Ruslan Levytskyi
      * @param element locator of element you want to check if it's visible
-     *             Here we also check if text is EC_ or MD_ of KW_
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
      */
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
         waitForPageToLoad();
         boolean isDisplayed = false;
-        for(int i = 0; i<findElements(initElementLocator(element)).size(); i++){
-            if(findElements(initElementLocator(element)).get(i).isDisplayed()){
+        for (int i = 0; i < findElements(initElementLocator(element)).size(); i++) {
+            if (findElements(initElementLocator(element)).get(i).isDisplayed()) {
                 isDisplayed = true;
             }
         }
@@ -133,9 +134,9 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to verify that you are on the page with correct title
      *
-     * @author Ruslan Levytskyi
      * @param pageTitle locator of element you want to check if it's visible
-     *             Here we also check if text is EC_ or MD_ of KW_
+     *                  Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
      */
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
@@ -145,7 +146,7 @@ public class StepDefinitions extends BasePage {
         Reporter.log("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
         Assert.assertEquals(driver().getTitle(), processedPageTitle, "Current page is " + processedPageTitle);
-        if(!pageTitle.equals(processedPageTitle)){
+        if (!pageTitle.equals(processedPageTitle)) {
             Reporter.log("<pre>[input test parameter] " + pageTitle + "' -> '" + processedPageTitle + " [output value]</pre>");
         }
     }
@@ -153,9 +154,9 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to execute reusable steps
      *
-     * @author Ruslan Levytskyi
      * @param reusableName name of reusable step (Scenario in ReusableSteps.feature) you want to execute
-     *             Here we also check if text is EC_ or MD_ of KW_
+     *                     Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
      */
     @Then("^I execute \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step(String reusableName) {
@@ -179,9 +180,9 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to execute reusable steps
      *
-     * @author Ruslan Levytskyi
-     * @param text text you want to save into a variable
+     * @param text    text you want to save into a variable
      * @param varName name of variable in which you want to save text
+     * @author Ruslan Levytskyi
      */
     //todo: create EC_ variable each time any random value is generated
     @Then("I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
@@ -193,10 +194,10 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to verify presence of element on the page
      *
-     * @author Ruslan Levytskyi
-     * @param attributeName name of attribute of element you want to check
+     * @param attributeName  name of attribute of element you want to check
      * @param elementLocator name or value of needed element
      * @param attributeValue value that tested attribute should have
+     * @author Ruslan Levytskyi
      */
     @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
     public void elements_attribute_should_have_value(String attributeName, String elementLocator, String attributeValue) {
@@ -209,18 +210,21 @@ public class StepDefinitions extends BasePage {
      * If svalue is check, but the checkbox is unchecked, than this method checks the checkbox
      * Vice versa.
      *
-     * @param value = value to set a statement to the checkbox. Can be "check" or "uncheck"
+     * @param value   = value to set a statement to the checkbox. Can be "check" or "uncheck"
      * @param element By locator of checkbox
      */
     @When("^I \"(check|uncheck)\" \"([^\"]*)\" checkbox$")
-    public void i_check_uncheck(String value, String element){
+    public void i_check_uncheck(String value, String element) {
         Reporter.log("Executing step: I " + value + " '" + element + "' checkbox");
         String processedElement = TestParametersController.checkIfSpecialParameter(element);
         boolean state = true;
-        if(value.equals("check")){state = true;}
-        else if(value.equals("uncheck")){state = false;}
-        checkCheckbox(initElementLocator(element),state);
-        if(!element.equals(processedElement)){
+        if (value.equals("check")) {
+            state = true;
+        } else if (value.equals("uncheck")) {
+            state = false;
+        }
+        checkCheckbox(initElementLocator(element), state);
+        if (!element.equals(processedElement)) {
             Reporter.log("<pre>[input test parameter] " + element + "' -> '" + processedElement + " [output value]</pre>");
         }
     }
@@ -229,7 +233,7 @@ public class StepDefinitions extends BasePage {
      * Definition to imitate key press from keyboard
      *
      * @param fieldValue : value to be entered in appropriate field using metadata values
-     * @param element: By locator of element to press key
+     * @param element:   By locator of element to press key
      */
     @Then("^I press \"([^\"]*)\" for \"([^\"]*)\"$")
     public void i_press_from_keyboard(String fieldValue, String element) {
@@ -242,8 +246,8 @@ public class StepDefinitions extends BasePage {
      * Definition to check visibility of the element located in frame
      *
      * @param element locator of element you want to check if it's visible
-     *             Here we also check if text is EC_ or MD_ of KW_
-     * @param frame frame name to switch
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @param frame   frame name to switch
      */
     @Then("^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$")
     public void i_should_see_the_message_in_frame(String element, String frame) {
@@ -256,25 +260,24 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to check invisibility of the element
      *
+     * @param element: By locator of a element
      * @author Andrii Yakymchuk
-     * @param element:  By locator of a element
-     *
      */
     @Then("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
     public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
         waitForPageToLoad();
-            if(checkIfElementNotExist(initElementLocator(element))) {
-                Assert.assertTrue(false, "Element with " + element + " text is not displayed");
-            } else {
-                Assert.assertTrue(true, "Element with " + element + " is displayed, but it shouldn't");
-            }
+        if (checkIfElementNotExist(initElementLocator(element))) {
+            Assert.assertTrue(false, "Element with " + element + " text is not displayed");
+        } else {
+            Assert.assertTrue(true, "Element with " + element + " is displayed, but it shouldn't");
         }
+    }
 
     /**
      * Action to upload a file
      *
-     * @param element: locator type to be used to locate the element for uploading a file
+     * @param element:  locator type to be used to locate the element for uploading a file
      * @param fileName: file that should be uploaded to element on the page
      */
     @Then("I upload \"([^\"]*)\" file to \"([^\"]*)\" element")
@@ -291,8 +294,8 @@ public class StepDefinitions extends BasePage {
         String newValue = text;
         if (text.toUpperCase().trim().startsWith("RE=")) {
             newValue = newValue.substring("RE=".length());
-            assertThat(actualValue.trim(), matchesPattern(newValue ));
-            Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" +newValue +"'</pre>");
+            assertThat(actualValue.trim(), matchesPattern(newValue));
+            Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'</pre>");
         } else if (text.toUpperCase().startsWith("CONTAINS=")) {
             newValue = newValue.substring("CONTAINS=".length());
             if (text.contains("EC")) {
@@ -302,7 +305,7 @@ public class StepDefinitions extends BasePage {
                 assertThat(actualValue.trim(), Matchers.containsString(newValue));
                 Reporter.log("<pre>Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'</pre>");
             }
-        } else if(text.toUpperCase().startsWith("NOT_CONTAINS=")) {
+        } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
             newValue = newValue.substring("NOT_CONTAINS=".length());
             if (text.contains("EC")) {
                 String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
@@ -314,14 +317,14 @@ public class StepDefinitions extends BasePage {
         } else if (text.toUpperCase().startsWith("CASE=")) {
             newValue = newValue.substring("CASE=".length());
             assertThat(actualValue.trim(), Matchers.equalTo(newValue));
-            Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" +newValue +"'</pre>");
+            Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'</pre>");
         } else if (text.toUpperCase().contains("STARTS-WITH=")) {
             newValue = newValue.substring("STARTS-WITH=".length());
             assertThat(actualValue.trim(), Matchers.startsWith(newValue));
-            Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" +newValue +"'</pre>");
-        }else {
+            Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
+        } else {
             assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
-            Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" +newValue +"'</pre>");
+            Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
         }
         waitForPageToLoad();
     }
