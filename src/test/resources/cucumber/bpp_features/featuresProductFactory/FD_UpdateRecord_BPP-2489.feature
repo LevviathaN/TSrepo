@@ -33,8 +33,14 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I should scroll to the bottom of the page
     And I click on the "EC_FD_CODE_TWO" "Product Factory edit button"
     And I click on the "Audit Log" "Product Factory button title"
-    Then I should see the "Updated" "Product Factory button"
-    Then I should see the "Samuel Slade" "Product Factory button"
+    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_DATE" variable
+    Then I validate text "CONTAINS=Created" to be displayed for "Product Factory Audit Log Created Node" element
+    Then I validate text "Samuel Slade" to be displayed for "Product Factory Audit Log Created By Node" element
+    Then I validate text "CONTAINS=EC_DATE" to be displayed for "Product Factory Audit Log Created When Node" element
+    Then I validate text "Updated" to be displayed for "Product Factory Audit Log Updated Node" element
+    Then I validate text "Samuel Slade" to be displayed for "Product Factory Audit Log Updated By Node" element
+    Then I validate text "CONTAINS=EC_DATE" to be displayed for "Product Factory Audit Log Updated When Node" element
+
 
   Examples:
   |type         |
@@ -46,7 +52,7 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
   |Body         |
 
 
-  @Negative @P2 @BET
+  @Negative @P2
   Scenario Outline: Update created Financial Dimension record <type> item with Duplicate Data
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
@@ -73,16 +79,24 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I set "EC_FD_CODE" text to the "Code" "Product Factory text field"
     And I set "EC_FD_DESCRIPTION" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
-    Then I should see the "A Financial Dimension with the same code already targets '<type>'" "Product Factory navigation sub item"
+    Then I validate text "A Financial Dimension with the same code already targets '<Error Type>'" to be displayed for "Product Factory Code Filed Validation Error Message" element
+    Then I validate text "A Financial Dimension with the same code already targets '<Error Type>'" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I set "FDCodeThree[####]" text to the "Code" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE_THREE" element
 
     Examples:
-      |type         |
-      |Course       |
-#      |Material     |
-#      |Course Type  |
-#      |Material Type|
-#      |Location     |
-#      |Body         |
+      |type         ||Error Type   |
+      |Course       ||Course       |
+      |Material     ||Material     |
+      |Course Type  ||CourseType   |
+      |Material Type||MaterialType |
+      |Location     ||Location     |
+      |Body         ||Body         |
+
+
+
+
+
+
+

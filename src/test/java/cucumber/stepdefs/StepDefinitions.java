@@ -326,7 +326,6 @@ public class StepDefinitions extends BasePage {
         waitForPageToLoad();
     }
 
-
     /**
      * Definition scroll the page to the bottom after page is loaded
      *
