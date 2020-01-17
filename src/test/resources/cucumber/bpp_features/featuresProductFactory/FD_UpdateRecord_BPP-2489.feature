@@ -86,13 +86,13 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     Then I should see the "EC_FD_CODE_THREE" element
 
     Examples:
-      |type         ||Error Type   |
-      |Course       ||Course       |
-      |Material     ||Material     |
-      |Course Type  ||CourseType   |
-      |Material Type||MaterialType |
-      |Location     ||Location     |
-      |Body         ||Body         |
+      |type         |Error Type   |
+      |Course       |Course       |
+      |Material     |Material     |
+      |Course Type  |CourseType   |
+      |Material Type|MaterialType |
+      |Location     |Location     |
+      |Body         |Body         |
 
 
 
