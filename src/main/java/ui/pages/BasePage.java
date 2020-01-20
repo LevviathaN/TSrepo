@@ -2,6 +2,7 @@ package ui.pages;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -15,10 +16,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -207,10 +205,103 @@ public class BasePage {
         }
     }
 
-    public void selectFromDropdown(By element, String value) {
-        Reporter.log("Selecting '" + value + "' from dropdown");
-        Select dropdown = new Select(findElement(element));
-        dropdown.selectByVisibleText(value);
+    /**
+     * Action to select a value from a dropdown
+     *
+     * @param locator: locator type to be used to locate the dropdown element
+     * @param value:   value to be selected from dropdown
+     */
+    public void selectValueFromDropDown(By locator, String value) {
+        if (!value.equals("")) {
+            elementToBeEnable(locator);
+            WebElement webelement = driver().findElement(locator);
+            Select dropdown = new Select(webelement);
+            waitForOptions(locator);
+            try {
+                selectDropDownOption(dropdown, value);
+            } catch (StaleElementReferenceException e1) {
+                webelement = driver().findElement(locator);
+                dropdown = new Select(webelement);
+                waitForOptions(locator);
+                selectDropDownOption(dropdown, value);
+            }
+        }
+    }
+
+    /**
+     * This method select the value from the dropdown
+     *
+     * @param dropdown : to pass the WebElement into dropdown
+     * @param value    : pass the value to select from dropdown
+     */
+    public void selectDropDownOption(Select dropdown, String value) {
+        try {
+            dropdown.selectByVisibleText(value);
+        } catch (NoSuchElementException n) {
+            value = value.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
+            dropdown.selectByVisibleText(value);
+        }
+        WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
+        wait.until(ExpectedConditions.attributeContains(dropdown.getFirstSelectedOption(), "text", value));
+    }
+    /**
+     * This method gets auto selected value from a dropdown
+     *
+     * @param locator: locator type to be used to locate the dropdown  element
+     * @return a string indicating a value that has been selected
+     */
+    public String autoSelectFromDropdown(By locator) {
+
+        elementToBeEnable(locator);
+        WebElement selectElement = driver().findElement(locator);
+        Select select = new Select(selectElement);
+        waitForOptions(locator);
+
+        int value;
+        Random random = new Random();
+        List<WebElement> allOptions = select.getOptions();
+
+        if (allOptions.get(0).getText().toLowerCase().contains("none")||
+                allOptions.get(0).getText().toLowerCase().contains("Select a country...")) {
+            value = 1 + random.nextInt(allOptions.size() - 1);
+        } else {
+            value = random.nextInt(allOptions.size() - 1);
+        }
+
+        select.selectByIndex(value);
+        return allOptions.get(value).getText();
+    }
+
+
+    /**
+     * This method wait for the value to populate in the dropdown
+     *
+     * @param locator :- selector to find the element
+     */
+    private void waitForOptions(By locator) {
+        try {
+            BPPLogManager.getLogger().info("Waiting for options to be available...");
+            WebElement webelement = driver().findElement(locator);
+            Select dropdown = new Select(webelement);
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(60, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
+                    .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
+        } catch (StaleElementReferenceException s) {
+            BPPLogManager.getLogger().info("Seems like the web page is being updated. Waiting...");
+            WebElement webelement = driver().findElement(locator);
+            Select dropdown = new Select(webelement);
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(60, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
+                    .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
+        }
+    }
+
+    /**
+     * Wait for the element to be enable on web page
+     *
+     * @param locator: locator to wait to make it enable
+     */
+    public void elementToBeEnable(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver(), STATIC_TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public WebElement findByText(String element) {
