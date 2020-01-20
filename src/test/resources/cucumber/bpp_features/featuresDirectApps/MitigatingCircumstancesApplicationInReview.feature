@@ -1,5 +1,5 @@
 @DirectApps @MitigatingCircumstances
-Feature: Accept Mitigating Circumstances Application
+Feature: Mitigating Circumstances Application in Review
 
   Background:
     Given I execute "Register New Student Account" reusable step
