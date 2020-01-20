@@ -66,3 +66,32 @@ Feature: BuildEmpire
     Then I click on the "Begin review" "Build Empire admin applications tab"
     Then I click on the "Submit" "button"
     Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Academic Appeals" element
+
+  Scenario: Create Mitigating Circumstances Application
+    Given I click on the "Direct App My Applications Left Menu Link" button
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP University Mitigating Circumstances" "Build Empire application type"
+    And I click on the "Direct App Create Application" button
+
+  Scenario: Accept Mitigating Circumstances As Admin
+    Given I click on the "Direct App Admin Apps Top Link" button
+    And I click on the "Direct App Admin Direct Apps List Option" element
+    Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
+    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
+    And I click on the "Show" "button"
+    Then I click on the "Begin review" "Build Empire admin applications tab"
+    Then I click on the "Submit" "button"
+    Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+
+  Scenario: Reject Mitigating Circumstances As Admin
+    Given I click on the "Direct App Admin Apps Top Link" button
+    And I click on the "Direct App Admin Direct Apps List Option" element
+    Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
+    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
+    And I click on the "Show" "button"
+    Then I click on the "Begin review" "Build Empire admin applications tab"
+    And I select "Reject" from "Direct App Admin New Status Dropdown" element
+    Then I click on the "Submit" "button"
+    Then I validate text "CONTAINS=Rejected" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
