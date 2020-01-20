@@ -52,7 +52,7 @@ Feature: Reference Data - Sitting - BPP-401
     Then I click on the "Create" "Product Factory button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 @NoQTest
   Scenario: Add a Sitting Where Name Already Exists
     When I execute "Create Sitting" reusable step
     When I click on the "Delivery" "Product Factory navigation item"
