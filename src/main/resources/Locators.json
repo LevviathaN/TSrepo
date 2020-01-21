@@ -120,5 +120,10 @@
   "Direct App Admin Filter By Assesment": "xpath=//select[@name='search[aasm_state]']",
   "Direct App Admin By Assesment": "xpath=//select[@name='search[aasm_state]']/option[1]",
   "Direct App Admin Assesment Status": "xpath=//select[@name='search[aasm_state]']",
-  "Direct App Admin Status Changed for Academic Appeals": "xpath=//*[contains(.,'Academic appeal application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]"
+  "Direct App Admin Status Changed for Academic Appeals": "xpath=//*[contains(.,'Academic appeal application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
+  "Direct App Ten Working Days To Submit Application Yes": "xpath=//span[contains(text(),'If you do not supply this, your application will be rejected.')]/../following-sibling::div/label[1]",
+  "Direct App Mitigating Checkbox If Application Is Successful": "xpath=//label[contains(.,'If my application is successful')]",
+  "Direct App Did You Apply For Deferral": "xpath=//label[contains(.,'Did you apply for a deferral?')]/following-sibling::div/label[1]",
+  "Direct App Admin Status Changed for Mitigating Circumstances": "xpath=//*[contains(.,'Mitigating circumstances application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
+  "Direct App Admin New Status Dropdown": "xpath=//div[@class='form-group']/select[@class='form-control']"
 }

@@ -4,6 +4,7 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
+import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
 import ui.utils.UiHandlers;
 import ui.utils.bpp.TestParametersController;
@@ -25,7 +26,8 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(By.xpath(resultingXpath));
-            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SCROLL_HANDLER, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
+            BPPLogManager.getLogger().info("Clicking on: " + elementLocator);
+            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SCROLL_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
             }

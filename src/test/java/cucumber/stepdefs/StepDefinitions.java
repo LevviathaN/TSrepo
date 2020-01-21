@@ -62,7 +62,7 @@ public class StepDefinitions extends BasePage {
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element");
-        clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
+        clickOnElement(initElementLocator(element), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT);
         waitForPageToLoad();
     }
 
@@ -79,6 +79,7 @@ public class StepDefinitions extends BasePage {
     public void fill_field(String element, String text) {
         Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
         String processedText = TestParametersController.checkIfSpecialParameter(text);
+        BPPLogManager.getLogger().info("Setting: " + element + " with value: "  + text);
         findElement(initElementLocator(element)).sendKeys(processedText);
         if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
@@ -339,5 +340,19 @@ public class StepDefinitions extends BasePage {
         Reporter.log("Executing step: I should scroll to bottom of the page");
         waitForPageToLoad();
         scrollToBottomOfPage();
+    }
+
+    @And("I select \"([^\"]*)\" from \"([^\"]*)\" element")
+    public void i_select_from_element(String value, String element) {
+        Reporter.log("Executing step: I select: " + value + " from " + element + " dropdown");
+        if (value.equals("KW_AUTO_SELECT")) {
+            Reporter.log("Starting random selection from dropdown.");
+            String autoSelectedValue = autoSelectFromDropdown(initElementLocator(element));
+            Reporter.log("Selected \"" + autoSelectedValue + "\" value from " + element);
+        } else {
+            Reporter.log("Selecting \"" + value + "\" value from " + element);
+            selectValueFromDropDown(initElementLocator(element), value);
+        }
+        waitForPageToLoad();
     }
 }
