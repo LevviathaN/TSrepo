@@ -19,3 +19,16 @@ Feature: Materials - Create Material Type - BPP-1090
     And I click on the "EC_MATERIAL_TYPE_FD_CODE" "Product Factory select button"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_DESCRIPTION" element
+
+  @Negative @P2
+  Scenario: Add a Material Type Where Name Already Exists
+    When I execute "Create Material Type" reusable step
+    When I click on the "Types" "Product Factory navigation item"
+    When I click on the "Material Types" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "EC_MATERIAL_TYPE_NAME" text to the "Name" "Product Factory text field"
+    And I set "MaterialTypeDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Financial Dimension" "Product Factory change button"
+    And I click on the "EC_MATERIAL_TYPE_FD_CODE" "Product Factory select button"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "Name must be unique" "message"
