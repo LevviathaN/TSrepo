@@ -67,6 +67,17 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_FD_CODE" element
 
+  Scenario: Create Material Financial Dimension
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "MaterialFDCode[####]" text to the "Code" "Product Factory text field"
+    And I set "MaterialFDDescription[####]" text to the "Description" "Product Factory text field"
+    And I click on the "Applies To" "Product Factory dropdown"
+    And I click on the "Material" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_MATERIAL_FD_CODE" element
+
   Scenario: Create Body
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"

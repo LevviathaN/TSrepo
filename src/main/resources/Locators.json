@@ -18,6 +18,7 @@
   "Product Factory Audit Log Updated By Node": "xpath=//div[@role='document']/div/div[2]/span[2]",
   "Product Factory Audit Log Updated When Node": "xpath=//div[@role='document']/div/div[2]/span[3]",
   "Product Factory Code Filed Validation Error Message": "xpath=//label[text()='Code']/following-sibling::p",
+  "Product Factory Edit Button": "xpath=//tr/td/button/span[not(text()) and position()=1]",
   "Product Factory Toast Error Message Top-Right corner": "xpath=//div[@class='toast toast-error']/div[@class='toast-message']",
   "Product Factory Choose Dimension Popup Item Type": "xpath=//h6/following::tbody//tr[1]/td[3]",
   "Product Factory Body of Webpage": "xpath=(//div[@role='document'])[2]",
