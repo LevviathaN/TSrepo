@@ -24,8 +24,6 @@ import static org.hamcrest.Matchers.not;
  */
 public class StepDefinitions extends BasePage {
 
-    String actualValue = "";
-
     @AfterStep
     public void postActions() {
         driver().switchTo().defaultContent();
@@ -288,10 +286,16 @@ public class StepDefinitions extends BasePage {
         waitForPageToLoad();
     }
 
+    /**
+     * Definition to validate text from web element
+     *
+     * @param text : value to be checked
+     * @param element:   By locator of element to press key
+     */
     @Then("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$")
     public void i_validate_text_to_be_displayed_for_element(String text, String element) {
         Reporter.log("Executing step: I validate " + text + " to be displayed for: " + element);
-        actualValue = getTextValueFromField(initElementLocator(element));
+        String actualValue = getTextValueFromField(initElementLocator(element));
         String newValue = text;
         if (text.toUpperCase().trim().startsWith("RE=")) {
             newValue = newValue.substring("RE=".length());
@@ -336,7 +340,7 @@ public class StepDefinitions extends BasePage {
      * @author Andrii Yakymchuk
      */
     @And("^I should scroll to the bottom of the page$")
-    public void iShouldScrollToBottomOfThePage() {
+    public void i_should_scroll_to_bottom_of_the_page() {
         Reporter.log("Executing step: I should scroll to bottom of the page");
         waitForPageToLoad();
         scrollToBottomOfPage();

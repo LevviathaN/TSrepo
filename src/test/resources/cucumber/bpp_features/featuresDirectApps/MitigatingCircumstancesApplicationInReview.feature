@@ -1,4 +1,4 @@
-@DirectApps @MitigatingCircumstances
+@DirectApps @MitigatingCircumstances1
 Feature: Mitigating Circumstances Application in Review
 
   Background:
@@ -63,8 +63,13 @@ Feature: Mitigating Circumstances Application in Review
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
-
     Then I execute "Submit Application Hub" reusable step
+    Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Reject Mitigating Circumstances As Admin" reusable step
+    And I execute "Log Out from Hub Admin" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    Then I execute "Student Validates Application Status Changed" reusable step
+    And I execute "Log In to Hub as Admin" reusable step
+    And I execute "Put in Review Mitigating Circumstances" reusable step

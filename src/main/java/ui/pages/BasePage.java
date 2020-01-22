@@ -572,7 +572,7 @@ public class BasePage {
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
     public static void waitForPageToLoad(){
-        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT).ignoring(WebDriverException.class);
+        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT, 1000).ignoring(WebDriverException.class);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
