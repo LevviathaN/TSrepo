@@ -83,6 +83,39 @@
             Appeals" element
         </step>
     </reusable>
+    <reusable name="Create Mitigating Circumstances Application">
+        <step>I click on the "Direct App My Applications Left Menu Link" button</step>
+        <step>I click on the "Direct App What Are You Applying For Dropdown" element</step>
+        <step>I click on the "BPP University Mitigating Circumstances" "Build Empire application type"</step>
+        <step>I click on the "Direct App Create Application" button</step>
+    </reusable>
+    <reusable name="Accept Mitigating Circumstances As Admin">
+        <step>I click on the "Direct App Admin Apps Top Link" button</step>
+        <step>I click on the "Direct App Admin Direct Apps List Option" element</step>
+        <step>I click on the "Mitigating Circumstances" "Build Empire admin applications tab"</step>
+        <step>I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"</step>
+        <step>I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"</step>
+        <step>I click on the "Show" "button"</step>
+        <step>I click on the "Begin review" "Build Empire admin applications tab"</step>
+        <step>I click on the "Submit" "button"</step>
+        <step>I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Mitigating
+            Circumstances" element
+        </step>
+    </reusable>
+    <reusable name="Reject Mitigating Circumstances As Admin">
+        <step>I click on the "Direct App Admin Apps Top Link" button</step>
+        <step>I click on the "Direct App Admin Direct Apps List Option" element</step>
+        <step>I click on the "Mitigating Circumstances" "Build Empire admin applications tab"</step>
+        <step>I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"</step>
+        <step>I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"</step>
+        <step>I click on the "Show" "button"</step>
+        <step>I click on the "Begin review" "Build Empire admin applications tab"</step>
+        <step>I select "Reject" from "Direct App Admin New Status Dropdown" element</step>
+        <step>I click on the "Submit" "button"</step>
+        <step>I validate text "CONTAINS=Rejected" to be displayed for "Direct App Admin Status Changed for Mitigating
+            Circumstances" element
+        </step>
+    </reusable>
     <reusable name="Log In">
         <step>I am on "MD_COMMON_LINKS_PRODUCTFACTORYURL" URL</step>
         <step>I click on the "Sign in with Auth0" button</step>
