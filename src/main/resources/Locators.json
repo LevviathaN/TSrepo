@@ -11,6 +11,7 @@
   "Product Factory Select Dropdown": "xpath=//button[normalize-space()='Select'][1]",
   "Product Factory Save Button": "xpath=//span[text()='Save']",
   "Product Factory Spinner": "xpath=//div[@role='progressbar']",
+  "Product Factory Edit Button": "xpath=//tr/td/button/span[not(text()) and position()=1]",
 
   "Salesforce Username": "id=username",
   "Salesforce Password": "id=password",

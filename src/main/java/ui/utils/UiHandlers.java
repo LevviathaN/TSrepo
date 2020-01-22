@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author rlevytskyi
  * <p>
- * Enum to handle spinners and modules that may overlay ui elements
+ * Enum to handle different exceptions after click (e.c. spinners and modules that may overlay ui elements)
  * </p>
  */
 public enum UiHandlers {
@@ -30,6 +30,7 @@ public enum UiHandlers {
         if(e.getMessage().contains("Other element would receive the click: <")){
             Reporter.log("Handling PF Edit button click overlay");
             BasePage.scrollToBottomOfPage();
+            page.findElement(element).click();
         }
     }),
 
