@@ -176,7 +176,7 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     ######Add Material Financial Dimension
     When I click on the "Products" "Product Factory navigation item"
     And I click on the "Materials" "Product Factory navigation sub item"
-    When I click on the "Financials" "Product Factory navigation item"
+    And I click on the "Financials" "Product Factory button"
     And I click on the "Entity Dimension" "Product Factory change button"
     And I click on the "EC_FD_MATERIAL_CODE_ONE" "Product Factory change modal option"
     And I click on the "Revenue Dimension" "Product Factory change button"
