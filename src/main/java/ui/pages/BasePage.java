@@ -168,7 +168,6 @@ public class BasePage {
     public void setText(By element, String value) {
         if (value != null) {
             BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
-//            findElement(element).clear();
             clearEntireField(element);
             findElement(element).sendKeys(value);
         }

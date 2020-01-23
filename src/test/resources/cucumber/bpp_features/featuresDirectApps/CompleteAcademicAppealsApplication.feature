@@ -67,3 +67,4 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Accept Academic Appeals As Admin" reusable step
+    Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Academic Appeals" element

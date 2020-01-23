@@ -46,8 +46,12 @@ Feature: Amend Reference Data - Paper - BPP-660
     When I execute "Create Level" reusable step replacing some steps
       |4|I set "LevelShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
       |5|I set "LevelNameNew[####]" text to the "Name" "Product Factory text field"           |
+    When I execute "Link Body To Level" reusable step
     When I execute "Link Body To Paper" reusable step
     When I execute "Link Paper To Level" reusable step
+    When I execute "Link Body To Level" reusable step replacing some steps
+      |3|I click on the "EC_BODY_NAME_NEW" "Product Factory Link Levels button"  |
+      |4|I click on the "EC_LEVEL_NAME_NEW" "Product Factory dialog checkbox"|
     When I execute "Link Body To Paper" reusable step replacing some steps
       |4|I click on the "EC_BODY_NAME_NEW" "Product Factory select button"|
     When I execute "Link Paper To Level" reusable step replacing some steps

@@ -1,4 +1,4 @@
-@DirectApps @MitigatingCircumstances1
+@DirectApps @MitigatingCircumstances
 Feature: Mitigating Circumstances Application in Review
 
   Background:

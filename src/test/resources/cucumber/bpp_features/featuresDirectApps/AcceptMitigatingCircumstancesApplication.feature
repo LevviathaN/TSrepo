@@ -7,7 +7,6 @@ Feature: Accept Mitigating Circumstances Application
 
   @Positive #TC-1266
   Scenario: Accept Mitigating Circumstances
-    #And I execute "Complete Mitigating Circumstances" reusable step
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Direct App Final Award In Relation To Programme" button

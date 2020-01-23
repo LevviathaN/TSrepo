@@ -12,15 +12,21 @@ Feature: Materials - Create Materials - BPP-1099
     And I execute "Create Sitting" reusable step
     And I execute "Create VAT Rule" reusable step
     And I execute "Create Material Type Financial Dimension" reusable step
+    And I execute "Create Material Financial Dimension" reusable step
     And I execute "Create Material Type" reusable step
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Paper" reusable step
+    And I execute "Link Body To Level" reusable step
 
   @Positive @P1
   Scenario: Create Material Wizard
-#   TODO Handle one-time Material System Settings (preferably using conditional step definitions)
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Materials" "Product Factory navigation sub item"
+    Then I click on the "Entity Dimension" "Product Factory change button" if "System Setting" "element is present"
+    Then I click on the "EC_MATERIAL_FD_CODE" "Product Factory change modal option" if "System Setting" "element is present"
+    Then I click on the "Revenue Dimension" "Product Factory change button" if "System Setting" "element is present"
+    Then I click on the "EC_MATERIAL_FD_CODE" "Product Factory change modal option" if "System Setting" "element is present"
+    Then I click on the "Save" "Product Factory button" if "System Setting" "element is present"
     And I click on the "Create" "Product Factory button"
     And I click on the "BPP Learning Media" "Product Factory button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
@@ -42,7 +48,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
 
-  @Positive @P1 @Amend
+  @Positive @P1 @Amend #blocked by BPP-3250
   Scenario: Amend Material Using Modal
     When I execute "Create Material" reusable step
     And I execute "Create Body" reusable step

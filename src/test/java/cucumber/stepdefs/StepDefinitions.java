@@ -12,6 +12,7 @@ import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
@@ -62,6 +63,28 @@ public class StepDefinitions extends BasePage {
         Reporter.log("Executing step: I click on the '" + element + "' element");
         clickOnElement(initElementLocator(element), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT);
         waitForPageToLoad();
+    }
+
+    /**
+     * Definition to click an element on the page if given condition is true
+     *
+     * @param element locator for element you want to click on
+     *                initElementLocator builds locator, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @author Ruslan Levytskyi
+     */
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_click_on_the_button_if(String element, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        if(conditions.checkCondition(condition,conditionParameter)){
+            Reporter.log("Executing step: I click on the '" + element + "' element");
+            clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
+            waitForPageToLoad();
+        } else{
+            Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
+        }
     }
 
     /**
@@ -175,6 +198,23 @@ public class StepDefinitions extends BasePage {
         ReusableRunner.getInstance().executeReusableReplaceStep(TestParametersController.checkIfSpecialParameter(reusableName), steps);
     }
 
+    /**
+     * Definition to execute reusable step if given condition is true
+     *
+     * @param reusableName name of reusable step (Scenario in ReusableSteps.feature) you want to execute
+     *                     Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
+     */
+    @Then("^I execute \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_execute_reusable_step_if(String reusableName, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        if(conditions.checkCondition(condition,conditionParameter)){
+            Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
+            ReusableRunner.getInstance().executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
+        } else{
+            Reporter.log("Condition " + conditionParameter + " " + condition + " is not true, so '" + reusableName + "' reusable step will not be executed");
+        }
+    }
 
     /**
      * Definition to execute reusable steps
@@ -183,7 +223,6 @@ public class StepDefinitions extends BasePage {
      * @param varName name of variable in which you want to save text
      * @author Ruslan Levytskyi
      */
-    //todo: create EC_ variable each time any random value is generated
     @Then("I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         Reporter.log("Executing step: I remember '" + text + "' text as '" + varName + "' variable");
@@ -262,7 +301,7 @@ public class StepDefinitions extends BasePage {
      * @param element: By locator of a element
      * @author Andrii Yakymchuk
      */
-    @Then("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
+    @Then("I shouldn't see the \"([^\"]*)\"(?: button| message| element| text)?$")
     public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
         waitForPageToLoad();

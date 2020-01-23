@@ -20,12 +20,14 @@ Feature: BuildEmpire
     And I set "EC_EMAIL_AUTO" text to the "Email" "Build Empire text field"
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
+    And I should see the "Direct App My Applications Left Menu Link" element
 
   Scenario: Log In to Hub as Admin
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREADMINURL" URL
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINUSER"
     And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINPASSWORD"
     Then I click on the "Direct App Login Button" button
+    And I should see the "Direct App Admin Apps Top Link" element
 
   Scenario: Create Scholarships Application
     Given I click on the "Direct App My Applications Left Menu Link" button
@@ -65,7 +67,6 @@ Feature: BuildEmpire
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
     Then I click on the "Submit" "button"
-    Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Academic Appeals" element
 
   Scenario: Create Mitigating Circumstances Application
     Given I click on the "Direct App My Applications Left Menu Link" button

@@ -13,10 +13,8 @@ import ui.utils.Tools;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import static cucumber.StepPatterns.*;
 
 /**
@@ -53,6 +51,8 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_CHECK_UNCHECK.getPattern(),() -> stepDefs.i_check_uncheck(arg1, arg2));
         stepDefsMap.put(I_PRESS_KEY.getPattern(),() -> stepDefs.i_press_from_keyboard(arg1, arg2));
         stepDefsMap.put(I_VALIDATE_TEXT.getPattern(),() -> stepDefs.i_validate_text_to_be_displayed_for_element(arg1, arg2));
+        stepDefsMap.put(I_EXECUTE_REUSABLE_STEP_IF.getPattern(),() -> stepDefs.i_execute_reusable_step_if(arg1, arg2, arg3));
+        stepDefsMap.put(I_CLICK_ON_THE_BUTTON_IF.getPattern(),() -> stepDefs.i_click_on_the_button_if(arg1, arg2, arg3));
         stepDefsMap.put(I_SELECT_FROM_DROPDOWN.getPattern(),() -> stepDefs.i_select_from_element(arg1, arg2));
         stepDefsMap.put(I_SHOULD_SCROLL_TO_THE_BOTTOM_OF_THE_PAGE.getPattern(),() -> stepDefs.i_should_scroll_to_bottom_of_the_page());
         stepDefsMap.put(I_UPLOAD_FILE.getPattern(),() -> stepDefs.i_upload_file_to_element(arg1, arg2));
@@ -65,6 +65,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_SHOULD_SEE_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_special(arg1, arg2));
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL.getPattern(),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));
         stepDefsMap.put(I_CHECK_UNCHECK_SPECIAL.getPattern(),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));
+        stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special_if(arg1, arg2, arg3, arg4));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();
@@ -74,7 +75,6 @@ public static ReusableRunner getInstance() {
 
     public HashMap<String, RunReusable> stepDefsMap = new HashMap<>();
 
-    private String step = "";
     private String arg1 = "";
     private String arg2 = "";
     private String arg3 = "";
@@ -100,7 +100,7 @@ public static ReusableRunner getInstance() {
                 BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
                 reusable.add(i, subSteps.get(i));
             }
-            executeStep(i);
+            executeStep(reusable.get(i));
         }
     }
 
@@ -125,7 +125,7 @@ public static ReusableRunner getInstance() {
                 reusable.remove(i);
                 reusable.add(i, subSteps.get(i+1));
             }
-            executeStep(i);
+            executeStep(reusable.get(i));
         }
     }
 
@@ -141,19 +141,17 @@ public static ReusableRunner getInstance() {
         reusable = getStepsOfReusableScenario(reusableName);
         BPPLogManager.getLogger().info("Executing: " + reusableName + " reusable step");
         for (int i = 0; i < reusable.size(); i++) {
-            executeStep(i);
+            executeStep(reusable.get(i));
         }
     }
 
     /**
-     * Execute i-th step of reusable scenario
+     * Execute step of reusable scenario
      *
-     * @param i index of step of reusable scenario to execute
+     * @param step to execute
      * @author Ruslan Levytskyi
      */
-    private void executeStep(int i) {
-        step = reusable.get(i);
-        arg1 = Tools.getQuotet(step, '"').get(0);
+    public void executeStep(String step) {
         List<String> arguments = Tools.getQuotet(step, '"');
         if (arguments.toArray().length == 1) {
             arg1 = arguments.get(0);
@@ -172,8 +170,8 @@ public static ReusableRunner getInstance() {
         }
 
         for (String regx : stepDefsMap.keySet()) {
-            if (reusable.get(i).matches(regx)) {
-                BPPLogManager.getLogger().info("Executing step: " + this.step);
+            if (step.matches(regx)) {
+                BPPLogManager.getLogger().info("Executing step: " + step);
                 stepDefsMap.get(regx).runReusable();
             }
         }
