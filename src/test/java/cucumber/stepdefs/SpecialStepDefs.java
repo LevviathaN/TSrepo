@@ -28,7 +28,7 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(By.xpath(resultingXpath));
-            BPPLogManager.getLogger().info("Clicking on: " + elementLocator);
+            BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
             clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SCROLL_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
@@ -86,6 +86,7 @@ public class SpecialStepDefs extends BasePage {
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             setText(By.xpath(resultingXpath), processedText);
             if(!text.equals(processedText)){
+                BPPLogManager.getLogger().info("Setting " + processedText + " to " + elementLocator + " element");
                 Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + "' [output value]</pre>");
             }
         } else {
@@ -107,6 +108,7 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
+            BPPLogManager.getLogger().info("Validating presence of " + elementLocator);
             Assert.assertTrue(isElementPresentAndDisplay(By.xpath(resultingXpath)));
         } else {
             Reporter.fail("No such locator template key");

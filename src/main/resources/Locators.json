@@ -124,5 +124,11 @@
   "Direct App Mitigating Checkbox If Application Is Successful": "xpath=//label[contains(.,'If my application is successful')]",
   "Direct App Did You Apply For Deferral": "xpath=//label[contains(.,'Did you apply for a deferral?')]/following-sibling::div/label[1]",
   "Direct App Admin Status Changed for Mitigating Circumstances": "xpath=//*[contains(.,'Mitigating circumstances application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
-  "Direct App Admin New Status Dropdown": "xpath=//div[@class='form-group']/select[@class='form-control']"
+  "Direct App Admin New Status Dropdown": "xpath=//div[@class='form-group']/select[@class='form-control']",
+
+  "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
+  "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
+  "Harakirimail Application Outcome Letter": "xpath=//div[contains(text(),'Your Mitigating Circumstances application outcome')]",
+  "Harakirimail Validate Letter Body": "xpath=//div[@id='email_body_html']",
+  "Harakirimail Back To Inbox": "xpath=//i[@class='icon-arrow-left']/parent::a[normalize-space()='Inbox']"
 }
