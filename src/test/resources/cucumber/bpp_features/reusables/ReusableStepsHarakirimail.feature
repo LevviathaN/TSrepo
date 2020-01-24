@@ -1,7 +1,7 @@
 @Reusable
 Feature: Harakirimail
 
-  Scenario: Harakirimail Mitigating Circustances Reject  Validation
+  Scenario: Harakirimail Mitigating Circustances Reject Validation
     Given I am on "https://harakirimail.com/" URL
     And I fill the "Harakirimail Inbox Name" field with "EC_EMAIL_AUTO"
     Then I click on the "Harakirimail Get Inbox" button
