@@ -27,7 +27,7 @@ public enum StepPatterns {
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"),
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$"),
     I_PRESS_KEY("^I press \"([^\"]*)\" for \"([^\"]*)\"$"),
-    I_VALIDATE_TEXT("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\"element$"),
+    I_VALIDATE_TEXT("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$"),
     I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF("^I click on the \"([^\"]*)\" \"([^\"]*)\" if \"([^\"]*)\" \"([^\"]*)\"$"),
     I_CLICK_ON_THE_BUTTON_IF("^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$"),
     I_EXECUTE_REUSABLE_STEP_IF("^I execute \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$"),
