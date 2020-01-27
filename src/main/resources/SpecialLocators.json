@@ -29,5 +29,8 @@
   "Build Empire education element":"//label[contains(text(),'PARAMETER')]/..//input",
   "Build Empire course details element":".//label[contains(text(), 'PARAMETER')]/..//input",
   "Build Empire reason for appeal element":"//label[contains(.,'PARAMETER')]/../div/label[1]",
-  "Build Empire admin applications tab":"//a[text()='PARAMETER']"
+  "Build Empire admin applications tab":"//a[text()='PARAMETER']",
+  "Build Empire nationality option":"//ul[@role='listbox']/li[text()='PARAMETER']",
+  "Build Empire nationality dropdown":"//label[contains(text(),'PARAMETER')]/..//span[@class='ember-power-select-status-icon']",
+  "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']"
 }
