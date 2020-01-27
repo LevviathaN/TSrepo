@@ -217,6 +217,8 @@ Feature: Product Factory
     Then I should see the "EC_BODY_NAME" element
 
   Scenario: Create Pricing Matrix Full
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "Prices" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
     Then I click on the "Create" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"

@@ -17,34 +17,47 @@ public enum UiHandlers {
 
     PF_SPINNER_HANDLER((element, e) -> {
         BasePage page = new BasePage();
+        BasePage.isHandled.put("pfSpinnerHandler", false);
         WebDriverWait wait = new WebDriverWait(BasePage.driver(), BasePage.DEFAULT_TIMEOUT,300);
         if (e.getMessage().contains("opacity: 1; transition: opacity 225ms cubic-bezier")){
             Reporter.log("Handling PF Spinner");
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
             page.findElement(element).click();
+            BasePage.isHandled.put("pfSpinnerHandler", true);
         }
     }),
 
     PF_SCROLL_HANDLER((element, e) -> {
         BasePage page = new BasePage();
-        if(e.getMessage().contains("Other element would receive the click: <")){
+        BasePage.isHandled.put("pfScrollHandler", false);
+        if(e.getMessage().contains("Other element would receive the click: <button")){
             Reporter.log("Handling PF Edit button click overlay");
-            BasePage.scrollToBottomOfPage();
+            BasePage.scrollBy(0,100);
             page.findElement(element).click();
+            BasePage.isHandled.put("pfScrollHandler", true);
         }
     }),
 
     ACCEPT_ALERT((element, e) -> {
         BasePage page = new BasePage();
+        BasePage.isHandled.put("acceptAert", false);
         if (e.getCause().toString().contains(" Are you sure want to review this application?")) {
             Reporter.log("Handling JS Alert");
             page.acceptAlertMessage();
+            BasePage.isHandled.put("acceptAlert", true);
         }
     }),
 
     DEFAULT_HANDLER((element, e) -> {
-        Reporter.fail(Tools.getStackTrace(e));
-        throw new RuntimeException("Failure clicking on element");
+        boolean handled = false;
+        for (Boolean value : BasePage.isHandled.values()) {
+            if (value) handled = true;
+        }
+        if (!handled){
+            Reporter.log("Default Handler: FAIL");
+            Reporter.fail(Tools.getStackTrace(e));
+            throw new RuntimeException("Failure clicking on element");
+        }
     });
 
     private UiHandler handler;

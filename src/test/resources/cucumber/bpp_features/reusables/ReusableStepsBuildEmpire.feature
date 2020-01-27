@@ -112,7 +112,6 @@ Feature: BuildEmpire
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
-    And I select "Reject" from "Direct App Admin New Status Dropdown" element
     Then I click on the "Submit" "button"
     Then I validate text "CONTAINS=Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
 
@@ -173,3 +172,13 @@ Feature: BuildEmpire
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
+
+  Scenario: Create Programmes Application
+    Given I click on the "Direct App My Applications Left Menu Link" button
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP University Programmes" "Build Empire application type"
+    And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I click on the "UAT University Programme" "Build Empire application type"
+    And I click on the "Direct App Location Dropdown" element
+    Then I click on the "BPP University Birmingham" "Build Empire application type"
+    And I click on the "Direct App Create Application" button

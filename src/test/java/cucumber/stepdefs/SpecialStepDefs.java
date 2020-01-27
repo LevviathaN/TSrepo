@@ -30,7 +30,11 @@ public class SpecialStepDefs extends BasePage {
             isElementPresentAndDisplay(By.xpath(resultingXpath));
             BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
             scrollToElement(findElement(By.xpath(resultingXpath)));
-            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT/*, UiHandlers.PF_SCROLL_HANDLER*/);
+            clickOnElement(By.xpath(resultingXpath),
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
             }
@@ -56,7 +60,11 @@ public class SpecialStepDefs extends BasePage {
                 String xpathTemplate = specialLocatorsMap.get(elementType);
                 String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
                 isElementPresentAndDisplay(By.xpath(resultingXpath));
-                clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SCROLL_HANDLER, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
+                clickOnElement(By.xpath(resultingXpath),
+                        UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.ACCEPT_ALERT,
+                        UiHandlers.PF_SPINNER_HANDLER,
+                        UiHandlers.DEFAULT_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
                     Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
                 }
