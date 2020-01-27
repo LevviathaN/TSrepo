@@ -32,6 +32,9 @@ public class BasePage {
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
+    //map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is
+    //executed.
+    public static Map<String, Boolean> isHandled = new HashMap<>();
 
     //____________________________________________Timeouts section__________________________________________________
 
@@ -554,6 +557,15 @@ public class BasePage {
     public static void scrollToBottomOfPage() {
         BPPLogManager.getLogger().info("Scrolling to bottom of the page.");
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        waitForPageToLoad();
+    }
+
+    /**
+     * Method to scroll by a certain amount of pixels
+     */
+    public static void scrollBy(int x, int y) {
+        BPPLogManager.getLogger().info("Scrolling to bottom of the page.");
+        ((JavascriptExecutor) driver()).executeScript("window.scrollBy(" + x + ", " + y +")");
         waitForPageToLoad();
     }
 
