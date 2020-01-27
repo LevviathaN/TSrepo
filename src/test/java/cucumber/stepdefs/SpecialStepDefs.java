@@ -3,6 +3,7 @@ package cucumber.stepdefs;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.Conditions;
@@ -29,7 +30,8 @@ public class SpecialStepDefs extends BasePage {
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(By.xpath(resultingXpath));
             BPPLogManager.getLogger().info("Clicking on: " + elementLocator);
-            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SCROLL_HANDLER);
+            scrollToElement(findElement(By.xpath(resultingXpath)));
+            clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT/*, UiHandlers.PF_SCROLL_HANDLER*/);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
             }
@@ -55,7 +57,7 @@ public class SpecialStepDefs extends BasePage {
                 String xpathTemplate = specialLocatorsMap.get(elementType);
                 String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
                 isElementPresentAndDisplay(By.xpath(resultingXpath));
-                clickOnElement(By.xpath(resultingXpath), UiHandlers.PF_SCROLL_HANDLER, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
+                clickOnElement(By.xpath(resultingXpath)/*, UiHandlers.PF_SCROLL_HANDLER*/, UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
                     Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
                 }
@@ -181,6 +183,7 @@ public class SpecialStepDefs extends BasePage {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            scrollToElement(findElement(By.xpath(resultingXpath)));
             checkCheckbox(By.xpath(resultingXpath),state);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
