@@ -27,10 +27,15 @@ public enum StepPatterns {
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"),
     ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL("^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$"),
     I_PRESS_KEY("^I press \"([^\"]*)\" for \"([^\"]*)\"$"),
-    I_VALIDATE_TEXT("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\"element$"),
+    I_VALIDATE_TEXT("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$"),
     I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF("^I click on the \"([^\"]*)\" \"([^\"]*)\" if \"([^\"]*)\" \"([^\"]*)\"$"),
     I_CLICK_ON_THE_BUTTON_IF("^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$"),
-    I_EXECUTE_REUSABLE_STEP_IF("^I execute \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$");
+    I_EXECUTE_REUSABLE_STEP_IF("^I execute \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$"),
+    I_SELECT_FROM_DROPDOWN("I select \"([^\"]*)\" from \"([^\"]*)\" element"),
+    I_SHOULD_SCROLL_TO_THE_BOTTOM_OF_THE_PAGE("^I should scroll to the bottom of the page$"),
+    I_UPLOAD_FILE("I upload \"([^\"]*)\" file to \"([^\"]*)\" element"),
+    I_SHOULD_NOT_SEE_ELEMENT("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"),
+    I_SHOULD_SEE_MESSAGE_IN_FRAME("^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$");
 
     private final String pattern;
 

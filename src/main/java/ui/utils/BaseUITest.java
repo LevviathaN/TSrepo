@@ -49,7 +49,7 @@ public class BaseUITest {
             BasePage.driver.set(DriverProvider.getDriver());
             BasePage.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (Exception e) {
-            Reporter.failTryTakingScreenshot("Before test failure during Driver creation");
+            Reporter.failTryTakingScreenshot("Before test failure during Driver creation. Please check options for test executions ");
             Reporter.flush();
             Assert.fail();
         }

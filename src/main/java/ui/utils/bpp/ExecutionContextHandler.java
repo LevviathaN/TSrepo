@@ -31,11 +31,11 @@ public class ExecutionContextHandler {
         if (executionContext.getValues().containsKey(key)) {
             return executionContext.getValue(key);
         } else {
-            BPPLogManager.getLogger().warn("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
+            BPPLogManager.getLogger().error("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- some previous CaptureData action(s) failed;\n" +
                     "\t\t- the requested key is misspelled");
-            Reporter.log("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +
-                    "- some previous CaptureData action(s) failed;<br>" +
+            Reporter.fail("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +
+                    "- some previous Capture Data action(s) failed;<br>" +
                     "- the requested key is misspelled");
             return key;
         }

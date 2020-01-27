@@ -73,4 +73,5 @@ Feature: Complete BPP University Scholarship Application
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
     Then I execute "Submit Application Hub" reusable step
+    Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element
     And I execute "Log Out from Hub Student" reusable step

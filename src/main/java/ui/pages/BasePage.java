@@ -36,7 +36,7 @@ public class BasePage {
     //____________________________________________Timeouts section__________________________________________________
 
     public static final int DEFAULT_TIMEOUT = getTimeout();
-    public static final int STATIC_TIMEOUT = getStaticTimeout();
+    public static final int SHORT_TIMEOUT = getShortTimeout();
 
     private static int getTimeout() {
         String timeout = FileIO.getConfigProperty("DefaultTimeoutInSeconds");
@@ -55,16 +55,6 @@ public class BasePage {
         }
         return Integer.parseInt(timeout);
     }
-
-    private static int getStaticTimeout() {
-        String timeout = FileIO.getConfigProperty("StaticTimeoutMilliseconds");
-        if (timeout == null) {
-            Reporter.failTryTakingScreenshot("StaticTimeoutMilliseconds parameter was not found");
-            timeout = "1000";
-        }
-        return Integer.parseInt(timeout);
-    }
-
     //____________________________________________________________________________________________________________
 
     //constructor
@@ -168,7 +158,6 @@ public class BasePage {
     public void setText(By element, String value) {
         if (value != null) {
             BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
-//            findElement(element).clear();
             clearEntireField(element);
             findElement(element).sendKeys(value);
         }
@@ -283,13 +272,13 @@ public class BasePage {
             BPPLogManager.getLogger().info("Waiting for options to be available...");
             WebElement webelement = driver().findElement(locator);
             Select dropdown = new Select(webelement);
-            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(60, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(30, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
                     .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
         } catch (StaleElementReferenceException s) {
             BPPLogManager.getLogger().info("Seems like the web page is being updated. Waiting...");
             WebElement webelement = driver().findElement(locator);
             Select dropdown = new Select(webelement);
-            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(60, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(30, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
                     .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
         }
     }
@@ -300,7 +289,7 @@ public class BasePage {
      * @param locator: locator to wait to make it enable
      */
     public void elementToBeEnable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver(), STATIC_TIMEOUT);
+        WebDriverWait wait = new WebDriverWait(driver(), SHORT_TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -366,7 +355,7 @@ public class BasePage {
      */
     public static WebElement findElementIgnoreException(By element, int... timeout) {
         waitForPageToLoad();
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
+        int timeoutForFindElement = timeout.length < 1 ? SHORT_TIMEOUT : timeout[0];
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -572,7 +561,7 @@ public class BasePage {
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
     public static void waitForPageToLoad(){
-        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT).ignoring(WebDriverException.class);
+        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT, 1000).ignoring(WebDriverException.class);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
