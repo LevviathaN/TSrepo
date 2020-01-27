@@ -125,7 +125,7 @@
   "Direct App Did You Apply For Deferral": "xpath=//label[contains(.,'Did you apply for a deferral?')]/following-sibling::div/label[1]",
   "Direct App Admin Status Changed for Mitigating Circumstances": "xpath=//*[contains(.,'Mitigating circumstances application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
   "Direct App Admin New Status Dropdown": "xpath=//div[@class='form-group']/select[@class='form-control']",
-  "Diret App Programmes Programm Dropdown":"xpath=//label[normalize-space()='Programme']/parent::div/div[@class='ember-basic-dropdown ember-view']//span[@class='ember-power-select-status-icon']",
+  "Direct App Programmes Programm Dropdown":"xpath=//label[normalize-space()='Programme']/parent::div/div[@class='ember-basic-dropdown ember-view']//span[@class='ember-power-select-status-icon']",
   "Direct App Location Dropdown": "xpath=//label[normalize-space()='Location']/parent::div/div[@class='ember-basic-dropdown ember-view']//span[@class='ember-power-select-status-icon']",
   "Direct App Nationality No Visa": "xpath=//div[@class='content-row-app']//div/label[2]",
   "Direct App Add Qualification":"xpath=//button[contains(.,'Add a qualification')]",

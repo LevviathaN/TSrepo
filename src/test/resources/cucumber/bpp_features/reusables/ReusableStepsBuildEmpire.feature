@@ -177,7 +177,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App My Applications Left Menu Link" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Programmes" "Build Empire application type"
-    And I click on the "Diret App Programmes Programm Dropdown" element
+    And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "UAT University Programme" "Build Empire application type"
     And I click on the "Direct App Location Dropdown" element
     Then I click on the "BPP University Birmingham" "Build Empire application type"
