@@ -24,7 +24,7 @@ Feature: Reference Data - Location - BPP-428
     Then I should see the "EC_LOCATION_NAME" element
 
   @Negative @P2
-  Scenario: Submitting Incomplete Fields
+  Scenario: Submitting Incomplete Location Fields
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Locations" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"

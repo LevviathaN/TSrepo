@@ -19,7 +19,7 @@ Feature: Reference Data - Level - BPP-371
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
   @Negative @P2
-  Scenario: Submitting Incomplete Fields
+  Scenario: Submitting Incomplete Level Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"

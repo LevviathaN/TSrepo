@@ -2,18 +2,22 @@ package ui.pages;
 
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.*;
 import ui.utils.*;
+import ui.utils.bpp.PreProcessFiles;
 import ui.utils.bpp.TestParametersController;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * <p> Base class for all page objects.
@@ -27,11 +31,15 @@ public class BasePage {
     public static Map<String,String> locatorsMap;
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
+    //map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is
+    //executed.
+    public static Map<String, Boolean> isHandled = new HashMap<>();
 
     //____________________________________________Timeouts section__________________________________________________
 
     public static final int DEFAULT_TIMEOUT = getTimeout();
-    public static final int STATIC_TIMEOUT = getStaticTimeout();
+    public static final int SHORT_TIMEOUT = getShortTimeout();
 
     private static int getTimeout() {
         String timeout = FileIO.getConfigProperty("DefaultTimeoutInSeconds");
@@ -50,16 +58,6 @@ public class BasePage {
         }
         return Integer.parseInt(timeout);
     }
-
-    private static int getStaticTimeout() {
-        String timeout = FileIO.getConfigProperty("StaticTimeoutMilliseconds");
-        if (timeout == null) {
-            Reporter.failTryTakingScreenshot("StaticTimeoutMilliseconds parameter was not found");
-            timeout = "1000";
-        }
-        return Integer.parseInt(timeout);
-    }
-
     //____________________________________________________________________________________________________________
 
     //constructor
@@ -163,15 +161,139 @@ public class BasePage {
     public void setText(By element, String value) {
         if (value != null) {
             BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
-            findElement(element).clear();
+            clearEntireField(element);
             findElement(element).sendKeys(value);
         }
     }
 
-    public void selectFromDropdown(By element, String value) {
-        Reporter.log("Selecting '" + value + "' from dropdown");
-        Select dropdown = new Select(findElement(element));
-        dropdown.selectByVisibleText(value);
+    /**
+     * Action clears the entire  text field as Selenium's clear() refuses to work on new chrome versions
+     *
+     * @param element: locator type to be used to locate the button element
+     */
+    //Todo: Fix click in the middle issue
+    //cursor is set in the middle of the field, so if text in field is bigger than the half of the field, text
+    //will not be erased completely. Temporary fixed, but the method needs refactoring
+    public void clearEntireField(By element) {
+        WebElement textField = findElement(element);
+        String backSpace = Keys.BACK_SPACE.toString();
+        try {
+            clickOnElement(element, UiHandlers.PF_SPINNER_HANDLER);
+//            textField.click();
+            int size = textField.getAttribute("value").length();
+
+            if (size != 0) {
+                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+            }
+            clickOnElement(element, UiHandlers.PF_SPINNER_HANDLER);
+//            textField.click();
+            size = textField.getAttribute("value").length();
+            if (size != 0) {
+                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+            }
+
+        } catch (InvalidElementStateException e) {
+            textField.sendKeys("");
+        }
+    }
+
+    /**
+     * Action to select a value from a dropdown
+     *
+     * @param locator: locator type to be used to locate the dropdown element
+     * @param value:   value to be selected from dropdown
+     */
+    public void selectValueFromDropDown(By locator, String value) {
+        if (!value.equals("")) {
+            elementToBeEnable(locator);
+            WebElement webelement = driver().findElement(locator);
+            Select dropdown = new Select(webelement);
+            waitForOptions(locator);
+            try {
+                selectDropDownOption(dropdown, value);
+            } catch (StaleElementReferenceException e1) {
+                webelement = driver().findElement(locator);
+                dropdown = new Select(webelement);
+                waitForOptions(locator);
+                selectDropDownOption(dropdown, value);
+            }
+        }
+    }
+
+    /**
+     * This method select the value from the dropdown
+     *
+     * @param dropdown : to pass the WebElement into dropdown
+     * @param value    : pass the value to select from dropdown
+     */
+    public void selectDropDownOption(Select dropdown, String value) {
+        try {
+            dropdown.selectByVisibleText(value);
+        } catch (NoSuchElementException n) {
+            value = value.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
+            dropdown.selectByVisibleText(value);
+        }
+        WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
+        wait.until(ExpectedConditions.attributeContains(dropdown.getFirstSelectedOption(), "text", value));
+    }
+    /**
+     * This method gets auto selected value from a dropdown
+     *
+     * @param locator: locator type to be used to locate the dropdown  element
+     * @return a string indicating a value that has been selected
+     */
+    public String autoSelectFromDropdown(By locator) {
+
+        elementToBeEnable(locator);
+        WebElement selectElement = driver().findElement(locator);
+        Select select = new Select(selectElement);
+        waitForOptions(locator);
+
+        int value;
+        Random random = new Random();
+        List<WebElement> allOptions = select.getOptions();
+
+        if (allOptions.get(0).getText().toLowerCase().contains("none")||
+                allOptions.get(0).getText().toLowerCase().contains("Select a country...")) {
+            value = 1 + random.nextInt(allOptions.size() - 1);
+        } else {
+            value = random.nextInt(allOptions.size() - 1);
+        }
+
+        select.selectByIndex(value);
+        return allOptions.get(value).getText();
+    }
+
+
+    /**
+     * This method wait for the value to populate in the dropdown
+     *
+     * @param locator :- selector to find the element
+     */
+    private void waitForOptions(By locator) {
+        try {
+            BPPLogManager.getLogger().info("Waiting for options to be available...");
+            WebElement webelement = driver().findElement(locator);
+            Select dropdown = new Select(webelement);
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(30, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
+                    .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
+        } catch (StaleElementReferenceException s) {
+            BPPLogManager.getLogger().info("Seems like the web page is being updated. Waiting...");
+            WebElement webelement = driver().findElement(locator);
+            Select dropdown = new Select(webelement);
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(30, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
+                    .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
+        }
+    }
+
+    /**
+     * Wait for the element to be enable on web page
+     *
+     * @param locator: locator to wait to make it enable
+     */
+    public void elementToBeEnable(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver(), SHORT_TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public WebElement findByText(String element) {
@@ -197,25 +319,6 @@ public class BasePage {
     }
 
     //_______________________________________________Complex Actions__________________________________________________
-
-    /**
-     * Method to click on element and continue execution if element is not found
-     *
-     * @param element locator of element to find
-     * @param timeout optional value of timeout for finding specified element
-     */
-    public static void clickOnElementIgnoreException(By element, int... timeout) {
-        waitForPageToLoad();
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.visibilityOfElementLocated(element));
-            driver().findElement(element).click();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        waitForPageToLoad();
-    }
 
     /**
      * Method to click on first visible element by specified locator
@@ -255,7 +358,7 @@ public class BasePage {
      */
     public static WebElement findElementIgnoreException(By element, int... timeout) {
         waitForPageToLoad();
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
+        int timeoutForFindElement = timeout.length < 1 ? SHORT_TIMEOUT : timeout[0];
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -263,46 +366,6 @@ public class BasePage {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    /**
-     * Method to find group elements and continue execution if element is not found
-     *
-     * @param element locator of element to find
-     * @param timeout optional value of timeout for finding specified element
-     *
-     * @return list of WebElements
-     */
-    public static List<WebElement> findElementsIgnoreException(By element, int... timeout) {
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        waitForPageToLoad();
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.presenceOfElementLocated(element));
-            return driver().findElements(element);
-        } catch (Exception e) {
-            return new ArrayList<WebElement>();
-        }
-    }
-
-    /**
-     * Method to click on element
-     *
-     * @param element locator of element to click on
-     * @param timeout optional value of timeout for finding specified element
-     */
-    public static synchronized void clickOnElement(By element, int... timeout) {
-        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.visibilityOfElementLocated(element));
-            driver().findElement(element).click();
-        } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
-            Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
-            throw new RuntimeException("Failure clicking on element");
-        }
-        waitForPageToLoad();
     }
 
     /**
@@ -316,12 +379,17 @@ public class BasePage {
             (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             driver().findElement(element).click();
+            waitForPageToLoad();
         } catch (Exception e) {
             for(UiHandlers handler : handlers){
                 handler.getHandler().handle(element, e);
             }
         }
-        waitForPageToLoad();
+    }
+
+    public static void clickWithJS(WebElement element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript("arguments[0].click();", element);
     }
 
     /**
@@ -335,7 +403,6 @@ public class BasePage {
     public WebElement findElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        BPPLogManager.getLogger().info("Finding an element: " + element);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -347,6 +414,30 @@ public class BasePage {
         }
     }
 
+    /**
+     * Method to find element by locator checking presence of element (not visibility)
+     *
+     * @param element locator of element to find
+     * @param timeout optional value of timeout for finding selected element
+     *
+     * @return list of WebElements found by specified locator
+     */
+    public WebElement findPresentElement(By element, int... timeout) {
+        int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
+        waitForPageToLoad();
+        try {
+            (new WebDriverWait(driver(), timeoutForFindElement))
+                    .until(ExpectedConditions.presenceOfElementLocated(element));
+            return driver().findElement(element);
+        } catch (TimeoutException e) {
+            BPPLogManager.getLogger().info("Exception caught. Trying to find an element again.");
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(10, ChronoUnit.SECONDS))
+                    .pollingEvery(Duration.ofMillis(2000))
+                    .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
+                    .until(ExpectedConditions.presenceOfElementLocated(element));
+            return driver().findElement(element);
+        }
+    }
     /**
      * Method to find elements by locator
      *
@@ -470,11 +561,19 @@ public class BasePage {
     }
 
     /**
+     * Method to scroll by a certain amount of pixels
+     */
+    public static void scrollBy(int x, int y) {
+        BPPLogManager.getLogger().info("Scrolling to bottom of the page.");
+        ((JavascriptExecutor) driver()).executeScript("window.scrollBy(" + x + ", " + y +")");
+        waitForPageToLoad();
+    }
+
+    /**
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
     public static void waitForPageToLoad(){
-        Wait<WebDriver> wait = new WebDriverWait(driver(), STATIC_TIMEOUT).ignoring(WebDriverException.class);
-        BPPLogManager.getLogger().info("Waiting for page to load");
+        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT, 1000).ignoring(WebDriverException.class);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
@@ -518,7 +617,7 @@ public class BasePage {
         while (i++ < timeout) try {
             driver().switchTo().alert();
             break;
-        } catch (NoAlertPresentException e)  // wait for second
+        } catch (NoAlertPresentException e)
         {
             sleepFor(1);
             continue;
@@ -541,11 +640,18 @@ public class BasePage {
     /**
      * Method to switch to iFrame on the page
      *
-     * @param xpath xpath of iFrame you need to switch to
+     * @param frameName locator of iFrame you need to switch to
      */
-    public void switchToFrame(By xpath) {
-        Reporter.log("Switch to frame: " + xpath.toString());
-        driver().switchTo().frame(findElement(xpath));
+    public void switchToFrame(By frameName) {
+        BPPLogManager.getLogger().info("Switching to frame: " + frameName);
+        WebDriverWait wait = new WebDriverWait(driver(), 10);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
+        sleepFor(5);
+        try {
+            driver().switchTo().frame(findPresentElement(frameName, 10));
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     /**
@@ -590,5 +696,66 @@ public class BasePage {
         } else {
             BPPLogManager.getLogger().error("No value defined for 'PressKey'. Check your parameters");
         }
+    }
+
+    /**
+     * Action to verify that element is not present
+     *
+     * @param element By locator of element to press the key for
+     */
+    public boolean checkIfElementNotExist(By element) {
+        waitForPageToLoad();
+        if (driver().findElements(element).size() != 0) {
+            BPPLogManager.getLogger().info("Element: " + element + " is not displayed");
+            return true;
+        } else {
+            BPPLogManager.getLogger().info("Element: " + element + " is displayed");
+            return false;
+        }
+    }
+
+    /**
+     * Action to upload a file
+     *
+     * @param locator: locator type to be used to locate the element for uploading a file
+     */
+    public void fileUpload(By locator, String filename) {
+        WebElement webelement = findPresentElement(locator);
+        ((RemoteWebElement) webelement ).setFileDetector(new LocalFileDetector());
+        webelement.sendKeys(fileUploadPath + "/" + filename);
+    }
+
+    /**
+     * Action to validate text data from an element
+     *
+     * @param locator: locator type to be used to locate the radio button element
+     * @return String webelement text
+     */
+    public String getTextValueFromField(By locator) {
+
+        WebElement webelement = driver().findElement(locator);
+        String data = webelement.getText().trim();
+        if (data.isEmpty()) {
+            try {
+                BPPLogManager.getLogger().info("Getting text from value attribute");
+                data = webelement.getAttribute("value").trim();
+            } catch (Exception e) {
+                data = "";
+            }
+        }
+        return data;
+    }
+
+    /**
+     * Action to accept alert / error message on the web page
+     *
+     * @return String webelement text with information provided in the Popup Window
+     */
+    public void acceptAlertMessage() {
+        Alert jsalert = new WebDriverWait(driver(), 5).until(ExpectedConditions.alertIsPresent());
+        String alertMsg = jsalert.getText();
+
+        Reporter.log("Expected:" + alertMsg + " popup appeared");
+        jsalert.accept();
     }
 }

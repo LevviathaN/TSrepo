@@ -17,7 +17,7 @@ Feature: Reference Data - Paper - BPP-372
     Then I should see the "EC_PAPER_DESCRIPTION" element
 
   @Negative @P2
-  Scenario: Submitting Incomplete Fields
+  Scenario: Submitting Incomplete Paper Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"

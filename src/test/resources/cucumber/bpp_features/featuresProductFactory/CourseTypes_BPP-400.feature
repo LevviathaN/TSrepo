@@ -25,7 +25,7 @@ Feature: Reference Data - Course Type - BPP-400
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
 
   @Negative @P2
-  Scenario: Submitting Incomplete Fields
+  Scenario: Submitting Incomplete Course Type Fields
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
@@ -33,7 +33,7 @@ Feature: Reference Data - Course Type - BPP-400
 
   @Negative @P2
   Scenario: Add a Course Type Where Description Already Exists
-    When I execute "Course Type" reusable step
+    When I execute "Create Course Type" reusable step
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"

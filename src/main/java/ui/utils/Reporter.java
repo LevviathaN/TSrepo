@@ -425,7 +425,7 @@ public class Reporter {
     public static synchronized void stopReporting(ITestResult result) {
 
         if (result.getStatus() == ITestResult.FAILURE)
-            fail("Test failed. Please see attached screenshot below");
+            fail("Test failed. Please see attached screenshot and log file for more details");
         else if (result.getStatus() == ITestResult.SKIP)
             log("Test: " + testStorage.get(Thread.currentThread().getId()).toString() + " skipped");
         else
