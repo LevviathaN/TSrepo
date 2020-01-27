@@ -96,9 +96,9 @@ public static ReusableRunner getInstance() {
 
         for (int i = 0; i < reusable.size(); i++) {
 
-            if (subSteps.containsKey(i)) {
-                BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
-                reusable.add(i, subSteps.get(i));
+            if (subSteps.containsKey(i+1)) {
+                BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
+                reusable.add(i, subSteps.get(i+1));
             }
             executeStep(reusable.get(i));
         }
@@ -121,7 +121,7 @@ public static ReusableRunner getInstance() {
         for (int i = 0; i < reusable.size(); i++) {
 
             if (subSteps.containsKey(i+1)) {
-                BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i) + "\" on the " + i + " position");
+                BPPLogManager.getLogger().info("Replacing \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
                 reusable.remove(i);
                 reusable.add(i, subSteps.get(i+1));
             }
