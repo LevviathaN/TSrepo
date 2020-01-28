@@ -5,6 +5,7 @@ import org.apache.log4j.LogManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import ui.utils.BPPLogManager;
 import ui.utils.bpp.ExecutionContextHandler;
 
 import javax.xml.transform.OutputKeys;
@@ -31,9 +32,9 @@ public class SoapApiController {
             for (String element : new String[]{"sessionId", nodeId}) {
                 NodeList sessionID = doc.getElementsByTagName(element);
                 Node aNode = sessionID.item(0);
-                //NoahLogManager.getLogger().info("Current " + element + ": " + aNode.getTextContent());
+                BPPLogManager.getLogger().info("Current " + element + ": " + aNode.getTextContent());
                 aNode.setTextContent(ExecutionContextHandler.getExecutionContextValueByKey(aNode.getTextContent()));
-                //NoahLogManager.getLogger().info("New sessionId " + element + ": " + aNode.getTextContent());
+                BPPLogManager.getLogger().info("New sessionId " + element + ": " + aNode.getTextContent());
             }
 
             //write the updated document to file or console
@@ -45,7 +46,7 @@ public class SoapApiController {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(new DOMSource(doc), new StreamResult(writer));
 
-            //LogManager.getLogger().info("XML object updated successfully");
+            BPPLogManager.getLogger().info("XML object updated successfully");
 
             return writer.toString();
 
@@ -69,10 +70,10 @@ public class SoapApiController {
                 .post();
 
         if (Integer.toString(response.getStatusCode()).matches("2.+")) {
-            //NoahLogManager.getLogger().info("Success! Response code: " + response.getStatusCode());
-            //NoahLogManager.getLogger().info(response.body().print());
+            BPPLogManager.getLogger().info("Success! Response code: " + response.getStatusCode());
+            BPPLogManager.getLogger().info(response.body().print());
         } else {
-            //NoahLogManager.getLogger().error("Response code: " + response.getStatusCode());
+            BPPLogManager.getLogger().error("Response code: " + response.getStatusCode());
             response.prettyPrint();
         }
         return response;

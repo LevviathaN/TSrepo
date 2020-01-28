@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Nick B. on 4/7/2017.
+ * @author yzosin
  * <p>Class contains static methods that check whether passed string locator matches any of CSS, XPATH or ID pattern </p>
  */
 public class PageLocatorMatcher {
@@ -19,6 +19,7 @@ public class PageLocatorMatcher {
     private static final Pattern LINK_PATTERN = Pattern.compile("^link=.+$");
     private static final Pattern CLASS_PATTERN = Pattern.compile("^className=.+$");
     private static final Pattern CSS_PATTERN = Pattern.compile("^css=.+$");
+    private static final Pattern INFRAME_PATTERN = Pattern.compile("^inframe=.+$");
     private static final Pattern EC_VARIABLE_PATTERN =
             Pattern.compile("^xpath=.+(" +
                     "(((text\\(\\))|\\.)\\s*=\\s*'EC_[A-Z_]+')" +
@@ -57,6 +58,11 @@ public class PageLocatorMatcher {
 
     public static boolean isClass(String locator){
         Matcher classMatcher = CLASS_PATTERN.matcher(locator);
+        return classMatcher.matches();
+    }
+
+    public static boolean isInFrame(String locator){
+        Matcher classMatcher = INFRAME_PATTERN.matcher(locator);
         return classMatcher.matches();
     }
 

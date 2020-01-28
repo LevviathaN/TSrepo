@@ -27,7 +27,8 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
 /**
- * Class to get Access Token for Salesforce using OAuth 2.0
+ * @author yzosin
+ * <p> Class to get Access Token for Salesforce using OAuth 2.0 </p>
  */
 
 public class SalesforceAuthentication {

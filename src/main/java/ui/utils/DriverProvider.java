@@ -1,5 +1,6 @@
 package ui.utils;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -20,18 +21,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by odiachuk on 13.12.16.
+ * @author yzosin
+ * <p> Enables to create webdriver isntance passed from System Property variable as driver=BSTACK_CHROME </p>
+ *
  */
+
 public class DriverProvider {
 
-    public static String OS_EXTENTION = (System.getProperty("os.name").toLowerCase().contains("win")) ? ".exe" :
+    public static final String OS_EXTENTION = (System.getProperty("os.name").toLowerCase().contains("win")) ? ".exe" :
             (System.getProperty("os.name").toLowerCase().contains("mac")) ? "_mac" :
                     "_linux";
-    static String FIREFOX_PATH = "drivers/geckodriver" + OS_EXTENTION;
+    static String FIREFOX_PATH = "drivers/geckodriver_mac" + OS_EXTENTION;
     static String CHROME_PATH = "drivers/chromedriver" + OS_EXTENTION;
 
     //private static WebDriver instance;
-    public static ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
+    public static final ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
 
     static String BROWSER_TYPE;
 
@@ -40,17 +44,16 @@ public class DriverProvider {
         System.setProperty("webdriver.gecko.driver", FIREFOX_PATH);
 
         try {
-            DesiredCapabilities capabilities = new DesiredCapabilities().firefox();
+
             FirefoxProfile profile = new FirefoxProfile();
+            profile.setPreference("browser.download.folderList", 2);
             profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
                     "image/jpeg, application/pdf, application/octet-stream, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             profile.setPreference("pdfjs.disabled", true);
-            profile.setPreference("browser.download.folderList", 2);
 
-            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 
-            FirefoxOptions options =
-                    new FirefoxOptions();
+            FirefoxOptions options = new FirefoxOptions();
+            options.setCapability(FirefoxDriver.PROFILE, profile);
 
             return new FirefoxDriver(options);
         } catch (Exception e) {
@@ -58,11 +61,15 @@ public class DriverProvider {
         }
     }
 
+    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     static public ChromeDriver getChrome() {
 
         try {
             File folder = new File("downloads");
-            folder.mkdir();
+            if(folder!=null) {
+                folder.mkdir();
+            }
+
             System.setProperty("webdriver.chrome.driver", CHROME_PATH);
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
@@ -98,12 +105,14 @@ public class DriverProvider {
         }
     }
 
+    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     static public RemoteWebDriver getChromeBrowserStack() {
 
         try {
             File folder = new File("downloads");
-            folder.mkdir();
-
+            if(folder!=null) {
+                folder.mkdir();
+            }
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
             prefs.put("credentials_enable_service", false);
@@ -144,7 +153,7 @@ public class DriverProvider {
             options.setCapability(ChromeOptions.CAPABILITY, options);
 
             //configure capability to set the job name with Test Case name
-            String testName = ReporterManager.getTestName();
+            String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
@@ -183,7 +192,7 @@ public class DriverProvider {
             options.setCapability(FirefoxDriver.PROFILE, profile);
 
             //configure capability for setting up Test Case name for Sauce Jobs
-            String testName = ReporterManager.getTestName();
+            String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
 
             return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
@@ -196,9 +205,9 @@ public class DriverProvider {
     public static WebDriver getDriver() throws MalformedURLException {
 
         if (instance.get() == null)
-            if (getCurrentBrowserName().equals(BrowserType.FIREFOX)) {
+            if (getCurrentBrowserName().equalsIgnoreCase(BrowserType.FIREFOX)) {
                 instance.set(getFirefox());
-            } else if (getCurrentBrowserName().equals(BrowserType.CHROME)) {
+            } else if (getCurrentBrowserName().equalsIgnoreCase(BrowserType.CHROME)) {
                 instance.set(getChrome());
             } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_CHROME")) {
                 instance.set(getChromeBrowserStack());

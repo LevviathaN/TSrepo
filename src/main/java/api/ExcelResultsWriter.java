@@ -1,5 +1,6 @@
 package api;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -11,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import ui.utils.bpp.PreProcessFiles;
 
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -20,10 +22,17 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author astepaniuk
+ * <p>
+ * The class write data from JSON response into excel file
+ * </p>
+ */
 public class ExcelResultsWriter {
 
     static void createApiExcel() {
 
+        FileOutputStream fileOut = null;
         Workbook workbook = new XSSFWorkbook();
 
         Font headerFont = workbook.createFont();
@@ -64,12 +73,10 @@ public class ExcelResultsWriter {
                     row.createCell(cellNum++).setCellValue(listItem);
                 }
             }
-
         });
 
         try {
-            //FileOutputStream fileOut = new FileOutputStream(Reporter.getReportPath().toString().concat("\\generated-data.xlsx"));
-            FileOutputStream fileOut = new FileOutputStream("\\generated-data.xlsx");
+            fileOut = new FileOutputStream( "//generated-data.xlsx");
             workbook.write(fileOut);
             fileOut.close();
         } catch (IOException ex) {
@@ -82,11 +89,13 @@ public class ExcelResultsWriter {
 
         Set<String> set = new HashSet<>();
 
-        HashMap<String, Object> global = null; //= GlobalDataBridge.getInstance().getDataBuffer();
+        HashMap<String, Object> global = new HashMap<>();
 
-        global.entrySet().forEach(entry -> {
-            set.add(entry.getKey().replaceAll("[0-9]", ""));
-        });
+        if (global != null) {
+            global.entrySet().forEach(entry -> {
+                set.add(entry.getKey().replaceAll("[0-9]", ""));
+            });
+        }
 
         HashMap<String, ArrayList<ArrayList<String>>> hash = new HashMap<>();
 
@@ -106,6 +115,7 @@ public class ExcelResultsWriter {
         return hash;
     }
 
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     private static ArrayList<String> getColumnHeaders(String schema) {
 
         JSONParser parser = new JSONParser();

@@ -4,7 +4,7 @@ import api.RestApiController;
 import api.SoapApiController;
 import api.Utilities;
 import io.restassured.response.Response;
-import ui.utils.ReporterManager;
+import ui.utils.Reporter;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHelper;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.containsString;
 
 /**
- * Class will contain all methods required for main Salesforce API calls: e.g. Create Faculty, Student Account, Add Address.
+ * <p> Contains all methods required for main Salesforce API calls in UAT: e.g. Create Faculty, Student Account, Add Address.</p>
  */
 
 public class SalesforceBusinessProcessesUAT {
@@ -38,7 +38,7 @@ public class SalesforceBusinessProcessesUAT {
                 restController.processProperties("addNewAccountUAT"));
 
         assertThat(accountResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Account Id: " + accountResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Account Id: " + accountResponse.getBody().asString() + "</pre>");
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_ACCOUNT_ID", new Utilities().getResponseProperty(accountResponse, "id"));
 
@@ -51,7 +51,7 @@ public class SalesforceBusinessProcessesUAT {
                 restController.processProperties("addNewAddressUAT"));
 
         assertThat(addressResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Address Id: " + addressResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Address Id: " + addressResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -72,7 +72,7 @@ public class SalesforceBusinessProcessesUAT {
                 restController.processProperties("addNewOpportunityUAT"));
 
         assertThat(opportunityResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Opportunity Id: " + opportunityResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Opportunity Id: " + opportunityResponse.getBody().asString() + "</pre>");
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_OPPORTUNITY_ID", new Utilities().getResponseProperty(opportunityResponse, "id"));
 
@@ -85,7 +85,7 @@ public class SalesforceBusinessProcessesUAT {
                 restController.processProperties("addNewProductItemUAT"));
 
         assertThat(offeringResponse.getBody().asString(), containsString("success"));
-        ReporterManager.info("<pre>" + "Offering Id: " + offeringResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Offering Id: " + offeringResponse.getBody().asString() + "</pre>");
 
         return this;
     }
@@ -114,7 +114,7 @@ public class SalesforceBusinessProcessesUAT {
         assertThat(facultyResponse.getBody().asString(), containsString("success"));
 
         ExecutionContextHandler.setExecutionContextValueByKey("EC_FACULTY_ID", new Utilities().getResponseProperty(facultyResponse, "id"));
-        ReporterManager.info("<pre>" + "Faculty Id: " + facultyResponse.getBody().asString() + "</pre>");
+        Reporter.log("<pre>" + "Faculty Id: " + facultyResponse.getBody().asString() + "</pre>");
 
         return this;
     }

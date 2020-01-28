@@ -1,10 +1,8 @@
 package api;
 
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.restassured.response.Response;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -72,13 +70,14 @@ public class Utilities {
     /**
      * @param requestTemplate - the name of Json file which will be used to retrieve Json file as an Object
      */
+    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     JSONObject getJsonObject(String requestTemplate) {
 
         JSONParser parser = new JSONParser();
 
         StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.dir"));
-        path.append("/src/main/resources/requestBody/");
+        path.append("/src/main/resources/api/requestBody/");
         path.append(requestTemplate);
         path.append(".json");
 
@@ -103,7 +102,7 @@ public class Utilities {
 
         StringBuilder path = new StringBuilder();
         path.append(System.getProperty("user.dir"));
-        path.append("/src/main/resources/soapActions/");
+        path.append("/src/main/resources/api/soapActions/");
         path.append(soapRequestTemplate);
         path.append(".xml");
 

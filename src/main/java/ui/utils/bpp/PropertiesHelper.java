@@ -1,35 +1,38 @@
 package ui.utils.bpp;
 
+import api.RestApiController;
+import ui.utils.BPPLogManager;
+import ui.utils.Reporter;
+
 import java.io.*;
-import java.util.Formatter;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
- * <p>This function uses a Java util, ResourceBundle, to identify file name located in src.
- * This returns a String value identified by the key in the property file </p>
- *
- * @author tchin
+ * @author yzosin
+ * <p>
+ * The class to get locator properties for web-elements
+ * </p>
  */
 public class PropertiesHelper {
 
     Properties properties;
 
-    public static String getConfiguration(String configuration, String key) {
-        if (configuration.equalsIgnoreCase("TestBeans")) {
-            return ResourceBundle.getBundle("configuration", Locale.getDefault()).getString(key);
-        }
+    //Map is needed to store the web-elements' locator ('xpath', 'css-selector' etc.)
+    private static Map<String, String> locatorProperties = new TreeMap<String, String>();
 
-        return "Configuration not found";
-    }
+    private static final String PROPERTIES_FOLDER = PreProcessFiles.PROPERTIES_FILES_FOLDER_PATH;
 
+    /**
+     * <p>This function used to get properties for API requests </p>
+     *
+     * @author yzosin
+     */
     public Properties getProperties() {
 
         properties = new Properties();
         InputStream inputStream;
         try {
-            inputStream = new FileInputStream(PreProcessFiles.TEST_RESOURCES_FOLDER_PATH + "/configuration.properties");
+            inputStream = new FileInputStream(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/api/configuration.properties");
             properties.load(inputStream);
             inputStream.close();
         } catch (FileNotFoundException e) {
@@ -42,7 +45,7 @@ public class PropertiesHelper {
 
     /**
      * <p>It returns the property value specified in either environment variable or configuration.properties
-     * It gives priority to the property specified in Java environment variable For e.g. -Ddriver_id=FIREFOX
+     * It gives priority to the property specified in Java environment variable For e.g. -Ddriver=FIREFOX
      *
      * @param key used to search for property
      * @return </p>
@@ -55,6 +58,34 @@ public class PropertiesHelper {
             return System.getProperty(key);
         } else {
             return propertiesHelper.getProperties().getProperty(key);
+        }
+    }
+
+    /**
+     * <p>
+     * method needed to read the JSON file and:
+     * - get web-elements' locator and store them in static variable called 'properties'.
+     * This should be called before test
+     * execution.
+     *
+     * @throws NullPointerException when failed to reade excel sheet
+     *                              </p>
+     */
+    public static void gatherPropertiesFromJSON() throws NullPointerException {
+
+        RestApiController controller = new RestApiController();
+
+        try {
+            Map<String, String> props = controller.processLocatorProperties("/src/main/resources/Locators.json");
+            locatorProperties.putAll(props);
+        } catch (NullPointerException e2) {
+            Reporter.log("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER);
+            BPPLogManager.getLogger().error("Failed to read sheet from properties file located in the " + PROPERTIES_FOLDER, e2);
+            throw new NullPointerException();
+        } catch (Exception e3) {
+            Reporter.log("Failed to gather properties");
+            BPPLogManager.getLogger().error("Failed to gather properties", e3);
+            throw new NullPointerException();
         }
     }
 }
