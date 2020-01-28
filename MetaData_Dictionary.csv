@@ -37,6 +37,8 @@ MD_ENTER,ENTER,descr.
 MD_REFRESH,F5,descr.
 MD_INSPECT,F12,descr.
 MD_BACKSPACE,BACK_SPACE,descr.
+MD_ESCAPE,ESCAPE,descr.
+MD_END,END,descr.
 MD_SALESFORCEURL,https://cs21.salesforce.com/home/home.jsp,descr.
 MD_BPPRFIURL, http://noahqa-bpp-13fd3e55188.cs17.force.com/rfi,descr.
 MD_SELFREGURL,https://bpp-test.apolloglobal.int/registration/login,descr.

@@ -20,6 +20,9 @@
   "Product Factory Change Body button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
   "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]",
   "Product Factory button title": "//button[@title='PARAMETER']",
+  "Product Factory Locked Applies To drop-down item": "//div[text()='PARAMETER']",
+  "Product Factory Financial Dimension list in Locations":"//div[@role='document']/ul/li[text()='PARAMETER']",
+  "Product Factory Check Link Levels button": "//td[text()='PARAMETER']/following-sibling::td/button/span",
 
   "Build Empire text field": "//input[@placeholder='PARAMETER']",
   "Build Empire application type":"//li[text()='PARAMETER']",
