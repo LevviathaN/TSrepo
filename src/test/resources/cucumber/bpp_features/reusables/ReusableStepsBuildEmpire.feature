@@ -273,3 +273,7 @@ Feature: BuildEmpire
     And I fill the "Direct App Admin Attach Line Manger Text Field" field with "idlgfcvgdh@harakirimail.com"
     And I click on the "Automation Line Manager 2" "Build Empire line manager option"
     Then I click on the "Attach" "button"
+
+  Scenario: Complete Bespoke Sctotland Application
+    Given I click on the "Direct App My Applications Left Menu Link" button
+    Then I validate text "CONTAINS=82" to be displayed for "Direct App Application Progress Percentage" element

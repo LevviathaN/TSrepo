@@ -154,6 +154,7 @@
   "Direct App Admin Company Dropdown": "xpath=//select[contains(@class,'companies-select')]",
   "Direct App Admin Attach Line Manger Text Field": "xpath=//span[@class='select2-search select2-search--dropdown']/input",
   "Direct App Admin Line Manager Dropdown": "xpath=//span[contains(@aria-labelledby,'select2-direct_application_company_line_manager_id-container')]",
+  "Direct App Go To Application": "xpath=//button[contains(.,'Edit')]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
