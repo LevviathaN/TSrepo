@@ -8,7 +8,7 @@ Feature: Amend Reference Data - Paper - BPP-660
     Given I execute "Log In" reusable step
     And I execute "Create Paper" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-828
   Scenario: Amend a Paper Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
@@ -17,14 +17,14 @@ Feature: Amend Reference Data - Paper - BPP-660
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
 
-  @Negative @P2
+  @Negative @P2 #TC-827
   Scenario: Submitting Unchanged Paper Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-831
   Scenario: Amend a Paper Where Description Already Exists
     Given I execute "Create Paper" reusable step replacing some steps
       |4|I set "PaperDescriptionNew[####]" text to the "Description" "Product Factory text field"|
@@ -35,7 +35,7 @@ Feature: Amend Reference Data - Paper - BPP-660
     And I click on the "Save" "Product Factory button"
     Then I should see the "Description must be unique" "message"
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1552
   Scenario: Amend a Paper Changing Body And Level
     When I execute "Create Body Financial Dimension" reusable step
     When I execute "Create Body" reusable step

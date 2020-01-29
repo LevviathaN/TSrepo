@@ -9,7 +9,7 @@ Feature: Reference Data - Course Type - BPP-400
     When I execute "Create Course Type Financial Dimension" reusable step
     Then I execute "Create VAT Rule" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-701
   Scenario: Add a New Course Type Using a Modal
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
@@ -24,14 +24,14 @@ Feature: Reference Data - Course Type - BPP-400
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
 
-  @Negative @P2
+  @Negative @P2 #TC-700
   Scenario: Submitting Incomplete Course Type Fields
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-702
   Scenario: Add a Course Type Where Description Already Exists
     When I execute "Create Course Type" reusable step
     When I click on the "Types" "Product Factory navigation item"

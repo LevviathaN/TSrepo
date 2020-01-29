@@ -7,7 +7,7 @@ Feature: Reference Data - Paper - BPP-372
   Background:
     Given I execute "Log In" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-772
   Scenario: Add a New Paper Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
@@ -16,14 +16,14 @@ Feature: Reference Data - Paper - BPP-372
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
 
-  @Negative @P2
+  @Negative @P2 #TC-771
   Scenario: Submitting Incomplete Paper Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-773
   Scenario: Add a Paper Where Description Already Exists
     When I execute "Create Paper" reusable step
     When I click on the "Programme" "Product Factory navigation item"

@@ -9,7 +9,7 @@ Feature: Amend Reference Data - Body - BPP-624
     And I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1545
   Scenario: Amend a Body Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
@@ -19,7 +19,7 @@ Feature: Amend Reference Data - Body - BPP-624
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
-  @Negative @P2
+  @Negative @P2 #TC-814
   Scenario: Submitting Incomplete Body Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
@@ -28,7 +28,7 @@ Feature: Amend Reference Data - Body - BPP-624
     And I set "" text to the "Name" "Product Factory text field"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-820
   Scenario: Amend a Body Where Short Name Already Exists
     Given I execute "Create Body" reusable step replacing some steps
     |4|I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"|

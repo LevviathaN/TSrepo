@@ -9,7 +9,7 @@ Feature: Reference Data - Sitting - BPP-401
     When I execute "Create Body Financial Dimension" reusable step
     Then I execute "Create Body" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-835
   Scenario: Add a New Sitting Using a Modal (Link to One Body)
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
@@ -23,7 +23,7 @@ Feature: Reference Data - Sitting - BPP-401
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SITTING_NAME" element
 
-  @Positive @Regression @P2
+  @Positive @Regression @P2 #TC-836
   Scenario: Add a New Sitting Using a Modal (Link to Multiple Bodies)
     Then I click on the "Create" "Product Factory button"
     And I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"
@@ -45,7 +45,7 @@ Feature: Reference Data - Sitting - BPP-401
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SITTING_NAME" element
 
-  @Negative @P2
+  @Negative @P2 #TC-837
   Scenario: Submitting Incomplete Sitting Fields
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
