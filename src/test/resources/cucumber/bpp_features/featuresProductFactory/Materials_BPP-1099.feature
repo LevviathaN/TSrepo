@@ -18,7 +18,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I execute "Link Body To Paper" reusable step
     And I execute "Link Body To Level" reusable step
 
-  @Positive @P1
+  @Positive @P1 #TC-918
   Scenario: Create Material Wizard
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Materials" "Product Factory navigation sub item"

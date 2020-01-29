@@ -18,7 +18,7 @@
   "Product Factory checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]",
   "Product Factory Link Levels button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Link Levels')]",
   "Product Factory Change Body button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
-  "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]",
+  "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]",
   "Product Factory button title": "//button[@title='PARAMETER']",
   "Product Factory Locked Applies To drop-down item": "//div[text()='PARAMETER']",
   "Product Factory Financial Dimension list in Locations":"//div[@role='document']/ul/li[text()='PARAMETER']",

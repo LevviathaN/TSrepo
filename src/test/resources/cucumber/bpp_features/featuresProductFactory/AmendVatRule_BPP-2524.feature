@@ -8,7 +8,7 @@ Feature: Reference Data - Vat Rules - Update Record - BPP-2524
     Given I execute "Log In" reusable step
     And I execute "Create VAT Rule" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1348
   Scenario: Amend a VAT Rule Using a Modal
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "VAT Rules" "Product Factory navigation sub item"

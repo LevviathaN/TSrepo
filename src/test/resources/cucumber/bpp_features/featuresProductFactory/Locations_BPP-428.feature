@@ -9,7 +9,7 @@ Feature: Reference Data - Location - BPP-428
     And I execute "Create Region Financial Dimension" reusable step
     Then I execute "Create Region" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-775
   Scenario: Add a New Location Using a Modal
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Locations" "Product Factory navigation sub item"
@@ -23,14 +23,14 @@ Feature: Reference Data - Location - BPP-428
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LOCATION_NAME" element
 
-  @Negative @P2
+  @Negative @P2 #TC-774
   Scenario: Submitting Incomplete Location Fields
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Locations" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-776
   Scenario: Add a Location Where Name Already Exists
     When I execute "Create Location" reusable step
     When I click on the "Delivery" "Product Factory navigation item"
