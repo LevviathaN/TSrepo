@@ -27,6 +27,7 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
       |Material Type|
       |Location     |
       |Body         |
+      |Region       |
 
   @Negative @P2 #TC-1542
   Scenario Outline: Create Financial Dimension record <type> item with Duplicate Data

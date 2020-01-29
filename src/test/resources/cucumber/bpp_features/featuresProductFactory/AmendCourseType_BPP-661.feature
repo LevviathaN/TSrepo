@@ -10,7 +10,7 @@ Feature: Amend Reference Data - Course Type - BPP-661
     And I execute "Create VAT Rule" reusable step
     Then I execute "Create Course Type" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1546
   Scenario: Amend a Course Type Using a Modal
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
@@ -19,14 +19,14 @@ Feature: Amend Reference Data - Course Type - BPP-661
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
 
-  @Negative @P2
+  @Negative @P2 #TC-792
   Scenario: Submitting Unchanged Course Type Fields
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     When I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-794
   Scenario: Amend a Course Type Where Short Name Already Exists
     Given I execute "Create Course Type" reusable step replacing some steps
       |4|I set "CourseTypeDescriptionNew[####]" text to the "Description" "Product Factory text field"|

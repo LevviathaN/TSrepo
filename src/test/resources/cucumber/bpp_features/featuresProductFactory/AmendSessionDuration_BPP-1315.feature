@@ -8,7 +8,7 @@ Feature: Reference Data - Amend Session Duration - BPP-1315
     Given I execute "Log In" reusable step
     And I execute "Create Session Duration" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-813
   Scenario: Amend a Session Duration Using a Modal
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Session Durations" "Product Factory navigation sub item"

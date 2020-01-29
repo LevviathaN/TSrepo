@@ -8,7 +8,7 @@ Feature: Reference Data - Level - BPP-371
   Background:
     Given I execute "Log In" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-746
   Scenario: Add a New Level Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
@@ -18,14 +18,14 @@ Feature: Reference Data - Level - BPP-371
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
-  @Negative @P2
+  @Negative @P2 #TC-745
   Scenario: Submitting Incomplete Level Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
-  @Negative @P2
+  @Negative @P2 #TC-748
   Scenario: Add a Level Where Short Name Already Exists
     When I execute "Create Level" reusable step
     When I click on the "Programme" "Product Factory navigation item"
