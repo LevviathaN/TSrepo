@@ -10,7 +10,7 @@ Feature: Amend Reference Data - Sitting - BPP-662
     Then I execute "Create Body" reusable step
     Given I execute "Create Sitting" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1547
   Scenario: Amend a Sitting Using a Modal
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"

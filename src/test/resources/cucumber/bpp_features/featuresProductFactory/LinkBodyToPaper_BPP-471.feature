@@ -10,7 +10,7 @@ Feature: Reference Data - Link Body/Paper(Module) - BPP-471
     And I execute "Create Body" reusable step
     Then I execute "Create Paper" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-697
   Scenario: Link Body to Paper
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"

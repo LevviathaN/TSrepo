@@ -24,7 +24,7 @@ Feature: Pricing Matrix - price creation validation to prevent duplicates - BPP-
     And I execute "Create Pricing Matrix" reusable step
     And I execute "Create Pricing Matrix Full" reusable step
 
-  @Negative @P1 @Duplicate
+  @Negative @P1 @Duplicate #TC-1158
   Scenario: Add Duplicate Price in Pricing Matrix
     When I execute "Create Course Type" reusable step replacing some steps
       |4 |I set "CourseTypeDescriptionNew[####]" text to the "Description" "Product Factory text field"|

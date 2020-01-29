@@ -10,7 +10,7 @@ Feature: Reference Data - Link Paper To Level - BPP-472
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-714
   Scenario: Link Paper to Level
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Link Levels button"
     And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"

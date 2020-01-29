@@ -20,6 +20,10 @@
   "Product Factory Code Filed Validation Error Message": "xpath=//label[text()='Code']/following-sibling::p",
   "Product Factory Edit Button": "xpath=//tr/td/button/span[not(text()) and position()=1]",
   "Product Factory Toast Error Message Top-Right corner": "xpath=//div[@class='toast toast-error']/div[@class='toast-message']",
+  "Product Factory Choose Dimension Popup Item Type": "xpath=//h6/following::tbody//tr[1]/td[3]",
+  "Product Factory Body of Webpage": "xpath=(//div[@role='document'])[2]",
+  "Product Factory Name Filed Validation Error Message": "xpath=//label[text()='Name']/following-sibling::p",
+  "Product Factory Grid Button Icon Element":"xpath=(//tbody/tr/td/button/span/*[name()='svg'])[1]",
 
   "Salesforce Username": "id=username",
   "Salesforce Password": "id=password",

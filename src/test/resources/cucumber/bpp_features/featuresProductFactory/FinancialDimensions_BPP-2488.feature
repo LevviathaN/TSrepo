@@ -7,7 +7,7 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
   Background:
     Given I execute "Log In" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1532
   Scenario Outline: Create Financial Dimensions record <type> item
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
@@ -27,8 +27,9 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
       |Material Type|
       |Location     |
       |Body         |
+      |Region       |
 
-  @Negative @P2
+  @Negative @P2 #TC-1542
   Scenario Outline: Create Financial Dimension record <type> item with Duplicate Data
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
