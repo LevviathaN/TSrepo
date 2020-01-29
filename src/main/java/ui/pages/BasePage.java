@@ -378,6 +378,7 @@ public class BasePage {
         try {
             (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
+            BPPLogManager.getLogger().info("Clicking on: " + element );
             driver().findElement(element).click();
             waitForPageToLoad();
         } catch (Exception e) {
