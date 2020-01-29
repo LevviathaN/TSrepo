@@ -41,7 +41,8 @@ public enum UiHandlers {
     ACCEPT_ALERT((element, e) -> {
         BasePage page = new BasePage();
         BasePage.isHandled.put("acceptAert", false);
-        if (e.getCause().toString().contains(" Are you sure want to review this application?")) {
+        if (e.getCause().toString().contains(" Are you sure want to review this application?")
+                |e.getCause().toString().contains(" Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")) {
             Reporter.log("Handling JS Alert");
             page.acceptAlertMessage();
             BasePage.isHandled.put("acceptAlert", true);

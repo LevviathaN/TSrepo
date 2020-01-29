@@ -32,5 +32,7 @@
   "Build Empire admin applications tab":"//a[text()='PARAMETER']",
   "Build Empire nationality option":"//ul[@role='listbox']/li[text()='PARAMETER']",
   "Build Empire nationality dropdown":"//label[contains(text(),'PARAMETER')]/..//span[@class='ember-power-select-status-icon']",
-  "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']"
+  "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']",
+  "Build Empire bespoke Scotland eligibility":"//p[contains(text(),'PARAMETER')]/../div//label[1]",
+  "Build Empire line manager option": "//li[contains(.,'PARAMETER')]"
 }
