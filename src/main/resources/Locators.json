@@ -24,6 +24,11 @@
   "Product Factory Body of Webpage": "xpath=(//div[@role='document'])[2]",
   "Product Factory Name Filed Validation Error Message": "xpath=//label[text()='Name']/following-sibling::p",
   "Product Factory Grid Button Icon Element":"xpath=(//tbody/tr/td/button/span/*[name()='svg'])[1]",
+  "Product Factory Course Instances Arrow Down Icon":"xpath=//button[@title='Delete']/following::div[@role='button']/span[1]",
+  "Product Factory Course Instances Sessions Number of Dates Icon":"xpath=//*[@title='You have not completed all the session timing information']/ancestor::td//button",
+  "Product Factory Session Dates Popup Date Input Field":"xpath=//h5/following-sibling::table//input[@type='text']",
+  "Product Factory Session Dates Popup Start Time Input Field":"xpath=(//h5/following-sibling::table//input[@type='time'])[1]",
+  "Product Factory Session Dates Popup End Time Input Field":"xpath=(//h5/following-sibling::table//input[@type='time'])[2]",
 
   "Salesforce Username": "id=username",
   "Salesforce Password": "id=password",
