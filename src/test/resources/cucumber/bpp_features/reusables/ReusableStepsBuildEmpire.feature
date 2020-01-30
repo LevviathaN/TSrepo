@@ -13,7 +13,8 @@ Feature: BuildEmpire
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     And I click on the "Direct App I Am Happy To Receive Information" button
     Then I click on the "Direct App Register" button
-    And I should see the "Direct App My Applications Left Menu Link" element
+    And I wait for "2" seconds
+    And I should see the "Direct App My Applications Left Menu Link" button
 
   Scenario: Log In to Hub as Student
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
@@ -180,10 +181,12 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Chartered Manager" "Build Empire application type"
     And I click on the "Direct App Create Application" button
+    And I click on the "Close" button
 
   Scenario: Pre Approve Apprenticeships Application As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
+    And I wait for "5" seconds
     Then I click on the "Apprenticeships" "Build Empire admin applications tab"
     And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
@@ -277,3 +280,27 @@ Feature: BuildEmpire
   Scenario: Complete Bespoke Sctotland Application
     Given I click on the "Direct App My Applications Left Menu Link" button
     Then I validate text "CONTAINS=82" to be displayed for "Direct App Application Progress Percentage" element
+    Then I click on the "Direct App Go To Application" button
+    And I click on the "documents" "Build Empire application section"
+    And I click on the "Download Application of" "Build Empire application section"
+    Then I swtich to window with index "0"
+    Then I upload "directApp.pdf" file to "Direct App Upload Other Documents" element
+    Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "3" seconds
+    And I click on the "Direct App Save And Return" button
+
+  Scenario: Line Manager Review Bespoke Scotland
+    Given I click on the "Direct App My Approvals Tab" button
+    And I click on the "Direct App Line Manager Review Application" button
+    And I click on the "Line Manager Review" "Build Empire application section"
+    Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
+    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager New Role" element
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Save Review And Back" button
+    And I wait for "2" seconds
+
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Save Review And Back" button
+    And I click on the "Submit Approval" "button"

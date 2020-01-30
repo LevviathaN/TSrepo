@@ -15,6 +15,13 @@ Feature: Submit Bespoke Scotland Application
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step
     And I execute "Attach Automation Line Manager" reusable step
     And I execute "Log Out from Hub Admin" reusable step
-    Then I execute "Log In to Hub as Student" reusable step replacing some steps
-    |2| I set "idlgfcvgdh@harakirimail.com" text to the "Email" "Build Empire text field"|
-    |3| And I set "qwerty azerty1!" text to the "Password" "Build Empire text field"|
+    Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
+    And I set "idlgfcvgdh@harakirimail.com" text to the "Email" "Build Empire text field"
+    And I set "qwerty azerty1" text to the "Password" "Build Empire text field"
+    Then I click on the "Direct App Login Button" button
+    And I should see the "Direct App My Applications Left Menu Link" element
+
+    Then I execute "Log In to Hub as Student" reusable step
+    And I execute "Complete Bespoke Sctotland Application" reusable step
+    Then I execute "Submit Application Hub" reusable step
+    And I execute "Log Out from Hub Student" reusable step
