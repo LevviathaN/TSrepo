@@ -59,6 +59,8 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_SHOULD_NOT_SEE_ELEMENT.getPattern(),() -> stepDefs.i_should_not_see_the_element(arg1));
         stepDefsMap.put(I_SHOULD_SEE_MESSAGE_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
         stepDefsMap.put(I_SWITCH_TO_WINDOW.getPattern(),() -> stepDefs.i_swtich_to_window_with_index(arg1));
+        stepDefsMap.put(I_CLICK_WITH_JS.getPattern(), ()-> stepDefs.i_click_with_JS(arg1));
+        stepDefsMap.put(BROWSER_PERFORMES_COMMAND.getPattern(), ()-> stepDefs.browser_navigates(arg1));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));

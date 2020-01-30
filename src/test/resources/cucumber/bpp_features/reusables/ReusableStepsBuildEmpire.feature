@@ -175,7 +175,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Save And Return" button
 
   Scenario: Create Bespoke Scotland Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" link by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "Professional Career Development Programmes Scotland" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
@@ -186,8 +186,8 @@ Feature: BuildEmpire
   Scenario: Pre Approve Apprenticeships Application As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
-    And I wait for "5" seconds
-    Then I click on the "Apprenticeships" "Build Empire admin applications tab"
+    And I wait for "2" seconds
+    Given I click on the "Direct App Admin Apprenticeships Tab" link by JS
     And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
@@ -277,30 +277,46 @@ Feature: BuildEmpire
     And I click on the "Automation Line Manager 2" "Build Empire line manager option"
     Then I click on the "Attach" "button"
 
-  Scenario: Complete Bespoke Sctotland Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
-    Then I validate text "CONTAINS=82" to be displayed for "Direct App Application Progress Percentage" element
+  Scenario: Complete Bespoke Sctotland Application After Review
+    Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    Then I validate text "CONTAINS=82" to be displayed for "Direct App Application Progress Percentage After Review" element
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I swtich to window with index "0"
     Then I upload "directApp.pdf" file to "Direct App Upload Other Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
+    And I wait for "2" seconds
     And I click on the "Direct App Mark As Complete Checkbox" button
-    And I wait for "3" seconds
     And I click on the "Direct App Save And Return" button
 
   Scenario: Line Manager Review Bespoke Scotland
-    Given I click on the "Direct App My Approvals Tab" button
+    Given I click on the "Direct App My Approvals Tab" link by JS
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
-    Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I click on the "Direct App Line Manager Agreee To Support Amount" element
-    And I click on the "Direct App Line Manager New Role" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
+    And I wait for "1" seconds
+    And Browser performes "Refresh" command
+    And I click on the "Application documents" "Build Empire application section"
+    And I click on the "Download Application of" "Build Empire application section"
+    Then I swtich to window with index "0"
+    Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
-
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I click on the "Submit Approval" "button"
+    And I click on the "OK" "button"
+
+  Scenario: Accept Application As Admin
+    Given I click on the "Direct App Admin Apps Top Link" button
+    And I click on the "Direct App Admin Direct Apps List Option" element
+    And I wait for "2" seconds
+    Given I click on the "Direct App Admin Apprenticeships Tab" link by JS
+    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
+    And I click on the "Show" "button"
+    Then I click on the "Begin full application review" "Build Empire application section"
+    Then I click on the "Submit" "button"
+    Then I validate text "Accepted" to be displayed for "Direct App Admin Status Changed for Apprenticeships" element

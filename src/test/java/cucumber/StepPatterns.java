@@ -36,7 +36,9 @@ public enum StepPatterns {
     I_UPLOAD_FILE("I upload \"([^\"]*)\" file to \"([^\"]*)\" element"),
     I_SHOULD_NOT_SEE_ELEMENT("I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"),
     I_SHOULD_SEE_MESSAGE_IN_FRAME("^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$"),
-    I_SWITCH_TO_WINDOW("^I swtich to window with index \"([^\"]*)\"$");
+    I_SWITCH_TO_WINDOW("^I swtich to window with index \"([^\"]*)\"$"),
+    I_CLICK_WITH_JS("^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$"),
+    BROWSER_PERFORMES_COMMAND("^Browser performes \"([^\"]*)\" command$");
 
     private final String pattern;
 

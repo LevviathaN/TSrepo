@@ -390,9 +390,9 @@ public class BasePage {
         }
     }
 
-    public static void clickWithJS(WebElement element){
+    public static void clickWithJS(By element){
         JavascriptExecutor executor = (JavascriptExecutor)driver();
-        executor.executeScript("arguments[0].click();", element);
+        executor.executeScript("arguments[0].click();", driver().findElement(element));
     }
 
     /**
