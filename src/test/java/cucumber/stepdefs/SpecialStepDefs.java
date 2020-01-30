@@ -29,7 +29,6 @@ public class SpecialStepDefs extends BasePage {
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(By.xpath(resultingXpath));
             BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
-            scrollToElement(findElement(By.xpath(resultingXpath)));
             clickOnElement(By.xpath(resultingXpath),
                     UiHandlers.PF_SPINNER_HANDLER,
                     UiHandlers.ACCEPT_ALERT,
@@ -192,7 +191,6 @@ public class SpecialStepDefs extends BasePage {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-            scrollToElement(findElement(By.xpath(resultingXpath)));
             checkCheckbox(By.xpath(resultingXpath),state);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");

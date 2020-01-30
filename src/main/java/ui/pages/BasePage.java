@@ -1,6 +1,7 @@
 package ui.pages;
 
 import com.google.common.base.Function;
+import org.hamcrest.Matcher;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
@@ -19,6 +20,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.IntStream;
 
+import static org.hamcrest.Matchers.*;
 /**
  * <p> Base class for all page objects.
  * A class to store Selenium-specific operations </p>.
@@ -388,9 +390,9 @@ public class BasePage {
         }
     }
 
-    public static void clickWithJS(WebElement element){
+    public static void clickWithJS(By element){
         JavascriptExecutor executor = (JavascriptExecutor)driver();
-        executor.executeScript("arguments[0].click();", element);
+        executor.executeScript("arguments[0].click();", driver().findElement(element));
     }
 
     /**
@@ -664,20 +666,59 @@ public class BasePage {
     }
 
     /**
-     * Method to switch between opened tabs in your browser
+     * Action to switch to specified window index. Index = 1 is supposed to be
+     * the index of main window
      *
-     * @param tabTitle name of opened tab you want to switch to
+     * @param index - index of a window that it is needed to switch to.
      */
-    public void handleMultipleTabs(String tabTitle) {
-        Set<String> windows = driver().getWindowHandles();
-
-        for (String window : windows) {
-            BPPLogManager.getLogger().info("Swtiching to window: " + window);
-            driver().switchTo().window(window);
-            if (driver().getTitle().contains(tabTitle)) {
-                return;
+    public void switchToWindowByIndex(int index) {
+        ArrayList<String> windows;
+        if (index > 1) {
+            waitWhileExpectedWindowsAppear(5, index);
+            windows = new ArrayList<String>(driver().getWindowHandles());
+            driver().switchTo().window(windows.get(index - 1));
+        } else {
+            try {
+                waitWhileExpectedWindowsLeft(5, 1);
+            } catch (Exception e) {
+                BPPLogManager.getLogger().warn("Seems like several windows are still opened." +
+                        " This may mean that some windows don't close themselves automatically." +
+                        " Trying to close them...");
+                windows = new ArrayList<String>(driver().getWindowHandles());
+                for (int i = windows.size(); i > 1; i--) {
+                    driver().switchTo().window(windows.get(i - 1)).close();
+                    waitWhileExpectedWindowsLeft(5, i - 1);
+                }
             }
+            windows = new ArrayList<String>(driver().getWindowHandles());
+            driver().switchTo().window(windows.get(0));
         }
+    }
+
+    /**
+     * Action to wait while browser opens all expected windows. Used when
+     * expected number of windows is greater than 1
+     *
+     * @param timeoutSeconds  - number of SECONDS to wait for expected windows to appears
+     * @param numberOfWindows - indicates the minimal number of windows to wait for
+     */
+    private void waitWhileExpectedWindowsAppear(int timeoutSeconds, int numberOfWindows) {
+        Matcher<?> matcher = is(greaterThanOrEqualTo(numberOfWindows));
+        new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(timeoutSeconds, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(1000))
+                .until((Function<WebDriver, Boolean>) d -> (matcher.matches(driver().getWindowHandles().size())));
+    }
+
+    /**
+     * Action to wait while browser close extra windows and leaves the main one.
+     * Used when expected number of windows is 1
+     *
+     * @param timeoutSeconds  - number of SECONDS to wait for expected windows to disappears
+     * @param numberOfWindows - indicates the number of windows be left
+     */
+    private void waitWhileExpectedWindowsLeft(int timeoutSeconds, int numberOfWindows) {
+        Matcher<?> matcher = is(lessThanOrEqualTo(numberOfWindows));
+        new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(timeoutSeconds, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(1000))
+                .until((Function<WebDriver, Boolean>) d -> (matcher.matches(driver().getWindowHandles().size())));
     }
 
     /**
