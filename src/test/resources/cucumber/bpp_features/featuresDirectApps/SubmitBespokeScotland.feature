@@ -30,4 +30,4 @@ Feature: Submit Bespoke Scotland Application
     And I execute "Accept Application As Admin" reusable step
     And I execute "Log Out from Hub Admin" reusable step
     And I execute "Log In to Hub as Student" reusable step
-    And I should see the "Direct App Application Accepted Message" element
+    And I execute "Validate Successful Application As Student" reusable step

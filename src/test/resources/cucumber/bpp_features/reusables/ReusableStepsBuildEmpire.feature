@@ -320,3 +320,7 @@ Feature: BuildEmpire
     Then I click on the "Begin full application review" "Build Empire application section"
     Then I click on the "Submit" "button"
     Then I validate text "Accepted" to be displayed for "Direct App Admin Status Changed for Apprenticeships" element
+
+  Scenario: Validate Successful Application As Student
+    Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I should see the "Direct App Application Accepted Message" element
