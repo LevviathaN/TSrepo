@@ -171,6 +171,7 @@
   "Direct App Line Manager Agreee To Support Amount": "xpath=//div[@class='content-row-app confirm-off-the-job-training']//label/input",
   "Direct App Line Manager New Role": "xpath=//div[@class='content-row-app apprentice-role-confirmation']//div[@class='radio-container']//label",
   "Direct App Save Review And Back": "xpath=//button[contains(.,'Save review and back')]",
+
   "Close": "xpath=//i[@class='bppicon icon-remove']",
   "Direct App Admin Apprenticeships Tab": "xpath=//a[text()='Apprenticeships']",
   "Direct App Application Progress Percentage After Review": "xpath=//div[@class='app-progress']",
