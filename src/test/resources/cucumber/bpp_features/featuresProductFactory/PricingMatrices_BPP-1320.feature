@@ -10,7 +10,7 @@ Feature: Pricing Matrix creation page - BPP-1320
     And I execute "Create Body" reusable step
     Then I execute "Create Sitting" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-981
   Scenario: Add a New Pricing Matrix Using a Modal
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"

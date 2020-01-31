@@ -8,7 +8,7 @@ Feature: Materials - Create Material Type - BPP-1090
     Given I execute "Log In" reusable step
     When I execute "Create Material Type Financial Dimension" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1435
   Scenario: Add a New Material Type Using a Modal
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Material Types" "Product Factory navigation sub item"
@@ -20,7 +20,7 @@ Feature: Materials - Create Material Type - BPP-1090
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_DESCRIPTION" element
 
-  @Negative @P2
+  @Negative @P2 #TC-1436
   Scenario: Add a Material Type Where Name Already Exists
     When I execute "Create Material Type" reusable step
     When I click on the "Types" "Product Factory navigation item"

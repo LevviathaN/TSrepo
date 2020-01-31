@@ -7,7 +7,7 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
   Background:
     Given I execute "Log In" reusable step
 
-  @Positive @Regression @P1
+  @Positive @Regression @P1 #TC-1543
   Scenario Outline: Update created Financial Dimension record <type> item
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
@@ -52,7 +52,7 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
   |Body         |
 
 
-  @Negative @P2
+  @Negative @P2 #TC-1544
   Scenario Outline: Update created Financial Dimension record <type> item with Duplicate Data
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
