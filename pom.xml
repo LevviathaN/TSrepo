@@ -45,6 +45,7 @@
                         <!-- TestNG suite XML files -->
                         <suiteXmlFile>${tests}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
 
