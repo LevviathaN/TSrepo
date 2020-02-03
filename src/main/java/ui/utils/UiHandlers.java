@@ -16,14 +16,21 @@ import java.util.Map;
 public enum UiHandlers {
 
     PF_SPINNER_HANDLER((element, e) -> {
-        BasePage page = new BasePage();
         BasePage.isHandled.put("pfSpinnerHandler", false);
         WebDriverWait wait = new WebDriverWait(BasePage.driver(), BasePage.DEFAULT_TIMEOUT,300);
         if (e.getMessage().contains("opacity: 1; transition: opacity 225ms cubic-bezier")){
             Reporter.log("Handling PF Spinner");
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
-            page.findElement(element).click();
             BasePage.isHandled.put("pfSpinnerHandler", true);
+        }
+    }),
+
+    WAIT_HANDLER((element, e) -> {
+        BasePage.isHandled.put("waitHandler", false);
+        if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")){
+            Reporter.log("Handling overlay by Wait");
+            BasePage.sleepFor(9000);
+            BasePage.isHandled.put("waitHandler", true);
         }
     }),
 
@@ -31,11 +38,22 @@ public enum UiHandlers {
         BasePage page = new BasePage();
         BasePage.isHandled.put("pfScrollHandler", false);
         if(e.getMessage().contains("Other element would receive the click:")){
-            Reporter.log("Handling PF Edit button click overlay");
+            Reporter.log("Handling click overlay by scrolling to element");
+            BasePage.scrollToElement(page.findElement(element));
             BasePage.scrollToElement(page.findElement(element));
             BasePage.scrollBy(0,100);
-            page.findElement(element).click();
             BasePage.isHandled.put("pfScrollHandler", true);
+        }
+    }),
+
+    SF_CLICK_HANDLER((element, e) -> {
+        BasePage.isHandled.put("sfClickHandler", false);
+        if(e.getMessage().contains("javascript error: Cannot read property 'defaultView' of undefined") ||
+                e.getMessage().contains("Other element would receive the click: <one-record-home-flexipage2")){
+            Reporter.log("Handling SF Click with JS");
+            BasePage.clickWithJS(element);
+            BasePage.repeatAction = false;
+            BasePage.isHandled.put("sfClickHandler", true);
         }
     }),
 
@@ -46,6 +64,7 @@ public enum UiHandlers {
                 ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")) {
             Reporter.log("Handling JS Alert");
             page.acceptAlertMessage();
+            BasePage.repeatAction = false;
             BasePage.isHandled.put("acceptAlert", true);
         }
     }),
@@ -56,6 +75,7 @@ public enum UiHandlers {
             if (value) handled = true;
         }
         if (!handled){
+            BasePage.repeatAction = false;
             Reporter.log("Default Handler: FAIL");
             Reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");

@@ -61,7 +61,13 @@ public class StepDefinitions extends BasePage {
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
     public void i_click_on_the_button(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element");
-        clickOnElement(initElementLocator(element), UiHandlers.PF_SPINNER_HANDLER, UiHandlers.ACCEPT_ALERT);
+        clickOnElement(initElementLocator(element),
+                UiHandlers.PF_SPINNER_HANDLER,
+                UiHandlers.ACCEPT_ALERT,
+                UiHandlers.PF_SCROLL_HANDLER,
+                UiHandlers.SF_CLICK_HANDLER,
+                UiHandlers.WAIT_HANDLER,
+                UiHandlers.DEFAULT_HANDLER);
         waitForPageToLoad();
     }
 
