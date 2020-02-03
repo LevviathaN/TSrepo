@@ -34,9 +34,9 @@ public class BasePage {
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
-    //map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is
-    //executed.
+    //boolean map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is executed.
     public static Map<String, Boolean> isHandled = new HashMap<>();
+    //boolean, used by UiHandlers to determine, if you want to repeat Action, on which you had an exception, after running handlers.
     public static boolean repeatAction = true;
 
     //____________________________________________Timeouts section__________________________________________________

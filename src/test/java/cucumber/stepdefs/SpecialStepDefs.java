@@ -201,7 +201,7 @@ public class SpecialStepDefs extends BasePage {
         }
     }
 
-    @And("I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"")
+    @And("^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_select_from_element_special(String value, String elementLocator, String elementType) {
         Reporter.log("Executing step: I select: " + value + " from " + elementLocator + "' " + elementType);
         if(specialLocatorsMap.containsKey(elementType)) {
