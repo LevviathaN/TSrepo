@@ -1,5 +1,6 @@
 package cucumber.stepdefs;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
@@ -33,6 +34,8 @@ public class SpecialStepDefs extends BasePage {
                     UiHandlers.PF_SPINNER_HANDLER,
                     UiHandlers.ACCEPT_ALERT,
                     UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
                     UiHandlers.DEFAULT_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
@@ -147,8 +150,6 @@ public class SpecialStepDefs extends BasePage {
         } else {
             Reporter.fail("No such locator template key");
         }
-
-
     }
 
     /**
@@ -200,4 +201,25 @@ public class SpecialStepDefs extends BasePage {
         }
     }
 
+    @And("I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"")
+    public void i_select_from_element_special(String value, String elementLocator, String elementType) {
+        Reporter.log("Executing step: I select: " + value + " from " + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+
+            if (value.equals("KW_AUTO_SELECT")) {
+                Reporter.log("Starting random selection from dropdown.");
+                String autoSelectedValue = autoSelectFromDropdown(By.xpath(resultingXpath));
+                Reporter.log("Selected \"" + autoSelectedValue + "\" value from " + elementLocator + "' " + elementType);
+            } else {
+                Reporter.log("Selecting \"" + value + "\" value from " + elementLocator + "' " + elementType);
+                selectValueFromDropDown(By.xpath(resultingXpath), value);
+            }
+            waitForPageToLoad();
+        }else {
+            Reporter.fail("No such locator template key");
+        }
+    }
 }
