@@ -78,11 +78,11 @@ public class StepDefinitions extends BasePage {
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_click_on_the_button_if(String element, String conditionParameter, String condition) {
         Conditions conditions = new Conditions();
-        if(conditions.checkCondition(condition,conditionParameter)){
+        if (conditions.checkCondition(condition, conditionParameter)) {
             Reporter.log("Executing step: I click on the '" + element + "' element");
             clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
             waitForPageToLoad();
-        } else{
+        } else {
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
         }
     }
@@ -100,7 +100,7 @@ public class StepDefinitions extends BasePage {
     public void fill_field(String element, String text) {
         Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
         String processedText = TestParametersController.checkIfSpecialParameter(text);
-        BPPLogManager.getLogger().info("Setting: " + element + " with value: "  + text);
+        BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
         findElement(initElementLocator(element)).sendKeys(processedText);
         if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
@@ -208,10 +208,10 @@ public class StepDefinitions extends BasePage {
     @Then("^I execute \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_execute_reusable_step_if(String reusableName, String conditionParameter, String condition) {
         Conditions conditions = new Conditions();
-        if(conditions.checkCondition(condition,conditionParameter)){
+        if (conditions.checkCondition(condition, conditionParameter)) {
             Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
             ReusableRunner.getInstance().executeReusable(TestParametersController.checkIfSpecialParameter(reusableName));
-        } else{
+        } else {
             Reporter.log("Condition " + conditionParameter + " " + condition + " is not true, so '" + reusableName + "' reusable step will not be executed");
         }
     }
@@ -328,8 +328,8 @@ public class StepDefinitions extends BasePage {
     /**
      * Definition to validate text from web element
      *
-     * @param text : value to be checked
-     * @param element:   By locator of element to press key
+     * @param text     : value to be checked
+     * @param element: By locator of element to press key
      */
     @Then("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$")
     public void i_validate_text_to_be_displayed_for_element(String text, String element) {
@@ -401,6 +401,62 @@ public class StepDefinitions extends BasePage {
             selectValueFromDropDown(initElementLocator(element), value);
         }
         waitForPageToLoad();
+    }
+
+    /**
+     * Switching to the window with appropriate index. Used when few windows are open in browser.
+     * If needed it may be used in order to switch to any extra window and then back to the main window.
+     * Index = 1 is supposed to be the index of the main window
+     * MAXIMUM acceptable window index is 9
+     */
+    @Then("^I swtich to window with index \"([^\"]*)\"$")
+    public void i_swtich_to_window_with_index(String value) {
+        if (value.length() > 0) {
+            int index = Integer.parseInt(value.substring(0, 1));
+            Reporter.log("Switching to the window with index = " + index);
+            switchToWindowByIndex(index);
+        } else {
+            Reporter.log("REQUIRED 'WINDOW INDEX' PARAMETER IS MISSED");
+        }
+    }
+
+    /**
+     * Perform click using JavaScript
+     *
+     */
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$")
+    public void i_click_with_JS(String element) {
+        Reporter.log("Executing step: I click on the '" + element + "' element by JS");
+        clickWithJS(initElementLocator(element));
+        waitForPageToLoad();
+    }
+
+    /**
+     * Provides the ability to use the browser's navigation capabilities.
+     *
+     * @param operation: browser operation performed can be FORWARD, BACK, or REFRESH case-insensitive
+     */
+    @Then("^Browser performes \"([^\"]*)\" command$")
+    public void browser_navigates(String operation) {
+        String browserOperation = operation.toUpperCase();
+        Reporter.log("Executing step: Performing browser " + browserOperation + " operation");
+        switch (browserOperation) {
+            case "FORWARD":
+                BPPLogManager.getLogger().info("Browser FORWARD operation executing.");
+                driver().navigate().forward();
+                break;
+            case "BACK":
+                BPPLogManager.getLogger().info("Browser BACK operation executing.");
+                driver().navigate().back();
+                break;
+            case "REFRESH":
+                BPPLogManager.getLogger().info("Browser REFRESH operation executing.");
+                driver().navigate().refresh();
+                break;
+            default:
+                BPPLogManager.getLogger().info("No navigation operation performed.  Check spelling for page navigation parameter.  Only 'Forward', 'Back', and 'Refresh' are supported.");
+                break;
+        }
     }
 
     /**
