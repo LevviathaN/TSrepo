@@ -35,5 +35,12 @@
   "Build Empire admin applications tab":"//a[text()='PARAMETER']",
   "Build Empire nationality option":"//ul[@role='listbox']/li[text()='PARAMETER']",
   "Build Empire nationality dropdown":"//label[contains(text(),'PARAMETER')]/..//span[@class='ember-power-select-status-icon']",
-  "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']"
+  "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']",
+
+  "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
+  "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
+  "BPP Digital Qualifications at Every Level item link":"//div[text()='Qualifications at every level.']/following-sibling::div//a[text()=\"PARAMETER\"]",
+  "BPP Digital Student Applications Menu link":"//a[text()='PARAMETER']",
+  "BPP Digital Section Article Name":"xpath=//section//h3[normalize-space()='PARAMETER']",
+  "BPP Digital Courses Menu Item links":"xpath=//ul[@class='second-level-list']/li/span[text()='PARAMETER']"
 }

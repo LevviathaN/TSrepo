@@ -155,5 +155,17 @@
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
   "Harakirimail Application Outcome Letter": "xpath=//div[contains(text(),'Your Mitigating Circumstances application outcome')]",
   "Harakirimail Validate Letter Body": "xpath=//div[@id='email_body_html']",
-  "Harakirimail Back To Inbox": "xpath=//i[@class='icon-arrow-left']/parent::a[normalize-space()='Inbox']"
+  "Harakirimail Back To Inbox": "xpath=//i[@class='icon-arrow-left']/parent::a[normalize-space()='Inbox']",
+
+  "BPP Digital Find a Course Search Field": "xpath=//input[@placeholder='Find a course']",
+  "BPP Digital Find a Course Search Field Total Results":"xpath=//p[@class='total-results']",
+  "BPP Digital Find a Course Search Field Total Results Header":"xpath=//h2[@class='list-title']",
+  "BPP Digital Find a Course Search Field Total Results Search Field":"xpath=//div[@class='search-box-container']//input[@placeholder='Search']",
+  "BPP Digital Breadcrumb Level One":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[1]",
+  "BPP Digital Breadcrumb Level Two":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[2]",
+  "BPP Digital Breadcrumb Level Three":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
+  "BPP Digital Site Page Header":"xpath=//h2[@class='section-header']/span",
+  "BPP Digital Login link":"xpath=//span[text()='Login']",
+  "BPP Digital Study expandable link":"xpath=//ul[contains(@class,'main-level')]/li/span[text()='Study']",
+  "":""
 }

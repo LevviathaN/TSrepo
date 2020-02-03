@@ -58,6 +58,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_UPLOAD_FILE.getPattern(),() -> stepDefs.i_upload_file_to_element(arg1, arg2));
         stepDefsMap.put(I_SHOULD_NOT_SEE_ELEMENT.getPattern(),() -> stepDefs.i_should_not_see_the_element(arg1));
         stepDefsMap.put(I_SHOULD_SEE_MESSAGE_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
+        stepDefsMap.put(I_CAPTURE_DATA.getPattern(),() -> stepDefs.iCaptureTextDataAsVariable(arg1,arg2));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
