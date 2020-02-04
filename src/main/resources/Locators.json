@@ -183,7 +183,6 @@
   "Direct App Are You In Employment": "xpath=//div[text()='Are you in employment/have a contract of employment, for the duration of the apprenticeship, on the first day of the apprenticeship, and are you paid at least a wage consistent with the law for both the time you are in work and in off-the-job learning?']//label[1]",
   "Direct App Apprenticeships Upload Documents": "xpath=//h3[contains(.,'Apprenticeship Application Pack Uploader')]//following-sibling::div[1]//input[@type='file']",
   "Direct App Admin Reason": "xpath=//textarea[@name='reason']",
-
   "Direct App Admin Status Started": "xpath=//div[@class='container content-container']/div/div/div[2]//tbody/tr[1]/td[2]",
   "Direct App Admin Status Submitted": "xpath=//div[@class='container content-container']/div/div/div[2]//tbody/tr[2]/td[2]",
   "Direct App Admin Status In Review": "xpath=//div[@class='container content-container']/div/div/div[2]//tbody/tr[3]/td[2]",
@@ -206,6 +205,7 @@
   "Direct App Admin Rejected Status Reason": "xpath=//div[@class='container content-container']/div/div/div[2]//tbody/tr[10]/td[4]",
   "Direct App Country Dropdown": "xpath=//span[contains(.,'Country*')]//following-sibling::span[1]",
   "Direct App Country Dropdown UK Option": "xpath=//ul[@role='listbox']/li[contains(.,'United Kingdom')]",
+  "Direct App Additional Info Upload Button": "xpath=//div[@class='clearfix ']/following-sibling::div/input",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",

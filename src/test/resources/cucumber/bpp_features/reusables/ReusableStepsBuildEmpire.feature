@@ -163,14 +163,6 @@ Feature: BuildEmpire
     And I click on the "Direct App Add Filled Assesment" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
-    And I click on the "Did you have learning support" "Build Empire reason for appeal element"
-    And I click on the "Did you submit a Mitigating Circumstances" "Build Empire reason for appeal element"
-    And I click on the "Are you appealing the result" "Build Empire reason for appeal element"
-    And I click on the "Are you appealing a decision to reject your" "Build Empire reason for appeal element"
-    And I click on the "Are you appealing the decision of an Examination Board" "Build Empire reason for appeal element"
-    And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
-    And I click on the "Direct App Mark As Complete Checkbox" button
-    And I click on the "Direct App Next" button
     Then I upload "directApp.pdf" file to "Direct App Upload File" element
     And I fill the "Direct App Uploaded File Description" field with "Test"
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
@@ -490,12 +482,14 @@ Feature: BuildEmpire
     And I select "Part Accept" from "Direct App Admin New Status Dropdown" element
     And I fill the "Direct App Admin Reason" field with "Reason Part Accept"
     Then I click on the "Submit" "button"
-    Then I validate text "Part Accept" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    Then I validate text "Part accepted" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I fill the "Direct App Admin Reason" field with "Reason Full Application In Review Second"
+    Then I click on the "Submit" "button"
+    Then I validate text "Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
     And I select "Accept" from "Direct App Admin New Status Dropdown" element
     And I fill the "Direct App Admin Reason" field with "Reason Accept"
     Then I click on the "Submit" "button"
     Then I validate text "Accepted" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
-    And I select "Full Application In Review" from "Direct App Admin New Status Dropdown" element
     And I fill the "Direct App Admin Reason" field with "Reason Full Application In Review Second"
     Then I click on the "Submit" "button"
     Then I validate text "Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
@@ -503,28 +497,15 @@ Feature: BuildEmpire
     And I fill the "Direct App Admin Reason" field with "Reason Reject"
     Then I click on the "Submit" "button"
     Then I validate text "Rejected" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
-    And I select "Full Application In Review" from "Direct App Admin New Status Dropdown" element
-    And I fill the "Direct App Admin Reason" field with "Full Application Second"
-    Then I click on the "Submit" "button"
-    Then I validate text "Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
 
   Scenario: Mitigating Circumstances Admin Status Validation
-    Then I validate text "" to be displayed for "Direct App Admin Status Started" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Submitted" element
-    Then I validate text "" to be displayed for "Direct App Admin Status In Review" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Referral Panel" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Referral ODP" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Part Acccepted" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Full Application" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Full Application Second Time" element
-    Then I validate text "" to be displayed for "Direct App Admin Status Rejected" element
-    Then I validate text "" to be displayed for "Direct App Admin Started Status Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Submitted Status Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin In Review Status Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Referral Panel Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Referral ODP Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Part Accepted Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Full Application Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Accepted Status Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Full Application Status Second Reason" element
-    Then I validate text "" to be displayed for "Direct App Admin Rejected Status Reason" element
+    Then I validate text "User start" to be displayed for "Direct App Admin Started Status Reason" element
+    Then I validate text "User submit" to be displayed for "Direct App Admin Submitted Status Reason" element
+    Then I validate text "User begin review" to be displayed for "Direct App Admin In Review Status Reason" element
+    Then I validate text "Reason Referral Panel" to be displayed for "Direct App Admin Referral Panel Reason" element
+    Then I validate text "Reason Referral ODP" to be displayed for "Direct App Admin Referral ODP Reason" element
+    Then I validate text "Reason Part Accept" to be displayed for "Direct App Admin Part Accepted Reason" element
+    Then I validate text "Reason Full Application in Review Second" to be displayed for "Direct App Admin Full Application Reason" element
+    Then I validate text "Reason Accept" to be displayed for "Direct App Admin Accepted Status Reason" element
+    Then I validate text "Reason Full Application in Review Second" to be displayed for "Direct App Admin Full Application Status Second Reason" element
+    Then I validate text "Reason Reject" to be displayed for "Direct App Admin Rejected Status Reason" element
