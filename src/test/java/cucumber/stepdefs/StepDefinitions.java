@@ -377,6 +377,11 @@ public class StepDefinitions extends BasePage {
             assertThat(actualValue.trim(), Matchers.startsWith(newValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
             BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
+        } else if (text.contains("EC_")) {
+            String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+            assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
+            Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
+            BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
         } else {
             assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
             BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
@@ -465,5 +470,30 @@ public class StepDefinitions extends BasePage {
                 BPPLogManager.getLogger().info("No navigation operation performed.  Check spelling for page navigation parameter.  Only 'Forward', 'Back', and 'Refresh' are supported.");
                 break;
         }
+    }
+
+    /**
+     * Definition scroll the page to the bottom after page is loaded
+     *
+     * @param element locator of element you want to check if it's visible and soon to put into Execution Context
+     * @param executionContext Name that starts with 'EC_' that is used to store saved text value from element
+     *
+     * @author Andrii Yakymchuk
+     */
+
+    @And("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$")
+    public void iCaptureTextDataAsVariable(String element, String executionContext) {
+        waitForPageToLoad();
+        String value = getTextValueFromField(initElementLocator(element));
+        Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
+        if (!executionContext.equals("")) {
+            if (value.equals("")) {
+                Reporter.log("Saving EC key " + executionContext + " with an empty string. No application data found.");
+            } else {
+                Reporter.log("Saving EC key " + executionContext + " = " + value);
+            }
+            ExecutionContextHandler.setExecutionContextValueByKey(executionContext, value);
+        } else
+            Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
     }
 }

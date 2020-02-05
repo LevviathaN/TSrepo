@@ -219,5 +219,16 @@
   "Harakirimail Your MC Progressing": "xpath=//tbody[@id='mail_list_body']/tr[4]/td[normalize-space()='Your Mitigating Circumstances is progressing']",
   "Harakirimail Your MC Outcome": "xpath=//tbody[@id='mail_list_body']/tr[3]/td[normalize-space()='Your Mitigating Circumstances application outcome']",
   "Harakirimail Your MC Accepted": "xpath=//tbody[@id='mail_list_body']/tr[2]/td[normalize-space()='Your Mitigating Circumstances application has been accepted']",
-  "Harakirimail Your MC Outcome Second": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
+  "Harakirimail Your MC Outcome Second": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']",
+
+  "BPP Digital Find a Course Search Field": "xpath=//input[@placeholder='Find a course']",
+  "BPP Digital Find a Course Search Field Total Results":"xpath=//p[@class='total-results']",
+  "BPP Digital Find a Course Search Field Total Results Header":"xpath=//h2[@class='list-title']",
+  "BPP Digital Find a Course Search Field Total Results Search Field":"xpath=//div[@class='search-box-container']//input[@placeholder='Search']",
+  "BPP Digital Breadcrumb Level One":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[1]",
+  "BPP Digital Breadcrumb Level Two":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[2]",
+  "BPP Digital Breadcrumb Level Three":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
+  "BPP Digital Site Page Header":"xpath=//h2[@class='section-header']/span",
+  "BPP Digital Login link":"xpath=//span[text()='Login']",
+  "BPP Digital Section First Article name":"xpath=(//div[@class='search-results-list']/article/h3)[1]"
 }

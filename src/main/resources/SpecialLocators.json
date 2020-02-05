@@ -37,5 +37,12 @@
   "Build Empire nationality dropdown":"//label[contains(text(),'PARAMETER')]/..//span[@class='ember-power-select-status-icon']",
   "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']",
   "Build Empire bespoke Scotland eligibility":"//p[contains(text(),'PARAMETER')]/../div//label[1]",
-  "Build Empire line manager option": "//li[contains(.,'PARAMETER')]"
+  "Build Empire line manager option": "//li[contains(.,'PARAMETER')]",
+
+  "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
+  "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
+  "BPP Digital Qualifications at Every Level item link":"//div[text()='Qualifications at every level.']/following-sibling::div//a[text()=\"PARAMETER\"]",
+  "BPP Digital Student Applications Menu link":"//a[normalize-space()='PARAMETER']",
+  "BPP Digital Courses Menu Item links":"//ul[@class='second-level-list']/li/span[text()=\"PARAMETER\"]",
+  "BPP Digital Study expandable link":"//ul[contains(@class,'main-level')]/li/span[text()=\"PARAMETER\"]"
 }
