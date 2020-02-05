@@ -211,5 +211,13 @@
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
   "Harakirimail Application Outcome Letter": "xpath=//div[contains(text(),'Your Mitigating Circumstances application outcome')]",
   "Harakirimail Validate Letter Body": "xpath=//div[@id='email_body_html']",
-  "Harakirimail Back To Inbox": "xpath=//i[@class='icon-arrow-left']/parent::a[normalize-space()='Inbox']"
+  "Harakirimail Back To Inbox": "xpath=//i[@class='icon-arrow-left']/parent::a[normalize-space()='Inbox']",
+  "Harakirimail Validate Mitigating Header": "xpath=//div[@id='email_viewer_header']/following::h1",
+  "Harakirimail Validate Mitigating Circustances Submitted Link": "xpath=//tbody[@id='mail_list_body']/tr[7]/td[normalize-space()='Your Mitigating Circumstances has been submitted']",
+  "Harakirimail Your MC Are Now Reviewed": "xpath=//tbody[@id='mail_list_body']/tr[6]/td[normalize-space()='Your Mitigating Circumstances are now being reviewed']",
+  "Harakirimail Your MC Referred": "xpath=//tbody[@id='mail_list_body']/tr[5]/td[normalize-space()='Your Mitigating Circumstances application has been referred']",
+  "Harakirimail Your MC Progressing": "xpath=//tbody[@id='mail_list_body']/tr[4]/td[normalize-space()='Your Mitigating Circumstances is progressing']",
+  "Harakirimail Your MC Outcome": "xpath=//tbody[@id='mail_list_body']/tr[3]/td[normalize-space()='Your Mitigating Circumstances application outcome']",
+  "Harakirimail Your MC Accepted": "xpath=//tbody[@id='mail_list_body']/tr[2]/td[normalize-space()='Your Mitigating Circumstances application has been accepted']",
+  "Harakirimail Your MC Outcome Second": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
 }

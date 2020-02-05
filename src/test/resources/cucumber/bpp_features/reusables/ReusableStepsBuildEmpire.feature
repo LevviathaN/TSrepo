@@ -113,7 +113,6 @@ Feature: BuildEmpire
     And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
-    Then I click on the "Begin review" "Build Empire admin applications tab"
     Then I click on the "Submit" "button"
     Then I validate text "CONTAINS=Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
 
