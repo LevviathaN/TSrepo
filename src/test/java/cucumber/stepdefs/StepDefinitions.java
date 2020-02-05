@@ -366,7 +366,7 @@ public class StepDefinitions extends BasePage {
             newValue = newValue.substring("STARTS-WITH=".length());
             assertThat(actualValue.trim(), Matchers.startsWith(newValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
-        } else if (text.toUpperCase().contains("EC")) {
+        } else if (text.contains("EC_")) {
             String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
             assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");

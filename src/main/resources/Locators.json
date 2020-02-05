@@ -200,6 +200,5 @@
   "BPP Digital Breadcrumb Level Three":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
   "BPP Digital Site Page Header":"xpath=//h2[@class='section-header']/span",
   "BPP Digital Login link":"xpath=//span[text()='Login']",
-  "BPP Digital Study expandable link":"xpath=//ul[contains(@class,'main-level')]/li/span[text()='Study']",
-  "":""
+  "BPP Digital Section First Article name":"xpath=(//div[@class='search-results-list']/article/h3)[1]"
 }
