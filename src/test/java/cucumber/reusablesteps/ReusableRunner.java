@@ -70,6 +70,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL.getPattern(),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));
         stepDefsMap.put(I_CHECK_UNCHECK_SPECIAL.getPattern(),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special_if(arg1, arg2, arg3, arg4));
+        stepDefsMap.put(I_SELECT_FROM_ELEMENT_SPECIAL.getPattern(),() -> specialStepDefs.i_select_from_element_special(arg1, arg2, arg3));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();

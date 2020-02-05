@@ -113,7 +113,6 @@ Feature: BuildEmpire
     And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
-    Then I click on the "Begin review" "Build Empire admin applications tab"
     Then I click on the "Submit" "button"
     Then I validate text "CONTAINS=Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
 
@@ -124,6 +123,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Ten Working Days To Submit Application Yes" button
     And I click on the "Direct App Next" button
     And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I click on the "Direct App Country Dropdown" button
+    And I click on the "Direct App Country Dropdown UK Option" button
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
     And I set "Address 1" text to the "Address Line 2" "Build Empire text field"
     And I set "London" text to the "Town/City*" "Build Empire text field"
@@ -161,14 +162,6 @@ Feature: BuildEmpire
     And I click on the "Direct App Add Filled Assesment" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
-    And I click on the "Did you have learning support" "Build Empire reason for appeal element"
-    And I click on the "Did you submit a Mitigating Circumstances" "Build Empire reason for appeal element"
-    And I click on the "Are you appealing the result" "Build Empire reason for appeal element"
-    And I click on the "Are you appealing a decision to reject your" "Build Empire reason for appeal element"
-    And I click on the "Are you appealing the decision of an Examination Board" "Build Empire reason for appeal element"
-    And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
-    And I click on the "Direct App Mark As Complete Checkbox" button
-    And I click on the "Direct App Next" button
     Then I upload "directApp.pdf" file to "Direct App Upload File" element
     And I fill the "Direct App Uploaded File Description" field with "Test"
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
@@ -182,7 +175,6 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Chartered Manager" "Build Empire application type"
     And I click on the "Direct App Create Application" button
-    And I click on the "Close" button
 
   Scenario: Pre Approve Apprenticeships Application As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
@@ -208,6 +200,8 @@ Feature: BuildEmpire
     And I click on the "You confirm that you meet the programme eligibility criteria" "Build Empire bespoke Scotland eligibility"
     And I click on the "Direct App Next" button
     And I fill the "Direct App Insurance Number" field with "12345"
+    And I click on the "Direct App Country Dropdown" button
+    And I click on the "Direct App Country Dropdown UK Option" button
     And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
     And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
@@ -333,7 +327,6 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Chartered Manager" "Build Empire application type"
     And I click on the "Direct App Create Application" button
-    And I click on the "Close" button
 
   Scenario: Complete Bespoke England Application
     Given I click on the "I Understand" "button"
@@ -350,6 +343,8 @@ Feature: BuildEmpire
     And I click on the "Do you confirm that you have discussed" "Build Empire bespoke Scotland eligibility"
     And I click on the "Direct App Next" button
     And I fill the "Direct App Insurance Number" field with "12345"
+    And I click on the "Direct App Country Dropdown" button
+    And I click on the "Direct App Country Dropdown UK Option" button
     And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
     And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
@@ -465,3 +460,51 @@ Feature: BuildEmpire
     And I wait for "3" seconds
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
+
+  Scenario: Mitigating Circumstances Admin Status Change
+    Given I click on the "Direct App Admin Apps Top Link" button
+    And I click on the "Direct App Admin Direct Apps List Option" element
+    Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
+    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
+    And I click on the "Show" "button"
+    Then I click on the "Begin review" "Build Empire admin applications tab"
+    Then I validate text "In review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I select "Referral Panel" from "Direct App Admin New Status Dropdown" element
+    And I fill the "Direct App Admin Reason" field with "Reason Referral Panel"
+    Then I click on the "Submit" "button"
+    Then I validate text "Referral panel" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I select "Referral ODP" from "Direct App Admin New Status Dropdown" element
+    And I fill the "Direct App Admin Reason" field with "Reason Referral ODP"
+    Then I click on the "Submit" "button"
+    Then I validate text "Referral ODP" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I select "Part Accept" from "Direct App Admin New Status Dropdown" element
+    And I fill the "Direct App Admin Reason" field with "Reason Part Accept"
+    Then I click on the "Submit" "button"
+    Then I validate text "Part accepted" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I fill the "Direct App Admin Reason" field with "Reason Full Application In Review Second"
+    Then I click on the "Submit" "button"
+    Then I validate text "Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I select "Accept" from "Direct App Admin New Status Dropdown" element
+    And I fill the "Direct App Admin Reason" field with "Reason Accept"
+    Then I click on the "Submit" "button"
+    Then I validate text "Accepted" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I fill the "Direct App Admin Reason" field with "Reason Full Application In Review Second"
+    Then I click on the "Submit" "button"
+    Then I validate text "Full application in review" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+    And I select "Reject" from "Direct App Admin New Status Dropdown" element
+    And I fill the "Direct App Admin Reason" field with "Reason Reject"
+    Then I click on the "Submit" "button"
+    Then I validate text "Rejected" to be displayed for "Direct App Admin Status Changed for Mitigating Circumstances" element
+
+  Scenario: Mitigating Circumstances Admin Status Validation
+    Then I validate text "User start" to be displayed for "Direct App Admin Started Status Reason" element
+    Then I validate text "User submit" to be displayed for "Direct App Admin Submitted Status Reason" element
+    Then I validate text "User begin review" to be displayed for "Direct App Admin In Review Status Reason" element
+    Then I validate text "Reason Referral Panel" to be displayed for "Direct App Admin Referral Panel Reason" element
+    Then I validate text "Reason Referral ODP" to be displayed for "Direct App Admin Referral ODP Reason" element
+    Then I validate text "Reason Part Accept" to be displayed for "Direct App Admin Part Accepted Reason" element
+    Then I validate text "Reason Full Application in Review Second" to be displayed for "Direct App Admin Full Application Reason" element
+    Then I validate text "Reason Accept" to be displayed for "Direct App Admin Accepted Status Reason" element
+    Then I validate text "Reason Full Application in Review Second" to be displayed for "Direct App Admin Full Application Status Second Reason" element
+    Then I validate text "Reason Reject" to be displayed for "Direct App Admin Rejected Status Reason" element
