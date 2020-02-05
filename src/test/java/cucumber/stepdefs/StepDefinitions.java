@@ -346,6 +346,7 @@ public class StepDefinitions extends BasePage {
             newValue = newValue.substring("RE=".length());
             assertThat(actualValue.trim(), matchesPattern(newValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'</pre>");
+            BPPLogManager.getLogger().info("Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'");
         } else if (text.toUpperCase().startsWith("CONTAINS=")) {
             newValue = newValue.substring("CONTAINS=".length());
             if (text.contains("EC")) {
@@ -354,6 +355,7 @@ public class StepDefinitions extends BasePage {
             } else {
                 assertThat(actualValue.trim(), Matchers.containsString(newValue));
                 Reporter.log("<pre>Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'</pre>");
+                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'");
             }
         } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
             newValue = newValue.substring("NOT_CONTAINS=".length());
@@ -363,17 +365,21 @@ public class StepDefinitions extends BasePage {
             } else {
                 assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
                 Reporter.log("<pre>Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'</pre>");
+                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'");
             }
         } else if (text.toUpperCase().startsWith("CASE=")) {
             newValue = newValue.substring("CASE=".length());
             assertThat(actualValue.trim(), Matchers.equalTo(newValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'</pre>");
+            BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'");
         } else if (text.toUpperCase().contains("STARTS-WITH=")) {
             newValue = newValue.substring("STARTS-WITH=".length());
             assertThat(actualValue.trim(), Matchers.startsWith(newValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
+            BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
         } else {
             assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
+            BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
             Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
         }
         waitForPageToLoad();
