@@ -34,9 +34,10 @@ public class BasePage {
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
-    //map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is
-    //executed.
+    //boolean map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is executed.
     public static Map<String, Boolean> isHandled = new HashMap<>();
+    //boolean, used by UiHandlers to determine, if you want to repeat Action, on which you had an exception, after running handlers.
+    public static boolean repeatAction = true;
 
     //____________________________________________Timeouts section__________________________________________________
 
@@ -180,17 +181,30 @@ public class BasePage {
         WebElement textField = findElement(element);
         String backSpace = Keys.BACK_SPACE.toString();
         try {
-            clickOnElement(element, UiHandlers.PF_SPINNER_HANDLER);
 //            textField.click();
             int size = textField.getAttribute("value").length();
 
             if (size != 0) {
+                clickOnElement(element,
+                        UiHandlers.PF_SPINNER_HANDLER,
+                        UiHandlers.ACCEPT_ALERT,
+                        UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.SF_CLICK_HANDLER,
+                        UiHandlers.WAIT_HANDLER,
+                        UiHandlers.DEFAULT_HANDLER);
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
-            clickOnElement(element, UiHandlers.PF_SPINNER_HANDLER);
+
 //            textField.click();
             size = textField.getAttribute("value").length();
             if (size != 0) {
+                clickOnElement(element,
+                        UiHandlers.PF_SPINNER_HANDLER,
+                        UiHandlers.ACCEPT_ALERT,
+                        UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.SF_CLICK_HANDLER,
+                        UiHandlers.WAIT_HANDLER,
+                        UiHandlers.DEFAULT_HANDLER);
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
 
@@ -383,10 +397,12 @@ public class BasePage {
             BPPLogManager.getLogger().info("Clicking on: " + element );
             driver().findElement(element).click();
             waitForPageToLoad();
+            repeatAction = true;
         } catch (Exception e) {
             for(UiHandlers handler : handlers){
                 handler.getHandler().handle(element, e);
             }
+            if (repeatAction) clickOnElement(element, handlers);
         }
     }
 
