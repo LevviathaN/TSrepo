@@ -206,6 +206,7 @@
   "Direct App Country Dropdown": "xpath=//span[contains(.,'Country*')]//following-sibling::span[1]",
   "Direct App Country Dropdown UK Option": "xpath=//ul[@role='listbox']/li[contains(.,'United Kingdom')]",
   "Direct App Additional Info Upload Button": "xpath=//div[@class='clearfix ']/following-sibling::div/input",
+  "Direct App Account settings": "xpath=//ul[@class='user-menu']//a[contains(text(),'Account settings')]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
