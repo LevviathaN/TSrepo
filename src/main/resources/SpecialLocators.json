@@ -44,5 +44,6 @@
   "BPP Digital Qualifications at Every Level item link":"//div[text()='Qualifications at every level.']/following-sibling::div//a[text()=\"PARAMETER\"]",
   "BPP Digital Student Applications Menu link":"//a[normalize-space()='PARAMETER']",
   "BPP Digital Courses Menu Item links":"//ul[@class='second-level-list']/li/span[text()=\"PARAMETER\"]",
-  "BPP Digital Study expandable link":"//ul[contains(@class,'main-level')]/li/span[text()=\"PARAMETER\"]"
+  "BPP Digital Study expandable link":"//ul[contains(@class,'main-level')]/li/span[text()=\"PARAMETER\"]",
+  "BPP Digital Profile button":"//button[normalize-space()='PARAMETER']"
 }

@@ -508,3 +508,8 @@ Feature: BuildEmpire
     Then I validate text "Reason Accept" to be displayed for "Direct App Admin Accepted Status Reason" element
     Then I validate text "Reason Full Application in Review Second" to be displayed for "Direct App Admin Full Application Status Second Reason" element
     Then I validate text "Reason Reject" to be displayed for "Direct App Admin Rejected Status Reason" element
+
+  Scenario: Edit Hub Student
+    Given I click on the "Direct App User Icon Menu" button
+    And I click on the "Direct App Account settings" link
+    And I wait for "1" seconds
