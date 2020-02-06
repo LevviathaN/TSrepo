@@ -482,7 +482,7 @@ public class StepDefinitions extends BasePage {
      */
 
     @And("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$")
-    public void iCaptureTextDataAsVariable(String element, String executionContext) {
+    public void i_capture_text_data_as_variable(String element, String executionContext) {
         waitForPageToLoad();
         String value = getTextValueFromField(initElementLocator(element));
         Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
