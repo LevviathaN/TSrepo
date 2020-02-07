@@ -38,6 +38,7 @@
   "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']",
   "Build Empire bespoke Scotland eligibility":"//p[contains(text(),'PARAMETER')]/../div//label[1]",
   "Build Empire line manager option": "//li[contains(.,'PARAMETER')]",
+  "Build Empire emergency field": "//label[contains(.,'PARAMETER')]/following-sibling::div//input",
 
   "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
