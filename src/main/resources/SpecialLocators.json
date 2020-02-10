@@ -62,8 +62,10 @@
   "Salesforce related dropdown": "//span[text()='PARAMETER']/ancestor::header/following-sibling::div[@class='slds-no-flex']/descendant::a",
   "Salesforce dropdown button": "//a[contains(@title,'PARAMETER')]",
   "Salesforce dropdown option": "//a[@title='PARAMETER' and @role='menuitem']",
+  "Salesforce cases dropdown option": "//a[@title=\"PARAMETER\" and @role='menuitemradio']",
   "Salesforce link": "//a[text()='PARAMETER']",
   "Salesforce app launcher app": "//p[text()='PARAMETER']",
-  "Salesforce readonly field": "//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*"
+  "Salesforce readonly field": "//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*",
+  "Salesforce cases search student": "//div[@title='PARAMETER']"
 
 }
