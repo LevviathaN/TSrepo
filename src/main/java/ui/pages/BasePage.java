@@ -566,6 +566,7 @@ public class BasePage {
      */
     public static void scrollToElement(WebElement element) {
         waitForPageToLoad();
+        BPPLogManager.getLogger().info("Scrolling to element: " + element);
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
@@ -582,6 +583,7 @@ public class BasePage {
      * Method to scroll by a certain amount of pixels
      */
     public static void scrollBy(int x, int y) {
+        BPPLogManager.getLogger().info("Scrolling horizontally by " + x + " pixels, vertically by " + y + " pixels");
         ((JavascriptExecutor) driver()).executeScript("window.scrollBy(" + x + ", " + y +")");
         waitForPageToLoad();
     }
