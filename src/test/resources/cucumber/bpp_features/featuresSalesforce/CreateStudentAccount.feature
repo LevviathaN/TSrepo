@@ -2,7 +2,7 @@
 Feature: Create Student Account
   Description
 
-  @Positive
+  @Positive #TC-253 TC-254 TC-294 TC-76
   Scenario: Create Student Account and Submit Application
     Given I execute "Log In To Salesforce" reusable step
 #    And I execute "Switch to Sales App" reusable step
