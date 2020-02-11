@@ -279,7 +279,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I swtich to window with index "0"
+    Then I switch to window with index "0"
     Then I upload "directApp.pdf" file to "Direct App Upload Other Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
@@ -297,7 +297,7 @@ Feature: BuildEmpire
     And Browser performes "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I swtich to window with index "0"
+    Then I switch to window with index "0"
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -440,7 +440,7 @@ Feature: BuildEmpire
     And Browser performes "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I swtich to window with index "0"
+    Then I switch to window with index "0"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
@@ -455,7 +455,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I swtich to window with index "0"
+    Then I switch to window with index "0"
     Then I upload "directApp.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
@@ -680,9 +680,55 @@ Feature: BuildEmpire
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I swtich to window with index "0"
+    Then I switch to window with index "0"
     Then I upload "directApp.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
+
+  Scenario: Admin Hub Navigate to Blog Posts
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Blog Posts" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Blog Posts" "BPP Digital Admin Page Header name"
+
+  Scenario: Create Blog Post
+    When I click on the "Add" "BPP Digital Admin Page Button"
+    And I set "AutoBlogPost[#####]" text to the "Title *" "BPP Digital Mandatory input field"
+    And I set "AutoUrl[#####]" text to the "URL path *" "BPP Digital Mandatory input field"
+    And I set "Metadescription[####]" text to the "Meta description *" "BPP Digital Mandatory input field"
+    And I set "Summary[####]" text to the "Summary *" "BPP Digital Mandatory input field"
+    And I select "Research" from "Content type *" "BPP Digital Mandatory select field"
+    And I select "Topic 1" from "Topics" "BPP Digital Mandatory select field"
+    And I select "Accountancy" from "Schools/Professions" "BPP Digital Mandatory select field"
+    And I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I should see the "Blog Post was successfully created." "BPP Digital Admin Alert Message"
+
+  Scenario: Search for Blog Post
+    When I fill the "BPP Digital Filter by title search field" field with "EC_AUTO_BLOG_POST"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Filter by title search field"
+    Then I should see the "EC_AUTO_BLOG_POST" element
+
+  Scenario: Add Image Component To CMS or Blog Post page
+    And I click on the "Add component" "BPP Digital Search Label Button"
+    And I click on the "Images" "BPP Digital Admin Sub Menu Item links"
+    And I click on the "Add" "BPP Digital Search Label Button"
+    And I click on the "Image" "BPP Digital Admin Choose Image button"
+    And I switch to window with index "2"
+    And I set "tree.jpg" text to the "Search..." "Build Empire text field"
+    And I click on the "Search" "button"
+    And I capture text data "BPP Digital First Image name from Image Uploader Popup" as "EC_IMAGE_NAME" variable
+    And I click on the "BPP Digital First CMS Component First Select button" button by JS
+    And I switch to window with index "1"
+    And I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I wait for "3" seconds
+
+  Scenario: Publish a CMS or Blog Post page
+    When I wait for "2" seconds
+    When I click on the "Publish" "button"
+    Then I should see the "Blog post successfully published." "BPP Digital Admin Alert Message"
+
+  Scenario: Archive a CMS or Blog Post page
+    When I wait for "2" seconds
+    When I click on the "Archive" "button"
+    Then I should see the "Blog post successfully archived." "BPP Digital Admin Alert Message"
