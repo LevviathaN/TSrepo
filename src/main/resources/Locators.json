@@ -231,5 +231,11 @@
   "BPP Digital Breadcrumb Level Three":"xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
   "BPP Digital Site Page Header":"xpath=//h2[@class='section-header']/span",
   "BPP Digital Login link":"xpath=//span[text()='Login']",
-  "BPP Digital Section First Article name":"xpath=(//div[@class='search-results-list']/article/h3)[1]"
+  "BPP Digital Section First Article name":"xpath=(//div[@class='search-results-list']/article/h3)[1]",
+  "BPP Digital Filter by title search field":"xpath=//input[@placeholder='Filter by title']",
+  "BPP Digital First CMS Component First Select button":"css=a[data-file-name]:first-child",
+  "BPP Digital First Image name from Image Uploader Popup":"xpath=(//div[@class='row']//img)[1]/following-sibling::div//div[@class='text-truncate']/small",
+  "BPP Digital Blog Post Topic name":"xpath=//span[@class='post-topic']",
+  "BPP Digital Blog Post Topic date":"xpath=//span[@class='post-date']",
+  "BPP Digital Blog Post Image Content":"xpath=//div[@class='image-container']//picture/img"
 }

@@ -27,7 +27,9 @@ public class StepDefinitions extends BasePage {
 
     @AfterStep
     public void postActions() {
-        driver().switchTo().defaultContent();
+        if(driver().getWindowHandles().contains(0)) {
+            driver().switchTo().defaultContent();
+        }
     }
 
     /**
@@ -422,8 +424,8 @@ public class StepDefinitions extends BasePage {
      * Index = 1 is supposed to be the index of the main window
      * MAXIMUM acceptable window index is 9
      */
-    @Then("^I swtich to window with index \"([^\"]*)\"$")
-    public void i_swtich_to_window_with_index(String value) {
+    @Then("^I switch to window with index \"([^\"]*)\"$")
+    public void i_stitch_to_window_with_index(String value) {
         if (value.length() > 0) {
             int index = Integer.parseInt(value.substring(0, 1));
             Reporter.log("Switching to the window with index = " + index);
@@ -441,7 +443,9 @@ public class StepDefinitions extends BasePage {
     public void i_click_with_JS(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element by JS");
         clickWithJS(initElementLocator(element));
-        waitForPageToLoad();
+        if(driver().getWindowHandles().contains(0)) {
+            waitForPageToLoad();
+        }
     }
 
     /**
