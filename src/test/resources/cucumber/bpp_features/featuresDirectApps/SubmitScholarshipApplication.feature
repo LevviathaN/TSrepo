@@ -11,7 +11,7 @@ Feature: Complete BPP University Scholarship Application
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Diret App Do You Meet Eligilibility Criteria Yes" button
     And I click on the "Direct App Next" button
-    And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I click on the "Direct App Country Dropdown" button
     And I click on the "Direct App Country Dropdown UK Option" button
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
@@ -57,7 +57,7 @@ Feature: Complete BPP University Scholarship Application
     And I set "Name" text to the "Name of reference" "Build Empire scholarship evidence element"
     And I set "Position" text to the "Position" "Build Empire scholarship evidence element"
     And I set "Address 1" text to the "Address" "Build Empire scholarship evidence element"
-    And I set "EC_PHONENUMBER" text to the "Telephone" "Build Empire scholarship evidence element"
+    And I set "EC_PHONE" text to the "Telephone" "Build Empire scholarship evidence element"
     And I fill the "Direct App Scholarship Evidence Date" field with "10/10/2017"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Scholarship Evidence Date"
     And I set "email000@mail.com" text to the "Email" "Build Empire scholarship evidence element"

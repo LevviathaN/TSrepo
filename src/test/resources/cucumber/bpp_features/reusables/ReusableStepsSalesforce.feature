@@ -22,10 +22,8 @@ Feature: Salesforce
     And I click on the "New Account" "Salesforce navigation menu dropdown option"
     And I click on the "Student Account" "Salesforce radiobutton"
     And I click on the "Next" "button"
-    And I remember "Auto<KW_AUTO_FIRSTNAME>" text as "EC_FIRST_NAME" variable
-    And I set "EC_FIRST_NAME" text to the "First Name" "Salesforce text field"
-    And I remember "Auto<KW_AUTO_LASTNAME>" text as "EC_LAST_NAME" variable
-    And I set "EC_LAST_NAME" text to the "Last Name" "Salesforce text field"
+    And I set "Auto[FIRSTNAME]" text to the "First Name" "Salesforce text field"
+    And I set "Auto[LASTNAME]" text to the "Last Name" "Salesforce text field"
     And I click on the "Student Type" "Salesforce dropdown field"
     And I click on the "Domestic" "option"
     And I set "31/01/1998" text to the "Date of Birth" "Salesforce date field"
@@ -37,9 +35,12 @@ Feature: Salesforce
     And I click on the "Canada" "Salesforce dropdown field option"
     And I click on the "Preferred Phone" "Salesforce dropdown field"
     And I click on the "Home" "Salesforce dropdown field option"
-    And I set "KW_AUTO_PHONE|##########" text to the "Home Phone" "Salesforce search field"
+    And I set "[PHONE]" text to the "Home Phone" "Salesforce text field"
     And I click on the "Legal Entity" "Salesforce dropdown field"
     And I click on the "UC~COL" "Salesforce dropdown field option"
+    And I click on the "Preferred Email" "Salesforce dropdown field"
+    And I click on the "Personal" "Salesforce dropdown field option"
+    And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
 #    Then I should see the " was created." message
 

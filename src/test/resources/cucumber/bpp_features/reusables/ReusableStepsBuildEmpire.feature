@@ -4,11 +4,10 @@ Feature: BuildEmpire
   Scenario: Register New Student Account
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     Then I click on the "Direct App Register Link on Login Page" button
-    And I set "AutoFirstName[####]" text to the "First name" "Build Empire text field"
-    And I set "AutoLastName[####]" text to the "Surname" "Build Empire text field"
-    And I set "EmailAuto[#####]/@/harakirimail.com" text to the "Email" "Build Empire text field"
-    Then I remember "0913<KW_AUTO_RANDOMNUMBER|#######>" text as "EC_PHONENUMBER" variable
-    And I set "EC_PHONENUMBER" text to the "Telephone number" "Build Empire text field"
+    And I set "Auto[FIRSTNAME]" text to the "First name" "Build Empire text field"
+    And I set "Auto[LASTNAME]" text to the "Surname" "Build Empire text field"
+    And I set "Auto[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"
+    And I set "[PHONE-0913]" text to the "Telephone number" "Build Empire text field"
     Then I remember "A@polloGlobal2018" text as "EC_PASSWORD" variable
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     And I click on the "Direct App I Am Happy To Receive Information" button
@@ -18,7 +17,7 @@ Feature: BuildEmpire
 
   Scenario: Log In to Hub as Student
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
-    And I set "EC_EMAIL_AUTO" text to the "Email" "Build Empire text field"
+    And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
     And I should see the "Direct App My Applications Left Menu Link" element
@@ -65,7 +64,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
     Then I click on the "Academic Appeals" "Build Empire admin applications tab"
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
@@ -81,7 +80,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
     Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
@@ -93,7 +92,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Admin Direct Apps List Option" element
     Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
     And I select "Submitted" from "Direct App Admin Assesment Status" element
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
@@ -110,7 +109,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Admin Direct Apps List Option" element
     Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
     And I select "Rejected" from "Direct App Admin Assesment Status" element
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Submit" "button"
@@ -122,7 +121,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Final Award In Relation To Programme" button
     And I click on the "Direct App Ten Working Days To Submit Application Yes" button
     And I click on the "Direct App Next" button
-    And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I click on the "Direct App Country Dropdown" button
     And I click on the "Direct App Country Dropdown UK Option" button
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
@@ -181,7 +180,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Admin Direct Apps List Option" element
     And I wait for "2" seconds
     Given I click on the "Direct App Admin Apprenticeships Tab" link by JS
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
@@ -202,7 +201,7 @@ Feature: BuildEmpire
     And I fill the "Direct App Insurance Number" field with "12345"
     And I click on the "Direct App Country Dropdown" button
     And I click on the "Direct App Country Dropdown UK Option" button
-    And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
     And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
     And I fill the "Diret App Postal Code" field with "12345"
@@ -249,7 +248,7 @@ Feature: BuildEmpire
     And I set "Manager Lastname" text to the "Manager Last Name" "Build Empire employment element"
     And I set "AutoTitle" text to the "Manager Job Title" "Build Empire employment element"
     And I set "automation11@mail.com" text to the "Manager Email" "Build Empire employment element"
-    And I fill the "Direct App Line Manager Telephone" field with "0913<KW_AUTO_RANDOMNUMBER|#######>"
+    And I fill the "Direct App Line Manager Telephone" field with "[PHONE-0913]"
     And I set "Address 1" text to the "Address Line 1" "Build Empire employment element"
     And I set "London" text to the "Company/Employer City" "Build Empire employment element"
     And I set "Employee" text to the "Employee" "Build Empire employment element"
@@ -310,7 +309,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Admin Direct Apps List Option" element
     And I wait for "2" seconds
     Given I click on the "Direct App Admin Apprenticeships Tab" link by JS
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin full application review" "Build Empire application section"
@@ -346,7 +345,7 @@ Feature: BuildEmpire
     And I fill the "Direct App Insurance Number" field with "12345"
     And I click on the "Direct App Country Dropdown" button
     And I click on the "Direct App Country Dropdown UK Option" button
-    And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
     And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
     And I fill the "Diret App Postal Code" field with "12345"
@@ -466,7 +465,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
     Then I click on the "Mitigating Circumstances" "Build Empire admin applications tab"
-    And I fill the "Direct App Admin Filter By User" field with "EC_EMAIL_AUTO"
+    And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
     And I click on the "Show" "button"
     Then I click on the "Begin review" "Build Empire admin applications tab"
@@ -554,7 +553,7 @@ Feature: BuildEmpire
     And I fill the "Direct App Insurance Number" field with "12345"
     And I click on the "Direct App Country Dropdown" button
     And I click on the "Direct App Country Dropdown UK Option" button
-    And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
     And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
     And I fill the "Diret App Postal Code" field with "12345"

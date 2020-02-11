@@ -88,7 +88,7 @@ public class RestApiController {
                 keyValue = valueArray.get(new Random().nextInt(valueArray.size())).toString();
             }
 
-            map.put(keyStr, TestParametersController.checkIfSpecialParameter(keyValue.toString()));
+            map.put(keyStr, keyValue.toString());
 
         });
 
