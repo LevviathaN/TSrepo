@@ -27,9 +27,9 @@ public class StepDefinitions extends BasePage {
 
     @AfterStep
     public void postActions() {
-        if(driver().getWindowHandles().contains(0)) {
-            driver().switchTo().defaultContent();
-        }
+            if(!driver().getTitle().equals("Media")) {
+                driver().switchTo().defaultContent();
+            }
     }
 
     /**
