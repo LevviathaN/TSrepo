@@ -732,3 +732,14 @@ Feature: BuildEmpire
     When I wait for "2" seconds
     When I click on the "Archive" "button"
     Then I should see the "Blog post successfully archived." "BPP Digital Admin Alert Message"
+
+  Scenario: Admin Hub Navigate to Blog Topics
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Blog Topics" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Blog Topics" "BPP Digital Admin Page Header name"
+
+  Scenario: Create Blog Topic
+    When I click on the "Add" "BPP Digital Admin Page Button"
+    And I set "AutoBlogTopic[#####]" text to the "Name *" "BPP Digital Mandatory input field"
+    And I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I should see the "Blog Topic was successfully created." "BPP Digital Admin Alert Message"

@@ -5,7 +5,7 @@ Feature: BPP Digital General Review
     Given I am on "MD_COMMON_LINKS_BPPDIGITALINDEXURL" URL
 
   @Positive #TC-2266
-  Scenario: BPP Digital General Review
+  Scenario: General Review
     When I fill the "BPP Digital Find a Course Search Field" field with "Law"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Find a Course Search Field"
     Then I validate text "Law" to be displayed for "BPP Digital Find a Course Search Field Total Results Search Field" element

@@ -5,7 +5,7 @@ Feature: BPP Digital Changing Student Personal Password
     Given I execute "Register New Student Account" reusable step
 
   @Positive #TC-7809
-  Scenario: BPP Digital Changing Student Personal Password
+  Scenario: Changing Student Personal Password
     When I execute "Edit Hub Student" reusable step
     Then I click on the "Change My Password" "BPP Digital Profile button"
     When I set "EC_PASSWORD" text to the "Current password" "Build Empire text field"
