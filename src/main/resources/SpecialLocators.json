@@ -3,6 +3,7 @@
   "link": "//*[text()='PARAMETER']",
   "text": "//*[text()='PARAMETER']",
   "message": "//*[text()='PARAMETER']",
+  "option": "//*[text()='PARAMETER']",
 
   "Product Factory navigation item": "//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
@@ -38,6 +39,7 @@
   "Build Empire qualification option":"//ul[@role='listbox']/li[normalize-space()='PARAMETER']",
   "Build Empire bespoke Scotland eligibility":"//p[contains(text(),'PARAMETER')]/../div//label[1]",
   "Build Empire line manager option": "//li[contains(.,'PARAMETER')]",
+  "Build Empire emergency field": "//label[contains(.,'PARAMETER')]/following-sibling::div//input",
 
   "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
@@ -57,5 +59,25 @@
   "BPP Digital Admin Edit Button for Specific name":"//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Edit']",
   "BPP Digital Admin Delete Button for Specific name":"//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Delete']",
   "BPP Digital Admin Choose Image button":"//label[normalize-space()='PARAMETER']/following-sibling::div/button",
-  "BPP Digital Admin Breadcrumb item":"//ol[@class='breadcrumb']/li/a[text()='PARAMETER']"
+  "BPP Digital Admin Breadcrumb item":"//ol[@class='breadcrumb']/li/a[text()='PARAMETER']",
+
+  "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
+  "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",
+  "Salesforce navigation menu option": "//span[text()='PARAMETER' and @class='slds-truncate']",
+  "Salesforce radiobutton": "//span[text()='PARAMETER']/../preceding-sibling::div/span",
+  "Salesforce text field": "//span[text()='PARAMETER']/../following-sibling::input|(//label[normalize-space()='PARAMETER']/following::input)[1]",
+  "Salesforce date field": "//span[text()='PARAMETER']/../following-sibling::div/input[@class=' input']",
+  "Salesforce search field": "//span[text()='PARAMETER']/../following-sibling::div/descendant::input|//input[contains(@placeholder,'PARAMETER')]",
+  "Salesforce dropdown field": "//span[text()='PARAMETER']/../following-sibling::div[contains(@class,'uiMenu')]",
+  "Salesforce dropdown field option": "//a[text()='PARAMETER' and @title='PARAMETER']",
+  "Salesforce related new button": "//span[text()='PARAMETER']/ancestor::header/following-sibling::div[@class='slds-no-flex']/descendant::a",
+  "Salesforce related dropdown": "//span[text()='PARAMETER']/ancestor::header/following-sibling::div[@class='slds-no-flex']/descendant::a",
+  "Salesforce dropdown button": "//a[contains(@title,'PARAMETER')]",
+  "Salesforce dropdown option": "//a[@title='PARAMETER' and @role='menuitem']",
+  "Salesforce cases dropdown option": "//a[@title=\"PARAMETER\" and @role='menuitemradio']",
+  "Salesforce link": "//a[text()='PARAMETER']",
+  "Salesforce app launcher app": "//p[text()='PARAMETER']",
+  "Salesforce readonly field": "//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*",
+  "Salesforce cases search student": "//div[@title='PARAMETER']"
+
 }

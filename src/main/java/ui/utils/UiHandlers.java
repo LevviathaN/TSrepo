@@ -27,19 +27,24 @@ public enum UiHandlers {
 
     WAIT_HANDLER((element, e) -> {
         BasePage.isHandled.put("waitHandler", false);
-        if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")){
+        if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")||
+                e.getMessage().contains("panel slds-modal transitioning movetocenter")||
+                e.getMessage().contains("panel slds-modal slds-fade-in-open transitioning movefromcenter")||
+                e.getMessage().contains("panel slds-modal slds-fade-in-open")||
+                e.getMessage().contains("panel slds-modal")||
+                e.getMessage().contains("modal-glass visible")){
             Reporter.log("Handling overlay by Wait");
             BasePage.sleepFor(9000);
             BasePage.isHandled.put("waitHandler", true);
         }
     }),
 
+    //todo Condition of this handler is changed!!!!!
     PF_SCROLL_HANDLER((element, e) -> {
         BasePage page = new BasePage();
         BasePage.isHandled.put("pfScrollHandler", false);
-        if(e.getMessage().contains("Other element would receive the click:")){
+        if(e.getMessage().contains("Other element would receive the click: <button")){
             Reporter.log("Handling click overlay by scrolling to element");
-            BasePage.scrollToElement(page.findElement(element));
             BasePage.scrollToElement(page.findElement(element));
             BasePage.scrollBy(0,100);
             BasePage.isHandled.put("pfScrollHandler", true);

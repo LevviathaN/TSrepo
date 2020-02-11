@@ -60,7 +60,7 @@ public class StepDefinitions extends BasePage {
      *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
      * @author Ruslan Levytskyi
      */
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)$")
     public void i_click_on_the_button(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element");
         clickOnElement(initElementLocator(element),
@@ -225,13 +225,13 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
-     * Definition to execute reusable steps
+     * Definition to save some text value in EC variable
      *
      * @param text    text you want to save into a variable
      * @param varName name of variable in which you want to save text
      * @author Ruslan Levytskyi
      */
-    @Then("I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
+    @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         Reporter.log("Executing step: I remember '" + text + "' text as '" + varName + "' variable");
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
