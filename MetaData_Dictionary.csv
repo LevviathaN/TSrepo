@@ -3,16 +3,12 @@ MD_BPPUSER,crmteamfusion@noah_crm_bpp.com.noahqa,descr.
 MD_BPPPASSWORD,Fusion12345,descr.
 MD_BPPADMINUSER,crmteamfusionadmin@gmail.com.noahqa,descr.
 MD_BPPADMINPASSWORD,Fusion12345,descr.
-MD_SELFREGUSER,tchin@apollo.edu,descr.
-MD_SELFREGPASSWORD,Apollo01!,descr.
 MD_BPPPORTALUSER,b.uftflowers,descr.
 MD_BPPPORTALPASSWORD,Uf101416,descr.
 MD_BPPSSBUSER,a.bray,descr.
 MD_BPPSSBPASSWORD,Br062117,descr.
 MD_BPPVLEUSER,ateam,descr.
 MD_BPPVLEPASSWORD,Welcome1!,descr.
-MD_OPENBRAVOUSER,BP5041772,descr.
-MD_OPENBRAVOPASSWORD,Ch102116,descr.
 MD_BPPBANNERUSER,BP5080920,descr.
 MD_BPPBANNERPASSWORD,St050219,descr.
 MD_YAHOOEMAILUSER,ayaks.spam,descr.
@@ -33,6 +29,8 @@ MD_BUILDEMPIREMANAGERINUSER,waltdisney@mailinator.com,descr.
 MD_BUILDEMPIREMANAGERPASSWORD,Testing WALT 2018,descr.
 MD_BUILDEMPIRENEILADMINUSER,neilsteward@outlook.com,descr.
 MD_BUILDEMPIRENEILADMINPASSWORD,I am really really bored now!!,descr.
+MD_YAHOOEMAILCSAUSER,nadineanja@yahoo.com,descr.
+MD_YAHOOEMAILCSAPASSWORD,Wake Up 19!,descr.
 MD_ENTER,ENTER,descr.
 MD_REFRESH,F5,descr.
 MD_INSPECT,F12,descr.
