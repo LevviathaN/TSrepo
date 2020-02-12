@@ -168,5 +168,32 @@ Feature: Salesforce
     Then I click on the "My invoice address is incorrect" "Salesforce cases dropdown option"
     And I click on the "Salesforce CS Ready to Close" element
     And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
     And I validate text "CONTAINS=Customer Service Team" to be displayed for "Salesforce Case Owner Data Field" element
     And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
+
+  Scenario: Create CSA Case My Course
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Customer Service" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I set "Automation CSA" text to the "Student" "Salesforce search field"
+    And I click on the "Automation CSA" "Salesforce cases search student"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Email" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "My course" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "I need to defer my course" "Salesforce cases dropdown option"
+    And I click on the "Salesforce CS Ready to Close" element
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
+    And I validate text "CONTAINS=Customer Service Team" to be displayed for "Salesforce Case Owner Data Field" element
+    And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
+
+  Scenario: Search Case by Number
+    And I fill the "Salesforce Main Header Search" field with "EC_CASENUMBER"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Salesforce Main Header Search"
+    And I wait for "2" seconds
+    And I click on the "Salesforce First Case Number Search Table" element
+    And I click on the "Salesforce First Case Number" element

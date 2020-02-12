@@ -78,6 +78,7 @@
   "Salesforce link": "//a[text()='PARAMETER']",
   "Salesforce app launcher app": "//p[text()='PARAMETER']",
   "Salesforce readonly field": "//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*",
-  "Salesforce cases search student": "//div[@title='PARAMETER']"
+  "Salesforce cases search student": "//div[@title='PARAMETER']",
+  "Salesforce cases status option": "//span[@title='PARAMETER']"
 
 }

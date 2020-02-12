@@ -259,5 +259,22 @@
   "Salesforce Cases Option":"xpath=(//*[@data-id='Case']/a)[2]",
   "Salesforce CS Ready to Close": "xpath=//*[*='CS Ready to Close']//input",
   "Salesforce Case Number Data Field": "xpath=//span[text()='Case Number']/../following-sibling::div/span/slot/slot/*",
-  "Salesforce Case Owner Data Field": "xpath=//span[text()='Case Owner']/../following-sibling::div/span/slot/slot/*"
+  "Salesforce Case Owner Data Field": "xpath=//span[text()='Case Owner']/../following-sibling::div/span/slot/slot/*",
+  "Salesforce Case Status Data Field": "xpath=//span[text()='Status']/../following-sibling::div/span/slot/slot/*",
+  "Salesforce First Case Number Search Table": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//td/span[contains(.,'EC_CASENUMBER')]",
+  "Salesforce First Case Number": "xpath=//span/a[contains(.,'EC_CASENUMBER')]",
+  "Salesforce Main Header Search": "xpath=//input[@title='Search Salesforce']",
+  "Salesforce Edit Case Status": "xpath=//span[text()='Status']/../following-sibling::div//button",
+  "Salesforce Case Status Dropdown": "xpath=//label[text()='Status']//following-sibling::div[1]//div[1]/div/input",
+
+  "Yahoo Email": "id=login-username",
+  "Yahoo Password": "id=login-passwd",
+  "Yahoo Next": "xpath=//input[@id='login-signin']",
+  "Yahoo Sign In": "xpath=//button[@id='login-signin']",
+  "Yahoo Search Email": "xpath=//input[@role='combobox']",
+  "Yahoo First Email Link": "xpath=//span[contains(.,'Sandbox: Your case reference')]",
+  "Yahoo Case Email Header": "xpath=//table/tbody/tr[2]//table/tbody//tr//h1",
+  "Yahoo Reply": "xpath=//button[@data-kind='reply']",
+  "Yahoo Body": "xpath=//div[@role='textbox']/div",
+  "Yahoo Send": "xpath=//button[@title='Send this email']"
 }
