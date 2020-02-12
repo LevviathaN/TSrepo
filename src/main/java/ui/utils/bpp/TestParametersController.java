@@ -295,8 +295,8 @@ public class TestParametersController {
             }
 
             ExecutionContextHandler.setExecutionContextValueByKey(ecVarNameSimplified.toString(), resultingValueSimplified.toString());
-//            Reporter.log("Execution Context variable '" + ecVarNameSimplified.toString() +
-//                    "' was automatically created with value '" + resultingValueSimplified.toString() + "'");
+            Reporter.log("Execution Context variable '" + ecVarNameSimplified.toString() +
+                    "' was automatically created with value '" + resultingValueSimplified.toString() + "'");
             return resultingValueSimplified.toString();
         }
 

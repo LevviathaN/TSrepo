@@ -77,8 +77,11 @@ Feature: Salesforce
     And I click on the "Save" "button"
 #    And I should see the " was created." message
 
+  # This reusable scenario is not working, because its steps are not treated as separate Gherkin steps, so AfterStep
+  # method that switches to default content is not called for two serial inframe elements, so the second element's parent
+  # xpath cannot be found as the focus of the test is still inside the first element's iframe
   Scenario: Add Product Catalog Item
-    And I click on the "EC_LAST_NAME" "Salesforce link"
+    And I click on the "EC_AUTO_LASTNAME" "Salesforce link"
     And I click on the "Product Catalog Items" "Salesforce related new button"
     And I click on the "New" "Salesforce dropdown option"
     And I fill the "Salesforce Offering Text Field" field with "2381626"
