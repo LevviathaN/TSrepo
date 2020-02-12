@@ -5,7 +5,7 @@ Feature: BPP Digital Create Archive Publish and Delete a Blog Post
     Given I execute "Log In to Hub as Admin" reusable step
 
   @Positive #TC-7810
-  Scenario: BPP Digital Create Archive Publish and Delete a Blog Post
+  Scenario: Create Archive Publish and Delete a Blog Post
     When I execute "Admin Hub Navigate to Blog Posts" reusable step
     And I execute "Create Blog Post" reusable step
     And I execute "Search for Blog Post" reusable step
