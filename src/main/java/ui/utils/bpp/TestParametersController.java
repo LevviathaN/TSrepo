@@ -234,6 +234,9 @@ public class TestParametersController {
 
     public static By initElementByLocator(String locator) {
         if (PageLocatorMatcher.isXpath(locator)) {
+            if(PageLocatorMatcher.isECVariableInXpath(locator)) {
+                return By.xpath(PageLocatorMatcher.updateXpath(locator.substring(6)));
+            }
             return By.xpath(locator.substring(6));
         } else if (PageLocatorMatcher.isId(locator)) {
             return By.id(locator.substring(3));
