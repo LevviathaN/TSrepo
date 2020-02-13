@@ -655,7 +655,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Save Review And Next" button
     And I wait for "1" seconds
     And I click on the "Download Application of" "Build Empire application section"
-    Then I swtich to window with index "0"
+    Then I switch to window with index "0"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
@@ -695,11 +695,11 @@ Feature: BuildEmpire
     When I click on the "Add" "BPP Digital Admin Page Button"
     And I set "AutoBlogPost[#####]" text to the "Title *" "BPP Digital Mandatory input field"
     And I set "AutoUrl[#####]" text to the "URL path *" "BPP Digital Mandatory input field"
-    And I set "Metadescription[####]" text to the "Meta description *" "BPP Digital Mandatory input field"
+    And I set "MetaDescription[####]" text to the "Meta description *" "BPP Digital Mandatory input field"
     And I set "Summary[####]" text to the "Summary *" "BPP Digital Mandatory input field"
     And I select "Research" from "Content type *" "BPP Digital Mandatory select field"
     And I select "Topic 1" from "Topics" "BPP Digital Mandatory select field"
-    And I select "Accountancy" from "Schools/Professions" "BPP Digital Mandatory select field"
+    And I select "Law" from "Schools/Professions" "BPP Digital Mandatory select field"
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I should see the "Blog Post was successfully created." "BPP Digital Admin Alert Message"
 
