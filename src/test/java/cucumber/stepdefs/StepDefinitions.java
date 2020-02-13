@@ -1,23 +1,19 @@
 package cucumber.stepdefs;
 
-import cucumber.api.java.AfterStep;
 import cucumber.reusablesteps.ReusableRunner;
-import cucumber.api.java.en.*;
-//import io.cucumber.java.en.*;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
 /**

@@ -450,7 +450,7 @@ public class BasePage {
             return driver().findElement(element);
         } catch (TimeoutException e) {
             BPPLogManager.getLogger().info("Exception caught. Trying to find an element again.");
-            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(10, ChronoUnit.SECONDS))
+            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(5, ChronoUnit.SECONDS))
                     .pollingEvery(Duration.ofMillis(2000))
                     .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
                     .until(ExpectedConditions.presenceOfElementLocated(element));
@@ -667,7 +667,7 @@ public class BasePage {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
         sleepFor(5);
         try {
-            driver().switchTo().frame(findPresentElement(frameName, 10));
+            driver().switchTo().frame(findPresentElement(frameName, 5));
         } catch (Exception e) {
             e.getMessage();
         }

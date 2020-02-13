@@ -10,7 +10,7 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Direct App Final Award In Relation To Programme" button
     And I click on the "Direct App Next" button
-    And I fill the "Diret App Phone Number" field with "EC_PHONENUMBER"
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I click on the "Direct App Country Dropdown" button
     And I click on the "Direct App Country Dropdown UK Option" button
     And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"

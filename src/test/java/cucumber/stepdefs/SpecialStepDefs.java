@@ -1,8 +1,6 @@
 package cucumber.stepdefs;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
