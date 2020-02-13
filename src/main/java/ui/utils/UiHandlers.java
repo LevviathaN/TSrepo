@@ -70,6 +70,7 @@ public enum UiHandlers {
                 ||e.getCause().toString().contains("Are you sure want to publish this blog post?")
                 ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
                 ||e.getCause().toString().contains("Are you sure?")
+                ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
         ) {
             Reporter.log("Handling JS Alert");
             page.acceptAlertMessage();

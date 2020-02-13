@@ -242,6 +242,7 @@
   "BPP Digital Blog Post Topic name":"xpath=//span[@class='post-topic']",
   "BPP Digital Blog Post Topic date":"xpath=//span[@class='post-date']",
   "BPP Digital Blog Post Image Content":"xpath=//div[@class='image-container']//picture/img",
+  "BPP Digital Validation Error message":"xpath=//div[@class='invalid-feedback']",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",
