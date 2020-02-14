@@ -267,6 +267,8 @@
   "Salesforce Main Header Search": "xpath=//input[@title='Search Salesforce']",
   "Salesforce Edit Case Status": "xpath=//span[text()='Status']/../following-sibling::div//button",
   "Salesforce Case Status Dropdown": "xpath=//label[text()='Status']//following-sibling::div[1]//div[1]/div/input",
+  "Salesforce Case Milestone Name": "xpath=(//a[@title='Customer Service - Ready to Close'])[2]",
+  "Salesforce Case Milestone Hours": "xpath=(//div[@class='milestoneTimerText ontrackTimer']//span)[2]",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",
