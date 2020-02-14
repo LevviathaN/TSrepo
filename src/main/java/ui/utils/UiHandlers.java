@@ -27,19 +27,24 @@ public enum UiHandlers {
 
     WAIT_HANDLER((element, e) -> {
         BasePage.isHandled.put("waitHandler", false);
-        if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")){
+        if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")||
+                e.getMessage().contains("panel slds-modal transitioning movetocenter")||
+                e.getMessage().contains("panel slds-modal slds-fade-in-open transitioning movefromcenter")||
+                e.getMessage().contains("panel slds-modal slds-fade-in-open")||
+                e.getMessage().contains("panel slds-modal")||
+                e.getMessage().contains("modal-glass visible")){
             Reporter.log("Handling overlay by Wait");
             BasePage.sleepFor(9000);
             BasePage.isHandled.put("waitHandler", true);
         }
     }),
 
+    //todo Condition of this handler is changed!!!!!
     PF_SCROLL_HANDLER((element, e) -> {
         BasePage page = new BasePage();
         BasePage.isHandled.put("pfScrollHandler", false);
-        if(e.getMessage().contains("Other element would receive the click:")){
+        if(e.getMessage().contains("Other element would receive the click: <button")){
             Reporter.log("Handling click overlay by scrolling to element");
-            BasePage.scrollToElement(page.findElement(element));
             BasePage.scrollToElement(page.findElement(element));
             BasePage.scrollBy(0,100);
             BasePage.isHandled.put("pfScrollHandler", true);
@@ -61,7 +66,12 @@ public enum UiHandlers {
         BasePage page = new BasePage();
         BasePage.isHandled.put("acceptAlert", false);
         if (e.getCause().toString().contains("Are you sure want to review this application?")
-                ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")) {
+                ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
+                ||e.getCause().toString().contains("Are you sure want to publish this blog post?")
+                ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
+                ||e.getCause().toString().contains("Are you sure?")
+                ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
+        ) {
             Reporter.log("Handling JS Alert");
             page.acceptAlertMessage();
             BasePage.repeatAction = false;

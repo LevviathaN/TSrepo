@@ -1,23 +1,19 @@
 package cucumber.stepdefs;
 
-import cucumber.api.java.AfterStep;
 import cucumber.reusablesteps.ReusableRunner;
-import cucumber.api.java.en.*;
-//import io.cucumber.java.en.*;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
 /**
@@ -27,7 +23,9 @@ public class StepDefinitions extends BasePage {
 
     @AfterStep
     public void postActions() {
-        driver().switchTo().defaultContent();
+            if(!driver().getTitle().equals("Media")) {
+                driver().switchTo().defaultContent();
+            }
     }
 
     /**
@@ -58,7 +56,7 @@ public class StepDefinitions extends BasePage {
      *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
      * @author Ruslan Levytskyi
      */
-    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$")
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element)$")
     public void i_click_on_the_button(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element");
         clickOnElement(initElementLocator(element),
@@ -223,13 +221,13 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
-     * Definition to execute reusable steps
+     * Definition to save some text value in EC variable
      *
      * @param text    text you want to save into a variable
      * @param varName name of variable in which you want to save text
      * @author Ruslan Levytskyi
      */
-    @Then("I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
+    @Then("^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$")
     public void i_remember_text(String text, String varName) {
         Reporter.log("Executing step: I remember '" + text + "' text as '" + varName + "' variable");
         ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(text));
@@ -422,8 +420,8 @@ public class StepDefinitions extends BasePage {
      * Index = 1 is supposed to be the index of the main window
      * MAXIMUM acceptable window index is 9
      */
-    @Then("^I swtich to window with index \"([^\"]*)\"$")
-    public void i_swtich_to_window_with_index(String value) {
+    @Then("^I switch to window with index \"([^\"]*)\"$")
+    public void i_switch_to_window_with_index(String value) {
         if (value.length() > 0) {
             int index = Integer.parseInt(value.substring(0, 1));
             Reporter.log("Switching to the window with index = " + index);
@@ -441,7 +439,9 @@ public class StepDefinitions extends BasePage {
     public void i_click_with_JS(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element by JS");
         clickWithJS(initElementLocator(element));
-        waitForPageToLoad();
+        if(driver().getWindowHandles().contains(0)) {
+            waitForPageToLoad();
+        }
     }
 
     /**
@@ -482,7 +482,7 @@ public class StepDefinitions extends BasePage {
      */
 
     @And("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$")
-    public void iCaptureTextDataAsVariable(String element, String executionContext) {
+    public void i_capture_text_data_as_variable(String element, String executionContext) {
         waitForPageToLoad();
         String value = getTextValueFromField(initElementLocator(element));
         Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);

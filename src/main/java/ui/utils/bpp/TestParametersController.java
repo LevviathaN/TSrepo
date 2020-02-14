@@ -141,7 +141,7 @@ public class TestParametersController {
 
     private static boolean isSimplifiedRandom(String value) {
 //        Matcher possibleSimplifiedRandomMatcher = GENERAL_SIMPLIFIED_RANDOM_PATTERN.matcher(value);
-        return value.contains("[##");
+        return (value.contains("[") && value.contains("]") && !value.contains("//"));
     }
 
     /**
@@ -155,47 +155,50 @@ public class TestParametersController {
         if (isMetaData(parameter)) {
             //get metadata from document (MD_CREDENTIALS_BPPUSER returns username, MD_LINKS_BPPURL returns Url etc.)
             return MetaDataHandler.getMetaDataValue(parameter);
-            //otherwise if keyword (contains KW_ or KW_AUTO, for instance AutoName<KW_AUTO_RANDOMNUMBER|####>)
-        } else if (isKeyword(parameter)) {
+        }
+
+        //otherwise if keyword (contains KW_ or KW_AUTO, for instance AutoName<KW_AUTO_RANDOMNUMBER|####>)
+        else if (isKeyword(parameter)) {
+
             //check if equals KW_AUTO_SELECT
             if (parameter.equals(KEYWORD_NAME_TO_SKIP)) {
                 //just return input parameter without changes
                 return parameter;
-                //check if equals KW_AUTO_RUT
             }
-            if (parameter.equals(KEYWORD_RUT)) {
-                //return random number
-                return KeywordsHandler.randomRutNumber();
-            }
+
             if (parameter.equals(KEYWORD_SF_DATE)) {
                 return String.valueOf(KeywordsHandler.salesForceDateAPIdateFormat());
             }
+
+            //split parameter into two parts: static text, and KW_ value itself
             String[] splitArray = parameter.split("[<>]");
             StringBuilder resultingValue = new StringBuilder();
-            StringBuilder ecVarName = new StringBuilder();
+
+            //cycle through parts of parameter
             for (String element : splitArray) {
+                //if part is KW_ value
                 if (element.startsWith(KEYWORD_NAME_PREFIX)) {
+                    //then add transformed KW_ value to resultingValue
                     resultingValue.append(KeywordsHandler.getValueByKeyword(element.substring(3)));
-                } else {
+                }
+
+                //if part is NOT KW_ value
+                else {
+
+                    //trim slashes, if present
                     if (element.contains("/")) {
                         String updateElement = element.replace("/", "");
                         resultingValue.append(updateElement);
                     } else {
                         resultingValue.append(element);
-                        ecVarName.append("EC");
-                        for (String w : element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
-                            ecVarName.append("_");
-                            ecVarName.append(w.toUpperCase());
-                        }
                     }
                 }
             }
-            ExecutionContextHandler.setExecutionContextValueByKey(ecVarName.toString(), resultingValue.toString());
-            Reporter.log("Execution Context variable '" + ecVarName +
-                    "' was automatically created with value '" + resultingValue.toString() + "'");
             return resultingValue.toString();
-            //otherwise check if contains EC_ value
-        } else if (isExecutionContextKey(parameter)) {
+        }
+
+        //otherwise check if contains EC_ value
+        else if (isExecutionContextKey(parameter)) {
 
             String[] splitArray = parameter.split("[<>]");
             StringBuilder splittedValue = new StringBuilder();
@@ -206,13 +209,99 @@ public class TestParametersController {
                     splittedValue.append(element);
                 }
             return splittedValue.toString();
-            //If it is simplified random generation
-        } else if (isSimplifiedRandom(parameter)) {
-            String[] splitArray = parameter.split("[\\[\\]]");
-            String transformedValue = parameter.replace(splitArray[1], "KW_AUTO_RANDOMNUMBER|" + splitArray[1]);
-            return checkIfSpecialParameter(transformedValue.replace("[", "<").replace("]", ">"));
-            //If contains no special parameters, then just return input value
-        } else {
+        }
+
+        //If it is simplified random generation
+        else if (isSimplifiedRandom(parameter)) {
+
+            String[] splitArraySimplified = parameter.split("[\\[\\]]");
+            StringBuilder resultingValueSimplified = new StringBuilder();
+            StringBuilder ecVarNameSimplified = new StringBuilder();
+            ecVarNameSimplified.append("EC");
+
+            for (String element : splitArraySimplified) {
+                if (element.startsWith("#")){
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|" + element));
+                }
+                else if (element.startsWith("FIRSTNAME")){
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_FIRSTNAME"));
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("FIRSTNAME");
+                }
+                else if (element.startsWith("LASTNAME")){
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_LASTNAME"));
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("LASTNAME");
+                }
+                else if (element.startsWith("STREET")){
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_STREET"));
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("STREET");
+                }
+                else if (element.startsWith("CITYUSA")){
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_CITYUSA"));
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("CITYUSA");
+                }
+                else if (element.startsWith("EMAIL")){
+                    if (element.contains("HARAKIRI")){
+                        resultingValueSimplified.append("Email");
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|####"));
+                        resultingValueSimplified.append("@harakirimail.com");
+                    } else {
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_EMAIL"));
+                    }
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("EMAIL");
+                }
+                else if (element.startsWith("PHONE")){
+                    if (element.contains("-")){
+                        resultingValueSimplified.append(element.replace("PHONE-",""));
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|#######"));
+                    } else {
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_PHONE|##########"));
+                    }
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("PHONE");
+                }
+                else if (element.startsWith("TODAY")){
+                    if (element.contains("-")||element.contains("+")){
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("KW_AUTO_TODAY|DD/MM/YYYY_" + element.replace("TODAY","")));
+                    } else {
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("KW_AUTO_TODAY|DD/MM/YYYY"));
+                    }
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("TODAY");
+                }
+                //if part is NOT KW_ value
+                else {
+
+                    //trim slashes, if present
+                    if (element.contains("/")) {
+                        String updateElement = element.replace("/", "");
+                        resultingValueSimplified.append(updateElement);
+                    } else {
+                        resultingValueSimplified.append(element);
+                    }
+
+                    //form EC_ value name from camelCase static text
+                    for (String w : element.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
+                        if (!w.isEmpty()){
+                            ecVarNameSimplified.append("_");
+                            ecVarNameSimplified.append(w.toUpperCase());
+                        }
+                    }
+                }
+            }
+
+            ExecutionContextHandler.setExecutionContextValueByKey(ecVarNameSimplified.toString(), resultingValueSimplified.toString());
+            Reporter.log("Execution Context variable '" + ecVarNameSimplified.toString() +
+                    "' was automatically created with value '" + resultingValueSimplified.toString() + "'");
+            return resultingValueSimplified.toString();
+        }
+
+        //If contains no special parameters, then just return input value
+        else {
             return parameter;
         }
     }
@@ -234,6 +323,9 @@ public class TestParametersController {
 
     public static By initElementByLocator(String locator) {
         if (PageLocatorMatcher.isXpath(locator)) {
+            if(PageLocatorMatcher.isECVariableInXpath(locator)) {
+                return By.xpath(PageLocatorMatcher.updateXpath(locator.substring(6)));
+            }
             return By.xpath(locator.substring(6));
         } else if (PageLocatorMatcher.isId(locator)) {
             return By.id(locator.substring(3));

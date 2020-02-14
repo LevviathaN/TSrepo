@@ -1,8 +1,6 @@
 package cucumber.stepdefs;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import ui.pages.BasePage;
@@ -10,6 +8,7 @@ import ui.utils.Conditions;
 import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
 import ui.utils.UiHandlers;
+import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
 public class SpecialStepDefs extends BasePage {
@@ -213,6 +212,11 @@ public class SpecialStepDefs extends BasePage {
                 Reporter.log("Starting random selection from dropdown.");
                 String autoSelectedValue = autoSelectFromDropdown(By.xpath(resultingXpath));
                 Reporter.log("Selected \"" + autoSelectedValue + "\" value from " + elementLocator + "' " + elementType);
+            } else if (value.contains("EC_")) {
+                Reporter.log("Selecting value using Execution Context");
+                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(value);
+                selectValueFromDropDown(By.xpath(resultingXpath), executionContextValue);
+                Reporter.log("Selected \"" + executionContextValue + "\" value from " + elementLocator + "' " + elementType);
             } else {
                 Reporter.log("Selecting \"" + value + "\" value from " + elementLocator + "' " + elementType);
                 selectValueFromDropDown(By.xpath(resultingXpath), value);
