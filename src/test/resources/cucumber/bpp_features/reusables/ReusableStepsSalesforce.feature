@@ -201,3 +201,24 @@ Feature: Salesforce
     And I wait for "2" seconds
     And I click on the "Salesforce First Case Number Search Table" element
     And I click on the "Salesforce First Case Number" element
+
+  Scenario: Create ID Card Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "ID Card" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "Lost" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Leeds" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Law" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
