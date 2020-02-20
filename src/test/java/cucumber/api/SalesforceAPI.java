@@ -1,7 +1,7 @@
 package cucumber.api;
 
 import api.requests.SalesforceBusinessProcesses;
-import cucumber.api.java.en.*;
+import io.cucumber.java.en.*;
 
 public class SalesforceAPI {
     @When("I create new faculty record")
@@ -13,4 +13,16 @@ public class SalesforceAPI {
     public void i_should_submit_faculty() {
         new SalesforceBusinessProcesses().submitNewFaculty();
     }
+
+    @And("I create new student account")
+    public void i_should_create_student_account() {
+        new SalesforceBusinessProcesses().
+                createNewStudent().
+                addAddress().
+                getAccountProfileId().
+                addOpportunity().
+                addOffering().
+                submitNewAccount();
+    }
+
 }

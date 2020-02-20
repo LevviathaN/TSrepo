@@ -1,5 +1,6 @@
 package api;
 
+import com.aventstack.extentreports.IReport;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -12,11 +13,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import ui.utils.GlobalDataBridge;
+import ui.utils.Reporter;
 import ui.utils.bpp.PreProcessFiles;
 
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -76,7 +80,7 @@ public class ExcelResultsWriter {
         });
 
         try {
-            fileOut = new FileOutputStream( "//generated-data.xlsx");
+            fileOut = new FileOutputStream( System.getProperty("user.dir") + "/report" +"//generated-data.xlsx");
             workbook.write(fileOut);
             fileOut.close();
         } catch (IOException ex) {
@@ -89,7 +93,7 @@ public class ExcelResultsWriter {
 
         Set<String> set = new HashSet<>();
 
-        HashMap<String, Object> global = new HashMap<>();
+        HashMap<String, Object> global = GlobalDataBridge.getInstance().getDataBuffer();
 
         if (global != null) {
             global.entrySet().forEach(entry -> {
