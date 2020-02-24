@@ -220,8 +220,6 @@ Feature: Salesforce
     Then I click on the "Law" "Salesforce cases dropdown option"
     And I click on the "Save" "Product Factory button title"
     And I wait for "3" seconds
-    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
-    And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
 
   Scenario: Validate All Registry Cases Types
       When I click on the "Cases" "Salesforce navigation menu dropdown"
@@ -344,3 +342,117 @@ Feature: Salesforce
       And I click on the "Save" "Product Factory button title"
       And I wait for "3" seconds
       And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
+
+  Scenario: Create Assesments Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "Assessments" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "Appeals" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Doncaster" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Law" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "2" seconds
+
+  Scenario: Create IOS Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "IOS (Interruption of Studies)" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "Extension" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Doncaster" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Law" "Salesforce cases dropdown option"
+    And I click on the "IOS Form Received?" "Salesforce dropdown field"
+    Then I click on the "Yes" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
+
+  Scenario: Create Letter Production Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "Letter Production" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "Acceptance" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Doncaster" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Law" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
+
+  Scenario: Create Registration and Induction Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "Registration and Induction" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "Missed induction" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Bristol" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Law" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
+
+  Scenario: Create Timetable Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "Timetable" "Salesforce cases dropdown option"
+    And I click on the "Query Subtype" "Salesforce dropdown field"
+    Then I click on the "Term dates" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Bristol" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Law" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds
+
+  Scenario: Create Complaints Registry Case
+    When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Student Query" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    And I click on the "Case Origin" "Salesforce dropdown field"
+    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
+    And I click on the "Query Type" "Salesforce dropdown field"
+    And I click on the "Complaint (Non-Uni)" "Salesforce cases dropdown option"
+    And I click on the "Study Location" "Salesforce dropdown field"
+    Then I click on the "Manchester" "Salesforce cases dropdown option"
+    And I click on the "School" "Salesforce dropdown field"
+    Then I click on the "Health" "Salesforce cases dropdown option"
+    And I click on the "Save" "Product Factory button title"
+    And I wait for "3" seconds

@@ -269,6 +269,11 @@
   "Salesforce Case Status Dropdown": "xpath=//label[text()='Status']//following-sibling::div[1]//div[1]/div/input",
   "Salesforce Case Milestone Name": "xpath=(//a[@title='Customer Service - Ready to Close'])[2]",
   "Salesforce Case Milestone Hours": "xpath=(//div[@class='milestoneTimerText ontrackTimer']//span)[2]",
+  "Salesforce Case Milestone Show More": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='showMoreButtonSection ']/button",
+  "Salesforce Case Milestone Work Started Hours": "xpath=(//div[@class='milestoneTimerText ontrackTimer']//span)[3]",
+  "Salesforce Case Milestone Hours After Refresh": "xpath=(//div[@class='milestoneTimerText ontrackTimer']//span)[4]",
+  "Salesforce Case Milestone Completed": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='completedMilestonesHeader']/../ul//div[@class='milestoneTimerText ']",
+  "Salesforce Case Milestone Hours Ready To Close": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@class='milestoneTimerText ontrackTimer']//span)[2]",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",

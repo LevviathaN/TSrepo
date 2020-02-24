@@ -7,6 +7,8 @@ Feature: Registry Case Management
   Scenario: Registry Case Management End To End
     Given I execute "Log In To Salesforce" reusable step
     And I execute "Create ID Card Registry Case" reusable step
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
     Then I click on the "Salesforce Edit Case Status" button by JS
     And I click on the "Salesforce Case Status Dropdown" element
     And I click on the "In Progress" "Salesforce cases status option"
@@ -25,7 +27,6 @@ Feature: Registry Case Management
     Given I execute "Log In To Salesforce" reusable step
     And I execute "Validate All Registry Cases Types" reusable step
 
-    Given I execute "Log In To Salesforce" reusable step
     When I click on the "Cases" "Salesforce navigation menu dropdown"
     And I click on the "New Case" "Salesforce navigation menu dropdown option"
     And I click on the "Student Query" "Salesforce radiobutton"
@@ -70,5 +71,3 @@ Feature: Registry Case Management
     And I wait for "3" seconds
     And I validate text "CONTAINS=Overseas Exams" to be displayed for "Salesforce Case Owner Data Field" element
 
-  @Milestones #TC-2537
-  Scenario: Registry Case Management Verify Milestones
