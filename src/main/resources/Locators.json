@@ -211,6 +211,12 @@
   "Direct App Line Manager End Point Assessment": "xpath=//label[contains(text(),'Point Assessment Organisation?')]//following-sibling::div[1]//input",
   "Direct App Save Review And Next": "xpath=//button[contains(.,'Save review and next')]",
   "Direct App Line Manager Review Health And Safety Checkbox": "xpath=//div[@class='step-completed ']/label/input",
+  "Direct App Admin Apprenticeships Change Status Submit Button": "xpath=//input[@value='Submit']",
+  "Direct App Admin Force Change Status Dropdown": "xpath=//select[@id='force_change_status']",
+  "Direct App Admin Application Page Password Field": "xpath=//input[@placeholder='Password']",
+  "Direct App Start New Application Button": "xpath=//button[@class='new-app-button']",
+  "Direct App Reopen Application Button": "xpath=//button[normalize-space()='Reopen Application']",
+  "Direct Apps Close Window Button": "xpath=//span[@class='btn-close']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
