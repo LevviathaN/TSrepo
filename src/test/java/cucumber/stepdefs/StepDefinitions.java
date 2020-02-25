@@ -110,7 +110,7 @@ public class StepDefinitions extends BasePage {
         Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
         String processedText = TestParametersController.checkIfSpecialParameter(text);
         BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
-        findElement(initElementLocator(element)).sendKeys(processedText);
+        setText(initElementLocator(element), processedText);
         if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
         }
@@ -441,7 +441,7 @@ public class StepDefinitions extends BasePage {
      * MAXIMUM acceptable window index is 9
      */
     @Then("^I switch to window with index \"([^\"]*)\"$")
-    public void i_stitch_to_window_with_index(String value) {
+    public void i_switch_to_window_with_index(String value) {
         if (value.length() > 0) {
             int index = Integer.parseInt(value.substring(0, 1));
             Reporter.log("Switching to the window with index = " + index);
