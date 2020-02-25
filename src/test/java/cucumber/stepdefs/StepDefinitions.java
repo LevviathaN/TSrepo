@@ -4,6 +4,7 @@ import cucumber.reusablesteps.ReusableRunner;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.NoSuchWindowException;
 import org.testng.Assert;
 import ui.pages.BasePage;
 import ui.utils.*;
@@ -15,6 +16,7 @@ import java.util.Map;
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
+import static ui.utils.bpp.ExecutionContextHandler.getExecutionContextValueByKey;
 
 /**
  * Created by Ruslan Levytskyi on 15/3/2019.
@@ -23,9 +25,12 @@ public class StepDefinitions extends BasePage {
 
     @AfterStep
     public void postActions() {
-            if(!driver().getTitle().equals("Media")) {
-                driver().switchTo().defaultContent();
-            }
+        try {
+            driver().switchTo().defaultContent();
+        }
+        catch (NoSuchWindowException e) {
+            BPPLogManager.getLogger().info("Catching exception: " + e.getMessage().substring(0,44));
+        }
     }
 
     /**
@@ -244,7 +249,18 @@ public class StepDefinitions extends BasePage {
     @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
     public void elements_attribute_should_have_value(String attributeName, String elementLocator, String attributeValue) {
         Reporter.log("Executing step: Attribute '" + attributeName + "' of '" + elementLocator + "' should have value '" + attributeValue + "'");
+       if (attributeValue.toUpperCase().contains("CONTAINS=")) {
+           String attributeValueCropped = attributeValue.substring("CONTAINS=".length());
+            if (attributeValue.contains("EC_")) {
+                String executionContextValue = TestParametersController.checkIfSpecialParameter(getExecutionContextValueByKey(attributeValueCropped));
+                Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).contains(executionContextValue));
+            }
+        } else if (attributeValue.contains("EC_")) {
+            String executionContextValue = TestParametersController.checkIfSpecialParameter(getExecutionContextValueByKey(attributeValue));
+            Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(executionContextValue));
+        } else {
         Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
+        }
     }
 
     /**
@@ -348,7 +364,7 @@ public class StepDefinitions extends BasePage {
         } else if (text.toUpperCase().startsWith("CONTAINS=")) {
             newValue = newValue.substring("CONTAINS=".length());
             if (text.contains("EC")) {
-                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                String executionContextValue = getExecutionContextValueByKey(newValue);
                 assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(executionContextValue.toLowerCase()));
             } else {
                 assertThat(actualValue.trim(), Matchers.containsString(newValue));
@@ -358,7 +374,7 @@ public class StepDefinitions extends BasePage {
         } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
             newValue = newValue.substring("NOT_CONTAINS=".length());
             if (text.contains("EC")) {
-                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                String executionContextValue = getExecutionContextValueByKey(newValue);
                 assertThat(actualValue.trim(), not(Matchers.containsString(executionContextValue)));
             } else {
                 assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
@@ -376,7 +392,7 @@ public class StepDefinitions extends BasePage {
             Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
             BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
         } else if (text.contains("EC_")) {
-            String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+            String executionContextValue = getExecutionContextValueByKey(newValue);
             assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
             BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
@@ -393,11 +409,15 @@ public class StepDefinitions extends BasePage {
      *
      * @author Andrii Yakymchuk
      */
-    @And("^I should scroll to the bottom of the page$")
-    public void i_should_scroll_to_bottom_of_the_page() {
-        Reporter.log("Executing step: I should scroll to bottom of the page");
-        waitForPageToLoad();
-        scrollToBottomOfPage();
+    @And("^I should scroll to the \"(top|bottom)\" of the page$")
+    public void i_should_scroll_to_top_bottom_of_the_page(String value) {
+        Reporter.log("Executing step: I should scroll to the " + value + " of the page");
+        if (value.equals("top")) {
+            scrollToTopOfPage();
+        } else if (value.equals("bottom")) {
+            scrollToBottomOfPage();
+        }
+
     }
 
     @And("I select \"([^\"]*)\" from \"([^\"]*)\" element")
@@ -438,8 +458,9 @@ public class StepDefinitions extends BasePage {
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$")
     public void i_click_with_JS(String element) {
         Reporter.log("Executing step: I click on the '" + element + "' element by JS");
+        String condition = driver().getTitle();
         clickWithJS(initElementLocator(element));
-        if(driver().getWindowHandles().contains(0)) {
+        if(!condition.equals("Media")) {
             waitForPageToLoad();
         }
     }

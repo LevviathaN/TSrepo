@@ -709,8 +709,9 @@ Feature: BuildEmpire
     Then I should see the "EC_AUTO_BLOG_POST" element
 
   Scenario: Add Image Component To CMS or Blog Post page
-    And I click on the "Add component" "BPP Digital Search Label Button"
+    When I click on the "Add component" "BPP Digital Search Label Button"
     And I click on the "Images" "BPP Digital Admin Sub Menu Item links"
+    And I set "CMS Images" text to the "Html" "BPP Digital Mandatory input field"
     And I click on the "Add" "BPP Digital Search Label Button"
     And I click on the "Image" "BPP Digital Admin Choose Image button"
     And I switch to window with index "2"
@@ -719,7 +720,7 @@ Feature: BuildEmpire
     And I capture text data "BPP Digital First Image name from Image Uploader Popup" as "EC_IMAGE_NAME" variable
     And I click on the "BPP Digital First CMS Component First Select button" button by JS
     And I switch to window with index "1"
-    And I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I wait for "3" seconds
 
   Scenario: Publish a CMS or Blog Post page
@@ -742,3 +743,28 @@ Feature: BuildEmpire
     And I set "AutoBlogTopic[#####]" text to the "Name *" "BPP Digital Mandatory input field"
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I should see the "Blog Topic was successfully created." "BPP Digital Admin Alert Message"
+
+  Scenario: Admin Hub Navigate to CMS Pages
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Pages" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Blog Topics" "BPP Digital Admin Page Header name"
+
+  Scenario: Create CMS Page
+    When I click on the "Add" "BPP Digital Admin Page Button"
+    And I set "AutoCMSPage[#####]" text to the "Name *" "BPP Digital Mandatory input field"
+    And I select "CMS page" from "Page type *" "BPP Digital Mandatory select field"
+    And I set "AutoCMSUrl[#####]" text to the "Path *" "BPP Digital Mandatory input field"
+    And I select "About us > BPP University > University board" from "Parent" "BPP Digital Mandatory select field"
+    And I set "Title[####]" text to the "Title" "BPP Digital Mandatory input field"
+    And I set "Summary[####]" text to the "Summary" "BPP Digital Mandatory text area field"
+    And I set "MetaDescription[####]" text to the "Meta description" "BPP Digital Mandatory text area field"
+    And I set "LinkTitle[####]" text to the "Link title *" "BPP Digital Mandatory input field"
+    And I set "LinkDescription[####]" text to the "Link description *" "BPP Digital Mandatory text area field"
+    And I "check" "Show in navigation" "BPP Digital Admin Mandatory checkbox"
+    And I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I should see the "CMS Page was successfully created." "BPP Digital Admin Alert Message"
+
+   Scenario: Search for CMS Page
+      When I fill the "BPP Digital Filter by name search field" field with "EC_AUTO_CMS_PAGE"
+      And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Filter by name search field"
+      Then I should see the "EC_AUTO_CMS_PAGE" element

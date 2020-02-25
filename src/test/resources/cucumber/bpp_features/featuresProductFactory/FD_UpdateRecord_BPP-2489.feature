@@ -19,7 +19,7 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
     Then I should see the "EC_FD_DESCRIPTION" element
-    And I should scroll to the bottom of the page
+    And I should scroll to the "bottom" of the page
     Then I should see the "EC_FD_CODE" "Product Factory edit button"
     And I click on the "EC_FD_CODE" "Product Factory edit button"
     Then I should see the "EC_FD_CODE" "Product Factory edit button"
@@ -30,7 +30,7 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE_TWO" element
     Then I should see the "EC_FD_DESCRIPTION_TWO" element
-    And I should scroll to the bottom of the page
+    And I should scroll to the "bottom" of the page
     And I click on the "EC_FD_CODE_TWO" "Product Factory edit button"
     And I click on the "Audit Log" "Product Factory button title"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_DATE" variable
@@ -74,7 +74,7 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE_TWO" element
     Then I should see the "EC_FD_DESCRIPTION_TWO" element
-    And I should scroll to the bottom of the page
+    And I should scroll to the "bottom" of the page
     And I click on the "EC_FD_DESCRIPTION_TWO" "Product Factory edit button"
     And I set "EC_FD_CODE" text to the "Code" "Product Factory text field"
     And I set "EC_FD_DESCRIPTION" text to the "Description" "Product Factory text field"
