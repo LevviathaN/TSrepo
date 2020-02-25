@@ -30,7 +30,7 @@ Feature: BuildEmpire
     And I should see the "Direct App Admin Apps Top Link" element
 
   Scenario: Create Scholarships Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Scholarships" "Build Empire application type"
     And I click on the "Diret App Scholarship Dropdown" element
@@ -515,7 +515,7 @@ Feature: BuildEmpire
     And I wait for "1" seconds
 
   Scenario: Create Programmes Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Programmes" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
