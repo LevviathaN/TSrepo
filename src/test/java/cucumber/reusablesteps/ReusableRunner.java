@@ -54,7 +54,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_EXECUTE_REUSABLE_STEP_IF.getPattern(),() -> stepDefs.i_execute_reusable_step_if(arg1, arg2, arg3));
         stepDefsMap.put(I_CLICK_ON_THE_BUTTON_IF.getPattern(),() -> stepDefs.i_click_on_the_button_if(arg1, arg2, arg3));
         stepDefsMap.put(I_SELECT_FROM_DROPDOWN.getPattern(),() -> stepDefs.i_select_from_element(arg1, arg2));
-        stepDefsMap.put(I_SHOULD_SCROLL_TO_THE_BOTTOM_OF_THE_PAGE.getPattern(),() -> stepDefs.i_should_scroll_to_bottom_of_the_page());
+        stepDefsMap.put(I_SHOULD_SCROLL_TO_THE_TOP_BOTTOM_OF_THE_PAGE.getPattern(),() -> stepDefs.i_should_scroll_to_top_bottom_of_the_page(arg1));
         stepDefsMap.put(I_UPLOAD_FILE.getPattern(),() -> stepDefs.i_upload_file_to_element(arg1, arg2));
         stepDefsMap.put(I_SHOULD_NOT_SEE_ELEMENT.getPattern(),() -> stepDefs.i_should_not_see_the_element(arg1));
         stepDefsMap.put(I_SHOULD_SEE_MESSAGE_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
