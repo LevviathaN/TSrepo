@@ -252,11 +252,11 @@ public class StepDefinitions extends BasePage {
        if (attributeValue.toUpperCase().contains("CONTAINS=")) {
            String attributeValueCropped = attributeValue.substring("CONTAINS=".length());
             if (attributeValue.contains("EC_")) {
-                String executionContextValue = TestParametersController.checkIfSpecialParameter(getExecutionContextValueByKey(attributeValueCropped));
+                String executionContextValue = TestParametersController.checkIfSpecialParameter(ExecutionContextHandler.getExecutionContextValueByKey(attributeValueCropped));
                 Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).contains(executionContextValue));
             }
         } else if (attributeValue.contains("EC_")) {
-            String executionContextValue = TestParametersController.checkIfSpecialParameter(getExecutionContextValueByKey(attributeValue));
+            String executionContextValue = TestParametersController.checkIfSpecialParameter(ExecutionContextHandler.getExecutionContextValueByKey(attributeValue));
             Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(executionContextValue));
         } else {
         Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
@@ -364,7 +364,7 @@ public class StepDefinitions extends BasePage {
         } else if (text.toUpperCase().startsWith("CONTAINS=")) {
             newValue = newValue.substring("CONTAINS=".length());
             if (text.contains("EC")) {
-                String executionContextValue = getExecutionContextValueByKey(newValue);
+                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
                 assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(executionContextValue.toLowerCase()));
             } else {
                 assertThat(actualValue.trim(), Matchers.containsString(newValue));
@@ -374,7 +374,7 @@ public class StepDefinitions extends BasePage {
         } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
             newValue = newValue.substring("NOT_CONTAINS=".length());
             if (text.contains("EC")) {
-                String executionContextValue = getExecutionContextValueByKey(newValue);
+                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
                 assertThat(actualValue.trim(), not(Matchers.containsString(executionContextValue)));
             } else {
                 assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
@@ -392,7 +392,7 @@ public class StepDefinitions extends BasePage {
             Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
             BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
         } else if (text.contains("EC_")) {
-            String executionContextValue = getExecutionContextValueByKey(newValue);
+            String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
             assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
             Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
             BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
