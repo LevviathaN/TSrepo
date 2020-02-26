@@ -245,7 +245,8 @@ public class TestParametersController {
                 }
                 else if (element.startsWith("EMAIL")){
                     if (element.contains("HARAKIRI")){
-                        resultingValueSimplified.append("Email");
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_FIRSTNAME"));
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_LASTNAME"));
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|####"));
                         resultingValueSimplified.append("@harakirimail.com");
                     } else {
@@ -266,12 +267,21 @@ public class TestParametersController {
                 }
                 else if (element.startsWith("TODAY")){
                     if (element.contains("-")||element.contains("+")){
-                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("KW_AUTO_TODAY|DD/MM/YYYY_" + element.replace("TODAY","")));
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_TODAY|DD/MM/YYYY_" + element.replace("TODAY","")));
                     } else {
-                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("KW_AUTO_TODAY|DD/MM/YYYY"));
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_TODAY|DD/MM/YYYY"));
                     }
                     ecVarNameSimplified.append("_");
                     ecVarNameSimplified.append("TODAY");
+                }
+                else if (element.startsWith("DOB")){
+                    if (element.contains("-")){
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_DOB|DD/MM/YYYY_" + element.replace("DOB-","")));
+                    } else {
+                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_TODAY|DD/MM/YYYY"));
+                    }
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("DOB");
                 }
                 //if part is NOT KW_ value
                 else {

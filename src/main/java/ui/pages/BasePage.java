@@ -574,8 +574,17 @@ public class BasePage {
      * Method to scroll to the bottom of the page
      */
     public static void scrollToBottomOfPage() {
-        BPPLogManager.getLogger().info("Scrolling to bottom of the page.");
+        BPPLogManager.getLogger().info("Scrolling to the bottom of the page.");
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        waitForPageToLoad();
+    }
+
+    /**
+     * Method to scroll to the top of the page
+     */
+    public static void scrollToTopOfPage() {
+        BPPLogManager.getLogger().info("Scrolling to the top of the page.");
+        ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, 0)");
         waitForPageToLoad();
     }
 

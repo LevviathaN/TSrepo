@@ -19,7 +19,7 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
     Then I should see the "EC_FD_DESCRIPTION" element
-    And I should scroll to the bottom of the page
+    And I should scroll to the "bottom" of the page
     And I click on the "EC_FD_CODE" "Product Factory edit button"
     Then Attribute "aria-pressed" of "<type>" "Product Factory Locked Applies To drop-down item" should have value "false"
 
