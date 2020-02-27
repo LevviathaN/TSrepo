@@ -26,48 +26,132 @@ Feature: Registry Case Management
   Scenario: Registry Case Management Verify Case Assignment
     Given I execute "Log In To Salesforce" reusable step
     And I execute "Validate All Registry Cases Types" reusable step
-
-    When I click on the "Cases" "Salesforce navigation menu dropdown"
-    And I click on the "New Case" "Salesforce navigation menu dropdown option"
-    And I click on the "Student Query" "Salesforce radiobutton"
-    And I click on the "Next" "button"
-    And I click on the "Study Location" "Salesforce dropdown field"
-    And I click on the "Case Origin" "Salesforce dropdown field"
-    And I click on the "Face-to-Face" "Salesforce cases dropdown option"
-    And I click on the "Query Type" "Salesforce dropdown field"
-    And I click on the "Assessments" "Salesforce cases dropdown option"
-    And I click on the "Query Subtype" "Salesforce dropdown field"
-    Then I click on the "Appeals" "Salesforce cases dropdown option"
-    And I click on the "Study Location" "Salesforce dropdown field"
-    Then I click on the "Birmingham" "Salesforce cases dropdown option"
-    And I click on the "School" "Salesforce dropdown field"
-    Then I click on the "Law" "Salesforce cases dropdown option"
-    And I click on the "Save" "Product Factory button title"
-    And I wait for "3" seconds
-    And I validate text "CONTAINS=Programme Support" to be displayed for "Salesforce Case Owner Data Field" element
-    And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
-    Then I click on the "Salesforce Edit Case Status" button by JS
-    And I click on the "Query Subtype" "Salesforce dropdown field"
-    Then I click on the "Exemptions" "Salesforce cases dropdown option"
-    And I click on the "Save" "Product Factory button title"
-    And I wait for "3" seconds
-    And I validate text "CONTAINS=Academic Admin" to be displayed for "Salesforce Case Owner Data Field" element
-    Then I click on the "Salesforce Edit Case Status" button by JS
-    And I click on the "Query Subtype" "Salesforce dropdown field"
-    Then I click on the "Transcripts" "Salesforce cases dropdown option"
-    And I click on the "Save" "Product Factory button title"
-    And I wait for "3" seconds
-    And I validate text "CONTAINS=Exam Queries" to be displayed for "Salesforce Case Owner Data Field" element
-    Then I click on the "Salesforce Edit Case Status" button by JS
-    And I click on the "Query Subtype" "Salesforce dropdown field"
-    Then I click on the "Learning Support" "Salesforce cases dropdown option"
-    And I click on the "Save" "Product Factory button title"
-    And I wait for "3" seconds
-    And I validate text "CONTAINS=Exam Ops" to be displayed for "Salesforce Case Owner Data Field" element
-    Then I click on the "Salesforce Edit Case Status" button by JS
-    And I click on the "Query Subtype" "Salesforce dropdown field"
-    Then I click on the "Overseas Exams" "Salesforce cases dropdown option"
-    And I click on the "Save" "Product Factory button title"
-    And I wait for "3" seconds
+    #Assesments
+    And I execute "Create Assesments Registry Case" reusable step
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=School Programme Support" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Overseas Exams" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
     And I validate text "CONTAINS=Overseas Exams" to be displayed for "Salesforce Case Owner Data Field" element
-
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Transcripts" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Exam Queries" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Examination Date /Venue/Time" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Exam Operations" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Feedback" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Academic Admin" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Results" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Exam Results" to be displayed for "Salesforce Case Owner Data Field" element
+    #Attendance and Absences
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Attendance & Absences" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Name missing from class register" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Bus & Tech Attendance" to be displayed for "Salesforce Case Owner Data Field" element
+    #Book an Appointment
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Book an Appointment" "Salesforce cases dropdown option" |
+      | 11 | I click on the "International Student Advice" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=International Student Advice" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Book an Appointment" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Personal Tutor" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=School Programme Support" to be displayed for "Salesforce Case Owner Data Field" element
+    #IOS
+    And I execute "Create IOS Registry Case" reusable step replacing some steps
+      | 11 | I click on the "New" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create IOS Registry Case" reusable step
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    #leeter Production
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Letter Production" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Academic References" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Academic Admin" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Letter Production Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Academic References" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Academic Admin" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Letter Production Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Schengen" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=International Student Advice" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Letter Production Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Confirmation of completion letter" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Exam Queries" to be displayed for "Salesforce Case Owner Data Field" element
+    #Locker Key
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Locker Key" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Withheld Results" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    #Oyster Card
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Oyster Card" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Other" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    #Personal Details
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "Personal Details" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Change of contact details" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    #Registartion and Induction
+    And I execute "Create Registration and Induction Registry Case" reusable step
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=School Programme Support" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Registration and Induction Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Exemptions" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Academic Admin" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Registration and Induction Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Not Received Joining Instructions" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Registration and Induction Registry Case" reusable step replacing some steps
+      | 11 | I click on the "International Query" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=International Student Advice" to be displayed for "Salesforce Case Owner Data Field" element
+    #Timetable
+    And I execute "Create Timetable Registry Case" reusable step
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=School Programme Support" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Timetable Registry Case" reusable step replacing some steps
+      | 11 | I click on the "Group number" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
+    #Complaint
+    And I execute "Create Complaints Registry Case" reusable step
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Head of Student Experience" to be displayed for "Salesforce Case Owner Data Field" element
+    #VLE
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "VLE" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Cant login to the VLE" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Admin Automation" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "VLE" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Cant see submission link on the VLE" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Academic Admin" to be displayed for "Salesforce Case Owner Data Field" element
+    And I execute "Create Assesments Registry Case" reusable step replacing some steps
+      | 9 | I click on the "VLE" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Missing or wrong modules" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element

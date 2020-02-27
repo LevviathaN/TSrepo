@@ -341,6 +341,7 @@ Feature: Salesforce
       Then I click on the "Health" "Salesforce cases dropdown option"
       And I click on the "Save" "Product Factory button title"
       And I wait for "3" seconds
+      And I should scroll to the "top" of the page
       And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
 
   Scenario: Create Assesments Registry Case
