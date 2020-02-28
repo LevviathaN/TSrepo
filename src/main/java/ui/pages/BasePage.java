@@ -18,6 +18,7 @@ import java.io.File;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.Matchers.*;
@@ -179,11 +180,10 @@ public class BasePage {
     //will not be erased completely. Temporary fixed, but the method needs refactoring
     public void clearEntireField(By element) {
         WebElement textField = findElement(element);
+        String textArea = findElement(element).getText();
         String backSpace = Keys.BACK_SPACE.toString();
-        try {
-//            textField.click();
-            int size = textField.getAttribute("value").length();
-
+        if (textField.getAttribute("value") == null) {
+            int size = textArea.length();
             if (size != 0) {
                 clickOnElement(element,
                         UiHandlers.PF_SPINNER_HANDLER,
@@ -194,25 +194,40 @@ public class BasePage {
                         UiHandlers.DEFAULT_HANDLER);
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
+        } else {
+            try {
+//            textField.click();
+                int size = textField.getAttribute("value").length();
+
+                if (size != 0) {
+                    clickOnElement(element,
+                            UiHandlers.PF_SPINNER_HANDLER,
+                            UiHandlers.ACCEPT_ALERT,
+                            UiHandlers.PF_SCROLL_HANDLER,
+                            UiHandlers.SF_CLICK_HANDLER,
+                            UiHandlers.WAIT_HANDLER,
+                            UiHandlers.DEFAULT_HANDLER);
+                    IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+                }
 
 //            textField.click();
-            size = textField.getAttribute("value").length();
-            if (size != 0) {
-                clickOnElement(element,
-                        UiHandlers.PF_SPINNER_HANDLER,
-                        UiHandlers.ACCEPT_ALERT,
-                        UiHandlers.PF_SCROLL_HANDLER,
-                        UiHandlers.SF_CLICK_HANDLER,
-                        UiHandlers.WAIT_HANDLER,
-                        UiHandlers.DEFAULT_HANDLER);
-                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
-            }
+                size = textField.getAttribute("value").length();
+                if (size != 0) {
+                    clickOnElement(element,
+                            UiHandlers.PF_SPINNER_HANDLER,
+                            UiHandlers.ACCEPT_ALERT,
+                            UiHandlers.PF_SCROLL_HANDLER,
+                            UiHandlers.SF_CLICK_HANDLER,
+                            UiHandlers.WAIT_HANDLER,
+                            UiHandlers.DEFAULT_HANDLER);
+                    IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+                }
 
-        } catch (InvalidElementStateException e) {
-            textField.sendKeys("");
+            } catch (InvalidElementStateException e) {
+                textField.sendKeys("");
+            }
         }
     }
-
     /**
      * Action to select a value from a dropdown
      *
