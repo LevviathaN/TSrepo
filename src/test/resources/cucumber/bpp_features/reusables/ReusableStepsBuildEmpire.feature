@@ -293,7 +293,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
-    And Browser performes "Refresh" command
+    And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "0"
@@ -436,7 +436,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
-    And Browser performes "Refresh" command
+    And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "0"
@@ -868,7 +868,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
-    And Browser performes "Refresh" command
+    And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "0"
@@ -903,7 +903,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
-    And Browser performes "Refresh" command
+    And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "0"

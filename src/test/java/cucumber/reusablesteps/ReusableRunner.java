@@ -60,7 +60,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_SHOULD_SEE_MESSAGE_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
         stepDefsMap.put(I_SWITCH_TO_WINDOW.getPattern(),() -> stepDefs.i_switch_to_window_with_index(arg1));
         stepDefsMap.put(I_CLICK_WITH_JS.getPattern(), ()-> stepDefs.i_click_with_JS(arg1));
-        stepDefsMap.put(BROWSER_PERFORMES_COMMAND.getPattern(), ()-> stepDefs.browser_navigates(arg1));
+        stepDefsMap.put(BROWSER_PERFORMS_COMMAND.getPattern(), ()-> stepDefs.browser_navigates(arg1));
         stepDefsMap.put(I_CAPTURE_DATA.getPattern(),() -> stepDefs.i_capture_text_data_as_variable(arg1,arg2));
 
         //Special stepdefs

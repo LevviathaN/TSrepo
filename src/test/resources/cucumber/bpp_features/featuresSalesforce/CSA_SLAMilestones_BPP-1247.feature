@@ -23,5 +23,6 @@ Feature: CSA - SLA Milestones
     And I click on the "Save" "Product Factory button title"
     And I wait for "3" seconds
     Then I should see the "Salesforce Case Milestone Name" element
+    Then I should scroll to the "top" of the page
     Then I validate text "CONTAINS=16 hr" to be displayed for "Salesforce Case Milestone Hours" element
     And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable

@@ -470,7 +470,7 @@ public class StepDefinitions extends BasePage {
      *
      * @param operation: browser operation performed can be FORWARD, BACK, or REFRESH case-insensitive
      */
-    @Then("^Browser performes \"([^\"]*)\" command$")
+    @Then("^Browser performs \"([^\"]*)\" command$")
     public void browser_navigates(String operation) {
         String browserOperation = operation.toUpperCase();
         Reporter.log("Executing step: Performing browser " + browserOperation + " operation");

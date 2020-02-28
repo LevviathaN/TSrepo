@@ -38,7 +38,7 @@ public enum StepPatterns {
     I_SHOULD_SEE_MESSAGE_IN_FRAME("^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$"),
     I_SWITCH_TO_WINDOW("^I switch to window with index \"([^\"]*)\"$"),
     I_CLICK_WITH_JS("^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$"),
-    BROWSER_PERFORMES_COMMAND("^Browser performes \"([^\"]*)\" command$"),
+    BROWSER_PERFORMS_COMMAND("^Browser performs \"([^\"]*)\" command$"),
     I_SELECT_FROM_ELEMENT_SPECIAL("^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$"),
     I_CAPTURE_DATA("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$");
 
