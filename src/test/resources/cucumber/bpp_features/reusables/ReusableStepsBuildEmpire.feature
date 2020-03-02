@@ -996,3 +996,8 @@ Feature: BuildEmpire
     When I fill the "BPP Digital Filter by name search field" field with "EC_AUTO_CMS_PAGE"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Filter by name search field"
     Then I should see the "EC_AUTO_CMS_PAGE" element
+
+  Scenario: Admin Hub Navigate to Applications list
+    When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
+    And I click on the "List" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Applications" "BPP Digital Admin Page Header name"
