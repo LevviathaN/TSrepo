@@ -36,11 +36,10 @@ public class BaseApiTest {
 
     @AfterMethod
     public void flushProcesses(ITestResult testResult) {
-
         Reporter.stopReportingAPI(testResult);
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void flushReporter() {
         ExcelResultsWriter.createApiExcel();
         Reporter.flush();
