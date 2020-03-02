@@ -285,6 +285,12 @@
   "BPP Digital Course Card Type text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[@class='post-info']/div[2]",
   "BPP Digital Course Card Title Header text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/h3",
   "BPP Digital Course Card Content Summary text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[2]",
+  "BPP Digital Import Redirects Table Redirect Type value": "xpath=//tbody//td[1]",
+  "BPP Digital Import Redirects Table Host value": "xpath=//tbody//td[2]",
+  "BPP Digital Import Redirects Table Source value": "xpath=//tbody//td[3]",
+  "BPP Digital Import Redirects Table Target value": "xpath=//tbody//td[4]",
+  "BPP Digital Import Redirects Table Status value": "xpath=//tbody//td[5]",
+  "BPP Digital Import Redirects Table Updated value": "xpath=//tbody//td[6]",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",
