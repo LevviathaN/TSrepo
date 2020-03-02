@@ -1001,3 +1001,8 @@ Feature: BuildEmpire
     When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
     And I click on the "List" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Applications" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to Website Redirects
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Redirects" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Redirects" "BPP Digital Admin Page Header name"

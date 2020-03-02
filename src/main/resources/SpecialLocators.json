@@ -78,6 +78,7 @@
   "BPP Digital Web Site CMS Anchors ID":"//div[contains(@class,'cms-page')]//div[@id=\"PARAMETER\"]",
   "BPP Digital Admin Applications Information block":"//strong[text()=\"PARAMETER\"]/parent::div/following-sibling::div",
   "BPP Digital Admin Applications Edit button":"//div[normalize-space()='PARAMETER']/following-sibling::div/a[text()='Edit']",
+  "BPP Digital Button With Specific Name": "//button[contains(@class,'btn') and text()=\"PARAMETER\"]",
 
   "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",
