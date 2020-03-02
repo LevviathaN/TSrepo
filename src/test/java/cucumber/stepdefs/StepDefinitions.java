@@ -62,6 +62,7 @@ public class StepDefinitions extends BasePage {
         clickOnElement(initElementLocator(element),
                 UiHandlers.PF_SPINNER_HANDLER,
                 UiHandlers.ACCEPT_ALERT,
+                UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                 UiHandlers.PF_SCROLL_HANDLER,
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,

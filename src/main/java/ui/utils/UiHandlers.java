@@ -21,7 +21,9 @@ public enum UiHandlers {
         if (e.getMessage().contains("opacity: 1; transition: opacity 225ms cubic-bezier")){
             Reporter.log("Handling PF Spinner");
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
+            BasePage.clickWithJS(element);
             BasePage.isHandled.put("pfSpinnerHandler", true);
+            BasePage.repeatAction = false;
         }
     }),
 
@@ -32,22 +34,31 @@ public enum UiHandlers {
                 e.getMessage().contains("panel slds-modal slds-fade-in-open transitioning movefromcenter")||
                 e.getMessage().contains("panel slds-modal slds-fade-in-open")||
                 e.getMessage().contains("panel slds-modal")||
-                e.getMessage().contains("modal-glass visible")){
+                e.getMessage().contains("modal-glass visible")||
+                e.getMessage().contains("jss243")){
             Reporter.log("Handling overlay by Wait");
             BasePage.sleepFor(9000);
             BasePage.isHandled.put("waitHandler", true);
         }
     }),
 
-    //todo Condition of this handler is changed!!!!!
     PF_SCROLL_HANDLER((element, e) -> {
-        BasePage page = new BasePage();
         BasePage.isHandled.put("pfScrollHandler", false);
+        if(e.getMessage().contains("jss1bndbcl")||
+                e.getMessage().contains("jss1wye7u4")){
+            Reporter.log("Handling click overlay by scrolling 300 pixels down");
+            BasePage.scrollBy(0,300);
+            BasePage.isHandled.put("pfScrollHandler", true);
+        }
+    }),
+
+    PF_SCROLL_TO_ELEMENT_HANDLER((element, e) -> {
+        BasePage page = new BasePage();
+        BasePage.isHandled.put("pfScrollToElementHandler", false);
         if(e.getMessage().contains("Other element would receive the click: <button")){
             Reporter.log("Handling click overlay by scrolling to element");
             BasePage.scrollToElement(page.findElement(element));
-            BasePage.scrollBy(0,100);
-            BasePage.isHandled.put("pfScrollHandler", true);
+            BasePage.isHandled.put("pfScrollToElementHandler", true);
         }
     }),
 
@@ -65,17 +76,19 @@ public enum UiHandlers {
     ACCEPT_ALERT((element, e) -> {
         BasePage page = new BasePage();
         BasePage.isHandled.put("acceptAlert", false);
-        if (e.getCause().toString().contains("Are you sure want to review this application?")
-                ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
-                ||e.getCause().toString().contains("Are you sure want to publish this blog post?")
-                ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
-                ||e.getCause().toString().contains("Are you sure?")
-                ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
-        ) {
-            Reporter.log("Handling JS Alert");
-            page.acceptAlertMessage();
-            BasePage.repeatAction = false;
-            BasePage.isHandled.put("acceptAlert", true);
+        if(e.getCause()!=null){
+            if (e.getCause().toString().contains("Are you sure want to review this application?")
+                    ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
+                    ||e.getCause().toString().contains("Are you sure want to publish this blog post?")
+                    ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
+                    ||e.getCause().toString().contains("Are you sure?")
+                    ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
+            ) {
+                Reporter.log("Handling JS Alert");
+                page.acceptAlertMessage();
+                BasePage.repeatAction = false;
+                BasePage.isHandled.put("acceptAlert", true);
+            }
         }
     }),
 

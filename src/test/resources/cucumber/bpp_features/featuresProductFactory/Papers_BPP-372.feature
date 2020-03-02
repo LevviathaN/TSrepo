@@ -16,7 +16,7 @@ Feature: Reference Data - Paper - BPP-372
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
 
-  @Negative @P2 #TC-771
+  @Negative @P2 @BlockedByIssue #TC-771; blocked by BPP-6181
   Scenario: Submitting Incomplete Paper Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"

@@ -5,7 +5,7 @@ Feature: Product Factory
   In order to (just cause)
 
   Scenario: Log In
-    Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYURL" URL
+    Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYURLNEW" URL
     When I click on the "Sign in with Auth0" button
     And I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYUSER"
     And I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYPASSWORD"
@@ -111,7 +111,7 @@ Feature: Product Factory
     When I click on the "Papers" "Product Factory navigation sub item"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"
-    Then I click on the "Yes" "button"
+    Then I click on the "Yes" "Product Factory button"
 
   Scenario: Link Paper To Level
     When I click on the "Programme" "Product Factory navigation item"
