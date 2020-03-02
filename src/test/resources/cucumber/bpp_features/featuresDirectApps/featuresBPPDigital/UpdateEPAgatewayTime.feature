@@ -4,7 +4,7 @@ Feature: BPP Digital Update EPA gateway time
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-7841
+  @Positive #TC-1823
   Scenario: Update EPA gateway time
     When I execute "Admin Hub Navigate to Applications list" reusable step
     And I click on the "Direct App Admin Apprenticeships Tab" link by JS

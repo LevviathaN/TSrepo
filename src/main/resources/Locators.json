@@ -281,6 +281,10 @@
   "BPP Digital Validate Note Date": "xpath=//h3[text()='Eligibility criteria']/preceding::thead[1]/tr[last()]/td[1]",
   "BPP Digital Validate Note Message": "xpath=//h3[text()='Eligibility criteria']/preceding::thead[1]/tr[last()]/td[2]",
   "BPP Digital Overall Off the Job Training Hours": "xpath=//strong[text()='Overall Off the Job training hours']/parent::div/following-sibling::div",
+  "BPP Digital Course Card Profession text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[@class='post-info']/div[1]",
+  "BPP Digital Course Card Type text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[@class='post-info']/div[2]",
+  "BPP Digital Course Card Title Header text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/h3",
+  "BPP Digital Course Card Content Summary text field": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[2]",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",
