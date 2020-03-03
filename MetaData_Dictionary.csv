@@ -55,5 +55,6 @@ MD_BUILDEMPIREURL,https://staging.bppdigital.buildempire.app/account,descr.
 MD_BUILDEMPIREADMINURL,https://admin.staging.bppdigital.buildempire.app,descr.
 MD_TOTARALOGINURL,https://totara.staging.bppdigital.buildempire.app/login/index.php,descr.
 MD_PRODUCTFACTORYURLNEW,http://pf-services-qa2-482823960.eu-west-2.elb.amazonaws.com/,descr.
+MD_PRODUCTFACTORYDATABASEURLNEW,http://ec2-3-10-141-78.eu-west-2.compute.amazonaws.com:7474/,descr.
 MD_CUSTOMERGROUP,SELFFUND,descr.
 MD_MSCMANAGEMENTOFFERING,MSc Management CRO PTD 201819 for student application,descr.

@@ -316,5 +316,12 @@
   "Yahoo Case Email Header": "xpath=//table/tbody/tr[2]//table/tbody//tr//h1",
   "Yahoo Reply": "xpath=//button[@data-kind='reply']",
   "Yahoo Body": "xpath=//div[@role='textbox']/div",
-  "Yahoo Send": "xpath=//button[@title='Send this email']"
+  "Yahoo Send": "xpath=//button[@title='Send this email']",
+
+  "Product Factory Database Connect URL Field": "xpath=//input[@data-testid='boltaddress']",
+  "Product Factory Database Username Field": "xpath=//input[@data-testid='username']",
+  "Product Factory Database Password Field": "xpath=//input[@data-testid='password']",
+  "Product Factory Database Connect Button": "xpath=//button[@data-testid='connect']",
+  "Product Factory Database Query Field": "xpath=//div[@class='CodeMirror-code']//pre",
+  "Product Factory Database Submit Query Button": "xpath=//span[@data-testid='submitQuery']"
 }

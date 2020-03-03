@@ -6,6 +6,7 @@ import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.NoSuchWindowException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
@@ -31,6 +32,12 @@ public class StepDefinitions extends BasePage {
         catch (NoSuchWindowException e) {
             BPPLogManager.getLogger().info("Catching exception: " + e.getMessage().substring(0,44));
         }
+    }
+
+    @BeforeSuite (groups = "Product Factory")
+    public void beforeFroductFactory() {
+        i_execute_reusable_step("Clean Database");
+        i_execute_reusable_step("System Settings");
     }
 
     /**
