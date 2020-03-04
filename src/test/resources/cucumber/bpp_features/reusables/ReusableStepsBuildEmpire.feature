@@ -975,7 +975,7 @@ Feature: BuildEmpire
   Scenario: Admin Hub Navigate to CMS Pages
     When I click on the "Website" "BPP Digital Admin Menu Item links"
     And I click on the "Pages" "BPP Digital Admin Sub Menu Item links"
-    Then I should see the "Blog Topics" "BPP Digital Admin Page Header name"
+    Then I should see the "Pages - All" "BPP Digital Admin Page Header name"
 
   Scenario: Create CMS Page
     When I click on the "Add" "BPP Digital Admin Page Button"
@@ -1006,3 +1006,13 @@ Feature: BuildEmpire
     When I click on the "Website" "BPP Digital Admin Menu Item links"
     And I click on the "Redirects" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Redirects" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to new Courses Pages
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Courses (new)" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Pages - Courses (new)" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to new Professions Pages
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Professions (new)" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Pages - Professions (new)" "BPP Digital Admin Page Header name"
