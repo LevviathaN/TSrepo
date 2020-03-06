@@ -1,11 +1,11 @@
 @DirectApps @ProfessionalApprenticeships
-Feature: Submit Professional Apprenticeship Applications
+Feature: Reject Professional Apprenticeship Applications
 
   Background:
     Given I execute "Register New Student Account" reusable step
 
   @Negative @RejectByAdmin #TC-1023
-  Scenario: Submit Professional Apprenticeship Chartered Manager Degree
+  Scenario: Reject Professional Apprenticeship By Admin
     When I execute "Create Professional Apprenticeships Application Chartered Manager" reusable step
     Given I execute "Complete Professional Apprenticeships Application Chartered Manager" reusable step
     Then I execute "Submit Application Hub" reusable step
