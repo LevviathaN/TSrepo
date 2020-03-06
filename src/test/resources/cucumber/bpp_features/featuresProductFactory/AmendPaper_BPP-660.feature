@@ -13,7 +13,7 @@ Feature: Amend Reference Data - Paper - BPP-660
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
-    And I set "PaperDescription[####]" text to the "Description" "Product Factory text field"
+    And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
 
@@ -27,7 +27,7 @@ Feature: Amend Reference Data - Paper - BPP-660
   @Negative @P2 #TC-831
   Scenario: Amend a Paper Where Description Already Exists
     Given I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionNew[####]" text to the "Description" "Product Factory text field"|
+      |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field"|
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
@@ -40,12 +40,12 @@ Feature: Amend Reference Data - Paper - BPP-660
     When I execute "Create Body Financial Dimension" reusable step
     When I execute "Create Body" reusable step
     When I execute "Create Body" reusable step replacing some steps
-      |4|I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
-      |5|I set "BodyNameNew[####]" text to the "Name" "Product Factory text field"           |
+      |4|I set "BodyShortNameNew[######]" text to the "Short Name" "Product Factory text field"|
+      |5|I set "BodyNameNew[######]" text to the "Name" "Product Factory text field"           |
     When I execute "Create Level" reusable step
     When I execute "Create Level" reusable step replacing some steps
-      |4|I set "LevelShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
-      |5|I set "LevelNameNew[####]" text to the "Name" "Product Factory text field"           |
+      |4|I set "LevelShortNameNew[######]" text to the "Short Name" "Product Factory text field"|
+      |5|I set "LevelNameNew[######]" text to the "Name" "Product Factory text field"           |
     When I execute "Link Body To Level" reusable step
     When I execute "Link Body To Paper" reusable step
     When I execute "Link Paper To Level" reusable step

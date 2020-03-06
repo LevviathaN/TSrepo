@@ -32,6 +32,7 @@ public class SpecialStepDefs extends BasePage {
             clickOnElement(By.xpath(resultingXpath),
                     UiHandlers.PF_SPINNER_HANDLER,
                     UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                     UiHandlers.PF_SCROLL_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
@@ -64,6 +65,7 @@ public class SpecialStepDefs extends BasePage {
                 clickOnElement(By.xpath(resultingXpath),
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.ACCEPT_ALERT,
+                        UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                         UiHandlers.PF_SPINNER_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
@@ -191,7 +193,14 @@ public class SpecialStepDefs extends BasePage {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-            checkCheckbox(By.xpath(resultingXpath),state);
+            checkCheckbox(By.xpath(resultingXpath),state,
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
             }
