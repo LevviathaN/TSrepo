@@ -218,6 +218,7 @@
   "Direct App Reopen Application Button": "xpath=//button[normalize-space()='Reopen Application']",
   "Direct Apps Close Window Button": "xpath=//span[@class='btn-close']",
   "Direct Apps Line Manager End Point Assessment Organisation": "xpath=//label[contains(text(),'Point Assessment Organisation?')]//following-sibling::div[1]//input",
+  "Direct Apps Incomplete Actions Pop up message": "xpath=//div[@class='box-content']/p",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
