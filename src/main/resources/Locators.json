@@ -29,6 +29,8 @@
   "Product Factory Session Dates Popup Date Input Field":"xpath=//h5/following-sibling::table//input[@type='text']",
   "Product Factory Session Dates Popup Start Time Input Field":"xpath=(//h5/following-sibling::table//input[@type='time'])[1]",
   "Product Factory Session Dates Popup End Time Input Field":"xpath=(//h5/following-sibling::table//input[@type='time'])[2]",
+  "Product Factory Number Of Sessions Edit Button": "xpath=//label[text()='Number of Sessions']/../following-sibling::div/button",
+  "Product Factory Number Of Sessions Edit Field": "xpath=//input",
 
   "Salesforce Username": "id=username",
   "Salesforce Password": "id=password",

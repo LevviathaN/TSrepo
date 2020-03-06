@@ -34,12 +34,6 @@ public class StepDefinitions extends BasePage {
         }
     }
 
-    @BeforeSuite (groups = "Product Factory")
-    public void beforeFroductFactory() {
-        i_execute_reusable_step("Clean Database");
-        i_execute_reusable_step("System Settings");
-    }
-
     /**
      * Definition to go to specified url.
      * Also checks if the parameter is Meta Data or Execution Context value
@@ -524,5 +518,11 @@ public class StepDefinitions extends BasePage {
             ExecutionContextHandler.setExecutionContextValueByKey(executionContext, value);
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
+    }
+
+    @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
+    public void i_execute_js_code_for_element(String jsCode, String element) {
+        Reporter.log("Executing JS code");
+        executeJSCode(jsCode, initElementLocator(element));
     }
 }

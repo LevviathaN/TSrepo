@@ -279,6 +279,9 @@ Feature: Product Factory
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
+    And I click on the "Product Factory Number Of Sessions Edit Button" button
+    And I fill the "Product Factory Number Of Sessions Edit Field" field with "2"
+    And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     Then I click on the "Create" "Product Factory button"
     And I click on the "Default Session Duration" "Product Factory dropdown"
@@ -288,14 +291,14 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
 
   Scenario: Clean Database
-    Given I am on "http://ec2-3-10-141-78.eu-west-2.compute.amazonaws.com:7474/" URL
+    Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYDATABASEURLNEW" URL
     When I fill the "Product Factory Database Connect URL Field" field with "bolt://ec2-3-10-141-78.eu-west-2.compute.amazonaws.com:7687"
-    Then I fill the "Product Factory Database Username Field" field with "Neo4j"
-    And I fill the "Product Factory Database Password Field" field with "3M#$,qns5uw*W#jr"
+    Then I fill the "Product Factory Database Username Field" field with "MD_COMMON_LINKS_PRODUCTFACTORYDATABASEUSERNEW"
+    And I fill the "Product Factory Database Password Field" field with "MD_COMMON_LINKS_PRODUCTFACTORYDATABASEPASSWORDNEW"
     And I click on the "Product Factory Database Connect Button" button
     When I click on the "Product Factory Database Query Field" button
     And I fill the "Product Factory Database Query Field" field with "MATCH (n) DETACH DELETE n"
-#    Then I click on the "Product Factory Database Submit Query Button" button
+    Then I click on the "Product Factory Database Submit Query Button" button
 
   Scenario: System Settings
     When I click on the "Financials" "Product Factory navigation item"

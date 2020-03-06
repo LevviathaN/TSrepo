@@ -165,8 +165,13 @@ public class BasePage {
     public void setText(By element, String value) {
         if (value != null) {
             BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
-            clearEntireField(element);
-            findElement(element).sendKeys(value);
+            try {
+                clearEntireField(element);
+                findElement(element).sendKeys(value);
+            } catch (ElementNotInteractableException | StaleElementReferenceException e) {
+                new Actions(driver()).sendKeys(value).perform();
+            }
+
         }
     }
 
@@ -424,9 +429,25 @@ public class BasePage {
         }
     }
 
+    /**
+     * Method to click on element with JS
+     *
+     * @param element locator of element to click on
+     */
     public static void clickWithJS(By element){
         JavascriptExecutor executor = (JavascriptExecutor)driver();
         executor.executeScript("arguments[0].click();", driver().findElement(element));
+    }
+
+    /**
+     * Method to execute some JS code on desired element
+     *
+     * @param element locator of element to apply JS code for
+     * @param jsCode JS code to execute
+     */
+    public void executeJSCode(String jsCode, By element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript(jsCode, driver().findElement(element));
     }
 
     /**
@@ -475,6 +496,7 @@ public class BasePage {
             return driver().findElement(element);
         }
     }
+
     /**
      * Method to find elements by locator
      *

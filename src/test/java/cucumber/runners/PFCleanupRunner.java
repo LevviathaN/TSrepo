@@ -4,17 +4,14 @@ import io.cucumber.testng.CucumberFeatureWrapper;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ui.utils.BaseUITest;
 import ui.utils.Reporter;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@BeforePF"},
+        tags = {"@ProductFactoryCleanup"},
         plugin = {"pretty"})
 
 public class PFCleanupRunner extends BaseUITest {
@@ -30,10 +27,10 @@ public class PFCleanupRunner extends BaseUITest {
     }
 
     @Test(
-            groups = {"BPP Automation"},
+            groups = {"DatabaseCleanup"},
             dataProvider = "scenarios"
     )
-    public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
+    public void runPFDatabaseCleanup(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
         scenarioName = pickleWrapper.getPickleEvent().pickle.getName();
         Reporter.node("Executing: " + scenarioName + " scenario",
                 "It contains " + pickleWrapper.getPickleEvent().pickle.getSteps().size() + " steps");

@@ -1,9 +1,13 @@
-<groups name="Product Factory">
-    <suite name="Suite" parallel="methods" data-provider-thread-count="3">
-        <test name="Cucumber Test">
-            <classes>
-                <class name="cucumber.CucumberUITest" />
-            </classes>
-        </test> <!-- test -->
-    </suite> <!-- suite -->
-</groups>
+<suite name="Suite" parallel="methods" data-provider-thread-count="3">
+    <test name="Cucumber Test">
+        <groups>
+            <dependencies>
+                <group name="BPP Automation" depends-on="DatabaseCleanup" />
+            </dependencies>
+        </groups>
+        <classes>
+            <class name="cucumber.runners.PFCleanupRunner" />
+            <class name="cucumber.CucumberUITest" />
+        </classes>
+    </test> <!-- test -->
+</suite> <!-- suite -->
