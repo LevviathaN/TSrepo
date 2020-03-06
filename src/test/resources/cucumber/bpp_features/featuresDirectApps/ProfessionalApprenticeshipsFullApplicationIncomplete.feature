@@ -28,4 +28,3 @@ Feature: Professional Apprenticeship Applications
     And I execute "Incomplete University Degree Apprenticeships Application As Admin" reusable step
     #And I execute "Harakirimail Mitigating Circustances Reject Validation" reusable step replacing some steps
       #|5|I validate text "CONTAINS=Unfortunately your application for Chartered Manager Degree Apprenticeship is incomplete. " to be displayed for "Harakirimail Validate Letter Body" element|
-
