@@ -6,6 +6,7 @@ import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.NoSuchWindowException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
@@ -67,6 +68,7 @@ public class StepDefinitions extends BasePage {
         clickOnElement(initElementLocator(element),
                 UiHandlers.PF_SPINNER_HANDLER,
                 UiHandlers.ACCEPT_ALERT,
+                UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                 UiHandlers.PF_SCROLL_HANDLER,
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,
@@ -470,7 +472,7 @@ public class StepDefinitions extends BasePage {
      *
      * @param operation: browser operation performed can be FORWARD, BACK, or REFRESH case-insensitive
      */
-    @Then("^Browser performes \"([^\"]*)\" command$")
+    @Then("^Browser performs \"([^\"]*)\" command$")
     public void browser_navigates(String operation) {
         String browserOperation = operation.toUpperCase();
         Reporter.log("Executing step: Performing browser " + browserOperation + " operation");
@@ -516,5 +518,19 @@ public class StepDefinitions extends BasePage {
             ExecutionContextHandler.setExecutionContextValueByKey(executionContext, value);
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
+    }
+
+    /**
+     * Definition to execute JS code for web element
+     *
+     * @param element locator of element you want to execute JS code for
+     * @param jsCode JS code to execute
+     *
+     * @author Ruslan Levytskyi
+     */
+    @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
+    public void i_execute_js_code_for_element(String jsCode, String element) {
+        Reporter.log("Executing JS code");
+        executeJSCode(jsCode, initElementLocator(element));
     }
 }

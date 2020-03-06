@@ -107,6 +107,7 @@ Feature: Salesforce
     And I click on the "Customer Service" "Salesforce radiobutton"
     And I click on the "Next" "button"
     And I set "Automation CSA" text to the "Student" "Salesforce search field"
+    And I wait for "1" seconds
     And I click on the "Automation CSA" "Salesforce cases search student"
     And I click on the "Case Origin" "Salesforce dropdown field"
     And I click on the "Email" "Salesforce cases dropdown option"
@@ -341,6 +342,7 @@ Feature: Salesforce
       Then I click on the "Health" "Salesforce cases dropdown option"
       And I click on the "Save" "Product Factory button title"
       And I wait for "3" seconds
+      And I should scroll to the "top" of the page
       And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
 
   Scenario: Create Assesments Registry Case

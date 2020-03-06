@@ -13,8 +13,8 @@ Feature: Amend Reference Data - Level - BPP-658
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
     When I click on the "EC_LEVEL_NAME" "Product Factory edit button"
-    And I set "LevelShortName[####]" text to the "Short Name" "Product Factory text field"
-    And I set "LevelName[####]" text to the "Name" "Product Factory text field"
+    And I set "LevelShortName[######]" text to the "Short Name" "Product Factory text field"
+    And I set "LevelName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
@@ -28,8 +28,8 @@ Feature: Amend Reference Data - Level - BPP-658
   @Negative @P2 #TC-824
   Scenario: Amend a Level Where Short Name Already Exists
     Given I execute "Create Level" reusable step replacing some steps
-      |4|I set "LevelShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
-      |5|I set "LevelNameNew[####]" text to the "Name" "Product Factory text field"|
+      |4|I set "LevelShortNameNew[######]" text to the "Short Name" "Product Factory text field"|
+      |5|I set "LevelNameNew[######]" text to the "Name" "Product Factory text field"|
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
     When I click on the "EC_LEVEL_NAME" "Product Factory edit button"

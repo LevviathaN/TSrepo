@@ -14,8 +14,8 @@ Feature: Add/Amend Region to Location - BPP-3673
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Locations" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "LocationName[####]" text to the "Name" "Product Factory text field"
-    And I set "LocationAddress[####]" text to the "Address" "Product Factory text field"
+    And I set "LocationName[######]" text to the "Name" "Product Factory text field"
+    And I set "LocationAddress[######]" text to the "Address" "Product Factory text field"
     And I click on the "Financial Dimension" "Product Factory dropdown"
     And I click on the "EC_LOCATION_FD_DESCRIPTION" "Product Factory dropdown option"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
@@ -30,13 +30,13 @@ Feature: Add/Amend Region to Location - BPP-3673
     When I execute "Create Location Financial Dimension" reusable step
     When I execute "Create Region" reusable step
     When I execute "Create Region" reusable step replacing some steps
-      |4|I set "RegionNameTwo[####]" text to the "Name" "Product Factory text field"|
+      |4|I set "RegionNameTwo[######]" text to the "Name" "Product Factory text field"|
       |8|I should see the "EC_REGION_NAME_TWO" element|
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Locations" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "LocationName[#####]" text to the "Name" "Product Factory text field"
-    And I set "LocationAddress[#####]" text to the "Address" "Product Factory text field"
+    And I set "LocationName[#######]" text to the "Name" "Product Factory text field"
+    And I set "LocationAddress[#######]" text to the "Address" "Product Factory text field"
     And I click on the "Region" "Product Factory dropdown"
     And I click on the "EC_REGION_NAME" "Product Factory dropdown option"
     And I click on the "Financial Dimension" "Product Factory dropdown"
@@ -65,7 +65,7 @@ Feature: Add/Amend Region to Location - BPP-3673
     And I execute "Create Region Financial Dimension" reusable step
     And I execute "Create Region" reusable step
     And I execute "Create Region" reusable step replacing some steps
-      |4|I set "RegionNameTwo[####]" text to the "Name" "Product Factory text field"|
+      |4|I set "RegionNameTwo[######]" text to the "Name" "Product Factory text field"|
       |8|I should see the "EC_REGION_NAME_TWO" element|
     And I execute "Create Location" reusable step
     And I execute "Create Level" reusable step
@@ -91,6 +91,9 @@ Feature: Add/Amend Region to Location - BPP-3673
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
+    And I click on the "Product Factory Number Of Sessions Edit Button" button
+    And I fill the "Product Factory Number Of Sessions Edit Field" field with "2"
+    And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     Then I click on the "Create" "Product Factory button"
     And I click on the "Default Session Duration" "Product Factory dropdown"

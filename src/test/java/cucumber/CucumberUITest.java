@@ -9,7 +9,7 @@ import ui.utils.Reporter;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@Bodies"},
+        tags = {"@ProductFactory and not @BlockedByIssue"},
         plugin = {"pretty"})
 
 public class CucumberUITest extends BaseUITest {

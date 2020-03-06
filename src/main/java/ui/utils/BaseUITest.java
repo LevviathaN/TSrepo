@@ -6,10 +6,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import ui.pages.BasePage;
-import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.KeywordsHandler;
-import ui.utils.bpp.MetaDataHandler;
-import ui.utils.bpp.PreProcessFiles;
+import ui.utils.bpp.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -17,6 +14,8 @@ import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import static ui.utils.DriverProvider.getFirefox;
 
 /**
  * <p>Base test class for all ui tests.</p>
@@ -46,7 +45,13 @@ public class BaseUITest {
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
-            BasePage.driver.set(DriverProvider.getDriver());
+            //temporary hardcoded solution to run PF Cleanup on Firefox
+            if (method.getName().equals("runPFDatabaseCleanup")) {
+                DriverProvider.instance.set(DriverProvider.getFirefoxBrowserStack());
+                BasePage.driver.set(DriverProvider.instance.get());
+            } else {
+                BasePage.driver.set(DriverProvider.getDriver());
+            }
             BasePage.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (Exception e) {
             Reporter.failTryTakingScreenshot("Before test failure during Driver creation. Please check options for test executions ");

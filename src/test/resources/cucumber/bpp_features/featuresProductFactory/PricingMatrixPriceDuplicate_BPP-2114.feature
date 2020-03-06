@@ -17,7 +17,7 @@ Feature: Pricing Matrix - price creation validation to prevent duplicates - BPP-
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Paper" reusable step
     When I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionNew[####]" text to the "Description" "Product Factory text field"|
+      |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field"|
       |6|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                     |
     When I execute "Link Body To Paper" reusable step replacing some steps
       |3|I click on the "EC_PAPER_DESCRIPTION_NEW" "Product Factory Change Body button"|
@@ -27,10 +27,10 @@ Feature: Pricing Matrix - price creation validation to prevent duplicates - BPP-
   @Negative @P1 @Duplicate #TC-1158
   Scenario: Add Duplicate Price in Pricing Matrix
     When I execute "Create Course Type" reusable step replacing some steps
-      |4 |I set "CourseTypeDescriptionNew[####]" text to the "Description" "Product Factory text field"|
+      |4 |I set "CourseTypeDescriptionNew[######]" text to the "Description" "Product Factory text field"|
       |12|I should see the "EC_COURSE_TYPE_DESCRIPTION_NEW" element                                    |
     When I execute "Create Region" reusable step replacing some steps
-      |4|I set "RegionNameNew[####]" text to the "Name" "Product Factory text field"|
+      |4|I set "RegionNameNew[######]" text to the "Name" "Product Factory text field"|
       |8|I should see the "EC_REGION_NAME_NEW" element                              |
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
