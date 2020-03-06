@@ -31,7 +31,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
   @Negative @P1 #TC-1079
   Scenario: Verify Link Materials Restriction Negative
     Given I execute "Create Material" reusable step with some additional steps
-      |10|I "check" "Is Course Material" "Product Factory checkbox"|
+      |14|I "check" "Is Course Material" "Product Factory checkbox"|
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
@@ -51,7 +51,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I click on the "Add Material" "button"
     Then I should see the "EC_MATERIAL_TYPE_NAME" element
 
-  @Positive @P1 #TC-1063
+  @Positive @P1 @Run #TC-1063
   Scenario: Verify Already Selected Material Is Not Displayed In Dropdown
     Given I execute "Create Material" reusable step
     And I execute "Create Course Instance" reusable step
@@ -60,7 +60,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
     And I click on the "Add Material" "button"
-    Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
+    Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory checkbox"
     And I click on the "Save" "button"
     And I click on the "Add Material" "button"
     Then I shouldn't see the "EC_MATERIAL_TYPE_NAME" element

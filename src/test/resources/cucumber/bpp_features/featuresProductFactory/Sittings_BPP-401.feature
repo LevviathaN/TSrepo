@@ -14,7 +14,7 @@ Feature: Reference Data - Sitting - BPP-401
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "SittingName[####]" text to the "Name" "Product Factory text field"
+    And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
     And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
@@ -26,8 +26,8 @@ Feature: Reference Data - Sitting - BPP-401
   @Positive @Regression @P2 #TC-836
   Scenario: Add a New Sitting Using a Modal (Link to Multiple Bodies)
     Then I click on the "Create" "Product Factory button"
-    And I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"
-    And I set "BodyNameNew[####]" text to the "Name" "Product Factory text field"
+    And I set "BodyShortNameNew[######]" text to the "Short Name" "Product Factory text field"
+    And I set "BodyNameNew[######]" text to the "Name" "Product Factory text field"
     And I click on the "Change" "button"
     And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
@@ -35,7 +35,7 @@ Feature: Reference Data - Sitting - BPP-401
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "SittingName[####]" text to the "Name" "Product Factory text field"
+    And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
     And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable

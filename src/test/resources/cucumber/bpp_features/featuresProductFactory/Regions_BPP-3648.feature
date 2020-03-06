@@ -41,12 +41,12 @@ Feature: Product Factory - Region - BPP-3648
     Given I execute "Log In" reusable step
     When I execute "Create Region Financial Dimension" reusable step
     When I execute "Create Region Financial Dimension" reusable step replacing some steps
-      |4|I set "RegionFDCodeTwo[####]" text to the "Code" "Product Factory text field"|
-      |5|I set "RegionFDDescriptionTwo[####]" text to the "Description" "Product Factory text field"|
+      |4|I set "RegionFDCodeTwo[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "RegionFDDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
       |9|I should see the "EC_REGION_FD_CODE_TWO" element|
     When I execute "Create Region" reusable step
     And I click on the "EC_REGION_NAME" "Product Factory edit button"
-    And I set "RegionNameTwo[####]" text to the "Name" "Product Factory text field"
+    And I set "RegionNameTwo[######]" text to the "Name" "Product Factory text field"
     And I click on the "Financial Dimension" "Product Factory dropdown"
     And I click on the "EC_REGION_FD_DESCRIPTION_TWO" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"

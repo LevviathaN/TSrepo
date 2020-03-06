@@ -13,8 +13,8 @@ Feature: Reference Data - Level - BPP-371
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "LevelShortName[####]" text to the "Short Name" "Product Factory text field"
-    And I set "LevelName[####]" text to the "Name" "Product Factory text field"
+    And I set "LevelShortName[######]" text to the "Short Name" "Product Factory text field"
+    And I set "LevelName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
@@ -32,6 +32,6 @@ Feature: Reference Data - Level - BPP-371
     When I click on the "Levels" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "EC_LEVEL_SHORT_NAME" text to the "Short Name" "Product Factory text field"
-    And I set "LevelName[####]" text to the "Name" "Product Factory text field"
+    And I set "LevelName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Short Name must be unique" "message"

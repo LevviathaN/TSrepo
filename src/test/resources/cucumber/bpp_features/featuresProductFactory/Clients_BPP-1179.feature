@@ -12,7 +12,7 @@ Feature: Reference Data - Client - BPP-1179
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "ClientName[####]" text to the "Name" "Product Factory text field"
+    And I set "ClientName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
 
@@ -39,6 +39,6 @@ Feature: Reference Data - Client - BPP-1179
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"
     Then I click on the "EC_CLIENT_NAME" "Product Factory edit button"
-    And I set "ClientName[####]" text to the "Name" "Product Factory text field"
+    And I set "ClientName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
