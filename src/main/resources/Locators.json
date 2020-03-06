@@ -170,7 +170,7 @@
   "Direct App Upload Job Role Documents": "xpath=//h3[contains(.,'Application of Learning Agreement')]//following-sibling::div[1]//input[@type='file']",
   "Direct App My Approvals Tab": "xpath=//a[contains(text(),'My Approvals')]",
   "Direct App Line Manager Review Application": "xpath=//div[@class='my-application-review']/div[2]/div[1]/div[2]//button[contains(.,'Review application details')]",
-  "Direct App Line Manager Agreee To Support Amount": "xpath=//div[@class='content-row-app confirm-off-the-job-training']//label",
+  "Direct App Line Manager Agree To Support Amount": "xpath=//div[@class='content-row-app confirm-off-the-job-training']//label",
   "Direct App Line Manager New Role": "xpath=//div[@class='content-row-app apprentice-role-confirmation']//div[@class='radio-container']//label",
   "Direct App Save Review And Back": "xpath=//button[contains(.,'Save review and back')]",
   "Direct App Admin Apprenticeships Tab": "xpath=//a[text()='Apprenticeships']",
@@ -219,6 +219,8 @@
   "Direct App Start New Application Button": "xpath=//button[@class='new-app-button']",
   "Direct App Reopen Application Button": "xpath=//button[normalize-space()='Reopen Application']",
   "Direct Apps Close Window Button": "xpath=//span[@class='btn-close']",
+  "Direct Apps Line Manager End Point Assessment Organisation": "xpath=//label[contains(text(),'Point Assessment Organisation?')]//following-sibling::div[1]//input",
+  "Direct Apps Incomplete Actions Pop up message": "xpath=//div[@class='box-content']/p",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
