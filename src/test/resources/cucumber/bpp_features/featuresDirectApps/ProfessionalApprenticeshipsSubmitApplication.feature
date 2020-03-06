@@ -4,10 +4,10 @@ Feature: Submit Professional Apprenticeship Applications
   Background:
     Given I execute "Register New Student Account" reusable step
 
-  @Positive @CharteredManagerDegree #TC-1021 #TC-1022
-  Scenario: Submit Professional Apprenticeship Chartered Manager Degree
-    When I execute "Create Professional Apprenticeships Application Chartered Manager" reusable step
-    Given I execute "Complete Professional Apprenticeships Application Chartered Manager" reusable step
+  @Positive @UATAccounting #TC-1021 #TC-1022
+  Scenario: Submit Professional Apprenticeship UAT Acconting
+    When I execute "Create Professional Apprenticeships Application UAT Accounting Option Two" reusable step
+    Given I execute "Complete Professional Apprenticeships UAT Accounting Assisstant" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
