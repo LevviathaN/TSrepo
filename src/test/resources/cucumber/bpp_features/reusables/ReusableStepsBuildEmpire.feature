@@ -975,7 +975,7 @@ Feature: BuildEmpire
   Scenario: Admin Hub Navigate to CMS Pages
     When I click on the "Website" "BPP Digital Admin Menu Item links"
     And I click on the "Pages" "BPP Digital Admin Sub Menu Item links"
-    Then I should see the "Blog Topics" "BPP Digital Admin Page Header name"
+    Then I should see the "Pages - All" "BPP Digital Admin Page Header name"
 
   Scenario: Create CMS Page
     When I click on the "Add" "BPP Digital Admin Page Button"
@@ -996,3 +996,131 @@ Feature: BuildEmpire
     When I fill the "BPP Digital Filter by name search field" field with "EC_AUTO_CMS_PAGE"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Filter by name search field"
     Then I should see the "EC_AUTO_CMS_PAGE" element
+
+  Scenario: Admin Hub Navigate to Applications list
+    When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
+    And I click on the "List" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Applications" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to Website Redirects
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Redirects" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Redirects" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to new Courses Pages
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Courses (new)" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Pages - Courses (new)" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to new Professions Pages
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Professions (new)" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Pages - Professions (new)" "BPP Digital Admin Page Header name"
+
+  Scenario: Create Professional Apprenticeships Application UAT Accounting Option Two
+    Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP Professional Apprenticeships" "Build Empire application type"
+    And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I click on the "UAT Accounting Assitant" "Build Empire application type"
+    And I click on the "Direct App Start Date Application Dropdown" element
+    Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
+    And I click on the "Direct App Create Application" button
+
+  Scenario: Complete Professional Apprenticeships UAT Accounting Assisstant
+    Given I click on the "Direct App Start Application" button
+    And I click on the "Eligibility criteria" "Build Empire application section"
+    And I click on the "Are you aged over 15" "Build Empire bespoke Scotland eligibility"
+    And I click on the "Do you have a husband, wife, civil partner and child of any of the above?" "Build Empire bespoke Scotland eligibility"
+    And I click on the "Direct App Right To Work in England?" element
+    And I click on the "Direct App Do You Spend 50 Percent" element
+    And I click on the "Direct App Bespoke Enrolled On Another Apprenticeship No" element
+    And I click on the "Direct App Are You In Employment" element
+    And I click on the "Direct App Are You Working At Least 16 Hours" element
+    And I click on the "Are you applying for a programme" "Build Empire bespoke Scotland eligibility"
+    And I click on the "Do you confirm that your job is a new job role relevant to the career development" "Build Empire bespoke Scotland eligibility"
+    And I click on the "You confirm that you have discussed" "Build Empire bespoke Scotland eligibility"
+    And I click on the "Direct App Next" button
+    And I fill the "Direct App Insurance Number" field with "12345"
+    And I click on the "Direct App Country Dropdown" button
+    And I click on the "Direct App Country Dropdown UK Option" button
+    And I fill the "Diret App Phone Number" field with "EC_PHONE"
+    And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
+    And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
+    And I fill the "Diret App Postal Code" field with "12345"
+    Then I remember "KW_AUTO_DOB|DD/MM/YYYY_21" text as "EC_DOB" variable
+    And I fill the "Direct App DOB" field with "EC_DOB"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App DOB"
+    And I set "London" text to the "Town/City*" "Build Empire text field"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    Then I click on the "Direct App Scholarship Add" button
+    And I set "AutomationTest" text to the "Kin/Emergency" "Build Empire emergency field"
+    And I set "AutomationTest" text to the "What is your relationship with this person?" "Build Empire emergency field"
+    Then I fill the "Direct App Line Manager Telephone" field with "09138333731"
+    And I fill the "Direct App Admin Email" field with "automation111@mailinator.com"
+    Then I click on the "Direct App Scholarship Add" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Diret App Gender Dropdown" element
+    And I click on the "Diret App Gender Not To Say" element
+    And I click on the "Diret App Ethnicity Dropdown" element
+    And I click on the "Diret App Ethnicity White And Black African" element
+    And I click on the "Diret App Learning Disability No" element
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Country of birth" "Build Empire nationality dropdown"
+    And I click on the "Albania" "Build Empire nationality option"
+    And I click on the "Country of nationality" "Build Empire nationality dropdown"
+    And I click on the "United Kingdom" "Build Empire nationality option"
+    And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
+    And I click on the "Aruba" "Build Empire nationality option"
+    And I click on the "Is English your first language?" "Build Empire nationality dropdown"
+    And I click on the "Yes" "Build Empire nationality option"
+    And I click on the "Direct App Nationality No Visa" element
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Add Qualification" button
+    And I click on the "Direct App Country of Study Dropdown" button
+    And I click on the "United Kingdom" "Build Empire qualification option"
+    And I click on the "Direct App Education Type Degree Radiobutton" button
+    And I click on the "Direct App Qualification Title Dropdown" button
+    And I fill the "Direct App Education Search Field Dropdown" field with "Foundation degree"
+    Then I click on the "Foundation degree" "Build Empire application type"
+    And I click on the "Direct App Subject Dropdown" button
+    And I fill the "Direct App Education Search Field Dropdown" field with "Applied Law (QCF)"
+    Then I click on the "Applied Law (QCF)" "Build Empire application type"
+    And I click on the "Direct App Awarding Institution Dropdown" button
+    And I fill the "Direct App Education Search Field Dropdown" field with "Zaskin College"
+    Then I click on the "Zaskin College" "Build Empire application type"
+    And I fill the "Direct App Year Completed" field with "11/11/2018"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Year Completed"
+    And I fill the "Direct App Grade" field with "AutoGrade"
+    And I fill the "Direct App Examining Body" field with "AutoBody"
+    And I click on the "Direct App Add Assesment" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I fill the "Direct App Job Title" field with "Job Title"
+    And I set "32" text to the "contracted working hours?" "Build Empire employment element"
+    And I set "Manager Name" text to the "Manager First Name" "Build Empire employment element"
+    And I set "Manager Lastname" text to the "Manager Last Name" "Build Empire employment element"
+    And I set "AutoTitle" text to the "Manager Job Title" "Build Empire employment element"
+    And I set "automation11@mail.com" text to the "Manager Email" "Build Empire employment element"
+    And I fill the "Direct App Line Manager Telephone" field with "0913<KW_AUTO_RANDOMNUMBER|#######>"
+    And I set "Address 1" text to the "Address Line 1" "Build Empire employment element"
+    And I set "London" text to the "Company/Employer City" "Build Empire employment element"
+    And I set "Employee" text to the "Company/Employer Name" "Build Empire employment element"
+    And I click on the "Direct App Company Health And Safety" element
+    And I fill the "Direct App When You Start At Company" field with "05/05/2018"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App When You Start At Company"
+    And I click on the "Direct App Company Country Dropdown" element
+    And I click on the "Direct App Company Country Dropdown UK Option" element
+    And I set "12345" text to the "Postcode" "Build Empire employment element"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Privacy Notice By Email" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Save And Return" button
