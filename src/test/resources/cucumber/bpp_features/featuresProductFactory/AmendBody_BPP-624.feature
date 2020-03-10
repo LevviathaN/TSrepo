@@ -14,8 +14,8 @@ Feature: Amend Reference Data - Body - BPP-624
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I set "BodyShortName[####]" text to the "Short Name" "Product Factory text field"
-    And I set "BodyName[####]" text to the "Name" "Product Factory text field"
+    And I set "BodyShortName[######]" text to the "Short Name" "Product Factory text field"
+    And I set "BodyName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
@@ -31,8 +31,8 @@ Feature: Amend Reference Data - Body - BPP-624
   @Negative @P2 #TC-820
   Scenario: Amend a Body Where Short Name Already Exists
     Given I execute "Create Body" reusable step replacing some steps
-    |4|I set "BodyShortNameNew[####]" text to the "Short Name" "Product Factory text field"|
-    |5|I set "BodyNameNew[####]" text to the "Name" "Product Factory text field"|
+    |4|I set "BodyShortNameNew[######]" text to the "Short Name" "Product Factory text field"|
+    |5|I set "BodyNameNew[######]" text to the "Name" "Product Factory text field"|
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"

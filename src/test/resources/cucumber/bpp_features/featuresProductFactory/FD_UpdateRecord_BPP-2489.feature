@@ -12,8 +12,8 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Financial Dimensions" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "FDCode[####]" text to the "Code" "Product Factory text field"
-    And I set "FDDescription[####]" text to the "Description" "Product Factory text field"
+    And I set "FDCode[######]" text to the "Code" "Product Factory text field"
+    And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
@@ -25,8 +25,8 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     Then I should see the "EC_FD_CODE" "Product Factory edit button"
     Then I should see the "EC_FD_DESCRIPTION" "Product Factory edit button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
-    And I set "FDCodeTwo[####]" text to the "Code" "Product Factory text field"
-    And I set "FDDescriptionTwo[####]" text to the "Description" "Product Factory text field"
+    And I set "FDCodeTwo[######]" text to the "Code" "Product Factory text field"
+    And I set "FDDescriptionTwo[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE_TWO" element
     Then I should see the "EC_FD_DESCRIPTION_TWO" element

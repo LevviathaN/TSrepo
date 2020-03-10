@@ -289,7 +289,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App My Approvals Tab" link by JS
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -431,7 +431,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
@@ -646,7 +646,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Line Manager End Point Assessment" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -863,7 +863,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
@@ -898,7 +898,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
@@ -1131,7 +1131,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I fill the "Direct Apps Line Manager End Point Assessment Organisation" field with "AutomationTesting"
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
