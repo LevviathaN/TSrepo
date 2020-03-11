@@ -1,6 +1,7 @@
 package ui.utils;
 
 import api.RestApiController;
+import org.jsoup.Connection;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -73,6 +74,9 @@ public class BaseUITest {
         try {
             Reporter.writeToFile();
             Reporter.saveAllECToFile();
+//            qTestAPI.getTestRunIDfromSuite().containsKey(Reporter.getCurrentTestName());
+           String qtestID = qTestAPI.getTestRunIDfromSuite().get(Reporter.getCurrentTestName());
+              qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Passed", 601, qtestID, "");
         } catch (IOException e) {
             e.printStackTrace();
         }

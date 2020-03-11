@@ -57,7 +57,7 @@ public class RestApiController {
     /**
      * @param requestTemplate - the name of Json file which will be used to retrieve Json file as an Object
      */
-    public String processProperties(String requestTemplate) {
+    public static String processProperties(String requestTemplate) {
 
         JSONObject map = new Utilities().getJsonObject(requestTemplate);
 
@@ -76,7 +76,7 @@ public class RestApiController {
         return map.toString();
     }
 
-    public Map processLocatorProperties(String locatorsFile) {
+    public static Map processLocatorProperties(String locatorsFile) {
 
         JSONObject map = new Tools().getJsonObjectForLocators(locatorsFile);
 
@@ -93,5 +93,21 @@ public class RestApiController {
         });
 
         return map;
+    }
+
+    public static Response postQTestRequest(String baseURI, String requestBody, String bearerToken) {
+        Response response = given()
+                .header("Authorization", bearerToken)
+                .contentType(ContentType.JSON)
+                .baseUri(baseURI)
+                .when()
+                .body(requestBody)
+                .post();
+        if (Integer.toString(response.getStatusCode()).matches("2.+")) {
+            //LogManager.getLogger().info("Request sent successfully! Response code: " + response.getStatusCode());
+        } else {
+            //NoahLogManager.getLogger().error("Response code: " + response.getStatusCode());
+        }
+        return response;
     }
 }
