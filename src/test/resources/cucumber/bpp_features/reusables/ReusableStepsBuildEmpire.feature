@@ -668,7 +668,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App Admin Line Manager Edit" button
     And I select "Automation" from "Direct App Admin Company Dropdown" element
     And I click on the "Direct App Admin Line Manager Dropdown" button
-    And I fill the "Direct App Admin Attach Line Manger Text Field" field with "2917uk7sr@harakirimail.com"
+    And I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"
     And I wait for "1" seconds
     And I click on the "Automation Line Manager 1" "Build Empire line manager option"
     Then I click on the "Attach" "button"
