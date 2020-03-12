@@ -356,6 +356,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
@@ -564,6 +566,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     Then I click on the "Direct App Scholarship Add" button
@@ -786,6 +790,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
@@ -1055,6 +1061,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     Then I click on the "Direct App Scholarship Add" button
