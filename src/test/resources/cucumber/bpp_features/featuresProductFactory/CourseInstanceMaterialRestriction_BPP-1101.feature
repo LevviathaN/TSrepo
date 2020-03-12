@@ -51,7 +51,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I click on the "Add Material" "button"
     Then I should see the "EC_MATERIAL_TYPE_NAME" element
 
-  @Positive @P1 @Run #TC-1063
+  @Positive @P1 #TC-1063
   Scenario: Verify Already Selected Material Is Not Displayed In Dropdown
     Given I execute "Create Material" reusable step
     And I execute "Create Course Instance" reusable step
