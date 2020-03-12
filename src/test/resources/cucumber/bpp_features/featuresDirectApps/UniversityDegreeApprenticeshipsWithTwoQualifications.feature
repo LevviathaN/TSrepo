@@ -6,24 +6,24 @@ Feature: University Degree Apprenticeships
     Given I execute "Register New Student Account" reusable step
     When I execute "Create University Degree Apprenticeships Application" reusable step
     And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step with some additional steps
-      |58|I click on the "Direct App Add Qualification" button|
-      |59|I click on the "Direct App Country of Study Dropdown" button|
-      |60|I click on the "United Kingdom" "Build Empire qualification option"|
-      |61|I click on the "Direct App Education Type Degree Radiobutton" button|
-      |62|I click on the "Direct App Qualification Title Dropdown" button|
-      |63|I fill the "Direct App Education Search Field Dropdown" field with "Foundation degree"|
-      |64|I click on the "Foundation degree" "Build Empire application type"|
-      |65|I click on the "Direct App Subject Dropdown" button|
-      |66|I fill the "Direct App Education Search Field Dropdown" field with "Applied Law (QCF)"|
-      |67|I click on the "Applied Law (QCF)" "Build Empire application type"|
-      |68|I click on the "Direct App Awarding Institution Dropdown" button|
-      |69|I fill the "Direct App Education Search Field Dropdown" field with "Al-Risalah"|
-      |70|I click on the "Al-Risalah" "Build Empire application type"|
-      |71|I fill the "Direct App Year Completed" field with "11/11/2018"|
-      |72|I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Year Completed"|
-      |73|I fill the "Direct App Grade" field with "AutoGrade"|
-      |74|I fill the "Direct App Examining Body" field with "AutoBody"|
-      |75|I click on the "Direct App Add Assesment" button|
+      |60|I click on the "Direct App Add Qualification" button|
+      |61|I click on the "Direct App Country of Study Dropdown" button|
+      |62|I click on the "United Kingdom" "Build Empire qualification option"|
+      |63|I click on the "Direct App Education Type Degree Radiobutton" button|
+      |64|I click on the "Direct App Qualification Title Dropdown" button|
+      |65|I fill the "Direct App Education Search Field Dropdown" field with "Foundation degree"|
+      |66|I click on the "Foundation degree" "Build Empire application type"|
+      |67|I click on the "Direct App Subject Dropdown" button|
+      |68|I fill the "Direct App Education Search Field Dropdown" field with "Applied Law (QCF)"|
+      |69|I click on the "Applied Law (QCF)" "Build Empire application type"|
+      |70|I click on the "Direct App Awarding Institution Dropdown" button|
+      |71|I fill the "Direct App Education Search Field Dropdown" field with "Al-Risalah"|
+      |72|I click on the "Al-Risalah" "Build Empire application type"|
+      |73|I fill the "Direct App Year Completed" field with "11/11/2018"|
+      |74|I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Year Completed"|
+      |75|I fill the "Direct App Grade" field with "AutoGrade"|
+      |76|I fill the "Direct App Examining Body" field with "AutoBody"|
+      |77|I click on the "Direct App Add Assesment" button|
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step

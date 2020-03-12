@@ -158,7 +158,7 @@
   "Direct App When You Start At Company": "xpath=//label[contains(text(),'When did/will you start ')]//following-sibling::div[1]//input",
   "Direct App Company Country Dropdown": "xpath=//label[contains(text(),'Company/Employer Country')]//following-sibling::div[1]/div",
   "Direct App Company Country Dropdown UK Option": "xpath=//ul[@role='listbox']/li[1]",
-  "Direct App Admin Status Changed for Apprenticeships": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
+  "Direct App Admin Status Changed for Apprenticeships": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][2]//div[2]",
   "Direct App Admin Submit Apprenticeships": "xpath=//input[@value='Submit']",
   "Direct App Line Manager Telephone": "xpath=//input[@type='tel']",
   "Direct App Admin Line Manager Edit": "xpath=//button[contains(.,'Edit')]",
