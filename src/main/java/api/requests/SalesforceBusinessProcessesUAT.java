@@ -103,7 +103,7 @@ public class SalesforceBusinessProcessesUAT {
         ArrayList<String> recordData = utils.getRecordData(utils.getResponseProperty(dataResponse));
         GlobalDataBridge.getInstance().setBufferValueByKey("Student UAT".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
-        assertThat(recordData.get(56), matchesPattern("BP[0-9]+"));
+        assertThat(recordData.get(66), matchesPattern("BP[0-9]+"));
 
         return this;
     }
@@ -134,7 +134,7 @@ public class SalesforceBusinessProcessesUAT {
 
         GlobalDataBridge.getInstance().setBufferValueByKey("Faculty".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
-        assertThat(recordData.get(10), anyOf(matchesPattern("[a-z]\\.[a-z]+"), matchesPattern("[a-z]\\.[a-z]+[0-9]+$")));
+        assertThat(recordData.get(10), matchesPattern("[a-z]\\.[a-z]+"));
         assertThat(recordData.get(25), matchesPattern("[A-Z][a-z]\\d+"));
 
         return this;
