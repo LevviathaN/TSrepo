@@ -4,6 +4,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import ui.utils.BPPLogManager;
 import ui.utils.Tools;
 import ui.utils.bpp.TestParametersController;
 import java.util.Map;
@@ -28,9 +29,9 @@ public class RestApiController {
                 .post();
 
         if (Integer.toString(response.getStatusCode()).matches("2.+")) {
-            //LogManager.getLogger().info("Request sent successfully! Response code: " + response.getStatusCode());
+            BPPLogManager.getLogger().info("Request sent successfully! Response code: " + response.getStatusCode());
         } else {
-            //NoahLogManager.getLogger().error("Response code: " + response.getStatusCode());
+            BPPLogManager.getLogger().error("Response code: " + response.getStatusCode());
         }
         return response;
     }
@@ -47,9 +48,9 @@ public class RestApiController {
                 .andReturn();
 
         if (Integer.toString(response.getStatusCode()).matches("2.+")) {
-            //NoahLogManager.getLogger().info("Request sent successfully! Response code: " + response.getStatusCode());
+            BPPLogManager.getLogger().info("Request sent successfully! Response code: " + response.getStatusCode());
         } else {
-            //NoahLogManager.getLogger().error("Response code: " + response.getStatusCode());
+           BPPLogManager.getLogger().error("Response code: " + response.getStatusCode());
         }
         return response;
     }
