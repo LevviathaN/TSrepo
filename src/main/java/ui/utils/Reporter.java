@@ -16,6 +16,7 @@ import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import ui.pages.BasePage;
 import ui.utils.bpp.ExecutionContextHandler;
+import ui.utils.bpp.PropertiesHelper;
 
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -54,6 +55,7 @@ public class Reporter {
     protected String logName;
     protected static String testLogName;
     private static String browserLink;
+    private static String env;
 
     private static ConcurrentHashMap<Long, ExtentTest> testStorage = new ConcurrentHashMap<>();
     private static ConcurrentHashMap<Long, ExtentTest> testNodesStorage = new ConcurrentHashMap<>();
@@ -199,8 +201,13 @@ public class Reporter {
 
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
 
-        //pass the log file name to the final report
-
+        if (System.getProperties().containsKey("environment")) {
+            env = System.getProperty("environment").toUpperCase();
+            test.assignCategory(env.concat("<span>&nbsp;-&nbsp;Environment</span>"));
+        } else {
+            env = "QA";
+            test.assignCategory(env.concat("<span>&nbsp;-&nbsp;Environment</span>"));
+        }
         //info message for grabbing logo.
         test.info(browserLink);
     }
@@ -657,6 +664,14 @@ public class Reporter {
         ExtentTest test = extent.createTest(testName);
         testStorage.put(Thread.currentThread().getId(), test);
         browserLink = "<img src='https://i.imgur.com/zXAnKwH.png' class='BrowserLogo'>";
+
+        if (System.getProperties().containsKey("environment")) {
+            env = System.getProperty("environment");
+            test.assignCategory(env.concat("<span>&nbsp;-&nbsp;Environment</span>"));
+        } else {
+            env = "QA";
+            test.assignCategory(env.concat("<span>&nbsp;-&nbsp;Environment</span>"));
+        }
         test.info(browserLink);
     }
 
