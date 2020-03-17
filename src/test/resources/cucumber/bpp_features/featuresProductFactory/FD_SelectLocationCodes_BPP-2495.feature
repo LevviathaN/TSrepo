@@ -7,7 +7,7 @@ Feature: Financial Dimension - Select Location Codes - BPP-2495
   Background:
     Given I execute "Log In" reusable step
 
-  @Negative @Regression @P1 @Run #TC-1771, TC-1718
+  @Negative @Regression @P1 #TC-1771, TC-1718
   Scenario: Edit Financial Dimension for the Location that is in use
     When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step

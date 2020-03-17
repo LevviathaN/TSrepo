@@ -335,6 +335,25 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
+     * Definition to verify that a certain number of elements are present on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param element xpath of needed element
+     * @param quantity expected quantity of elements to be present on the page
+     */
+    @When("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$")
+    public void i_should_see_number_of_elements(String element, String quantity) {
+        Reporter.log("Executing step: I should see " + quantity + " '" + element + "' elements");
+        int numberOfElements = numberOfElements(initElementLocator(element));
+        if (quantity.contains("more than")) {
+            Assert.assertTrue(quantity.substring(10).equals(String.valueOf(numberOfElements)));
+        } else if (quantity.contains("less than")) {
+
+        }
+        Assert.assertTrue(quantity.equals(String.valueOf(numberOfElements)));
+    }
+
+    /**
      * Action to upload a file
      *
      * @param element:  locator type to be used to locate the element for uploading a file

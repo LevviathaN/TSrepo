@@ -128,6 +128,28 @@ public class SpecialStepDefs extends BasePage {
     }
 
     /**
+     * Definition to verify that a certain number of elements are present on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param elementLocator name or value of needed element
+     * @param elementType xpath template of needed element
+     * @param quantity expected quantity of elements to be present on the page
+     */
+    @When("^I should see \"([^\"]*)\" \"([^\"]*)\" in quantity of \"([^\"]*)\"$")
+    public void i_should_see_number_of_elements_special(String elementLocator, String elementType, String quantity) {
+        Reporter.log("Executing step: I should see the '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
+                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            BPPLogManager.getLogger().info("Validating the number of elements is " + quantity);
+            Assert.assertTrue(quantity.equals(numberOfElements(By.xpath(resultingXpath))));
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
      * Definition to check invisibility of the element
      *
      * @param elementLocator name or value of needed element
@@ -169,7 +191,8 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
+            String actualAttributeValue = findElement(By.xpath(resultingXpath)).getAttribute(attributeName);
+            Assert.assertTrue(actualAttributeValue.equalsIgnoreCase(TestParametersController.checkIfSpecialParameter(attributeValue)));
         } else {
             Reporter.fail("No such locator template key");
         }
