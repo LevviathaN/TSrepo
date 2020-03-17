@@ -63,6 +63,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(BROWSER_PERFORMS_COMMAND.getPattern(), ()-> stepDefs.browser_navigates(arg1));
         stepDefsMap.put(I_CAPTURE_DATA.getPattern(),() -> stepDefs.i_capture_text_data_as_variable(arg1,arg2));
         stepDefsMap.put(I_EXECUTE_JS_CODE_FOR_ELEMENT.getPattern(),() -> stepDefs.i_execute_js_code_for_element(arg1,arg2));
+        stepDefsMap.put(I_SHOULD_SEE_NUMBER_OF_ELEMENTS.getPattern(),() -> stepDefs.i_should_see_number_of_elements(arg1, arg2));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
@@ -72,6 +73,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_CHECK_UNCHECK_SPECIAL.getPattern(),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special_if(arg1, arg2, arg3, arg4));
         stepDefsMap.put(I_SELECT_FROM_ELEMENT_SPECIAL.getPattern(),() -> specialStepDefs.i_select_from_element_special(arg1, arg2, arg3));
+        stepDefsMap.put(I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_number_of_elements_special(arg1, arg2, arg3));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();

@@ -130,6 +130,17 @@ public class BasePage {
         }
     }
 
+    /**
+     * Returns number of elements, present on the page by given locator
+     *
+     * @param by locator of element
+     *
+     * @return int
+     */
+    public int numberOfElements(By by) {
+        return driver().findElements(by).size();
+    }
+
     //________________________________________________Basic Actions___________________________________________________
 
     public void reloadPage() {
