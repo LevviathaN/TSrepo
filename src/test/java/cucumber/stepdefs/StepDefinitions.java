@@ -339,18 +339,19 @@ public class StepDefinitions extends BasePage {
      *
      * @author Ruslan Levytskyi
      * @param element xpath of needed element
-     * @param quantity expected quantity of elements to be present on the page
+     * @param expectedQuantity expected quantity of elements to be present on the page
      */
     @When("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$")
-    public void i_should_see_number_of_elements(String element, String quantity) {
-        Reporter.log("Executing step: I should see " + quantity + " '" + element + "' elements");
-        int numberOfElements = numberOfElements(initElementLocator(element));
-        if (quantity.contains("more than")) {
-            Assert.assertTrue(quantity.substring(10).equals(String.valueOf(numberOfElements)));
-        } else if (quantity.contains("less than")) {
-
+    public void i_should_see_number_of_elements(String element, String expectedQuantity) {
+        Reporter.log("Executing step: I should see " + expectedQuantity + " '" + element + "' elements");
+        int actualNumberOfElements = numberOfElements(initElementLocator(element));
+        if (expectedQuantity.contains("more than")) {
+            Assert.assertTrue(actualNumberOfElements > Integer.parseInt(expectedQuantity.substring(10)));
+        } else if (expectedQuantity.contains("less than")) {
+            Assert.assertTrue(actualNumberOfElements < Integer.parseInt(expectedQuantity.substring(10)));
+        } else {
+            Assert.assertTrue(expectedQuantity.equals(String.valueOf(actualNumberOfElements)));
         }
-        Assert.assertTrue(quantity.equals(String.valueOf(numberOfElements)));
     }
 
     /**
