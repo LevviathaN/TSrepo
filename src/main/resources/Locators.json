@@ -221,6 +221,12 @@
   "Direct Apps Close Window Button": "xpath=//span[@class='btn-close']",
   "Direct Apps Line Manager End Point Assessment Organisation": "xpath=//label[contains(text(),'Point Assessment Organisation?')]//following-sibling::div[1]//input",
   "Direct Apps Incomplete Actions Pop up message": "xpath=//div[@class='box-content']/p",
+  "Direct App Admin Create Line Manager": "xpath=//button[contains(text(), 'Create line manager')]",
+  "Direct App Admin Company Dropdown For Line Manager Creation": "xpath=//div[@id='create-line-manager-modal']//span[@aria-labelledby='select2-direct_application_company_id-container']",
+  "Direct App Admin Email Line Manager Creation": "id=direct_application_line_manager_email",
+  "Direct App Admin Firstname Line Manager Creation": "id=id=direct_application_line_manager_first_name",
+  "Direct App Admin Lastname Line Manager Creation": "id=direct_application_line_manager_last_name",
+  "Build Empire Programmes Nursing Programme":"xpath=//li[text()='BSc (Hons) Nursing  [Diploma to Degree]']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
