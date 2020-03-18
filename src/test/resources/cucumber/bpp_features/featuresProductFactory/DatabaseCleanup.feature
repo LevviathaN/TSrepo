@@ -1,7 +1,7 @@
 @ProductFactoryCleanup @BeforePF
 Feature: Product Factory database cleanup
 
-  #TC-1668 TC-1666
+  #TC-1668, TC-1666, TC-1606
   Scenario: Clean Product Factory Database
     Given I am on "http://ec2-3-10-141-78.eu-west-2.compute.amazonaws.com:7474/" URL
     When I fill the "Product Factory Database Connect URL Field" field with "bolt://ec2-3-10-141-78.eu-west-2.compute.amazonaws.com:7687"
