@@ -533,4 +533,28 @@ public class StepDefinitions extends BasePage {
         Reporter.log("Executing JS code");
         executeJSCode(jsCode, initElementLocator(element));
     }
+
+    /**
+     * Definition to get specific data using REGEX. Required for BE Create New Line Manager workflow
+     *
+     * @param element locator of element you want to check is visible
+     * @param executionContext Name that starts with 'EC_' that is used to store saved text value from element
+     *
+     * @author yzosin
+     */
+    @And("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$")
+    public void i_capture_special_data(String element, String executionContext) {
+        waitForPageToLoad();
+        String value = selectSpecificData(initElementLocator(element));
+        Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
+        if (!executionContext.equals("")) {
+            if (value.equals("")) {
+                Reporter.log("Saving EC key " + executionContext + " with an empty string. No application data found.");
+            } else {
+                Reporter.log("Saving EC key " + executionContext + " = " + value);
+            }
+            ExecutionContextHandler.setExecutionContextValueByKey(executionContext, value);
+        } else
+            Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
+    }
 }

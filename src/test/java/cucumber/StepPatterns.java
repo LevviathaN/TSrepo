@@ -41,7 +41,8 @@ public enum StepPatterns {
     BROWSER_PERFORMS_COMMAND("^Browser performs \"([^\"]*)\" command$"),
     I_SELECT_FROM_ELEMENT_SPECIAL("^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$"),
     I_CAPTURE_DATA("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$"),
-    I_EXECUTE_JS_CODE_FOR_ELEMENT("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$");
+    I_EXECUTE_JS_CODE_FOR_ELEMENT("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$"),
+    I_CAPTURE_SPECIAL_DATA("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$");
 
     private final String pattern;
 

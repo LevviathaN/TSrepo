@@ -1,5 +1,5 @@
 @Reusable
-Feature: Harakirimail
+Feature: Harakirimail, Guerrillamail
 
   Scenario: Harakirimail Mitigating Circustances Reject Validation
     Given I am on "https://harakirimail.com/" URL
@@ -35,3 +35,19 @@ Feature: Harakirimail
     And I click on the "Harakirimail Your MC Outcome Second" element
     And I validate text "CONTAINS=Your application has been rejected" to be displayed for "Harakirimail Validate Letter Body" element
     And I validate text "CONTAINS=Reason Reject" to be displayed for "Harakirimail Validate Letter Body" element
+
+  Scenario: Guerillamail Reset Line Manager Password
+    Given I am on "https://www.guerrillamail.com/" URL
+    Then I click on the "Guerilla Edit" button
+    And I fill the "Guerilla Email Input" field with "EC_LINEMANAGER_EMAIL"
+    Then I click on the "Guerilla Email Set" button
+    And I wait for "10" seconds
+    Given I am on "https://www.guerrillamail.com/" URL
+    Then I click on the "Guerilla Edit" button
+    And I fill the "Guerilla Email Input" field with "EC_LINEMANAGER_EMAIL"
+    Then I click on the "Guerilla Email Set" button
+    And I wait for "10" seconds
+    And Browser performs "Refresh" command
+    And I wait for "2" seconds
+    Then I click on the "Guerilla BPP Email" element
+    Then I capture special data "Guerilla New Line Manager Email" as "EC_RESET_PASSWORD" variable
