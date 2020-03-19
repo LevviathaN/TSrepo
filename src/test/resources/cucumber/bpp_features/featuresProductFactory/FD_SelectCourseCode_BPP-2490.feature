@@ -29,7 +29,7 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
     And I execute "Create Client" reusable step
     And I execute "Create Material" reusable step
 
-  @Positive @P1 @Run #TC-1605
+  @Positive @P1 #TC-1605
   Scenario: Course Page Filters Validation
     Given I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
