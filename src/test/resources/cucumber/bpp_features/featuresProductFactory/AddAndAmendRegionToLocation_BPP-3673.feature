@@ -92,7 +92,7 @@ Feature: Add/Amend Region to Location - BPP-3673
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
     And I click on the "Product Factory Number Of Sessions Edit Button" button
-    And I fill the "Product Factory Number Of Sessions Edit Field" field with "2"
+    And I fill the "Product Factory Number Of Sessions Edit Field" field with "1"
     And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     Then I click on the "Create" "Product Factory button"
@@ -103,7 +103,6 @@ Feature: Add/Amend Region to Location - BPP-3673
     And I click on the "Save" "Product Factory button"
     And I click on the "Activate" "Product Factory button"
     And I click on the "Product Factory Course Instances Arrow Down Icon" element
-    And I click on the "Add Session" "Product Factory button title"
     And I click on the "Product Factory Course Instances Sessions Number of Dates Icon" element
     And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
     And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"

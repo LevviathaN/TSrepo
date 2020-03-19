@@ -145,9 +145,9 @@ public class DriverProvider {
             options.setCapability("browserstack.video", "true");
             options.setCapability("browserstack.networkLogs", "true");
             options.setCapability("build", "automation");
-            options.setCapability("browserstack.local", "true");
+//            options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
-            options.setCapability("browserstack.localIdentifier", "TestAutomation");
+//            options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability("browserstack.timeouts", "{\"implicit\"=>0, \"pageLoad\"=>60000, \"script\"=>60000}");
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);

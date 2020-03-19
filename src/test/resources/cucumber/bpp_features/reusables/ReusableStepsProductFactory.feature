@@ -280,7 +280,7 @@ Feature: Product Factory
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
     And I click on the "Product Factory Number Of Sessions Edit Button" button
-    And I fill the "Product Factory Number Of Sessions Edit Field" field with "2"
+    And I fill the "Product Factory Number Of Sessions Edit Field" field with "1"
     And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     Then I click on the "Create" "Product Factory button"
