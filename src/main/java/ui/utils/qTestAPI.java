@@ -67,7 +67,6 @@ public class qTestAPI {
         Iterator<Map.Entry> itr1 = status.entrySet().iterator();
         while (itr1.hasNext()) {
             Map.Entry pair = itr1.next();
-            System.out.println("itr2: " + pair.getKey() + " : " + pair.getValue());
         }
 
         // getting property values
@@ -80,7 +79,6 @@ public class qTestAPI {
             itr1 = ((Map) itr2.next()).entrySet().iterator();
             while (itr1.hasNext()) {
                 Map.Entry pair = itr1.next();
-                System.out.println("itr2: " + pair.getKey() + " : " + pair.getValue());
             }
         }
 
