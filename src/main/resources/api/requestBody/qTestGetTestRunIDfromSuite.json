@@ -2,21 +2,16 @@
   "properties": [
     {
       "field_id": 9730076,
-      "field_name": "Iterations Status",
-      "field_value": "",
-      "field_value_name": "ErrorInformation"
+      "field_value": "errorInformation"
     },
     {
       "field_id": 9730077,
-      "field_name": "Useful / Additional Information",
-      "field_value": "",
-      "field_value_name": "BrowserInformation"
+      "field_value": "browserInformation"
     }
   ],
   "exe_start_date": "currentDateTime",
   "exe_end_date": "currentDateTime",
   "status": {
-    "links": [],
     "id": "Code",
     "name": "Result"
   },

@@ -1,43 +1,39 @@
 package ui.utils;
 
-import api.RestApiController;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import netscape.javascript.JSObject;
+import org.jooq.tools.json.JSONArray;
+import org.jooq.tools.json.JSONParser;
+import org.jooq.tools.json.ParseException;
+import org.jooq.tools.json.JSONObject;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import ui.utils.bpp.PropertiesHelper;
-
-import java.net.MalformedURLException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 import static io.restassured.RestAssured.given;
 
 public class qTestAPI {
+
     /**@TestRunStatusUpdate method used to update the Test Run status in qTest to Passed or Failed. It has a constructor that contains:
      * @param test - declares the current test name that is finished and should be updated in qTest.
      * @param Result - defines the Passed or Failed status to send through JSON POST request for specific test
      * @param Code - according to qTest API should send 601 - for Passed, 602 for Failed etc.
-     * @param TestRunID - ID of current test that has been finished. This ID is defined by getTestRunIDfromSuite method**/
+     * @param TestRunID - ID of current test that has been finished. This ID is defined by getTestRunIDfromSuite method
+     * @param errorInformation - send error to show in qtest**/
 
-    public static synchronized void TestRunStatusUpdate(String test, String Result, int Code, String TestRunID, String ErrorInformation) throws MalformedURLException {
-
-        String bearerToken;
-        String ProjectID;
-        String BrowserInformation;
+    public static synchronized void TestRunStatusUpdate(String test, String Result, int Code, String TestRunID, String errorInformation) throws IOException, ParseException {
 
         /**This block is created to update Execution History with Browser Name and Version
          * @param browserName - used to get Name of the Current Browser
-         * @param browserVersion - used to get Version of the Current Browser**/
+         * @param browserVersion - used to get Version of the Current Browser
+         * @param browserInformation - Variable to get Browser Type and Version. Currently this information is sent to qTest execution logs to Operating System column**/
 
         String browserName = DriverProvider.getCurrentBrowserName();
         String browserVersion = ((RemoteWebDriver) DriverProvider.getDriver()).getCapabilities().getVersion();
-        BrowserInformation = browserName.toUpperCase() + " " + browserVersion;
+        String browserInformation = browserName.toUpperCase() + " " + browserVersion;
 
         /**This block is created to generate specific data in Date/Time/Time Zone format
          * @param formattedDate - generate current Date in (YYYY-MM-ddThh:mm:ssXXX) format
@@ -48,30 +44,59 @@ public class qTestAPI {
         String formattedDate = ZonedDateTime.now().format(dateFormat);
         String currentDateTime = (formattedDate);
 
-        bearerToken = FileIO.getConfigProperty("QTest_Bearer_token");
-        ProjectID = FileIO.getConfigProperty("QTest_Test_ProjectID");
-
         /**@param bearerToken - is Token of qTest user that should be used to create a GET/POST requests
          * Example - (Bearer #######-####-####-####-########) This Token is located inside Resources -> API & SDK in qTest
-         * @param ProjectID - Declares inside configuration.properties file. This variable is located in the URL of the qTest Web Application.
-         * @param BrowserInformation - Variable to get Browser Type and Version. Currently this information is sent to qTest execution logs to Operating System column**/
+         * @param ProjectID - Declares inside configuration.properties file. This variable is located in the URL of the qTest Web Application.**/
 
+        String bearerToken = FileIO.getConfigProperty("QTest_Bearer_token");
+        String ProjectID = FileIO.getConfigProperty("QTest_Test_ProjectID");
+
+        // request URL
         String baseURI = "https://globalqatest.qtestnet.com/api/v3/projects/" + ProjectID + "/test-runs/" + TestRunID + "/test-logs";
 
-        String requestBody = RestApiController.processProperties("qTestGetTestRunIDfromSuite");
+        // define  json file
+        Object obj = new JSONParser().parse(new FileReader("src/main/resources/api/requestBody/qTestGetTestRunIDfromSuite.json"));
 
-        String replacedBody = requestBody
-                .replace("currentDateTime", currentDateTime)
-                .replace("BrowserInformation",BrowserInformation)
-                .replace("Result", "Passed")
-                .replace("Code", "601");
+        // typecasting obj to JSONObject
+        JSONObject jo = new JSONObject((Map) obj);
+
+        // getting status
+        Map status = ((Map)jo.get("status"));
+
+        // iterating status Map
+        Iterator<Map.Entry> itr1 = status.entrySet().iterator();
+        while (itr1.hasNext()) {
+            Map.Entry pair = itr1.next();
+            System.out.println("itr2: " + pair.getKey() + " : " + pair.getValue());
+        }
+
+        // getting property values
+        JSONArray property = (JSONArray) jo.get("properties");
+
+        // iterating property values
+        Iterator itr2 = property.iterator();
+        while (itr2.hasNext())
+        {
+            itr1 = ((Map) itr2.next()).entrySet().iterator();
+            while (itr1.hasNext()) {
+                Map.Entry pair = itr1.next();
+                System.out.println("itr2: " + pair.getKey() + " : " + pair.getValue());
+            }
+        }
+
+        status.put("name",Result);
+        status.put("id", Code);
+        jo.put("exe_start_date", currentDateTime);
+        jo.put("exe_end_date", currentDateTime);
+        ((JSONObject) property.get(0)).put("field_value", errorInformation);
+        ((JSONObject) property.get(1)).put("field_value", browserInformation);
 
         Response response = given()
                 .header("Authorization", bearerToken)
                 .contentType(ContentType.JSON)
                 .baseUri(baseURI)
                 .when()
-                .body(replacedBody)
+                .body(jo)
                 .post();
 
         if (response.getStatusCode() == 201) {
@@ -95,13 +120,17 @@ public class qTestAPI {
 
     public static synchronized Map<String, String> getTestRunIDfromSuite() {
 
-        String bearerToken;
-        String ProjectID;
-        String TestSuiteID;
+        String TestSuiteID = null;
+        String bearerToken = FileIO.getConfigProperty("QTest_Bearer_token");
+        String ProjectID = FileIO.getConfigProperty("QTest_Test_ProjectID");
 
-        bearerToken = FileIO.getConfigProperty("QTest_Bearer_token");
-        ProjectID = FileIO.getConfigProperty("QTest_Test_ProjectID");
-        TestSuiteID = FileIO.getConfigProperty("QTest_Test_PF_SuiteID");
+        if(System.getProperty("qtestSuite").contains("PF")) {
+            TestSuiteID = FileIO.getConfigProperty("QTest_Test_PF_SuiteID");
+        } else if (System.getProperty("qtestSuite").contains("BE")) {
+            TestSuiteID = FileIO.getConfigProperty("QTest_Test_BE_SuiteID");
+        } else if (System.getProperty("qtestSuite").contains("SF")) {
+            TestSuiteID = FileIO.getConfigProperty("QTest_Test_SF_SuiteID");
+        }
 
         String baseURI = "https://globalqatest.qtestnet.com/api/v3/projects/" + ProjectID + "/test-suites/" + TestSuiteID + "/test-runs";
         Response response = given()
@@ -114,6 +143,7 @@ public class qTestAPI {
         List<String> id = jsonPathEvaluator.get("id");
         List<String> name = jsonPathEvaluator.get("name");
         Map<String,String> map = new LinkedHashMap<String, String>();
+
 
         for (int i=0; i<id.size(); i++) {
             map.put(name.get(i),String.valueOf(id.get(i)));

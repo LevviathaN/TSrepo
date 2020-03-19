@@ -1,6 +1,7 @@
 package ui.utils;
 
 import api.RestApiController;
+import org.jooq.tools.json.ParseException;
 import org.jsoup.Connection;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -67,16 +68,25 @@ public class BaseUITest {
     }
 
     @AfterMethod
-    public void endTest(ITestResult testResult) {
+    public synchronized void endTest(ITestResult testResult) throws IOException, ParseException {
 
         // close reporter
         Reporter.stopReporting(testResult);
         try {
             Reporter.writeToFile();
             Reporter.saveAllECToFile();
-//            qTestAPI.getTestRunIDfromSuite().containsKey(Reporter.getCurrentTestName());
-           String qtestID = qTestAPI.getTestRunIDfromSuite().get(Reporter.getCurrentTestName());
-              qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Passed", 601, qtestID, "");
+            if (System.getProperties().containsKey("qtest") && System.getProperty("qtest").equalsIgnoreCase("TRUE")) {
+                if (qTestAPI.getTestRunIDfromSuite().containsKey(Reporter.getCurrentTestName())) {
+                    String qtestID = qTestAPI.getTestRunIDfromSuite().get(Reporter.getCurrentTestName());
+                    if (testResult.toString().contains("SUCCESS")){
+                        BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");
+                        qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Passed", 601, qtestID, "");
+                    } else {
+                        BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " FAILED");
+                        qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Failed", 602, qtestID, testResult.getThrowable().toString());
+                    }
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
