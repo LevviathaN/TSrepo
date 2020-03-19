@@ -71,7 +71,7 @@ Feature: BuildEmpire
     Then I click on the "Submit" "button"
 
   Scenario: Create Mitigating Circumstances Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Mitigating Circumstances" "Build Empire application type"
     And I click on the "Direct App Create Application" button
@@ -289,7 +289,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App My Approvals Tab" link by JS
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -356,6 +356,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
@@ -431,7 +433,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
@@ -519,7 +521,7 @@ Feature: BuildEmpire
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Programmes" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
-    Then I click on the "BSc (Hons) Nursing  [Diploma to Degree]" "Build Empire application type"
+    Then I click on the "Build Empire Programmes Nursing Programme" element
     And I click on the "Direct App Location Dropdown" element
     Then I click on the "Online GDL" "Build Empire application type"
     And I click on the "Direct App Start Date Application Dropdown" element
@@ -564,6 +566,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     Then I click on the "Direct App Scholarship Add" button
@@ -646,7 +650,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Line Manager End Point Assessment" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -668,7 +672,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App Admin Line Manager Edit" button
     And I select "Automation" from "Direct App Admin Company Dropdown" element
     And I click on the "Direct App Admin Line Manager Dropdown" button
-    And I fill the "Direct App Admin Attach Line Manger Text Field" field with "2917uk7sr@harakirimail.com"
+    And I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"
     And I wait for "1" seconds
     And I click on the "Automation Line Manager 1" "Build Empire line manager option"
     Then I click on the "Attach" "button"
@@ -786,6 +790,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
@@ -863,7 +869,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
@@ -898,7 +904,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
@@ -954,6 +960,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -1055,6 +1063,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     Then I click on the "Direct App Scholarship Add" button
@@ -1131,7 +1141,7 @@ Feature: BuildEmpire
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I fill the "Direct Apps Line Manager End Point Assessment Organisation" field with "AutomationTesting"
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -1148,3 +1158,14 @@ Feature: BuildEmpire
     And I click on the "Direct App Save Review And Back" button
     And I click on the "Reject Application" button
     And I click on the "OK" "button"
+
+  Scenario: Create Automation Line Manager
+    Given I click on the "Direct App Admin Create Line Manager" button
+    And I click on the "Direct App Admin Create Line Manager" button
+    And I click on the "Direct App Admin Company Dropdown For Line Manager Creation" button
+    Then I click on the "Automation" "Build Empire application type"
+    Then I remember "Auto[EMAIL-HARAKIRI]" text as "EC_LINEMANAGER_EMAIL" variable
+    And I fill the "Direct App Admin Email Line Manager Creation" field with "EC_LINEMANAGER_EMAIL"
+    And I fill the "Direct App Admin Firstname Line Manager Creation" field with "AutoFirst"
+    And I fill the "Direct App Admin Lastname Line Manager Creation" field with "AutoLast"
+    Then I click on the "Create" "button"

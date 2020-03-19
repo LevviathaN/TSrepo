@@ -130,6 +130,17 @@ public class BasePage {
         }
     }
 
+    /**
+     * Returns number of elements, present on the page by given locator
+     *
+     * @param by locator of element
+     *
+     * @return int
+     */
+    public int numberOfElements(By by) {
+        return driver().findElements(by).size();
+    }
+
     //________________________________________________Basic Actions___________________________________________________
 
     public void reloadPage() {
@@ -165,8 +176,13 @@ public class BasePage {
     public void setText(By element, String value) {
         if (value != null) {
             BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
-            clearEntireField(element);
-            findElement(element).sendKeys(value);
+            try {
+                clearEntireField(element);
+                findElement(element).sendKeys(value);
+            } catch (ElementNotInteractableException | StaleElementReferenceException e) {
+                new Actions(driver()).sendKeys(value).perform();
+            }
+
         }
     }
 
@@ -203,12 +219,13 @@ public class BasePage {
                     clickOnElement(element,
                             UiHandlers.PF_SPINNER_HANDLER,
                             UiHandlers.ACCEPT_ALERT,
-                            UiHandlers.PF_SCROLL_HANDLER,
-                            UiHandlers.SF_CLICK_HANDLER,
-                            UiHandlers.WAIT_HANDLER,
-                            UiHandlers.DEFAULT_HANDLER);
-                    IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
-                }
+                            UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                        UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.SF_CLICK_HANDLER,
+                        UiHandlers.WAIT_HANDLER,
+                        UiHandlers.DEFAULT_HANDLER);
+                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+            }
 
 //            textField.click();
                 size = textField.getAttribute("value").length();
@@ -216,18 +233,20 @@ public class BasePage {
                     clickOnElement(element,
                             UiHandlers.PF_SPINNER_HANDLER,
                             UiHandlers.ACCEPT_ALERT,
-                            UiHandlers.PF_SCROLL_HANDLER,
-                            UiHandlers.SF_CLICK_HANDLER,
-                            UiHandlers.WAIT_HANDLER,
-                            UiHandlers.DEFAULT_HANDLER);
-                    IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
-                }
+                            UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                        UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.SF_CLICK_HANDLER,
+                        UiHandlers.WAIT_HANDLER,
+                        UiHandlers.DEFAULT_HANDLER);
+                IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+            }
 
             } catch (InvalidElementStateException e) {
                 textField.sendKeys("");
             }
         }
     }
+
     /**
      * Action to select a value from a dropdown
      *
@@ -421,9 +440,25 @@ public class BasePage {
         }
     }
 
+    /**
+     * Method to click on element with JS
+     *
+     * @param element locator of element to click on
+     */
     public static void clickWithJS(By element){
         JavascriptExecutor executor = (JavascriptExecutor)driver();
         executor.executeScript("arguments[0].click();", driver().findElement(element));
+    }
+
+    /**
+     * Method to execute some JS code on desired element
+     *
+     * @param element locator of element to apply JS code for
+     * @param jsCode JS code to execute
+     */
+    public void executeJSCode(String jsCode, By element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript(jsCode, driver().findElement(element));
     }
 
     /**
@@ -472,6 +507,7 @@ public class BasePage {
             return driver().findElement(element);
         }
     }
+
     /**
      * Method to find elements by locator
      *
@@ -565,11 +601,38 @@ public class BasePage {
      * @param shouldBeChecked = boolean to set a statement to the checkbox
      * @param element By locator of checkbox
      */
+    //method does not work properly
     public void checkCheckbox(By element, boolean shouldBeChecked){
         WebElement checkbox = findElement(element);
         if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
             BPPLogManager.getLogger().info("Checking the checkbox " + checkbox);
             checkbox.click();
+        }
+    }
+
+    /**
+     * Method to check or uncheck the checkbox
+     * If shouldBeChecked is true, but the checkbox is unchecked, than this method checks the checkbox
+     * Vice versa.
+     *
+     * @param shouldBeChecked = boolean to set a statement to the checkbox
+     * @param element By locator of checkbox
+     * @param handlers code from UiHandlers enum, that will be executed, when exception occurs
+     */
+    public void checkCheckbox(By element, boolean shouldBeChecked, UiHandlers... handlers){
+        WebElement checkbox = findElement(element);
+        boolean toClick = (!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked);
+        if(toClick){
+            BPPLogManager.getLogger().info("Checking the checkbox " + checkbox);
+            try{
+                checkbox.click();
+                repeatAction = true;
+            } catch (Exception e) {
+                for(UiHandlers handler : handlers){
+                    handler.getHandler().handle(element, e);
+                }
+                if (repeatAction) checkCheckbox(element, shouldBeChecked, handlers);
+            }
         }
     }
 

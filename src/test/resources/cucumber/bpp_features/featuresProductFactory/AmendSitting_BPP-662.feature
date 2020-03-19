@@ -15,7 +15,7 @@ Feature: Amend Reference Data - Sitting - BPP-662
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
     When I click on the "EC_SITTING_NAME" "Product Factory edit button"
-    And I set "SittingName[####]" text to the "Name" "Product Factory text field"
+    And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
     And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
@@ -33,7 +33,7 @@ Feature: Amend Reference Data - Sitting - BPP-662
   @Negative @P2 @NoQTest
   Scenario: Amend a Sitting Where Name Already Exists
     Given I execute "Create Sitting" reusable step replacing some steps
-      |4|I set "SittingNameNew[####]" text to the "Name" "Product Factory text field"|
+      |4|I set "SittingNameNew[######]" text to the "Name" "Product Factory text field"|
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Sittings" "Product Factory navigation sub item"
     When I click on the "EC_SITTING_NAME" "Product Factory edit button"

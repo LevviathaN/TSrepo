@@ -40,7 +40,10 @@ public enum StepPatterns {
     I_CLICK_WITH_JS("^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$"),
     BROWSER_PERFORMS_COMMAND("^Browser performs \"([^\"]*)\" command$"),
     I_SELECT_FROM_ELEMENT_SPECIAL("^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$"),
-    I_CAPTURE_DATA("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$");
+    I_CAPTURE_DATA("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$"),
+    I_EXECUTE_JS_CODE_FOR_ELEMENT("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$"),
+    I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL("^I should see \"([^\"]*)\" \"([^\"]*)\" in quantity of \"([^\"]*)\"$"),
+    I_SHOULD_SEE_NUMBER_OF_ELEMENTS("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$");
 
     private final String pattern;
 

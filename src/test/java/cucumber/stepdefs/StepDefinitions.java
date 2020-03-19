@@ -6,6 +6,7 @@ import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.NoSuchWindowException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
@@ -67,6 +68,7 @@ public class StepDefinitions extends BasePage {
         clickOnElement(initElementLocator(element),
                 UiHandlers.PF_SPINNER_HANDLER,
                 UiHandlers.ACCEPT_ALERT,
+                UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                 UiHandlers.PF_SCROLL_HANDLER,
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,
@@ -333,6 +335,26 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
+     * Definition to verify that a certain number of elements are present on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param element xpath of needed element
+     * @param expectedQuantity expected quantity of elements to be present on the page
+     */
+    @When("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$")
+    public void i_should_see_number_of_elements(String element, String expectedQuantity) {
+        Reporter.log("Executing step: I should see " + expectedQuantity + " '" + element + "' elements");
+        int actualNumberOfElements = numberOfElements(initElementLocator(element));
+        if (expectedQuantity.contains("more than")) {
+            Assert.assertTrue(actualNumberOfElements > Integer.parseInt(expectedQuantity.substring(10)));
+        } else if (expectedQuantity.contains("less than")) {
+            Assert.assertTrue(actualNumberOfElements < Integer.parseInt(expectedQuantity.substring(10)));
+        } else {
+            Assert.assertTrue(expectedQuantity.equals(String.valueOf(actualNumberOfElements)));
+        }
+    }
+
+    /**
      * Action to upload a file
      *
      * @param element:  locator type to be used to locate the element for uploading a file
@@ -516,5 +538,19 @@ public class StepDefinitions extends BasePage {
             ExecutionContextHandler.setExecutionContextValueByKey(executionContext, value);
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
+    }
+
+    /**
+     * Definition to execute JS code for web element
+     *
+     * @param element locator of element you want to execute JS code for
+     * @param jsCode JS code to execute
+     *
+     * @author Ruslan Levytskyi
+     */
+    @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
+    public void i_execute_js_code_for_element(String jsCode, String element) {
+        Reporter.log("Executing JS code");
+        executeJSCode(jsCode, initElementLocator(element));
     }
 }

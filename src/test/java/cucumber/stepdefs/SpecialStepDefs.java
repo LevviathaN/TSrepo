@@ -32,6 +32,7 @@ public class SpecialStepDefs extends BasePage {
             clickOnElement(By.xpath(resultingXpath),
                     UiHandlers.PF_SPINNER_HANDLER,
                     UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                     UiHandlers.PF_SCROLL_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
@@ -64,6 +65,7 @@ public class SpecialStepDefs extends BasePage {
                 clickOnElement(By.xpath(resultingXpath),
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.ACCEPT_ALERT,
+                        UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                         UiHandlers.PF_SPINNER_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
@@ -126,6 +128,36 @@ public class SpecialStepDefs extends BasePage {
     }
 
     /**
+     * Definition to verify that a certain number of elements are present on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param elementLocator name or value of needed element
+     * @param elementType xpath template of needed element
+     * @param expectedQuantity expected quantity of elements to be present on the page
+     */
+    @When("^I should see \"([^\"]*)\" \"([^\"]*)\" in quantity of \"([^\"]*)\"$")
+    public void i_should_see_number_of_elements_special(String elementLocator, String elementType, String expectedQuantity) {
+        Reporter.log("Executing step: I should see the '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
+                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            BPPLogManager.getLogger().info("Validating the number of elements is " + expectedQuantity);
+            Assert.assertTrue(expectedQuantity.equals(numberOfElements(By.xpath(resultingXpath))));
+            int actualNumberOfElements = numberOfElements(By.xpath(resultingXpath));
+            if (expectedQuantity.contains("more than")) {
+                Assert.assertTrue(actualNumberOfElements > Integer.parseInt(expectedQuantity.substring(10)));
+            } else if (expectedQuantity.contains("less than")) {
+                Assert.assertTrue(actualNumberOfElements < Integer.parseInt(expectedQuantity.substring(10)));
+            } else {
+                Assert.assertTrue(expectedQuantity.equals(String.valueOf(actualNumberOfElements)));
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
      * Definition to check invisibility of the element
      *
      * @param elementLocator name or value of needed element
@@ -167,7 +199,8 @@ public class SpecialStepDefs extends BasePage {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            Assert.assertTrue(findElement(By.xpath(resultingXpath)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
+            String actualAttributeValue = findElement(By.xpath(resultingXpath)).getAttribute(attributeName);
+            Assert.assertTrue(actualAttributeValue.equalsIgnoreCase(TestParametersController.checkIfSpecialParameter(attributeValue)));
         } else {
             Reporter.fail("No such locator template key");
         }
@@ -191,7 +224,14 @@ public class SpecialStepDefs extends BasePage {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-            checkCheckbox(By.xpath(resultingXpath),state);
+            checkCheckbox(By.xpath(resultingXpath),state,
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
             }

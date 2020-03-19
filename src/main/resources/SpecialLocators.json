@@ -4,6 +4,7 @@
   "text": "//*[text()='PARAMETER']",
   "message": "//*[text()='PARAMETER']",
   "option": "//*[text()='PARAMETER']",
+  "element": "//*[text()='PARAMETER']",
 
   "Product Factory navigation item": "//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
@@ -16,7 +17,7 @@
   "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
   "Product Factory dropdown option": "//li[text()='PARAMETER']",
   "Product Factory dialog checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]",
-  "Product Factory checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]",
+  "Product Factory checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]|//span[text()='PARAMETER']/preceding-sibling::span/span[1]",
   "Product Factory Link Levels button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Link Levels')]",
   "Product Factory Change Body button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
   "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]",

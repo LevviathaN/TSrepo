@@ -1,7 +1,7 @@
 @DirectApps @UniversityDegreeApprenticeships
 Feature: University Degree Apprenticeships
 
-  @Positive @P1 @AddExistingLineManagerToExistingStudent
+  @Positive @AddExistingLineManagerToExistingStudent
   Scenario: Create University Degree Apprenticeships Add Existing Line Manager To Existing Student
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "autojaredgartred@harakirimail.com" text to the "Email" "Build Empire text field"|

@@ -20,9 +20,7 @@ Feature: CSA Workflow Alerts
     And I click on the "Save" "Product Factory button title"
     And I wait for "2" seconds
     Given I am on "MD_COMMON_LINKS_YAHOOMAILURL" URL
-    And I click on the "Yahoo Next" button by JS
-    And I fill the "Yahoo Password" field with "MD_COMMON_CREDENTIALS_YAHOOEMAILCSAPASSWORD"
-    And I click on the "Yahoo Sign In" button by JS
+    And I wait for "1" seconds
     And I fill the "Yahoo Search Email" field with "EC_CASENUMBER"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Yahoo Search Email"
     Then I click on the "Yahoo First Email Link" element
@@ -53,9 +51,7 @@ Feature: CSA Workflow Alerts
     And I click on the "Save" "Product Factory button title"
     And I wait for "2" seconds
     Given I am on "MD_COMMON_LINKS_YAHOOMAILURL" URL
-    And I click on the "Yahoo Next" button by JS
-    And I fill the "Yahoo Password" field with "MD_COMMON_CREDENTIALS_YAHOOEMAILCSAPASSWORD"
-    And I click on the "Yahoo Sign In" button by JS
+    And I wait for "1" seconds
     And I fill the "Yahoo Search Email" field with "EC_CASENUMBER"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Yahoo Search Email"
     Then I click on the "Yahoo First Email Link" element

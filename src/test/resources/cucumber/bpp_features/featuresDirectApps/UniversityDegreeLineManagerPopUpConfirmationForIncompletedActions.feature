@@ -4,7 +4,7 @@ Feature: BPP University Degree Line Manager Pop up confirmation for application 
   Background:
     Given I execute "Register New Student Account" reusable step
 
-  @Positive #TC-1574
+  @Positive @Popup #TC-1574
   Scenario: BPP University Degree Line Manager Pop up confirmation for application without completed actions
     When I execute "Create University Degree Apprenticeships Application" reusable step
     And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step
@@ -25,7 +25,7 @@ Feature: BPP University Degree Line Manager Pop up confirmation for application 
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I wait for "2" seconds
-    And I click on the "Direct App Line Manager Agreee To Support Amount" element
+    And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button

@@ -15,7 +15,7 @@ Feature: Amend Reference Data - Course Type - BPP-661
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     When I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
-    And I set "CourseTypeDescription[####]" text to the "Description" "Product Factory text field"
+    And I set "CourseTypeDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
 
@@ -29,7 +29,7 @@ Feature: Amend Reference Data - Course Type - BPP-661
   @Negative @P2 #TC-794
   Scenario: Amend a Course Type Where Short Name Already Exists
     Given I execute "Create Course Type" reusable step replacing some steps
-      |4|I set "CourseTypeDescriptionNew[####]" text to the "Description" "Product Factory text field"|
+      |4|I set "CourseTypeDescriptionNew[######]" text to the "Description" "Product Factory text field"|
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     When I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
