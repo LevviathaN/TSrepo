@@ -64,6 +64,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(I_CAPTURE_DATA.getPattern(),() -> stepDefs.i_capture_text_data_as_variable(arg1,arg2));
         stepDefsMap.put(I_EXECUTE_JS_CODE_FOR_ELEMENT.getPattern(),() -> stepDefs.i_execute_js_code_for_element(arg1,arg2));
         stepDefsMap.put(I_SHOULD_SEE_NUMBER_OF_ELEMENTS.getPattern(),() -> stepDefs.i_should_see_number_of_elements(arg1, arg2));
+        stepDefsMap.put(I_CAPTURE_SPECIAL_DATA.getPattern(), () -> stepDefs.i_capture_special_data(arg1, arg2));
 
         //Special stepdefs
         stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
