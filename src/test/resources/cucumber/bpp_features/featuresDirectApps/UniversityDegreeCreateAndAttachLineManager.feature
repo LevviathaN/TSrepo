@@ -21,7 +21,6 @@ Feature: Submit University Degree Apprenticeships Application With New Line Mana
     And I set "Welcome2@#!Welc" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
     And I should see the "Direct App My Approvals Tab" element
-    #Then I execute "Line Manager Review University Degree Apprenticeships Scotland" reusable step
     And I execute "Line Manager Review University Degree Apprenticeships Scotland" reusable step replacing some steps
       | 11 | I wait for "2" seconds |
     And I execute "Log Out from Hub Student" reusable step
