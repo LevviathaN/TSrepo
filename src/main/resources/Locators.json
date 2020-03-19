@@ -224,10 +224,14 @@
   "Direct Apps Incomplete Actions Pop up message": "xpath=//div[@class='box-content']/p",
   "Direct App Admin Create Line Manager": "xpath=//button[contains(text(), 'Create line manager')]",
   "Direct App Admin Company Dropdown For Line Manager Creation": "xpath=//div[@id='create-line-manager-modal']//span[@aria-labelledby='select2-direct_application_company_id-container']",
+  "Direct App Admin Company Text Field Line Manager Creation": "xpath=//input[@class='select2-search__field']",
   "Direct App Admin Email Line Manager Creation": "id=direct_application_line_manager_email",
-  "Direct App Admin Firstname Line Manager Creation": "id=id=direct_application_line_manager_first_name",
+  "Direct App Admin Firstname Line Manager Creation": "id=direct_application_line_manager_first_name",
   "Direct App Admin Lastname Line Manager Creation": "id=direct_application_line_manager_last_name",
   "Build Empire Programmes Nursing Programme":"xpath=//li[text()='BSc (Hons) Nursing  [Diploma to Degree]']",
+  "Direct App Reset New Password": "xpath=//form/div[1]/div[1]//input",
+  "Direct App Confirm New Password": "xpath=//input[@placeholder='confirm your new password']",
+  "Direct App Reset Password Button": "xpath=//button",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -352,5 +356,14 @@
   "Product Factory Database Password Field": "xpath=//input[@data-testid='password']",
   "Product Factory Database Connect Button": "xpath=//button[@data-testid='connect']",
   "Product Factory Database Query Field": "xpath=//div[@class='CodeMirror-code']//pre",
-  "Product Factory Database Submit Query Button": "xpath=//span[@data-testid='submitQuery']"
+  "Product Factory Database Submit Query Button": "xpath=//span[@data-testid='submitQuery']",
+
+  "Yopmail Search Field": "xpath=//td[@class='nw']/input[2]",
+  "Yopmail Check Inbox": "xpath=//input[@value='Check Inbox']",
+  "Yopmail Frame": "xpath=//iframe[@id='ifmail']",
+  "Guerilla Edit": "xpath=//span[@class='strong']/span",
+  "Guerilla Email Input": "xpath=//span[@class='strong']/span/input",
+  "Guerilla Email Set": "xpath=//span[@class='strong']//button[1]",
+  "Guerilla BPP Email": "xpath=//tbody[@id='email_list']//td[contains(.,'no-reply@staging.bppdigital.buildempire.co.uk ')]",
+  "Guerilla New Line Manager Email": "xpath=//div[@class='email_body']|https:\\/\\/bpp-stage.eu.auth0.com\\/lo\\/reset.+[aA-zZ0-9]\\#"
 }

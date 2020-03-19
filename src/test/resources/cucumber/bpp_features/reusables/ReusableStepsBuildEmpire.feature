@@ -1160,12 +1160,20 @@ Feature: BuildEmpire
     And I click on the "OK" "button"
 
   Scenario: Create Automation Line Manager
-    Given I click on the "Direct App Admin Create Line Manager" button
     And I click on the "Direct App Admin Create Line Manager" button
     And I click on the "Direct App Admin Company Dropdown For Line Manager Creation" button
+    And I wait for "1" seconds
+    And I fill the "Direct App Admin Company Text Field Line Manager Creation" field with "Automation"
     Then I click on the "Automation" "Build Empire application type"
-    Then I remember "Auto[EMAIL-HARAKIRI]" text as "EC_LINEMANAGER_EMAIL" variable
+    Then I remember "Email[#####]/@/guerrillamail.info" text as "EC_LINEMANAGER_EMAIL" variable
     And I fill the "Direct App Admin Email Line Manager Creation" field with "EC_LINEMANAGER_EMAIL"
     And I fill the "Direct App Admin Firstname Line Manager Creation" field with "AutoFirst"
     And I fill the "Direct App Admin Lastname Line Manager Creation" field with "AutoLast"
     Then I click on the "Create" "button"
+
+  Scenario: Reset Line Manager Password
+    Given I am on "EC_RESET_PASSWORD" URL
+    And I fill the "Direct App Reset New Password" field with "Welcome2@#!Welc"
+    And I fill the "Direct App Confirm New Password" field with "Welcome2@#!Welc"
+    Then I click on the "Direct App Reset Password Button" button
+    And I wait for "1" seconds
