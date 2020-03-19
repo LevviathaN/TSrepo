@@ -50,6 +50,13 @@ Feature: Financial Dimension - Select Material Code - Initial Selection - BPP-24
     When I click on the "Clear Filters" "Product Factory button"
     Then Attribute "value" of "Sitting" "Product Factory text field" should have value ""
 
+    And I set "EC_ISBN" text to the "ISBN" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    Then I should see the "EC_ISBN" element
+    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    When I click on the "Clear Filters" "Product Factory button"
+    Then Attribute "value" of "ISBN" "Product Factory text field" should have value ""
+
     When I click on the "Generate Material Report" "Product Factory button"
     And I click on the "Click here to download the report" "button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
