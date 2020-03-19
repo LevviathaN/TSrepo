@@ -50,7 +50,6 @@ public class TestParametersController {
     private static final String KEYWORD_NAME_PREFIX = "KW_AUTO_";
     private static final String EXECUTION_CONTEXT_PREFIX = "EC_";
     private static final String KEYWORD_NAME_TO_SKIP = "KW_AUTO_SELECT";
-    private static final String KEYWORD_RUT = "KW_AUTO_RUT";
     private static final String KEYWORD_SF_DATE = "KW_AUTO_SFDATE";
 
     /**
@@ -167,7 +166,7 @@ public class TestParametersController {
             }
 
             if (parameter.equals(KEYWORD_SF_DATE)) {
-                return String.valueOf(KeywordsHandler.salesForceDateAPIdateFormat());
+                return KeywordsHandler.salesForceDateAPIdateFormat();
             }
 
             //split parameter into two parts: static text, and KW_ value itself
