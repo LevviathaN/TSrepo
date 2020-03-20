@@ -1177,3 +1177,52 @@ Feature: BuildEmpire
     And I fill the "Direct App Confirm New Password" field with "Welcome2@#!Welc"
     Then I click on the "Direct App Reset Password Button" button
     And I wait for "1" seconds
+
+  Scenario: Create Channel Islands Mk2 Application
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I wait for "2" seconds
+    And I click on the "Direct App Create Application" button
+
+  Scenario: Complete Channel Islands Mk2 Application
+    Given I click on the "Direct App Start Application" button
+    And I click on the " Personal details" "Build Empire application section"
+    And I set "EC_AUTO_FIRSTNAME" text to the "Forenames" "Build Empire text field by title"
+    And I set "EC_AUTO_LASTNAME" text to the "Family name" "Build Empire text field by title"
+    And I set "[DOB-21]" text to the "Date of Birth" "Build Empire text field by title"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App DOB"
+    And I set "EC_PHONE" text to the "Phone number" "Build Empire text field by title"
+    And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
+    And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
+    And I set "80004" text to the "Postcode" "Build Empire text field by title"
+    And I set "London" text to the "Town/City*" "Build Empire text field"
+    And I click on the "Country*" "Build Empire dropdown"
+    And I click on the "United Kingdom" "Build Empire dropdown option"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Payment Employer Funded" button
+    And I wait for "2" seconds
+    And I fill the "Direct App Channel Islands Phone Training Manager" field with "EC_PHONE"
+    And I set "AutoTest" text to the "First name" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "organisation/company" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "Surname" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "Purchase" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "City" "Build Empire Channel Islands text field"
+    And I set "12345" text to the "Postcode" "Build Empire Channel Islands text field"
+    And I click on the "Direct App Channel Islands Country Dropdown" button
+    And I click on the "Direct App Country Dropdown UK Option" button
+    Then I remember "e-mail[#####]/@/guerrillamail.info" text as "EC_LINEMANAGER_EMAIL" variable
+    And I fill the "Direct App Channel Islands Email Training Manager" field with "EC_LINEMANAGER_EMAIL"
+    And I fill the "Direct App Channel Islands Address Training Manager" field with "Simple Test 1"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Channel Islands Compliance" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Save And Return" button
+
+    Scenario: Approve Channel Isalnds Application as Training Manager
+      And I click on the "Direct App My Approvals Tab" button by JS
+      And I click on the "Approve" "button"
+      And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
+      And I click on the "Direct App Channel Islands Training Manager OK" button
+      And I wait for "2" seconds
+      Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Channel Islands Accepted Applciation" element

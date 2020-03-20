@@ -232,6 +232,15 @@
   "Direct App Reset New Password": "xpath=//form/div[1]/div[1]//input",
   "Direct App Confirm New Password": "xpath=//input[@placeholder='confirm your new password']",
   "Direct App Reset Password Button": "xpath=//button",
+  "Direct App Channel Islands Compliance": "xpath=//label[contains(text(),'acknowledge')]/input",
+  "Direct App Payment Employer Funded": "xpath=//label[normalize-space()='Employer Funded']",
+  "Direct App Channel Islands Address Training Manager": "xpath=//label[contains(text(), 'Address')]/following-sibling::div/div/textarea",
+  "Direct App Channel Islands Email Training Manager": "xpath=//label/following-sibling::input",
+  "Direct App Channel Islands Phone Training Manager": "xpath=//label[contains(text(), 'Telephone')]/following-sibling::div/div/div/input",
+  "Direct App Channel Islands Country Dropdown": "xpath=//label[contains(.,'Country')]//following-sibling::div//span[2]",
+  "Direct App Channel Islands Training Manager Reason": "xpath=//div[@class='confirm-dialog-body']/textarea",
+  "Direct App Channel Islands Training Manager OK": "xpath=//div[@class='confirm-dialog-body']//button[text()='OK']",
+  "Direct App Channel Islands Accepted Applciation": "xpath=//div[@class='confirm-dialog-body']/div[1]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -246,6 +255,7 @@
   "Harakirimail Your MC Outcome": "xpath=//tbody[@id='mail_list_body']/tr[3]/td[normalize-space()='Your Mitigating Circumstances application outcome']",
   "Harakirimail Your MC Accepted": "xpath=//tbody[@id='mail_list_body']/tr[2]/td[normalize-space()='Your Mitigating Circumstances application has been accepted']",
   "Harakirimail Your MC Outcome Second": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']",
+  "Harakirimail First Email": "css=tbody#mail_list_body>tr:nth-child(1)>td:nth-child(2)>a",
 
   "BPP Digital Find a Course Search Field": "xpath=//input[@placeholder='Find a course']",
   "BPP Digital Find a Course Search Field Total Results": "xpath=//p[@class='total-results']",
