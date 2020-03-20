@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.Matchers.*;
+import static ui.utils.bpp.TestParametersController.initElementByLocator;
+
 /**
  * <p> Base class for all page objects.
  * A class to store Selenium-specific operations </p>.
@@ -128,6 +130,17 @@ public class BasePage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    /**
+     * Returns number of elements, present on the page by given locator
+     *
+     * @param by locator of element
+     *
+     * @return int
+     */
+    public int numberOfElements(By by) {
+        return driver().findElements(by).size();
     }
 
     //________________________________________________Basic Actions___________________________________________________
@@ -891,5 +904,33 @@ public class BasePage {
 
         Reporter.log("Expected:" + alertMsg + " popup appeared");
         jsalert.accept();
+    }
+
+    /**
+     * Used to get specific data using Regular Expressions
+     *
+     * @param locator: locator type to be used to locate the element
+     */
+    public String selectSpecificData(By locator) {
+
+        String udatedLocator = locator.toString();
+        String[] decomposedLocator = udatedLocator.split("\\|");
+        By element = By.xpath(decomposedLocator[0].substring(10));
+        WebElement webelement = driver().findElement(element);
+        String data;
+
+        try {
+            data = webelement.getText().trim();
+        } catch (Exception e) {
+            return "";
+        }
+
+        String regexSuitableLocator = decomposedLocator[1].replace("\\", "");
+        for (String singleElement : data.split(" ")) {
+            if (singleElement.matches(regexSuitableLocator)) {
+                return singleElement;
+            }
+        }
+        throw new NotFoundException("Requested element was not found by " + regexSuitableLocator);
     }
 }

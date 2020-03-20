@@ -4,6 +4,7 @@
   "text": "//*[text()='PARAMETER']",
   "message": "//*[text()='PARAMETER']",
   "option": "//*[text()='PARAMETER']",
+  "element": "//*[text()='PARAMETER']",
 
   "Product Factory navigation item": "//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
@@ -50,6 +51,7 @@
   "Build Empire link": "//a[normalize-space()='PARAMETER']",
   "Build Empire Downloaded Application Documents Title name": "//p[@class='file-name' and @title='PARAMETER']",
   "Build Empire Delete Downloaded Application Document Title by name": "(//p[@class='file-name' and @title='PARAMETER']/following::span[@class='bppicon icon-cancel'])[1]",
+  "Build Empire Channel Islands text field": "//label[contains(text(), 'PARAMETER')]/following-sibling::div/div/input",
 
   "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",

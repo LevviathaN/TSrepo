@@ -4,7 +4,7 @@ Feature: BPP University Degree Line Manager Pop up confirmation for application 
   Background:
     Given I execute "Register New Student Account" reusable step
 
-  @Positive #TC-1574
+  @Positive @Popup #TC-1574
   Scenario: BPP University Degree Line Manager Pop up confirmation for application without completed actions
     When I execute "Create University Degree Apprenticeships Application" reusable step
     And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step

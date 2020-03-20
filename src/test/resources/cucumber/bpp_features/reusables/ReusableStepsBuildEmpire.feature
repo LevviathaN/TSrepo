@@ -71,7 +71,7 @@ Feature: BuildEmpire
     Then I click on the "Submit" "button"
 
   Scenario: Create Mitigating Circumstances Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Mitigating Circumstances" "Build Empire application type"
     And I click on the "Direct App Create Application" button
@@ -356,6 +356,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
@@ -519,7 +521,7 @@ Feature: BuildEmpire
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Programmes" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
-    Then I click on the "BSc (Hons) Nursing  [Diploma to Degree]" "Build Empire application type"
+    Then I click on the "Build Empire Programmes Nursing Programme" element
     And I click on the "Direct App Location Dropdown" element
     Then I click on the "Online GDL" "Build Empire application type"
     And I click on the "Direct App Start Date Application Dropdown" element
@@ -564,6 +566,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     Then I click on the "Direct App Scholarship Add" button
@@ -668,7 +672,7 @@ Feature: BuildEmpire
     Given I click on the "Direct App Admin Line Manager Edit" button
     And I select "Automation" from "Direct App Admin Company Dropdown" element
     And I click on the "Direct App Admin Line Manager Dropdown" button
-    And I fill the "Direct App Admin Attach Line Manger Text Field" field with "2917uk7sr@harakirimail.com"
+    And I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"
     And I wait for "1" seconds
     And I click on the "Automation Line Manager 1" "Build Empire line manager option"
     Then I click on the "Attach" "button"
@@ -786,6 +790,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
@@ -954,6 +960,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -1055,6 +1063,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     Then I click on the "Direct App Scholarship Add" button
@@ -1148,3 +1158,71 @@ Feature: BuildEmpire
     And I click on the "Direct App Save Review And Back" button
     And I click on the "Reject Application" button
     And I click on the "OK" "button"
+
+  Scenario: Create Automation Line Manager
+    And I click on the "Direct App Admin Create Line Manager" button
+    And I click on the "Direct App Admin Company Dropdown For Line Manager Creation" button
+    And I wait for "1" seconds
+    And I fill the "Direct App Admin Company Text Field Line Manager Creation" field with "Automation"
+    Then I click on the "Automation" "Build Empire application type"
+    Then I remember "Email[#####]/@/guerrillamail.info" text as "EC_LINEMANAGER_EMAIL" variable
+    And I fill the "Direct App Admin Email Line Manager Creation" field with "EC_LINEMANAGER_EMAIL"
+    And I fill the "Direct App Admin Firstname Line Manager Creation" field with "AutoFirst"
+    And I fill the "Direct App Admin Lastname Line Manager Creation" field with "AutoLast"
+    Then I click on the "Create" "button"
+
+  Scenario: Reset Line Manager Password
+    Given I am on "EC_RESET_PASSWORD" URL
+    And I fill the "Direct App Reset New Password" field with "Welcome2@#!Welc"
+    And I fill the "Direct App Confirm New Password" field with "Welcome2@#!Welc"
+    Then I click on the "Direct App Reset Password Button" button
+    And I wait for "1" seconds
+
+  Scenario: Create Channel Islands Mk2 Application
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I wait for "2" seconds
+    And I click on the "Direct App Create Application" button
+
+  Scenario: Complete Channel Islands Mk2 Application
+    Given I click on the "Direct App Start Application" button
+    And I click on the " Personal details" "Build Empire application section"
+    And I set "EC_AUTO_FIRSTNAME" text to the "Forenames" "Build Empire text field by title"
+    And I set "EC_AUTO_LASTNAME" text to the "Family name" "Build Empire text field by title"
+    And I set "[DOB-21]" text to the "Date of Birth" "Build Empire text field by title"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App DOB"
+    And I set "EC_PHONE" text to the "Phone number" "Build Empire text field by title"
+    And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
+    And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
+    And I set "80004" text to the "Postcode" "Build Empire text field by title"
+    And I set "London" text to the "Town/City*" "Build Empire text field"
+    And I click on the "Country*" "Build Empire dropdown"
+    And I click on the "United Kingdom" "Build Empire dropdown option"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Payment Employer Funded" button
+    And I wait for "2" seconds
+    And I fill the "Direct App Channel Islands Phone Training Manager" field with "EC_PHONE"
+    And I set "AutoTest" text to the "First name" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "organisation/company" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "Surname" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "Purchase" "Build Empire Channel Islands text field"
+    And I set "AutoTest" text to the "City" "Build Empire Channel Islands text field"
+    And I set "12345" text to the "Postcode" "Build Empire Channel Islands text field"
+    And I click on the "Direct App Channel Islands Country Dropdown" button
+    And I click on the "Direct App Country Dropdown UK Option" button
+    Then I remember "e-mail[#####]/@/guerrillamail.info" text as "EC_LINEMANAGER_EMAIL" variable
+    And I fill the "Direct App Channel Islands Email Training Manager" field with "EC_LINEMANAGER_EMAIL"
+    And I fill the "Direct App Channel Islands Address Training Manager" field with "Simple Test 1"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Channel Islands Compliance" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Save And Return" button
+
+    Scenario: Approve Channel Isalnds Application as Training Manager
+      And I click on the "Direct App My Approvals Tab" button by JS
+      And I click on the "Approve" "button"
+      And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
+      And I click on the "Direct App Channel Islands Training Manager OK" button
+      And I wait for "2" seconds
+      Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Channel Islands Accepted Applciation" element

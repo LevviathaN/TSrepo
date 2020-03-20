@@ -335,6 +335,26 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
+     * Definition to verify that a certain number of elements are present on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param element xpath of needed element
+     * @param expectedQuantity expected quantity of elements to be present on the page
+     */
+    @When("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$")
+    public void i_should_see_number_of_elements(String element, String expectedQuantity) {
+        Reporter.log("Executing step: I should see " + expectedQuantity + " '" + element + "' elements");
+        int actualNumberOfElements = numberOfElements(initElementLocator(element));
+        if (expectedQuantity.contains("more than")) {
+            Assert.assertTrue(actualNumberOfElements > Integer.parseInt(expectedQuantity.substring(10)));
+        } else if (expectedQuantity.contains("less than")) {
+            Assert.assertTrue(actualNumberOfElements < Integer.parseInt(expectedQuantity.substring(10)));
+        } else {
+            Assert.assertTrue(expectedQuantity.equals(String.valueOf(actualNumberOfElements)));
+        }
+    }
+
+    /**
      * Action to upload a file
      *
      * @param element:  locator type to be used to locate the element for uploading a file
@@ -532,5 +552,29 @@ public class StepDefinitions extends BasePage {
     public void i_execute_js_code_for_element(String jsCode, String element) {
         Reporter.log("Executing JS code");
         executeJSCode(jsCode, initElementLocator(element));
+    }
+
+    /**
+     * Definition to get specific data using REGEX. Required for BE Create New Line Manager workflow
+     *
+     * @param element locator of element you want to check is visible
+     * @param executionContext Name that starts with 'EC_' that is used to store saved text value from element
+     *
+     * @author yzosin
+     */
+    @And("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$")
+    public void i_capture_special_data(String element, String executionContext) {
+        waitForPageToLoad();
+        String value = selectSpecificData(initElementLocator(element));
+        Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
+        if (!executionContext.equals("")) {
+            if (value.equals("")) {
+                Reporter.log("Saving EC key " + executionContext + " with an empty string. No application data found.");
+            } else {
+                Reporter.log("Saving EC key " + executionContext + " = " + value);
+            }
+            ExecutionContextHandler.setExecutionContextValueByKey(executionContext, value);
+        } else
+            Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
     }
 }

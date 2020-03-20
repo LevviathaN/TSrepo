@@ -13,6 +13,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import ui.utils.BPPLogManager;
 import ui.utils.bpp.ExecutionContextHandler;
 
 import java.io.IOException;
@@ -80,7 +81,7 @@ public class SalesforceAuthentication {
                     new InputStreamReader(bodyStream, StandardCharsets.UTF_8));
 
             String token = bodyObject.get("access_token").toString();
-            //NoahLogManager.getLogger().info(token);
+            BPPLogManager.getLogger().info(token);
 
             assertThat(bodyObject.toString(), not(containsString("errorCode")));
 
