@@ -242,6 +242,7 @@
   "Direct App Channel Islands Training Manager OK": "xpath=//div[@class='confirm-dialog-body']//button[text()='OK']",
   "Direct App Channel Islands Accepted Applciation": "xpath=//div[@class='confirm-dialog-body']/div[1]",
   "Direct App Channel Islands Training Manager Review Application Details": "xpath=//div[@class='my-application-review']/div[2]/div[1]/div[2]//button[contains(text(),'Review application details')]",
+  "Direct App Inactive Status Button": "xpath=//div[@class='step-actions disabled']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
