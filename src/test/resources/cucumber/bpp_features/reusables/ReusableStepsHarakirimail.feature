@@ -51,3 +51,10 @@ Feature: Harakirimail, Guerrillamail
     And I wait for "2" seconds
     Then I click on the "Guerilla BPP Email" element
     Then I capture special data "Guerilla New Line Manager Email" as "EC_RESET_PASSWORD" variable
+
+  Scenario: Harakirimail Validate Accepted Application Email
+    Given I am on "https://harakirimail.com/" URL
+    And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
+    Then I click on the "Harakirimail Get Inbox" button
+    Then I click on the "Harakirimail First Email" button
+    And I validate text "Your application has been approved" to be displayed for "Harakirimail Validate Mitigating Header" element

@@ -1226,3 +1226,11 @@ Feature: BuildEmpire
       And I click on the "Direct App Channel Islands Training Manager OK" button
       And I wait for "2" seconds
       Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Channel Islands Accepted Applciation" element
+
+  Scenario: Reject Channel Isalnds Application as Training Manager
+    And I click on the "Direct App My Approvals Tab" button by JS
+    And I click on the "Reject" "button"
+    And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
+    And I click on the "Direct App Channel Islands Training Manager OK" button
+    And I wait for "2" seconds
+    Then I validate text "CONTAINS=Rejected" to be displayed for "Direct App Channel Islands Accepted Applciation" element
