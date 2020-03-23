@@ -1,8 +1,8 @@
 @DirectApps @ChannelIslands
-Feature: Approve Channel Islands Application
+Feature: Reject Channel Islands Application
 
-  @Positive #TC-1268 TC-1269
-  Scenario: Approve Channel Islands Application as Training Manager
+  @Negative #TC-1270
+  Scenario: Reject Channel Islands Application as Training Manager
     Given I execute "Register New Student Account" reusable step replacing some steps
       | 1 | I am on "MD_COMMON_LINKS_BUILDEMPIRECHANNELISLANDURL" URL |
     When I execute "Create Channel Islands Mk2 Application" reusable step
@@ -16,11 +16,12 @@ Feature: Approve Channel Islands Application
     And I set "Welcome2@#!Welc" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
     And I should see the "Direct App My Approvals Tab" element
-    Then I execute "Approve Channel Isalnds Application as Training Manager" reusable step
-    And I execute "Harakirimail Validate Accepted Application Email" reusable step
+    Then I execute "Reject Channel Isalnds Application as Training Manager" reusable step
+    And I execute "Harakirimail Validate Accepted Application Email" reusable step replacing some steps
+      | 5 | I validate text "Your application has been rejected" to be displayed for "Harakirimail Validate Mitigating Header" element |
 
-  @ApproveApplicationPage
-  Scenario: Approve Channel Islands Application as Training Manager on Review Application Details Page
+  @Negative
+  Scenario: Reject Channel Islands Application as Training Manager on Review Application Details Page
     Given I execute "Register New Student Account" reusable step replacing some steps
       | 1 | I am on "MD_COMMON_LINKS_BUILDEMPIRECHANNELISLANDURL" URL |
     When I execute "Create Channel Islands Mk2 Application" reusable step
@@ -36,11 +37,12 @@ Feature: Approve Channel Islands Application
     And I should see the "Direct App My Approvals Tab" element
     And I click on the "Direct App My Approvals Tab" button by JS
     And I click on the "Direct App Channel Islands Training Manager Review Application Details" button
-    And I click on the "Approve" "button"
+    And I click on the "Reject" "button"
     And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
     And I click on the "Direct App Channel Islands Training Manager OK" button
     And I wait for "1" seconds
-    And I execute "Harakirimail Validate Accepted Application Email" reusable step
+    And I execute "Harakirimail Validate Accepted Application Email" reusable step replacing some steps
+      | 5 | I validate text "Your application has been rejected" to be displayed for "Harakirimail Validate Mitigating Header" element |
 
 
 
