@@ -24,7 +24,7 @@ Feature: Reference Data - Client - BPP-1179
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
   @Negative @P2 #TC-921
-  Scenario: Add a Client Where Description Already Exists
+  Scenario: Add a Client Where Name Already Exists
     When I execute "Create Client" reusable step
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"

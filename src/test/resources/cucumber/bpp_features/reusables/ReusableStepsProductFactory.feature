@@ -208,6 +208,14 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
 
+  Scenario: Create Stream
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Streams" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "StreamName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_STREAM_NAME" element
+
   Scenario: Create Deactivation Reason
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
