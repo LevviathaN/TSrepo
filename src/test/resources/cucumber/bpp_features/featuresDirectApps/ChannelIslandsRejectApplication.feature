@@ -43,6 +43,3 @@ Feature: Reject Channel Islands Application
     And I wait for "1" seconds
     And I execute "Harakirimail Validate Accepted Application Email" reusable step replacing some steps
       | 5 | I validate text "Your application has been rejected" to be displayed for "Harakirimail Validate Mitigating Header" element |
-
-
-
