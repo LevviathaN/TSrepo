@@ -28,10 +28,14 @@ Feature: Edit Instance - Streams - BPP-6518
     And I execute "Create Session Duration" reusable step
     And I execute "Create Client" reusable step
     And I execute "Create Stream" reusable step
+    Then I click on the "Create" "Product Factory button"
+    And I set "StreamNameTwo[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_STREAM_NAME_TWO" element
     And I execute "Create Material" reusable step
     And I execute "Create Course Instance" reusable step
 
-  @Positive @P1
+  @Positive @P1 #TC-2951, TC-2968
   Scenario: Add a Stream to Course Instance
     Given I click on the "Activate" "Product Factory button"
     And I click on the "Product Factory Course Instances Arrow Down Icon" element
@@ -41,9 +45,40 @@ Feature: Edit Instance - Streams - BPP-6518
     And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
-    And I click on the "Activate" "Product Factory button"
     And I click on the "Stream" "Product Factory edit button"
     And I click on the "EC_STREAM_NAME" "Product Factory select button"
+    And I should see the "EC_STREAM_NAME" element
+    Then I click on the "Delete" "Product Factory button title"
+    And I click on the "Yes" "Product Factory button"
+
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "Default Session Duration" "Product Factory dropdown"
+    And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
+    And I click on the "Default Location" "Product Factory dropdown"
+    And I click on the "EC_LOCATION_NAME" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    And I click on the "Product Factory Course Instances Arrow Down Icon" element
+    And I click on the "Product Factory Course Instances Sessions Number of Dates Icon" element
+    And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
+    And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"
+    And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
+    And I click on the "Activate" "Product Factory button"
+
+    And I click on the "Stream" "Product Factory edit button"
+    And I click on the "EC_STREAM_NAME" "Product Factory select button"
+    And I should see the "EC_STREAM_NAME" element
+    And I click on the "Stream" "Product Factory edit button"
+    And I click on the "EC_STREAM_NAME_TWO" "Product Factory select button"
+    And I should see the "EC_STREAM_NAME_TWO" element
+    And I click on the "Stream" "Product Factory edit button"
+    And I click on the "Deselect" "Product Factory button"
+    And I shouldn't see the "EC_STREAM_NAME_TWO" "element"
+    And I click on the "Stream" "Product Factory edit button"
+    And I click on the "EC_STREAM_NAME" "Product Factory select button"
+    And I should see the "EC_STREAM_NAME" element
+
     And I click on the "Publish" "Product Factory active button"
     And I click on the "Yes" "Product Factory button"
     When Browser performs "REFRESH" command
