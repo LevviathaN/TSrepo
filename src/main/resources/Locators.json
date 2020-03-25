@@ -243,6 +243,9 @@
   "Direct App Channel Islands Accepted Applciation": "xpath=//div[@class='confirm-dialog-body']/div[1]",
   "Direct App Channel Islands Training Manager Review Application Details": "xpath=//div[@class='my-application-review']/div[2]/div[1]/div[2]//button[contains(text(),'Review application details')]",
   "Direct App Inactive Status Button": "xpath=//div[@class='step-actions disabled']",
+  "Direct App PopUp Header For Incomplete Documents": "xpath=//div[@class='box-content']/p",
+  "Direct App PopUp Exit Button Presence For Incomplete Documents": "xpath=//div[@class='box-content']/div/button[1]",
+  "Direct App PopUp Continue Button For Incomplete Documents": "xpath=//div[@class='box-content']/div/button[2]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",

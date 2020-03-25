@@ -35,7 +35,7 @@ public enum UiHandlers {
                 e.getMessage().contains("panel slds-modal slds-fade-in-open")||
                 e.getMessage().contains("panel slds-modal")||
                 e.getMessage().contains("modal-glass visible")||
-                e.getMessage().contains("jss243")){
+                e.getMessage().contains("jss243")|| e.getMessage().contains("bodyWrapper")){
             Reporter.log("Handling overlay by Wait");
             BasePage.sleepFor(9000);
             BasePage.isHandled.put("waitHandler", true);
