@@ -29,4 +29,4 @@ Feature: University Degree Apprenticeships
     Then I validate text "Continue" to be displayed for "Direct App PopUp Continue Button For Incomplete Documents" element
     Given I click on the "Direct App PopUp Continue Button For Incomplete Documents" button by JS
     Given I click on the "Direct App My Applications Left Menu Link" button
-    Then I validate text "Exit Application" to be displayed for "Direct App PopUp Exit Button Presence For Incomplete Documents" element
+    Then I click on the "Direct App PopUp Exit Button Presence For Incomplete Documents" element
