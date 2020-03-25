@@ -90,6 +90,7 @@ public class BaseUITest {
                         BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " FAILED");
                         qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Failed", 602, qtestID, testResult.getThrowable().toString());
                     }
+                    Reporter.addQtestLink(qtestID);
                 }
             }
         } catch (IOException e) {
