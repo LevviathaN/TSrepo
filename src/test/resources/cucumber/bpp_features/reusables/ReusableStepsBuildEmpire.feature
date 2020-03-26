@@ -1035,7 +1035,7 @@ Feature: BuildEmpire
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
     And I click on the "Direct App Create Application" button
 
-  Scenario: Complete Professional Apprenticeships UAT Accounting Assisstant
+  Scenario: Complete Professional Apprenticeships UAT Accounting Assistant
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Are you aged over 15" "Build Empire bespoke Scotland eligibility"
