@@ -30,7 +30,7 @@ Feature: Create Student Account
     And I click on the "Personal" "Salesforce dropdown field option"
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
-#    Then I should see the " was created." message
+    Then I should see the " was created." message
 
     And I click on the "Addresses" "Salesforce related new button"
     And I click on the "Address Type" "Salesforce dropdown field"
@@ -41,7 +41,7 @@ Feature: Create Student Account
     And I set "United States" text to the "Country" "Salesforce search field"
     And I click on the "States" "option"
     And I click on the "Save" "button"
-#    Then I should see the " was created." message
+    Then I should see the " was created." message
 
     And I click on the "Salesforce More Actions Dropdown" button
     And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
@@ -59,9 +59,9 @@ Feature: Create Student Account
     And I click on the "University Application" "Salesforce dropdown field option"
     And I set "31/01/2022" text to the "Close Date" "Salesforce date field"
     And I click on the "Save" "button"
-#    And I should see the " was created." message
+    And I should see the " was created." message
 
-    And I click on the "EC_AUTO_LASTNAME" "Salesforce link"
+    And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
     And I click on the "Product Catalog Items" "Salesforce related new button"
     And I click on the "New" "Salesforce dropdown option"
     And I fill the "Salesforce Offering Text Field" field with "2381626"
@@ -70,7 +70,6 @@ Feature: Create Student Account
     And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
     And I wait for "4" seconds
-#    And I should see the "MSc Management CRO PTD 201819 for student application" element
 
     And I click on the "Salesforce More Actions Dropdown" button
     And I click on the "Submit Application LEX" "Salesforce dropdown option"
