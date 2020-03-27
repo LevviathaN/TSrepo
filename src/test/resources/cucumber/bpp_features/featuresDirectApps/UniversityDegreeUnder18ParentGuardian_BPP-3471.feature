@@ -41,7 +41,7 @@ Feature: As a student who, is under 18, I expect to provide more information abo
     And I set "Autotest" text to the "Name of Parent/Legal" "Build Empire text field by title"
     Then I remember "email11@mail.com" text as "EC_GUARDIAN_EMAIL" variable
     And I set "EC_GUARDIAN_EMAIL" text to the "Email Address of Parent/Legal" "Build Empire text field by title"
-    And I set "[PHONE-0913]" text to the "Phone Number of Parent/Legal" "Build Empire text field by title"
+    And I set "1234567890" text to the "Phone Number of Parent/Legal" "Build Empire text field by title"
     And I set "JustTest" text to the "What is your relationship with this person?" "Build Empire text field by title"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
@@ -123,7 +123,7 @@ Feature: As a student who, is under 18, I expect to provide more information abo
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step with some additional steps
       | 8 | I validate text "EC_GUARDIAN_EMAIL" to be displayed for "Direct App Admin Parent Guardian Email" element |
-      | 9 | I validate text "EC_GUARDIAN_PHONE" to be displayed for "Direct App Admin Parent Guardian Phone" element |
+      | 9 | I validate text "1234567890" to be displayed for "Direct App Admin Parent Guardian Phone" element |
     And I execute "Attach Automation Line Manager Apprenticeships" reusable step replacing some steps
       | 4 | I fill the "Direct App Admin Attach Line Manger Text Field" field with "automationlinemanager9@harakirimail.com" |
       | 6 | I click on the "Automation9 Linemanager9 " "Build Empire line manager option"                                    |
