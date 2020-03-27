@@ -29,7 +29,7 @@ Feature: Create Course Instance - BPP-429
     And I execute "Create Client" reusable step
     And I execute "Create Material" reusable step
 
-  @Positive @P1 #TC-696
+  @Positive @P1 #TC-696, TC-2793, TC-2794, TC-2769
   Scenario: Create Course Instance
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
@@ -39,11 +39,14 @@ Feature: Create Course Instance - BPP-429
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
+    When I click on the "Finish" "Product Factory button"
+    Then I should see the "Number of Sessions must be Greater than 0" message
     And I click on the "Product Factory Number Of Sessions Edit Button" button
-    And I fill the "Product Factory Number Of Sessions Edit Field" field with "2"
+    When I fill the "Product Factory Number Of Sessions Edit Field" field with "~NumberOfSessions[##]"
     And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     Then I click on the "Create" "Product Factory button"
+    And I validate text "CONTAINS=EC_NUMBER_OF_SESSIONS" to be displayed for ": " element
     And I click on the "Default Session Duration" "Product Factory dropdown"
     And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
     And I click on the "Default Location" "Product Factory dropdown"

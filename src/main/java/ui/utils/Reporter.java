@@ -56,6 +56,7 @@ public class Reporter {
     protected static String testLogName;
     private static String browserLink;
     private static String env;
+    private static String qtestBuild;
 
     private static ConcurrentHashMap<Long, ExtentTest> testStorage = new ConcurrentHashMap<>();
     private static ConcurrentHashMap<Long, ExtentTest> testNodesStorage = new ConcurrentHashMap<>();
@@ -184,6 +185,10 @@ public class Reporter {
      */
     public static void addTest(Method m, String testName) {
 
+        ExtentTest test = extent.createTest(testName);
+        testStorage.put(Thread.currentThread().getId(), test);
+
+        //Custom functionality to add browser icons, environment info and qTest build to the report
         String browserName = DriverProvider.getCurrentBrowserName().toUpperCase();
 
         if (browserName.equalsIgnoreCase("chrome") || browserName.equalsIgnoreCase("bstack_chrome")) {
@@ -195,9 +200,6 @@ public class Reporter {
         } else if (browserName.equalsIgnoreCase("safari") || browserName.equalsIgnoreCase("bstack_safari")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/safari_1-7/safari_1-7_64x64.png' class='BrowserLogo'>";
         }
-
-        ExtentTest test = extent.createTest(testName);
-        testStorage.put(Thread.currentThread().getId(), test);
 
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
 
@@ -542,20 +544,20 @@ public class Reporter {
             String fileName = "Execution_Context_Variables" + ".txt";
             String tempFile = ecFolder + File.separator + fileName;
             File file = new File(tempFile);
-            if (file!=null)
-            if (!file.exists()) {
-                file.createNewFile();
-                FileWriter writer = new FileWriter(file, true);
-                BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                bufferedWriter.write(entry.getKey() + ": " + entry.getValue());
-                bufferedWriter.close();
-            } else {
-                FileWriter writer = new FileWriter(file, true);
-                BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                bufferedWriter.newLine();
-                bufferedWriter.write(entry.getKey() + ": " + entry.getValue());
-                bufferedWriter.close();
-            }
+            if (file != null)
+                if (!file.exists()) {
+                    file.createNewFile();
+                    FileWriter writer = new FileWriter(file, true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write(entry.getKey() + ": " + entry.getValue());
+                    bufferedWriter.close();
+                } else {
+                    FileWriter writer = new FileWriter(file, true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.newLine();
+                    bufferedWriter.write(entry.getKey() + ": " + entry.getValue());
+                    bufferedWriter.close();
+                }
         }
     }
 
@@ -569,7 +571,8 @@ public class Reporter {
         String tempName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
         logName = tempName.replace("\"", "_");
         synchronized (testLogName) {
-        Reporter.testLogName = logName + "_" + formattedDateTime + ".log";}
+            Reporter.testLogName = logName + "_" + formattedDateTime + ".log";
+        }
         //this.logName = testName.replace(" ", "_") + "_" + formattedDateTime + ".log";
     }
 
@@ -600,6 +603,14 @@ public class Reporter {
         BPPLogManager.addFileAppender(fileApp);
     }
 
+    public static void addQtestLink(String testID) {
+
+            qtestBuild = String.format("https://globalqatest.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
+                    + testID);
+
+        String link = String.format("<a target='_blank' href='%s'>qTest Link</a>", qtestBuild);
+        node("qTest Execution Link", link);
+    }
 
     // ============= BROWSER STACK ====================
     public static String getScreencastLinkFromBrowserStack(String sessionId) {
@@ -659,7 +670,7 @@ public class Reporter {
 
     //Methods required only for API tests
 
-    public static synchronized void addApiTest(Method m,String testName) {
+    public static synchronized void addApiTest(Method m, String testName) {
 
         ExtentTest test = extent.createTest(testName);
         testStorage.put(Thread.currentThread().getId(), test);

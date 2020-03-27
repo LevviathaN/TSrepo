@@ -5,7 +5,7 @@ Feature: Professional Apprenticeship Applications
   Scenario: Professional Apprenticeship Applications in Reviewing Application
     Given I execute "Register New Student Account" reusable step
     When I execute "Create Professional Apprenticeships Application UAT Accounting Option Two" reusable step
-    And I execute "Complete Professional Apprenticeships UAT Accounting Assisstant" reusable step
+    And I execute "Complete Professional Apprenticeships UAT Accounting Assistant" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step

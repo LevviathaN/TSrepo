@@ -1035,7 +1035,7 @@ Feature: BuildEmpire
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
     And I click on the "Direct App Create Application" button
 
-  Scenario: Complete Professional Apprenticeships UAT Accounting Assisstant
+  Scenario: Complete Professional Apprenticeships UAT Accounting Assistant
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Are you aged over 15" "Build Empire bespoke Scotland eligibility"
@@ -1087,7 +1087,7 @@ Feature: BuildEmpire
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-    And I click on the "Aruba" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Is English your first language?" "Build Empire nationality dropdown"
     And I click on the "Yes" "Build Empire nationality option"
     And I click on the "Direct App Nationality No Visa" element
@@ -1219,10 +1219,167 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
 
-    Scenario: Approve Channel Isalnds Application as Training Manager
+  Scenario: Approve Channel Isalnds Application as Training Manager
       And I click on the "Direct App My Approvals Tab" button by JS
       And I click on the "Approve" "button"
       And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
       And I click on the "Direct App Channel Islands Training Manager OK" button
       And I wait for "2" seconds
       Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Channel Islands Accepted Applciation" element
+
+  Scenario: Reject Channel Isalnds Application as Training Manager
+    And I click on the "Direct App My Approvals Tab" button by JS
+    And I click on the "Reject" "button"
+    And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
+    And I click on the "Direct App Channel Islands Training Manager OK" button
+    And I wait for "2" seconds
+    Then I validate text "CONTAINS=Rejected" to be displayed for "Direct App Channel Islands Accepted Applciation" element
+
+  Scenario: Negative Scenarios - Validate User Cannot Proceed
+      Given I click on the "Direct App Start Application" button
+      And I click on the "Eligibility criteria" "Build Empire application section"
+      And I click on the "Are you aged over 15" "Build Empire bespoke Scotland eligibility"
+      And I click on the "Do you have a husband, wife, civil partner and child of any of the above?" "Build Empire bespoke Scotland eligibility"
+      And I click on the "Direct App Right To Work in England?" element
+      And I click on the "Direct App Do You Spend 50 Percent" element
+      And I click on the "Direct App Bespoke Enrolled On Another Apprenticeship No" element
+      And I click on the "Direct App Are You In Employment" element
+      And I click on the "Direct App Are You Working At Least 16 Hours" element
+      And I click on the "Are you applying for a programme" "Build Empire bespoke Scotland eligibility"
+      And I click on the "Do you confirm that your job is a new job role relevant to the career development" "Build Empire bespoke Scotland eligibility"
+      And I click on the "You confirm that you have discussed" "Build Empire bespoke Scotland eligibility"
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Insurance Number" field with "12345"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Country Dropdown" button
+      And I click on the "Direct App Country Dropdown UK Option" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Diret App Phone Number" field with "EC_PHONE"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "Address 1" text to the "Address Line 1*" "Build Empire text field"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "Address 2" text to the "Address Line 2" "Build Empire text field"
+      And I fill the "Diret App Postal Code" field with "12345"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      Then I remember "KW_AUTO_DOB|DD/MM/YYYY_21" text as "EC_DOB" variable
+      And I fill the "Direct App DOB" field with "EC_DOB"
+      And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App DOB"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "London" text to the "Town/City*" "Build Empire text field"
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Additional Info Aged 19" element
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "employment status?:" "Build Empire nationality dropdown"
+      And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      Then I click on the "Direct App Scholarship Add" button
+      And I set "AutomationTest" text to the "Kin/Emergency" "Build Empire emergency field"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "AutomationTest" text to the "What is your relationship with this person?" "Build Empire emergency field"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      Then I fill the "Direct App Line Manager Telephone" field with "09138333731"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Admin Email" field with "automation111@mailinator.com"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      Then I click on the "Direct App Scholarship Add" button
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Diret App Gender Dropdown" element
+      And I click on the "Diret App Gender Not To Say" element
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Diret App Ethnicity Dropdown" element
+      And I click on the "Diret App Ethnicity White And Black African" element
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Diret App Learning Disability No" element
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Country of birth" "Build Empire nationality dropdown"
+      And I click on the "Albania" "Build Empire nationality option"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Country of nationality" "Build Empire nationality dropdown"
+      And I click on the "United Kingdom" "Build Empire nationality option"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
+      And I click on the "Aruba" "Build Empire nationality option"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Is English your first language?" "Build Empire nationality dropdown"
+      And I click on the "Yes" "Build Empire nationality option"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Nationality No Visa" element
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Add Qualification" button
+      And I click on the "Direct App Country of Study Dropdown" button
+      And I click on the "United Kingdom" "Build Empire qualification option"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Education Type Degree Radiobutton" button
+      And I click on the "Direct App Qualification Title Dropdown" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Education Search Field Dropdown" field with "Foundation degree"
+      Then I click on the "Foundation degree" "Build Empire application type"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Subject Dropdown" button
+      And I fill the "Direct App Education Search Field Dropdown" field with "Applied Law (QCF)"
+      Then I click on the "Applied Law (QCF)" "Build Empire application type"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Awarding Institution Dropdown" button
+      And I fill the "Direct App Education Search Field Dropdown" field with "Zaskin College"
+      Then I click on the "Zaskin College" "Build Empire application type"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Year Completed" field with "11/11/2018"
+      And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Year Completed"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Grade" field with "AutoGrade"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Examining Body" field with "AutoBody"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Add Assesment" button
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Job Title" field with "Job Title"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "32" text to the "contracted working hours?" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "Manager Name" text to the "Manager First Name" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "Manager Lastname" text to the "Manager Last Name" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "AutoTitle" text to the "Manager Job Title" "Build Empire employment element"
+      And I set "automation11@mail.com" text to the "Manager Email" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App Line Manager Telephone" field with "0913<KW_AUTO_RANDOMNUMBER|#######>"
+      And I set "Address 1" text to the "Address Line 1" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "London" text to the "Company/Employer City" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "Employee" text to the "Company/Employer Name" "Build Empire employment element"
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Company Health And Safety" element
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I fill the "Direct App When You Start At Company" field with "05/05/2018"
+      And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App When You Start At Company"
+      And I click on the "Direct App Company Country Dropdown" element
+      And I click on the "Direct App Company Country Dropdown UK Option" element
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I set "12345" text to the "Postcode" "Build Empire employment element"
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Next" button
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Privacy Notice By Email" button
+      And I click on the "Direct App Mark As Complete Checkbox" button
+      And I click on the "Direct App Save And Return" button
+      Given I click on the "Direct App Submit Application" button
+      And I wait for "1" seconds
+      And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+      And I click on the "Direct App Confirm Application Radiobutton" button
+      And I click on the "Direct App Submit Application on Confirmation Page" button
+      Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element

@@ -5,9 +5,9 @@ Feature: Submit Professional Apprenticeship Applications
     Given I execute "Register New Student Account" reusable step
 
   @Positive @UATAccounting #TC-1021 #TC-1022
-  Scenario: Submit Professional Apprenticeship UAT Acconting
+  Scenario: Submit Professional Apprenticeship UAT Accounting
     When I execute "Create Professional Apprenticeships Application UAT Accounting Option Two" reusable step
-    Given I execute "Complete Professional Apprenticeships UAT Accounting Assisstant" reusable step
+    Given I execute "Complete Professional Apprenticeships UAT Accounting Assistant" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step

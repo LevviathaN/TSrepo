@@ -48,7 +48,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
 
-  @Positive @P1 @Amend @BlockedByIssue #blocked by BPP-3250
+  @Positive @P1 @Amend @BlockedByIssue #TC-1294, blocked by BPP-3250
   Scenario: Amend Material Using Modal
     When I execute "Create Material" reusable step
     And I execute "Create Body" reusable step
