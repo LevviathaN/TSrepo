@@ -19,6 +19,7 @@ Feature: Salesforce
 
   Scenario: Create Student Account
     When I click on the "Accounts" "Salesforce navigation menu dropdown"
+    And I wait for "2" seconds
     And I click on the "New Account" "Salesforce navigation menu dropdown option"
     And I click on the "Student Account" "Salesforce radiobutton"
     And I click on the "Next" "button"
@@ -42,7 +43,7 @@ Feature: Salesforce
     And I click on the "Personal" "Salesforce dropdown field option"
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
-#    Then I should see the " was created." message
+    Then I should see the " was created." message
 
   Scenario: Create Address
     And I click on the "Addresses" "Salesforce related new button"
@@ -54,8 +55,7 @@ Feature: Salesforce
     And I set "United States" text to the "Country" "Salesforce search field"
     And I click on the "States" "option"
     And I click on the "Save" "button"
-#    And I wait for "2" seconds
-#    Then I should see the " was created." message
+    Then I should see the " was created." message
 
   Scenario: Get Profile ID
     And I click on the "Salesforce More Actions Dropdown" button
@@ -75,7 +75,7 @@ Feature: Salesforce
     And I click on the "University Application" "Salesforce dropdown field option"
     And I set "31/01/2022" text to the "Close Date" "Salesforce date field"
     And I click on the "Save" "button"
-#    And I should see the " was created." message
+    And I should see the " was created." message
 
   # This reusable scenario is not working, because its steps are not treated as separate Gherkin steps, so AfterStep
   # method that switches to default content is not called for two serial inframe elements, so the second element's parent
@@ -95,6 +95,7 @@ Feature: Salesforce
   Scenario: Submit Application
     And I click on the "Salesforce More Actions Dropdown" button
     And I click on the "Submit Application LEX" "Salesforce dropdown option"
+    Then I should scroll to the "top" of the page
     And I click on the "Salesforce Account Name Link" element
     And I click on the "Salesforce Account Details Tab" element
     And I validate text "STARTS-WITH=BP" to be displayed for "Salesforce Banner ID Field" element

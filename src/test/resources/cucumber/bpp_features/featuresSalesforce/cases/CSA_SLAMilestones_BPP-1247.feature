@@ -4,7 +4,7 @@ Feature: CSA - SLA Milestones
   I want to ensure that all cases assigned to the Customer Service Team Queue
   and are responded to within the agreed SLAs.
 
-  @Milestones
+  @Milestones #TC-802
   Scenario: CSA - SLA Milestones
     Given I execute "Log In To Salesforce" reusable step
     When I click on the "Cases" "Salesforce navigation menu dropdown"
@@ -24,5 +24,6 @@ Feature: CSA - SLA Milestones
     And I wait for "3" seconds
     Then I should see the "Salesforce Case Milestone Name" element
     Then I should scroll to the "top" of the page
-    Then I validate text "CONTAINS=16 hr" to be displayed for "Salesforce Case Milestone Hours" element
-    And I capture text data "Salesforce Case Number Data Field" as "EC_CASENUMBER" variable
+    And I click on the "Salesforce Case Milestones Tab" button
+    And I wait for "1" seconds
+    Then I validate text "RE=9.+" to be displayed for "Salesforce Case Milestones Tab Milestone One" element
