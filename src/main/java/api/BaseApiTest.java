@@ -3,6 +3,7 @@ package api;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import ui.utils.Reporter;
+import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.MetaDataHandler;
 import ui.utils.bpp.PreProcessFiles;
@@ -43,6 +44,7 @@ public class BaseApiTest {
     public void flushReporter() {
         ExcelResultsWriter.createApiExcel();
         Reporter.flush();
+        ExecutionContextHandler.resetExecutionContextValues();
         System.out.println("EXECUTIONS HAVE FINISHED");
     }
 }
