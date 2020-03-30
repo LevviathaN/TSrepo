@@ -10,6 +10,7 @@
 
     <properties>
         <tests>smoke.xml</tests>
+        <tests>productFactory.xml</tests>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>3.141.59</selenium.version>
     </properties>
@@ -20,14 +21,6 @@
             <url>https://jitpack.io</url>
         </repository>
 
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
     </repositories>
 
     <build>
@@ -52,7 +45,7 @@
                         <!-- TestNG suite XML files -->
                         <suiteXmlFile>${tests}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <skipTests>true</skipTests>
+                    <skipTests>false</skipTests>
                 </configuration>
             </plugin>
 
