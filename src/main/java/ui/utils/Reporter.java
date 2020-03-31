@@ -196,7 +196,12 @@ public class Reporter {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/safari_1-7/safari_1-7_64x64.png' class='BrowserLogo'>";
         }
 
-        ExtentTest test = extent.createTest(testName);
+        String finalTestName = testName;
+        if (RetryAnalyzer.counterMap.containsKey(testName.substring(1,testName.length()-1))) {
+            int retryAttempt = RetryAnalyzer.counterMap.get(testName.substring(1,testName.length()-1));
+            finalTestName = testName + " " + retryAttempt + " attempt";
+        }
+        ExtentTest test = extent.createTest(finalTestName);
         testStorage.put(Thread.currentThread().getId(), test);
 
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
@@ -283,6 +288,10 @@ public class Reporter {
      * @param log identify the log for test execution
      */
     public static void pass(String log) {
+        String currentTestName = getCurrentTestName();
+        if (RetryAnalyzer.counterMap.containsKey(currentTestName)) {
+            RetryAnalyzer.deleteFailedTestsFromHtmlReport(currentTestName);
+        }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 

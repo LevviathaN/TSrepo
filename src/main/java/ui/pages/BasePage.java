@@ -39,8 +39,11 @@ public class BasePage {
     private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
     //boolean map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is executed.
     public static Map<String, Boolean> isHandled = new HashMap<>();
+    public static Map<String, Integer> handlerCounter = new HashMap<>();
     //boolean, used by UiHandlers to determine, if you want to repeat Action, on which you had an exception, after running handlers.
     public static boolean repeatAction = true;
+    public static int handlingLimit = 3;
+    public static String lastTriggeredHandler = "";
 
     //____________________________________________Timeouts section__________________________________________________
 
@@ -214,7 +217,6 @@ public class BasePage {
             }
         } else {
             try {
-//            textField.click();
                 int size = textField.getAttribute("value").length();
 
                 if (size != 0) {
@@ -229,7 +231,6 @@ public class BasePage {
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
 
-//            textField.click();
                 size = textField.getAttribute("value").length();
                 if (size != 0) {
                     clickOnElement(element,
@@ -288,6 +289,7 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
         wait.until(ExpectedConditions.attributeContains(dropdown.getFirstSelectedOption(), "text", value));
     }
+
     /**
      * This method gets auto selected value from a dropdown
      *
@@ -437,6 +439,28 @@ public class BasePage {
         } catch (Exception e) {
             for(UiHandlers handler : handlers){
                 handler.getHandler().handle(element, e);
+            }
+            int handlersTriggered = 0;
+            for (String handlerName : isHandled.keySet()) {
+                if (isHandled.get(handlerName)) {
+                    handlersTriggered++;
+                    if (!handlerCounter.containsKey(handlerName)) {
+                        handlerCounter.put(handlerName,1);
+                    } else {
+                        handlerCounter.replace(handlerName,handlerCounter.get(handlerName)+1);
+                    }
+                }
+            }
+            if (handlersTriggered>1) {
+                Reporter.warn("2 of more handlers triggered while handling 1 exception! Check the logic of handlers");
+            }
+            for (String handlerName : handlerCounter.keySet()) {
+                if (handlerCounter.get(handlerName)>handlingLimit) {
+                    BasePage.repeatAction = false;
+                    Reporter.log("FAIL: " + handlerName + " has iterated more than " + handlingLimit + " times");
+                    Reporter.fail(Tools.getStackTrace(e));
+                    throw new RuntimeException("Failure clicking on element. Handler iteration time exceeded");
+                }
             }
             if (repeatAction) clickOnElement(element, handlers);
         }
