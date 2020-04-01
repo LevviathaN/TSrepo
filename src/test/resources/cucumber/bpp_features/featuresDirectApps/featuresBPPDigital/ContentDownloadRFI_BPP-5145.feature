@@ -27,7 +27,6 @@ Feature: As a user, viewing a "content download RFI", I expect to see an RFI for
     And I click on the "BPP Digital First CMS Component First Select button" button by JS
     And I switch to window with index "1"
     Then I click on the "Save" "BPP Digital Admin Value attribute button"
-
     When I should scroll to the "top" of the page
     Then I execute "Publish a CMS or Blog Post page" reusable step
     Then I execute "Log Out from Hub Admin" reusable step
