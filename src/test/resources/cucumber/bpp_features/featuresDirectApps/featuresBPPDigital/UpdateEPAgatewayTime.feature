@@ -37,7 +37,7 @@ Feature: BPP Digital Update EPA gateway time
     When I fill the "BPP Digital Admin Overwritten EPA gateway time input field" field with "4"
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I validate text "CONTAINS=EC_DATE_TODAY" to be displayed for "BPP Digital Validate Note Date" element
-    Then I validate text "CONTAINS=4 weeks" to be displayed for "BPP Digital Validate Note Message" element
+    Then I validate text "CONTAINS=EPA Gateway Time amended to 4" to be displayed for "BPP Digital Validate Note Message" element
     Then I validate text "CONTAINS=EC_JOB_TRAINING_HOURS" to be displayed for "BPP Digital Overall Off the Job Training Hours" element
     And I click on the "Submit" "BPP Digital Admin Value attribute button"
     And I wait for "3" seconds

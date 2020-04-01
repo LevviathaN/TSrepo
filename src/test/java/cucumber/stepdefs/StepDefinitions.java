@@ -490,7 +490,8 @@ public class StepDefinitions extends BasePage {
         Reporter.log("Executing step: I click on the '" + element + "' element by JS");
         String condition = driver().getTitle();
         clickWithJS(initElementLocator(element));
-        if(!condition.equals("Media")) {
+        if (!condition.equals("Media") & (!condition.equals("BPP Totara Staging: Log in to the site"))
+                & (!condition.equals("BPPTS: My Learning"))) {
             waitForPageToLoad();
         }
     }
@@ -558,7 +559,7 @@ public class StepDefinitions extends BasePage {
      */
     @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
     public void i_execute_js_code_for_element(String jsCode, String element) {
-        Reporter.log("Executing JS code");
+        Reporter.log("Executing JS code: " + jsCode);
         executeJSCode(jsCode, initElementLocator(element));
     }
 

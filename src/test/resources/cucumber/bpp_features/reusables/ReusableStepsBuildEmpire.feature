@@ -1384,6 +1384,11 @@ Feature: BuildEmpire
       And I click on the "Direct App Submit Application on Confirmation Page" button
       Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element
 
+  Scenario: Admin Hub Navigate to Application Categories
+    When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
+    And I click on the "Categories" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Application Categories" "BPP Digital Admin Page Header name"
+
   Scenario: Submit RFI Form
     And I set "Automation" text to the "First Name" "BPP Digital RFI Input Field"
     And I set "Automation" text to the "Last Name" "BPP Digital RFI Input Field"
