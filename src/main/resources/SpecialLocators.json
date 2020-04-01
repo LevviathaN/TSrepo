@@ -5,6 +5,7 @@
   "message": "//*[text()='PARAMETER']",
   "option": "//*[text()='PARAMETER']",
   "element": "//*[text()='PARAMETER']",
+  "exact element": "//*[normalize-space()=\"PARAMETER\"]",
 
   "Product Factory navigation item": "//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "//p[text()='PARAMETER']",
@@ -85,6 +86,7 @@
   "BPP Digital Admin Applications Edit button":"//div[normalize-space()='PARAMETER']/following-sibling::div/a[text()='Edit']",
   "BPP Digital Button With Specific Name": "//button[contains(@class,'btn') and text()=\"PARAMETER\"]",
   "BPP Digital Drop Down Option value": "//option[@value='PARAMETER']",
+  "BPP Digital Archive Category button": "//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Archive']",
 
   "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",
