@@ -16,7 +16,7 @@ public class SalesforceAPI {
             new SalesforceBusinessProcesses().createNewFaculty();
     }
 
-    @Then("I should submit faculty")
+    @Then("I should submit faculty API")
     public void i_should_submit_faculty() {
         if (PropertiesHelper.determineEffectivePropertyValue("environment").equalsIgnoreCase("UAT"))
             new SalesforceBusinessProcessesUAT().submitNewFacultyUAT();
@@ -24,7 +24,7 @@ public class SalesforceAPI {
             new SalesforceBusinessProcesses().submitNewFaculty();
     }
 
-    @And("I create new student account")
+    @And("I create new student account API")
     public void i_should_create_student_account() {
         if (PropertiesHelper.determineEffectivePropertyValue("environment").equalsIgnoreCase("UAT"))
             new SalesforceBusinessProcessesUAT().
