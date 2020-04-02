@@ -326,6 +326,7 @@
   "BPP Digital Import Redirects Table Target value": "xpath=//tbody//td[4]",
   "BPP Digital Import Redirects Table Status value": "xpath=//tbody//td[5]",
   "BPP Digital Import Redirects Table Updated value": "xpath=//tbody//td[6]",
+  "BPP Digital RFI Form Apprenticeship Levy": "xpath=//label[normalize-space()='Are you an Apprenticeship Levy payer?']/../following-sibling::div/div[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

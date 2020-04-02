@@ -87,6 +87,7 @@
   "BPP Digital Button With Specific Name": "//button[contains(@class,'btn') and text()=\"PARAMETER\"]",
   "BPP Digital Drop Down Option value": "//option[@value='PARAMETER']",
   "BPP Digital Archive Category button": "//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Archive']",
+  "BPP Digital RFI Input Field": "//label[contains(text(), 'PARAMETER')]/..//input",
 
   "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",
