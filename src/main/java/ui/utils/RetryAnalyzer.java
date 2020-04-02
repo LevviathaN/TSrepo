@@ -11,20 +11,22 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class RetryAnalyzer
-        implements IRetryAnalyzer
-{
+public class RetryAnalyzer implements IRetryAnalyzer {
 
     int counter = 0;
-//    private static final ThreadLocal<Map<String, Integer>> counterMapLocal = new ThreadLocal<>();
     public static ConcurrentHashMap<String, Integer> counterMap = new ConcurrentHashMap<>();
     public static int limit = 4;
 
     public synchronized boolean retry(ITestResult result) {
-        String scenarioName = Reporter.getCurrentTestName();
+        String scenarioName;
+        String actualScenarioName = Reporter.getCurrentTestName();
+        if (actualScenarioName.contains("attempt")) {
+            scenarioName = actualScenarioName.substring(0,actualScenarioName.length()-10);
+        } else {
+            scenarioName = actualScenarioName;
+        }
         if (!counterMap.containsKey(scenarioName)) {
             counterMap.put(scenarioName,1);
         } else {
@@ -40,7 +42,6 @@ public class RetryAnalyzer
 
     public static void deleteFailedTestsFromHtmlReport(String testName) {
 
-        ArrayList<String> stepsList = new ArrayList<>();
         String filePath = Reporter.getScreenshotFolder().toString().replace("screenshots","report.html");
 
         try {

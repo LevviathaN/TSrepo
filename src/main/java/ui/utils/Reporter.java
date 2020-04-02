@@ -188,7 +188,7 @@ public class Reporter {
         String finalTestName = testName;
         if (RetryAnalyzer.counterMap.containsKey(testName.substring(1,testName.length()-1))) {
             int retryAttempt = RetryAnalyzer.counterMap.get(testName.substring(1,testName.length()-1));
-            finalTestName = testName + " " + retryAttempt + " attempt";
+            finalTestName = testName.substring(1,testName.length()-1) + " " + retryAttempt + " attempt";
         }
         ExtentTest test = extent.createTest(finalTestName);
         testStorage.put(Thread.currentThread().getId(), test);
@@ -291,8 +291,8 @@ public class Reporter {
      */
     public static void pass(String log) {
         String currentTestName = getCurrentTestName();
-        if (RetryAnalyzer.counterMap.containsKey(currentTestName)) {
-            RetryAnalyzer.deleteFailedTestsFromHtmlReport(currentTestName);
+        if (currentTestName.contains("attempt")) {
+            DomParser.deleteFailedTestsFromHtmlReport(currentTestName.substring(0,currentTestName.length()-10));
         }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
