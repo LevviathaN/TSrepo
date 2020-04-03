@@ -119,6 +119,7 @@ public class BaseUITest {
         Reporter.setSystemInfo(executionEnvironment);
         Reporter.flush();
         ExecutionContextHandler.resetExecutionContextValues();
+        RetryAnalyzer.deleteFailedTestsFromHtmlReport();
     }
 
     public static void setExecutionEnvironmentInfo() {

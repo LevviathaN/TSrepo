@@ -12,7 +12,7 @@ Feature: Debug Feature
 #    And I execute "retCreate Client" reusable step
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"
-    When I click on the "TestClientName6" "Product Factory edit button"
+    When I click on the "TestClientName5" "Product Factory edit button"
 
   Scenario: Debug Scenario 3
     Given I execute "Log In" reusable step

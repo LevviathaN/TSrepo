@@ -292,7 +292,7 @@ public class Reporter {
     public static void pass(String log) {
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
-            DomParser.deleteFailedTestsFromHtmlReport(currentTestName.substring(0,currentTestName.length()-10));
+            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
         }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
