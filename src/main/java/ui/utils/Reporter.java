@@ -188,7 +188,7 @@ public class Reporter {
         String finalTestName = testName;
         if (RetryAnalyzer.counterMap.containsKey(testName.substring(1,testName.length()-1))) {
             int retryAttempt = RetryAnalyzer.counterMap.get(testName.substring(1,testName.length()-1));
-            finalTestName = testName.substring(1,testName.length()-1) + " " + retryAttempt + " attempt";
+            finalTestName = testName.substring(1,testName.length()-1) + "_attempt_" + retryAttempt;
         }
         ExtentTest test = extent.createTest(finalTestName);
         testStorage.put(Thread.currentThread().getId(), test);

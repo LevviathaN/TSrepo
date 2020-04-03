@@ -81,7 +81,14 @@ public class BaseUITest {
             Reporter.writeToFile();
             Reporter.saveAllECToFile();
             if (System.getProperties().containsKey("qtest") && System.getProperty("qtest").equalsIgnoreCase("TRUE")) {
-                if (qTestAPI.getTestRunIDfromSuite().containsKey(Reporter.getCurrentTestName())) {
+                String scenarioName;
+                String actualScenarioName = Reporter.getCurrentTestName();
+                if (actualScenarioName.contains("attempt")) {
+                    scenarioName = actualScenarioName.substring(0,actualScenarioName.length()-10);
+                } else {
+                    scenarioName = actualScenarioName;
+                }
+                if (qTestAPI.getTestRunIDfromSuite().containsKey(scenarioName)) {
                     String qtestID = qTestAPI.getTestRunIDfromSuite().get(Reporter.getCurrentTestName());
                     if (testResult.toString().contains("SUCCESS")){
                         BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");

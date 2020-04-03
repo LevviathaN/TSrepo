@@ -38,6 +38,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
     }
 
     public static void deleteFailedTestsFromHtmlReport() {
+        //todo not working when all tests are passed, because no screenshot folder is created in that case
         String filePath = Reporter.getScreenshotFolder().toString().replace("screenshots","report.html");
 
         for (String testName : passMap.keySet()) {
