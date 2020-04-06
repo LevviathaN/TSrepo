@@ -55,7 +55,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Admin Logout" link
 
   Scenario: Create Academic Appeals Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Academic Appeals" "Build Empire application type"
     And I click on the "Direct App Create Application" button

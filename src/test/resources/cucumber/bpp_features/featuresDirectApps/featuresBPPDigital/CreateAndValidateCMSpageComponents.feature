@@ -4,7 +4,7 @@ Feature: BPP Digital Create and Validate CMS Page Components
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-7814 TC-8084 TC-2517
+  @Positive @Smoke #TC-7814 TC-8084 TC-2517
   Scenario: Create and Validate CMS Page Components
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     And I execute "Create CMS Page" reusable step

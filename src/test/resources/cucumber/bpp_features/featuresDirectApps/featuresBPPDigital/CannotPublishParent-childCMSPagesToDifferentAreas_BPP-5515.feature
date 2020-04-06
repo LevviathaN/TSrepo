@@ -6,7 +6,7 @@ Feature: As an admin, if I try to update a CMS page's "published to" setting and
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @ParentChild #TC-2549
+  @ParentChild @Smoke #TC-2549
   Scenario: Can not publish parent or child CMS pages to different areas
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     #Create Parent page

@@ -1,12 +1,13 @@
-@DirectApps @Appeals
-Feature: Complete Academic Appeals Application - BPPPMO-1091
+@DirectApps @Timestamp
+Feature: As an admin, viewing my downloads in the admin area,
+  I expect to see a timestamp of when document was generated
 
   Background:
     Given I execute "Register New Student Account" reusable step
     When I execute "Create Academic Appeals Application" reusable step
 
-  @Smoke
-  Scenario: Complete Academic Appeals Application
+
+  Scenario: As an Admin, I Expect to See a Timestamp of When Document Was Generated
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Direct App Final Award In Relation To Programme" button
@@ -71,3 +72,14 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Accept Academic Appeals As Admin" reusable step
     Then I validate text "CONTAINS=Accepted" to be displayed for "Direct App Admin Status Changed for Academic Appeals" element
+    Then I click on the "Direct App Admin Download Menu" button
+    And I click on the "Direct App Admin Download Menu Salesforce CSV" button
+    And I fill the "Direct App Admin Application Page Password Field" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINPASSWORD"
+    And I click on the "OK" "button"
+    Then I should scroll to the "top" of the page
+    Given I click on the "Direct App User Icon Menu Admin" button by JS
+    And I click on the "Downloads" "link"
+    Then I should see the "Direct App Admin Downloads Type" element
+    Then I validate text "RE=\d{2}\s\w{3}\s\d{2}.\d{2}" to be displayed for "Direct App Admin Downloads Generated At" element
+
+
