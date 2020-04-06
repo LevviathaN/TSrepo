@@ -4,7 +4,7 @@ Feature: BPP Digital Create and Edit Blog Topic
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-7841
+  @Positive @Smoke #TC-7841
   Scenario: Create and Edit Blog Topic
     When I execute "Admin Hub Navigate to Blog Topics" reusable step
     And I execute "Create Blog Topic" reusable step
