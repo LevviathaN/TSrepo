@@ -228,6 +228,7 @@ public static ReusableRunner getInstance() {
                 for (String availStep : availableReusableStepsList) {
                     Reporter.log("  " + availStep);
                 }
+                throw new RuntimeException("Reusable step does not exist");
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,7 +2,6 @@ package ui.utils;
 
 import api.RestApiController;
 import org.jooq.tools.json.ParseException;
-import org.jsoup.Connection;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -17,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static ui.utils.DriverProvider.getFirefox;
 
 /**
  * <p>Base test class for all ui tests.</p>
@@ -81,7 +79,14 @@ public class BaseUITest {
             Reporter.writeToFile();
             Reporter.saveAllECToFile();
             if (System.getProperties().containsKey("qtest") && System.getProperty("qtest").equalsIgnoreCase("TRUE")) {
-                if (qTestAPI.getTestRunIDfromSuite().containsKey(Reporter.getCurrentTestName())) {
+                String scenarioName;
+                String actualScenarioName = Reporter.getCurrentTestName();
+                if (actualScenarioName.contains("attempt")) {
+                    scenarioName = actualScenarioName.substring(0,actualScenarioName.length()-10);
+                } else {
+                    scenarioName = actualScenarioName;
+                }
+                if (qTestAPI.getTestRunIDfromSuite().containsKey(scenarioName)) {
                     String qtestID = qTestAPI.getTestRunIDfromSuite().get(Reporter.getCurrentTestName());
                     if (testResult.toString().contains("SUCCESS")){
                         BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");
@@ -119,6 +124,7 @@ public class BaseUITest {
         Reporter.setSystemInfo(executionEnvironment);
         Reporter.flush();
         ExecutionContextHandler.resetExecutionContextValues();
+        RetryAnalyzer.deletePreviousAttemptsFromHtmlReport();
     }
 
     public static void setExecutionEnvironmentInfo() {

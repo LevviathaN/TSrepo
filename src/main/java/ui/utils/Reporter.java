@@ -185,7 +185,12 @@ public class Reporter {
      */
     public static void addTest(Method m, String testName) {
 
-        ExtentTest test = extent.createTest(testName);
+        String finalTestName = testName;
+        if (RetryAnalyzer.counterMap.containsKey(testName.substring(1,testName.length()-1))) {
+            int retryAttempt = RetryAnalyzer.counterMap.get(testName.substring(1,testName.length()-1));
+            finalTestName = testName.substring(1,testName.length()-1) + "_attempt_" + retryAttempt;
+        }
+        ExtentTest test = extent.createTest(finalTestName);
         testStorage.put(Thread.currentThread().getId(), test);
 
         //Custom functionality to add browser icons, environment info and qTest build to the report
@@ -285,6 +290,10 @@ public class Reporter {
      * @param log identify the log for test execution
      */
     public static void pass(String log) {
+        String currentTestName = getCurrentTestName();
+        if (currentTestName.contains("attempt")) {
+            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
+        }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 
@@ -296,6 +305,10 @@ public class Reporter {
      * @param log identify the log for test execution
      */
     public static synchronized void fail(String log) {
+        String currentTestName = getCurrentTestName();
+        if (currentTestName.contains("attempt")) {
+            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"fail");
+        }
         try {
             String screenshotPath = takeScreenshot();
             screenshotPath = screenshotPath.substring(screenshotPath.indexOf("screenshots"));
@@ -441,6 +454,10 @@ public class Reporter {
             pass("Test passed!");
 
         flush();
+    }
+
+    public static Path getReportPath() {
+        return reportPath;
     }
 
     /**
