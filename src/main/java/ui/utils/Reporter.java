@@ -305,6 +305,10 @@ public class Reporter {
      * @param log identify the log for test execution
      */
     public static synchronized void fail(String log) {
+        String currentTestName = getCurrentTestName();
+        if (currentTestName.contains("attempt")) {
+            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"fail");
+        }
         try {
             String screenshotPath = takeScreenshot();
             screenshotPath = screenshotPath.substring(screenshotPath.indexOf("screenshots"));
@@ -450,6 +454,10 @@ public class Reporter {
             pass("Test passed!");
 
         flush();
+    }
+
+    public static Path getReportPath() {
+        return reportPath;
     }
 
     /**

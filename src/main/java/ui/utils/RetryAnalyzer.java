@@ -11,7 +11,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class RetryAnalyzer implements IRetryAnalyzer {
 
-    int counter = 0;
     public static ConcurrentHashMap<String, Integer> counterMap = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<String, String> passMap = new ConcurrentHashMap<>();
     public static int limit = 2;
@@ -29,17 +28,15 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         } else {
             counterMap.replace(scenarioName,counterMap.get(scenarioName)+1);
         }
-        if (counterMap.get(scenarioName) < limit){
-            counter++;
+        if (counterMap.get(scenarioName) <= limit){
             return true;
         } else {
             return false;
         }
     }
 
-    public static void deleteFailedTestsFromHtmlReport() {
-        //todo not working when all tests are passed, because no screenshot folder is created in that case
-        String filePath = Reporter.getScreenshotFolder().toString().replace("screenshots","report.html");
+    public static void deletePreviousAttemptsFromHtmlReport() {
+        String filePath = Reporter.getReportPath().toString().concat("/report.html");
 
         for (String testName : passMap.keySet()) {
             try {
@@ -50,7 +47,14 @@ public class RetryAnalyzer implements IRetryAnalyzer {
                     if (element.text().contains(testName)) {
                         Element testNode = element.parents().first().parents().first();
                         if (testNode.attr("status").equals("fail")) {
-                            testNode.remove();
+                            if (passMap.get(testName).equals("pass")) {
+                                testNode.remove();
+                            }
+                            else if (passMap.get(testName).equals("fail")) {
+                                if (!element.text().contains("attempt_" + limit)) {
+                                    testNode.remove();
+                                }
+                            }
                         }
                     }
                 }
