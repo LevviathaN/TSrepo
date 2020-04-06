@@ -1383,3 +1383,26 @@ Feature: BuildEmpire
       And I click on the "Direct App Confirm Application Radiobutton" button
       And I click on the "Direct App Submit Application on Confirmation Page" button
       Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element
+
+  Scenario: Admin Hub Navigate to Application Categories
+    When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
+    And I click on the "Categories" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Application Categories" "BPP Digital Admin Page Header name"
+
+  Scenario: Submit RFI Form
+    And I set "Automation" text to the "First Name" "BPP Digital RFI Input Field"
+    And I set "Automation" text to the "Last Name" "BPP Digital RFI Input Field"
+    And I set "Automation@test.com" text to the "Email" "BPP Digital RFI Input Field"
+    And I set "Automation" text to the "Phone" "BPP Digital RFI Input Field"
+    And I set "Automation" text to the "Company" "BPP Digital RFI Input Field"
+    And I set "AutoJob" text to the "Job" "BPP Digital RFI Input Field"
+    And I set "[PHONE-0913]" text to the "Phone Number" "BPP Digital RFI Input Field"
+    And I click on the "BPP Digital RFI Form Apprenticeship Levy" button
+    And I click on the "Direct App I Am Happy To Receive Information" button
+    Then I click on the "Submit" "button"
+    Then I should see the "EC_FORM_THANK_YOU_TITLE" element
+    Then I should see the "EC_FORM_THANK_YOU_MESSAGE" element
+    Then I click on the "Click here to download" "Build Empire link"
+    And I wait for "2" seconds
+    And I switch to window with index "2"
+    And I validate text "222012-QAA-Report.pdf" to be displayed for "CHECK_URL" element
