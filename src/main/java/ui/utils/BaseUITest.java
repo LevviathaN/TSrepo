@@ -2,7 +2,6 @@ package ui.utils;
 
 import api.RestApiController;
 import org.jooq.tools.json.ParseException;
-import org.jsoup.Connection;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -17,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static ui.utils.DriverProvider.getFirefox;
 
 /**
  * <p>Base test class for all ui tests.</p>
@@ -126,7 +124,7 @@ public class BaseUITest {
         Reporter.setSystemInfo(executionEnvironment);
         Reporter.flush();
         ExecutionContextHandler.resetExecutionContextValues();
-        RetryAnalyzer.deleteFailedTestsFromHtmlReport();
+        RetryAnalyzer.deletePreviousAttemptsFromHtmlReport();
     }
 
     public static void setExecutionEnvironmentInfo() {
