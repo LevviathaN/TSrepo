@@ -214,7 +214,6 @@ public class BasePage {
             }
         } else {
             try {
-//            textField.click();
                 int size = textField.getAttribute("value").length();
 
                 if (size != 0) {
@@ -229,7 +228,6 @@ public class BasePage {
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
 
-//            textField.click();
                 size = textField.getAttribute("value").length();
                 if (size != 0) {
                     clickOnElement(element,
@@ -288,6 +286,7 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
         wait.until(ExpectedConditions.attributeContains(dropdown.getFirstSelectedOption(), "text", value));
     }
+
     /**
      * This method gets auto selected value from a dropdown
      *

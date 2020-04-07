@@ -1,7 +1,7 @@
 @DirectApps @UniversityDegreeApprenticeships
 Feature: University Degree Apprenticeships
 
-  @Negative @P1 @RejectByAdmin
+  @Negative @Smoke @RejectByAdmin
   Scenario: Reject University Degree Apprenticeships Application by Admin
     Given I execute "Register New Student Account" reusable step
     When I execute "Create University Degree Apprenticeships Application" reusable step

@@ -55,7 +55,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Admin Logout" link
 
   Scenario: Create Academic Appeals Application
-    Given I click on the "Direct App My Applications Left Menu Link" button
+    Given I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Academic Appeals" "Build Empire application type"
     And I click on the "Direct App Create Application" button
@@ -1388,6 +1388,24 @@ Feature: BuildEmpire
     When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
     And I click on the "Categories" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Application Categories" "BPP Digital Admin Page Header name"
+
+  Scenario: Submit RFI Form
+    And I set "Automation" text to the "First Name" "BPP Digital RFI Input Field"
+    And I set "Automation" text to the "Last Name" "BPP Digital RFI Input Field"
+    And I set "Automation@test.com" text to the "Email" "BPP Digital RFI Input Field"
+    And I set "Automation" text to the "Phone" "BPP Digital RFI Input Field"
+    And I set "Automation" text to the "Company" "BPP Digital RFI Input Field"
+    And I set "AutoJob" text to the "Job" "BPP Digital RFI Input Field"
+    And I set "[PHONE-0913]" text to the "Phone Number" "BPP Digital RFI Input Field"
+    And I click on the "BPP Digital RFI Form Apprenticeship Levy" button
+    And I click on the "Direct App I Am Happy To Receive Information" button
+    Then I click on the "Submit" "button"
+    Then I should see the "EC_FORM_THANK_YOU_TITLE" element
+    Then I should see the "EC_FORM_THANK_YOU_MESSAGE" element
+    Then I click on the "Click here to download" "Build Empire link"
+    And I wait for "2" seconds
+    And I switch to window with index "2"
+    And I validate text "222012-QAA-Report.pdf" to be displayed for "CHECK_URL" element
 
   Scenario: Admin Hub Navigate to Marketing Cloud Logs
     When I click on the "BPP Digital Admin Logs Menu Item link" element

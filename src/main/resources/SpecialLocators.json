@@ -22,7 +22,7 @@
   "Product Factory checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]|//span[text()='PARAMETER']/preceding-sibling::span/span[1]",
   "Product Factory Link Levels button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Link Levels')]",
   "Product Factory Change Body button": "//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
-  "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]|//span[text()='PARAMETER']/../following-sibling::button",
+  "Product Factory edit button": "//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]|//span[text()='PARAMETER']/../following-sibling::div/div/button",
   "Product Factory button title": "//button[@title='PARAMETER']",
   "Product Factory Locked Applies To drop-down item": "//div[text()='PARAMETER']",
   "Product Factory Financial Dimension list in Locations":"//div[@role='document']/ul/li[text()='PARAMETER']",
@@ -91,6 +91,7 @@
   "BPP Digital Button With Specific Name": "//button[contains(@class,'btn') and text()=\"PARAMETER\"]",
   "BPP Digital Drop Down Option value": "//option[@value='PARAMETER']",
   "BPP Digital Archive Category button": "//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Archive']",
+  "BPP Digital RFI Input Field": "//label[contains(text(), 'PARAMETER')]/..//input",
 
   "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",

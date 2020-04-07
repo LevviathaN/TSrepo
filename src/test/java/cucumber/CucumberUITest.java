@@ -5,6 +5,7 @@ import io.cucumber.testng.*;
 import org.testng.annotations.*;
 import ui.utils.BaseUITest;
 import ui.utils.Reporter;
+import ui.utils.RetryAnalyzer;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
@@ -26,7 +27,8 @@ public class CucumberUITest extends BaseUITest {
 
     @Test(
             groups = {"BPP Automation"},
-            dataProvider = "scenarios"
+            dataProvider = "scenarios",
+            retryAnalyzer = RetryAnalyzer.class
     )
     public void runScenario(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
         scenarioName = pickleWrapper.getPickleEvent().pickle.getName();

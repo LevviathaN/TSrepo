@@ -5,7 +5,7 @@ Feature: Complete BPP University Scholarship Application
     Given I execute "Register New Student Account" reusable step
     When I execute "Create Scholarships Application" reusable step
 
-  @Positive #TC-1247
+  @Positive @Smoke #TC-1247
   Scenario: Complete Scholarship Application
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"

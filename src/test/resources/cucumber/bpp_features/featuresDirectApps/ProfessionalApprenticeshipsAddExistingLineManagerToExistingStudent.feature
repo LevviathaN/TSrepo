@@ -1,7 +1,7 @@
 @DirectApps @ProfessionalApprenticeships
 Feature: Professional Apprenticeships
 
-  @Positive @P1 @AddExistingLineManagerToExistingStudent
+  @Positive @Smoke @AddExistingLineManagerToExistingStudent
   Scenario: Create Professional Apprenticeships Add Existing Line Manager To Existing Student
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "AutoHeavenSoueilem@harakirimail.com" text to the "Email" "Build Empire text field"|
