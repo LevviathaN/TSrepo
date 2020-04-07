@@ -326,6 +326,9 @@
   "BPP Digital Import Redirects Table Target value": "xpath=//tbody//td[4]",
   "BPP Digital Import Redirects Table Status value": "xpath=//tbody//td[5]",
   "BPP Digital Import Redirects Table Updated value": "xpath=//tbody//td[6]",
+  "BPP Digital Admin Logs Menu Item link": "xpath=//li[@class='nav-item']/a[contains(text(),'Logs')]",
+  "BPP Digital Admin Logs Response Body text": "xpath=(//div[normalize-space()='Response']/following::pre)[1]",
+  "BPP Digital Marketing Cloud Log Show button": "xpath=(//td[text()='EC_DATE_TIME']/following-sibling::td/a[text()='Show'])[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

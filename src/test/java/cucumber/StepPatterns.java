@@ -44,7 +44,8 @@ public enum StepPatterns {
     I_EXECUTE_JS_CODE_FOR_ELEMENT("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$"),
     I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL("^I should see \"([^\"]*)\" \"([^\"]*)\" in quantity of \"([^\"]*)\"$"),
     I_SHOULD_SEE_NUMBER_OF_ELEMENTS("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$"),
-    I_CAPTURE_SPECIAL_DATA("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$");
+    I_CAPTURE_SPECIAL_DATA("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$"),
+    I_GENERATE_DATE_AND_TIME_AS_TEXT_PATTERN("^I generate date and time as text pattern \"([^\"]*)\" to \"([^\"]*)\" variable$");
 
     private final String pattern;
 

@@ -1388,3 +1388,8 @@ Feature: BuildEmpire
     When I click on the "Direct Apps" "BPP Digital Admin Menu Item links"
     And I click on the "Categories" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Application Categories" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to Marketing Cloud Logs
+    When I click on the "BPP Digital Admin Logs Menu Item link" element
+    And I click on the "Marketing Cloud" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Marketing Cloud Logs" "BPP Digital Admin Page Header name"

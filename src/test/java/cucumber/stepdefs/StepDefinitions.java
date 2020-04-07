@@ -12,6 +12,9 @@ import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
@@ -377,7 +380,7 @@ public class StepDefinitions extends BasePage {
     public void i_validate_text_to_be_displayed_for_element(String text, String element) {
         Reporter.log("Executing step: I validate " + text + " to be displayed for: " + element);
         String actualValue = getTextValueFromField(initElementLocator(element));
-        String newValue = text;
+        String newValue = text.replaceAll("&#34;","\"");
         if (text.toUpperCase().trim().startsWith("RE=")) {
             newValue = newValue.substring("RE=".length());
             assertThat(actualValue.trim(), matchesPattern(newValue));
@@ -578,4 +581,22 @@ public class StepDefinitions extends BasePage {
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
     }
+
+    /**
+     * Definition to save some text value in EC variable
+     *
+     * @param formatPattern format pattern to use of the current date and time
+     * @param varName name of variable in which you want to save text
+     * @author Andrii Yakymchuk
+     */
+    @Then("^I generate date and time as text pattern \"([^\"]*)\" to \"([^\"]*)\" variable$")
+    public void i_generate_date_and_time_as_text_pattern(String formatPattern, String varName) {
+        BPPLogManager.getLogger().info("Executing step: I generate date and time '" + formatPattern + "' text as '" + varName + "' variable");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(formatPattern);
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("Europe/London"));
+        String currentDateTime = dtf.format(now);
+        ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(currentDateTime));
+        Reporter.log("Saving current Date and Time in " + formatPattern + " date/time format pattern");
+    }
+
 }
