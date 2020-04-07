@@ -4,7 +4,7 @@ Feature: BPP Digital Bulk Upload Functionality for Redirects
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-1579 TC-1580 TC-1581
+  @Positive @Smoke #TC-1579 TC-1580 TC-1581
   Scenario: Bulk Upload Functionality for Redirects
     When I execute "Admin Hub Navigate to Website Redirects" reusable step
     #Upload CSV

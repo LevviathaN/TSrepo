@@ -4,7 +4,7 @@ Feature: BPP Digital Validate CMS Page Accordion Component
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-2024 TC-2025 TC-2026
+  @Positive @Smoke #TC-2024 TC-2025 TC-2026
   Scenario: Validate CMS Page Accordion Component
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     And I execute "Create CMS Page" reusable step

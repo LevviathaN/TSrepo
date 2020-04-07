@@ -251,6 +251,10 @@
   "Direct App Admin Parent Guardian Phone": "xpath=//strong[text()='Parent/Legal Guardian Phone']/parent::div/following-sibling::div",
   "Direct App Line Manager Parent Guardian Email": "xpath=//span[@class='required-field']/parent::label[contains(text(),'Email Address of Parent/Legal Guardian')]/following-sibling::input",
   "Direct App Line Manager Parent Guardian Phone": "xpath=//span[@class='required-field']/parent::label[contains(text(),'Phone Number of Parent/Legal Guardian')]/following-sibling::div//input",
+  "Direct App Admin Download Menu": "xpath=//button[contains(text(),'Download')]",
+  "Direct App Admin Download Menu Salesforce CSV": "xpath=//a[contains(text(),'Salesforce CSV')]",
+  "Direct App Admin Downloads Generated At": "xpath=//thead//th[text()='Generated at']/../following::tbody/tr[1]/td[4]",
+  "Direct App Admin Downloads Type": "xpath=//thead//th[text()='Type']/../following::tbody/tr[1]/td[2]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",

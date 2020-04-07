@@ -5,7 +5,7 @@ Feature: Accept Mitigating Circumstances Application
     Given I execute "Register New Student Account" reusable step
     When I execute "Create Mitigating Circumstances Application" reusable step
 
-  @Positive #TC-1266 #TC-1257
+  @Positive @Smoke #TC-1266 #TC-1257
   Scenario: Accept Mitigating Circumstances
     And I execute "Complete Mitigating Circumstances" reusable step
     Then I execute "Submit Application Hub" reusable step

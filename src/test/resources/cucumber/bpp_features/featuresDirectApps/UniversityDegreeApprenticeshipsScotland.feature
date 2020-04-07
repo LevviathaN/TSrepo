@@ -1,7 +1,7 @@
 @DirectApps @UniversityDegreeApprenticeships
 Feature: University Degree Apprenticeships
 
-  @Positive @P1 @Scotland
+  @Positive @Smoke @Scotland
   Scenario: Create University Degree Apprenticeships Application Scotland
     Given I execute "Register New Student Account" reusable step
     When I execute "Create University Degree Apprenticeships Application" reusable step

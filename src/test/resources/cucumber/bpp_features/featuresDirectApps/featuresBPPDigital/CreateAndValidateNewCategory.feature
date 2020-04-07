@@ -4,7 +4,7 @@ Feature: BPP Digital Create and Validate New Category
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-3050
+  @Positive @Smoke #TC-3050
   Scenario: Create and Validate New Category
     #Navigate to Application Categories page
     When I execute "Admin Hub Navigate to Application Categories" reusable step
