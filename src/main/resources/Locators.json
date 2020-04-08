@@ -348,6 +348,7 @@
   "Salesforce Offering Checkbox": "inframe=Salesforce Frame>xpath=(//td[text()='MSc Management CRO PTD 201819 for student application']/preceding-sibling::td/input)[1]",
   "Salesforce Product Checkbox": "inframe=Salesforce Frame>xpath=(//td[text()='MSc Management CRO PTD 201819 for student application']/preceding-sibling::td/input)[2]",
   "Salesforce More Actions Dropdown": "xpath=//div[contains(@class,'active lafPageHost')]//li[@data-aura-class='oneActionsDropDown']",
+  "Salesforce Get Profile ID": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Get Profile ID LEX']",
   "Salesforce Account Details Tab": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']/descendant::a[@data-label='Details']",
   "Salesforce Banner ID Field": "xpath=//span[text()='Banner ID']/../following-sibling::div/span/slot/slot/*",
   "Salesforce Profile Services ID Field": "xpath=//span[text()='Profile Services ID']/../following-sibling::div/span/slot/slot/*",

@@ -3,17 +3,18 @@ package ui.utils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.testng.IRetryAnalyzer;
-import org.testng.ITestResult;
+import org.testng.*;
+
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class RetryAnalyzer implements IRetryAnalyzer {
 
     public static ConcurrentHashMap<String, Integer> counterMap = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<String, String> passMap = new ConcurrentHashMap<>();
-    public static int limit = 2;
+    public static int limit = Integer.parseInt(FileIO.getConfigProperty("retryExecutionLimit"));
 
     public synchronized boolean retry(ITestResult result) {
         String scenarioName;
@@ -28,11 +29,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         } else {
             counterMap.replace(scenarioName,counterMap.get(scenarioName)+1);
         }
-        if (counterMap.get(scenarioName) <= limit){
-            return true;
-        } else {
-            return false;
-        }
+        return counterMap.get(scenarioName) <= limit;
     }
 
     public static void deletePreviousAttemptsFromHtmlReport() {

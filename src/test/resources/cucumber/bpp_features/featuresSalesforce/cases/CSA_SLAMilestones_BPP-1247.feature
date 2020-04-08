@@ -1,4 +1,4 @@
-@Salesforce @CSA
+@Salesforce @CSA @Cases
 Feature: CSA - SLA Milestones
   As a Salesforce user/CSA
   I want to ensure that all cases assigned to the Customer Service Team Queue

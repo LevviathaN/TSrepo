@@ -1,4 +1,4 @@
-@Salesforce @CSA
+@Salesforce @CSA @Cases
 Feature: Create and Validate Cases
   As a Salesforce user/Customer Service Team member
   I want to add Query/subquery types as per the table below

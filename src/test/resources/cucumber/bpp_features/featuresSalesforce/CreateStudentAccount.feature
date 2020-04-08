@@ -43,8 +43,9 @@ Feature: Create Student Account
     And I click on the "Save" "button"
     Then I should see the " was created." message
 
-    And I click on the "Salesforce More Actions Dropdown" button
-    And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
+    #And I click on the "Salesforce More Actions Dropdown" button by JS
+    #And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
+    And I click on the "Salesforce Get Profile ID" option
     Then I should see the "Profile Id created Successfully" message
 
     And I click on the "Opportunities" "Salesforce related new button"

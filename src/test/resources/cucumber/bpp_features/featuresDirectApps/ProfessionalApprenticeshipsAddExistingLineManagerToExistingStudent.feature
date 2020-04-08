@@ -4,7 +4,7 @@ Feature: Professional Apprenticeships
   @Positive @Smoke @AddExistingLineManagerToExistingStudent
   Scenario: Create Professional Apprenticeships Add Existing Line Manager To Existing Student
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
-      |2|I set "AutoHeavenSoueilem@harakirimail.com" text to the "Email" "Build Empire text field"|
+      |2|I set "AutoAlonsoRivers6311@harakirimail.com" text to the "Email" "Build Empire text field"|
       |3|I set "A@polloGlobal2018" text to the "Password" "Build Empire text field"|
     And I click on the "Direct App My Applications Left Menu Link" link by JS
     When I execute "Create University Degree Apprenticeships Application" reusable step replacing some steps
@@ -14,10 +14,10 @@ Feature: Professional Apprenticeships
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step replacing some steps
-      |5|I fill the "Direct App Admin Filter By User" field with "AutoHeavenSoueilem@harakirimail.com"|
+      |4|I fill the "Direct App Admin Filter By User" field with "AutoAlonsoRivers6311@harakirimail.com"|
     And I execute "Attach Automation Line Manager Apprenticeships" reusable step replacing some steps
       |4|I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"|
-      |6|I click on the "Automation Line Manager 1" "Build Empire line manager option"|
+      |5|I click on the "Automation Line Manager 1" "Build Empire line manager option"|
     And I execute "Log Out from Hub Admin" reusable step
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     And I set "02917uk7sr@harakirimail.com" text to the "Email" "Build Empire text field"
@@ -26,17 +26,17 @@ Feature: Professional Apprenticeships
     Then I execute "Line Manager Review University Degree Apprenticeships Scotland" reusable step
     And I execute "Log Out from Hub Student" reusable step
     Then I execute "Log In to Hub as Student" reusable step replacing some steps
-      |2|I set "AutoHeavenSoueilem@harakirimail.com" text to the "Email" "Build Empire text field"|
+      |2|I set "AutoAlonsoRivers6311@harakirimail.com" text to the "Email" "Build Empire text field"|
       |3|I set "A@polloGlobal2018" text to the "Password" "Build Empire text field"|
     And I execute "Complete Professional Apprenticeships Application After Review" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Accept Application As Admin" reusable step replacing some steps
-      |5|I fill the "Direct App Admin Filter By User" field with "AutoHeavenSoueilem@harakirimail.com"|
+      |5|I fill the "Direct App Admin Filter By User" field with "AutoAlonsoRivers6311@harakirimail.com"|
     And I execute "Log Out from Hub Admin" reusable step
     And I execute "Log In to Hub as Student" reusable step replacing some steps
-      |2|I set "AutoHeavenSoueilem@harakirimail.com" text to the "Email" "Build Empire text field"|
+      |2|I set "AutoAlonsoRivers6311@harakirimail.com" text to the "Email" "Build Empire text field"|
       |3|I set "A@polloGlobal2018" text to the "Password" "Build Empire text field"|
     And I execute "Validate Successful Application As Student" reusable step
     And I execute "Log Out from Hub Student" reusable step

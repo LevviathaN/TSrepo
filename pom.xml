@@ -47,6 +47,12 @@
                         <!-- TestNG suite XML files -->
                         <suiteXmlFile>${tests}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>ui.utils.BPPListener</value>
+                        </property>
+                    </properties>
                 </configuration>
             </plugin>
 

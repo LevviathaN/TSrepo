@@ -74,7 +74,7 @@ public class StepDefinitions extends BasePage {
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,
                 UiHandlers.DEFAULT_HANDLER);
-        waitForPageToLoad();
+        //waitForPageToLoad();
     }
 
     /**
@@ -93,7 +93,7 @@ public class StepDefinitions extends BasePage {
         if (conditions.checkCondition(condition, conditionParameter)) {
             Reporter.log("Executing step: I click on the '" + element + "' element");
             clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
-            waitForPageToLoad();
+            //waitForPageToLoad();
         } else {
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
         }
@@ -155,7 +155,7 @@ public class StepDefinitions extends BasePage {
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
-        waitForPageToLoad();
+        //waitForPageToLoad();
         boolean isDisplayed = false;
         for (int i = 0; i < findElements(initElementLocator(element)).size(); i++) {
             if (findElements(initElementLocator(element)).get(i).isDisplayed()) {
@@ -175,7 +175,7 @@ public class StepDefinitions extends BasePage {
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
         Reporter.log("Executing step: I should be redirected to the '" + pageTitle + "' page");
-        waitForPageToLoad();
+        //waitForPageToLoad();
         String processedPageTitle = TestParametersController.checkIfSpecialParameter(pageTitle);
         Reporter.log("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
@@ -327,7 +327,7 @@ public class StepDefinitions extends BasePage {
     @Then("I shouldn't see the \"([^\"]*)\"(?: button| message| element| text)?$")
     public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
-        waitForPageToLoad();
+        //waitForPageToLoad();
         if (checkIfElementNotExist(initElementLocator(element))) {
             Assert.assertTrue(false, "Element with " + element + " text is not displayed");
         } else {
@@ -430,7 +430,7 @@ public class StepDefinitions extends BasePage {
                 BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
             }
-            waitForPageToLoad();
+            //waitForPageToLoad();
         }
     }
 
@@ -461,7 +461,7 @@ public class StepDefinitions extends BasePage {
             Reporter.log("Selecting \"" + value + "\" value from " + element);
             selectValueFromDropDown(initElementLocator(element), value);
         }
-        waitForPageToLoad();
+        //waitForPageToLoad();
     }
 
     /**
@@ -492,7 +492,7 @@ public class StepDefinitions extends BasePage {
         clickWithJS(initElementLocator(element));
         if (!condition.equals("Media") & (!condition.equals("BPP Totara Staging: Log in to the site"))
                 & (!condition.equals("BPPTS: My Learning"))) {
-            waitForPageToLoad();
+            //waitForPageToLoad();
         }
     }
 
@@ -535,7 +535,7 @@ public class StepDefinitions extends BasePage {
 
     @And("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$")
     public void i_capture_text_data_as_variable(String element, String executionContext) {
-        waitForPageToLoad();
+        //waitForPageToLoad();
         String value = getTextValueFromField(initElementLocator(element));
         Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
         if (!executionContext.equals("")) {
@@ -573,7 +573,7 @@ public class StepDefinitions extends BasePage {
      */
     @And("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$")
     public void i_capture_special_data(String element, String executionContext) {
-        waitForPageToLoad();
+        //waitForPageToLoad();
         String value = selectSpecificData(initElementLocator(element));
         Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
         if (!executionContext.equals("")) {

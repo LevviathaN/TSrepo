@@ -12,7 +12,7 @@ Feature: BuildEmpire
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     And I click on the "Direct App I Am Happy To Receive Information" button
     Then I click on the "Direct App Register" button
-    And I wait for "2" seconds
+
     And I should see the "Direct App My Applications Left Menu Link" button
 
   Scenario: Log In to Hub as Student
@@ -178,7 +178,6 @@ Feature: BuildEmpire
   Scenario: Pre Approve Apprenticeships Application As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
-    And I wait for "2" seconds
     Given I click on the "Direct App Admin Apprenticeships Tab" link by JS
     And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
@@ -268,7 +267,7 @@ Feature: BuildEmpire
     And I select "Automation" from "Direct App Admin Company Dropdown" element
     And I click on the "Direct App Admin Line Manager Dropdown" button
     And I fill the "Direct App Admin Attach Line Manger Text Field" field with "idlgfcvgdh@harakirimail.com"
-    And I wait for "1" seconds
+
     And I click on the "Automation Line Manager 2" "Build Empire line manager option"
     Then I click on the "Attach" "button"
 
@@ -307,7 +306,7 @@ Feature: BuildEmpire
   Scenario: Accept Application As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
     And I click on the "Direct App Admin Direct Apps List Option" element
-    And I wait for "2" seconds
+
     Given I click on the "Direct App Admin Apprenticeships Tab" link by JS
     And I fill the "Direct App Admin Filter By User" field with "EC_AUTO_EMAIL"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Admin Filter By User"
@@ -673,7 +672,7 @@ Feature: BuildEmpire
     And I select "Automation" from "Direct App Admin Company Dropdown" element
     And I click on the "Direct App Admin Line Manager Dropdown" button
     And I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"
-    And I wait for "1" seconds
+
     And I click on the "Automation Line Manager 1" "Build Empire line manager option"
     Then I click on the "Attach" "button"
 
