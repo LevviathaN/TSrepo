@@ -12,6 +12,9 @@ import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
@@ -384,7 +387,7 @@ public class StepDefinitions extends BasePage {
             assertThat(actualValue, containsString(text));
         } else {
             actualValue = getTextValueFromField(initElementLocator(element));
-            String newValue = text;
+            String newValue = text.replaceAll("''","\"");
             if (text.toUpperCase().trim().startsWith("RE=")) {
                 newValue = newValue.substring("RE=".length());
                 assertThat(actualValue.trim(), matchesPattern(newValue));
