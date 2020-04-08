@@ -58,8 +58,9 @@ Feature: Salesforce
     Then I should see the " was created." message
 
   Scenario: Get Profile ID
-    And I click on the "Salesforce More Actions Dropdown" button
-    And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
+    #And I click on the "Salesforce More Actions Dropdown" button
+    #And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
+    Then I click on the "Salesforce Get Profile ID" button by JS
     Then I should see the "Profile Id created Successfully" message
 
   Scenario: Create Opportunity
@@ -90,11 +91,11 @@ Feature: Salesforce
     And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
     And I wait for "4" seconds
-#    And I should see the "MSc Management CRO PTD 201819 for student application" element
 
   Scenario: Submit Application
-    And I click on the "Salesforce More Actions Dropdown" button
-    And I click on the "Submit Application LEX" "Salesforce dropdown option"
+    #And I click on the "Salesforce More Actions Dropdown" button
+    #And I click on the "Submit Application LEX" "Salesforce dropdown option"
+    Then I click on the "Salesforce Submit Application" button
     Then I should scroll to the "top" of the page
     And I click on the "Salesforce Account Name Link" element
     And I click on the "Salesforce Account Details Tab" element

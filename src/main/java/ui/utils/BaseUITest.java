@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
  * <p>Base test class for all ui tests.</p>
  * @author yzosin
  */
+@Listeners(BPPListener.class)
 public class BaseUITest {
 
     private PreProcessFiles preProcessFiles;

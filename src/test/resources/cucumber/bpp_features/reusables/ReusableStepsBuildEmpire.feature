@@ -511,8 +511,8 @@ Feature: BuildEmpire
     Then I validate text "Reason Reject" to be displayed for "Direct App Admin Rejected Status Reason" element
 
   Scenario: Edit Hub Student
-    Given I click on the "Direct App User Icon Menu" button
-    And I click on the "Direct App Account settings" link
+    Given I click on the "Direct App User Icon Menu" button by JS
+    And I click on the "Direct App Account settings" link by JS
     And I wait for "1" seconds
 
   Scenario: Create Programmes Application
@@ -672,7 +672,7 @@ Feature: BuildEmpire
     And I select "Automation" from "Direct App Admin Company Dropdown" element
     And I click on the "Direct App Admin Line Manager Dropdown" button
     And I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"
-
+    And I wait for "1" seconds
     And I click on the "Automation Line Manager 1" "Build Empire line manager option"
     Then I click on the "Attach" "button"
 
