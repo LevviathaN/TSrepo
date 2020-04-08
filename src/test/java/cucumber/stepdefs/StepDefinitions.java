@@ -387,7 +387,7 @@ public class StepDefinitions extends BasePage {
             assertThat(actualValue, containsString(text));
         } else {
             actualValue = getTextValueFromField(initElementLocator(element));
-            String newValue = text.replaceAll("&#34;","\"");
+            String newValue = text.replaceAll("''","\"");
             if (text.toUpperCase().trim().startsWith("RE=")) {
                 newValue = newValue.substring("RE=".length());
                 assertThat(actualValue.trim(), matchesPattern(newValue));
@@ -589,22 +589,4 @@ public class StepDefinitions extends BasePage {
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
     }
-
-    /**
-     * Definition to save some text value in EC variable
-     *
-     * @param formatPattern format pattern to use of the current date and time
-     * @param varName name of variable in which you want to save text
-     * @author Andrii Yakymchuk
-     */
-    @Then("^I generate date and time as text pattern \"([^\"]*)\" to \"([^\"]*)\" variable$")
-    public void i_generate_date_and_time_as_text_pattern(String formatPattern, String varName) {
-        BPPLogManager.getLogger().info("Executing step: I generate date and time '" + formatPattern + "' text as '" + varName + "' variable");
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(formatPattern);
-        LocalDateTime now = LocalDateTime.now(ZoneId.of("Europe/London"));
-        String currentDateTime = dtf.format(now);
-        ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(currentDateTime));
-        Reporter.log("Saving current Date and Time in " + formatPattern + " date/time format pattern");
-    }
-
 }

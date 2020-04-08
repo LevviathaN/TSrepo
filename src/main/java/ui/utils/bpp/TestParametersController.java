@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import ui.pages.BasePage;
 import ui.utils.Reporter;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -281,6 +284,14 @@ public class TestParametersController {
                     }
                     ecVarNameSimplified.append("_");
                     ecVarNameSimplified.append("DOB");
+                }
+                else if (element.startsWith("TIMENOW")){
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMM HH:mm");
+                    LocalDateTime now = LocalDateTime.now(ZoneId.of("Europe/London"));
+                    String currentDateTime = dtf.format(now);
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("TIMENOW");
+                    return currentDateTime;
                 }
                 //if part is NOT KW_ value
                 else {

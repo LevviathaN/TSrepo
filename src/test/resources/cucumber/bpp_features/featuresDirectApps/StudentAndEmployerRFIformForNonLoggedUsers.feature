@@ -1,7 +1,10 @@
 @DirectApps @RFI
-Feature: BPP Digital Create and Validate New Category
-  
-  @Positive #TC-1514
+Feature:
+  As a developer
+  I will capture a user's GClid whenever they register/complete RFI form on Staging
+  As this is important marketing information
+
+  @Positive @NoRun #TC-1514
   Scenario: Submit RFI form for non logged Users as Learner
     #RFI Submitting Student
     When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test1" URL
@@ -15,7 +18,7 @@ Feature: BPP Digital Create and Validate New Category
     And I set "SomeCommentLearner[####]" text to the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I click on the "I do not wish to receive information from BPP" "Build Empire RFI Span dropdown item"
     And I click on the "Submit" "Build Empire button"
-    And I generate date and time as text pattern "dd MMM HH:mm" to "EC_DATE_TIME" variable
+    And I remember "[TIMENOW]" text as "EC_DATE_TIME" variable
     Then I should see the "Thank you for your interest" element
     Then I should see the "A member of our team will be with you shortly." element
     #Login Admin
@@ -25,12 +28,12 @@ Feature: BPP Digital Create and Validate New Category
     #Find Log
     And I click on the "BPP Digital Marketing Cloud Log Show button" element
     Then I validate text "CONTAINS=EC_AUTO_EMAIL" to be displayed for "BPP Digital Admin Logs Response Body text" element
-    Then I validate text "CONTAINS=&#34;gA Gclid&#34;: &#34;test1&#34;" to be displayed for "BPP Digital Admin Logs Response Body text" element
+    Then I validate text "CONTAINS=''gA Gclid'': ''test1''" to be displayed for "BPP Digital Admin Logs Response Body text" element
     Then I should see the "Success" message
     #Logout Admin
     And I execute "Log Out from Hub Admin" reusable step
 
-  @Positive #TC-1514
+  @Positive @NoRun #TC-1514
     Scenario: Submit RFI form for non logged Users as Learner URL Two
     #RFI Submitting Student Site 2
     When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test2" URL
@@ -44,7 +47,7 @@ Feature: BPP Digital Create and Validate New Category
     And I set "SomeCommentLearner[####]" text to the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I click on the "I do not wish to receive information from BPP" "Build Empire RFI Span dropdown item"
     And I click on the "Submit" "Build Empire button"
-    And I generate date and time as text pattern "dd MMM HH:mm" to "EC_DATE_TIME" variable
+    And I remember "[TIMENOW]" text as "EC_DATE_TIME" variable
     Then I should see the "Thank you for your interest" element
     Then I should see the "A member of our team will be with you shortly." element
     #Login Admin
@@ -54,12 +57,12 @@ Feature: BPP Digital Create and Validate New Category
     #Find Log
     And I click on the "BPP Digital Marketing Cloud Log Show button" element
     Then I validate text "CONTAINS=EC_AUTO_EMAIL" to be displayed for "BPP Digital Admin Logs Response Body text" element
-    Then I validate text "CONTAINS=&#34;gA Gclid&#34;: &#34;test2&#34;" to be displayed for "BPP Digital Admin Logs Response Body text" element
+    Then I validate text "CONTAINS=''gA Gclid'': ''test2''" to be displayed for "BPP Digital Admin Logs Response Body text" element
     Then I should see the "Success" message
     #Logout Admin
     And I execute "Log Out from Hub Admin" reusable step
 
-  @Positive #TC-1533
+  @Positive @NoRun #TC-1533
   Scenario: Submit RFI form for non logged Users as Employer
     #RFI Submitting Employer
     When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test3" URL
@@ -73,7 +76,7 @@ Feature: BPP Digital Create and Validate New Category
     And I set "SomeCommentEmployer[####]" text to the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I click on the "I do not wish to receive information from BPP" "Build Empire RFI Span dropdown item"
     And I click on the "Submit" "Build Empire button"
-    And I generate date and time as text pattern "dd MMM HH:mm" to "EC_DATE_TIME" variable
+    And I remember "[TIMENOW]" text as "EC_DATE_TIME" variable
     Then I should see the "Thank you for your interest" element
     Then I should see the "A member of our team will be with you shortly." element
     #Login Admin
@@ -83,12 +86,12 @@ Feature: BPP Digital Create and Validate New Category
     #Find Log
     And I click on the "BPP Digital Marketing Cloud Log Show button" element
     Then I validate text "CONTAINS=EC_AUTO_EMAIL" to be displayed for "BPP Digital Admin Logs Response Body text" element
-    Then I validate text "CONTAINS=&#34;gA Gclid&#34;: &#34;test3&#34;" to be displayed for "BPP Digital Admin Logs Response Body text" element
+    Then I validate text "CONTAINS=''gA Gclid'': ''test3''" to be displayed for "BPP Digital Admin Logs Response Body text" element
     Then I should see the "Success" message
     #Logout Admin
     And I execute "Log Out from Hub Admin" reusable step
 
-  @Positive #TC-1533
+  @Positive @NoRun #TC-1533
   Scenario: Submit RFI form for non logged Users as Employer URL Two
     #RFI Submitting Student Site 2
     When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test4" URL
@@ -102,7 +105,7 @@ Feature: BPP Digital Create and Validate New Category
     And I set "SomeCommentEmployer[####]" text to the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I click on the "I do not wish to receive information from BPP" "Build Empire RFI Span dropdown item"
     And I click on the "Submit" "Build Empire button"
-    And I generate date and time as text pattern "dd MMM HH:mm" to "EC_DATE_TIME" variable
+    And I remember "[TIMENOW]" text as "EC_DATE_TIME" variable
     Then I should see the "Thank you for your interest" element
     Then I should see the "A member of our team will be with you shortly." element
     #Login Admin
@@ -112,7 +115,7 @@ Feature: BPP Digital Create and Validate New Category
     #Find Log
     And I click on the "BPP Digital Marketing Cloud Log Show button" element
     Then I validate text "CONTAINS=EC_AUTO_EMAIL" to be displayed for "BPP Digital Admin Logs Response Body text" element
-    Then I validate text "CONTAINS=&#34;gA Gclid&#34;: &#34;test4&#34;" to be displayed for "BPP Digital Admin Logs Response Body text" element
+    Then I validate text "CONTAINS=''gA Gclid'': ''test4''" to be displayed for "BPP Digital Admin Logs Response Body text" element
     Then I should see the "Success" message
     #Logout Admin
     And I execute "Log Out from Hub Admin" reusable step
