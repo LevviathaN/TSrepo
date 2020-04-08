@@ -1406,3 +1406,8 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I switch to window with index "2"
     And I validate text "222012-QAA-Report.pdf" to be displayed for "CHECK_URL" element
+
+  Scenario: Admin Hub Navigate to Marketing Cloud Logs
+    When I click on the "BPP Digital Admin Logs Menu Item link" element
+    And I click on the "Marketing Cloud" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Marketing Cloud Logs" "BPP Digital Admin Page Header name"
