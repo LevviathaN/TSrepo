@@ -291,7 +291,7 @@ public class TestParametersController {
                     String currentDateTime = dtf.format(now);
                     ecVarNameSimplified.append("_");
                     ecVarNameSimplified.append("TIMENOW");
-                    return currentDateTime;
+                    resultingValueSimplified.append(currentDateTime);
                 }
                 //if part is NOT KW_ value
                 else {
