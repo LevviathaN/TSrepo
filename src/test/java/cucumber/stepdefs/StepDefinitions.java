@@ -77,7 +77,6 @@ public class StepDefinitions extends BasePage {
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,
                 UiHandlers.DEFAULT_HANDLER);
-        //waitForPageToLoad();
     }
 
     /**
@@ -433,7 +432,6 @@ public class StepDefinitions extends BasePage {
                 BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
             }
-            //waitForPageToLoad();
         }
     }
 
@@ -464,7 +462,6 @@ public class StepDefinitions extends BasePage {
             Reporter.log("Selecting \"" + value + "\" value from " + element);
             selectValueFromDropDown(initElementLocator(element), value);
         }
-        //waitForPageToLoad();
     }
 
     /**
@@ -495,7 +492,6 @@ public class StepDefinitions extends BasePage {
         clickWithJS(initElementLocator(element));
         if (!condition.equals("Media") & (!condition.equals("BPP Totara Staging: Log in to the site"))
                 & (!condition.equals("BPPTS: My Learning"))) {
-            //waitForPageToLoad();
         }
     }
 
@@ -538,7 +534,6 @@ public class StepDefinitions extends BasePage {
 
     @And("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$")
     public void i_capture_text_data_as_variable(String element, String executionContext) {
-        //waitForPageToLoad();
         String value = getTextValueFromField(initElementLocator(element));
         Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
         if (!executionContext.equals("")) {
@@ -576,7 +571,7 @@ public class StepDefinitions extends BasePage {
      */
     @And("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$")
     public void i_capture_special_data(String element, String executionContext) {
-        //waitForPageToLoad();
+
         String value = selectSpecificData(initElementLocator(element));
         Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
         if (!executionContext.equals("")) {
