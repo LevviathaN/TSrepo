@@ -58,8 +58,9 @@ Feature: Salesforce
     Then I should see the " was created." message
 
   Scenario: Get Profile ID
-    And I click on the "Salesforce More Actions Dropdown" button
-    And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
+    #And I click on the "Salesforce More Actions Dropdown" button
+    #And I click on the "Get Profile ID LEX" "Salesforce dropdown option"
+    Then I click on the "Salesforce Get Profile ID" button by JS
     Then I should see the "Profile Id created Successfully" message
 
   Scenario: Create Opportunity
@@ -90,11 +91,11 @@ Feature: Salesforce
     And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
     And I wait for "4" seconds
-#    And I should see the "MSc Management CRO PTD 201819 for student application" element
 
   Scenario: Submit Application
-    And I click on the "Salesforce More Actions Dropdown" button
-    And I click on the "Submit Application LEX" "Salesforce dropdown option"
+    #And I click on the "Salesforce More Actions Dropdown" button
+    #And I click on the "Submit Application LEX" "Salesforce dropdown option"
+    Then I click on the "Salesforce Submit Application" button
     Then I should scroll to the "top" of the page
     And I click on the "Salesforce Account Name Link" element
     And I click on the "Salesforce Account Details Tab" element
@@ -107,9 +108,9 @@ Feature: Salesforce
     And I click on the "New Case" "Salesforce navigation menu dropdown option"
     And I click on the "Customer Service" "Salesforce radiobutton"
     And I click on the "Next" "button"
-    And I set "Automation CSA" text to the "Student" "Salesforce search field"
+    And I set "2Automation 2CSA" text to the "Student" "Salesforce search field"
     And I wait for "1" seconds
-    And I click on the "Automation CSA" "Salesforce cases search student"
+    And I click on the "2Automation 2CSA" "Salesforce cases search student"
     And I click on the "Case Origin" "Salesforce dropdown field"
     And I click on the "Email" "Salesforce cases dropdown option"
     And I click on the "Query Type" "Salesforce dropdown field"
@@ -180,11 +181,12 @@ Feature: Salesforce
 
   Scenario: Create CSA Case My Course
     When I click on the "Cases" "Salesforce navigation menu dropdown"
+    And I wait for "1" seconds
     And I click on the "New Case" "Salesforce navigation menu dropdown option"
     And I click on the "Customer Service" "Salesforce radiobutton"
     And I click on the "Next" "button"
-    And I set "Automation CSA" text to the "Student" "Salesforce search field"
-    And I click on the "Automation CSA" "Salesforce cases search student"
+    And I set "2Automation 2CSA" text to the "Student" "Salesforce search field"
+    And I click on the "2Automation 2CSA" "Salesforce cases search student"
     And I click on the "Case Origin" "Salesforce dropdown field"
     And I click on the "Email" "Salesforce cases dropdown option"
     And I click on the "Query Type" "Salesforce dropdown field"

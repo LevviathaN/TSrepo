@@ -1,4 +1,4 @@
-@Salesforce @CSA
+@Salesforce @CSA @Cases
 Feature: CSA - SLA Milestones
   As a Salesforce user/CSA
   I want to ensure that all cases assigned to the Customer Service Team Queue
@@ -11,8 +11,8 @@ Feature: CSA - SLA Milestones
     And I click on the "New Case" "Salesforce navigation menu dropdown option"
     And I click on the "Customer Service" "Salesforce radiobutton"
     And I click on the "Next" "button"
-    And I set "Automation CSA" text to the "Student" "Salesforce search field"
-    And I click on the "Automation CSA" "Salesforce cases search student"
+    And I set "2Automation 2CSA" text to the "Student" "Salesforce search field"
+    And I click on the "2Automation 2CSA" "Salesforce cases search student"
     And I click on the "Case Origin" "Salesforce dropdown field"
     And I click on the "Email" "Salesforce cases dropdown option"
     And I click on the "Query Type" "Salesforce dropdown field"

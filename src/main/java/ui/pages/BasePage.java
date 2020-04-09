@@ -438,6 +438,7 @@ public class BasePage {
                 handler.getHandler().handle(element, e);
             }
             if (repeatAction) clickOnElement(element, handlers);
+            waitForPageToLoad();
         }
     }
 
