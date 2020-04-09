@@ -95,7 +95,6 @@ public class StepDefinitions extends BasePage {
         if (conditions.checkCondition(condition, conditionParameter)) {
             Reporter.log("Executing step: I click on the '" + element + "' element");
             clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
-            //waitForPageToLoad();
         } else {
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
         }
@@ -157,7 +156,6 @@ public class StepDefinitions extends BasePage {
     @Then("^I should see the \"([^\"]*)\" (?:button|message|element)$")
     public void i_should_see_the_text(String element) {
         Reporter.log("Executing step: I should see the '" + element + "' element");
-        //waitForPageToLoad();
         boolean isDisplayed = false;
         for (int i = 0; i < findElements(initElementLocator(element)).size(); i++) {
             if (findElements(initElementLocator(element)).get(i).isDisplayed()) {
@@ -177,7 +175,6 @@ public class StepDefinitions extends BasePage {
     @Then("^I should be redirected to the \"([^\"]*)\" page$")
     public void i_should_be_redirected_to_page(String pageTitle) {
         Reporter.log("Executing step: I should be redirected to the '" + pageTitle + "' page");
-        //waitForPageToLoad();
         String processedPageTitle = TestParametersController.checkIfSpecialParameter(pageTitle);
         Reporter.log("Current page is " + driver().getTitle());
         System.out.println("Expected page is " + pageTitle);
@@ -329,7 +326,6 @@ public class StepDefinitions extends BasePage {
     @Then("I shouldn't see the \"([^\"]*)\"(?: button| message| element| text)?$")
     public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
-        //waitForPageToLoad();
         if (checkIfElementNotExist(initElementLocator(element))) {
             Assert.assertTrue(false, "Element with " + element + " text is not displayed");
         } else {
