@@ -6,7 +6,7 @@
 
     <groupId>bdd_automation_framework</groupId>
     <artifactId>bdd_automation_framework</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <tests>smoke.xml</tests>
