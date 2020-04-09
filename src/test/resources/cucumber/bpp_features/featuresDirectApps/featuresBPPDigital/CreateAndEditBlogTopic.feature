@@ -18,7 +18,7 @@ Feature: BPP Digital Create and Edit Blog Topic
     When I am on "https://staging.bppdigital.buildempire.app/insights/<EC_AUTO_URL>" URL
     Then I validate text "EC_AUTO_BLOG_POST" to be displayed for "BPP Digital Breadcrumb Level Three" element
     And I validate text "EC_AUTO_BLOG_TOPIC" to be displayed for "BPP Digital Blog Post Topic name" element
-    And I remember "<KW_AUTO_TODAY>" text as "EC_CURRENT_DATE" variable
+    And I remember "[TIMENOW-MMMMd,yyyy]" text as "EC_CURRENT_DATE" variable
     And I validate text "EC_CURRENT_DATE" to be displayed for "BPP Digital Blog Post Topic date" element
     When I execute "Log In to Hub as Admin" reusable step
     And I execute "Admin Hub Navigate to Blog Posts" reusable step
