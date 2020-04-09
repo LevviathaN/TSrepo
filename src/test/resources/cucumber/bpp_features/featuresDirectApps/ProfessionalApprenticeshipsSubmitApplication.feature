@@ -4,7 +4,7 @@ Feature: Submit Professional Apprenticeship Applications
   Background:
     Given I execute "Register New Student Account" reusable step
 
-  @Positive @UATAccounting #TC-1021 #TC-1022
+  @Positive @UATAccounting @Smoke #TC-1021 #TC-1022
   Scenario: Submit Professional Apprenticeship UAT Accounting
     When I execute "Create Professional Apprenticeships Application UAT Accounting Option Two" reusable step
     Given I execute "Complete Professional Apprenticeships UAT Accounting Assistant" reusable step

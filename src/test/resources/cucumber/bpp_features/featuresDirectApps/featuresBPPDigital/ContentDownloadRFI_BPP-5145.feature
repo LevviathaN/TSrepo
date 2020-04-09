@@ -5,7 +5,7 @@ Feature: As a user, viewing a "content download RFI", I expect to see an RFI for
     Given I execute "Log In to Hub as Admin" reusable step
 
   @Positive #TC-2454 TC-2459
-  Scenario: Create and validate "Content Download RFI"
+  Scenario: Create and validate Content Download RFI
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     And I execute "Create CMS Page" reusable step
     #Add Form Component:

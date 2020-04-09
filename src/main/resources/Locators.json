@@ -251,6 +251,10 @@
   "Direct App Admin Parent Guardian Phone": "xpath=//strong[text()='Parent/Legal Guardian Phone']/parent::div/following-sibling::div",
   "Direct App Line Manager Parent Guardian Email": "xpath=//span[@class='required-field']/parent::label[contains(text(),'Email Address of Parent/Legal Guardian')]/following-sibling::input",
   "Direct App Line Manager Parent Guardian Phone": "xpath=//span[@class='required-field']/parent::label[contains(text(),'Phone Number of Parent/Legal Guardian')]/following-sibling::div//input",
+  "Direct App Admin Download Menu": "xpath=//button[contains(text(),'Download')]",
+  "Direct App Admin Download Menu Salesforce CSV": "xpath=//a[contains(text(),'Salesforce CSV')]",
+  "Direct App Admin Downloads Generated At": "xpath=//thead//th[text()='Generated at']/../following::tbody/tr[1]/td[4]",
+  "Direct App Admin Downloads Type": "xpath=//thead//th[text()='Type']/../following::tbody/tr[1]/td[2]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -330,6 +334,9 @@
   "BPP Digital Parent CMS Clickable Field": "xpath=//label[normalize-space()='Parent']/following-sibling::span",
   "BPP Digital Parent CMS Text Field": "xpath=//input[contains(@aria-controls,'cms_page_parent_id-results')]",
   "BPP Digital CMS Page Published Location": "xpath=//tbody/tr[1]/td[5]",
+  "BPP Digital Admin Logs Menu Item link": "xpath=//li[@class='nav-item']/a[contains(text(),'Logs')]",
+  "BPP Digital Admin Logs Response Body text": "xpath=(//div[normalize-space()='Response']/following::pre)[1]",
+  "BPP Digital Marketing Cloud Log Show button": "xpath=(//td[text()='EC_DATE_TIME']/following-sibling::td/a[text()='Show'])[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

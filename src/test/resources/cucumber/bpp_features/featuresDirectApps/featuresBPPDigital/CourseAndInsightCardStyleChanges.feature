@@ -4,7 +4,7 @@ Feature: BPP Digital Course and Insight Card Style Changes
   Background:
     Given I am on "MD_COMMON_LINKS_BPPDIGITALINDEXURL" URL
 
-  @Positive #TC-1971
+  @Positive @Smoke #TC-1971
   Scenario: Course and Insight Card Style Changes
     When I click on the "Study" "BPP Digital Study expandable link"
     And I click on the "Courses" "BPP Digital Courses Menu Item links"
