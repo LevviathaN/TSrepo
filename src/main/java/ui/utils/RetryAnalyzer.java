@@ -5,6 +5,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,14 +20,14 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         String scenarioName;
         String actualScenarioName = Reporter.getCurrentTestName();
         if (actualScenarioName.contains("attempt")) {
-            scenarioName = actualScenarioName.substring(0,actualScenarioName.length()-10);
+            scenarioName = actualScenarioName.substring(0, actualScenarioName.length() - 10);
         } else {
             scenarioName = actualScenarioName;
         }
         if (!counterMap.containsKey(scenarioName)) {
-            counterMap.put(scenarioName,1);
+            counterMap.put(scenarioName, 1);
         } else {
-            counterMap.replace(scenarioName,counterMap.get(scenarioName)+1);
+            counterMap.replace(scenarioName, counterMap.get(scenarioName) + 1);
         }
         return counterMap.get(scenarioName) <= limit;
     }
@@ -37,7 +38,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
         for (String testName : passMap.keySet()) {
             try {
                 File inputFile = new File(filePath);
-                org.jsoup.nodes.Document doc = Jsoup.parse(inputFile,"utf-8");
+                org.jsoup.nodes.Document doc = Jsoup.parse(inputFile, "utf-8");
                 Elements testNameElements = doc.getElementsByClass("test-name");
                 for (org.jsoup.nodes.Element element : testNameElements) {
                     if (element.text().contains(testName)) {
@@ -45,8 +46,7 @@ public class RetryAnalyzer implements IRetryAnalyzer {
                         if (testNode.attr("status").equals("fail")) {
                             if (passMap.get(testName).equals("pass")) {
                                 testNode.remove();
-                            }
-                            else if (passMap.get(testName).equals("fail")) {
+                            } else if (passMap.get(testName).equals("fail")) {
                                 if (!element.text().contains("attempt_" + limit)) {
                                     testNode.remove();
                                 }
