@@ -16,7 +16,7 @@ public class BPPListener extends TestListenerAdapter {
             ITestResult failedTestCase = failedTests.next();
             ITestNGMethod method = failedTestCase.getMethod();
             if (testContext.getFailedTests().getResults(method).size() > 0) {
-                BPPLogManager.getLogger().info("Failed Test Case: " + failedTestCase.getTestClass().toString());
+                BPPLogManager.getLogger().info("Failed Test Case: " + failedTestCase.getTestClass().getName());
                 failedTests.remove();
             } else {
                 if (testContext.getPassedTests().getResults(method).size() > 0) {
