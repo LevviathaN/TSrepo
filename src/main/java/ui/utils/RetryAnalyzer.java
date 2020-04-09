@@ -3,11 +3,10 @@ package ui.utils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.testng.*;
-
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class RetryAnalyzer implements IRetryAnalyzer {
