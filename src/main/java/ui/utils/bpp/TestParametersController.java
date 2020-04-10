@@ -286,7 +286,13 @@ public class TestParametersController {
                     ecVarNameSimplified.append("DOB");
                 }
                 else if (element.startsWith("TIMENOW")){
-                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMM HH:mm");
+                    String timePattern = null;
+                    if(element.endsWith("MMMMd,yyyy")){
+                        timePattern = "MMMM d, yyyy";
+                    } else {
+                        timePattern = "dd MMM HH:mm";
+                    }
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern(timePattern);
                     LocalDateTime now = LocalDateTime.now(ZoneId.of("Europe/London"));
                     String currentDateTime = dtf.format(now);
                     ecVarNameSimplified.append("_");

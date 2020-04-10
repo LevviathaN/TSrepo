@@ -21,7 +21,7 @@ Feature: BPP Digital Create Archive Publish and Delete a Blog Post
     When I am on "https://staging.bppdigital.buildempire.app/insights/<EC_AUTO_URL>" URL
     Then I validate text "EC_AUTO_BLOG_POST" to be displayed for "BPP Digital Breadcrumb Level Three" element
     And I validate text "Topic 1" to be displayed for "BPP Digital Blog Post Topic name" element
-    And I remember "<KW_AUTO_TODAY>" text as "EC_CURRENT_DATE" variable
+    And I remember "[TIMENOW-MMMMd,yyyy]" text as "EC_CURRENT_DATE" variable
     And I validate text "EC_CURRENT_DATE" to be displayed for "BPP Digital Blog Post Topic date" element
     Then Attribute "alt" of "BPP Digital Blog Post Image Content" should have value "tree"
     Then I wait for "2" seconds

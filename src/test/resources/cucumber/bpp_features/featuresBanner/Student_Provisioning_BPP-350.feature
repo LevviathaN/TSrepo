@@ -17,7 +17,7 @@ Feature: Admitting a single student in Banner - BPP-350
     And I "check" "Salesforce Offering Checkbox" checkbox
     And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
-    And I wait for "4" seconds
+    #And I wait for "4" seconds
     Given I execute "Submit Application" reusable step
     Given I execute "Log In To Banner" reusable step
     And I execute "Navigate To Form" reusable step

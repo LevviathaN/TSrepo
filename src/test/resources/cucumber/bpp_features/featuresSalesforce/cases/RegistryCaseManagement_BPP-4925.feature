@@ -1,4 +1,4 @@
-@Salesforce @RegistryCaseManagement
+@Salesforce @RegistryCaseManagement @Cases
 Feature: Registry Case Management
   As a Registry Salesforce Classic User switching to Lightning Experience,
   I want Registry Case Management to perform as expected

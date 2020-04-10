@@ -1,4 +1,4 @@
-@Salesforce @CSA
+@Salesforce @CSA @Cases
 Feature: CSA Workflow Alerts
   As a Salesforce CSA member:
 

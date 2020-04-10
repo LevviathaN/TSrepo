@@ -21,7 +21,7 @@ Feature: BPP Digital Edit Blog Post
     When I am on "https://staging.bppdigital.buildempire.app/insights/<EC_AUTO_URL>" URL
     Then I validate text "EC_AUTO_BLOG_POST" to be displayed for "BPP Digital Breadcrumb Level Three" element
     And I validate text "Topic 1" to be displayed for "BPP Digital Blog Post Topic name" element
-    And I remember "<KW_AUTO_TODAY>" text as "EC_CURRENT_DATE" variable
+    And I remember "[TIMENOW-MMMMd,yyyy]" text as "EC_CURRENT_DATE" variable
     And I validate text "EC_CURRENT_DATE" to be displayed for "BPP Digital Blog Post Topic date" element
     Then Attribute "alt" of "BPP Digital Blog Post Image Content" should have value "tree"
     Then I wait for "2" seconds
@@ -81,7 +81,7 @@ Feature: BPP Digital Edit Blog Post
     #Validate School/Professions Change Scenario #8
     And I execute "Search for Blog Post" reusable step
     Then I click on the "EC_AUTO_BLOG_POST" "BPP Digital Admin Edit Button for Specific name"
-    And I select "Accountancy" from "Schools/Professions" "BPP Digital Mandatory select field"
+    And I select "Accountancy and Tax" from "Schools/Professions" "BPP Digital Mandatory select field"
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I should see the "Blog Post was successfully updated." "BPP Digital Admin Alert Message"
     #Delete Image
