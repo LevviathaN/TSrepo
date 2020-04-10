@@ -334,6 +334,9 @@
   "BPP Digital Parent CMS Clickable Field": "xpath=//label[normalize-space()='Parent']/following-sibling::span",
   "BPP Digital Parent CMS Text Field": "xpath=//input[contains(@aria-controls,'cms_page_parent_id-results')]",
   "BPP Digital CMS Page Published Location": "xpath=//tbody/tr[1]/td[5]",
+  "BPP Digital Admin Logs Menu Item link": "xpath=//li[@class='nav-item']/a[contains(text(),'Logs')]",
+  "BPP Digital Admin Logs Response Body text": "xpath=(//div[normalize-space()='Response']/following::pre)[1]",
+  "BPP Digital Marketing Cloud Log Show button": "xpath=(//td[text()='EC_DATE_TIME']/following-sibling::td/a[text()='Show'])[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
@@ -348,6 +351,8 @@
   "Salesforce Offering Checkbox": "inframe=Salesforce Frame>xpath=(//td[text()='MSc Management CRO PTD 201819 for student application']/preceding-sibling::td/input)[1]",
   "Salesforce Product Checkbox": "inframe=Salesforce Frame>xpath=(//td[text()='MSc Management CRO PTD 201819 for student application']/preceding-sibling::td/input)[2]",
   "Salesforce More Actions Dropdown": "xpath=//div[contains(@class,'active lafPageHost')]//li[@data-aura-class='oneActionsDropDown']",
+  "Salesforce Get Profile ID": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Get Profile ID LEX']",
+  "Salesforce Submit Application": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Submit Application LEX']",
   "Salesforce Account Details Tab": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']/descendant::a[@data-label='Details']",
   "Salesforce Banner ID Field": "xpath=//span[text()='Banner ID']/../following-sibling::div/span/slot/slot/*",
   "Salesforce Profile Services ID Field": "xpath=//span[text()='Profile Services ID']/../following-sibling::div/span/slot/slot/*",

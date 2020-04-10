@@ -167,7 +167,6 @@ public class SpecialStepDefs extends BasePage {
     @Then("I shouldn't see the \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_should_not_see_the_element_special(String elementLocator, String elementType) {
         Reporter.log("Executing step: I should see the '" + elementLocator + "' " + elementType);
-        waitForPageToLoad();
 
         if(specialLocatorsMap.containsKey(elementType)) {
             String xpathTemplate = specialLocatorsMap.get(elementType);
@@ -261,7 +260,6 @@ public class SpecialStepDefs extends BasePage {
                 Reporter.log("Selecting \"" + value + "\" value from " + elementLocator + "' " + elementType);
                 selectValueFromDropDown(By.xpath(resultingXpath), value);
             }
-            waitForPageToLoad();
         }else {
             Reporter.fail("No such locator template key");
         }
