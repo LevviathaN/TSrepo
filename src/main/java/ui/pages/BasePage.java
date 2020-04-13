@@ -188,6 +188,15 @@ public class BasePage {
         }
     }
 
+    public void setTextDyJS(By element, String value) {
+        if (value != null) {
+            BPPLogManager.getLogger().info("Setting: " + element + " with value: " + value + " by JS");
+            JavascriptExecutor executor = (JavascriptExecutor)driver();
+            //executor.executeScript("arguments[0].click();", driver().findElement(element));
+            executor.executeScript("document.getElementById('id_text_mainboxtexteditable')");
+        }
+    }
+
     /**
      * Action clears the entire  text field as Selenium's clear() refuses to work on new chrome versions
      *
@@ -456,12 +465,19 @@ public class BasePage {
     /**
      * Method to execute some JS code on desired element
      *
-     * @param element locator of element to apply JS code for
+
      * @param jsCode JS code to execute
      */
-    public void executeJSCode(String jsCode, By element){
-        JavascriptExecutor executor = (JavascriptExecutor)driver();
-        executor.executeScript(jsCode, driver().findElement(element));
+    public void executeJSCode(String jsCode){
+      try {
+          JavascriptExecutor executor = (JavascriptExecutor) driver();
+          BPPLogManager.getLogger().info("Executing JavaScript code");
+          executor.executeScript(jsCode);
+      } catch (StaleElementReferenceException e1) {
+          BPPLogManager.getLogger().info("StaleElementReferenceExeption caught. Try to execute JavaScript code");
+          JavascriptExecutor executor = (JavascriptExecutor) driver();
+          executor.executeScript(jsCode);
+        }
     }
 
     /**
