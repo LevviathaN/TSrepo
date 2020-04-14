@@ -27,6 +27,12 @@
   "Product Factory Locked Applies To drop-down item": "//div[text()='PARAMETER']",
   "Product Factory Financial Dimension list in Locations":"//div[@role='document']/ul/li[text()='PARAMETER']",
   "Product Factory Check Link Levels button": "//td[text()='PARAMETER']/following-sibling::td/button/span",
+  "Product Factory Session Dates button": "//td[text()='PARAMETER']/following-sibling::td/div/div/button",
+  "Product Factory course instance sessions dropdown button": "//p[text()='PARAMETER']/../../../../../../following-sibling::div/span[1]",
+  "Product Factory course instance Activate button": "//p[text()='PARAMETER']/../../../../following-sibling::div/button/span[text()='Activate']",
+  "Product Factory course instance Deactivate button": "//p[text()='PARAMETER']/../../../../following-sibling::div/button/span[text()='Deactivate']",
+  "Product Factory course instance Publish button": "//p[text()='PARAMETER']/../../../../following-sibling::div/button/span[text()='Publish']",
+  "Product Factory course instance Delete button": "//p[text()='PARAMETER']/../../../../../descendant::button[@title='Delete']",
 
   "Build Empire text field": "//input[@placeholder='PARAMETER']",
   "Build Empire application type":"//li[text()='PARAMETER']",

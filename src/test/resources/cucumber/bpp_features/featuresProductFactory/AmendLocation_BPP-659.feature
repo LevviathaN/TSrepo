@@ -9,7 +9,7 @@ Feature: Amend Reference Data - Location - BPP-659
     And I execute "Create Region Financial Dimension" reusable step
     Then I execute "Create Region" reusable step
 
-  @Positive @P1 #TC-659
+  @Positive @P1 #TC-832
   Scenario: Amend Location
     When I execute "Create Location Financial Dimension" reusable step replacing some steps
       |4|I set "LocationFDCodeTwo[####]" text to the "Code" "Product Factory text field"|
