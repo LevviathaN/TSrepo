@@ -188,15 +188,6 @@ public class BasePage {
         }
     }
 
-    public void setTextDyJS(By element, String value) {
-        if (value != null) {
-            BPPLogManager.getLogger().info("Setting: " + element + " with value: " + value + " by JS");
-            JavascriptExecutor executor = (JavascriptExecutor)driver();
-            //executor.executeScript("arguments[0].click();", driver().findElement(element));
-            executor.executeScript("document.getElementById('id_text_mainboxtexteditable')");
-        }
-    }
-
     /**
      * Action clears the entire  text field as Selenium's clear() refuses to work on new chrome versions
      *
