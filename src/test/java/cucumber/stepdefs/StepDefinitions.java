@@ -122,28 +122,6 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
-     * Definition to send some text into text input field using Javasript.
-     * Was implemented to cover Totara functionality
-     *
-     * @param element locator for element you want to send text to
-     *                Parameter exists in locators document - locator value is returned from document
-     * @param text    text you want to send to element
-     *                Here we also check if text is EC_ or MD_ of KW_
-     * @author Yurii Zosin
-     */
-    @When("^I fill the \"([^\"]*)\" field with \"([^\"]*)\" byJS$")
-    public void fill_field_with_JS (String element, String text) {
-        Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
-        String processedText = TestParametersController.checkIfSpecialParameter(text);
-
-        BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
-        setText(initElementLocator(element), processedText);
-        if (!text.equals(processedText)) {
-            Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
-        }
-    }
-
-    /**
      * Definition to send some text into some text input field
      *
      * @param seconds amount of seconds you want to wait
