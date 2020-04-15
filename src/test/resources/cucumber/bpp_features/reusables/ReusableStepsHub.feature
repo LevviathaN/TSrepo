@@ -22,7 +22,6 @@ Feature: Hub, Totara
     And I select "KW_AUTO_SELECT" from "Totara Activities Dropdown" element
     Then I execute "document.getElementById('id_text_mainboxtexteditable').innerText='MainTopAutomation';" JS code
     Then I execute "document.getElementById('id_text_submitbuttontexteditable').innerText='SubmitTopAutomation';" JS code
-    And I wait for "2" seconds
     Then I click on the "Totara Save" button by JS
     And I click on the "Totara Continue" button by JS
     And I click on the "Topic to test adding activities" link by JS
@@ -30,7 +29,6 @@ Feature: Hub, Totara
     Then I execute "document.getElementById('id_text_mainboxtexteditable').innerText='MainBottomAutomation';" JS code
     Then I execute "document.getElementById('id_text_submitbuttontexteditable').innerText='SubmitBottomAutomation';" JS code
     And I select "KW_AUTO_SELECT" from "Totara Activities Dropdown" element
-    And I wait for "2" seconds
     Then I click on the "Totara Save" button by JS
     And I click on the "Totara Continue" button by JS
     And I click on the "Topic to test adding activities" link by JS
