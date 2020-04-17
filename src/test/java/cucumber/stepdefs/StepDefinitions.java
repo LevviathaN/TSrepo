@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import ui.pages.BasePage;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
+import ui.utils.bpp.JavaScriptHelper;
 import ui.utils.bpp.TestParametersController;
 
 import java.time.LocalDateTime;
@@ -544,17 +545,15 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
-     * Definition to execute JS code for web element
+     * Definition to execute JS code
      *
-     * @param element locator of element you want to execute JS code for
      * @param jsCode JS code to execute
-     *
      * @author Ruslan Levytskyi
      */
-    @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
-    public void i_execute_js_code_for_element(String jsCode, String element) {
+    @And("^I execute \"([^\"]*)\" JS code$")
+    public void i_execute_js_code_for_element(String jsCode) {
         Reporter.log("Executing JS code: " + jsCode);
-        executeJSCode(jsCode, initElementLocator(element));
+        executeJSCode(jsCode);
     }
 
     /**

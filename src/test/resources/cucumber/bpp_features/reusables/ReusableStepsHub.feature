@@ -11,4 +11,4 @@ Feature: Hub, Totara
     Then I click on the "Totara Account Expandable Menu" element by JS
     Then I click on the "Totara Logout Link" button by JS
     And I wait for "2" seconds
-    And I execute "document.getElementsByClassName('logininfo')[0].innerText;" JS code for "Totara Logout Message" element
+    And I execute "document.getElementsByClassName('logininfo')[0].innerText;" JS code

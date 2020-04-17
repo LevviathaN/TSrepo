@@ -322,6 +322,11 @@ public class Reporter {
 
     public static void failTryTakingScreenshot(String log) {
 
+        String currentTestName = getCurrentTestName();
+        if (currentTestName.contains("attempt")) {
+            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"fail");
+        }
+
         try {
             testNodesStorage.get(Thread.currentThread().getId()).fail(log);
             buildStatus = false;
@@ -714,6 +719,11 @@ public class Reporter {
     }
 
     public static synchronized void passApi(String log) {
+
+        String currentTestName = getCurrentTestName();
+        if (currentTestName.contains("attempt")) {
+            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
+        }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 
