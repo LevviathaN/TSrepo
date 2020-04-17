@@ -25,10 +25,10 @@ public class JavaScriptHelper {
      */
     public static void waitForJavaScriptToRun(WebDriver driver, int timeSeconds) {
         try {
-            Reporter.log("Waiting for JavaScript to updated the DOM");
+            Reporter.log("Waiting for JavaScript to update the DOM");
             BPPLogManager.getLogger().info("Waiting for JavaScript to updated the DOM");
-            Reporter.log("Waiting for JavaScript to updated the DOM");
-            Reporter.log("Waiting for JavaScript to updated the DOM");
+            Reporter.log("Waiting for JavaScript to update the DOM");
+            Reporter.log("Waiting for JavaScript to update the DOM");
 
             JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
             driver.manage().timeouts().setScriptTimeout(timeSeconds, TimeUnit.SECONDS);
@@ -62,7 +62,7 @@ public class JavaScriptHelper {
     public static void waitForJavaScriptToRun(WebDriver driver, WebElement element, int timeSeconds) {
         try {
             Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
-            BPPLogManager.getLogger().info("Waiting for JavaScript to updated the passed element along with its descendants");
+            BPPLogManager.getLogger().info("Waiting for JavaScript to update the passed element along with its descendants");
             Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
             Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
 

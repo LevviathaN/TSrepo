@@ -14,10 +14,10 @@ Feature: University Degree Apprenticeships
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step replacing some steps
-      |5|I fill the "Direct App Admin Filter By User" field with "autojaredgartred@harakirimail.com"|
+      |4|I fill the "Direct App Admin Filter By User" field with "autojaredgartred@harakirimail.com"|
     And I execute "Attach Automation Line Manager Apprenticeships" reusable step replacing some steps
       |4|I fill the "Direct App Admin Attach Line Manger Text Field" field with "02917uk7sr@harakirimail.com"|
-      |6|I click on the "Automation Line Manager 1" "Build Empire line manager option"|
+      |5|I click on the "Automation Line Manager 1" "Build Empire line manager option"|
     And I execute "Log Out from Hub Admin" reusable step
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     And I set "02917uk7sr@harakirimail.com" text to the "Email" "Build Empire text field"
@@ -33,7 +33,7 @@ Feature: University Degree Apprenticeships
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Accept Application As Admin" reusable step replacing some steps
-      |5|I fill the "Direct App Admin Filter By User" field with "autojaredgartred@harakirimail.com"|
+      |4|I fill the "Direct App Admin Filter By User" field with "autojaredgartred@harakirimail.com"|
     And I execute "Log Out from Hub Admin" reusable step
     And I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "autojaredgartred@harakirimail.com" text to the "Email" "Build Empire text field"|

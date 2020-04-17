@@ -3,11 +3,13 @@ package api;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import ui.utils.Reporter;
+import ui.utils.RetryAnalyzer;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.KeywordsHandler;
 import ui.utils.bpp.MetaDataHandler;
 import ui.utils.bpp.PreProcessFiles;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -38,6 +40,13 @@ public class BaseApiTest {
     @AfterMethod
     public void flushProcesses(ITestResult testResult) {
         Reporter.stopReportingAPI(testResult);
+        try {
+            Reporter.writeToFile();
+            Reporter.saveAllECToFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @AfterClass(alwaysRun = true)
@@ -45,6 +54,7 @@ public class BaseApiTest {
         ExcelResultsWriter.createApiExcel();
         Reporter.flush();
         ExecutionContextHandler.resetExecutionContextValues();
+        RetryAnalyzer.deletePreviousAttemptsFromHtmlReport();
         System.out.println("EXECUTIONS HAVE FINISHED");
     }
 }
