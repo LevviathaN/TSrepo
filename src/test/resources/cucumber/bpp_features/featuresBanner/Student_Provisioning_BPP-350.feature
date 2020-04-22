@@ -1,4 +1,4 @@
-@Banner @Student
+@Banner
 Feature: Admitting a single student in Banner - BPP-350
   As a member of the Admissions team, I want to admit a student in Banner.
 
