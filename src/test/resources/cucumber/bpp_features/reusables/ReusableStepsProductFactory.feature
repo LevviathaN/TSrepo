@@ -172,6 +172,7 @@ Feature: Product Factory
     When I click on the "Session Durations" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "SessionDurationDescription[######]" text to the "Description" "Product Factory text field"
+    And I set "1" text to the "Number of Dates" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element
 
