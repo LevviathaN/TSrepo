@@ -303,6 +303,7 @@ Feature: Product Factory
     And I fill the "Product Factory Number Of Sessions Edit Field" field with "1"
     And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
+    #todo: separate Course and Course Instance creation
     Then I click on the "Create" "Product Factory button"
     And I click on the "Default Session Duration" "Product Factory dropdown"
     And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
@@ -354,3 +355,45 @@ Feature: Product Factory
     And I click on the "Revenue Dimension" "Product Factory change button"
     And I click on the "EC_FD_CODE" "Product Factory select button"
     And I click on the "Save" "Product Factory button"
+
+  Scenario: Create CBA Record
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "CBAs" "Product Factory navigation sub item"
+    And I click on the "Create" "Product Factory button"
+    And I click on the "EC_SITTING_NAME" "Product Factory select button"
+    And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory select button"
+    And I click on the "Region" "Product Factory dropdown"
+    And I click on the "EC_REGION_NAME" "element"
+    And I click on the "Location" "Product Factory dropdown"
+    And I click on the "EC_LOCATION_NAME" "element"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
+    Then I should see the "EC_SITTING_NAME" element
+    Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element
+    Then I should see the "EC_REGION_NAME" element
+    Then I should see the "EC_LOCATION_NAME" element
+    Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
+    And I set "[TODAY]" text to the "Date" "Product Factory text field"
+    And I set "01:00AM" text to the "Start Time" "Product Factory text field"
+    And I set "1" text to the "Capacity" "Product Factory text field"
+    And I click on the "Finish" "Product Factory button"
+    And I click on the "Default Institute Fee (£)" "Product Factory edit button"
+    And I set "~DefaultInstituteFee[###]" text to the "Default Institute Fee (£)" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    When I click on the "Clients" "Product Factory button"
+    And I click on the "Edit" "Product Factory button"
+    And I "check" "EC_CLIENT_NAME" "Product Factory checkbox"
+    And I click on the "Save" "Product Factory button"
+    And I click on the "Courses" "Product Factory button"
+
+  Scenario: Create CBA Course
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "CBAs" "Product Factory navigation sub item"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
+    When I click on the "Create" "Product Factory button"
+    And I "check" "EC_BODY_SHORT_NAME" "Product Factory checkbox"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Next" "Product Factory button"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    Then I should see the "EC_PAPER_DESCRIPTION" element
+    Then I should see the "EC_LEVEL_SHORT_NAME" element
+    And I click on the "Finish" "Product Factory button"

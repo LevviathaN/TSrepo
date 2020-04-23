@@ -16,7 +16,7 @@
   "Product Factory change button": "//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "//td[text()='PARAMETER']/following-sibling::td/button",
-  "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
+  "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div/div",
   "Product Factory dropdown option": "//li[text()='PARAMETER']",
   "Product Factory dialog checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]",
   "Product Factory checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]|//span[text()='PARAMETER']/preceding-sibling::span/span[1]",
