@@ -3,7 +3,7 @@ Feature: BPP University Hub My Learning
   As a learner
   I need an easy way to access the My Learning page from the navigation of The Hub
 
-  @Positive @BET #TC-1119 TC-1121
+  @Positive #TC-1119 TC-1121
   Scenario: HUB - My Learning
     #Register New Student
     When I remember "Auto[EMAIL-HARAKIRI]" text as "EC_VARIABLE" variable
