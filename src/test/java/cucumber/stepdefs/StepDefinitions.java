@@ -553,7 +553,11 @@ public class StepDefinitions extends BasePage {
     @And("^I execute \"([^\"]*)\" JS code$")
     public void i_execute_js_code_for_element(String jsCode) {
         Reporter.log("Executing JS code: " + jsCode);
-        executeJSCode(jsCode);
+        if(jsCode.contains("EC_VARIABLE")){
+            executeJSCode(jsCode.replace("EC_VARIABLE",ExecutionContextHandler.getExecutionContextValueByKey("EC_VARIABLE")));
+        } else {
+            executeJSCode(jsCode);
+        }
     }
 
     /**

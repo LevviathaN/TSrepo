@@ -71,6 +71,7 @@
   "Build Empire RFI Span dropdown item": "//span[normalize-space()=\"PARAMETER\"]",
   "Build Empire RFI dropdown option": "//li[text()=\"PARAMETER\"]",
   "Build Empire RFI Textarea text item": "//textarea[@placeholder=\"PARAMETER\"]",
+  "Build Empire Navigation Menu elements":"//li[normalize-space()=\"PARAMETER\"]",
 
   "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
@@ -105,6 +106,8 @@
   "BPP Digital Drop Down Option value": "//option[@value='PARAMETER']",
   "BPP Digital Archive Category button": "//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Archive']",
   "BPP Digital RFI Input Field": "//label[contains(text(), 'PARAMETER')]/..//input",
+
+  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
 
   "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",

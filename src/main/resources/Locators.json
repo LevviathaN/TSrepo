@@ -266,6 +266,7 @@
   "Direct App Topic Read More": "xpath=//div[@class='section-description']//div[2]//button",
   "Direct App Topic Key Activities": "xpath=//div[contains(@class,'single-section')][12]/a",
   "Direct App Remove Application Pack": "xpath=(//p[@class='file-name' and @title='Application pack']/following::span[@class='bppicon icon-cancel'])[1]",
+  "Direct App Left Navigation Panel menu logo image": "xpath=//div[contains(@class,'item-logo')]//img[1]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -348,6 +349,7 @@
   "BPP Digital Admin Logs Menu Item link": "xpath=//li[@class='nav-item']/a[contains(text(),'Logs')]",
   "BPP Digital Admin Logs Response Body text": "xpath=(//div[normalize-space()='Response']/following::pre)[1]",
   "BPP Digital Marketing Cloud Log Show button": "xpath=(//td[text()='EC_DATE_TIME']/following-sibling::td/a[text()='Show'])[1]",
+  "BPP Digital Log out button":"xpath=//input[@value='Log out']",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
@@ -380,6 +382,15 @@
   "Totara Bulk Expected Completed Month": "xpath=//div[@id='fitem_id_completion']//div/select[2]",
   "Totara Bulk Expected Completed Hour": "xpath=//div[@id='fitem_id_completion']//div/select[4]",
   "Totara Save On Update Page": "id=id_submit",
+  "Totara ICAEW Course": "xpath=//h3[normalize-space()='ICAEW Accounting Full']/parent::a",
+  "Totara Enrol User button": "xpath=//h2[text()='Enrolled users']/following-sibling::div[1]//form/div/input[1]",
+  "Totara Enrol User Search field": "xpath=//input[@id='enrolusersearch']",
+  "Totara Enrol User Search button": "xpath=//input[@id='searchbtn']",
+  "Totara Enrol Button": "xpath=//input[@value='Enrol']",
+  "Totara Finish Enroling Users button": "xpath=//input[@value='Finish enrolling users']",
+  "Totara Login Confirmation Popup window": "xpath=//div[@class='box generalbox']",
+  "Totara Left Menu Users link": "xpath=//li/p[normalize-space()='Users']",
+  "Totara Enrolled Users button":"xpath=//a[text()='Enrolled users']",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",
