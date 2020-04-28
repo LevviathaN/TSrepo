@@ -391,6 +391,9 @@
   "Totara Login Confirmation Popup window": "xpath=//div[@class='box generalbox']",
   "Totara Left Menu Users link": "xpath=//li/p[normalize-space()='Users']",
   "Totara Enrolled Users button":"xpath=//a[text()='Enrolled users']",
+  "Totara Volodymyr Course": "xpath=//h3[contains(text(),'Mini Course for Volodymyr')]",
+  "Totara Users Dropdown": "xpath=//span[text()='Users']",
+  "Totara User Text": "xpath=//span[@class='usertext']",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",

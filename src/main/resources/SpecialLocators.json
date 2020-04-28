@@ -72,6 +72,8 @@
   "Build Empire RFI dropdown option": "//li[text()=\"PARAMETER\"]",
   "Build Empire RFI Textarea text item": "//textarea[@placeholder=\"PARAMETER\"]",
   "Build Empire Navigation Menu elements":"//li[normalize-space()=\"PARAMETER\"]",
+  "Build Empire Homepage My Learning Course": "//div[@class='home-col right-col']/descendant::h3[contains(text(),'PARAMETER')]",
+  "Build Empire Course Topic": "//div[@class='section-name' and text()='PARAMETER']/../following-sibling::a",
 
   "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
@@ -127,6 +129,8 @@
   "Salesforce app launcher app": "//p[text()='PARAMETER']",
   "Salesforce readonly field": "//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*",
   "Salesforce cases search student": "//div[@title='PARAMETER']",
-  "Salesforce cases status option": "//span[@title='PARAMETER']"
+  "Salesforce cases status option": "//span[@title='PARAMETER']",
 
+  "Totara text field": "//label[normalize-space()='Password']",
+  "Totara side menu option": "//span[text='PARAMETER']"
 }
