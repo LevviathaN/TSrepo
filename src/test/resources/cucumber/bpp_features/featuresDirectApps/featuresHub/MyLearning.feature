@@ -3,12 +3,10 @@ Feature: BPP University Hub My Learning
   As a learner
   I need an easy way to access the My Learning page from the navigation of The Hub
 
-  @Positive #TC-1119 TC-1121
+  @Positive @Run #TC-1119 TC-1121
   Scenario: HUB - My Learning
     #Register New Student
-    When I remember "Auto[EMAIL-HARAKIRI]" text as "EC_VARIABLE" variable
-    When I execute "Register New Student Account" reusable step replacing some steps
-      |5|I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"|
+    When I execute "Register New Student Account" reusable step
     #Verify Left panel
     Then I should see the "Home" "Build Empire Navigation Menu elements"
     Then I should see the "My Applications" "Build Empire Navigation Menu elements"
@@ -27,7 +25,7 @@ Feature: BPP University Hub My Learning
     And I click on the "Totara Enrolled Users button" button by JS
     And I wait for "3" seconds
     And I click on the "Totara Enrol User button" button by JS
-    And I execute "document.getElementById('enrolusersearch').setAttribute('value', 'EC_VARIABLE')" JS code
+    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
     And I click on the "Totara Enrol User Search button" button by JS
     And I click on the "Totara Enrol Button" button by JS
     And I click on the "Totara Finish Enroling Users button" button by JS
