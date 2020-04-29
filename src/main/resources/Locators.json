@@ -267,6 +267,11 @@
   "Direct App Topic Key Activities": "xpath=//div[contains(@class,'single-section')][12]/a",
   "Direct App Remove Application Pack": "xpath=(//p[@class='file-name' and @title='Application pack']/following::span[@class='bppicon icon-cancel'])[1]",
   "Direct App Left Navigation Panel menu logo image": "xpath=//div[contains(@class,'item-logo')]//img[1]",
+  "Direct App Scorm Topic": "xpath=//div[contains(@class,'single-section')][5]/a",
+  "Direct App Topic Assessment Status Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div//span[2]",
+  "Direct App Topic Take Test Button": "xpath=//div[contains(@class,'topic-assessment-take-test-inner')]/a",
+  "Direct App Topic Assessment Percentage Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div//span[2]",
+
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -391,6 +396,9 @@
   "Totara Login Confirmation Popup window": "xpath=//div[@class='box generalbox']",
   "Totara Left Menu Users link": "xpath=//li/p[normalize-space()='Users']",
   "Totara Enrolled Users button":"xpath=//a[text()='Enrolled users']",
+  "Totara Scorm Frame": "xpath=//iframe[@id='scorm_object']",
+  "Totara Scorm Frame Next": "inframe=Totara Scrom Frame>xpath=//input[@id='qm_NEXT']",
+  "Totara Scorm Frame Submit": "inframe=Totara Scrom Frame>xpath=//input[@id='qm_SUB']",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",
