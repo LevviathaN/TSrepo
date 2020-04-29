@@ -16,7 +16,7 @@
   "Product Factory change button": "//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "//td[text()='PARAMETER']/following-sibling::td/button",
-  "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div",
+  "Product Factory dropdown": "//span[text()='PARAMETER']/following-sibling::div/div",
   "Product Factory dropdown option": "//li[text()='PARAMETER']",
   "Product Factory dialog checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]",
   "Product Factory checkbox": "//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]|//span[text()='PARAMETER']/preceding-sibling::span/span[1]",
@@ -71,6 +71,9 @@
   "Build Empire RFI Span dropdown item": "//span[normalize-space()=\"PARAMETER\"]",
   "Build Empire RFI dropdown option": "//li[text()=\"PARAMETER\"]",
   "Build Empire RFI Textarea text item": "//textarea[@placeholder=\"PARAMETER\"]",
+  "Build Empire Navigation Menu elements":"//li[normalize-space()=\"PARAMETER\"]",
+  "Build Empire Homepage My Learning Course": "//div[@class='home-col right-col']/descendant::h3[contains(text(),'PARAMETER')]",
+  "Build Empire Course Topic": "//div[@class='section-name' and text()='PARAMETER']/../following-sibling::a",
 
   "BPP Digital Search Label Button":"//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link":"//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
@@ -106,6 +109,8 @@
   "BPP Digital Archive Category button": "//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Archive']",
   "BPP Digital RFI Input Field": "//label[contains(text(), 'PARAMETER')]/..//input",
 
+  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
+
   "Salesforce navigation menu dropdown": "//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "//span[text()='PARAMETER']/../..",
   "Salesforce navigation menu option": "//span[text()='PARAMETER' and @class='slds-truncate']",
@@ -124,6 +129,8 @@
   "Salesforce app launcher app": "//p[text()='PARAMETER']",
   "Salesforce readonly field": "//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*",
   "Salesforce cases search student": "//div[@title='PARAMETER']",
-  "Salesforce cases status option": "//span[@title='PARAMETER']"
+  "Salesforce cases status option": "//span[@title='PARAMETER']",
 
+  "Totara text field": "//label[normalize-space()='Password']",
+  "Totara side menu option": "//span[text='PARAMETER']"
 }
