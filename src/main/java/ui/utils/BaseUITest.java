@@ -87,7 +87,7 @@ public class BaseUITest {
                     scenarioName = actualScenarioName;
                 }
                 if (qTestAPI.getTestRunIDfromSuite().containsKey(scenarioName)) {
-                    String qtestID = qTestAPI.getTestRunIDfromSuite().get(Reporter.getCurrentTestName());
+                    String qtestID = qTestAPI.getTestRunIDfromSuite().get(scenarioName);
                     if (testResult.toString().contains("SUCCESS")){
                         BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");
                         qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Passed", 601, qtestID, "");

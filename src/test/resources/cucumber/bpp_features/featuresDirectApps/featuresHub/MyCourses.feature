@@ -4,12 +4,10 @@ Feature: BPP University Hub My Courses
   I'd like to be able to see a summary of my most recently accessed Courses and my progression for each within the dashboard
   So that I can see where I am up to at a glance
 
-  @Positive #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
+  @Positive @BET #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
   Scenario: HUB - My Courses
     #Register New Student
-    When I remember "Auto[EMAIL-HARAKIRI]" text as "EC_VARIABLE" variable
-    And I execute "Register New Student Account" reusable step replacing some steps
-      |5|I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"|
+    And I execute "Register New Student Account" reusable step
     #Validate Timeline block
     Then I should see the "Timeline" message
     Then I should see the "Welcome to your new logged in area." message
@@ -25,7 +23,7 @@ Feature: BPP University Hub My Courses
     And I click on the "Totara Enrolled Users button" button by JS
     And I wait for "3" seconds
     And I click on the "Totara Enrol User button" button by JS
-    And I execute "document.getElementById('enrolusersearch').setAttribute('value', 'EC_VARIABLE')" JS code
+    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
     And I click on the "Totara Enrol User Search button" button by JS
     And I click on the "Totara Enrol Button" button by JS
     And I click on the "Totara Finish Enroling Users button" button by JS
