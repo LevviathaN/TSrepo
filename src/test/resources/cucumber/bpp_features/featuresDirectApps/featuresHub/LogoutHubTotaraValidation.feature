@@ -1,7 +1,7 @@
 @Hub @LogoutValidation
 Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/Totara - BPP-4488
 
-  @Positive @Smoke @Run #TC-2499
+  @Positive @Smoke #TC-2499
   Scenario: If I Logout of the Hub I Expect to be Logged out of Moodle Totara
     #Register New Student
     When I execute "Register New Student Account" reusable step replacing some steps
@@ -62,8 +62,9 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     And I click on the "ICAEW Accounting Full" "Build Empire Homepage My Learning Course"
     And I click on the "Course Expires" "Build Empire Course Topic"
     And I click on the "TEST BUTTON" button
-    Then I execute "window.stop()" JS code
     Then I switch to window with index "2"
+    Then I execute "window.stop()" JS code
+
     And I validate text "CONTAINS=EC_AUTO_ONE_FIRSTNAME" to be displayed for "Totara User Text" element
     And I am on "https://staging.bppdigital.buildempire.app/my/learning/" URL
     Then I execute "Log Out from Hub Student" reusable step
