@@ -493,6 +493,28 @@ public class StepDefinitions extends BasePage {
     }
 
     /**
+     * Definition to send some text into some text input field using JS
+     *
+     * @param element locator for element you want to send text to
+     *                Parameter exists in locators document - locator value is returned from document
+     * @param text    text you want to send to element
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
+     */
+    @When("^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$")
+    public void i_set_text_with_js(String text, String element) {
+        Reporter.log("Executing step: I set '" + text + "' text to the element with ID '" + element + "' using JS");
+        executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + text + "')");
+
+        String processedText = TestParametersController.checkIfSpecialParameter(text);
+        BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
+        executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + processedText + "')");
+        if (!text.equals(processedText)) {
+            Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
+        }
+    }
+
+    /**
      * Provides the ability to use the browser's navigation capabilities.
      *
      * @param operation: browser operation performed can be FORWARD, BACK, or REFRESH case-insensitive
@@ -553,11 +575,10 @@ public class StepDefinitions extends BasePage {
     @And("^I execute \"([^\"]*)\" JS code$")
     public void i_execute_js_code_for_element(String jsCode) {
         Reporter.log("Executing JS code: " + jsCode);
-        if(jsCode.contains("EC_VARIABLE")){
-            executeJSCode(jsCode.replace("EC_VARIABLE",ExecutionContextHandler.getExecutionContextValueByKey("EC_VARIABLE")));
-        } else {
-            executeJSCode(jsCode);
-        }
+        //todo: .checkIfSpecialParameter() does not work with JS commands.
+        //It sees that string contains EC_ variable, but do not recognize it as valid one. Probably the thing is in regex
+        //to check it. todo to be replaced
+        executeJSCode(TestParametersController.checkIfSpecialParameter(jsCode));
     }
 
     /**

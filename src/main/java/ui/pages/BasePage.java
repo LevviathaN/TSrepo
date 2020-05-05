@@ -598,6 +598,8 @@ public class BasePage {
 
         if (locatorsMap.containsKey(element)) {
             return TestParametersController.initElementByLocator(locatorsMap.get(element));
+        } else if(element.contains("xpath=") || element.contains("id=") || element.contains("css=")) {
+            return TestParametersController.initElementByLocator(element);
         } else {
             return byText(TestParametersController.checkIfSpecialParameter(element));
         }
