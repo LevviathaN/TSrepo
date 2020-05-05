@@ -4,7 +4,7 @@ Feature: BPP University Hub My Courses
   I'd like to be able to see a summary of my most recently accessed Courses and my progression for each within the dashboard
   So that I can see where I am up to at a glance
 
-  @Positive @BET #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
+  @Positive #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
   Scenario: HUB - My Courses
     #Register New Student
     And I execute "Register New Student Account" reusable step
