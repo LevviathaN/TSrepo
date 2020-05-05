@@ -394,6 +394,9 @@
   "Totara Volodymyr Course": "xpath=//h3[contains(text(),'Mini Course for Volodymyr')]",
   "Totara Users Dropdown": "xpath=//span[text()='Users']",
   "Totara User Text": "xpath=//span[@class='usertext']",
+  "TotaraScromFrame": "xpath=//iframe[@id='scorm_object']",
+  "Totara Assessment Next Button": "inframe=TotaraScromFrame>xpath=//input[@id='qm_NEXT']",
+  "Totara Assessment Submit Button": "inframe=TotaraScromFrame>xpath=//input[@id='qm_SUB']",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",
@@ -455,5 +458,15 @@
   "Guerilla Email Input": "xpath=//span[@class='strong']/span/input",
   "Guerilla Email Set": "xpath=//span[@class='strong']//button[1]",
   "Guerilla BPP Email": "xpath=//tbody[@id='email_list']//td[contains(.,'no-reply@staging.bppdigital.buildempire.co.uk ')]",
-  "Guerilla New Line Manager Email": "xpath=//div[@class='email_body']|https:\\/\\/bpp-stage.eu.auth0.com\\/lo\\/reset.+[aA-zZ0-9]\\#"
+  "Guerilla New Line Manager Email": "xpath=//div[@class='email_body']|https:\\/\\/bpp-stage.eu.auth0.com\\/lo\\/reset.+[aA-zZ0-9]\\#",
+
+  "Proctorio Login Link": "xpath=//span[text()='You are not logged in. (']/a[text()='Log in']",
+  "Proctorio Special Accounts": "xpath=//a[text()='Special Accounts']",
+  "Proctorio Username Field": "xpath=//input[@name='username']",
+  "Proctorio Password Field": "xpath=//input[@name='password']",
+  "Proctorio Login Button": "xpath=//button[text()='Log in']",
+  "Proctorio Test": "xpath=//a[text()='Proctorio Test']",
+  "Proctorio Yes": "xpath=//button[text()='Yes']",
+  "Proctorio Account": "xpath=//a[@id='action-menu-toggle-0']",
+  "Proctorio Logout": "xpath=//span[text()='Log out']"
 }
