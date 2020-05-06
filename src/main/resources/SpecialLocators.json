@@ -75,6 +75,7 @@
   "Build Empire Navigation Menu elements": "xpath=//li[normalize-space()=\"PARAMETER\"]",
   "Build Empire Homepage My Learning Course": "xpath=//div[@class='home-col right-col']/descendant::h3[contains(text(),'PARAMETER')]",
   "Build Empire Course Topic": "xpath=//div[@class='section-name' and text()='PARAMETER']/../following-sibling::a",
+  "Build Empire My Learning Right Block Course name": "xpath=//div[@class='home-col right-col']//h3[text()=\"PARAMETER\"]",
 
   "BPP Digital Search Label Button": "xpath=//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link": "xpath=//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
