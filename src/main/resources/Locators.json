@@ -268,10 +268,8 @@
   "Direct App Remove Application Pack": "xpath=(//p[@class='file-name' and @title='Application pack']/following::span[@class='bppicon icon-cancel'])[1]",
   "Direct App Left Navigation Panel menu logo image": "xpath=//div[contains(@class,'item-logo')]//img[1]",
   "Direct App Scorm Topic": "xpath=//div[contains(@class,'single-section')][5]/a",
-  "Direct App Topic Assessment Status Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div//span[2]",
-  "Direct App Topic Take Test Button": "xpath=//div[contains(@class,'topic-assessment-take-test-inner')]/a",
-  "Direct App Topic Assessment Percentage Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div//span[2]",
-
+  "Direct App Topic Assessment Status Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div",
+  "Direct App Topic Assessment Percentage Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div//span[1]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
