@@ -276,6 +276,8 @@
   "Direct App Announcement Bar": "xpath=//div[contains(@class,'announcement-box')]",
   "Direct App CTA Banner Bar": "xpath=//div[contains(@class,'cta-banner')]",
   "Direct App Withdraw First Application": "xpath=(//span[@role='button' and normalize-space()='Withdraw Application'])[1]",
+  "Direct App Admin Employment Status for Apprenticeships": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
+  "Direct App Admin Employment Status Additional Answer": "xpath=//*[contains(.,'Additional apprenticeship information')]/../div[@class='card-body']/div[@class='row'][1]//div[2]/span",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
