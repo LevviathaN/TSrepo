@@ -1,10 +1,10 @@
-@Hub @SCORM @KeyActivities
+@Hub @ScormAssessment
 Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
   As a user in the Hub
   when a SCORM Assignment Bridge activity has been set as Key Activity
   then I expect this to be reflected in the Topic Overview page within the Hub
 
-  @Positive @Smoke #TC-2499
+  @Positive @Smoke #TC-2715
   Scenario: Scorm Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
@@ -26,7 +26,7 @@ Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
     And I execute "Log In to Hub as Student" reusable step
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course"
     And I click on the "SCORM Topic" "Build Empire Course Topic"
-
+    And I validate text "CONTAINS=You haven't attempted this assessment yet" to be displayed for "Direct App Topic Assessment Status Results" element
     And I click on the "Take the test" "Build Empire button"
     And I wait for "10" seconds
     Then I execute "window.stop()" JS code
@@ -101,7 +101,7 @@ Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course" if "Take the test" "element is absent"
     And I click on the "SCORM Topic" "Build Empire Course Topic" if "Take the test" "element is absent"
     Then I should see the "Passed" message
-
+    And I validate text "CONTAINS=73" to be displayed for "Direct App Topic Assessment Percentage Results" element
 
     And I click on the "Take the test" "Build Empire button"
     And I wait for "10" seconds

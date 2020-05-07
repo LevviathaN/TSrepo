@@ -36,7 +36,7 @@ public class BasePage {
     public static Map<String,String> locatorsMap;
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-    private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
+    private final String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
     //boolean map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is executed.
     public static Map<String, Boolean> isHandled = new HashMap<>();
     //boolean, used by UiHandlers to determine, if you want to repeat Action, on which you had an exception, after running handlers.
@@ -504,18 +504,12 @@ public class BasePage {
     public WebElement findPresentElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.presenceOfElementLocated(element));
-            return driver().findElement(element);
-        } catch (TimeoutException e) {
-            BPPLogManager.getLogger().info("Exception caught. Trying to find an element again.");
-            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(5, ChronoUnit.SECONDS))
-                    .pollingEvery(Duration.ofMillis(2000))
-                    .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
-                    .until(ExpectedConditions.presenceOfElementLocated(element));
-            return driver().findElement(element);
-        }
+        BPPLogManager.getLogger().info("Checking the presence of an element: " + element);
+        new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(timeoutForFindElement, ChronoUnit.SECONDS))
+                .pollingEvery(Duration.ofMillis(1000))
+                .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
+                .until(ExpectedConditions.presenceOfElementLocated(element));
+        return driver().findElement(element);
     }
 
     /**
@@ -762,11 +756,11 @@ public class BasePage {
      */
     public void switchToFrame(By frameName) {
         BPPLogManager.getLogger().info("Switching to frame: " + frameName);
-        WebDriverWait wait = new WebDriverWait(driver(), 10);
+        WebDriverWait wait = new WebDriverWait(driver(), 3);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
-        sleepFor(5);
+        sleepFor(2);
         try {
-            driver().switchTo().frame(findPresentElement(frameName, 5));
+            driver().switchTo().frame(findPresentElement(frameName, 3));
         } catch (Exception e) {
             e.getMessage();
         }
