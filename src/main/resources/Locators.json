@@ -417,6 +417,7 @@
   "TotaraScromFrame": "xpath=//iframe[@id='scorm_object']",
   "Totara Assessment Next Button": "inframe=TotaraScromFrame>xpath=//input[@id='qm_NEXT']",
   "Totara Assessment Submit Button": "inframe=TotaraScromFrame>xpath=//input[@id='qm_SUB']",
+  "Totara Submit all and finish Button": "xpath=//div[contains(text(),'Once you')]/following-sibling::div/input[1]",
 
   "Salesforce App Launcher": "xpath=//nav[contains(@class,'appLauncher')]",
   "Salesforce Search": "inframe=Salesforce Frame>xpath=//input[@value='Search']",

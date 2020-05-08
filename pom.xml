@@ -261,7 +261,6 @@
             <artifactId>spring-core</artifactId>
             <version>4.3.5.RELEASE</version>
         </dependency>
-
     </dependencies>
 
 </project>
