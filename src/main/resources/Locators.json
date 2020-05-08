@@ -281,6 +281,12 @@
   "Direct App Topic Assessment Percentage Results": "xpath=//div[contains(@class,'topic-assessment-results')]/div//span[1]",
   "Direct App Admin Employment Status for Apprenticeships": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]",
   "Direct App Admin Employment Status Additional Answer": "xpath=//*[contains(.,'Additional apprenticeship information')]/../div[@class='card-body']/div[@class='row'][1]//div[2]/span",
+  "Direct App Account Name Drop Down": "xpath=//button[@class='dropdown-button']",
+  "Direct App Account Avatar Image": "xpath=//button[@class='dropdown-button-img']",
+  "Direct App Edit Account Page Account Name field": "xpath=//div[@class='my-profile']//h1",
+  "Direct App Edit Account Page Edit button": "xpath=//button[normalize-space()='edit']",
+  "Direct App Edit Account Page Save button": "xpath=//button[normalize-space()='save']",
+  "Direct App Account Avatar Image Upload status": "xpath=//span[@class='upload-status']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
