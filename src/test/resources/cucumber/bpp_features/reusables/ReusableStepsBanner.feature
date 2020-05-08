@@ -12,3 +12,4 @@ Feature: Banner
   Scenario: Navigate To Form
     When I fill the "Banner Go To Form" field with "SAADCRV"
     Then I press "MD_COMMON_KEYBOARD_ENTER" for "Banner Go To Form"
+    And I wait for "7" seconds
