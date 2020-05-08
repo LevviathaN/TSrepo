@@ -207,6 +207,7 @@ public class BasePage {
                         UiHandlers.PF_SPINNER_HANDLER,
                         UiHandlers.ACCEPT_ALERT,
                         UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.SF_CLICK_HANDLER,
                         UiHandlers.WAIT_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
@@ -221,6 +222,7 @@ public class BasePage {
                             UiHandlers.PF_SPINNER_HANDLER,
                             UiHandlers.ACCEPT_ALERT,
                             UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                            UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.SF_CLICK_HANDLER,
                         UiHandlers.WAIT_HANDLER,
@@ -234,6 +236,7 @@ public class BasePage {
                             UiHandlers.PF_SPINNER_HANDLER,
                             UiHandlers.ACCEPT_ALERT,
                             UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                            UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.SF_CLICK_HANDLER,
                         UiHandlers.WAIT_HANDLER,
@@ -454,9 +457,20 @@ public class BasePage {
     }
 
     /**
+     * Method to execute JS code for some specific element
+     *
+     * @param element locator of element
+     * @param jsCode JS code to execute
+     */
+    public static void executeJSCodeForElement(By element, String jsCode){
+        BPPLogManager.getLogger().info("Executing JS code on element: " + element);
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript(jsCode, driver().findElement(element));
+    }
+
+    /**
      * Method to execute some JS code on desired element
      *
-
      * @param jsCode JS code to execute
      */
     public void executeJSCode(String jsCode){

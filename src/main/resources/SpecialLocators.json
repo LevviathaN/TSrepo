@@ -61,7 +61,7 @@
   "Build Empire dropdown option": "xpath=//li[text()='PARAMETER']",
   "Build Empire radiobutton yes": "xpath=//label[contains(text(),'PARAMETER')]/following-sibling::div/descendant::label[normalize-space()='Yes']",
   "Build Empire radiobutton no": "xpath=//label[contains(text(),'PARAMETER')]/following-sibling::div/descendant::label[normalize-space()='No']",
-  "Build Empire button": "xpath=//button[normalize-space()='PARAMETER']|//p[text()='PARAMETER']/parent::a",
+  "Build Empire button": "xpath=//button[normalize-space()='PARAMETER']|//p[normalize-space()='PARAMETER']/parent::a",
   "Build Empire text field by title": "xpath=//label[contains(normalize-space(),'PARAMETER')]/following-sibling::*/descendant-or-self::input",
   "Build Empire checkbox": "xpath=//label[contains(normalize-space(),'PARAMETER')]/input[@type='checkbox']",
   "Build Empire link": "xpath=//a[normalize-space()='PARAMETER']",
@@ -111,7 +111,7 @@
   "BPP Digital Archive Category button": "xpath=//td[normalize-space()='PARAMETER']/following-sibling::td/a[text()='Archive']",
   "BPP Digital RFI Input Field": "xpath=//label[contains(text(), 'PARAMETER')]/..//input",
 
-  "Totara Input field with Id Parameter": "xpath=xpath=//input[@id=\"PARAMETER\"]",
+  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
 
   "Salesforce navigation menu dropdown": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "xpath=//span[text()='PARAMETER']/../..",
@@ -134,7 +134,10 @@
   "Salesforce cases status option": "xpath=//span[@title='PARAMETER']",
 
   "Totara text field": "xpath=//label[normalize-space()='Password']",
+  "Totara button": "xpath=//input[@value='PARAMETER']",
   "Totara side menu option": "xpath=//span[text='PARAMETER']",
   "Totara Assessment select": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../following-sibling::td/select",
-  "Totara Assessment radiobutton": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../preceding-sibling::td/input"
+  "Totara Assessment radiobutton": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../preceding-sibling::td/input",
+  "Totara Moodle Quiz radiobutton": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='radio']",
+  "Totara Moodle Quiz checkbox": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']"
 }

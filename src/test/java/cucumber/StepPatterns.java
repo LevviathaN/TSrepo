@@ -41,10 +41,12 @@ public enum StepPatterns {
     BROWSER_PERFORMS_COMMAND("^Browser performs \"([^\"]*)\" command$"),
     I_SELECT_FROM_ELEMENT_SPECIAL("^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$"),
     I_CAPTURE_DATA("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$"),
+    I_EXECUTE_JS_CODE("^I execute \"([^\"]*)\" JS code$"),
     I_EXECUTE_JS_CODE_FOR_ELEMENT("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$"),
     I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL("^I should see \"([^\"]*)\" \"([^\"]*)\" in quantity of \"([^\"]*)\"$"),
     I_SHOULD_SEE_NUMBER_OF_ELEMENTS("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$"),
     I_CAPTURE_SPECIAL_DATA("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$"),
+    I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" \"([^\"]*)\"$"),
     I_SET_TEXT_WITH_JS("^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$");
 
     private final String pattern;

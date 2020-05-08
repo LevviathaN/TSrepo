@@ -75,6 +75,7 @@ public class StepDefinitions extends BasePage {
                 UiHandlers.ACCEPT_ALERT,
                 UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                 UiHandlers.PF_SCROLL_HANDLER,
+                UiHandlers.PAGE_NOT_LOAD_HANDLER,
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,
                 UiHandlers.DEFAULT_HANDLER);
@@ -573,12 +574,24 @@ public class StepDefinitions extends BasePage {
      * @author Ruslan Levytskyi
      */
     @And("^I execute \"([^\"]*)\" JS code$")
-    public void i_execute_js_code_for_element(String jsCode) {
+    public void i_execute_js_code(String jsCode) {
         Reporter.log("Executing JS code: " + jsCode);
         //todo: .checkIfSpecialParameter() does not work with JS commands.
         //It sees that string contains EC_ variable, but do not recognize it as valid one. Probably the thing is in regex
         //to check it. todo to be replaced
         executeJSCode(TestParametersController.checkIfSpecialParameter(jsCode));
+    }
+
+    /**
+     * Definition to execute JS code for some particular element
+     *
+     * @param jsCode JS code to execute
+     * @author Ruslan Levytskyi
+     */
+    @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
+    public void i_execute_js_code_for_element(String jsCode, String element) {
+        Reporter.log("Executing JS code: " + jsCode);
+        executeJSCodeForElement(initElementLocator(element),TestParametersController.checkIfSpecialParameter(jsCode));
     }
 
     /**

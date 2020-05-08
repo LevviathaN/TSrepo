@@ -74,6 +74,22 @@ public enum UiHandlers {
         }
     }),
 
+    PAGE_NOT_LOAD_HANDLER((element, e) -> {
+
+        BasePage page = new BasePage();
+        StackTraceElement[] stackTraceElementArray = e.getStackTrace();
+        StackTraceElement s = stackTraceElementArray[2];
+        Boolean bool = s.getMethodName().contains("waitForPageToLoad");
+
+        BasePage.isHandled.put("pageNotLoadHandler", false);
+        if(bool){
+            Reporter.log("Handling Page not load");
+            page.executeJSCode("window.stop()");
+            BasePage.repeatAction = false;
+            BasePage.isHandled.put("pageNotLoadHandler", true);
+        }
+    }),
+
     ACCEPT_ALERT((element, e) -> {
         BasePage page = new BasePage();
         BasePage.isHandled.put("acceptAlert", false);

@@ -4,7 +4,7 @@ Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
   when a SCORM Assignment Bridge activity has been set as Key Activity
   then I expect this to be reflected in the Topic Overview page within the Hub
 
-  @Positive @Smoke #TC-2499
+  @Positive @Smoke #TC-2828
   Scenario: Scorm Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
