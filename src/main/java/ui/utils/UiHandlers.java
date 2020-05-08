@@ -74,6 +74,22 @@ public enum UiHandlers {
         }
     }),
 
+    PAGE_NOT_LOAD_HANDLER((element, e) -> {
+
+        BasePage page = new BasePage();
+        StackTraceElement[] stackTraceElementArray = e.getStackTrace();
+        StackTraceElement s = stackTraceElementArray[2];
+        Boolean bool = s.getMethodName().contains("waitForPageToLoad");
+
+        BasePage.isHandled.put("pageNotLoadHandler", false);
+        if(bool){
+            Reporter.log("Handling Page not load");
+            page.executeJSCode("window.stop()");
+            BasePage.repeatAction = false;
+            BasePage.isHandled.put("pageNotLoadHandler", true);
+        }
+    }),
+
     ACCEPT_ALERT((element, e) -> {
         BasePage page = new BasePage();
         BasePage.isHandled.put("acceptAlert", false);
@@ -85,7 +101,8 @@ public enum UiHandlers {
                     ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
                     ||e.getCause().toString().contains("Are you sure?")
                     ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
-            ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
+                    ||e.getCause().toString().contains("Some questions are not answered yet.")
+                    ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
                 Reporter.log("Handling an expected JS Alert");
                 page.acceptAlertMessage();
                 BasePage.repeatAction = false;
@@ -107,7 +124,7 @@ public enum UiHandlers {
         }
     });
 
-    private UiHandler handler;
+    private final UiHandler handler;
 
     private static final Map<UiHandler, UiHandlers> lookup = new HashMap<UiHandler, UiHandlers>();
 

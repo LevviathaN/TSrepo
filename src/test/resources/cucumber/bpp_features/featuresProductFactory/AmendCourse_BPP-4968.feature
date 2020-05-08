@@ -1,4 +1,4 @@
-@ProductFactory @Courses @Amend
+@ProductFactory @Courses @Amend @DoNotRun
 Feature: Course - Update Instances for non draft Courses - BPP-4968
   As a Product Setter
   I want to be able to update a Course Instance for a non draft Course

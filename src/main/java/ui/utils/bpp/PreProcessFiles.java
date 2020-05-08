@@ -13,7 +13,7 @@ public class PreProcessFiles {
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("MS_PKGPROTECT")
 	protected static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
 	protected static String PROPERTIES_FILES_FOLDER_PATH = null;
-	protected static String ROOT_FOLDER_PATH = null;
+	public static String ROOT_FOLDER_PATH = null;
 	public static String TEST_FILES_FOLDER_PATH = null;
 
 	public PreProcessFiles(){

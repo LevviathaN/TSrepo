@@ -36,7 +36,7 @@ public class BasePage {
     public static Map<String,String> locatorsMap;
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-    private String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
+    private final String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
     //boolean map, used by UiHandlers to determine, if exception was handled by any handler. If not, then DEFAULT_HANDLER is executed.
     public static Map<String, Boolean> isHandled = new HashMap<>();
     //boolean, used by UiHandlers to determine, if you want to repeat Action, on which you had an exception, after running handlers.
@@ -207,6 +207,7 @@ public class BasePage {
                         UiHandlers.PF_SPINNER_HANDLER,
                         UiHandlers.ACCEPT_ALERT,
                         UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.SF_CLICK_HANDLER,
                         UiHandlers.WAIT_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
@@ -221,6 +222,7 @@ public class BasePage {
                             UiHandlers.PF_SPINNER_HANDLER,
                             UiHandlers.ACCEPT_ALERT,
                             UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                            UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.SF_CLICK_HANDLER,
                         UiHandlers.WAIT_HANDLER,
@@ -234,6 +236,7 @@ public class BasePage {
                             UiHandlers.PF_SPINNER_HANDLER,
                             UiHandlers.ACCEPT_ALERT,
                             UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                            UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.SF_CLICK_HANDLER,
                         UiHandlers.WAIT_HANDLER,
@@ -454,9 +457,20 @@ public class BasePage {
     }
 
     /**
+     * Method to execute JS code for some specific element
+     *
+     * @param element locator of element
+     * @param jsCode JS code to execute
+     */
+    public static void executeJSCodeForElement(By element, String jsCode){
+        BPPLogManager.getLogger().info("Executing JS code on element: " + element);
+        JavascriptExecutor executor = (JavascriptExecutor)driver();
+        executor.executeScript(jsCode, driver().findElement(element));
+    }
+
+    /**
      * Method to execute some JS code on desired element
      *
-
      * @param jsCode JS code to execute
      */
     public void executeJSCode(String jsCode){
@@ -504,18 +518,12 @@ public class BasePage {
     public WebElement findPresentElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
-                    .until(ExpectedConditions.presenceOfElementLocated(element));
-            return driver().findElement(element);
-        } catch (TimeoutException e) {
-            BPPLogManager.getLogger().info("Exception caught. Trying to find an element again.");
-            new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(5, ChronoUnit.SECONDS))
-                    .pollingEvery(Duration.ofMillis(2000))
-                    .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
-                    .until(ExpectedConditions.presenceOfElementLocated(element));
-            return driver().findElement(element);
-        }
+        BPPLogManager.getLogger().info("Checking the presence of an element: " + element);
+        new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(timeoutForFindElement, ChronoUnit.SECONDS))
+                .pollingEvery(Duration.ofMillis(1000))
+                .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
+                .until(ExpectedConditions.presenceOfElementLocated(element));
+        return driver().findElement(element);
     }
 
     /**
@@ -598,6 +606,8 @@ public class BasePage {
 
         if (locatorsMap.containsKey(element)) {
             return TestParametersController.initElementByLocator(locatorsMap.get(element));
+        } else if(element.contains("xpath=") || element.contains("id=") || element.contains("css=")) {
+            return TestParametersController.initElementByLocator(element);
         } else {
             return byText(TestParametersController.checkIfSpecialParameter(element));
         }
@@ -760,11 +770,11 @@ public class BasePage {
      */
     public void switchToFrame(By frameName) {
         BPPLogManager.getLogger().info("Switching to frame: " + frameName);
-        WebDriverWait wait = new WebDriverWait(driver(), 10);
+        WebDriverWait wait = new WebDriverWait(driver(), 3);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
-        sleepFor(5);
+        sleepFor(2);
         try {
-            driver().switchTo().frame(findPresentElement(frameName, 5));
+            driver().switchTo().frame(findPresentElement(frameName, 3));
         } catch (Exception e) {
             e.getMessage();
         }
