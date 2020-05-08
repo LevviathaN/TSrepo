@@ -7,6 +7,7 @@ Feature: CSA Workflow Alerts
     Given I execute "Log In To Salesforce" reusable step
     And I execute "Create CSA Case My Course" reusable step
     And I execute "Log Out Salesforce" reusable step
+    And I wait for "3" seconds
     And I execute "Login To Yahoo" reusable step
     And I fill the "Yahoo Search Email" field with "EC_CASENUMBER"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Yahoo Search Email"

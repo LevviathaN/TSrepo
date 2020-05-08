@@ -8,7 +8,7 @@ Feature: BPP University Hub Profile Area
     #Register New Student
     And I execute "Register New Student Account" reusable step
     #Profile Area validation
-    Then I should see the "CONTAINS=EC_AUTO_FIRSTNAME" "Direct App Account Name Drop Down"
+    Then I validate text "CONTAINS=EC_AUTO_FIRSTNAME" to be displayed for "Direct App Account Name Drop Down" element
     Then Attribute "style" of "Direct App Account Avatar Image" should have value "CONTAINS=/assets/icons/avatar-icon.svg"
     And I click on the "Direct App Account Name Drop Down" element
     Then I should see the "Account settings" "BPP Digital Student Applications Menu link"
