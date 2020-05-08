@@ -101,7 +101,8 @@ public enum UiHandlers {
                     ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
                     ||e.getCause().toString().contains("Are you sure?")
                     ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
-            ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
+                    ||e.getCause().toString().contains("Some questions are not answered yet.")
+                    ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
                 Reporter.log("Handling an expected JS Alert");
                 page.acceptAlertMessage();
                 BasePage.repeatAction = false;
@@ -123,7 +124,7 @@ public enum UiHandlers {
         }
     });
 
-    private UiHandler handler;
+    private final UiHandler handler;
 
     private static final Map<UiHandler, UiHandlers> lookup = new HashMap<UiHandler, UiHandlers>();
 
