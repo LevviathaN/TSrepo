@@ -276,6 +276,12 @@
   "Direct App Announcement Bar": "xpath=//div[contains(@class,'announcement-box')]",
   "Direct App CTA Banner Bar": "xpath=//div[contains(@class,'cta-banner')]",
   "Direct App Withdraw First Application": "xpath=(//span[@role='button' and normalize-space()='Withdraw Application'])[1]",
+  "Direct App Account Name Drop Down": "xpath=//button[@class='dropdown-button']",
+  "Direct App Account Avatar Image": "xpath=//button[@class='dropdown-button-img']",
+  "Direct App Edit Account Page Account Name field": "xpath=//div[@class='my-profile']//h1",
+  "Direct App Edit Account Page Edit button": "xpath=//button[normalize-space()='edit']",
+  "Direct App Edit Account Page Save button": "xpath=//button[normalize-space()='save']",
+  "Direct App Account Avatar Image Upload status": "xpath=//span[@class='upload-status']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
