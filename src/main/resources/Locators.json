@@ -480,6 +480,7 @@
   "Guerilla Email Set": "xpath=//span[@class='strong']//button[1]",
   "Guerilla BPP Email": "xpath=//tbody[@id='email_list']//td[contains(.,'no-reply@staging.bppdigital.buildempire.co.uk ')]",
   "Guerilla New Line Manager Email": "xpath=//div[@class='email_body']|https:\\/\\/bpp-stage.eu.auth0.com\\/lo\\/reset.+[aA-zZ0-9]\\#",
+  "Guerilla Email Header": "xpath=//h3[@class='email_subject']",
 
   "Proctorio Login Link": "xpath=//span[text()='You are not logged in. (']/a[text()='Log in']",
   "Proctorio Special Accounts": "xpath=//a[text()='Special Accounts']",

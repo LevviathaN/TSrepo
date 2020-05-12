@@ -2,12 +2,17 @@
 Feature: Harakirimail, Guerrillamail
 
   Scenario: Harakirimail Mitigating Circustances Reject Validation
-    Given I am on "https://harakirimail.com/" URL
-    And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
-    Then I click on the "Harakirimail Get Inbox" button
-    Then I click on the "Harakirimail Application Outcome Letter" button
-    And I validate text "CONTAINS=Your application has been rejected" to be displayed for "Harakirimail Validate Letter Body" element
-    Then I click on the "Harakirimail Back To Inbox" button
+    Given I am on "https://www.guerrillamail.com/" URL
+    Then I click on the "Guerilla Edit" button
+    And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
+    Then I click on the "Guerilla Email Set" button
+    And I wait for "7" seconds
+    Given I am on "https://www.guerrillamail.com/" URL
+    Then I click on the "Guerilla Edit" button
+    And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
+    Then I click on the "Guerilla Email Set" button
+    Then I click on the "Guerilla BPP Email" element
+    And I validate text "Your application has been rejected" to be displayed for "Guerilla Email Header" element
 
   Scenario: Harakirimail Mitigating Circustances Status Validations
     Given I am on "https://harakirimail.com/" URL
@@ -53,8 +58,14 @@ Feature: Harakirimail, Guerrillamail
     Then I capture special data "Guerilla New Line Manager Email" as "EC_RESET_PASSWORD" variable
 
   Scenario: Harakirimail Validate Accepted Application Email
-    Given I am on "https://harakirimail.com/" URL
-    And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
-    Then I click on the "Harakirimail Get Inbox" button
-    Then I click on the "Harakirimail First Email" button
-    And I validate text "Your application has been approved" to be displayed for "Harakirimail Validate Mitigating Header" element
+    Given I am on "https://www.guerrillamail.com/" URL
+    Then I click on the "Guerilla Edit" button
+    And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
+    Then I click on the "Guerilla Email Set" button
+    And I wait for "7" seconds
+    Given I am on "https://www.guerrillamail.com/" URL
+    Then I click on the "Guerilla Edit" button
+    And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
+    Then I click on the "Guerilla Email Set" button
+    Then I click on the "Guerilla BPP Email" element
+    And I validate text "Your application has been approved" to be displayed for "Guerilla Email Header" element

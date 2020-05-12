@@ -246,11 +246,11 @@ public class TestParametersController {
                     ecVarNameSimplified.append("CITYUSA");
                 }
                 else if (element.startsWith("EMAIL")){
-                    if (element.contains("HARAKIRI")){
+                    if (element.contains("GUERILLA")){
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_FIRSTNAME"));
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_LASTNAME"));
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|####"));
-                        resultingValueSimplified.append("@harakirimail.com");
+                        resultingValueSimplified.append("@guerrillamail.info");
                     } else {
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_EMAIL"));
                     }
