@@ -168,6 +168,7 @@ public class DriverProvider {
             String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
             options.setCapability(CapabilityType.PROXY,seleniumProxy);
+            proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
             Tools.writeHar(proxy);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
