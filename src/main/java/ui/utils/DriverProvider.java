@@ -1,29 +1,36 @@
 package ui.utils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import net.lightbody.bmp.BrowserMobProxy;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.chrome.ChromeDriver;  //імпортуємо необхідні бібліотеки
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.*;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.Proxy;
 import ui.utils.bpp.PropertiesHelper;
 
 import java.io.File;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+
+import net.lightbody.bmp.proxy.CaptureType;
+
 /**
  * @author yzosin
  * <p> Enables to create webdriver isntance passed from System Property variable as driver=BSTACK_CHROME </p>
- *
  */
 
 public class DriverProvider {
@@ -38,6 +45,7 @@ public class DriverProvider {
     public static final ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
 
     static String BROWSER_TYPE;
+    //static BrowserMobProxy proxy;
 
     static public FirefoxDriver getFirefox() {
 
@@ -66,7 +74,7 @@ public class DriverProvider {
 
         try {
             File folder = new File("downloads");
-            if(folder!=null) {
+            if (folder != null) {
                 folder.mkdir();
             }
 
@@ -110,13 +118,16 @@ public class DriverProvider {
 
         try {
             File folder = new File("downloads");
-            if(folder!=null) {
+            if (folder != null) {
                 folder.mkdir();
             }
             ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
+
+            BrowserMobProxy proxy = setBrowserMobProxy();
+            Proxy seleniumProxy = getSeleniumProxy(proxy);
 
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("--test-type");
@@ -156,6 +167,8 @@ public class DriverProvider {
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
+            options.setCapability(CapabilityType.PROXY,seleniumProxy);
+            Tools.writeHar(proxy);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
             //driver.setFileDetector(new LocalFileDetector());
@@ -215,13 +228,14 @@ public class DriverProvider {
             } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_FIREFOX")) {
                 instance.set(getFirefoxBrowserStack());
             }
-
         return instance.get();
+
     }
 
     public static void closeDriver() {
         instance.get().quit();
         instance.set(null);
+        //proxy.stop();
     }
 
     public static String getCurrentBrowserName() {
@@ -238,4 +252,26 @@ public class DriverProvider {
 
         return BROWSER_TYPE;
     }
+
+    public static BrowserMobProxy setBrowserMobProxy() {
+        BrowserMobProxy proxy = new BrowserMobProxyServer();
+        proxy.setTrustAllServers(true);
+        proxy.start();
+
+        return proxy;
+    }
+
+    public static Proxy getSeleniumProxy(BrowserMobProxy proxyServer) {
+        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxyServer);
+        String hostIp = null;
+        try {
+            hostIp = Inet4Address.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        seleniumProxy.setHttpProxy(hostIp + ":" + proxyServer.getPort());
+        seleniumProxy.setSslProxy(hostIp + ":" + proxyServer.getPort());
+        return seleniumProxy;
+    }
+
 }
