@@ -45,7 +45,7 @@ public class DriverProvider {
     public static final ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
 
     static String BROWSER_TYPE;
-    //static BrowserMobProxy proxy;
+    public static BrowserMobProxy proxy;
 
     static public FirefoxDriver getFirefox() {
 
@@ -84,20 +84,29 @@ public class DriverProvider {
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
 
+            proxy = setBrowserMobProxy();
+            Proxy seleniumProxy = getSeleniumProxy(proxy);
+
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("--test-type");
             options.addArguments("--start-maximized");
             options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--no-sandbox");
             options.addArguments("--disable-infobars");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-browser-side-navigation");
             options.addArguments("--disable-gpu");
             options.addArguments("enable-automation");
-
             options.setPageLoadStrategy(PageLoadStrategy.NONE);
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
+            options.setCapability(CapabilityType.PROXY,seleniumProxy);
+
+            proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+            proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
+            proxy.enableHarCaptureTypes(CaptureType.REQUEST_BINARY_CONTENT, CaptureType.RESPONSE_BINARY_CONTENT);
+            //Tools.writeHar(proxy);
 
             HashMap<String, Object> chromePreferences = new HashMap<>();
             chromePreferences.put("profile.password_manager_enabled", "false");
@@ -126,7 +135,7 @@ public class DriverProvider {
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
 
-            BrowserMobProxy proxy = setBrowserMobProxy();
+            proxy = setBrowserMobProxy();
             Proxy seleniumProxy = getSeleniumProxy(proxy);
 
             options.setExperimentalOption("prefs", prefs);
@@ -169,7 +178,9 @@ public class DriverProvider {
             options.setCapability("name", testName);
             options.setCapability(CapabilityType.PROXY,seleniumProxy);
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-            Tools.writeHar(proxy);
+            proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
+            proxy.enableHarCaptureTypes(CaptureType.REQUEST_BINARY_CONTENT, CaptureType.RESPONSE_BINARY_CONTENT);
+            //Tools.writeHar(proxy);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
             //driver.setFileDetector(new LocalFileDetector());
@@ -234,9 +245,10 @@ public class DriverProvider {
     }
 
     public static void closeDriver() {
+        Tools.writeHar(proxy);
+        proxy.stop();
         instance.get().quit();
         instance.set(null);
-        //proxy.stop();
     }
 
     public static String getCurrentBrowserName() {
@@ -257,7 +269,8 @@ public class DriverProvider {
     public static BrowserMobProxy setBrowserMobProxy() {
         BrowserMobProxy proxy = new BrowserMobProxyServer();
         proxy.setTrustAllServers(true);
-        proxy.start();
+        proxy.start(0);
+        BPPLogManager.getLogger().info("BrowserMob proxy started.");
 
         return proxy;
     }
@@ -270,6 +283,7 @@ public class DriverProvider {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+        BPPLogManager.getLogger().info("HostIP is: " + hostIp);
         seleniumProxy.setHttpProxy(hostIp + ":" + proxyServer.getPort());
         seleniumProxy.setSslProxy(hostIp + ":" + proxyServer.getPort());
         return seleniumProxy;
