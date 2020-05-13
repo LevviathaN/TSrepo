@@ -1420,3 +1420,13 @@ Feature: BuildEmpire
     When I click on the "BPP Digital Admin Logs Menu Item link" element
     And I click on the "Marketing Cloud" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Marketing Cloud Logs" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to Users List
+    When I click on the "Users" "BPP Digital Admin Menu Item links"
+    And I click on the "List" "BPP Digital Admin Users Sub Menu Item links"
+    Then I should see the "Users" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to User Imports
+    When I click on the "Logs" "BPP Digital Admin Menu Item links"
+    And I click on the "User Import" "BPP Digital Admin Logs Sub Menu Item links"
+    Then I should see the "User Import Logs" "BPP Digital Admin Page Header name"
