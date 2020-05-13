@@ -6,7 +6,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Register Link on Login Page" button
     And I set "Auto[FIRSTNAME]" text to the "First name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Surname" "Build Empire text field"
-    And I set "Auto[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"
+    And I set "Auto[EMAIL-GUERILLA]" text to the "Email" "Build Empire text field"
     And I set "[PHONE-0913]" text to the "Telephone number" "Build Empire text field"
     Then I remember "A@polloGlobal2020" text as "EC_PASSWORD" variable
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"

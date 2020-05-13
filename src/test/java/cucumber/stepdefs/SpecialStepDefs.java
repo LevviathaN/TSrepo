@@ -27,13 +27,13 @@ public class SpecialStepDefs extends BasePage {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-            isElementPresentAndDisplay(By.xpath(resultingXpath));
             BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
             clickOnElement(initElementLocator(resultingXpath),
                     UiHandlers.PF_SPINNER_HANDLER,
                     UiHandlers.ACCEPT_ALERT,
                     UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                     UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.PAGE_NOT_LOAD_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
                     UiHandlers.DEFAULT_HANDLER);
@@ -61,11 +61,11 @@ public class SpecialStepDefs extends BasePage {
                 String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
                 String xpathTemplate = specialLocatorsMap.get(elementType);
                 String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-                isElementPresentAndDisplay(By.xpath(resultingXpath));
                 clickOnElement(initElementLocator(resultingXpath),
                         UiHandlers.PF_SCROLL_HANDLER,
                         UiHandlers.ACCEPT_ALERT,
                         UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                        UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SPINNER_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
@@ -228,6 +228,7 @@ public class SpecialStepDefs extends BasePage {
                     UiHandlers.ACCEPT_ALERT,
                     UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                     UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.PAGE_NOT_LOAD_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
                     UiHandlers.DEFAULT_HANDLER);
@@ -261,6 +262,30 @@ public class SpecialStepDefs extends BasePage {
                 selectValueFromDropDown(initElementLocator(resultingXpath), value);
             }
         }else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
+     * Definition to execute JS code for some particular element
+     *
+     * @param jsCode JS code to execute
+     * @author Ruslan Levytskyi
+     */
+    @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_execute_js_code_for_element_special(String jsCode, String elementLocator, String elementType) {
+        Reporter.log("Executing JS code: " + jsCode);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            isElementPresentAndDisplay(initElementLocator(resultingXpath));
+            BPPLogManager.getLogger().info("Executing JS code for: " + elementLocator + " element");
+            executeJSCodeForElement(initElementLocator(resultingXpath),jsCode);
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
             Reporter.fail("No such locator template key");
         }
     }

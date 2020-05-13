@@ -29,7 +29,7 @@ Feature: Create Course Instance - BPP-429
     And I execute "Create Client" reusable step
     And I execute "Create Material" reusable step
 
-  @Positive @P1 #TC-696, TC-2793, TC-2794, TC-2769, TC-2382, TC-2402, TC-2403
+  @Positive @P1 @DoNotRun #TC-696, TC-2793, TC-2794, TC-2769, TC-2382, TC-2402, TC-2403
   Scenario: Create Course Instance
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
