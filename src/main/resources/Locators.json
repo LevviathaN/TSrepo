@@ -370,6 +370,10 @@
   "BPP Digital Admin Logs Response Body text": "xpath=(//div[normalize-space()='Response']/following::pre)[1]",
   "BPP Digital Marketing Cloud Log Show button": "xpath=(//td[text()='EC_DATE_TIME']/following-sibling::td/a[text()='Show'])[1]",
   "BPP Digital Log out button":"xpath=//input[@value='Log out']",
+  "BPP Digital Green Import button": "xpath=//button[@type='submit'][normalize-space()='Import']",
+  "BPP Digital Existing Users Updated field value": "xpath=(//strong[normalize-space()='Existing users updated']/following::div)[1]",
+  "BPP Digital Status field value": "xpath=(//strong[normalize-space()='Status']/following::div)[1]",
+  "BPP Digital Rows field value": "xpath=(//strong[normalize-space()='Rows']/following::div)[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
