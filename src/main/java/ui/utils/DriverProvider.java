@@ -106,7 +106,6 @@ public class DriverProvider {
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_BINARY_CONTENT, CaptureType.RESPONSE_BINARY_CONTENT);
-            //Tools.writeHar(proxy);
 
             HashMap<String, Object> chromePreferences = new HashMap<>();
             chromePreferences.put("profile.password_manager_enabled", "false");
@@ -180,7 +179,6 @@ public class DriverProvider {
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
             proxy.enableHarCaptureTypes(CaptureType.REQUEST_BINARY_CONTENT, CaptureType.RESPONSE_BINARY_CONTENT);
-            //Tools.writeHar(proxy);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
             //driver.setFileDetector(new LocalFileDetector());
