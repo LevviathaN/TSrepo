@@ -1430,3 +1430,8 @@ Feature: BuildEmpire
     When I click on the "Logs" "BPP Digital Admin Menu Item links"
     And I click on the "User Import" "BPP Digital Admin Logs Sub Menu Item links"
     Then I should see the "User Import Logs" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to Announcements
+    When I click on the "Website" "BPP Digital Admin Menu Item links"
+    And I click on the "Announcements" "BPP Digital Admin Sub Menu Item links"
+    Then I should see the "Announcements" "BPP Digital Admin Page Header name"
