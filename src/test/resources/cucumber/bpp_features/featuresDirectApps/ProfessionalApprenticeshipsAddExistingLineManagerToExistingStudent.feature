@@ -33,7 +33,7 @@ Feature: Professional Apprenticeships
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Accept Application As Admin" reusable step replacing some steps
-      |5|I fill the "Direct App Admin Filter By User" field with "AutoHeavenSoueilem@harakirimail.com"|
+      |4|I fill the "Direct App Admin Filter By User" field with "AutoHeavenSoueilem@harakirimail.com"|
     And I execute "Log Out from Hub Admin" reusable step
     And I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "AutoHeavenSoueilem@harakirimail.com" text to the "Email" "Build Empire text field"|

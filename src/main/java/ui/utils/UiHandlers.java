@@ -79,7 +79,8 @@ public enum UiHandlers {
         BasePage page = new BasePage();
         StackTraceElement[] stackTraceElementArray = e.getStackTrace();
         StackTraceElement s = stackTraceElementArray[2];
-        Boolean bool = s.getMethodName().contains("waitForPageToLoad");
+        Boolean bool = s.getMethodName().contains("waitForPageToLoad")
+                && e.getCause()==null;
 
         BasePage.isHandled.put("pageNotLoadHandler", false);
         if(bool){
