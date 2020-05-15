@@ -322,6 +322,10 @@
   "Direct App Edit Account Page Edit button": "xpath=//button[normalize-space()='edit']",
   "Direct App Edit Account Page Save button": "xpath=//button[normalize-space()='save']",
   "Direct App Account Avatar Image Upload status": "xpath=//span[@class='upload-status']",
+  "Direct App Announcement Text": "xpath=//p[@class='announcement-text']/p",
+  "Direct App Announcement First Item name": "xpath=(//table[contains(@class,'table')]//tr/td[2])[1]",
+  "Direct App Announcement First Item status": "xpath=(//table[contains(@class,'table')]//tr/td[3])[1]",
+  "Direct App Announcement First Item created": "xpath=(//table[contains(@class,'table')]//tr/td[4])[1]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
