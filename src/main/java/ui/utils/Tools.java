@@ -94,13 +94,6 @@ public class Tools {
         //BPPLogManager.getLogger().info(har.getLog().getBrowser().getName());
         //BPPLogManager.getLogger().info(har.getLog().getBrowser().getVersion());
 
-//        for (HarEntry entry: har.getLog().getEntries()) {
-//
-//            System.out.println(entry.getRequest().getUrl());
-//            System.out.println(entry.getTimings().getWait());
-//            System.out.println(entry.getTimings().getReceive());
-//        }
-
         File harFile = new File(Reporter.getReportPath().toString() + "/automation.har");
         try {
             har.writeTo(harFile);
