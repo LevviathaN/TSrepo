@@ -6,7 +6,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Register Link on Login Page" button
     And I set "Auto[FIRSTNAME]" text to the "First name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Surname" "Build Empire text field"
-    And I set "Auto[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"
+    And I set "Auto[EMAIL-GUERILLA]" text to the "Email" "Build Empire text field"
     And I set "[PHONE-0913]" text to the "Telephone number" "Build Empire text field"
     Then I remember "A@polloGlobal2020" text as "EC_PASSWORD" variable
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
@@ -1420,3 +1420,13 @@ Feature: BuildEmpire
     When I click on the "BPP Digital Admin Logs Menu Item link" element
     And I click on the "Marketing Cloud" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Marketing Cloud Logs" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to Users List
+    When I click on the "Users" "BPP Digital Admin Menu Item links"
+    And I click on the "List" "BPP Digital Admin Users Sub Menu Item links"
+    Then I should see the "Users" "BPP Digital Admin Page Header name"
+
+  Scenario: Admin Hub Navigate to User Imports
+    When I click on the "Logs" "BPP Digital Admin Menu Item links"
+    And I click on the "User Import" "BPP Digital Admin Logs Sub Menu Item links"
+    Then I should see the "User Import Logs" "BPP Digital Admin Page Header name"

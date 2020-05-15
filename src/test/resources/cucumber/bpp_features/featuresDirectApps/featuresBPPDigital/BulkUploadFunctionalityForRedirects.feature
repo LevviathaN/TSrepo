@@ -1,5 +1,7 @@
 @DigitalSite
 Feature: BPP Digital Bulk Upload Functionality for Redirects
+  As an admin
+  I expect to be able to upload a CSV with columns for each property for redirects
 
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
