@@ -6,7 +6,11 @@
   "option": "xpath=//*[text()='PARAMETER']",
   "element": "xpath=//*[text()='PARAMETER']",
   "exact element": "xpath=//*[normalize-space()=\"PARAMETER\"]",
+  "text contained in element": "xpath=//*[contains(text(),'PARAMETER')]",
+  "text contained in A element": "xpath=//a[contains(text(),'PARAMETER')]",
+  "text contained in SPAN element": "xpath=//span[contains(text(),'PARAMETER')]",
   "inframe element": "inframe=Salesforce Frame>xpath=//*[text()='PARAMETER']",
+  "link address": "xpath=//a[contains(@href,'PARAMETER')]",
 
   "Product Factory navigation item": "xpath=//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "xpath=//p[text()='PARAMETER']",
@@ -135,7 +139,7 @@
   "Salesforce cases search student": "xpath=//div[@title='PARAMETER']",
   "Salesforce cases status option": "xpath=//span[@title='PARAMETER']",
 
-  "Totara text field": "xpath=//label[normalize-space()='Password']",
+  "Totara text field": "xpath=//label[normalize-space()='PARAMETER']/../following-sibling::div/input",
   "Totara button": "xpath=//input[@value='PARAMETER']",
   "Totara side menu option": "xpath=//span[text='PARAMETER']",
   "Totara Assessment select": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../following-sibling::td/select",
