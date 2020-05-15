@@ -7,8 +7,8 @@ Feature: CSA - SLA Milestones
   @Milestones #TC-802
   Scenario: CSA - SLA Milestones
     Given I execute "Log In To Salesforce" reusable step
-    When I click on the "Cases" "Salesforce navigation menu dropdown"
-    And I click on the "New Case" "Salesforce navigation menu dropdown option"
+    And I click on the "Cases" "Salesforce navigation menu option"
+    And I click on the "Salesforce New Case Button" element
     And I click on the "Customer Service" "Salesforce radiobutton"
     And I click on the "Next" "button"
     And I set "2Automation 2CSA" text to the "Student" "Salesforce search field"
