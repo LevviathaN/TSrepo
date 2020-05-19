@@ -211,8 +211,8 @@ public class DriverProvider {
             options.setCapability("browserstack.video", "true");
             options.setCapability("browserstack.networkLogs", "true");
             options.setCapability("build", "automation");
-            options.setCapability("browserstack.local", "true");
-            options.setCapability("browserstack.localIdentifier", "TestAutomation");
+//            options.setCapability("browserstack.local", "true");
+//            options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability(FirefoxDriver.PROFILE, profile);
 
             //configure capability for setting up Test Case name for Sauce Jobs
