@@ -454,6 +454,8 @@
   "Totara Assessment Next Button": "inframe=TotaraScromFrame>xpath=//input[@id='qm_NEXT']",
   "Totara Assessment Submit Button": "inframe=TotaraScromFrame>xpath=//input[@id='qm_SUB']",
   "Totara Submit all and finish Button": "xpath=//div[contains(text(),'Once you')]/following-sibling::div/input[1]",
+  "Totara Add Submission Button": "xpath=//input[@value='Add submission']",
+  "Totara Upload This File": "xpath=//button[contains(.,'Upload this file')]",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",
