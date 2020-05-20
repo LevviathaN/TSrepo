@@ -1,9 +1,6 @@
 package ui.utils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import net.lightbody.bmp.BrowserMobProxy;
-import net.lightbody.bmp.core.har.Har;
-import net.lightbody.bmp.core.har.HarEntry;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -85,21 +82,5 @@ public class Tools {
             }
         }
         return result;
-    }
-
-    public static void writeHar(BrowserMobProxy proxy) {
-        proxy.newHar();
-        Har har = proxy.getHar();
-        //System.out.println(har.getLog().getBrowser().getName());
-        //BPPLogManager.getLogger().info(har.getLog().getBrowser().getName());
-        //BPPLogManager.getLogger().info(har.getLog().getBrowser().getVersion());
-
-        File harFile = new File(Reporter.getReportPath().toString() + "/automation.har");
-        try {
-            har.writeTo(harFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            BPPLogManager.getLogger().error("Cannot write har file for proxy");
-        }
     }
 }

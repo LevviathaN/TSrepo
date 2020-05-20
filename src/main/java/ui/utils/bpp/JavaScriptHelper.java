@@ -54,12 +54,11 @@ public class JavaScriptHelper {
     }
 
     /**
-     *
-     * @param driver
+     *  @param driver
      * @param element
      * @param timeSeconds
      */
-    public static void waitForJavaScriptToRun(WebDriver driver, WebElement element, int timeSeconds) {
+    public static void waitForJavaScriptToRun(WebDriver driver, String element, int timeSeconds) {
         try {
             Reporter.log("Waiting for JavaScript to updated the passed element along with its descendants");
             BPPLogManager.getLogger().info("Waiting for JavaScript to update the passed element along with its descendants");
