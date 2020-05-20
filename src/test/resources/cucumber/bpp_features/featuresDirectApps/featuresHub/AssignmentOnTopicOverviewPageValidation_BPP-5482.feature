@@ -1,9 +1,9 @@
-@Hub @Assignment
+@Assignment
 Feature: Verify Assignment Key Activity Complition Appearance In HUB - BPP-4488
   As a user in the Hub, when an Assignment has been set as Key Activity on my Topic Overview page,
   I expect it to appear the same as Assignment Assessment Block
 
-  @Positive @Smoke #TC-2716
+  #TC-2716 Is not completed until issue with BrowserStack will be resolved
   Scenario: Assignment On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"

@@ -1,7 +1,6 @@
 package ui.utils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import net.lightbody.bmp.BrowserMobProxy;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -22,11 +21,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
-import net.lightbody.bmp.core.har.Har;
-
-import net.lightbody.bmp.proxy.CaptureType;
 
 /**
  * @author yzosin

@@ -326,6 +326,7 @@
   "Direct App Announcement First Item name": "xpath=(//table[contains(@class,'table')]//tr/td[2])[1]",
   "Direct App Announcement First Item status": "xpath=(//table[contains(@class,'table')]//tr/td[3])[1]",
   "Direct App Announcement First Item created": "xpath=(//table[contains(@class,'table')]//tr/td[4])[1]",
+  "Direct App CMS Page Left Hand Menu": "xpath=//a[contains(.,'EC_AUTO_CMS_PAGE')]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -406,6 +407,7 @@
   "BPP Digital Existing Users Updated field value": "xpath=(//strong[normalize-space()='Existing users updated']/following::div)[1]",
   "BPP Digital Status field value": "xpath=(//strong[normalize-space()='Status']/following::div)[1]",
   "BPP Digital Rows field value": "xpath=(//strong[normalize-space()='Rows']/following::div)[1]",
+  "BPP Digital Remove Student Role X Button": "xpath=//li[@title='student']/span",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
