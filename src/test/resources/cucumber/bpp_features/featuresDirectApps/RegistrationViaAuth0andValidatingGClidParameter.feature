@@ -1,4 +1,4 @@
-@DirectApps @RFI
+@RFI
 Feature: Registration via Auth0 and Capturing GClid Parameter BPP-2632
   As a developer
   I will capture a user's GClid whenever they register via Auth0 on Staging

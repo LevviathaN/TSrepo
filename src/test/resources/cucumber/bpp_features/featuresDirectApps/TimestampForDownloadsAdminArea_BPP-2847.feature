@@ -6,7 +6,6 @@ Feature: As an admin, viewing my downloads in the admin area,
     Given I execute "Register New Student Account" reusable step
     When I execute "Create Academic Appeals Application" reusable step
 
-
   Scenario: As an Admin, I Expect to See a Timestamp of When Document Was Generated
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"
