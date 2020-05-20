@@ -1,4 +1,4 @@
-@DirectApps @RFI
+@RFI
 Feature: Pre-Auth0 user submits RFI forms as a student/employer BPP-2521
   As a developer
   I will capture a user's GClid whenever they register/complete RFI form on Staging
