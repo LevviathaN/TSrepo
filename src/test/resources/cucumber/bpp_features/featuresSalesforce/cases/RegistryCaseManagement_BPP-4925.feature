@@ -97,7 +97,7 @@ Feature: Registry Case Management
     And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
 
   @AssignmentRules
-  Scenario: Verify Case Assignment Rules Letter/Key/Oyster/Timeteable/Complaint
+  Scenario: Registry Case Management Verify Case Assignment Rules Letter_Key_Oyster_Timetable_Complaint
     Given I execute "Log In To Salesforce" reusable step
     #Letter Production
     And I execute "Create Assesments Registry Case" reusable step replacing some steps
