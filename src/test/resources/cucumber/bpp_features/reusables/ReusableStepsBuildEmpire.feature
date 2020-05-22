@@ -12,7 +12,6 @@ Feature: BuildEmpire
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     And I click on the "Direct App I Am Happy To Receive Information" button
     Then I click on the "Direct App Register" button
-
     And I should see the "Direct App My Applications Left Menu Link" button
 
   Scenario: Log In to Hub as Student
