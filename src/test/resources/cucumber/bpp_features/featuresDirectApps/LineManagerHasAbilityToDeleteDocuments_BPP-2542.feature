@@ -5,7 +5,7 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
     Given I execute "Register New Student Account" reusable step
 
   @Positive @BPP-2542 #TC-8143
-  Scenario: Line Manager has an Ability to Delete Documents that was Uploaded by Mistake
+  Scenario: Line Manager has an Ability to Delete Documents that were Uploaded by Mistake
     When I execute "Create University Degree Apprenticeships Application" reusable step
     And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step
     Then I execute "Submit Application Hub" reusable step

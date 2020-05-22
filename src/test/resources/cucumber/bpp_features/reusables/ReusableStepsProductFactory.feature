@@ -397,3 +397,21 @@ Feature: Product Factory
     Then I should see the "EC_PAPER_DESCRIPTION" element
     Then I should see the "EC_LEVEL_SHORT_NAME" element
     And I click on the "Finish" "Product Factory button"
+
+  Scenario: Create Digital Content
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Digital Content" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
+    And I click on the "Level" "Product Factory dropdown"
+    And I click on the "EC_LEVEL_NAME" "Product Factory dropdown option"
+    And I click on the "Paper" "Product Factory dropdown"
+    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory dropdown option"
+    And I click on the "Sittings" "Product Factory edit button"
+    And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
+    And I click on the "Save" "Product Factory active button"
+    And I click on the "Course Types" "Product Factory edit button"
+    And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
+    And I click on the "Save" "Product Factory active button"
+    And I click on the "Save" "Product Factory button"

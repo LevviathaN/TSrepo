@@ -1,7 +1,6 @@
 package ui.utils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import net.lightbody.bmp.BrowserMobProxy;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -22,11 +21,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
-import net.lightbody.bmp.core.har.Har;
-
-import net.lightbody.bmp.proxy.CaptureType;
 
 /**
  * @author yzosin
@@ -45,7 +39,6 @@ public class DriverProvider {
     public static final ThreadLocal<WebDriver> instance = new ThreadLocal<WebDriver>();
 
     static String BROWSER_TYPE;
-    public static BrowserMobProxy proxy;
 
     static public FirefoxDriver getFirefox() {
 
@@ -84,8 +77,6 @@ public class DriverProvider {
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
 
-            proxy = setBrowserMobProxy();
-            Proxy seleniumProxy = getSeleniumProxy(proxy);
 
             options.setExperimentalOption("prefs", prefs);
             options.addArguments("--test-type");
@@ -101,11 +92,6 @@ public class DriverProvider {
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
-            options.setCapability(CapabilityType.PROXY,seleniumProxy);
-
-            proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-            proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
-            proxy.enableHarCaptureTypes(CaptureType.REQUEST_BINARY_CONTENT, CaptureType.RESPONSE_BINARY_CONTENT);
 
             HashMap<String, Object> chromePreferences = new HashMap<>();
             chromePreferences.put("profile.password_manager_enabled", "false");
@@ -134,10 +120,9 @@ public class DriverProvider {
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
 
-            proxy = setBrowserMobProxy();
-            Proxy seleniumProxy = getSeleniumProxy(proxy);
 
             options.setExperimentalOption("prefs", prefs);
+            options.setPageLoadStrategy(PageLoadStrategy.EAGER);
             options.addArguments("--test-type");
             options.addArguments("--start-maximized");
             options.addArguments("--disable-save-password-bubble");
@@ -147,7 +132,6 @@ public class DriverProvider {
             options.addArguments("--disable-browser-side-navigation");
             options.addArguments("--disable-gpu");
             options.addArguments("enable-automation");
-            options.setPageLoadStrategy(PageLoadStrategy.NONE);
 
             options.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
             HashMap<String, Object> chromePreferences = new HashMap<>();
@@ -162,12 +146,12 @@ public class DriverProvider {
             options.setCapability("resolution", "1920x1080");
             options.setCapability("browserstack.debug", "true");
             options.setCapability("browserstack.video", "true");
-            options.setCapability("browserstack.networkLogs", "true");
+            options.setCapability("browserstack.networkLogs", "false");
             options.setCapability("build", "automation");
             options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
             options.setCapability("browserstack.localIdentifier", "TestAutomation");
-            options.setCapability("browserstack.timeouts", "{\"implicit\"=>0, \"pageLoad\"=>60000, \"script\"=>60000}");
+
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability(ChromeOptions.CAPABILITY, options);
@@ -175,10 +159,6 @@ public class DriverProvider {
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
-            options.setCapability(CapabilityType.PROXY,seleniumProxy);
-            proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-            proxy.enableHarCaptureTypes(CaptureType.REQUEST_HEADERS, CaptureType.RESPONSE_HEADERS);
-            proxy.enableHarCaptureTypes(CaptureType.REQUEST_BINARY_CONTENT, CaptureType.RESPONSE_BINARY_CONTENT);
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
             //driver.setFileDetector(new LocalFileDetector());
@@ -203,6 +183,20 @@ public class DriverProvider {
 
             //Create Desired Capability Instance
             FirefoxOptions options = new FirefoxOptions();
+            HashMap<String, Object> firefoxPreferences = new HashMap<>();
+            firefoxPreferences.put("profile.password_manager_enabled", "false");
+            firefoxPreferences.put("credentials_enable_service", "false");
+            firefoxPreferences.put("profile.default_content_settings.popups", 0);
+            options.addArguments("--test-type");
+            options.addArguments("--start-maximized");
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-infobars");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-browser-side-navigation");
+            options.addArguments("--disable-gpu");
+            options.addArguments("enable-automation");
+            options.setPageLoadStrategy(PageLoadStrategy.NONE);
             options.setCapability("browser_version", FileIO.getConfigProperty("ff_version"));
             options.setCapability("os", FileIO.getConfigProperty("os"));
             options.setCapability("os_version", FileIO.getConfigProperty("os_version"));
@@ -211,8 +205,8 @@ public class DriverProvider {
             options.setCapability("browserstack.video", "true");
             options.setCapability("browserstack.networkLogs", "true");
             options.setCapability("build", "automation");
-            options.setCapability("browserstack.local", "true");
-            options.setCapability("browserstack.localIdentifier", "TestAutomation");
+//            options.setCapability("browserstack.local", "true");
+//            options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability(FirefoxDriver.PROFILE, profile);
 
             //configure capability for setting up Test Case name for Sauce Jobs
@@ -243,8 +237,6 @@ public class DriverProvider {
     }
 
     public static void closeDriver() {
-        Tools.writeHar(proxy);
-        proxy.stop();
         instance.get().quit();
         instance.set(null);
     }
@@ -262,29 +254,6 @@ public class DriverProvider {
             }
 
         return BROWSER_TYPE;
-    }
-
-    public static BrowserMobProxy setBrowserMobProxy() {
-        BrowserMobProxy proxy = new BrowserMobProxyServer();
-        proxy.setTrustAllServers(true);
-        proxy.start(0);
-        BPPLogManager.getLogger().info("BrowserMob proxy started.");
-
-        return proxy;
-    }
-
-    public static Proxy getSeleniumProxy(BrowserMobProxy proxyServer) {
-        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxyServer);
-        String hostIp = null;
-        try {
-            hostIp = Inet4Address.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-        BPPLogManager.getLogger().info("HostIP is: " + hostIp);
-        seleniumProxy.setHttpProxy(hostIp + ":" + proxyServer.getPort());
-        seleniumProxy.setSslProxy(hostIp + ":" + proxyServer.getPort());
-        return seleniumProxy;
     }
 
 }
