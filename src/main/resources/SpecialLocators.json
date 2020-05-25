@@ -45,7 +45,6 @@
   "Product Factory Session Two Dates Popup Start Time Input Field": "xpath=(//tr[PARAMETER]/td[2]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup End Time Input Field": "xpath=(//tr[PARAMETER]/td[3]/div/div/input)[2]",
 
-
   "Build Empire text field": "xpath=//input[@placeholder='PARAMETER']",
   "Build Empire application type": "xpath=//li[text()='PARAMETER']",
   "Build Empire application section": "xpath=//a[contains(.,'PARAMETER')]",
@@ -80,6 +79,8 @@
   "Build Empire Homepage My Learning Course": "xpath=//div[@class='home-col right-col']/descendant::h3[contains(text(),'PARAMETER')]",
   "Build Empire Course Topic": "xpath=//div[@class='section-name' and text()='PARAMETER']/../following-sibling::a",
   "Build Empire My Learning Right Block Course name": "xpath=//div[@class='home-col right-col']//h3[text()=\"PARAMETER\"]",
+  "Build Empire Breadcrumb Tab": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]/a",
+  "Build Empire Breadcrumb Not Clickable Tab": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]",
 
   "BPP Digital Search Label Button": "xpath=//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link": "xpath=//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",
