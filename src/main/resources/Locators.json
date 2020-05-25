@@ -472,6 +472,12 @@
   "Totara Submit all and finish Button": "xpath=//div[contains(text(),'Once you')]/following-sibling::div/input[1]",
   "Totara Add Submission Button": "xpath=//input[@value='Add submission']",
   "Totara Upload This File": "xpath=//button[contains(.,'Upload this file')]",
+  "Totara Course Select Forum link": "xpath=//div[@class='course-details-desktop']//button[text()='Select Forum']",
+  "Totara Forum Header name": "xpath=//div[@role='main']/h2",
+  "Totara Course Forum option": "xpath=//ul[contains(@class,'dropdown-content dropdown')]/li/a[normalize-space()='Automation Forum']",
+  "Totara First Forum Question item": "xpath=(//table[@class='forumheaderlist']//tbody//td[1]/a)[1]",
+  "Totara Course URL Activity link": "xpath=(//div[text()='Your progress']/following-sibling::ul/li[1]/div[3]//span[@class='instancename']/parent::a[contains(@class,'dimmed')]/@href)[1]",
+  "Totara Course URL Activity field": "xpath=//div[text()='Your progress']/following-sibling::ul/li[1]/div[3]//a[contains(@class,'dimmed')]/span[@class='instancename']/text()",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",
