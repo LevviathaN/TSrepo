@@ -334,6 +334,7 @@
   "Direct Apps Home News Content": "xpath=//div[@class='news-content']",
   "Direct Apps Home News Author": "xpath=//p[@class='news-author']",
   "Direct Apps Home News URL": "xpath=//a[@class='news-link']",
+  "Direct App Help And Support Left Menu Link": "xpath=//a[contains(.,'Help')]",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
