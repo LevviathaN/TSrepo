@@ -33,9 +33,10 @@ Feature: Edit Instance - Streams - BPP-6518
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_STREAM_NAME_TWO" element
     And I execute "Create Material" reusable step
+    And I execute "Create Digital Content" reusable step
     And I execute "Create Course Instance" reusable step
 
-  @Positive @P1 @DoNotRun #TC-2951, TC-2968
+  @Positive @P1 #TC-2951, TC-2968
   Scenario: Add a Stream to Course Instance
     Given I click on the "Activate" "Product Factory button"
     And I click on the "Product Factory Course Instances Arrow Down Icon" element
