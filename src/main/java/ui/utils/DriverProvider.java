@@ -146,7 +146,7 @@ public class DriverProvider {
             options.setCapability("resolution", "1920x1080");
             options.setCapability("browserstack.debug", "true");
             options.setCapability("browserstack.video", "true");
-            options.setCapability("browserstack.networkLogs", "true");
+            options.setCapability("browserstack.networkLogs", "false");
             options.setCapability("build", "automation");
             options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
