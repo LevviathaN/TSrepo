@@ -27,7 +27,7 @@
   "Product Factory checkbox": "xpath=//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]|//span[text()='PARAMETER']/preceding-sibling::span/span[1]",
   "Product Factory Link Levels button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Link Levels')]",
   "Product Factory Change Body button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
-  "Product Factory edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]|//span[text()='PARAMETER']/../following-sibling::div/div/button|//span[text()='PARAMETER']/following-sibling::div/button|//span[text()='PARAMETER']/../following-sibling::button|//td[text()='PARAMETER']/button|//span[text()='PARAMETER']/following-sibling::span/button",
+  "Product Factory edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]|//span[text()='PARAMETER']/../following-sibling::div/div/button|//span[text()='PARAMETER']/following-sibling::div/button|//span[text()='PARAMETER']/../following-sibling::button|//td[text()='PARAMETER']/button|//span[text()='PARAMETER']/following-sibling::span/button|//p[text()='PARAMETER']/../../../following-sibling::button",
   "Product Factory button title": "xpath=//button[@title='PARAMETER']",
   "Product Factory Locked Applies To drop-down item": "xpath=//div[text()='PARAMETER']",
   "Product Factory Financial Dimension list in Locations": "xpath=//div[@role='document']/ul/li[text()='PARAMETER']",

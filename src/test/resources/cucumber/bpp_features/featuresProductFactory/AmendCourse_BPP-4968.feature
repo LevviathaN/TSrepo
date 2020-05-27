@@ -1,4 +1,4 @@
-@ProductFactory @Courses @Amend @DoNotRun
+@ProductFactory @Courses @Amend
 Feature: Course - Update Instances for non draft Courses - BPP-4968
   As a Product Setter
   I want to be able to update a Course Instance for a non draft Course
@@ -38,6 +38,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And I execute "Create Client" reusable step
     And I execute "Create Stream" reusable step
     And I execute "Create Material" reusable step
+    And I execute "Create Digital Content" reusable step
 
   @Positive @P1 #TC-2406
   Scenario: Amend Non Draft Course Instance
