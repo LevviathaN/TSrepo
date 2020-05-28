@@ -4,7 +4,7 @@ Feature: SCORM Asessment Not Submit
   I do not expect this to be recorded as an attempt in my 'assessment block' as these attempts are not relevant
 
   @Negative #TC-1829
-  Scenario: Scorm Assesstment Start But Not Submit
+  Scenario: Scorm Assessment Start But Not Submit
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     When I execute "Log Out from Hub Student" reusable step

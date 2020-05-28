@@ -101,6 +101,7 @@
   "Direct App Accept Cookie": "id=cookieButton",
   "Direct App My Applications Left Menu Link": "xpath=//a[contains(.,'My Applications')]",
   "Direct App What Are You Applying For Dropdown": "xpath=//span[@class='ember-power-select-status-icon']",
+  "Direct App Level Three Paralegal": "xpath=//li[contains(.,'Level 3 Paralegal')]",
   "Diret App Scholarship Dropdown":"xpath=//div[@class='scholarships-row ']//span[@class='ember-power-select-status-icon']",
   "Direct App Programme Dropdown": "xpath=//div[@class='programmes-row ']//span[@class='ember-power-select-status-icon']",
   "Direct App Create Application": "xpath=//button[contains(text(),'Create Application')]",
@@ -422,6 +423,9 @@
   "BPP Digital Edit News": "xpath=//tbody//tr[contains(.,'EC_AUTOMATION_NEWS')]//td[5]/a[1]",
   "BPP Digital Remove Visibility Group": "xpath=//li[@class='select2-selection__choice']/span",
   "BPP Digital Delete News": "xpath=//tbody//tr[contains(.,'EC_AUTOMATION_NEWS')]//td[5]/a[2]",
+  "BPP Digital Edit Form Button": "xpath=//div[@class='list-group-item']//div[2]/a[contains(.,'Edit')]",
+  "BPP Digital Form Area Of Interest": "xpath=//span[contains(.,'Select area of interest')]",
+  "BPP Digital Form I Am Employer Tab": "xpath=//label[contains(.,'I am an Employer')]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
