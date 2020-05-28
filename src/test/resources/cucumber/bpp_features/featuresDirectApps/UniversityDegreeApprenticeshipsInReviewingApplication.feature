@@ -4,7 +4,7 @@ Feature: University Degree Apprenticeships
   @Positive @P1 @InReviewingApplication
   Scenario: University Degree Apprenticeships in Reviewing Application
     Given I execute "Register New Student Account" reusable step
-    When I execute "Create University Degree Apprenticeships Application" reusable step
+    When I execute "Create University Degree Level Three Paralegal" reusable step
     And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step

@@ -1434,3 +1434,11 @@ Feature: BuildEmpire
     When I click on the "Website" "BPP Digital Admin Menu Item links"
     And I click on the "Announcements" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Announcements" "BPP Digital Admin Page Header name"
+
+  Scenario: Create University Degree Level Three Paralegal
+    Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP University Degree Apprenticeships" "Build Empire application type"
+    And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I click on the "Direct App Level Three Paralegal" element
+    And I click on the "Direct App Create Application" button
