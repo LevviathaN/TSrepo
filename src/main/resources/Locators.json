@@ -426,6 +426,10 @@
   "BPP Digital Edit Form Button": "xpath=//div[@class='list-group-item']//div[2]/a[contains(.,'Edit')]",
   "BPP Digital Form Area Of Interest": "xpath=//span[contains(.,'Select area of interest')]",
   "BPP Digital Form I Am Employer Tab": "xpath=//label[contains(.,'I am an Employer')]",
+  "BPP Digital Text Component Add Link": "xpath=//span[contains(@class,'cke_button__link_icon')]",
+  "BPP Digital Text Component Link Stylesheet Classes": "xpath=//label[contains(text(),'Stylesheet Classes')]//following::div[2]/input",
+  "BPP Digital Text Component Protocol Type": "xpath=//label[contains(text(),'Protocol')]//following::select[1]",
+  "BPP Digital Text Component URL": "xpath=//label[contains(text(),'URL')]//following::div[2]/input",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
