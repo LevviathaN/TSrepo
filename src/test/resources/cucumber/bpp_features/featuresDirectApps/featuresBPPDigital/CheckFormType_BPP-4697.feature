@@ -163,3 +163,62 @@ Feature: As a user, viewing a "employer (basic)" form,
     Then I should see the "Page successfully archived." "BPP Digital Admin Alert Message"
     And I click on the "BPP Digital CMS Page Delete Button" button
     Then I should see the "CMS Page was successfully removed." "BPP Digital Admin Alert Message"
+
+  @Grid #TC-2461
+  Scenario: Validate Form Title Is Not Displayed For Grid Component
+    When I execute "Admin Hub Navigate to CMS Pages" reusable step
+    When I click on the "Add" "BPP Digital Admin Page Button"
+    And I set "AutoCMSPage[#####]" text to the "Name *" "BPP Digital Mandatory input field"
+    And I select "CMS page" from "Page type *" "BPP Digital Mandatory select field"
+    And I set "AutoCMSUrl[#####]" text to the "Path *" "BPP Digital Mandatory input field"
+    And I select "About us > BPP University > University board" from "Parent" "BPP Digital Mandatory select field"
+    And I set "Title[####]" text to the "Title" "BPP Digital Mandatory input field"
+    And I set "Summary[####]" text to the "Summary" "BPP Digital Mandatory text area field"
+    And I set "MetaDescription[####]" text to the "Meta description" "BPP Digital Mandatory text area field"
+    And I set "LinkTitle[####]" text to the "Link title *" "BPP Digital Mandatory input field"
+    And I set "LinkDescription[####]" text to the "Link description *" "BPP Digital Mandatory text area field"
+    And I "check" "Show in navigation" "BPP Digital Admin Mandatory checkbox"
+    And I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I should see the "CMS Page was successfully created." "BPP Digital Admin Alert Message"
+    #Add Form Component:
+    When I click on the "Add component" "BPP Digital Search Label Button"
+    And I click on the "Form" "BPP Digital Admin Sub Menu Item links"
+    And I set "cmsformmodal" text to the "Html" "BPP Digital Mandatory input field"
+    And I select "Modal" from "Display type" "BPP Digital Mandatory select field"
+    And I select "Learner (basic)" from "Form type" "BPP Digital Mandatory select field"
+    And I set "ModalThankYouTitle[###]" text to the "Thank you title" "BPP Digital Mandatory input field"
+    And I set "ModalThankYouMessage[###]" text to the "Thank you message" "BPP Digital Mandatory input field"
+    And I set "ModalTitle[###]" text to the "Title" "BPP Digital Mandatory input field"
+    And I set "ModalDescription[###]" text to the "Description" "BPP Digital Mandatory input field"
+    Then I click on the "Save" "BPP Digital Admin Value attribute button"
+     #Add Grid Component:
+    When I click on the "Add component" "BPP Digital Search Label Button"
+    And I click on the "Grid" "BPP Digital Admin Sub Menu Item links"
+    And I select "1 column, full width" from "Layout *" "BPP Digital Mandatory select field"
+    And I select "Colour" from "Background type" "BPP Digital Mandatory select field"
+    And I select "Box" from "Container style *" "BPP Digital Mandatory select field"
+    And I select "Red" from "Background colour" "BPP Digital Mandatory select field"
+    And I wait for "3" seconds
+    Then I click on the "Save" "BPP Digital Admin Value attribute button"
+    Then I should see the "Grid was successfully created." "BPP Digital Admin Alert Message"
+    Then I click on the "Back" "button"
+    When I should scroll to the "top" of the page
+    Then I execute "Publish a CMS or Blog Post page" reusable step
+    And I wait for "2" seconds
+    And I execute "Log Out from Hub Admin" reusable step
+    Given I execute "Log In to Hub as Student" reusable step replacing some steps
+      | 2 | I set "AutoAdonisDuarte6846@guerrillamail.info" text to the "Email" "Build Empire text field" |
+      | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"                    |
+    When I am on "https://staging.bppdigital.buildempire.app/university-board/<EC_AUTO_CMS_URL>" URL
+    And I shouldn't see the "EC_TITLE" "element"
+    And I shouldn't see the "EC_SUMMARY" "element"
+    #Add Clean Up Component
+    And I execute "Log In to Hub as Admin" reusable step
+    When I execute "Admin Hub Navigate to CMS Pages" reusable step
+    And I execute "Search for CMS Page" reusable step
+    When I click on the "EC_AUTO_CMS_PAGE" "BPP Digital Admin Edit Button for Specific name"
+    When I click on the "BPP Digital CMS Page Archive Button" button
+    And I click on the "No, just archive" "BPP Digital Admin Page Button"
+    Then I should see the "Page successfully archived." "BPP Digital Admin Alert Message"
+    And I click on the "BPP Digital CMS Page Delete Button" button
+    Then I should see the "CMS Page was successfully removed." "BPP Digital Admin Alert Message"
