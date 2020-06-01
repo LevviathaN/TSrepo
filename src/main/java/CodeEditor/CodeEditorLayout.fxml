@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CodeEditor.CodeEditor">
+   <center>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <WebView fx:id="webview" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#setHtmlText" prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </WebView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="copyCode" mnemonicParsing="false" onAction="#setCode" text="Set Code" />
+                  <Button fx:id="revertEdits" mnemonicParsing="false" onAction="#setHtmlText" text="Set Text" />
+               </children>
+            </HBox>
+            <Label fx:id="labeledCode" text="Locators" />
+            <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      
+      </VBox>
+   </center>
+   <left>
+      <ChoiceBox fx:id="choiceBox" prefHeight="27.0" prefWidth="283.0" BorderPane.alignment="TOP_CENTER" />
+   </left>
+</BorderPane>
