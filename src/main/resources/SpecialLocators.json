@@ -17,7 +17,7 @@
   "Product Factory button": "xpath=//span[text()='PARAMETER']/..",
   "Product Factory active button": "xpath=//span[text()='PARAMETER']/parent::button[@tabindex='0']",
   "Product Factory field value": "xpath=//span[text()='PARAMETER']/following-sibling::p",
-  "Product Factory text field": "xpath=//label[text()='PARAMETER']/following-sibling::div/input|//label[text()='PARAMETER']/following-sibling::textarea",
+  "Product Factory text field": "xpath=//label[text()='PARAMETER']/following-sibling::div/input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea",
   "Product Factory change button": "xpath=//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button",
