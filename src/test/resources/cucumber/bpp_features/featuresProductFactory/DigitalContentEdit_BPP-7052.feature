@@ -83,7 +83,7 @@ Feature: Digital Content Id - Edit - BPP-7052
     And I click on the "Save" "Product Factory active button"
     And I click on the "Save" "Product Factory button"
 
-  @Negative @P1 @Run #TC-3210
+  @Negative @P1 #TC-3210
   Scenario: Edit Digital Content Additional Scenario
     Given I execute "Create Digital Content" reusable step with some additional steps
       |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
