@@ -5,7 +5,7 @@ Feature: As an admin, I expect the ability to add a "course block" component,
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-2075
+  @Positive #TC-2075, TС-2638, TC-2577, TC-2522
   Scenario: Course Block Component
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     And I execute "Create CMS Page" reusable step
