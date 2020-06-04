@@ -1442,3 +1442,12 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Direct App Level Three Paralegal" element
     And I click on the "Direct App Create Application" button
+
+  Scenario: Log In to Hub as Student Fixed
+    When I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
+    And Browser performs "Refresh" command
+    And I wait for "5" seconds
+    And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
+    And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
+    And I click on the "Direct App Login Button" button by JS
+    Then I should see the "Direct App My Applications Left Menu Link" element
