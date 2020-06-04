@@ -246,7 +246,7 @@ Feature: Product Factory
     And I click on the "Next" button
     And I "check" "EC_PAPER_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Next" button
-    And I set "1000" text to the "Enter a Price (£)" "Product Factory text field"
+    And I set "~PricingMatrixPrice[####]" text to the "Enter a Price (£)" "Product Factory text field"
     And I click on the "Next" button
     And I click on the "Finish" button
 

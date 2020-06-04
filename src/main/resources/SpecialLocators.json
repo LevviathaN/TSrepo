@@ -44,6 +44,8 @@
   "Product Factory Session Two Dates Popup Date Input Field": "xpath=(//tr[PARAMETER]/td[1]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup Start Time Input Field": "xpath=(//tr[PARAMETER]/td[2]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup End Time Input Field": "xpath=(//tr[PARAMETER]/td[3]/div/div/input)[2]",
+  "Product Factory CBA Course Institute Fee edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Edit']",
+  "Product Factory CBA Course Institute Fee input field": "xpath=//td[text()='PARAMETER']/following-sibling::td//input",
 
   "Build Empire text field": "xpath=//input[@placeholder='PARAMETER']",
   "Build Empire application type": "xpath=//li[text()='PARAMETER']",
