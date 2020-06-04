@@ -76,7 +76,7 @@ Feature: CBA - Edit - BPP-3200
     Then I click on the "CBAs" "Product Factory button title"
     And I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory edit button"
 
-  @Positive @Regression @P1 @Run #TC-2865
+  @Positive @Regression @P1 #TC-2865
   Scenario: Update Draft CBA Record With Course
     When I click on the "exit_to_app" button
     And I execute "Log In" reusable step replacing some steps
