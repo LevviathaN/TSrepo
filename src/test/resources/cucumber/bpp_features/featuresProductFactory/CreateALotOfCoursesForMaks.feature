@@ -31,7 +31,7 @@ Feature: Create 150 Course Instances
     And I execute "Create Client" reusable step
     And I execute "Create Material" reusable step
 
-  @Positive @150Courses @Run
+  @Positive @150Courses
   Scenario Outline: Create 150 Course Instances <counter>
     #Create Digital content
     Given I execute "Create Digital Content" reusable step

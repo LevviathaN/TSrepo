@@ -17,7 +17,7 @@
   "Product Factory button": "xpath=//span[text()='PARAMETER']/..",
   "Product Factory active button": "xpath=//span[text()='PARAMETER']/parent::button[@tabindex='0']",
   "Product Factory field value": "xpath=//span[text()='PARAMETER']/following-sibling::p",
-  "Product Factory text field": "xpath=(//label[text()='PARAMETER']/following::div/input|//label[text()='PARAMETER']/following::textarea)[1]",
+  "Product Factory text field": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea",
   "Product Factory change button": "xpath=//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button",
@@ -27,7 +27,7 @@
   "Product Factory checkbox": "xpath=//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]|//span[text()='PARAMETER']/preceding-sibling::span/span[1]",
   "Product Factory Link Levels button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Link Levels')]",
   "Product Factory Change Body button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]",
-  "Product Factory edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]|//span[text()='PARAMETER']/../following-sibling::div/div/button|//span[text()='PARAMETER']/following-sibling::div/button|//span[text()='PARAMETER']/../following-sibling::button|//td[text()='PARAMETER']/button|//span[text()='PARAMETER']/following-sibling::span/button",
+  "Product Factory edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button[last()]|//td[text()='PARAMETER']/following-sibling::td/a/button[last()]|//span[text()='PARAMETER']/../following-sibling::div/div/button|//span[text()='PARAMETER']/following-sibling::div/button|//span[text()='PARAMETER']/../following-sibling::button|//td[text()='PARAMETER']/button|//span[text()='PARAMETER']/following-sibling::span/button|//p[text()='PARAMETER']/../../../following-sibling::button|//label[text()='PARAMETER']/following-sibling::button|//h6[text()='PARAMETER']/button",
   "Product Factory button title": "xpath=//button[@title='PARAMETER']",
   "Product Factory Locked Applies To drop-down item": "xpath=//div[text()='PARAMETER']",
   "Product Factory Financial Dimension list in Locations": "xpath=//div[@role='document']/ul/li[text()='PARAMETER']",
@@ -44,7 +44,8 @@
   "Product Factory Session Two Dates Popup Date Input Field": "xpath=(//tr[PARAMETER]/td[1]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup Start Time Input Field": "xpath=(//tr[PARAMETER]/td[2]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup End Time Input Field": "xpath=(//tr[PARAMETER]/td[3]/div/div/input)[2]",
-
+  "Product Factory CBA Course Institute Fee edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Edit']",
+  "Product Factory CBA Course Institute Fee input field": "xpath=//td[text()='PARAMETER']/following-sibling::td//input",
 
   "Build Empire text field": "xpath=//input[@placeholder='PARAMETER']",
   "Build Empire application type": "xpath=//li[text()='PARAMETER']",
@@ -80,6 +81,8 @@
   "Build Empire Homepage My Learning Course": "xpath=//div[@class='home-col right-col']/descendant::h3[contains(text(),'PARAMETER')]",
   "Build Empire Course Topic": "xpath=//div[@class='section-name' and text()='PARAMETER']/../following-sibling::a",
   "Build Empire My Learning Right Block Course name": "xpath=//div[@class='home-col right-col']//h3[text()=\"PARAMETER\"]",
+  "Build Empire Breadcrumb Tab": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]/a",
+  "Build Empire Breadcrumb Not Clickable Tab": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]",
 
   "BPP Digital Search Label Button": "xpath=//button[normalize-space()='PARAMETER']",
   "BPP Digital Explore Our Subjects item link": "xpath=//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']",

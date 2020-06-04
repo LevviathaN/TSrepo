@@ -1435,11 +1435,10 @@ Feature: BuildEmpire
     And I click on the "Announcements" "BPP Digital Admin Sub Menu Item links"
     Then I should see the "Announcements" "BPP Digital Admin Page Header name"
 
-  Scenario: Log In to Hub as Student Fixed
-    When I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
-    And Browser performs "Refresh" command
-    And I wait for "5" seconds
-    And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
-    And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
-    And I click on the "Direct App Login Button" button by JS
-    Then I should see the "Direct App My Applications Left Menu Link" element
+  Scenario: Create University Degree Level Three Paralegal
+    Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I click on the "BPP University Degree Apprenticeships" "Build Empire application type"
+    And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I click on the "Direct App Level Three Paralegal" element
+    And I click on the "Direct App Create Application" button
