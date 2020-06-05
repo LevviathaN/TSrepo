@@ -433,6 +433,7 @@
 
   "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
   "Hub VPE BPP Lion Image Logo": "xpath=(//*[@class='navbar-left d-none d-lg-block']//following::img)[1]",
+  "Hub VPE Active First Topic": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
