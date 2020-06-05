@@ -57,7 +57,7 @@
   "Salesforce Profile Services ID Field": "xpath=//span[text()='Profile Services ID']/../following-sibling::div/span/slot/slot/*",
   "Salesforce Account Name Link": "xpath=//p[@title='Account Name']/following-sibling::p/descendant::a",
   "Salesforce More Dropdown":"xpath=//span[text()='More']",
-  "Salesforce New Case Button": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//div[text()='New' and @class='slds-truncate']",
+  "Salesforce New Case Button": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//div[text()='New']",
   "Salesforce Cases Option":"xpath=(//*[@data-id='Case']/a)[2]",
   "Salesforce CS Ready to Close": "xpath=//*[*='CS Ready to Close']//input",
   "Salesforce Case Number Data Field": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//span[text()='Case Number']/../following-sibling::div/span/slot/slot/*",
