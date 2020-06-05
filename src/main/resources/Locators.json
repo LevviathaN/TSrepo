@@ -65,7 +65,7 @@
   "Salesforce Case Status Data Field": "xpath=//span[text()='Status']/../following-sibling::div/span/slot/slot/*",
   "Salesforce First Case Number Search Table": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//td/span[contains(.,'EC_CASENUMBER')]",
   "Salesforce First Case Number": "xpath=//span/a[contains(.,'EC_CASENUMBER')]",
-  "Salesforce Main Header Search": "xpath=//input[@title='Search Salesforce']",
+  "Salesforce Main Header Search": "xpath=(//input[contains(@placeholder,'Search')])[1]",
   "Salesforce Edit Case Status": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//span[text()='Status']/../following-sibling::div//button",
   "Salesforce Case Status Dropdown": "xpath=//label[text()='Status']//following-sibling::div[1]//div[1]/div/input",
   "Salesforce Case Milestone Name": "xpath=(//a[@title='Customer Service - Ready to Close'])[2]",
@@ -440,6 +440,11 @@
   "BPP Digital Automation Validate Quiz Square Svg Item" : "xpath=//ul[@class='sub-topic-activities-list']/li/span/*[name()='svg'][contains(@class,'ico-check-activity')]",
   "BPP Digital Automation Validate Quiz Check Svg Item" : "xpath=//ul[@class='sub-topic-activities-list']/li/span/*[name()='svg'][contains(@class,'check')]",
   "BPP Digital Automation Validate Green Check Icon" : "xpath=//div[@class='sub-topics-container']/div[1]//h5[contains(@class,'sub-topic-label')]/span",
+
+  "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
+  "Hub VPE BPP Lion Image Logo": "xpath=(//*[@class='navbar-left d-none d-lg-block']//following::img)[1]",
+  "Hub VPE Active First Topic": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]",
+  "Hub VPE View Next Activity": "xpath=//div[contains(@class,'next-activity')]//div/a",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
