@@ -1,111 +1,213 @@
 package CodeEditor;
 
 
-import api.RestApiController;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebView;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import ui.pages.BasePage;
 import ui.utils.bpp.PreProcessFiles;
 
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-/**
- * A syntax highlighting code editor for JavaFX created by wrapping a
- * CodeMirror code editor in a WebView.
- *
- * See http://codemirror.net for more information on using the codemirror editor.
- */
 public class CodeEditor extends StackPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        PreProcessFiles preProcessFiles = new PreProcessFiles();
-        preProcessFiles.initPaths(false);
-        rootFolder = PreProcessFiles.ROOT_FOLDER_PATH;
+//        fileTreeView = new TreeView<File>(
+//                new SimpleFileTreeItem(new File("/Users/ruslanlevytskyi/IdeaProjects/qa-automation-framework-poc/src/test/resources/cucumber/bpp_features")));
         try {
-            editingTemplate = readFile(rootFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
-            editingCode = readFile(rootFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8);
+            editingTemplate = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
+            editingCode = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private GherkinValidator validator = new GherkinValidator();
+    private FeatureCRUD crud = new FeatureCRUD();
+
     public WebView webview;
     public Label labeledCode;
-    public Button revertEdits;
     public Button copyCode;
-    public TextArea textArea;
-    public ChoiceBox<String> choiceBox;
+    public Button createFeature;
+    public ComboBox<String> locatorComboBox;
+    public TreeView<File> fileTreeView;
+    public ListView<String> predictedLocatorsList;
 
-    String rootFolder;
-    private String editingCode;
-    private String editingTemplate;
+    public static String editingCode;
+    public static String editingTemplate;
 
-    /** applies the editing template to the editing code to create the html+javascript source for a code editor. */
-    private String applyEditingTemplate() {
-        return editingTemplate.replace("${code}", editingCode);
-    }
-
-    /** sets the current code in the editor and creates an editing snapshot of the code which can be reverted to. */
+    /** Set Feature Template button listener */
     public void setCode() {
         webview.getEngine().loadContent(applyEditingTemplate());
     }
 
-    public void setHtmlText() {
-        Document doc = webview.getEngine().getDocument();
-        validator.getNodeList(doc, "span","class","cm-string");
-//        System.out.println(validator.getHtmlFromDocument(doc));
+    /** WebEditor listener */
+    public void updateInvalidLocators() {
+        List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
+        predictedLocatorsList.getItems().clear();
+        predictedLocatorsList.getItems().addAll(suggestionList(getEditableWord(),validLocatorsList,8));
+        locatorComboBox.getItems().clear();
+        locatorComboBox.getItems().addAll(validator.getInvalidParameters(getCode()));
+        snapshot();
+    }
 
-        StringBuilder invalidParameters = new StringBuilder();
-        for(String parameter : validator.validateParameters(doc)) {
-            invalidParameters.append(parameter);
-            invalidParameters.append(", ");
+    /** Save Feature File button listener */
+    public void createNewFeature() {
+        snapshot();
+        try {
+            crud.display();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        labeledCode.setText(invalidParameters.toString());
-        getCodeAndSnapshot();
     }
 
 
 
-    /** returns the current code in the editor and updates an editing snapshot of the code which can be reverted to. */
-    public String getCodeAndSnapshot() {
-        this.editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
-        return editingCode;
+//    _____________________________additional functions________________________________
+
+    /** applies the editing template to the editing code to create the html+javascript source for a code editor.
+     *
+     * @author Ruslan Levytskyi
+     * */
+    private String applyEditingTemplate() {
+        return editingTemplate.replace("${code}", editingCode);
     }
 
-    static String readFile(String path, Charset encoding)
-            throws IOException
+    /** Method to get current text from WebEditor
+     *
+     * text from WebEditor
+     * */
+    private String getCode() {
+        return (String ) webview.getEngine().executeScript("editor.getValue();");
+    }
+
+    /** Saves the current text from WebEditor into a variable
+     *
+     * @author Ruslan Levytskyi
+     * */
+    private void snapshot() {
+        editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
+    }
+
+    private String readFile(String path, Charset encoding) throws IOException
     {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
     }
 
-    public void writeFile(String fileName, String content)
+    private void writeFile(String fileName, String content)
             throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         writer.write(content);
 
         writer.close();
+    }
+
+    /** Method to compare 2 strings and get first distinct character
+     *
+     * @author Ruslan Levytskyi
+     * */
+    private int compareStrings(String s1, String s2) {
+        int distinctPosition = 0;
+        for (int i=0; i<s2.length(); i++) {
+            char ch1 = s1.charAt(i);
+            char ch2 = s2.charAt(i);
+            if (ch1!=ch2) {
+                distinctPosition = i;
+                break;
+            }
+        }
+        return distinctPosition;
+    }
+
+    //todo: make this method more universal. Pass strings before and after as parameters
+    /** Custom method to get the word between parentheses that was updated recently in web view.
+     *
+     * @author Ruslan Levytskyi
+     * */
+    private String getEditableWord() {
+        String editableWord = "";
+        String possibleR = "";
+        String possibleL = "";
+        String updatedCode = getCode();
+        int distinctPosition = compareStrings(editingCode, updatedCode);
+        int rightRim = 0;
+        int leftRim = 0;
+        int centerRim = 0;
+        for (int i=0; i<updatedCode.length(); i++) {
+            if (updatedCode.charAt(distinctPosition + i)=='"') {
+                rightRim = distinctPosition + i;
+                if (i==0) {
+                    centerRim = distinctPosition;
+                } else {
+                    break;
+                }
+            }
+        }
+        for (int i=0; updatedCode.length()-i>1; i++) {
+            if (updatedCode.charAt(distinctPosition - i)=='"') {
+                leftRim = distinctPosition - i + 1;
+                if (i!=0) {
+                    break;
+                }
+            }
+        }
+        editableWord = updatedCode.substring(leftRim, rightRim);
+        if (centerRim != 0) {
+            possibleR = updatedCode.substring(centerRim, rightRim);
+            possibleL = updatedCode.substring(leftRim, centerRim);
+        }
+
+        if (validator.getInvalidParameters(updatedCode).contains(editableWord)) {
+            System.out.println(editableWord);
+            return editableWord;
+        } else if (validator.getInvalidParameters(updatedCode).contains(possibleR)) {
+            System.out.println(possibleR);
+            return possibleR;
+        } else if (validator.getInvalidParameters(updatedCode).contains(possibleL)) {
+            System.out.println(possibleL);
+            return possibleL;
+        } else {
+            System.out.println("<edited word is not a parameter>");
+            return "";
+        }
+    }
+
+    /** Method to get a list of suggestions from chooseList based on the given word
+     *
+     * @param word - suggestion key
+     * @param chooseList - list of valid parameters to choose from
+     * @param restriction - max number of suggestions in the list
+     *
+     * @author Ruslan Levytskyi
+     * */
+    private List<String> suggestionList(String word, List<String> chooseList, int restriction) {
+        List<String> suggestions = new ArrayList<>();
+        int w = 0;
+        for (int i=0; word.length()-i>2; i++) {
+            for (String option : chooseList) {
+                String trimmedWord = word.substring(0,word.length()-i);
+                if (option.contains(trimmedWord) && !suggestions.contains(option)) {
+                    if (w > restriction) {
+                        break;
+                    }
+                    suggestions.add(option);
+                    w++;
+                }
+            }
+        }
+        return suggestions;
     }
 }

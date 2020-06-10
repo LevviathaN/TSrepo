@@ -6,6 +6,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ui.pages.BasePage;
+import ui.utils.Tools;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -28,6 +29,10 @@ public class GherkinValidator {
         BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
     }
 
+    /** Method to get desired node from document by nodeName and nodeAttribute
+     *
+     * @author Ruslan Levytskyi
+     * */
     public List<Node> getNodeList(Document doc, String nodeName, String attributeName, String attributeValue) {
         List<Node> neededNodesList = new ArrayList<>();
         NodeList nodeList = doc.getElementsByTagName(nodeName);
@@ -54,6 +59,10 @@ public class GherkinValidator {
         return neededNodesList;
     }
 
+    /** Convert Document into a String
+     *
+     * @author Ruslan Levytskyi
+     * */
     public String getHtmlFromDocument(Document doc) {
         String htmlString;
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -67,6 +76,10 @@ public class GherkinValidator {
         }
     }
 
+    /** Method to convert Document into OutputStream
+     *
+     * @author Ruslan Levytskyi
+     * */
     public void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
@@ -80,7 +93,11 @@ public class GherkinValidator {
                 new StreamResult(new OutputStreamWriter(out, "UTF-8")));
     }
 
-    public List<String> validateParameters(Document doc) {
+    /** Method to get parameters that are not matching any available Locator from Locators.json from Document
+     *
+     * @author Ruslan Levytskyi
+     * */
+    public List<String> getInvalidParameters(Document doc) {
         List<Node> parametersNodeList = getNodeList(doc, "span","class","cm-string");
         List<String> invalidParameters = new ArrayList<>();
 
@@ -91,6 +108,22 @@ public class GherkinValidator {
                 if (!BasePage.locatorsMap.containsKey(parameterWithoutParentheses)) {
                     invalidParameters.add(parameterWithoutParentheses);
                 }
+            }
+        }
+        return invalidParameters;
+    }
+
+    /** Method to get parameters that are not matching any available Locator from Locators.json from String
+     *
+     * @author Ruslan Levytskyi
+     * */
+    public List<String> getInvalidParameters(String doc) {
+        List<String> quotedList = Tools.getQuotet(doc,'"');
+        List<String> invalidParameters = new ArrayList<>();
+
+        for (String quoted : quotedList) {
+            if (!BasePage.locatorsMap.containsKey(quoted)) {
+                invalidParameters.add(quoted);
             }
         }
         return invalidParameters;
