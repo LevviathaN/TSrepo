@@ -2,22 +2,10 @@ package CodeEditor;
 
 import api.RestApiController;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import ui.pages.BasePage;
 import ui.utils.Tools;
 
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,78 +15,17 @@ public class GherkinValidator {
 
     public GherkinValidator() {
         BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
+        BasePage.stepPatternsMap = apiController.processLocatorProperties("//src/main/resources/StepPatterns.json");
     }
 
-    /** Method to get desired node from document by nodeName and nodeAttribute
-     *
-     * @author Ruslan Levytskyi
-     * */
-    public List<Node> getNodeList(Document doc, String nodeName, String attributeName, String attributeValue) {
-        List<Node> neededNodesList = new ArrayList<>();
-        NodeList nodeList = doc.getElementsByTagName(nodeName);
 
-        Node nodeFromList;
-        List<String> nodeValuesList = new ArrayList<>();
-        for (int i=0; i < nodeList.getLength(); i++) {
-            nodeFromList = nodeList.item(i);
-            NamedNodeMap nodeFromListAttributes = nodeFromList.getAttributes();
-
-            Node attributeNode;
-            for (int j=0; j < nodeFromListAttributes.getLength(); j++) {
-                attributeNode = nodeFromListAttributes.item(j);
-                if (attributeNode.getNodeName().contains(attributeName)){
-                    if (attributeNode.getNodeValue().contains(attributeValue)) {
-                        neededNodesList.add(nodeFromList);
-                        String spanNodeValue = nodeFromList.getTextContent();
-                        nodeValuesList.add(spanNodeValue);
-//                        System.out.println(spanNodeValue);
-                    }
-                }
-            }
-        }
-        return neededNodesList;
-    }
-
-    /** Convert Document into a String
-     *
-     * @author Ruslan Levytskyi
-     * */
-    public String getHtmlFromDocument(Document doc) {
-        String htmlString;
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        try {
-            printDocument(doc, stream);
-            htmlString = new String(stream.toByteArray());
-            return htmlString;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /** Method to convert Document into OutputStream
-     *
-     * @author Ruslan Levytskyi
-     * */
-    public void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer = tf.newTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-        transformer.transform(new DOMSource(doc),
-                new StreamResult(new OutputStreamWriter(out, "UTF-8")));
-    }
 
     /** Method to get parameters that are not matching any available Locator from Locators.json from Document
      *
      * @author Ruslan Levytskyi
      * */
     public List<String> getInvalidParameters(Document doc) {
-        List<Node> parametersNodeList = getNodeList(doc, "span","class","cm-string");
+        List<Node> parametersNodeList = Tools.getNodeList(doc, "span","class","cm-string");
         List<String> invalidParameters = new ArrayList<>();
 
         for (Node parameterNode : parametersNodeList) {
@@ -113,12 +40,40 @@ public class GherkinValidator {
         return invalidParameters;
     }
 
+    /** Method to get parameters that are not matching any available Locator from Locators.json from Document
+     *
+     * @author Ruslan Levytskyi
+     * */
+    public List<String> getInvalidStepdefs(Document doc) {
+        List<Node> linessNodeList = Tools.getNodeList(doc, "span","role","presentation");
+        List<String> invalidStepdefs = new ArrayList<>();
+
+        for (Node lineNode : linessNodeList) {
+            String lineText = lineNode.getTextContent().trim();
+            if (lineText.startsWith("Given") || lineText.startsWith("When")
+                    || lineText.startsWith("Then") || lineText.startsWith("And") || lineText.startsWith("But")) {
+                String lineWithoutkeyword = lineText.replaceAll("^(Given |When |Then |And |But )", "");
+                boolean validNode = false;
+                for (String stepPattern : BasePage.stepPatternsMap.values()) {
+                    if (lineWithoutkeyword.matches(stepPattern)) {
+                        validNode = true;
+                        break;
+                    }
+                }
+                if (!validNode) {
+                    invalidStepdefs.add(lineWithoutkeyword);
+                }
+            }
+        }
+        return invalidStepdefs;
+    }
+
     /** Method to get parameters that are not matching any available Locator from Locators.json from String
      *
      * @author Ruslan Levytskyi
      * */
     public List<String> getInvalidParameters(String doc) {
-        List<String> quotedList = Tools.getQuotet(doc,'"');
+        List<String> quotedList = Tools.getQuoted(doc,'"');
         List<String> invalidParameters = new ArrayList<>();
 
         for (String quoted : quotedList) {

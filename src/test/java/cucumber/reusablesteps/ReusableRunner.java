@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import ui.pages.BasePage;
 import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
 import ui.utils.Tools;
@@ -15,7 +16,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.*;
 
-import static cucumber.StepPatterns.*;
 
 /**
  * @author Ruslan Levytskyi
@@ -37,47 +37,47 @@ public static ReusableRunner getInstance() {
     private ReusableRunner() {
 
         //General stepdefs
-        stepDefsMap.put(I_CLICK_ON_THE_BUTTON.getPattern(),() -> stepDefs.i_click_on_the_button(arg1));
-        stepDefsMap.put(I_AM_ON_URL.getPattern(),() -> stepDefs.i_am_on_url(arg1));
-        stepDefsMap.put(FILL_THE_FIELD.getPattern(),() -> stepDefs.fill_field(arg1, arg2));
-        stepDefsMap.put(WAIT_FOR.getPattern(),() -> stepDefs.wait_for(arg1));
-        stepDefsMap.put(HOVER_OVER.getPattern(),() -> stepDefs.hover_over(arg1));
-        stepDefsMap.put(I_SHOULD_SEE_THE_TEXT.getPattern(),() -> stepDefs.i_should_see_the_text(arg1));
-        stepDefsMap.put(I_SHOULD_SEE_THE_MESSAGE_LOCATED_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
-        stepDefsMap.put(I_SHOULD_BE_REDIRECTED_TO_THE_PAGE.getPattern(),() -> stepDefs.i_should_be_redirected_to_page(arg1));
-        stepDefsMap.put(I_EXECUTE_REUSABLE_STEP.getPattern(),() -> stepDefs.i_execute_reusable_step(arg1));
-        stepDefsMap.put(I_REMEMBER_TEXT.getPattern(),() -> stepDefs.i_remember_text(arg1, arg2));
-        stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE.getPattern(),() -> stepDefs.elements_attribute_should_have_value(arg1, arg2, arg3));
-        stepDefsMap.put(I_CHECK_UNCHECK.getPattern(),() -> stepDefs.i_check_uncheck(arg1, arg2));
-        stepDefsMap.put(I_PRESS_KEY.getPattern(),() -> stepDefs.i_press_from_keyboard(arg1, arg2));
-        stepDefsMap.put(I_VALIDATE_TEXT.getPattern(),() -> stepDefs.i_validate_text_to_be_displayed_for_element(arg1, arg2));
-        stepDefsMap.put(I_EXECUTE_REUSABLE_STEP_IF.getPattern(),() -> stepDefs.i_execute_reusable_step_if(arg1, arg2, arg3));
-        stepDefsMap.put(I_CLICK_ON_THE_BUTTON_IF.getPattern(),() -> stepDefs.i_click_on_the_button_if(arg1, arg2, arg3));
-        stepDefsMap.put(I_SELECT_FROM_DROPDOWN.getPattern(),() -> stepDefs.i_select_from_element(arg1, arg2));
-        stepDefsMap.put(I_SHOULD_SCROLL_TO_THE_TOP_BOTTOM_OF_THE_PAGE.getPattern(),() -> stepDefs.i_should_scroll_to_top_bottom_of_the_page(arg1));
-        stepDefsMap.put(I_UPLOAD_FILE.getPattern(),() -> stepDefs.i_upload_file_to_element(arg1, arg2));
-        stepDefsMap.put(I_SHOULD_NOT_SEE_ELEMENT.getPattern(),() -> stepDefs.i_should_not_see_the_element(arg1));
-        stepDefsMap.put(I_SHOULD_SEE_MESSAGE_IN_FRAME.getPattern(),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
-        stepDefsMap.put(I_SWITCH_TO_WINDOW.getPattern(),() -> stepDefs.i_switch_to_window_with_index(arg1));
-        stepDefsMap.put(I_CLICK_WITH_JS.getPattern(), ()-> stepDefs.i_click_with_JS(arg1));
-        stepDefsMap.put(BROWSER_PERFORMS_COMMAND.getPattern(), ()-> stepDefs.browser_navigates(arg1));
-        stepDefsMap.put(I_CAPTURE_DATA.getPattern(),() -> stepDefs.i_capture_text_data_as_variable(arg1,arg2));
-        stepDefsMap.put(I_EXECUTE_JS_CODE.getPattern(),() -> stepDefs.i_execute_js_code(arg1));
-        stepDefsMap.put(I_EXECUTE_JS_CODE_FOR_ELEMENT.getPattern(),() -> stepDefs.i_execute_js_code_for_element(arg1, arg2));
-        stepDefsMap.put(I_SHOULD_SEE_NUMBER_OF_ELEMENTS.getPattern(),() -> stepDefs.i_should_see_number_of_elements(arg1, arg2));
-        stepDefsMap.put(I_CAPTURE_SPECIAL_DATA.getPattern(), () -> stepDefs.i_capture_special_data(arg1, arg2));
-        stepDefsMap.put(I_SET_TEXT_WITH_JS.getPattern(), () -> stepDefs.i_set_text_with_js(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CLICK_ON_THE_BUTTON"),() -> stepDefs.i_click_on_the_button(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_AM_ON_URL"),() -> stepDefs.i_am_on_url(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("FILL_THE_FIELD"),() -> stepDefs.fill_field(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("WAIT_FOR"),() -> stepDefs.wait_for(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("HOVER_OVER"),() -> stepDefs.hover_over(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SEE_THE_TEXT"),() -> stepDefs.i_should_see_the_text(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SEE_THE_MESSAGE_LOCATED_IN_FRAME"),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_BE_REDIRECTED_TO_THE_PAGE"),() -> stepDefs.i_should_be_redirected_to_page(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_EXECUTE_REUSABLE_STEP"),() -> stepDefs.i_execute_reusable_step(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_REMEMBER_TEXT"),() -> stepDefs.i_remember_text(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE"),() -> stepDefs.elements_attribute_should_have_value(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CHECK_UNCHECK"),() -> stepDefs.i_check_uncheck(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_PRESS_KEY"),() -> stepDefs.i_press_from_keyboard(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_VALIDATE_TEXT"),() -> stepDefs.i_validate_text_to_be_displayed_for_element(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_EXECUTE_REUSABLE_STEP_IF"),() -> stepDefs.i_execute_reusable_step_if(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CLICK_ON_THE_BUTTON_IF"),() -> stepDefs.i_click_on_the_button_if(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SELECT_FROM_DROPDOWN"),() -> stepDefs.i_select_from_element(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SCROLL_TO_THE_TOP_BOTTOM_OF_THE_PAGE"),() -> stepDefs.i_should_scroll_to_top_bottom_of_the_page(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_UPLOAD_FILE"),() -> stepDefs.i_upload_file_to_element(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_NOT_SEE_ELEMENT"),() -> stepDefs.i_should_not_see_the_element(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SEE_MESSAGE_IN_FRAME"),() -> stepDefs.i_should_see_the_message_in_frame(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SWITCH_TO_WINDOW"),() -> stepDefs.i_switch_to_window_with_index(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CLICK_WITH_JS"), ()-> stepDefs.i_click_with_JS(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("BROWSER_PERFORMS_COMMAND"), ()-> stepDefs.browser_navigates(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CAPTURE_DATA"),() -> stepDefs.i_capture_text_data_as_variable(arg1,arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_EXECUTE_JS_CODE"),() -> stepDefs.i_execute_js_code(arg1));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_EXECUTE_JS_CODE_FOR_ELEMENT"),() -> stepDefs.i_execute_js_code_for_element(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SEE_NUMBER_OF_ELEMENTS"),() -> stepDefs.i_should_see_number_of_elements(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CAPTURE_SPECIAL_DATA"), () -> stepDefs.i_capture_special_data(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SET_TEXT_WITH_JS"), () -> stepDefs.i_set_text_with_js(arg1, arg2));
 
         //Special stepdefs
-        stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
-        stepDefsMap.put(I_SET_TEXT_SPECIAL.getPattern(),() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
-        stepDefsMap.put(I_SHOULD_SEE_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_special(arg1, arg2));
-        stepDefsMap.put(ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL.getPattern(),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));
-        stepDefsMap.put(I_CHECK_UNCHECK_SPECIAL.getPattern(),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));
-        stepDefsMap.put(I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF.getPattern(),() -> specialStepDefs.i_click_on_element_with_parameter_special_if(arg1, arg2, arg3, arg4));
-        stepDefsMap.put(I_SELECT_FROM_ELEMENT_SPECIAL.getPattern(),() -> specialStepDefs.i_select_from_element_special(arg1, arg2, arg3));
-        stepDefsMap.put(I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL.getPattern(),() -> specialStepDefs.i_should_see_number_of_elements_special(arg1, arg2, arg3));
-        stepDefsMap.put(I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL.getPattern(),() -> specialStepDefs.i_execute_js_code_for_element_special(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SET_TEXT_SPECIAL"),() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SEE_SPECIAL"),() -> specialStepDefs.i_should_see_special(arg1, arg2));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL"),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CHECK_UNCHECK_SPECIAL"),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF"),() -> specialStepDefs.i_click_on_element_with_parameter_special_if(arg1, arg2, arg3, arg4));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SELECT_FROM_ELEMENT_SPECIAL"),() -> specialStepDefs.i_select_from_element_special(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL"),() -> specialStepDefs.i_should_see_number_of_elements_special(arg1, arg2, arg3));
+        stepDefsMap.put(BasePage.stepPatternsMap.get("I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL"),() -> specialStepDefs.i_execute_js_code_for_element_special(arg1, arg2, arg3));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();
@@ -164,7 +164,7 @@ public static ReusableRunner getInstance() {
      * @author Ruslan Levytskyi
      */
     public void executeStep(String step) {
-        List<String> arguments = Tools.getQuotet(step, '"');
+        List<String> arguments = Tools.getQuoted(step, '"');
         if (arguments.toArray().length == 1) {
             arg1 = arguments.get(0);
         } else if (arguments.toArray().length == 2) {

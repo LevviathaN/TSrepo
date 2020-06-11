@@ -4,9 +4,17 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.Proxy;
-import ui.utils.bpp.PreProcessFiles;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -68,7 +76,7 @@ public class Tools {
         return null;
     }
 
-    public static List<String> getQuotet(final String input, final char quote) {
+    public static List<String> getQuoted(final String input, final char quote) {
         final ArrayList<String> result = new ArrayList<>();
         int n = -1;
         for (int i = 0; i < input.length(); i++) {
@@ -82,5 +90,69 @@ public class Tools {
             }
         }
         return result;
+    }
+
+    /** Convert Document into a String
+     *
+     * @author Ruslan Levytskyi
+     * */
+    public static String getHtmlFromDocument(Document doc) {
+        String htmlString;
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        try {
+            printDocument(doc, stream);
+            htmlString = new String(stream.toByteArray());
+            return htmlString;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /** Method to convert Document into OutputStream
+     *
+     * @author Ruslan Levytskyi
+     * */
+    public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+        transformer.transform(new DOMSource(doc),
+                new StreamResult(new OutputStreamWriter(out, "UTF-8")));
+    }
+
+    /** Method to get desired node from document by nodeName and nodeAttribute
+     *
+     * @author Ruslan Levytskyi
+     * */
+    public static List<Node> getNodeList(Document doc, String nodeName, String attributeName, String attributeValue) {
+        List<Node> neededNodesList = new ArrayList<>();
+        NodeList nodeList = doc.getElementsByTagName(nodeName);
+
+        Node nodeFromList;
+        List<String> nodeValuesList = new ArrayList<>();
+        for (int i=0; i < nodeList.getLength(); i++) {
+            nodeFromList = nodeList.item(i);
+            NamedNodeMap nodeFromListAttributes = nodeFromList.getAttributes();
+
+            Node attributeNode;
+            for (int j=0; j < nodeFromListAttributes.getLength(); j++) {
+                attributeNode = nodeFromListAttributes.item(j);
+                if (attributeNode.getNodeName().contains(attributeName)){
+                    if (attributeNode.getNodeValue().contains(attributeValue)) {
+                        neededNodesList.add(nodeFromList);
+                        String spanNodeValue = nodeFromList.getTextContent();
+                        nodeValuesList.add(spanNodeValue);
+//                        System.out.println(spanNodeValue);
+                    }
+                }
+            }
+        }
+        return neededNodesList;
     }
 }

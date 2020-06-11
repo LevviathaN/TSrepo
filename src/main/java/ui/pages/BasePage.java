@@ -34,6 +34,7 @@ public class BasePage {
 
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
+    public static Map<String,String> stepPatternsMap;
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private final String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
