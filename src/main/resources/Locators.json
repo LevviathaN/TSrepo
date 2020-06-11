@@ -336,6 +336,9 @@
   "Direct Apps Home News Author": "xpath=//p[@class='news-author']",
   "Direct Apps Home News URL": "xpath=//a[@class='news-link']",
   "Direct App Help And Support Left Menu Link": "xpath=//a[contains(.,'Help')]",
+  "Direct App Student Left Hand Nav Second Item": "xpath=//ul[@class='aside-navigation ']/li[3]/a",
+  "Direct App My Learning No Course Placeholder": "css=div.intro-empty>p",
+  "Direct App My Learning First Course Tutor Name": "xpath=//div[@class='course-tutor']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -531,6 +534,11 @@
   "Totara Add Activity For VPE Last Topic": "xpath=//li[@id='section-6']//following::span[contains(text(),'Add an activity or resource')][1]",
   "Totara Edit Topic Dropdown": "xpath=(//a[contains(.,'Topic')]/../../following::a[contains(.,'Edit')])[2]",
   "Totara Delete Topic Dropdown Option": "xpath=(//a[contains(@title,'Delete topic')])[last()]",
+  "Totara Course Assign Roles Link": "xpath=//span[@title='Assign roles']",
+  "Totara Course Remove Bpp Lead Tutor Button": "xpath=//a[@title='Unassign role BPP Lead Tutor']",
+  "Totara Course Bpp Lead Tutor Button": "xpath=//input[@id='add_assignable_role_10']",
+  "Totara Course Current Tutor Name": "xpath=//tr[td/div/div[@class='role role_10']]/td/div[@class='subfield subfield_userfullnamedisplay']",
+  "Totara Course Confirm Remove Bpp Lead Tutor Button": "xpath=//input[@value='Remove']",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",
