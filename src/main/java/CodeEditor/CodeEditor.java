@@ -46,6 +46,15 @@ public class CodeEditor extends StackPane implements Initializable {
 
     public static String editingCode;
     public static String editingTemplate;
+    public static String updatedCode;
+    public static Document updatedDoc;
+    public static int editingCursorPosition;
+    public String editableWord;
+    public String editableLine;
+
+
+    private List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
+    private List<String> validStepdefsList = new ArrayList<>(BasePage.stepPatternsMap.values());
 
     /** Set Feature Template button listener */
     public void setCode() {
@@ -54,21 +63,25 @@ public class CodeEditor extends StackPane implements Initializable {
 
     /** WebEditor listener */
     public void updateInvalidLocators() {
-        List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
-        predictedLocatorsList.getItems().clear();
-        predictedLocatorsList.getItems().addAll(suggestionList(getEditableWord(),validLocatorsList,8));
+        updatedCode = getCode();
+        updatedDoc = webview.getEngine().getDocument();
+        editingCursorPosition = compareStrings(editingCode, updatedCode);
+        editableWord = getEditableWord();
+        editableLine = getEditableLine();
 
-        List<String> validStepdefsList = new ArrayList<>(BasePage.stepPatternsMap.values());
+        predictedLocatorsList.getItems().clear();
+        predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+
         predictedStepdefsList.getItems().clear();
-        predictedStepdefsList.getItems().addAll(suggestionList(getEditableLine(),validStepdefsList,8));
+        predictedStepdefsList.getItems().addAll(suggestionList(editableLine,validStepdefsList,8));
 
         locatorComboBox.getItems().clear();
-        locatorComboBox.setPromptText(getEditableWord());
-        locatorComboBox.getItems().addAll(validator.getInvalidParameters(webview.getEngine().getDocument()));
+        locatorComboBox.setPromptText(editableWord);
+        locatorComboBox.getItems().addAll(validator.getInvalidParameters(updatedDoc));
 
         stepdefComboBox.getItems().clear();
-        stepdefComboBox.setPromptText(getEditableLine());
-        stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(webview.getEngine().getDocument()));
+        stepdefComboBox.setPromptText(editableLine);
+        stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(updatedDoc));
         snapshot();
     }
 
@@ -83,7 +96,7 @@ public class CodeEditor extends StackPane implements Initializable {
     }
 
     public void debugButtonListener() {
-
+        fixParameter();
    }
 
 
@@ -153,25 +166,22 @@ public class CodeEditor extends StackPane implements Initializable {
         String editableWord = "";
         String possibleR = "";
         String possibleL = "";
-        Document updatedDoc = webview.getEngine().getDocument();
-        String updatedCode = getCode();
-        int distinctPosition = compareStrings(editingCode, updatedCode);
         int rightRim = 0;
         int leftRim = 0;
         int centerRim = 0;
-        for (int i=0; i+distinctPosition<updatedCode.length(); i++) {
-            if (updatedCode.charAt(distinctPosition + i)=='"') {
-                rightRim = distinctPosition + i;
+        for (int i=0; i+editingCursorPosition<updatedCode.length(); i++) {
+            if (updatedCode.charAt(editingCursorPosition + i)=='"') {
+                rightRim = editingCursorPosition + i;
                 if (i==0) {
-                    centerRim = distinctPosition;
+                    centerRim = editingCursorPosition;
                 } else {
                     break;
                 }
             }
         }
-        for (int i=0; distinctPosition-i>1; i++) {
-            if (updatedCode.charAt(distinctPosition - i)=='"') {
-                leftRim = distinctPosition - i + 1;
+        for (int i=0; editingCursorPosition-i>1; i++) {
+            if (updatedCode.charAt(editingCursorPosition - i)=='"') {
+                leftRim = editingCursorPosition - i + 1;
                 if (i!=0) {
                     break;
                 }
@@ -194,8 +204,13 @@ public class CodeEditor extends StackPane implements Initializable {
             System.out.println(possibleL);
             return possibleL;
         } else {
-            System.out.println("<edited word is not a parameter>");
-            return "";
+            if (validLocatorsList.contains(editableWord)) {
+                System.out.println("Locator is valid");
+                return "VALID";
+            } else {
+                System.out.println("<edited word is not a parameter>");
+                return "";
+            }
         }
     }
 
@@ -208,25 +223,22 @@ public class CodeEditor extends StackPane implements Initializable {
         String editableLine = "";
         String possibleR = "";
         String possibleL = "";
-        Document updatedDoc = webview.getEngine().getDocument();
-        String updatedCode = getCode();
-        int distinctPosition = compareStrings(editingCode, updatedCode);
         int rightRim = 0;
         int leftRim = 0;
         int centerRim = 0;
-        for (int i=0; i+distinctPosition<updatedCode.length(); i++) {
-            if (updatedCode.charAt(distinctPosition + i)=='\n') {
-                rightRim = distinctPosition + i;
+        for (int i=0; i+editingCursorPosition<updatedCode.length(); i++) {
+            if (updatedCode.charAt(editingCursorPosition + i)=='\n') {
+                rightRim = editingCursorPosition + i;
                 if (i==0) {
-                    centerRim = distinctPosition;
+                    centerRim = editingCursorPosition;
                 } else {
                     break;
                 }
             }
         }
-        for (int i=0; distinctPosition-i>1; i++) {
-            if (updatedCode.charAt(distinctPosition - i)=='\n') {
-                leftRim = distinctPosition - i + 1;
+        for (int i=0; editingCursorPosition-i>1; i++) {
+            if (updatedCode.charAt(editingCursorPosition - i)=='\n') {
+                leftRim = editingCursorPosition - i + 1;
                 if (i!=0) {
                     break;
                 }
@@ -249,8 +261,20 @@ public class CodeEditor extends StackPane implements Initializable {
             System.out.println(possibleL);
             return possibleL;
         } else {
-            System.out.println("<edited line is not a step>");
-            return "";
+            boolean isValid = false;
+            for (String regx : validStepdefsList) {
+                if (editableLine.matches(regx)) {
+                    isValid = true;
+                    break;
+                }
+            }
+            if (isValid) {
+                System.out.println("Stepdef is valid");
+                return "VALID";
+            } else {
+                System.out.println("<edited line is not a step>");
+                return "";
+            }
         }
     }
 
@@ -279,4 +303,11 @@ public class CodeEditor extends StackPane implements Initializable {
         }
         return suggestions;
     }
+
+    private void fixParameter() {
+        editingCode = editingCode.replaceAll('"'+editableWord+'"','"'+predictedLocatorsList.getSelectionModel().getSelectedItem()+'"');
+        setCode();
+    }
+
+
 }
