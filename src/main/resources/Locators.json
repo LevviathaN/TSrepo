@@ -449,6 +449,7 @@
   "Hub VPE Active First Topic": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]",
   "Hub VPE View Next Activity": "xpath=//div[contains(@class,'next-activity')]//div/a",
   "Hub VPE Assignemnt Activity Layout": "xpath=//div[contains(@class,'inbox-content email-content')]",
+  "Hub VPE Sent Email Notification": "xpath=//div[@class='email-notification-success']//h5",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
@@ -539,6 +540,7 @@
   "Totara Course Bpp Lead Tutor Button": "xpath=//input[@id='add_assignable_role_10']",
   "Totara Course Current Tutor Name": "xpath=//tr[td/div/div[@class='role role_10']]/td/div[@class='subfield subfield_userfullnamedisplay']",
   "Totara Course Confirm Remove Bpp Lead Tutor Button": "xpath=//input[@value='Remove']",
+  "Totara VPE Email Sender": "xpath=//input[@name='vpe_email_sender']",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",

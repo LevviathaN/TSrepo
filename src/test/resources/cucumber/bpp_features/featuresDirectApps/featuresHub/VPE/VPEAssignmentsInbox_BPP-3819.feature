@@ -1,9 +1,10 @@
 @Hub @VPE
-Feature: The Hub - Law School - Topics / Top Level Navigation
-  As an admin when I create a Topic in Totara, I expect this to appear in top navigation menu within VPE
+Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
+  As a user, if an "assignment" has been added to a topic in a VPE course,
+  I expect each assignment to display as a separate "email" on the left hand side of the page
 
-  @Positive @AddTopic #TC-2081, TC-2076
-  Scenario:The Hub - Law School - Topics Top Level Navigation
+  @Positive @Assignment #TC-1916, TC-2109, TC-2112, #TC-2081, TC-2076
+  Scenario: The Hub - Law School - Assignments and Emails - Inbox Overview
     Then I execute "Login as Admin Totara" reusable step
     When I click on the "Totara Volodymyr Course" link by JS
     Then I am on "https://totara.staging.bppdigital.buildempire.app/course/management.php?categoryid=4&courseid=227" URL
@@ -19,6 +20,28 @@ Feature: The Hub - Law School - Topics / Top Level Navigation
     Then I click on the "Totara Add an Activity Add Button" link by JS
     And I wait for "2" seconds
     And I fill the "Totara Add New Quiz Name Text Field" field with "AutoTest Created"
+    And I execute "arguments[0].click();" JS code for "VPE Settings" "text contained in A element"
+    And I fill the "Totara VPE Email Sender" field with "AutoTestSender"
+    And I wait for "1" seconds
+    And I execute "arguments[0].click();" JS code for "Save and return to course" "BPP Digital Admin Value attribute button"
+    And I wait for "3" seconds
+    And I should scroll to the "bottom" of the page
+    And I click on the "Totara Add Activity For VPE Last Topic" button by JS
+    And I wait for "1" seconds
+    And I execute "arguments[0].click();" JS code for "Assignment" "Product Factory button"
+    Then I click on the "Totara Add an Activity Add Button" link by JS
+    And I wait for "2" seconds
+    And I fill the "Totara Add New Quiz Name Text Field" field with "AutoTest Assignment2"
+    And I wait for "1" seconds
+    And I execute "arguments[0].click();" JS code for "Save and return to course" "BPP Digital Admin Value attribute button"
+    And I wait for "3" seconds
+    And I should scroll to the "bottom" of the page
+    And I click on the "Totara Add Activity For VPE Last Topic" button by JS
+    And I wait for "1" seconds
+    And I execute "arguments[0].click();" JS code for "Assignment" "Product Factory button"
+    Then I click on the "Totara Add an Activity Add Button" link by JS
+    And I wait for "2" seconds
+    And I fill the "Totara Add New Quiz Name Text Field" field with "AutoTest Assignment3"
     And I wait for "1" seconds
     And I execute "arguments[0].click();" JS code for "Save and return to course" "BPP Digital Admin Value attribute button"
     And I wait for "3" seconds
@@ -32,9 +55,17 @@ Feature: The Hub - Law School - Topics / Top Level Navigation
     Then I click on the "VPE Course Automation" "Build Empire My Learning Right Block Course name"
     And I switch to window with index "2"
     Then I should see the "AutoTest Created" "element"
+    Then I should see the "AutoTestSender" "element"
+    Then I should see the "AutoTest Assignment3" "element"
+    Then I should see the "AutoTest Assignment2" "element"
     Then I click on the "AutoTest Created" "element"
     And I should see the "Hub VPE Assignemnt Activity Layout" element
     And I should see the "REPLY" "text contained in element"
+    Then I click on the "REPLY" "text contained in element"
+    And I upload "fileToUpload.txt" file to "Direct App Upload File" element
+    And I set "AutomationScript" text to the "Type your response here" "Build Empire RFI Textarea text item"
+    Then I click on the "SEND " "button"
+    And I should see the "Hub VPE Sent Email Notification" message
     And I switch to window with index "1"
     When I execute "Log Out from Hub Student" reusable step
     And I should see the "Already registered? Log in" message
