@@ -16,8 +16,8 @@ public class GherkinValidator {
     public GherkinValidator() {
         BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
         BasePage.stepPatternsMap = apiController.processLocatorProperties("//src/main/resources/StepPatterns.json");
+        BasePage.stepSignaturesMap = apiController.processLocatorProperties("//src/main/resources/StepSignatures.json");
     }
-
 
 
     /** Method to get parameters that are not matching any available Locator from Locators.json from Document
@@ -53,14 +53,7 @@ public class GherkinValidator {
             if (lineText.startsWith("Given") || lineText.startsWith("When")
                     || lineText.startsWith("Then") || lineText.startsWith("And") || lineText.startsWith("But")) {
                 String lineWithoutkeyword = lineText.replaceAll("^(Given |When |Then |And |But )", "");
-                boolean validNode = false;
-                for (String stepPattern : BasePage.stepPatternsMap.values()) {
-                    if (lineWithoutkeyword.matches(stepPattern)) {
-                        validNode = true;
-                        break;
-                    }
-                }
-                if (!validNode) {
+                if (!isValidStepdef(lineWithoutkeyword)) {
                     invalidStepdefs.add(lineWithoutkeyword);
                 }
             }
@@ -82,5 +75,16 @@ public class GherkinValidator {
             }
         }
         return invalidParameters;
+    }
+
+    public boolean isValidStepdef(String stepdef) {
+        boolean validNode = false;
+        for (String stepPattern : BasePage.stepPatternsMap.values()) {
+            if (stepdef.matches(stepPattern)) {
+                validNode = true;
+                break;
+            }
+        }
+        return validNode;
     }
 }

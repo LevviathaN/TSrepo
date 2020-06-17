@@ -5,18 +5,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebView;
+import org.openqa.selenium.WebElement;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import ui.pages.BasePage;
+import ui.utils.Tools;
 
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathException;
+import javax.xml.xpath.XPathFactory;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CodeEditor extends StackPane implements Initializable {
 
@@ -25,7 +29,7 @@ public class CodeEditor extends StackPane implements Initializable {
         fileTreeView.setRoot(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features")));
         try {
             editingTemplate = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
-            editingCode = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8);
+            editingCode = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,8 +53,8 @@ public class CodeEditor extends StackPane implements Initializable {
     public static String updatedCode;
     public static Document updatedDoc;
     public static int editingCursorPosition;
-    public String editableWord;
-    public String editableLine;
+    public static String editableWord;
+    public static String editableLine;
 
 
     private List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
@@ -65,15 +69,17 @@ public class CodeEditor extends StackPane implements Initializable {
     public void updateInvalidLocators() {
         updatedCode = getCode();
         updatedDoc = webview.getEngine().getDocument();
-        editingCursorPosition = compareStrings(editingCode, updatedCode);
-        editableWord = getEditableWord();
-        editableLine = getEditableLine();
+        if (updatedCode.length()>3) {
+            editingCursorPosition = compareStrings(editingCode, updatedCode);
+            editableLine = getEditableLine();
+            editableWord = getEditableWord();
+        }
 
         predictedLocatorsList.getItems().clear();
         predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
 
         predictedStepdefsList.getItems().clear();
-        predictedStepdefsList.getItems().addAll(suggestionList(editableLine,validStepdefsList,8));
+        predictedStepdefsList.getItems().addAll(beutifyStepdefs(suggestionList(editableLine,validStepdefsList,8)));
 
         locatorComboBox.getItems().clear();
         locatorComboBox.setPromptText(editableWord);
@@ -83,6 +89,19 @@ public class CodeEditor extends StackPane implements Initializable {
         stepdefComboBox.setPromptText(editableLine);
         stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(updatedDoc));
         snapshot();
+//        webview.getEngine().executeScript(
+//                "var aTags = document.getElementsByTagName(\"span\");\n" +
+//                        "var searchText = \"SearchingText\";\n" +
+//                        "var found;\n" +
+//                        "\n" +
+//                        "for (var i = 0; i < aTags.length; i++) {\n" +
+//                        "  if (aTags[i].textContent == searchText) {\n" +
+//                        "    found = aTags[i];\n" +
+//                        "    break;\n" +
+//                        "  }\n" +
+//                        "}\n" +
+//                        "found.scrollIntoView();"
+//        );
     }
 
     /** Save Feature File button listener */
@@ -96,6 +115,7 @@ public class CodeEditor extends StackPane implements Initializable {
     }
 
     public void debugButtonListener() {
+        fixStepdef();
         fixParameter();
    }
 
@@ -146,7 +166,9 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     private int compareStrings(String s1, String s2) {
         int distinctPosition = 0;
-        for (int i=0; i<s2.length(); i++) {
+        String smallerString = s1.length()<s2.length() ? s1 : s2;
+        String biggerString = s1.length()>s2.length() ? s1 : s2;
+        for (int i=0; i<smallerString.length(); i++) {
             char ch1 = s1.charAt(i);
             char ch2 = s2.charAt(i);
             if (ch1!=ch2) {
@@ -154,7 +176,11 @@ public class CodeEditor extends StackPane implements Initializable {
                 break;
             }
         }
-        return distinctPosition;
+        if (!smallerString.equals(biggerString) && distinctPosition==0) {
+            return s2.length();
+        } else {
+            return distinctPosition;
+        }
     }
 
     //todo: make this method more universal. Pass strings before and after as parameters
@@ -166,7 +192,7 @@ public class CodeEditor extends StackPane implements Initializable {
         String editableWord = "";
         String possibleR = "";
         String possibleL = "";
-        int rightRim = 0;
+        int rightRim = updatedCode.length();
         int leftRim = 0;
         int centerRim = 0;
         for (int i=0; i+editingCursorPosition<updatedCode.length(); i++) {
@@ -180,8 +206,8 @@ public class CodeEditor extends StackPane implements Initializable {
             }
         }
         for (int i=0; editingCursorPosition-i>1; i++) {
-            if (updatedCode.charAt(editingCursorPosition - i)=='"') {
-                leftRim = editingCursorPosition - i + 1;
+            if (updatedCode.charAt(editingCursorPosition - 1 - i)=='"') {
+                leftRim = editingCursorPosition - i;
                 if (i!=0) {
                     break;
                 }
@@ -223,7 +249,7 @@ public class CodeEditor extends StackPane implements Initializable {
         String editableLine = "";
         String possibleR = "";
         String possibleL = "";
-        int rightRim = 0;
+        int rightRim = updatedCode.length();
         int leftRim = 0;
         int centerRim = 0;
         for (int i=0; i+editingCursorPosition<updatedCode.length(); i++) {
@@ -237,8 +263,8 @@ public class CodeEditor extends StackPane implements Initializable {
             }
         }
         for (int i=0; editingCursorPosition-i>1; i++) {
-            if (updatedCode.charAt(editingCursorPosition - i)=='\n') {
-                leftRim = editingCursorPosition - i + 1;
+            if (updatedCode.charAt(editingCursorPosition - 1 - i)=='\n') {
+                leftRim = editingCursorPosition - i;
                 if (i!=0) {
                     break;
                 }
@@ -305,9 +331,72 @@ public class CodeEditor extends StackPane implements Initializable {
     }
 
     private void fixParameter() {
-        editingCode = editingCode.replaceAll('"'+editableWord+'"','"'+predictedLocatorsList.getSelectionModel().getSelectedItem()+'"');
-        setCode();
+        if (!predictedLocatorsList.getSelectionModel().isEmpty()) {
+            editingCode = editingCode.replaceAll('"'+editableWord+'"','"'+predictedLocatorsList.getSelectionModel().getSelectedItem()+'"');
+            setCode();
+        }
     }
 
+    private void fixStepdef() {
+        if (!predictedStepdefsList.getSelectionModel().isEmpty()) {
+            String fixedLine = predictedStepdefsList.getSelectionModel().getSelectedItem();
+            List<String> params = Tools.getQuoted(editableLine,'"');
+            List<String> signature = Tools.getQuoted(predictedStepdefsList.getSelectionModel().getSelectedItem(),'"');
+            for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
+                fixedLine = fixedLine.replaceFirst(signature.get(i),params.get(i));
+            }
+            editingCode = editingCode.replace(editableLine, fixedLine.substring(1,fixedLine.length()-1));
+            setCode();
+        }
+    }
 
+    public static Map<String,String> getStepSignatureMap(String step, String template) {
+        if (step.matches(template)) {
+            Map<String,String> stepSignatureMap = new HashMap<>();
+            List<String> params = Tools.getQuoted(step,'"');
+            List<String> signature = Tools.getQuoted(template,'"');
+            for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
+                stepSignatureMap.put(params.get(i),signature.get(i));
+            }
+            return stepSignatureMap;
+        } else {
+            System.out.println("getStepSignatureMap error: step does not match provided template");
+            return null;
+        }
+    }
+
+    private List<String> beutifyStepdefs(List<String> stepDefs) {
+
+        List<String> beutifiedStepdefs = new ArrayList<>();
+        for (String stepdef : stepDefs) {
+            List<String> signature = new ArrayList<>(Arrays.asList(BasePage.stepSignaturesMap.get(stepdef).split(",")));
+            for (String element : signature) {
+                stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
+            }
+            beutifiedStepdefs.add(stepdef);
+        }
+        return beutifiedStepdefs;
+    }
+
+    public static String beutifyStepdef(String stepdef) {
+        List<String> signature = new ArrayList<>(Arrays.asList(BasePage.stepSignaturesMap.get(stepdef).split(",")));
+        for (String element : signature) {
+            stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
+        }
+        return stepdef;
+    }
+
+    private WebElement getElementFromWebViewByXpath(String xpath) {
+        WebElement element;
+        try {
+            element = (WebElement)
+                    XPathFactory.newInstance().newXPath().evaluate(
+                            "xpath",
+                            updatedDoc, XPathConstants.NODE);
+            return element;
+        } catch (XPathException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

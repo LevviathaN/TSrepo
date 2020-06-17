@@ -43,6 +43,7 @@ public class BaseUITest {
         BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
         BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
         BasePage.stepPatternsMap = apiController.processLocatorProperties("//src/main/resources/StepPatterns.json");
+        BasePage.stepSignaturesMap = apiController.processLocatorProperties("//src/main/resources/StepSignatures.json");
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
