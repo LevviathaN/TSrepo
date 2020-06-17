@@ -450,6 +450,8 @@
   "Hub VPE View Next Activity": "xpath=//div[contains(@class,'next-activity')]//div/a",
   "Hub VPE Assignemnt Activity Layout": "xpath=//div[contains(@class,'inbox-content email-content')]",
   "Hub VPE Sent Email Notification": "xpath=//div[@class='email-notification-success']//h5",
+  "Hub VPE Pages-Overview Header": "xpath=(//u[text()='Pages - Overview'])[1]",
+  "Hub VPE Page Thumbnail": "xpath=//img[@class='page-image']",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

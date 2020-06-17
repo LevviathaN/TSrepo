@@ -8,6 +8,7 @@
   "exact element": "xpath=//*[normalize-space()=\"PARAMETER\"]",
   "text contained in element": "xpath=//*[contains(text(),'PARAMETER')]",
   "text contained in A element": "xpath=//a[contains(text(),'PARAMETER')]",
+  "text contained in P element": "xpath=//p[contains(text(),'PARAMETER')]",
   "text contained in SPAN element": "xpath=//span[contains(text(),'PARAMETER')]",
   "inframe element": "inframe=Salesforce Frame>xpath=//*[text()='PARAMETER']",
   "link address": "xpath=//a[contains(@href,'PARAMETER')]",
@@ -120,8 +121,6 @@
   "BPP Digital Admin Users Sub Menu Item links": "xpath=//a[normalize-space()='Users']/following-sibling::div/a[normalize-space()='PARAMETER']",
   "BPP Digital Admin Logs Sub Menu Item links": "xpath=//a[normalize-space()='Logs']/following-sibling::div/a[normalize-space()='PARAMETER']",
 
-  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
-
   "Salesforce navigation menu dropdown": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "xpath=//span[text()='PARAMETER']/../..",
   "Salesforce navigation menu option": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']",
@@ -142,6 +141,7 @@
   "Salesforce cases search student": "xpath=//div[@title='PARAMETER']",
   "Salesforce cases status option": "xpath=//span[@title='PARAMETER']",
 
+  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
   "Totara text field": "xpath=//label[normalize-space()='PARAMETER']/../following-sibling::div/input",
   "Totara button": "xpath=//input[@value='PARAMETER']",
   "Totara side menu option": "xpath=//span[text='PARAMETER']",

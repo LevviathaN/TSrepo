@@ -83,4 +83,4 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     And I wait for "1" seconds
     Then I execute "arguments[0].click();" JS code for "Delete" "Totara button"
     And I wait for "5" seconds
-    Then I execute "Logout as Admin Totara" reusable step
+    And I should scroll to the "top" of the page
