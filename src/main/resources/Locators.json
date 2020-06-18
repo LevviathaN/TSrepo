@@ -356,6 +356,7 @@
   "BPP Digital Breadcrumb Level Two": "xpath=//ul[contains(@class,'breadcrumb-inner')]/li[2]",
   "BPP Digital Breadcrumb Level Three": "xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
   "BPP Digital Site Page Header": "xpath=//h2[@class='section-header']/span",
+  "BPP Digital Site Left Side Page Header": "xpath=//div[@class='component-content']/h1",
   "BPP Digital Login link": "xpath=//span[text()='Login']",
   "BPP Digital Section First Article name": "xpath=(//div[@class='search-results-list']/article/h3)[1]",
   "BPP Digital Filter by title search field": "xpath=//input[@placeholder='Filter by title']",
