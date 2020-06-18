@@ -10,7 +10,7 @@ Feature: CBA - Create Courses and Instances - BPP-3206
     And I execute "Create VAT Rule" reusable step
     And I execute "Create Sitting" reusable step
     And I execute "Create Session Duration" reusable step with some additional steps
-      |5|I "check" "Allowed for CBA" "Product Factory checkbox"|
+      |6|I "check" "Allowed for CBA" "Product Factory checkbox"|
     And I execute "Create Course Type Financial Dimension" reusable step
     And I execute "Create Course Type" reusable step
     And I execute "Create Location Financial Dimension" reusable step
@@ -78,6 +78,7 @@ Feature: CBA - Create Courses and Instances - BPP-3206
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
     And I click on the "Finish" "Product Factory button"
+    And I wait for "2" seconds
 
     Then I shouldn't see the "Sitting" "Product Factory edit button"
     Then I shouldn't see the "Session Duration" "Product Factory edit button"

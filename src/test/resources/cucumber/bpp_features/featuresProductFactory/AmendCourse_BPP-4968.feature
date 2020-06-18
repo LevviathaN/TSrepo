@@ -57,6 +57,8 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
 
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
     Then I should see the "Default Location" "Product Factory edit button"
@@ -165,6 +167,8 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     #Verify absence of Course edit buttons
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     Then I should see the "Default Location" "Product Factory edit button"
     And I should see the "Capacity" "Product Factory edit button"
