@@ -57,8 +57,8 @@ public class CodeEditor extends StackPane implements Initializable {
     public static String editableLine;
 
 
-    private List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
-    private List<String> validStepdefsList = new ArrayList<>(BasePage.stepPatternsMap.values());
+    public List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
+    public List<String> validStepdefsList = new ArrayList<>(BasePage.stepPatternsMap.values());
 
     /** Set Feature Template button listener */
     public void setCode() {
@@ -76,7 +76,42 @@ public class CodeEditor extends StackPane implements Initializable {
         }
 
         predictedLocatorsList.getItems().clear();
-        predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+
+        String originalStepdef = "";
+        String lineText = CodeEditor.editableLine.trim();
+
+        if (lineText.startsWith("Given") || lineText.startsWith("When")
+                || lineText.startsWith("Then") || lineText.startsWith("And") || lineText.startsWith("But")) {
+            lineText = lineText.replaceAll("^(Given |When |Then |And |But )", "");
+        }
+
+        for (String stepPattern : BasePage.stepPatternsMap.values()) {
+            if (lineText.matches(stepPattern)) {
+                originalStepdef = CodeEditor.beutifyStepdef(stepPattern).substring(1,CodeEditor.beutifyStepdef(stepPattern).length()-1);
+                break;
+            }
+        }
+
+        if (!originalStepdef.equals("")) {
+            Map<String, String> signatureMap = CodeEditor.getStepSignatureMap(lineText, originalStepdef);
+            String parameterType = signatureMap.get(editableWord);
+            switch (parameterType) {
+                case "LOCATOR":
+                    System.out.println("LOCATOR");
+                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+                    break;
+                case "PARAM":
+                    System.out.println("PARAM");
+                    break;
+                default:
+                    System.out.println("Default");
+                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+                    break;
+            }
+        } else {
+            predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+        }
+
 
         predictedStepdefsList.getItems().clear();
         predictedStepdefsList.getItems().addAll(beutifyStepdefs(suggestionList(editableLine,validStepdefsList,8)));
@@ -86,7 +121,12 @@ public class CodeEditor extends StackPane implements Initializable {
         locatorComboBox.getItems().addAll(validator.getInvalidParameters(updatedDoc));
 
         stepdefComboBox.getItems().clear();
-        stepdefComboBox.setPromptText(editableLine);
+        if (validator.isValidStepdef(editableLine.trim().replaceAll("^(Given |When |Then |And |But )", ""))) {
+            System.out.println("Stepdef is valid");
+            stepdefComboBox.setPromptText("VALID");
+        } else {
+            stepdefComboBox.setPromptText(editableLine);
+        }
         stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(updatedDoc));
         snapshot();
 //        webview.getEngine().executeScript(
@@ -270,10 +310,10 @@ public class CodeEditor extends StackPane implements Initializable {
                 }
             }
         }
-        editableLine = updatedCode.substring(leftRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");;
+        editableLine = updatedCode.substring(leftRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
         if (centerRim != 0) {
-            possibleR = updatedCode.substring(centerRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");;
-            possibleL = updatedCode.substring(leftRim, centerRim).trim().replaceAll("^(Given |When |Then |And |But )", "");;
+            possibleR = updatedCode.substring(centerRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
+            possibleL = updatedCode.substring(leftRim, centerRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
         }
 
         List<String> invalidLinesList = validator.getInvalidStepdefs(updatedDoc);
@@ -287,16 +327,9 @@ public class CodeEditor extends StackPane implements Initializable {
             System.out.println(possibleL);
             return possibleL;
         } else {
-            boolean isValid = false;
-            for (String regx : validStepdefsList) {
-                if (editableLine.matches(regx)) {
-                    isValid = true;
-                    break;
-                }
-            }
-            if (isValid) {
+            if (validator.isValidStepdef(editableLine)) {
                 System.out.println("Stepdef is valid");
-                return "VALID";
+                return editableLine;
             } else {
                 System.out.println("<edited line is not a step>");
                 return "";
@@ -351,18 +384,13 @@ public class CodeEditor extends StackPane implements Initializable {
     }
 
     public static Map<String,String> getStepSignatureMap(String step, String template) {
-        if (step.matches(template)) {
-            Map<String,String> stepSignatureMap = new HashMap<>();
-            List<String> params = Tools.getQuoted(step,'"');
-            List<String> signature = Tools.getQuoted(template,'"');
-            for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
-                stepSignatureMap.put(params.get(i),signature.get(i));
-            }
-            return stepSignatureMap;
-        } else {
-            System.out.println("getStepSignatureMap error: step does not match provided template");
-            return null;
+        Map<String,String> stepSignatureMap = new HashMap<>();
+        List<String> params = Tools.getQuoted(step,'"');
+        List<String> signature = Tools.getQuoted(template,'"');
+        for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
+            stepSignatureMap.put(params.get(i),signature.get(i));
         }
+        return stepSignatureMap;
     }
 
     private List<String> beutifyStepdefs(List<String> stepDefs) {
