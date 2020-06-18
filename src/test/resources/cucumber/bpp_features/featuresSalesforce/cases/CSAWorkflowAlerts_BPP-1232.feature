@@ -33,6 +33,7 @@ Feature: CSA Workflow Alerts
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Yahoo Search Email"
     Then I click on the "Yahoo First Email Link" element
     And I validate text "CONTAINS=Case ready to be closed." to be displayed for "Yahoo Case Email Header" element
+    Then I should scroll to the "bottom" of the page
     Then I click on the "Yahoo Reply" button
     Then I fill the "Yahoo Body" field with "Automation regression testing"
     Then I click on the "Yahoo Send" button
