@@ -59,5 +59,7 @@ Feature: Financial Dimension - Select Material Code - Initial Selection - BPP-24
 
     When I click on the "Generate Material Report" "Product Factory button"
     And I click on the "Click here to download the report" "button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
     Then I should see the "Edit Material" element

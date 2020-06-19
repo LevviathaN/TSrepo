@@ -229,6 +229,7 @@ Feature: Product Factory
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
+    And I wait for "2" seconds
     And I click on the "Body" "Product Factory change button"
     And I click on the "EC_BODY_NAME" "Product Factory change modal option"
     And I click on the "Sitting" "Product Factory change button"

@@ -95,7 +95,6 @@ public enum UiHandlers {
         BasePage page = new BasePage();
         BasePage.isHandled.put("acceptAlert", false);
         if(e.getCause()!=null){
-            BPPLogManager.getLogger().info("Handling an expected JS Alert" );
             if (e.getCause().toString().contains("Are you sure want to review this application?")
                     ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
                     ||e.getCause().toString().contains("Are you sure want to publish this blog post?")
@@ -104,6 +103,7 @@ public enum UiHandlers {
                     ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
                     ||e.getCause().toString().contains("Some questions are not answered yet.")
                     ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
+                BPPLogManager.getLogger().info("Handling an expected JS Alert" );
                 Reporter.log("Handling an expected JS Alert");
                 page.acceptAlertMessage();
                 BasePage.repeatAction = false;
