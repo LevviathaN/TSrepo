@@ -28,7 +28,7 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
     And I execute "Create Pricing Matrix" reusable step
     And I execute "Create Pricing Matrix Full" reusable step
     And I execute "Create Pricing Matrix" reusable step replacing some steps
-      |7|I click on the "EC_SITTING_NAME_TWO" "Product Factory change modal option"|
+      |8|I click on the "EC_SITTING_NAME_TWO" "Product Factory change modal option"|
     And I execute "Create Pricing Matrix Full" reusable step replacing some steps
       |3|I click on the "EC_SITTING_NAME_TWO" "Product Factory edit button"|
     And I execute "Create Material Type Financial Dimension" reusable step

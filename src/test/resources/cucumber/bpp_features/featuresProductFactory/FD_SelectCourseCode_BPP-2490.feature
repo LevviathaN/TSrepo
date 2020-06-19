@@ -77,7 +77,9 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
     When I click on the "Clear Filters" "Product Factory button"
     Then Attribute "value" of "Region" "Product Factory text field" should have value ""
 
-    When I click on the "Generate Session Report" "Product Factory button"
-    And I click on the "Click here to download the report" "button"
+#    When I click on the "Generate Session Report" "Product Factory button"
+#    And I click on the "Click here to download the report" "button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     Then I should see the "Edit Course" element
