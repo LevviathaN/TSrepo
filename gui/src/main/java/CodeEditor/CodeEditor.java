@@ -7,7 +7,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebView;
 import org.openqa.selenium.WebElement;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import ui.pages.BasePage;
 import ui.utils.Tools;
 
@@ -28,15 +27,15 @@ public class CodeEditor extends StackPane implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileTreeView.setRoot(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features")));
         try {
-            editingTemplate = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
-            editingCode = readFile(CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
+            editingTemplate = readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
+            editingCode = readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private GherkinValidator validator = new GherkinValidator();
-    private FeatureCRUD crud = new FeatureCRUD();
+    private final GherkinValidator validator = new GherkinValidator();
+    private final FeatureCRUD crud = new FeatureCRUD();
 
     public WebView webview;
     public Label labeledCode;

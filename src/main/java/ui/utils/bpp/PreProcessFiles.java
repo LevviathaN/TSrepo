@@ -14,6 +14,7 @@ public class PreProcessFiles {
 	protected static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
 	protected static String PROPERTIES_FILES_FOLDER_PATH = null;
 	public static String ROOT_FOLDER_PATH = null;
+	public static String GUI_FOLDER_PATH = null;
 	public static String TEST_FILES_FOLDER_PATH = null;
 
 	public PreProcessFiles(){
@@ -37,6 +38,7 @@ public class PreProcessFiles {
 		if (!classJar.startsWith("jar:")) {
 
 			ROOT_FOLDER_PATH = rootFolder;
+			GUI_FOLDER_PATH = rootFolder + "/gui";
 			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/keywords.metadata";
 
 			if(moduleUI){
@@ -46,6 +48,7 @@ public class PreProcessFiles {
 		}
 		else {
 			ROOT_FOLDER_PATH = rootFolder;
+			GUI_FOLDER_PATH = rootFolder + "/gui";
 			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
 			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
 			if (moduleUI) {

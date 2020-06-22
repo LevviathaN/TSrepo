@@ -12,19 +12,21 @@ import java.net.URL;
 public class CodeEditorExample extends Application {
 
     public static String rootFolder;
+    public static String guiFolder;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         PreProcessFiles preProcessFiles = new PreProcessFiles();
         preProcessFiles.initPaths(false);
         rootFolder = PreProcessFiles.ROOT_FOLDER_PATH;
+        guiFolder = PreProcessFiles.GUI_FOLDER_PATH;
 
-        URL url = new URL("file:" + rootFolder + "/src/main/java/CodeEditor/CodeEditorLayout.fxml");
+        URL url = new URL("file:" + guiFolder + "/src/main/java/CodeEditor/CodeEditorLayout.fxml");
         final FXMLLoader loader = new FXMLLoader(url);
-        final Parent root = (Parent) loader.load();
+        final Parent root = loader.load();
 
         primaryStage.setTitle("BDD Test Manager");
-        primaryStage.setScene(new Scene(root, 1100, 600));
+        primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
     }
 
