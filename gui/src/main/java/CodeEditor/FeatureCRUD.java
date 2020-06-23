@@ -4,6 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import ui.utils.bpp.PreProcessFiles;
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -16,12 +18,12 @@ import static java.nio.file.StandardOpenOption.CREATE;
 
 public class FeatureCRUD {
 
-    private Stage createFeatureWindow = new Stage();
+    private final Stage createFeatureWindow = new Stage();
     public TextField featureNameField;
 
     /** Displays "Save Feature File modal window" */
     public void display() throws Exception {
-        URL url = new URL("file:" + CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/CreateFeatureModal.fxml");
+        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/CreateFeatureModal.fxml");
         Parent root = FXMLLoader.load(url);
 //        createFeatureWindow.initModality(Modality.APPLICATION_MODAL);
         createFeatureWindow.setTitle("Save feature file");
