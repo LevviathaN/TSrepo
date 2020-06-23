@@ -1,4 +1,4 @@
-@Hub @ScormAssessment
+@ScormAssessment @DoNotRun
 Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
   As a user in the Hub
   when a SCORM Assignment Bridge activity has been set as Key Activity

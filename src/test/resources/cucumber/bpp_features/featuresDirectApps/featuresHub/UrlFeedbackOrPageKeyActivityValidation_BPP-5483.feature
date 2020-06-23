@@ -4,7 +4,7 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
   when a URL, FEEDBACK or PAGE learning activity has been set as the Key Activity on my Topic Overview page,
   I expect it to have the following workflow
 
-  @Positive @Smoke #TC-2886
+  @Positive @Smoke @URL #TC-2886
   Scenario: URL Feedback or Page Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
@@ -25,18 +25,17 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
     Then I execute "Logout as Admin Totara" reusable step
     And I execute "Log In to Hub as Student" reusable step
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course"
-
     And I click on the "URL" "Build Empire Course Topic"
     And I validate text "CONTAINS=You haven't attempted this assessment yet" to be displayed for "Direct App Topic Assessment Status Results" element
     And I click on the "Click to complete" "Build Empire button"
-    And I wait for "4" seconds
+    And I wait for "3" seconds
     Then I switch to window with index "2"
-    And I should see the "Welcome to BBC.com" element
+    And I wait for "2" seconds
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     And I should see the "Completed" "element"
-    And I click on the "/my/learning/course/12" "link address"
 
+    And I click on the "/my/learning/course/12" "link address"
     And I click on the "Page" "Build Empire Course Topic"
     And I validate text "CONTAINS=You haven't attempted this assessment yet" to be displayed for "Direct App Topic Assessment Status Results" element
     And I click on the "Click to complete" "Build Empire button"
