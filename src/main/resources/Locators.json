@@ -444,6 +444,7 @@
   "BPP Digital Automation Validate Quiz Square Svg Item" : "xpath=//ul[@class='sub-topic-activities-list']/li/span/*[name()='svg'][contains(@class,'ico-check-activity')]",
   "BPP Digital Automation Validate Quiz Check Svg Item" : "xpath=//ul[@class='sub-topic-activities-list']/li/span/*[name()='svg'][contains(@class,'check')]",
   "BPP Digital Automation Validate Green Check Icon" : "xpath=//div[@class='sub-topics-container']/div[1]//h5[contains(@class,'sub-topic-label')]/span",
+  "BPP Digital Search Result Under Courses Block": "xpath=//h2[text()='Courses']/following-sibling::div//h3",
 
   "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
   "Hub VPE BPP Lion Image Logo": "xpath=(//*[@class='navbar-left d-none d-lg-block']//following::img)[1]",
