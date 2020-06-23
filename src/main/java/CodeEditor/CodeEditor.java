@@ -58,6 +58,7 @@ public class CodeEditor extends StackPane implements Initializable {
 
 
     public List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
+    public List<String> validSpecialLocatorsList = new ArrayList<>(BasePage.specialLocatorsMap.keySet());
     public List<String> validStepdefsList = new ArrayList<>(BasePage.stepPatternsMap.values());
 
     /** Set Feature Template button listener */
@@ -100,6 +101,10 @@ public class CodeEditor extends StackPane implements Initializable {
                     System.out.println("LOCATOR");
                     predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
                     break;
+                case "LOC_TEMPLATE":
+                    System.out.println("LOC_TEMPLATE");
+                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validSpecialLocatorsList,8));
+                    break;
                 case "PARAM":
                     System.out.println("PARAM");
                     break;
@@ -117,8 +122,13 @@ public class CodeEditor extends StackPane implements Initializable {
         predictedStepdefsList.getItems().addAll(beutifyStepdefs(suggestionList(editableLine,validStepdefsList,8)));
 
         locatorComboBox.getItems().clear();
-        locatorComboBox.setPromptText(editableWord);
-        locatorComboBox.getItems().addAll(validator.getInvalidParameters(updatedDoc));
+        if (validator.isValidStepdef(editableWord)) {
+            System.out.println("Parameter is valid");
+            locatorComboBox.setPromptText("VALID");
+        } else {
+            locatorComboBox.setPromptText(editableWord);
+        }
+        locatorComboBox.getItems().addAll(validator.getInvalidParameters(updatedCode));
 
         stepdefComboBox.getItems().clear();
         if (validator.isValidStepdef(editableLine.trim().replaceAll("^(Given |When |Then |And |But )", ""))) {
@@ -157,6 +167,14 @@ public class CodeEditor extends StackPane implements Initializable {
     public void debugButtonListener() {
         fixStepdef();
         fixParameter();
+   }
+
+   public void clickOnLocatorsList() {
+       fixParameter();
+   }
+
+   public void clickOnStepdefsList() {
+       fixStepdef();
    }
 
 
@@ -248,7 +266,9 @@ public class CodeEditor extends StackPane implements Initializable {
         for (int i=0; editingCursorPosition-i>1; i++) {
             if (updatedCode.charAt(editingCursorPosition - 1 - i)=='"') {
                 leftRim = editingCursorPosition - i;
-                if (i!=0) {
+                if (i==0) {
+                    centerRim = editingCursorPosition;
+                } else {
                     break;
                 }
             }
@@ -259,7 +279,7 @@ public class CodeEditor extends StackPane implements Initializable {
             possibleL = updatedCode.substring(leftRim, centerRim);
         }
 
-        List<String> invalidParametersList = validator.getInvalidParameters(updatedDoc);
+        List<String> invalidParametersList = validator.getInvalidParameters(updatedCode);
         if (invalidParametersList.contains(editableWord)) {
             System.out.println(editableWord);
             return editableWord;
@@ -270,13 +290,8 @@ public class CodeEditor extends StackPane implements Initializable {
             System.out.println(possibleL);
             return possibleL;
         } else {
-            if (validLocatorsList.contains(editableWord)) {
-                System.out.println("Locator is valid");
-                return "VALID";
-            } else {
-                System.out.println("<edited word is not a parameter>");
-                return "";
-            }
+            System.out.println("Invalid Locator");
+            return editableWord;
         }
     }
 
@@ -327,13 +342,8 @@ public class CodeEditor extends StackPane implements Initializable {
             System.out.println(possibleL);
             return possibleL;
         } else {
-            if (validator.isValidStepdef(editableLine)) {
-                System.out.println("Stepdef is valid");
-                return editableLine;
-            } else {
-                System.out.println("<edited line is not a step>");
-                return "";
-            }
+            System.out.println("Invalid Stepdef");
+            return editableLine;
         }
     }
 

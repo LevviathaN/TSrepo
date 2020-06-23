@@ -23,13 +23,13 @@ public class FeatureCRUD {
     public void display() throws Exception {
         URL url = new URL("file:" + CodeEditorExample.rootFolder + "/src/main/java/CodeEditor/CreateFeatureModal.fxml");
         Parent root = FXMLLoader.load(url);
-        createFeatureWindow.initModality(Modality.APPLICATION_MODAL);
+//        createFeatureWindow.initModality(Modality.APPLICATION_MODAL);
         createFeatureWindow.setTitle("Save feature file");
         createFeatureWindow.setMinWidth(250);
 
         Scene scene = new Scene(root, 300, 100);
         createFeatureWindow.setScene(scene);
-        createFeatureWindow.showAndWait();
+        createFeatureWindow.show();
 
     }
 

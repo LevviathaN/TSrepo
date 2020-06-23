@@ -47,9 +47,9 @@
       <VBox BorderPane.alignment="CENTER">
          <children>
             <Label text="Valid Locators Suggestions" />
-            <ListView fx:id="predictedLocatorsList" editable="true" prefWidth="230.0" />
+            <ListView fx:id="predictedLocatorsList" editable="true" onMouseClicked="#debugButtonListener" prefWidth="230.0" />
             <Label text="Valid Stepdefs Guggestions" />
-            <ListView fx:id="predictedStepdefsList" prefWidth="200.0" />
+            <ListView fx:id="predictedStepdefsList" onMouseClicked="#debugButtonListener" prefWidth="200.0" />
          </children>
       </VBox>
    </right>

@@ -15,6 +15,7 @@ public class GherkinValidator {
 
     public GherkinValidator() {
         BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
+        BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
         BasePage.stepPatternsMap = apiController.processLocatorProperties("//src/main/resources/StepPatterns.json");
         BasePage.stepSignaturesMap = apiController.processLocatorProperties("//src/main/resources/StepSignatures.json");
     }
