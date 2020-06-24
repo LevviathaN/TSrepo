@@ -7,7 +7,7 @@ Feature: BPP Digital Professions and Courses CMS pages Under Courses
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive @Smoke @BET #TC-2579
+  @Positive @Smoke #TC-2579
   Scenario: Professions and Courses CMS pages Under Courses
     #Navigate and Create Courses(new) item
     Then I execute "Admin Hub Navigate to new Courses Pages" reusable step
