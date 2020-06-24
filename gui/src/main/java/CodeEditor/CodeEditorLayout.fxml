@@ -41,15 +41,24 @@
       </VBox>
    </center>
    <left>
-      <TreeView fx:id="fileTreeView" prefWidth="245.0" BorderPane.alignment="CENTER" />
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <TreeView fx:id="fileTreeView" prefWidth="245.0" VBox.vgrow="ALWAYS" />
+            <HBox>
+               <children>
+                  <Button fx:id="loadFeatureButton" mnemonicParsing="false" onMouseClicked="#loadFeature" text="Load" />
+                  <Button fx:id="deleteFeatureButton" mnemonicParsing="false" text="Delete" />
+               </children></HBox>
+         </children>
+      </VBox>
    </left>
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Valid Locators Suggestions" />
-            <ListView fx:id="predictedLocatorsList" editable="true" onMouseClicked="#debugButtonListener" prefWidth="230.0" />
-            <Label text="Valid Stepdefs Guggestions" />
-            <ListView fx:id="predictedStepdefsList" onMouseClicked="#debugButtonListener" prefWidth="200.0" />
+            <Label text="Parameters Suggestions" />
+            <ListView fx:id="predictedLocatorsList" editable="true" onMouseClicked="#clickOnLocatorsList" prefWidth="230.0" />
+            <Label text="Stepdefs Guggestions" />
+            <ListView fx:id="predictedStepdefsList" onMouseClicked="#clickOnStepdefsList" prefWidth="200.0" />
          </children>
       </VBox>
    </right>

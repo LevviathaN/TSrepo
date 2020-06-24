@@ -25,7 +25,7 @@ public class CodeEditor extends StackPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fileTreeView.setRoot(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features")));
+        fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
         try {
             editingTemplate = readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
             editingCode = readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
@@ -43,7 +43,7 @@ public class CodeEditor extends StackPane implements Initializable {
     public Button createFeature;
     public ComboBox<String> locatorComboBox;
     public ComboBox<String> stepdefComboBox;
-    public TreeView<File> fileTreeView;
+    public TreeView<String> fileTreeView;
     public ListView<String> predictedLocatorsList;
     public ListView<String> predictedStepdefsList;
 
@@ -55,6 +55,7 @@ public class CodeEditor extends StackPane implements Initializable {
     public static String editableWord;
     public static String editableLine;
 
+    public Map<String,String> featureFilesMap = new HashMap<>();
 
     public List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
     public List<String> validSpecialLocatorsList = new ArrayList<>(BasePage.specialLocatorsMap.keySet());
@@ -103,6 +104,10 @@ public class CodeEditor extends StackPane implements Initializable {
                 case "LOC_TEMPLATE":
                     System.out.println("LOC_TEMPLATE");
                     predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validSpecialLocatorsList,8));
+                    break;
+                case "REUSABLE":
+                    System.out.println("REUSABLE");
+                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,BasePage.reusablesList,8));
                     break;
                 case "PARAM":
                     System.out.println("PARAM");
@@ -164,8 +169,9 @@ public class CodeEditor extends StackPane implements Initializable {
     }
 
     public void debugButtonListener() {
-        fixStepdef();
-        fixParameter();
+        TreeView<String> names = new TreeView<>(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
+//        fixStepdef();
+//        fixParameter();
    }
 
    public void clickOnLocatorsList() {
@@ -174,6 +180,16 @@ public class CodeEditor extends StackPane implements Initializable {
 
    public void clickOnStepdefsList() {
        fixStepdef();
+   }
+
+   public void loadFeature() {
+        String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
+       try {
+           editingCode = readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+       setCode();
    }
 
 
@@ -435,5 +451,23 @@ public class CodeEditor extends StackPane implements Initializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private TreeItem<String> trimFileTreeView(TreeItem<File> fileTree) {
+        TreeItem<String> nameTree = new TreeItem<>();
+        String rootName = fileTree.getValue().getPath()
+                .split("/")[fileTree.getValue().getPath().split("/").length-1];
+        nameTree.setValue(rootName);
+        for (TreeItem<File> child : fileTree.getChildren()) {
+            if(!child.isLeaf()) {
+                nameTree.getChildren().add(trimFileTreeView(child));
+            } else {
+                String childName = child.getValue().getPath()
+                        .split("/")[child.getValue().getPath().split("/").length-1];
+                nameTree.getChildren().add(new TreeItem<>(childName));
+                featureFilesMap.put(childName,child.getValue().getPath());
+            }
+        }
+        return nameTree;
     }
 }
