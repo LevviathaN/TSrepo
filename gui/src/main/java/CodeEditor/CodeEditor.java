@@ -8,6 +8,7 @@ import javafx.scene.web.WebView;
 import org.openqa.selenium.WebElement;
 import org.w3c.dom.Document;
 import ui.pages.BasePage;
+import ui.utils.DriverProvider;
 import ui.utils.Tools;
 
 import javax.xml.xpath.XPathConstants;
@@ -494,15 +495,16 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     private TreeItem<String> trimFileTreeView(TreeItem<File> fileTree) {
         TreeItem<String> nameTree = new TreeItem<>();
+        String separator = DriverProvider.OS_EXTENTION.equals("_mac") ? "/" : String.valueOf('\\');
         String rootName = fileTree.getValue().getPath()
-                .split("/")[fileTree.getValue().getPath().split("/").length-1];
+                .split(separator)[fileTree.getValue().getPath().split(separator).length-1];
         nameTree.setValue(rootName);
         for (TreeItem<File> child : fileTree.getChildren()) {
             if(!child.isLeaf()) {
                 nameTree.getChildren().add(trimFileTreeView(child));
             } else {
                 String childName = child.getValue().getPath()
-                        .split("/")[child.getValue().getPath().split("/").length-1];
+                        .split(separator)[child.getValue().getPath().split(separator).length-1];
                 nameTree.getChildren().add(new TreeItem<>(childName));
                 featureFilesMap.put(childName,child.getValue().getPath());
             }
