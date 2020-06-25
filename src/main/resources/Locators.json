@@ -456,6 +456,8 @@
   "Hub VPE Page Thumbnail": "xpath=//img[@class='page-image']",
   "Hub VPE Documents Header": "xpath=(//u[text()='Documents'])[1]",
   "Hub VPE Documents Folder": "xpath=//i[contains(@class,'fa-folder')]",
+  "Hub VPE Assignment First Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[1]",
+  "Hub VPE Assignment Second Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[2]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

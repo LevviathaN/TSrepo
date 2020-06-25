@@ -60,6 +60,8 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     Then I should see the "AutoTestSender" "element"
     Then I should see the "AutoTest Assignment3" "element"
     Then I should see the "AutoTest Assignment2" "element"
+    And I validate text "CONTAINS=2023" to be displayed for "Hub VPE Assignment First Card Due Date" element
+    And I validate text "CONTAINS=2022" to be displayed for "Hub VPE Assignment Second Card Due Date" element
     Then I click on the "AutoTest Created" "element"
     And I should see the "Hub VPE Assignemnt Activity Layout" element
     And I should see the "REPLY" "text contained in element"
