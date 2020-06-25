@@ -456,6 +456,8 @@
   "Hub VPE Page Thumbnail": "xpath=//img[@class='page-image']",
   "Hub VPE Documents Header": "xpath=(//u[text()='Documents'])[1]",
   "Hub VPE Documents Folder": "xpath=//i[contains(@class,'fa-folder')]",
+  "Hub VPE Assignment First Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[1]",
+  "Hub VPE Assignment Second Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[2]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
@@ -485,7 +487,6 @@
   "Totara Bulk Update Expected Completed": "xpath=//div[@id='fitem_id_completion']",
   "Totara Bulk Due Date Enable Checkbox": "xpath=//div[@id='fitem_id_due_date']//div/span",
   "Totara Bulk Expected Completed Day": "xpath=//div[@id='fitem_id_completion']//div/select[1]",
-  "Totara Bulk Expected Completed Month": "xpath=//div[@id='fitem_id_completion']//div/select[2]",
   "Totara Bulk Expected Completed Hour": "xpath=//div[@id='fitem_id_completion']//div/select[4]",
   "Totara Save On Update Page": "id=id_submit",
   "Totara ICAEW Course": "xpath=//h3[normalize-space()='ICAEW Accounting Full']/parent::a",
@@ -547,6 +548,7 @@
   "Totara Course Current Tutor Name": "xpath=//tr[td/div/div[@class='role role_10']]/td/div[@class='subfield subfield_userfullnamedisplay']",
   "Totara Course Confirm Remove Bpp Lead Tutor Button": "xpath=//input[@value='Remove']",
   "Totara VPE Email Sender": "xpath=//input[@name='vpe_email_sender']",
+  "Totara Assignment Due Date Year": "xpath=//select[@id='id_duedate_year']",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",

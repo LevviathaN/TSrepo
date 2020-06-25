@@ -3,7 +3,7 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
   As a user, if an "assignment" has been added to a topic in a VPE course,
   I expect each assignment to display as a separate "email" on the left hand side of the page
 
-  @Positive @Assignment #TC-1916, TC-2109, TC-2112, #TC-2081, TC-2076
+  @Positive @Assignment #TC-1916, TC-2109, TC-2112, TC-2081, TC-2076, TC-2133
   Scenario: The Hub - Law School - Assignments and Emails - Inbox Overview
     Then I execute "Login as Admin Totara" reusable step
     When I click on the "Totara Volodymyr Course" link by JS
@@ -32,6 +32,7 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     Then I click on the "Totara Add an Activity Add Button" link by JS
     And I wait for "2" seconds
     And I fill the "Totara Add New Quiz Name Text Field" field with "AutoTest Assignment2"
+    And I select "2023" from "Totara Assignment Due Date Year" element
     And I wait for "1" seconds
     And I execute "arguments[0].click();" JS code for "Save and return to course" "BPP Digital Admin Value attribute button"
     And I wait for "3" seconds
@@ -42,6 +43,7 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     Then I click on the "Totara Add an Activity Add Button" link by JS
     And I wait for "2" seconds
     And I fill the "Totara Add New Quiz Name Text Field" field with "AutoTest Assignment3"
+    And I select "2022" from "Totara Assignment Due Date Year" element
     And I wait for "1" seconds
     And I execute "arguments[0].click();" JS code for "Save and return to course" "BPP Digital Admin Value attribute button"
     And I wait for "3" seconds
@@ -58,6 +60,8 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     Then I should see the "AutoTestSender" "element"
     Then I should see the "AutoTest Assignment3" "element"
     Then I should see the "AutoTest Assignment2" "element"
+    And I validate text "CONTAINS=2023" to be displayed for "Hub VPE Assignment First Card Due Date" element
+    And I validate text "CONTAINS=2022" to be displayed for "Hub VPE Assignment Second Card Due Date" element
     Then I click on the "AutoTest Created" "element"
     And I should see the "Hub VPE Assignemnt Activity Layout" element
     And I should see the "REPLY" "text contained in element"

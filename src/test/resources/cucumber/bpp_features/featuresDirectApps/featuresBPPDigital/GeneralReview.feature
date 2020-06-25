@@ -1,4 +1,4 @@
-@GeneralReview
+@Hub @GeneralReview
 Feature: BPP Digital General Review
 
   Background:
