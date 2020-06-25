@@ -46,6 +46,7 @@ public class CodeEditor extends StackPane implements Initializable {
     public TreeView<String> fileTreeView;
     public ListView<String> predictedLocatorsList;
     public ListView<String> predictedStepdefsList;
+    public Button loadFeatureButton;
 
     public static String editingCode;
     public static String editingTemplate;
@@ -64,10 +65,11 @@ public class CodeEditor extends StackPane implements Initializable {
     /** Set Feature Template button listener */
     public void setCode() {
         webview.getEngine().loadContent(applyEditingTemplate());
+        createFeature.setDisable(false);
     }
 
     /** WebEditor listener */
-    public void updateInvalidLocators() {
+    public void updateEditingData() {
         updatedCode = getCode();
         updatedDoc = webview.getEngine().getDocument();
         if (updatedCode.length()>3) {
@@ -76,6 +78,12 @@ public class CodeEditor extends StackPane implements Initializable {
             editableWord = getEditableWord();
         }
 
+        updateValidationItems();
+        snapshot();
+    }
+
+    /** Method to refresh prediction lists and invalid elements dropdowns */
+    public void updateValidationItems() {
         predictedLocatorsList.getItems().clear();
 
         String originalStepdef = "";
@@ -142,20 +150,6 @@ public class CodeEditor extends StackPane implements Initializable {
             stepdefComboBox.setPromptText(editableLine);
         }
         stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(updatedDoc));
-        snapshot();
-//        webview.getEngine().executeScript(
-//                "var aTags = document.getElementsByTagName(\"span\");\n" +
-//                        "var searchText = \"SearchingText\";\n" +
-//                        "var found;\n" +
-//                        "\n" +
-//                        "for (var i = 0; i < aTags.length; i++) {\n" +
-//                        "  if (aTags[i].textContent == searchText) {\n" +
-//                        "    found = aTags[i];\n" +
-//                        "    break;\n" +
-//                        "  }\n" +
-//                        "}\n" +
-//                        "found.scrollIntoView();"
-//        );
     }
 
     /** Save Feature File button listener */
@@ -163,25 +157,40 @@ public class CodeEditor extends StackPane implements Initializable {
         snapshot();
         try {
             crud.display();
+            fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(
+                    CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void debugButtonListener() {
-        TreeView<String> names = new TreeView<>(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
-//        fixStepdef();
-//        fixParameter();
+        System.out.println("Debug");
    }
 
+    /** Valid Parameters list listener */
    public void clickOnLocatorsList() {
        fixParameter();
    }
 
+    /** Valid Stepdefs list listener */
    public void clickOnStepdefsList() {
        fixStepdef();
    }
 
+    /** onClick() for fileTreeView.
+     * If selected item is feature file - enables "Load" button*/
+   public void checkLoadButtonAvailability() {
+        if (!fileTreeView.getSelectionModel().isEmpty()) {
+            if (fileTreeView.getSelectionModel().getSelectedItem().getValue().endsWith(".feature")) {
+                loadFeatureButton.setDisable(false);
+            } else {
+                loadFeatureButton.setDisable(true);
+            }
+        }
+   }
+
+    /** Load button listener */
    public void loadFeature() {
         String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
        try {
@@ -218,13 +227,14 @@ public class CodeEditor extends StackPane implements Initializable {
     private void snapshot() {
         editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
     }
-
+    /** Read file to string */
     private String readFile(String path, Charset encoding) throws IOException
     {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
     }
 
+    /** Write string to file */
     private void writeFile(String fileName, String content)
             throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
@@ -388,6 +398,10 @@ public class CodeEditor extends StackPane implements Initializable {
         return suggestions;
     }
 
+    /** Method to replace invalid parameter, being edited, to the valid one, selected from the list
+     *
+     * @author Ruslan Levytskyi
+     * */
     private void fixParameter() {
         if (!predictedLocatorsList.getSelectionModel().isEmpty()) {
             editingCode = editingCode.replaceAll('"'+editableWord+'"','"'+predictedLocatorsList.getSelectionModel().getSelectedItem()+'"');
@@ -395,6 +409,10 @@ public class CodeEditor extends StackPane implements Initializable {
         }
     }
 
+    /** Method to replace invalid step, being edited, to the valid one, selected from the list
+     *
+     * @author Ruslan Levytskyi
+     * */
     private void fixStepdef() {
         if (!predictedStepdefsList.getSelectionModel().isEmpty()) {
             String fixedLine = predictedStepdefsList.getSelectionModel().getSelectedItem();
@@ -408,6 +426,15 @@ public class CodeEditor extends StackPane implements Initializable {
         }
     }
 
+    /** Method to get a signature of each parameter of the step, if it is valid
+     *
+     * @param step - step, to get parameters from
+     * @param template - valid stepdef, to get parameter signature from
+     *
+     * @return a map, where key is actual parameter of provided stepdef, and value - it`s signature (LOCATOR,REUSABLE,LOC_TEMPLATE e.t.c.)
+     *
+     * @author Ruslan Levytskyi
+     * */
     public static Map<String,String> getStepSignatureMap(String step, String template) {
         Map<String,String> stepSignatureMap = new HashMap<>();
         List<String> params = Tools.getQuoted(step,'"');
@@ -418,6 +445,10 @@ public class CodeEditor extends StackPane implements Initializable {
         return stepSignatureMap;
     }
 
+    /** Method to replace all regex parameters in stepdef template with their signatures
+     *
+     * @author Ruslan Levytskyi
+     * */
     private List<String> beutifyStepdefs(List<String> stepDefs) {
 
         List<String> beutifiedStepdefs = new ArrayList<>();
@@ -431,6 +462,10 @@ public class CodeEditor extends StackPane implements Initializable {
         return beutifiedStepdefs;
     }
 
+    /** Method to replace all regex parameters in stepdef template with their signatures
+     *
+     * @author Ruslan Levytskyi
+     * */
     public static String beutifyStepdef(String stepdef) {
         List<String> signature = new ArrayList<>(Arrays.asList(BasePage.stepSignaturesMap.get(stepdef).split(",")));
         for (String element : signature) {
@@ -453,6 +488,10 @@ public class CodeEditor extends StackPane implements Initializable {
         return null;
     }
 
+    /** Method to trim all the unnecessary absolute path from fileTree elements
+     *
+     * @author Ruslan Levytskyi
+     * */
     private TreeItem<String> trimFileTreeView(TreeItem<File> fileTree) {
         TreeItem<String> nameTree = new TreeItem<>();
         String rootName = fileTree.getValue().getPath()

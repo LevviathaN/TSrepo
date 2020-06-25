@@ -18,20 +18,22 @@ import static java.nio.file.StandardOpenOption.CREATE;
 
 public class FeatureCRUD {
 
-    private final Stage createFeatureWindow = new Stage();
+    public static Stage createFeatureWindow;
     public TextField featureNameField;
+    public Label messageLabel;
 
     /** Displays "Save Feature File modal window" */
     public void display() throws Exception {
         URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/CreateFeatureModal.fxml");
         Parent root = FXMLLoader.load(url);
+        createFeatureWindow = new Stage();
 //        createFeatureWindow.initModality(Modality.APPLICATION_MODAL);
         createFeatureWindow.setTitle("Save feature file");
         createFeatureWindow.setMinWidth(250);
 
-        Scene scene = new Scene(root, 300, 100);
+        Scene scene = new Scene(root, 300, 120);
         createFeatureWindow.setScene(scene);
-        createFeatureWindow.show();
+        createFeatureWindow.showAndWait();
 
     }
 
@@ -42,6 +44,7 @@ public class FeatureCRUD {
 
         try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE))) {
             out.write(data, 0, data.length);
+            messageLabel.setText("File saved!");
         } catch (IOException x) {
             System.err.println(x);
         }

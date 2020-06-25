@@ -9,7 +9,7 @@
    <center>
       <VBox>
          <children>
-            <WebView fx:id="webview" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#updateInvalidLocators" prefHeight="314.0" prefWidth="583.0">
+            <WebView fx:id="webview" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#updateEditingData" onMouseClicked="#updateValidationItems" prefHeight="330.0" prefWidth="583.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
@@ -17,8 +17,8 @@
             <HBox>
                <children>
                   <Button fx:id="copyCode" mnemonicParsing="false" onAction="#setCode" text="Set Feature Template" />
-                  <Button fx:id="createFeature" mnemonicParsing="false" onAction="#createNewFeature" text="Save feature file" />
-                  <Button fx:id="debugButton" mnemonicParsing="false" onAction="#debugButtonListener" text="Debug Button" />
+                  <Button fx:id="createFeature" disable="true" mnemonicParsing="false" onAction="#createNewFeature" text="Save feature file" />
+                  <Button fx:id="debugButton" mnemonicParsing="false" onAction="#debugButtonListener" text="Debug Button" visible="false" />
                </children>
             </HBox>
             <HBox>
@@ -32,7 +32,7 @@
                   <VBox>
                      <children>
                         <Label text="Invalid stepdefs" />
-                        <ComboBox fx:id="stepdefComboBox" prefHeight="27.0" prefWidth="310.0" />
+                        <ComboBox fx:id="stepdefComboBox" prefWidth="310.0" />
                      </children></VBox>
                </children>
             </HBox>
@@ -43,11 +43,11 @@
    <left>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <TreeView fx:id="fileTreeView" prefWidth="245.0" VBox.vgrow="ALWAYS" />
+            <TreeView fx:id="fileTreeView" onMouseClicked="#checkLoadButtonAvailability" prefWidth="245.0" VBox.vgrow="ALWAYS" />
             <HBox>
                <children>
-                  <Button fx:id="loadFeatureButton" mnemonicParsing="false" onMouseClicked="#loadFeature" text="Load" />
-                  <Button fx:id="deleteFeatureButton" mnemonicParsing="false" text="Delete" />
+                  <Button fx:id="loadFeatureButton" disable="true" mnemonicParsing="false" onMouseClicked="#loadFeature" text="Load" />
+                  <Button fx:id="deleteFeatureButton" disable="true" mnemonicParsing="false" text="Delete" />
                </children></HBox>
          </children>
       </VBox>
@@ -62,4 +62,31 @@
          </children>
       </VBox>
    </right>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Open Feature Creation Wizard..." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Locators Manager..." />
+                  <MenuItem mnemonicParsing="false" text="Reusable Scenarios Manager..." />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
 </BorderPane>

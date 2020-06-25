@@ -26,7 +26,7 @@ public class CodeEditorExample extends Application {
         final Parent root = loader.load();
 
         primaryStage.setTitle("BDD Test Manager");
-        primaryStage.setScene(new Scene(root, 1200, 800));
+        primaryStage.setScene(new Scene(root, 1200, 650));
         primaryStage.show();
     }
 

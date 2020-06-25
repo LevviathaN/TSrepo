@@ -8,11 +8,12 @@
       <Label text="Enter feature name:" />
       <TextField fx:id="featureNameField" />
       <Label text="closeWindow() function is temporary disabled. Please click on X to close the window" />
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox>
          <children>
-            <Button fx:id="createFeatureButton" mnemonicParsing="false" onAction="#createFeatureFile" text="Save" />
-            <Button fx:id="cancelCreating" mnemonicParsing="false" onAction="#cancelCreation" text="Cancel" />
+            <Button fx:id="createFeatureButton" defaultButton="true" mnemonicParsing="false" onAction="#createFeatureFile" text="Save" />
+            <Button fx:id="cancelCreating" cancelButton="true" mnemonicParsing="false" onAction="#cancelCreation" text="Cancel" />
          </children>
       </HBox>
+      <Label fx:id="messageLabel" />
    </children>
 </VBox>
