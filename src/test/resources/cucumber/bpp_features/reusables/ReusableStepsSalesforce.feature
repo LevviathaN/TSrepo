@@ -43,17 +43,18 @@ Feature: Salesforce
     And I click on the "Personal" "Salesforce dropdown field option"
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
-    Then I should see the " was created." message
+
 
   Scenario: Create Address
     And I click on the "Addresses" "Salesforce related new button"
     And I click on the "Address Type" "Salesforce dropdown field"
     And I click on the "Billing" "option"
     And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
-    And I set "KW_AUTO_CITYUSA" text to the "City" "Salesforce text field"
+    And I set "London" text to the "City" "Salesforce text field"
     And I set "KW_AUTO_ZIPCODE|#####" text to the "Postal Code" "Salesforce text field"
-    And I set "United States" text to the "Country" "Salesforce search field"
-    And I click on the "States" "option"
+    And I set "United Kingdom" text to the "Country" "Salesforce search field"
+    Then I wait for "1" seconds
+    And I click on the "Kingdom" "option"
     And I click on the "Save" "button"
     Then I should see the " was created." message
 
