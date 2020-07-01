@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CodeEditor.LocatorsManager">
+   <children>
+      <TableView fx:id="locatorsTable" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" minWidth="75.0" prefWidth="-1.0" text="Name" />
+          <TableColumn fx:id="valueColumn" minWidth="75.0" prefWidth="-1.0" text="Value" />
+        </columns>
+      </TableView>
+      <HBox prefWidth="200.0">
+         <children>
+            <TextField />
+            <TextField />
+            <Button fx:id="btn" mnemonicParsing="false" onAction="#initTable" text="Button" />
+         </children></HBox>
+   </children>
+</VBox>

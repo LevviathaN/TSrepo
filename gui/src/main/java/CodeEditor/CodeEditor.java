@@ -37,6 +37,7 @@ public class CodeEditor extends StackPane implements Initializable {
 
     private final GherkinValidator validator = new GherkinValidator();
     private final FeatureCRUD crud = new FeatureCRUD();
+    private final LocatorsManager locatorsManager = new LocatorsManager();
 
     public WebView webview;
     public Label labeledCode;
@@ -202,6 +203,15 @@ public class CodeEditor extends StackPane implements Initializable {
        setCode();
    }
 
+   //___________________________menu items listeners____________________________
+
+    public void openLocatorsManager() {
+        try {
+            locatorsManager.display();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 //    _____________________________additional functions________________________________
 
