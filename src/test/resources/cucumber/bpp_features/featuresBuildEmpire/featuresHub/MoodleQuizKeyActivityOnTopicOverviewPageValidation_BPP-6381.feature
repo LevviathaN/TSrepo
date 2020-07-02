@@ -26,19 +26,15 @@ Feature: Verify Moodle Quiz Key Activity Complition Appearance In HUB - BPP-6381
     And I execute "Log In to Hub as Student" reusable step
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course"
     And I click on the "Moodle Quiz" "Build Empire Course Topic"
-
     # Use following JS code if you want the WebPage, that is opened by clicking on specified element in new tab,
       # to be opened in current tab instead
 #    Then I execute "arguments[0].setAttribute('target','')" JS code for "Submit" "Build Empire button"
     And I click on the "Submit" "Build Empire button"
     And I wait for "4" seconds
-
     Then I execute "window.stop()" JS code
     Then I switch to window with index "2"
-
     And I click on the "Attempt quiz now" "Totara button"
     Then I execute "window.stop()" JS code
-
     And I click on the "Start attempt" "Totara button"
     And I click on the "True" "Totara Moodle Quiz radiobutton"
     And I click on the "Next page" "Totara button"
@@ -50,20 +46,16 @@ Feature: Verify Moodle Quiz Key Activity Complition Appearance In HUB - BPP-6381
     And I click on the "Finish attempt" "Totara button"
     And I click on the "Submit all and finish" "Totara button"
     And I click on the "Totara Submit all and finish Button" button
-
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course" if "Submit" "element is absent"
     And I click on the "Moodle Quiz" "Build Empire Course Topic" if "Submit" "element is absent"
     Then I should see the "Passed" message
-
-
     And I click on the "Submit" "Build Empire button"
     And I wait for "4" seconds
     Then I execute "window.stop()" JS code
     Then I switch to window with index "2"
-
     And I click on the "Re-attempt quiz" "Totara button"
     And I click on the "Start attempt" "Totara button"
     And I click on the "False" "Totara Moodle Quiz radiobutton"
@@ -72,7 +64,6 @@ Feature: Verify Moodle Quiz Key Activity Complition Appearance In HUB - BPP-6381
     And I click on the "Finish attempt" "Totara button"
     And I click on the "Submit all and finish" "Totara button"
     And I click on the "Totara Submit all and finish Button" button
-
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"

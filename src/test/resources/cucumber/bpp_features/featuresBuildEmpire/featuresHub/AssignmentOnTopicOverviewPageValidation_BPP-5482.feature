@@ -1,5 +1,5 @@
 @Assignment
-Feature: Verify Assignment Key Activity Complition Appearance In HUB - BPP-4488
+Feature: Verify Assignment Key Activity Completion Appearance In HUB - BPP-4488
   As a user in the Hub, when an Assignment has been set as Key Activity on my Topic Overview page,
   I expect it to appear the same as Assignment Assessment Block
 

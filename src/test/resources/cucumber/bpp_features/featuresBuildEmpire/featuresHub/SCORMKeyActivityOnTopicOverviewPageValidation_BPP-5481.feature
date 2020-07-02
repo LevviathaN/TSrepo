@@ -94,7 +94,6 @@ Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
     # Question 15
     And I click on the "advance the" "Totara Assessment radiobutton"
     And I click on the "Totara Assessment Submit Button" button
-
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"
@@ -102,7 +101,6 @@ Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
     And I click on the "SCORM Topic" "Build Empire Course Topic" if "Take the test" "element is absent"
     Then I should see the "Passed" message
     And I validate text "CONTAINS=73" to be displayed for "Direct App Topic Assessment Percentage Results" element
-
     And I click on the "Take the test" "Build Empire button"
     And I wait for "10" seconds
     Then I execute "window.stop()" JS code
@@ -170,7 +168,6 @@ Feature: Verify SCORM Key Activity Complition Appearance In HUB - BPP-4488
     # Question 15
     And I click on the "duty or right" "Totara Assessment radiobutton"
     And I click on the "Totara Assessment Submit Button" button
-
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"
