@@ -451,7 +451,7 @@
   "Hub VPE Active First Topic": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]",
   "Hub VPE View Next Activity": "xpath=//div[contains(@class,'next-activity')]//div/a",
   "Hub VPE Assignemnt Activity Layout": "xpath=//div[contains(@class,'inbox-content email-content')]",
-  "Hub VPE Sent Email Notification": "xpath=//div[@class='email-notification-success']//h5",
+  "Hub VPE Sent Email Notification": "xpath=(//div[@class='email-notification-success']//h5)[1]",
   "Hub VPE Pages-Overview Header": "xpath=(//u[text()='Pages - Overview'])[1]",
   "Hub VPE Page Thumbnail": "xpath=//img[@class='page-image']",
   "Hub VPE Documents Header": "xpath=(//u[text()='Documents'])[1]",
@@ -459,6 +459,8 @@
   "Hub VPE Assignment First Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[1]",
   "Hub VPE Assignment Second Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[2]",
   "Hub VPE Pages Back Button": "xpath=//span[@class='page-back-btn-text']",
+  "Hub VPE Resubmit": "xpath=(//button[contains(.,'Resubmit')])[1]",
+  "Hub VPE Email Assignment Date": "xpath=(//div[@class='email-notification-success']//h5[2])[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
