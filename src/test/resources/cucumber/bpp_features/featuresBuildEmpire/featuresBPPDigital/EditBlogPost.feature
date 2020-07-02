@@ -4,7 +4,7 @@ Feature: BPP Digital Edit Blog Post
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive #TC-7828
+  @Positive #TC-3631
   Scenario: Edit Blog Post
     When I execute "Admin Hub Navigate to Blog Posts" reusable step
     And I execute "Create Blog Post" reusable step

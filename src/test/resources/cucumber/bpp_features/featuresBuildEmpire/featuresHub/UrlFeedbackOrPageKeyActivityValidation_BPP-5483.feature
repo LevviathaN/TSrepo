@@ -35,7 +35,6 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     And I should see the "Completed" "element"
-
     And I click on the "/my/learning/course/12" "link address"
     And I click on the "Page" "Build Empire Course Topic"
     And I validate text "CONTAINS=You haven't attempted this assessment yet" to be displayed for "Direct App Topic Assessment Status Results" element
@@ -48,7 +47,6 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
     And I click on the "Page" "Build Empire Course Topic" if "Click to complete" "element is absent"
     And I should see the "Completed" "element"
     And I click on the "/my/learning/course/12" "link address"
-
     And I click on the "Feedback" "Build Empire Course Topic"
     And I validate text "CONTAINS=You haven't attempted this assessment yet" to be displayed for "Direct App Topic Assessment Status Results" element
     And I click on the "Click to complete" "Build Empire button"
