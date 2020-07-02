@@ -289,6 +289,8 @@ public class TestParametersController {
                     String timePattern = null;
                     if(element.endsWith("MMMMd,yyyy")){
                         timePattern = "MMMM d, yyyy";
+                    } else if(element.endsWith("VPE")){
+                        timePattern = "MMMM d,yyyy";
                     } else {
                         timePattern = "dd MMM HH:mm";
                     }
