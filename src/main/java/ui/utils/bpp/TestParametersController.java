@@ -290,7 +290,7 @@ public class TestParametersController {
                     if(element.endsWith("MMMMd,yyyy")){
                         timePattern = "MMMM d, yyyy";
                     } else if(element.endsWith("VPE")){
-                        timePattern = "MMMM d,yyyy";
+                        timePattern = "MMM d yyyy";
                     } else {
                         timePattern = "dd MMM HH:mm";
                     }

@@ -460,7 +460,7 @@
   "Hub VPE Assignment Second Card Due Date": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[2]",
   "Hub VPE Pages Back Button": "xpath=//span[@class='page-back-btn-text']",
   "Hub VPE Resubmit": "xpath=(//button[contains(.,'Resubmit')])[1]",
-  "Hub VPE Email Assignment Date": "xpath=(//div[contains(@class,'result-form')]//div[contains(@class,'reply-form-reply-date text-sm-right')]/p)[last()]",
+  "Hub VPE Email Assignment Date": "xpath=(//div[@class='email-notification-success']//h5[2])[1]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

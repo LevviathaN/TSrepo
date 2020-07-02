@@ -75,7 +75,8 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     And I upload "CallOut.png" file to "Direct App Upload File" element
     Then I click on the "SEND " "button"
     And I remember "[TIMENOW-VPE]" text as "EC_CURRENT_DATE" variable
-    Then I validate text "CONTAINS=EC_TIMENOW" to be displayed for "Hub VPE Email Assignment Date" element
+    And I should see the "Hub VPE Sent Email Notification" message
+    Then I validate text "EC_TIMENOW" to be displayed for "Hub VPE Email Assignment Date" element
     And I switch to window with index "1"
     When I execute "Log Out from Hub Student" reusable step
     And I should see the "Already registered? Log in" message
