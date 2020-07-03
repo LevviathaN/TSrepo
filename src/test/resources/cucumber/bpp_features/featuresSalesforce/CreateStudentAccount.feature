@@ -15,6 +15,5 @@ Feature: Create Student Account
     And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox
-    And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
     Given I execute "Submit Application" reusable step
