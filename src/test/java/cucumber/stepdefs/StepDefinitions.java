@@ -617,4 +617,14 @@ public class StepDefinitions extends BasePage {
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
     }
+
+    @And("^I capture current URL as \"([^\"]*)\" variable$")
+    public void i_capture_url_as_variable(String executionContext) {
+        Reporter.log("Capturing current url as " + executionContext);
+        if (!executionContext.equals("")) {
+            Reporter.log("Current URL = " + getURL());
+            ExecutionContextHandler.setExecutionContextValueByKey(executionContext, getURL());
+        } else
+            Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
+    }
 }
