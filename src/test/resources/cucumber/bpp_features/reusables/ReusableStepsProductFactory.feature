@@ -180,7 +180,7 @@ Feature: Product Factory
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "CourseTypeDescription[######]" text to the "Description" "Product Factory text field"
+    And I set "CourseTypeDescription[######]" text to the "Description" "Product Factory text field two"
     And I click on the "VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
     And I click on the "Cost Centre Financial Dimension" "Product Factory change button"
@@ -188,6 +188,9 @@ Feature: Product Factory
     And I click on the "Project Financial Dimension" "Product Factory change button"
     And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
     And I click on the "Save" "Product Factory button"
+    And I wait for "3" seconds
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
 
   Scenario: Create Material Type
