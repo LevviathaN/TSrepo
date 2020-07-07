@@ -463,6 +463,7 @@
   "Hub VPE Resubmit": "xpath=(//button[contains(.,'Resubmit')])[1]",
   "Hub VPE Email Assignment Date": "xpath=(//div[@class='email-notification-success']//h5[2])[1]",
   "Hub VPE Call To": "xpath=//*[@class='col to']",
+  "Hub VPE Assignment Feedback": "xpath=(//div[contains(@class,'result-form')]//div[contains(@class,'assign-content-email') and contains(text(),'feedback automated text')])[last()]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

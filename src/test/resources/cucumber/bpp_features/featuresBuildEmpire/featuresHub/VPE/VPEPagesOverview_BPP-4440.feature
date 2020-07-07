@@ -13,12 +13,12 @@ Feature: The Hub - Law School - Pages - Overview
     And I switch to window with index "2"
     And I click on the "Hub VPE Pages-Overview Header" element
     Then I should see the "Automation Page" "text contained in P element"
-    And I should see the "Created for automated scripts. PLEASE DON NOT AMEND!" "text contained in P element"
+    And I should see the "Created for automated scripts. PLEASE DO NOT AMEND!" "text contained in element"
     Then I should see the "Hub VPE Page Thumbnail" element
     And Attribute "alt" of "Hub VPE Page Thumbnail" should have value "Green Sea Turtle grazing seagrass.jpg"
     Then I should see the "Read more" "text contained in P element"
     And I click on the "Read more" "text contained in P element"
-    Then I should see the "Automation Page Content" "text contained in P element"
+    Then I should see the "Automation Page Content" "text contained in element"
     And I should see the "Hub VPE Page Thumbnail" element
     Then I should see the "HEADER 1" "element"
     Then I should see the "HEADER 2" "element"
