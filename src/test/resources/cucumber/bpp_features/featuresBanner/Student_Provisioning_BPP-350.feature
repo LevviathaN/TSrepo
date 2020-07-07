@@ -12,12 +12,10 @@ Feature: Admitting a single student in Banner - BPP-350
     And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
     And I click on the "Product Catalog Items" "Salesforce related new button"
     And I click on the "New" "Salesforce dropdown option"
-    And I fill the "Salesforce Offering Text Field" field with "2381626"
+    And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox
-    And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
-    #And I wait for "4" seconds
     Given I execute "Submit Application" reusable step
     Given I execute "Log In To Banner" reusable step
     And I execute "Navigate To Form" reusable step
