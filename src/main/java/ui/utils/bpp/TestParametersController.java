@@ -3,6 +3,7 @@ package ui.utils.bpp;
 import org.openqa.selenium.By;
 import ui.pages.BasePage;
 import ui.utils.Reporter;
+import ui.utils.Tools;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -214,6 +215,7 @@ public class TestParametersController {
         }
 
         //If it is simplified random generation
+        //TODO: refactor this part of code
         else if (isSimplifiedRandom(parameter)) {
 
             String[] splitArraySimplified = parameter.split("[\\[\\]]");
@@ -284,13 +286,17 @@ public class TestParametersController {
                     }
                     ecVarNameSimplified.append("_");
                     ecVarNameSimplified.append("DOB");
-                }
-                else if (element.startsWith("TIMENOW")){
+                } else if (element.startsWith("TIMENOW")) {
                     String timePattern = null;
-                    if(element.endsWith("MMMMd,yyyy")){
+                    if (element.endsWith("MMMMd,yyyy")) {
                         timePattern = "MMMM d, yyyy";
-                    } else if(element.endsWith("VPE")){
-                        timePattern = "MMM d yyyy";
+                    } else if (element.endsWith("VPE")) {
+                        if (element.contains("CALENDAR")) {
+                            String time = String.valueOf(Tools.getCurDateTimeInMilliseconds());
+                            timePattern = time.substring(0,5);
+                        } else {
+                            timePattern = "MMM d yyyy";
+                        }
                     } else {
                         timePattern = "dd MMM HH:mm";
                     }
@@ -340,6 +346,7 @@ public class TestParametersController {
                         }
                     }
                 }
+
             }
 
             ExecutionContextHandler.setExecutionContextValueByKey(ecVarNameSimplified.toString(), resultingValueSimplified.toString());
