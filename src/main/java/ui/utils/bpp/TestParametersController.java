@@ -2,17 +2,12 @@ package ui.utils.bpp;
 
 import org.openqa.selenium.By;
 import ui.pages.BasePage;
-import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
 import ui.utils.Tools;
 
-import javax.swing.*;
-import javax.tools.Tool;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,7 +55,6 @@ public class TestParametersController {
     private static final String EXECUTION_CONTEXT_PREFIX = "EC_";
     private static final String KEYWORD_NAME_TO_SKIP = "KW_AUTO_SELECT";
     private static final String KEYWORD_SF_DATE = "KW_AUTO_SFDATE";
-    public static HashMap<String, TestParametersController> simplifiedMap = new HashMap<>();
 
     /**
      * The method performs two-levels verification of passed value to be a metadata key.
