@@ -122,6 +122,8 @@
   "BPP Digital RFI Input Field": "xpath=//label[contains(text(), 'PARAMETER')]/..//input",
   "BPP Digital Admin Users Sub Menu Item links": "xpath=//a[normalize-space()='Users']/following-sibling::div/a[normalize-space()='PARAMETER']",
   "BPP Digital Admin Logs Sub Menu Item links": "xpath=//a[normalize-space()='Logs']/following-sibling::div/a[normalize-space()='PARAMETER']",
+  "BPP Digital Search Courses label" : "xpath=//label[normalize-space()='PARAMETER']",
+  "BPP Digital Footer Course" : "xpath=//ul[@class='children-links']/li[normalize-space()='PARAMETER']/div/a",
 
   "Salesforce navigation menu dropdown": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "xpath=//span[text()='PARAMETER']/../..",

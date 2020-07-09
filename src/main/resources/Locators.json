@@ -447,6 +447,7 @@
   "BPP Digital Search Result Under Courses Block": "xpath=//h2[text()='Courses']/following-sibling::div//h3",
 
   "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
+  "HUb VPE Banner": "xpath=(//*[@class='welcome-banner'])[2]",
   "Hub VPE BPP Lion Image Logo": "xpath=(//*[@class='navbar-left d-none d-lg-block']//following::img)[1]",
   "Hub VPE Active First Topic": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]",
   "Hub VPE View Next Activity": "xpath=//div[contains(@class,'next-activity')]//div/a",
@@ -461,6 +462,8 @@
   "Hub VPE Pages Back Button": "xpath=//span[@class='page-back-btn-text']",
   "Hub VPE Resubmit": "xpath=(//button[contains(.,'Resubmit')])[1]",
   "Hub VPE Email Assignment Date": "xpath=(//div[@class='email-notification-success']//h5[2])[1]",
+  "Hub VPE Call To": "xpath=//*[@class='col to']",
+  "Hub VPE Assignment Feedback": "xpath=(//div[contains(@class,'result-form')]//div[contains(@class,'assign-content-email') and contains(text(),'feedback automated text')])[last()]",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",
@@ -552,6 +555,7 @@
   "Totara Course Confirm Remove Bpp Lead Tutor Button": "xpath=//input[@value='Remove']",
   "Totara VPE Email Sender": "xpath=//input[@name='vpe_email_sender']",
   "Totara Assignment Due Date Year": "xpath=//select[@id='id_duedate_year']",
+  "Totara Assignment Description": "id=id_introeditoreditable",
 
   "Yahoo Email": "id=login-username",
   "Yahoo Password": "id=login-passwd",
