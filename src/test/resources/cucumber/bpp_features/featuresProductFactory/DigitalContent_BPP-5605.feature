@@ -22,10 +22,43 @@ Feature: Digital Content Id - Create - BPP-5605
     And I execute "Link Paper To Level" reusable step
     And I execute "Create Sitting" reusable step
 
-  @Positive @P1 #TC-3148
+  @Positive @P1 #TC-3148, TC-3567
   Scenario: Create Digital Content
     Given I execute "Create Digital Content" reusable step
+
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
+    And I click on the "Clear Filters" "Product Factory button"
+
+    And I set "EC_LEVEL_SHORT_NAME" text to the "Level" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    And I click on the "Clear Filters" "Product Factory button"
+
+    And I set "EC_PAPER_DESCRIPTION" text to the "Paper" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    And I click on the "Clear Filters" "Product Factory button"
+
+    And I set "EC_SITTING_NAME" text to the "Sitting" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    And I click on the "Clear Filters" "Product Factory button"
+
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    And I click on the "Clear Filters" "Product Factory button"
+
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I set "EC_LEVEL_SHORT_NAME" text to the "Level" "Product Factory text field"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Paper" "Product Factory text field"
+    And I set "EC_SITTING_NAME" text to the "Sitting" "Product Factory text field"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    And I click on the "Clear Filters" "Product Factory button"
 
   @Negative @P1 #TC-3149
   Scenario: Create Digital Content Prevent Duplicate
