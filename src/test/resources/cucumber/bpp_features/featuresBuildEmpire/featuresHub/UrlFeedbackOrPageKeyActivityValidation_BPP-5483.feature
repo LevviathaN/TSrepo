@@ -1,4 +1,4 @@
-@KeyActivities
+@Hub @KeyActivities
 Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB - BPP-5483
   As a user in the Hub,
   when a URL, FEEDBACK or PAGE learning activity has been set as the Key Activity on my Topic Overview page,
