@@ -77,6 +77,10 @@
   "Salesforce Case Milestones Tab Milestone Two": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//table//tr[2]//td[4]",
   "Salesforce Case Milestones Tab First Milestone Name": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//table//tr[1]//th/span/span",
   "Salesforce Case Milestones Tab Second Milestone Name": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//table//tr[2]//th/span/span",
+  "Salesforce Student Account link": "xpath=(//span[@class='slds-grid slds-grid--align-spread']/a[contains(text(),'EC_AUTO_FIRSTNAME')])[1]",
+  "Salesforce Provisioning Username field": "xpath=(//div[normalize-space()='Username']/following::lightning-formatted-text)[1]",
+  "Salesforce Provisioning Password field": "xpath=(//div[normalize-space()='Password']/following::lightning-formatted-text)[1]",
+  "Salesforce Provisioning Email Address field": "xpath=(//div[normalize-space()='Email Address']/following::lightning-formatted-text)[1]",
 
   "Banner Username": "xpath=//*[@id='username']",
   "Banner Password": "xpath=//*[@id='password']",
