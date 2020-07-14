@@ -17,18 +17,20 @@ Feature: Pricing Matrix - price creation validation to prevent duplicates - BPP-
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Paper" reusable step
     When I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field"|
-      |6|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                     |
+      |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
+      |7|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"       |
+      |9|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                     |
     When I execute "Link Body To Paper" reusable step replacing some steps
-      |3|I click on the "EC_PAPER_DESCRIPTION_NEW" "Product Factory Change Body button"|
+      |3|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"|
+      |5|I click on the "EC_PAPER_DESCRIPTION_NEW" "Product Factory Change Body button"|
     And I execute "Create Pricing Matrix" reusable step
     And I execute "Create Pricing Matrix Full" reusable step
 
   @Negative @P1 @Duplicate #TC-1158
   Scenario: Add Duplicate Price in Pricing Matrix
     When I execute "Create Course Type" reusable step replacing some steps
-      |4 |I set "CourseTypeDescriptionNew[######]" text to the "Description" "Product Factory text field"|
-      |12|I should see the "EC_COURSE_TYPE_DESCRIPTION_NEW" element                                    |
+      |4 |I set "CourseTypeDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
+      |15|I should see the "EC_COURSE_TYPE_DESCRIPTION_NEW" element                                    |
     When I execute "Create Region" reusable step replacing some steps
       |4|I set "RegionNameNew[######]" text to the "Name" "Product Factory text field"|
       |8|I should see the "EC_REGION_NAME_NEW" element                              |
