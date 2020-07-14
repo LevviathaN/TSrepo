@@ -12,7 +12,9 @@ Feature: Digital Content Id - Edit - BPP-7052
     And I execute "Create Course Type Financial Dimension" reusable step
     And I execute "Create Course Type" reusable step
     And I execute "Create Course Type" reusable step replacing some steps
-      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
+      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
+      |13|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"     |
+      |15|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                         |
     And I execute "Create Location Financial Dimension" reusable step
     And I execute "Create Region Financial Dimension" reusable step
     And I execute "Create Region" reusable step
@@ -40,16 +42,19 @@ Feature: Digital Content Id - Edit - BPP-7052
     And I click on the "Save" "Product Factory active button"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     When I click on the "Course Types" "Product Factory edit button"
+    And I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button two"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Save" "Product Factory active button"
 
-  @Negative @P1 #TC-3198
+  @Negative @P1 @Run #TC-3198
   Scenario: Edit Digital Content Duplicate
     Given I execute "Create Digital Content" reusable step
     Given I execute "Create Digital Content" reusable step replacing some steps
       |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
-      |14|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |14|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |16|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     When I click on the "Sittings" "Product Factory edit button"
     And I click on the "EC_SITTING_NAME_TWO" "Product Factory checkbox"
@@ -58,6 +63,8 @@ Feature: Digital Content Id - Edit - BPP-7052
     And I click on the "Save" "Product Factory button"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     When I click on the "Course Types" "Product Factory edit button"
+    And I set "CourseTypeDescription" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button two"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory checkbox"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory checkbox"
     And I click on the "Save" "Product Factory active button"
@@ -68,7 +75,7 @@ Feature: Digital Content Id - Edit - BPP-7052
   Scenario: Edit Digital Content Not In Use
     Given I execute "Create Digital Content" reusable step with some additional steps
       |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
-      |15|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |17|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "EC_BODY_SHORT_NAME" element
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
@@ -87,7 +94,7 @@ Feature: Digital Content Id - Edit - BPP-7052
   Scenario: Edit Digital Content Additional Scenario
     Given I execute "Create Digital Content" reusable step with some additional steps
       |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
-      |15|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |17|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "EC_BODY_SHORT_NAME" element
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"

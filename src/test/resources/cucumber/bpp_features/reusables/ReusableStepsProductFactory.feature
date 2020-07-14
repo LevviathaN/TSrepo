@@ -432,7 +432,7 @@ Feature: Product Factory
     And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Course Types" "Product Factory edit button"
-    And I set " " text to the "Description" "Product Factory text field"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
     And I click on the "Search" "Product Factory button two"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"

@@ -66,7 +66,7 @@ Feature: Digital Content Id - Create - BPP-5605
     When I execute "Create Digital Content" reusable step
     Then I should see the "Digital Content already exists" "text contained in element"
 
-  @Negative @P1 @Run #TC-3194
+  @Negative @P1 #TC-3194
   Scenario: Create Digital Content Additional Scenarios
     And I execute "Create Level" reusable step replacing some steps
       |4|I set "LevelShortNameTwo[######]" text to the "Short Name" "Product Factory text field"|
@@ -74,12 +74,14 @@ Feature: Digital Content Id - Create - BPP-5605
     And I execute "Create Paper" reusable step replacing some steps
       |4|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
     And I execute "Link Paper To Level" reusable step replacing some steps
-      |3|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Link Levels button"|
-      |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"|
+      |3|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |5|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Link Levels button"|
+      |6|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"|
     And I execute "Link Body To Level" reusable step replacing some steps
       |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"|
     And I execute "Link Body To Paper" reusable step replacing some steps
-      |3|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Change Body button"|
+      |3|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |5|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Change Body button"|
     Given I execute "Create Digital Content" reusable step
     Then I click on the "Create" "Product Factory button"
     Then I click on the "Cancel" "Product Factory button"
