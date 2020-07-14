@@ -445,6 +445,12 @@
   "BPP Digital Automation Validate Quiz Check Svg Item" : "xpath=//ul[@class='sub-topic-activities-list']/li/span/*[name()='svg'][contains(@class,'check')]",
   "BPP Digital Automation Validate Green Check Icon" : "xpath=//div[@class='sub-topics-container']/div[1]//h5[contains(@class,'sub-topic-label')]/span",
   "BPP Digital Search Result Under Courses Block": "xpath=//h2[text()='Courses']/following-sibling::div//h3",
+  "BPP Digital Admin Edit Application": "xpath=(//*[text()='Edit'])[1]",
+  "BPP Digital Admin Edit Application Programme": "xpath=(//span[@class='select2-selection select2-selection--single'])[1]",
+  "BPP Digital Searchbox Field": "xpath=//input[@role='searchbox']",
+  "BPP Digital Admin Edit Application Save": "xpath=//*[@type='submit']",
+  "BPP Digital Admin Edit Application Variation": "xpath=(//span[@class='select2-selection select2-selection--single'])[2]",
+  "BPP Digital Admin Edit Application Location": "xpath=(//span[@class='select2-selection select2-selection--single'])[3]",
 
   "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
   "HUb VPE Banner": "xpath=(//*[@class='welcome-banner'])[2]",
