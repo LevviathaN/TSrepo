@@ -28,8 +28,12 @@ Feature: Amend Reference Data - Paper - BPP-660
   Scenario: Amend a Paper Where Description Already Exists
     Given I execute "Create Paper" reusable step replacing some steps
       |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field"|
+      |7|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"   |
+      |9|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                       |
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
     And I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
@@ -53,6 +57,6 @@ Feature: Amend Reference Data - Paper - BPP-660
       |3|I click on the "EC_BODY_NAME_NEW" "Product Factory Link Levels button"  |
       |4|I click on the "EC_LEVEL_NAME_NEW" "Product Factory dialog checkbox"|
     When I execute "Link Body To Paper" reusable step replacing some steps
-      |4|I click on the "EC_BODY_NAME_NEW" "Product Factory select button"|
+      |6|I click on the "EC_BODY_NAME_NEW" "Product Factory select button"|
     When I execute "Link Paper To Level" reusable step replacing some steps
-      |4|I "check" "EC_LEVEL_NAME_NEW" "Product Factory dialog checkbox"|
+      |6|I "check" "EC_LEVEL_NAME_NEW" "Product Factory dialog checkbox"|

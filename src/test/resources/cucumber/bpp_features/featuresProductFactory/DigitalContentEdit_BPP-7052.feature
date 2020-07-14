@@ -48,7 +48,7 @@ Feature: Digital Content Id - Edit - BPP-7052
     And I click on the "Save" "Product Factory active button"
     And I click on the "Save" "Product Factory active button"
 
-  @Negative @P1 @Run #TC-3198
+  @Negative @P1 #TC-3198
   Scenario: Edit Digital Content Duplicate
     Given I execute "Create Digital Content" reusable step
     Given I execute "Create Digital Content" reusable step replacing some steps
@@ -75,12 +75,16 @@ Feature: Digital Content Id - Edit - BPP-7052
   Scenario: Edit Digital Content Not In Use
     Given I execute "Create Digital Content" reusable step with some additional steps
       |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
-      |17|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |18|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |19|I click on the "Search" "Product Factory button two"                                         |
+      |20|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "EC_BODY_SHORT_NAME" element
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Course Types" "Product Factory edit button"
+    And I set "CourseTypeDescription" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button two"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Save" "Product Factory button"
@@ -94,12 +98,16 @@ Feature: Digital Content Id - Edit - BPP-7052
   Scenario: Edit Digital Content Additional Scenario
     Given I execute "Create Digital Content" reusable step with some additional steps
       |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
-      |17|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |18|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |19|I click on the "Search" "Product Factory button two"                                         |
+      |20|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "EC_BODY_SHORT_NAME" element
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Course Types" "Product Factory edit button"
+    And I set "CourseTypeDescription" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button two"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
@@ -110,6 +118,8 @@ Feature: Digital Content Id - Edit - BPP-7052
     And I click on the "Save" "Product Factory active button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
     And I click on the "Course Types" "Product Factory edit button"
+    And I set "CourseTypeDescription" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button two"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Sittings" "Product Factory edit button"
