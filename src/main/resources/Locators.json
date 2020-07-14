@@ -81,6 +81,8 @@
   "Salesforce Provisioning Username field": "xpath=(//div[normalize-space()='Username']/following::lightning-formatted-text)[1]",
   "Salesforce Provisioning Password field": "xpath=(//div[normalize-space()='Password']/following::lightning-formatted-text)[1]",
   "Salesforce Provisioning Email Address field": "xpath=(//div[normalize-space()='Email Address']/following::lightning-formatted-text)[1]",
+  "Salesforce First Qualification Subject": "xpath=(//ul[contains(@class,'lookup__list')]//div[contains(@class,'primaryLabel')])[1]",
+  "Salesforce Account Name link from Opportunity page": "xpath=//p[normalize-space()='Account Name']/following-sibling::p//a",
 
   "Banner Username": "xpath=//*[@id='username']",
   "Banner Password": "xpath=//*[@id='password']",
