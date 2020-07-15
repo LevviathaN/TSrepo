@@ -386,6 +386,8 @@ Feature: Product Factory
     And I click on the "EC_REGION_NAME" "element"
     And I click on the "Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME" "element"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     Then I should see the "EC_SITTING_NAME" element
     Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element

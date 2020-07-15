@@ -15,7 +15,7 @@ Feature: Paper List - add search filter - BPP-8381
     And I execute "Link Paper To Level" reusable step
 
   @Positive @Regression #TC-3582, TC-3600
-  Scenario: Add a New Paper Using a Modal
+  Scenario: Paper Filters Validation
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     And I wait for "3" seconds
