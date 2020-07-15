@@ -23,8 +23,9 @@ Feature: CBA - Edit - BPP-3200
     And I execute "Create Course Type Financial Dimension" reusable step
     And I execute "Create Course Type" reusable step
     And I execute "Create Course Type" reusable step replacing some steps
-      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
-      |12|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                     |
+      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
+      |13|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field" |
+      |15|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                     |
     And I execute "Create Location Financial Dimension" reusable step
     And I execute "Create Region Financial Dimension" reusable step
     And I execute "Create Region" reusable step
@@ -68,6 +69,8 @@ Feature: CBA - Edit - BPP-3200
     And I click on the "Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME_TWO" "element"
     And I click on the "Course Type" "Product Factory edit button"
+    And I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory select button"
     And I click on the "Start Time" "Product Factory edit button"
     And I set "55:00" text to the "Start Time" "Product Factory text field"

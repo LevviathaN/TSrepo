@@ -119,6 +119,7 @@ Feature: Product Factory
     And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
     And I click on the "Search" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
+    And I click on the "Clear Filters" "Product Factory button"
 
   Scenario: Link Body To Paper
     When I click on the "Programme" "Product Factory navigation item"
@@ -128,13 +129,17 @@ Feature: Product Factory
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"
     Then I click on the "Yes" "Product Factory button"
+    And I click on the "Clear Filters" "Product Factory button"
 
   Scenario: Link Paper To Level
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Link Levels button"
     And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
+    And I click on the "Clear Filters" "Product Factory button"
 
   Scenario: Create Sitting
     When I click on the "Delivery" "Product Factory navigation item"
@@ -295,9 +300,9 @@ Feature: Product Factory
     And I click on the "Choose a Body" "button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"
     And I click on the "Next" "Product Factory button"
-    And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
+    And I "check" "EC_LEVEL_NAME" "Product Factory checkbox"
     And I click on the "Next" "Product Factory button"
-    And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
+    And I "check" "EC_SITTING_NAME" "Product Factory checkbox"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
 
@@ -381,6 +386,8 @@ Feature: Product Factory
     And I click on the "EC_REGION_NAME" "element"
     And I click on the "Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME" "element"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     Then I should see the "EC_SITTING_NAME" element
     Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element
@@ -427,7 +434,7 @@ Feature: Product Factory
     And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Course Types" "Product Factory edit button"
-    And I set " " text to the "Description" "Product Factory text field"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
     And I click on the "Search" "Product Factory button two"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"

@@ -72,14 +72,16 @@ Feature: Digital Content Id - Create - BPP-5605
       |4|I set "LevelShortNameTwo[######]" text to the "Short Name" "Product Factory text field"|
       |5|I set "LevelNameTwo[######]" text to the "Name" "Product Factory text field"|
     And I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
+      |4|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
     And I execute "Link Paper To Level" reusable step replacing some steps
-      |3|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Link Levels button"|
-      |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"|
+      |3|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |5|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Link Levels button"|
+      |6|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"|
     And I execute "Link Body To Level" reusable step replacing some steps
       |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"|
     And I execute "Link Body To Paper" reusable step replacing some steps
-      |3|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Change Body button"|
+      |3|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |5|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Change Body button"|
     Given I execute "Create Digital Content" reusable step
     Then I click on the "Create" "Product Factory button"
     Then I click on the "Cancel" "Product Factory button"

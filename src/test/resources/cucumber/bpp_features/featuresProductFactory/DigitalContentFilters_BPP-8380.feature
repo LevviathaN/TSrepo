@@ -72,8 +72,9 @@ Feature: Digital Content List - add Search Filter - BPP-8380
       |5|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Change Body button"|
       |6|I click on the "EC_BODY_NAME_TWO" "Product Factory select button"             |
     And I execute "Link Paper To Level" reusable step replacing some steps
-      |3|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Link Levels button"|
-      |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"       |
+      |3|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |5|I click on the "EC_PAPER_DESCRIPTION_TWO" "Product Factory Link Levels button"|
+      |6|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"       |
     And I execute "Create Sitting" reusable step replacing some steps
       |4|I set "SittingNameTwo[######]" text to the "Name" "Product Factory text field"|
       |9|I "check" "EC_BODY_NAME_TWO" "Product Factory dialog checkbox"                    |
