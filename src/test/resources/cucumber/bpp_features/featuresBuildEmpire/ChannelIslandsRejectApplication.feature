@@ -17,6 +17,7 @@ Feature: Reject Channel Islands Application
     Then I click on the "Direct App Login Button" button
     And I should see the "Direct App My Approvals Tab" element
     Then I execute "Reject Channel Isalnds Application as Training Manager" reusable step
+    And I wait for "10" seconds
     And I execute "Harakirimail Validate Accepted Application Email" reusable step replacing some steps
       | 11 | I validate text "Your application has been rejected" to be displayed for "Guerilla Email Header" element |
 
@@ -40,6 +41,6 @@ Feature: Reject Channel Islands Application
     And I click on the "Reject" "button"
     And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
     And I click on the "Direct App Channel Islands Training Manager OK" button
-    And I wait for "1" seconds
+    And I wait for "10" seconds
     And I execute "Harakirimail Validate Accepted Application Email" reusable step replacing some steps
       | 11 | I validate text "Your application has been rejected" to be displayed for "Guerilla Email Header" element |
