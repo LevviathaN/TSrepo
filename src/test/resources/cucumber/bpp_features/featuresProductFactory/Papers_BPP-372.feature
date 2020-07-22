@@ -7,13 +7,16 @@ Feature: Reference Data - Paper - BPP-372
   Background:
     Given I execute "Log In" reusable step
 
-  @Positive @Regression @P1 #TC-772
+  @Positive @Regression #TC-772
   Scenario: Add a New Paper Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
+    And I set "PaperDescription[######]" text to the "Description" "Product Factory text field two"
     And I click on the "Save" "Product Factory button"
+    And I wait for "3" seconds
+    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     Then I should see the "EC_PAPER_DESCRIPTION" element
 
   @Negative @P2 #TC-771
@@ -29,6 +32,6 @@ Feature: Reference Data - Paper - BPP-372
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field two"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Description must be unique" "message"

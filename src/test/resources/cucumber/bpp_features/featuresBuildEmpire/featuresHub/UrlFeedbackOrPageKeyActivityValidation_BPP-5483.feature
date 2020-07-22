@@ -1,4 +1,4 @@
-@KeyActivities
+@Hub @KeyActivities
 Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB - BPP-5483
   As a user in the Hub,
   when a URL, FEEDBACK or PAGE learning activity has been set as the Key Activity on my Topic Overview page,
@@ -43,7 +43,7 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
     When I switch to window with index "1"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"
-    And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course" if "Take the test" "element is absent"
+    And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course" if "Click to complete" "element is absent"
     And I click on the "Page" "Build Empire Course Topic" if "Click to complete" "element is absent"
     And I should see the "Completed" "element"
     And I click on the "/my/learning/course/12" "link address"

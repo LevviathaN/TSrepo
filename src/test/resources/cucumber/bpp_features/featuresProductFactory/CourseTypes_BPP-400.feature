@@ -9,7 +9,7 @@ Feature: Reference Data - Course Type - BPP-400
     When I execute "Create Course Type Financial Dimension" reusable step
     Then I execute "Create VAT Rule" reusable step
 
-  @Positive @Regression @P1 @Run #TC-701, TC-1720
+  @Positive @Regression @P1 #TC-701, TC-1720
   Scenario: Add a New Course Type Using a Modal
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"

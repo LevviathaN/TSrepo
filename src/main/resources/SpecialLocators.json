@@ -16,6 +16,7 @@
   "Product Factory navigation item": "xpath=//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "xpath=//p[text()='PARAMETER']",
   "Product Factory button": "xpath=//span[text()='PARAMETER']/..",
+  "Product Factory button two": "xpath=(//span[text()='PARAMETER']/..)[2]",
   "Product Factory active button": "xpath=//span[text()='PARAMETER']/parent::button[@tabindex='0']",
   "Product Factory field value": "xpath=//span[text()='PARAMETER']/following-sibling::p",
   "Product Factory text field": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea",
