@@ -630,5 +630,8 @@
   "Proctorio Test": "xpath=//a[text()='Proctorio Test']",
   "Proctorio Yes": "xpath=//button[text()='Yes']",
   "Proctorio Account": "xpath=//a[@id='action-menu-toggle-0']",
-  "Proctorio Logout": "xpath=//span[text()='Log out']"
+  "Proctorio Logout": "xpath=//span[text()='Log out']",
+
+  "VLE Website Usermenu": "xpath=//div[@class='usermenu']",
+  "VLE CAS user link": "xpath="
 }

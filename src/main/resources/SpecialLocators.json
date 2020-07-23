@@ -155,5 +155,7 @@
   "Totara Assessment select": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../following-sibling::td/select",
   "Totara Assessment radiobutton": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../preceding-sibling::td/input",
   "Totara Moodle Quiz radiobutton": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='radio']",
-  "Totara Moodle Quiz checkbox": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']"
+  "Totara Moodle Quiz checkbox": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']",
+
+  "VLE Login Fields": "xpath=//input[@name='PARAMETER']"
 }
