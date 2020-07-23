@@ -632,6 +632,5 @@
   "Proctorio Account": "xpath=//a[@id='action-menu-toggle-0']",
   "Proctorio Logout": "xpath=//span[text()='Log out']",
 
-  "VLE Website Usermenu": "xpath=//div[@class='usermenu']",
-  "VLE CAS user link": "xpath="
+  "VLE Website Usermenu": "xpath=//div[@class='usermenu']"
 }
