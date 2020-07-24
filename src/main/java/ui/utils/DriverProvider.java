@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.Proxy;
 import ui.utils.bpp.PropertiesHelper;
@@ -219,6 +220,81 @@ public class DriverProvider {
         }
     }
 
+    static public RemoteWebDriver getIOSMobileDevice() {
+
+        try {
+            File folder = new File("downloads");
+            if (folder != null) {
+                folder.mkdir();
+            }
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+
+            capabilities.setCapability("device", System.getProperty("device"));
+            capabilities.setCapability("os_version", FileIO.getConfigProperty("ios_mobile_version"));
+            capabilities.setCapability("browserName", "iPhone");
+            capabilities.setCapability("realMobile", "true");
+            capabilities.setCapability("resolution", "1920x1080");
+            capabilities.setCapability("browserstack.debug", "true");
+            capabilities.setCapability("browserstack.video", "true");
+            capabilities.setCapability("browserstack.networkLogs", "true");
+            capabilities.setCapability("build", "automation");
+            capabilities.setCapability("browserstack.local", "true");
+            capabilities.setCapability("browserstack.console", "errors");
+            capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+            capabilities.setCapability("browserstack.appium_version", "1.17.0");
+
+            //configure capability to set the job name with Test Case name
+            String testName = Reporter.getCurrentTestName();
+            capabilities.setCapability("name", testName);
+
+            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), capabilities);
+
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
+    }
+
+    static public RemoteWebDriver getAndroidMobileDevice() {
+
+        try {
+            File folder = new File("downloads");
+            if (folder != null) {
+                folder.mkdir();
+            }
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+
+            Map<String, Object> prefs = new HashMap<String, Object>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+
+            capabilities.setCapability("device", System.getProperty("device"));
+            capabilities.setCapability("os_version", FileIO.getConfigProperty("android_mobile_version"));
+            capabilities.setCapability("browserName", "Chrome");
+            capabilities.setCapability("realMobile", "true");
+            capabilities.setCapability("resolution", "1920x1080");
+            capabilities.setCapability("browserstack.debug", "true");
+            capabilities.setCapability("browserstack.video", "true");
+            capabilities.setCapability("browserstack.networkLogs", "true");
+            capabilities.setCapability("build", "automation");
+            capabilities.setCapability("browserstack.local", "true");
+            capabilities.setCapability("browserstack.console", "errors");
+            capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+
+            //configure capability to set the job name with Test Case name
+            String testName = Reporter.getCurrentTestName();
+            capabilities.setCapability("name", testName);
+
+            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), capabilities);
+
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
+    }
+
 
     public static WebDriver getDriver() throws MalformedURLException {
 
@@ -231,6 +307,10 @@ public class DriverProvider {
                 instance.set(getChromeBrowserStack());
             } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_FIREFOX")) {
                 instance.set(getFirefoxBrowserStack());
+            } else if (getCurrentBrowserName().equalsIgnoreCase("MOBILE_IOS")) {
+                instance.set(getIOSMobileDevice());
+            } else if (getCurrentBrowserName().equalsIgnoreCase("MOBILE_ANDROID")) {
+                instance.set(getAndroidMobileDevice());
             }
         return instance.get();
 
@@ -251,6 +331,10 @@ public class DriverProvider {
                 BROWSER_TYPE = "BSTACK_CHROME";
             } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("BSTACK_FIREFOX")) {
                 BROWSER_TYPE = "BSTACK_FIREFOX";
+            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("MOBILE_ANDROID")) {
+                BROWSER_TYPE = "MOBILE_ANDROID";
+            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("MOBILE_IOS")) {
+                BROWSER_TYPE = "MOBILE_IOS";
             }
 
         return BROWSER_TYPE;

@@ -204,6 +204,10 @@ public class Reporter {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/internet-explorer_9-11/internet-explorer_9-11_64x64.png' class='BrowserLogo'>";
         } else if (browserName.equalsIgnoreCase("safari") || browserName.equalsIgnoreCase("bstack_safari")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/safari_1-7/safari_1-7_64x64.png' class='BrowserLogo'>";
+        } else if (browserName.contains("IOS")) {
+            browserLink = "<img src='https://img.icons8.com/nolan/64/ios-logo.png' class='BrowserLogo'>";
+        } else if (browserName.contains("ANDROID")) {
+            browserLink = "<img src='https://img.icons8.com/color/48/000000/android-os.png' class='BrowserLogo'>";
         }
 
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
