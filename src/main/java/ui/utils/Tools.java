@@ -16,9 +16,15 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.nio.file.StandardOpenOption.CREATE;
 
 /**
  * Class to store custom methods
@@ -120,6 +126,21 @@ public class Tools {
 
         transformer.transform(new DOMSource(doc),
                 new StreamResult(new OutputStreamWriter(out, "UTF-8")));
+    }
+
+    public static void createFile(String fileName, String fileContent) {
+        byte[] data = fileContent.getBytes();
+        Path p = Paths.get(fileName);
+
+        try{
+            Files.deleteIfExists(p);
+        }catch(IOException e){e.printStackTrace();}
+
+        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE))) {
+            out.write(data, 0, data.length);
+        } catch (IOException x) {
+            System.err.println(x);
+        }
     }
 
     /** Method to get desired node from document by nodeName and nodeAttribute

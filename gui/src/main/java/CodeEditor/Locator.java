@@ -1,5 +1,8 @@
 package CodeEditor;
 
+/** Class to reperesent Locator object in table view
+ * @author ruslanlevytskyi
+ * */
 public class Locator {
 
     private String name;
