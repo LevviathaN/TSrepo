@@ -210,11 +210,11 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
-    And I click on the "Albania" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-    And I click on the "Aruba" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Is English your first language?" "Build Empire nationality dropdown"
     And I click on the "Yes" "Build Empire nationality option"
     And I click on the "Direct App Nationality No Visa" element
@@ -371,11 +371,11 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
-    And I click on the "Albania" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-    And I click on the "Aruba" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Is English your first language?" "Build Empire nationality dropdown"
     And I click on the "Yes" "Build Empire nationality option"
     And I click on the "Direct App Nationality No Visa" element
@@ -589,11 +589,11 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
-    And I click on the "Albania" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-    And I click on the "Aruba" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Is English your first language?" "Build Empire nationality dropdown"
     And I click on the "Yes" "Build Empire nationality option"
     And I click on the "Direct App Nationality No Visa" element
@@ -804,11 +804,11 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
-    And I click on the "Albania" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-    And I click on the "Aruba" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Is English your first language?" "Build Empire nationality dropdown"
     And I click on the "Yes" "Build Empire nationality option"
     And I click on the "Direct App Nationality No Visa" element
@@ -1091,7 +1091,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
-    And I click on the "Albania" "Build Empire nationality option"
+    And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
@@ -1309,13 +1309,13 @@ Feature: BuildEmpire
       And I click on the "Direct App Next" button
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "Country of birth" "Build Empire nationality dropdown"
-      And I click on the "Albania" "Build Empire nationality option"
+      And I click on the "United Kingdom" "Build Empire nationality option"
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "Country of nationality" "Build Empire nationality dropdown"
       And I click on the "United Kingdom" "Build Empire nationality option"
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-      And I click on the "Aruba" "Build Empire nationality option"
+      And I click on the "United Kingdom" "Build Empire nationality option"
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "Is English your first language?" "Build Empire nationality dropdown"
       And I click on the "Yes" "Build Empire nationality option"
@@ -1442,3 +1442,12 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Direct App Level Three Paralegal" element
     And I click on the "Direct App Create Application" button
+
+  Scenario: Log In to Hub as Student Fixed
+    When I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
+    And Browser performs "Refresh" command
+    And I wait for "5" seconds
+    And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
+    And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
+    And I click on the "Direct App Login Button" button by JS
+    Then I should see the "Direct App My Applications Left Menu Link" element

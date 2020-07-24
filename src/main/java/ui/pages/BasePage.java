@@ -246,6 +246,19 @@ public class BasePage {
                         UiHandlers.DEFAULT_HANDLER);
                 IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
             }
+                size = textField.getAttribute("value").length();
+                if (size != 0) {
+                    clickOnElement(element,
+                            UiHandlers.PF_SPINNER_HANDLER,
+                            UiHandlers.ACCEPT_ALERT,
+                            UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                            UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                            UiHandlers.PF_SCROLL_HANDLER,
+                            UiHandlers.SF_CLICK_HANDLER,
+                            UiHandlers.WAIT_HANDLER,
+                            UiHandlers.DEFAULT_HANDLER);
+                    IntStream.range(0, size).mapToObj(i -> backSpace).forEach(textField::sendKeys);
+                }
 
             } catch (InvalidElementStateException e) {
                 textField.sendKeys("");

@@ -43,17 +43,18 @@ Feature: Salesforce
     And I click on the "Personal" "Salesforce dropdown field option"
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
-    Then I should see the " was created." message
+
 
   Scenario: Create Address
     And I click on the "Addresses" "Salesforce related new button"
     And I click on the "Address Type" "Salesforce dropdown field"
     And I click on the "Billing" "option"
     And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
-    And I set "KW_AUTO_CITYUSA" text to the "City" "Salesforce text field"
+    And I set "London" text to the "City" "Salesforce text field"
     And I set "KW_AUTO_ZIPCODE|#####" text to the "Postal Code" "Salesforce text field"
-    And I set "United States" text to the "Country" "Salesforce search field"
-    And I click on the "States" "option"
+    And I set "United Kingdom" text to the "Country" "Salesforce search field"
+    Then I wait for "1" seconds
+    And I click on the "Kingdom" "option"
     And I click on the "Save" "button"
     Then I should see the " was created." message
 
@@ -91,6 +92,26 @@ Feature: Salesforce
     And I "check" "Salesforce Product Checkbox" checkbox
     And I click on the "Salesforce Add Products" button
     And I wait for "4" seconds
+
+  Scenario: Add Qualification
+    And I click on the "Salesforce Qualifications link" element
+    And I click on the "Salesforce Student Account Pages New button" button
+    And I set "LAW" text to the "Qualification Subject" "Salesforce New Qualification input fields"
+    And I click on the "Salesforce First Qualification Subject" link
+    And I capture text data "Salesforce Qualification Subject Capture information" as "EC_QUALIFICATION_SUBJECT" variable
+    And I set "ACC" text to the "Qualification Institution" "Salesforce New Qualification input fields"
+    And I click on the "Salesforce First Qualification Subject" link
+    And I capture text data "Salesforce Qualification Institution Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
+    And I set "ACC" text to the "Qualification Type" "Salesforce New Qualification input fields"
+    And I click on the "Salesforce First Qualification Subject" link
+    And I capture text data "Salesforce Qualification Type Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
+    And I click on the "Status" "Salesforce dropdown field"
+    And I click on the "Actual" "Salesforce dropdown field option"
+    And I set "KW_AUTO_TODAY|DD/MM/YYYY" text to the "Qualification Date" "Salesforce date field"
+    And I set "G[####]" text to the "Grade" "Salesforce text field"
+    And I click on the "Salesforce Account Creation Save button" link
+    Then I should see the " was created." message
+    Then I wait for "5" seconds
 
   Scenario: Submit Application
     #And I click on the "Salesforce More Actions Dropdown" button

@@ -150,105 +150,53 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
   Scenario: Verify that Financial Dimensions for Material or Course can not be changed after at least one item is created
     ######Precondition Create Material Financial Dimensions
     ###First Financial Dimension for Material Block (Pre-requisite)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDMaterialCodeOne[######]" text to the "Code" "Product Factory text field"
-    And I set "FDMaterialDescriptionOne[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Material" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_MATERIAL_CODE_ONE" element
+    When I execute "Create Material Financial Dimension" reusable step replacing some steps
+      |4|I set "MaterialFDCodeOne[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "MaterialFDDescriptionOne[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_MATERIAL_FD_CODE_ONE" element|
+
     ###Second Financial Dimension for Material Block (Pre-requisite)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDMaterialCodeTwo[######]" text to the "Code" "Product Factory text field"
-    And I set "FDMaterialDescriptionTwo[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Material" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_MATERIAL_CODE_TWO" element
+    When I execute "Create Material Financial Dimension" reusable step replacing some steps
+      |4|I set "MaterialFDCodeTwo[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "MaterialFDDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_MATERIAL_FD_CODE_TWO" element|
+
     ###Third Financial Dimension for Material Block (Data Preparation)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDMaterialCodeThree[######]" text to the "Code" "Product Factory text field"
-    And I set "FDMaterialDescriptionThree[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Material" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_MATERIAL_CODE_THREE" element
+    When I execute "Create Material Financial Dimension" reusable step replacing some steps
+      |4|I set "MaterialFDCodeThree[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "MaterialFDDescriptionThree[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_MATERIAL_FD_CODE_THREE" element|
+
     ###Fourth Financial Dimension for Material Block (Data Preparation)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDMaterialCodeFour[#######]" text to the "Code" "Product Factory text field"
-    And I set "FDMaterialDescriptionFour[#######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Material" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_MATERIAL_CODE_FOUR" element
+    When I execute "Create Material Financial Dimension" reusable step replacing some steps
+      |4|I set "MaterialFDCodeFour[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "MaterialFDDescriptionFour[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_MATERIAL_FD_CODE_FOUR" element|
 
     ######Precondition Create Course Financial Dimensions
     ###First Financial Dimension for Material Block (Pre-requisite)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDCourseCodeOne[#######]" text to the "Code" "Product Factory text field"
-    And I set "FDCourseDescriptionOne[#######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Course" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_COURSE_CODE_ONE" element
+    When I execute "Create Course Financial Dimension" reusable step replacing some steps
+      |4|I set "CourseFDCodeOne[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "CourseFDDescriptionOne[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_COURSE_FD_CODE_ONE" element|
+
     ###Second Financial Dimension for Material Block (Pre-requisite)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDCourseCodeTwo[#######]" text to the "Code" "Product Factory text field"
-    And I set "FDCourseDescriptionTwo[#######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Course" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_COURSE_CODE_TWO" element
+    When I execute "Create Course Financial Dimension" reusable step replacing some steps
+      |4|I set "CourseFDCodeTwo[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "CourseFDDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_COURSE_FD_CODE_TWO" element|
+
     ###Third Financial Dimension for Material Block (Data Preparation)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDCourseCodeThree[#######]" text to the "Code" "Product Factory text field"
-    And I set "FDCourseDescriptionThree[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Course" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_COURSE_CODE_THREE" element
+    When I execute "Create Course Financial Dimension" reusable step replacing some steps
+      |4|I set "CourseFDCodeThree[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "CourseFDDescriptionThree[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_COURSE_FD_CODE_THREE" element|
+
     ###Fourth Financial Dimension for Material Block (Data Preparation)
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDCourseCodeFour[######]" text to the "Code" "Product Factory text field"
-    And I set "FDCourseDescriptionFour[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Course" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_COURSE_CODE_FOUR" element
-
-    ###Add Material Financial Dimensions if they were not added before
-    When I click on the "Products" "Product Factory navigation item"
-    And I click on the "Materials" "Product Factory navigation sub item"
-    Then I click on the "Entity Dimension" "Product Factory change button" if "System Setting" "element is present"
-    Then I click on the "EC_FD_MATERIAL_CODE_ONE" "Product Factory change modal option" if "System Setting" "element is present"
-    Then I click on the "Revenue Dimension" "Product Factory change button" if "System Setting" "element is present"
-    Then I click on the "EC_FD_MATERIAL_CODE_TWO" "Product Factory change modal option" if "System Setting" "element is present"
-    Then I click on the "Save" "Product Factory button" if "System Setting" "element is present"
-
-    ###Add Course Financial Dimensions if they were not added before
-    When I click on the "Products" "Product Factory navigation item"
-    And I click on the "Courses" "Product Factory navigation sub item"
-    Then I click on the "Entity Dimension" "Product Factory change button" if "System Setting" "element is present"
-    Then I click on the "EC_FD_COURSE_CODE_ONE" "Product Factory change modal option" if "System Setting" "element is present"
-    Then I click on the "Revenue Dimension" "Product Factory change button" if "System Setting" "element is present"
-    Then I click on the "EC_FD_COURSE_CODE_TWO" "Product Factory change modal option" if "System Setting" "element is present"
-    Then I click on the "Save" "Product Factory button" if "System Setting" "element is present"
+    When I execute "Create Course Financial Dimension" reusable step replacing some steps
+      |4|I set "CourseFDCodeFour[######]" text to the "Code" "Product Factory text field"|
+      |5|I set "CourseFDDescriptionFour[######]" text to the "Description" "Product Factory text field"|
+      |9|I should see the "EC_COURSE_FD_CODE_FOUR" element|
 
     ###Reusable steps for Creating Course
     And I execute "Create Body Financial Dimension" reusable step
@@ -275,45 +223,28 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I execute "Create Pricing Matrix Full" reusable step
 
     ###Create Course
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I click on the "Create" "Product Factory button"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory select button"
-    And I click on the "EC_LEVEL_NAME" "Product Factory select button"
-    And I click on the "EC_SITTING_NAME" "Product Factory select button"
-    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
-    And I click on the "EC_REGION_NAME" "Product Factory select button"
-    And I click on the "Product Factory Number Of Sessions Edit Button" button
-    And I fill the "Product Factory Number Of Sessions Edit Field" field with "2"
-    And I click on the "Save" "Product Factory button"
-    And I click on the "Finish" "Product Factory button"
-    Then I click on the "Create" "Product Factory button"
-    And I click on the "Default Session Duration" "Product Factory dropdown"
-    And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
-    And I click on the "Default Location" "Product Factory dropdown"
-    And I click on the "EC_LOCATION_NAME" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
+    And I execute "Create Course Instance" reusable step
 
    ###Edit Course after item creation
     When I click on the "Products" "Product Factory navigation item"
     And I click on the "Materials" "Product Factory navigation sub item"
     And I click on the "Financials" "Product Factory button"
     And I click on the "Entity Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_THREE" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_THREE" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "Materials have already been created, so you cannot change the Material Financial Dimensions" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I click on the "Cancel" "Product Factory button"
     And I click on the "Financials" "Product Factory button"
     And I click on the "Revenue Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_FOUR" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_FOUR" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "Materials have already been created, so you cannot change the Material Financial Dimensions" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I click on the "Cancel" "Product Factory button"
     And I click on the "Financials" "Product Factory button"
     And I click on the "Entity Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_THREE" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_THREE" "Product Factory change modal option"
     And I click on the "Revenue Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_FOUR" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_FOUR" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "Materials have already been created, so you cannot change the Material Financial Dimensions" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I click on the "Cancel" "Product Factory button"
@@ -323,21 +254,21 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I click on the "Materials" "Product Factory navigation sub item"
     And I click on the "Financials" "Product Factory button"
     And I click on the "Entity Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_THREE" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_THREE" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "Materials have already been created, so you cannot change the Material Financial Dimensions" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I click on the "Cancel" "Product Factory button"
     And I click on the "Financials" "Product Factory button"
     And I click on the "Revenue Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_FOUR" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_FOUR" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "Materials have already been created, so you cannot change the Material Financial Dimensions" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I click on the "Cancel" "Product Factory button"
     And I click on the "Financials" "Product Factory button"
     And I click on the "Entity Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_THREE" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_THREE" "Product Factory change modal option"
     And I click on the "Revenue Dimension" "Product Factory change button"
-    And I click on the "EC_FD_MATERIAL_CODE_FOUR" "Product Factory change modal option"
+    And I click on the "EC_MATERIAL_FD_CODE_FOUR" "Product Factory change modal option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "Materials have already been created, so you cannot change the Material Financial Dimensions" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     And I click on the "Cancel" "Product Factory button"

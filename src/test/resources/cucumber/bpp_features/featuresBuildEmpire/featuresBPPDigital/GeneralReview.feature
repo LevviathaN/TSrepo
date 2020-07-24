@@ -1,4 +1,4 @@
-@DigitalSite @GeneralReview
+@Hub @GeneralReview
 Feature: BPP Digital General Review
 
   Background:
@@ -51,12 +51,12 @@ Feature: BPP Digital General Review
     #View all
     When I click on the "BPP Digital Breadcrumb Level One" link
     And I click on the "View all" "BPP Digital Explore Our Subjects item link"
-    Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Page Header" element
+    Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Left Side Page Header" element
     #Qualifications at every level:
-    When I click on the "BPP Digital Breadcrumb Level One" link
-    And I click on the "Apprenticeships" "BPP Digital Qualifications at Every Level item link"
-    Then I validate text "Apprenticeships" to be displayed for "BPP Digital Breadcrumb Level Two" element
-    And I wait for "3" seconds
+#    When I click on the "BPP Digital Breadcrumb Level One" link
+#    And I click on the "Apprenticeships" "BPP Digital Qualifications at Every Level item link"
+#    Then I validate text "Apprenticeships" to be displayed for "BPP Digital Breadcrumb Level Two" element
+#    And I wait for "3" seconds
     When I click on the "BPP Digital Breadcrumb Level One" link
     And I click on the "Professional Qualifications" "BPP Digital Qualifications at Every Level item link"
     Then I validate text "Professional Qualifications" to be displayed for "BPP Digital Breadcrumb Level Three" element
@@ -92,11 +92,11 @@ Feature: BPP Digital General Review
     Then I validate text "CONTAINS=Law" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Accountancy
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
-    And I click on the "Accountancy" "BPP Digital Student Applications Menu link"
-    Then I validate text "CONTAINS=Accountancy" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "2" seconds
+#    When I click on the "Study" "BPP Digital Study expandable link"
+#    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+#    And I click on the "Accountancy" "BPP Digital Student Applications Menu link"
+#    Then I validate text "CONTAINS=Accountancy" to be displayed for "BPP Digital Breadcrumb Level Three" element
+#    Then I wait for "2" seconds
     #Management
     When I click on the "Study" "BPP Digital Study expandable link"
     And I click on the "Courses" "BPP Digital Courses Menu Item links"
@@ -176,15 +176,15 @@ Feature: BPP Digital General Review
     Then I validate text "CONTAINS=Business" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "2" seconds
     #Industries
-    When I click on the "Business" "BPP Digital Study expandable link"
-    And I click on the "Industries" "BPP Digital Student Applications Menu link"
-    Then I validate text "CONTAINS=Industries" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "2" seconds
+#    When I click on the "Business" "BPP Digital Study expandable link"
+#    And I click on the "Industries" "BPP Digital Student Applications Menu link"
+#    Then I validate text "CONTAINS=Industries" to be displayed for "BPP Digital Breadcrumb Level Three" element
+#    Then I wait for "2" seconds
     #Our Services
-    When I click on the "Business" "BPP Digital Study expandable link"
-    And I click on the "Our Services" "BPP Digital Student Applications Menu link"
-    Then I validate text "CONTAINS=Our services" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "2" seconds
+#    When I click on the "Business" "BPP Digital Study expandable link"
+#    And I click on the "Our Services" "BPP Digital Student Applications Menu link"
+#    Then I validate text "CONTAINS=Our services" to be displayed for "BPP Digital Breadcrumb Level Three" element
+#    Then I wait for "2" seconds
     #About Us
     #About Us
     When I click on the "About Us" "BPP Digital Study expandable link"

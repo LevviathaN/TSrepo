@@ -8,6 +8,7 @@
   "exact element": "xpath=//*[normalize-space()=\"PARAMETER\"]",
   "text contained in element": "xpath=//*[contains(text(),'PARAMETER')]",
   "text contained in A element": "xpath=//a[contains(text(),'PARAMETER')]",
+  "text contained in P element": "xpath=//p[contains(text(),'PARAMETER')]",
   "text contained in SPAN element": "xpath=//span[contains(text(),'PARAMETER')]",
   "inframe element": "inframe=Salesforce Frame>xpath=//*[text()='PARAMETER']",
   "link address": "xpath=//a[contains(@href,'PARAMETER')]",
@@ -15,9 +16,11 @@
   "Product Factory navigation item": "xpath=//div[@title='PARAMETER']",
   "Product Factory navigation sub item": "xpath=//p[text()='PARAMETER']",
   "Product Factory button": "xpath=//span[text()='PARAMETER']/..",
+  "Product Factory button two": "xpath=(//span[text()='PARAMETER']/..)[2]",
   "Product Factory active button": "xpath=//span[text()='PARAMETER']/parent::button[@tabindex='0']",
   "Product Factory field value": "xpath=//span[text()='PARAMETER']/following-sibling::p",
-  "Product Factory text field": "xpath=//label[text()='PARAMETER']/following-sibling::div/input|//label[text()='PARAMETER']/following-sibling::textarea",
+  "Product Factory text field": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea",
+  "Product Factory text field two": "xpath=(//label[text()='PARAMETER']/following-sibling::div//input)[2]|(//label[text()='PARAMETER']/following-sibling::textarea)[2]|(//label[text()='PARAMETER']/following-sibling::div/textarea)[2]",
   "Product Factory change button": "xpath=//*[text()='PARAMETER']/following-sibling::button",
   "Product Factory change modal option": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[text()='Select']",
   "Product Factory select button": "xpath=//td[text()='PARAMETER']/following-sibling::td/button",
@@ -44,6 +47,8 @@
   "Product Factory Session Two Dates Popup Date Input Field": "xpath=(//tr[PARAMETER]/td[1]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup Start Time Input Field": "xpath=(//tr[PARAMETER]/td[2]/div/div/input)[2]",
   "Product Factory Session Two Dates Popup End Time Input Field": "xpath=(//tr[PARAMETER]/td[3]/div/div/input)[2]",
+  "Product Factory CBA Course Institute Fee edit button": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Edit']",
+  "Product Factory CBA Course Institute Fee input field": "xpath=//td[text()='PARAMETER']/following-sibling::td//input",
 
   "Build Empire text field": "xpath=//input[@placeholder='PARAMETER']",
   "Build Empire application type": "xpath=//li[text()='PARAMETER']",
@@ -117,8 +122,8 @@
   "BPP Digital RFI Input Field": "xpath=//label[contains(text(), 'PARAMETER')]/..//input",
   "BPP Digital Admin Users Sub Menu Item links": "xpath=//a[normalize-space()='Users']/following-sibling::div/a[normalize-space()='PARAMETER']",
   "BPP Digital Admin Logs Sub Menu Item links": "xpath=//a[normalize-space()='Logs']/following-sibling::div/a[normalize-space()='PARAMETER']",
-
-  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
+  "BPP Digital Search Courses label" : "xpath=//label[normalize-space()='PARAMETER']",
+  "BPP Digital Footer Course" : "xpath=//ul[@class='children-links']/li[normalize-space()='PARAMETER']/div/a",
 
   "Salesforce navigation menu dropdown": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*",
   "Salesforce navigation menu dropdown option": "xpath=//span[text()='PARAMETER']/../..",
@@ -139,12 +144,18 @@
   "Salesforce readonly field": "xpath=//span[text()='PARAMETER']/../following-sibling::div/span/slot/slot/*",
   "Salesforce cases search student": "xpath=//div[@title='PARAMETER']",
   "Salesforce cases status option": "xpath=//span[@title='PARAMETER']",
+  "Salesforce New Qualification input fields": "xpath=(//span[text()='PARAMETER']/following::input)[1]",
+  "Salesforce Related Buttons link": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[@title='PARAMETER']/following::div//a[normalize-space()='New'])[1]",
+  "Salesforce drop down option with same Name and Title": "xpath=//a[normalize-space()='PARAMETER' and @title='PARAMETER']",
 
+  "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
   "Totara text field": "xpath=//label[normalize-space()='PARAMETER']/../following-sibling::div/input",
   "Totara button": "xpath=//input[@value='PARAMETER']",
   "Totara side menu option": "xpath=//span[text='PARAMETER']",
   "Totara Assessment select": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../following-sibling::td/select",
   "Totara Assessment radiobutton": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../preceding-sibling::td/input",
   "Totara Moodle Quiz radiobutton": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='radio']",
-  "Totara Moodle Quiz checkbox": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']"
+  "Totara Moodle Quiz checkbox": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']",
+
+  "VLE Login Fields": "xpath=//input[@name='PARAMETER']"
 }

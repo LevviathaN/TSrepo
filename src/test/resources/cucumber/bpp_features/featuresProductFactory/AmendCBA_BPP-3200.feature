@@ -23,8 +23,9 @@ Feature: CBA - Edit - BPP-3200
     And I execute "Create Course Type Financial Dimension" reusable step
     And I execute "Create Course Type" reusable step
     And I execute "Create Course Type" reusable step replacing some steps
-      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
-      |12|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                     |
+      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
+      |13|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field" |
+      |15|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                     |
     And I execute "Create Location Financial Dimension" reusable step
     And I execute "Create Region Financial Dimension" reusable step
     And I execute "Create Region" reusable step
@@ -47,7 +48,7 @@ Feature: CBA - Edit - BPP-3200
     And I execute "Create Pricing Matrix" reusable step
     And I execute "Create Pricing Matrix Full" reusable step
 
-  @Positive @Regression @P1 #TC-2717
+  @Positive @Regression @P1 #TC-2717, TC-2721, TC-2864
   Scenario: Update Draft CBA Record
     When I click on the "exit_to_app" button
     And I execute "Log In" reusable step replacing some steps
@@ -68,6 +69,8 @@ Feature: CBA - Edit - BPP-3200
     And I click on the "Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME_TWO" "element"
     And I click on the "Course Type" "Product Factory edit button"
+    And I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory select button"
     And I click on the "Start Time" "Product Factory edit button"
     And I set "55:00" text to the "Start Time" "Product Factory text field"
@@ -75,3 +78,27 @@ Feature: CBA - Edit - BPP-3200
     And I click on the "Save" "Product Factory button"
     Then I click on the "CBAs" "Product Factory button title"
     And I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory edit button"
+
+  @Positive @Regression @P1 #TC-2865
+  Scenario: Update Draft CBA Record With Course
+    When I click on the "exit_to_app" button
+    And I execute "Log In" reusable step replacing some steps
+      |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|
+      |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
+    And I execute "Create CBA Record" reusable step
+    When I click on the "Create" "Product Factory button"
+    Then I "check" "EC_BODY_SHORT_NAME" "Product Factory checkbox"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
+    And I wait for "3" seconds
+    And I shouldn't see the "Sitting" "Product Factory edit button"
+    And I shouldn't see the "Session Duration" "Product Factory edit button"
+    And I shouldn't see the "Location" "Product Factory edit button"
+    And I shouldn't see the "Course Type" "Product Factory edit button"
+    And I click on the "Start Time" "Product Factory edit button"
+    And I set "55:00" text to the "Start Time" "Product Factory text field"
+    And I shouldn't see the "05:50" "element"
+    And I click on the "Save" "Product Factory button"
+    Then I click on the "CBAs" "Product Factory button title"
+    And I should see the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"

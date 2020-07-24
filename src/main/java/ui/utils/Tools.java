@@ -16,10 +16,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,10 +28,8 @@ import java.util.List;
 
 public class Tools {
 
-
-    public static String getCurDateTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        return sdf.format(new Date(System.currentTimeMillis()));
+    public static long getCurDateTimeInMilliseconds() {
+        return System.currentTimeMillis();
     }
 
     public static String getReportName() {
