@@ -20,10 +20,10 @@ public class GherkinValidator {
     RestApiController apiController = new RestApiController();
 
     public GherkinValidator() {
-        BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
-        BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
-        BasePage.stepPatternsMap = apiController.processLocatorProperties("//src/main/resources/StepPatterns.json");
-        BasePage.stepSignaturesMap = apiController.processLocatorProperties("//src/main/resources/StepSignatures.json");
+        BasePage.locatorsMap = BasePage.getLocatorsMap("src/main/resources/NewLocators.json");
+        BasePage.specialLocatorsMap = BasePage.getLocatorsMap("src/main/resources/NewSpecialLocators.json");
+        BasePage.stepPatternsMap = BasePage.getLocatorsMap("src/main/resources/NewStepPatterns.json");
+        BasePage.stepSignaturesMap = BasePage.getLocatorsMap("src/main/resources/NewStepSignatures.json");
         BasePage.reusablesList = getReusableScenariosList();
     }
 

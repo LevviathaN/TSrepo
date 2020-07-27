@@ -1,4 +1,4 @@
-package CodeEditor;
+package ui.utils;
 
 /** Class to reperesent Locator object in table view
  * @author ruslanlevytskyi

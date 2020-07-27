@@ -15,6 +15,7 @@ import ui.utils.bpp.TestParametersController;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -76,6 +77,20 @@ public class BasePage {
     //Getter, that ensures only one driver instance exists in project
     public static WebDriver driver() {
         return driver.get();
+    }
+
+    public static Map<String,String> getLocatorsMap(String locatorsFile) {
+        Map<String,String> locatorsMap = new HashMap<>();
+        try {
+            List<Locator> locators = JSONReader.toObjectListFromFile(Locator[].class,
+                    new File(locatorsFile));
+            for (Locator locator : locators) {
+                locatorsMap.put(locator.getName(),locator.getValue());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return locatorsMap;
     }
 
     //_______________________________________________Basic Assertions_______________________________________________

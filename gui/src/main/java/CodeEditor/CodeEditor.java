@@ -19,8 +19,11 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+
+import static java.nio.file.StandardOpenOption.CREATE;
 
 public class CodeEditor extends StackPane implements Initializable {
 
@@ -42,6 +45,7 @@ public class CodeEditor extends StackPane implements Initializable {
     public WebView webview;
     public Label labeledCode;
     public Button copyCode;
+    public Button saveChangesButton;
     public Button createFeature;
     public ComboBox<String> locatorComboBox;
     public ComboBox<String> stepdefComboBox;
@@ -186,8 +190,10 @@ public class CodeEditor extends StackPane implements Initializable {
         if (!fileTreeView.getSelectionModel().isEmpty()) {
             if (fileTreeView.getSelectionModel().getSelectedItem().getValue().endsWith(".feature")) {
                 loadFeatureButton.setDisable(false);
+                saveChangesButton.setDisable(false);
             } else {
                 loadFeatureButton.setDisable(true);
+                saveChangesButton.setDisable(true);
             }
         }
    }
@@ -201,6 +207,20 @@ public class CodeEditor extends StackPane implements Initializable {
            e.printStackTrace();
        }
        setCode();
+   }
+
+   public void saveChanges() {
+       byte[] data = CodeEditor.editingCode.getBytes();
+       Path p = Paths.get(featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue()));
+       
+       try {
+           OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE));
+           out.write(data, 0, data.length);
+           out.close();
+//           messageLabel.setText("File saved!");
+       } catch (IOException x) {
+           System.err.println(x);
+       }
    }
 
    //___________________________menu items listeners____________________________
@@ -238,16 +258,15 @@ public class CodeEditor extends StackPane implements Initializable {
     private void snapshot() {
         editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
     }
+
     /** Read file to string */
-    private String readFile(String path, Charset encoding) throws IOException
-    {
+    private String readFile(String path, Charset encoding) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
     }
 
     /** Write string to file */
-    private void writeFile(String fileName, String content)
-            throws IOException {
+    private void writeFile(String fileName, String content) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
         writer.write(content);
 

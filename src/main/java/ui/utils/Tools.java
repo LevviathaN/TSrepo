@@ -66,9 +66,10 @@ public class Tools {
         path.append(System.getProperty("user.dir"));
         path.append(locatorsFile);
 
-        try (FileReader reader = new FileReader(path.toString())) {
-
+        try {
+            FileReader reader = new FileReader(path.toString());
             Object obj = parser.parse(reader);
+            reader.close();
 
             return (JSONObject) obj;
         } catch (ParseException | IOException ex) {
@@ -104,6 +105,7 @@ public class Tools {
         try {
             printDocument(doc, stream);
             htmlString = new String(stream.toByteArray());
+            stream.close();
             return htmlString;
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,8 +138,10 @@ public class Tools {
             Files.deleteIfExists(p);
         }catch(IOException e){e.printStackTrace();}
 
-        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE))) {
+        try {
+            OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE));
             out.write(data, 0, data.length);
+            out.close();
         } catch (IOException x) {
             System.err.println(x);
         }

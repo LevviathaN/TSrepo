@@ -42,8 +42,10 @@ public class FeatureCRUD {
         byte[] data = CodeEditor.editingCode.getBytes();
         Path p = Paths.get("src/test/resources/cucumber/bpp_features/featuresFromGUI/" + featureNameField.getText() + ".feature");
 
-        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE))) {
+        try {
+            OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE));
             out.write(data, 0, data.length);
+            out.close();
             messageLabel.setText("File saved!");
         } catch (IOException x) {
             System.err.println(x);
