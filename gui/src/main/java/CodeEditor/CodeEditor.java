@@ -31,8 +31,8 @@ public class CodeEditor extends StackPane implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
         try {
-            editingTemplate = readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
-            editingCode = readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
+            editingTemplate = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
+            editingCode = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,6 +41,7 @@ public class CodeEditor extends StackPane implements Initializable {
     private final GherkinValidator validator = new GherkinValidator();
     private final FeatureCRUD crud = new FeatureCRUD();
     private final LocatorsManager locatorsManager = new LocatorsManager();
+    private final ReusableScenariosManager reusablesManager = new ReusableScenariosManager();
 
     public WebView webview;
     public Label labeledCode;
@@ -171,6 +172,7 @@ public class CodeEditor extends StackPane implements Initializable {
     }
 
     public void debugButtonListener() {
+        getEditingCursorPosition();
         System.out.println("Debug");
    }
 
@@ -202,7 +204,7 @@ public class CodeEditor extends StackPane implements Initializable {
    public void loadFeature() {
         String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
        try {
-           editingCode = readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
+           editingCode = Tools.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -233,6 +235,14 @@ public class CodeEditor extends StackPane implements Initializable {
         }
     }
 
+    public void openReusablesManager() {
+        try {
+            reusablesManager.display();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 //    _____________________________additional functions________________________________
 
     /** applies the editing template to the editing code to create the html+javascript source for a code editor.
@@ -257,20 +267,6 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     private void snapshot() {
         editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
-    }
-
-    /** Read file to string */
-    private String readFile(String path, Charset encoding) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
-    }
-
-    /** Write string to file */
-    private void writeFile(String fileName, String content) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-        writer.write(content);
-
-        writer.close();
     }
 
     /** Method to compare 2 strings and get first distinct character
@@ -539,5 +535,15 @@ public class CodeEditor extends StackPane implements Initializable {
             }
         }
         return nameTree;
+    }
+
+
+    //______________________New editor Functions___________________
+
+    private int[] getEditingCursorPosition() {
+        int[] pos = new int[2];
+        pos[0] = (Integer ) webview.getEngine().executeScript("editor.getCursor().line;");
+        pos[1] = (Integer ) webview.getEngine().executeScript("editor.getCursor().ch;");
+        return pos;
     }
 }

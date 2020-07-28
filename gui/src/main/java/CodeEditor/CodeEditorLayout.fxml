@@ -90,7 +90,7 @@
             <Menu mnemonicParsing="false" text="Tools">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#openLocatorsManager" text="Locators Manager..." />
-                  <MenuItem mnemonicParsing="false" text="Reusable Scenarios Manager..." />
+                  <MenuItem mnemonicParsing="false" onAction="#openReusablesManager" text="Reusable Scenarios Manager..." />
               </items>
             </Menu>
         </menus>

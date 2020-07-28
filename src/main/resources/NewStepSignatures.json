@@ -36,6 +36,10 @@
     "value": "PARAM,PARAM"
   },
   {
+    "name": "^I capture current URL as \"([^\"]*)\" variable$",
+    "value": "PARAM"
+  },
+  {
     "name": "^I click on the \"([^\"]*)\" \"([^\"]*)\" if \"([^\"]*)\" \"([^\"]*)\"$",
     "value": "LOC_PARAM,LOC_TEMPLATE,CON_PARAM,CONDITION"
   },

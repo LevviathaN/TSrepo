@@ -5,9 +5,10 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CodeEditor.FeatureCRUD">
    <children>
+      <Label text="Path to store feature:" />
+      <TextField fx:id="featurePath" text="src/test/resources/cucumber/bpp_features/featuresFromGUI/" />
       <Label text="Enter feature name:" />
       <TextField fx:id="featureNameField" />
-      <Label text="closeWindow() function is temporary disabled. Please click on X to close the window" />
       <HBox>
          <children>
             <Button fx:id="createFeatureButton" defaultButton="true" mnemonicParsing="false" onAction="#createFeatureFile" text="Save" />

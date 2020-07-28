@@ -19,6 +19,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 public class FeatureCRUD {
 
     public static Stage createFeatureWindow;
+    public TextField featurePath;
     public TextField featureNameField;
     public Label messageLabel;
 
@@ -31,7 +32,7 @@ public class FeatureCRUD {
         createFeatureWindow.setTitle("Save feature file");
         createFeatureWindow.setMinWidth(250);
 
-        Scene scene = new Scene(root, 300, 120);
+        Scene scene = new Scene(root, 320, 150);
         createFeatureWindow.setScene(scene);
         createFeatureWindow.showAndWait();
 
@@ -40,7 +41,8 @@ public class FeatureCRUD {
     /** Method to create feature file using the name fom text field*/
     public void createFeatureFile() {
         byte[] data = CodeEditor.editingCode.getBytes();
-        Path p = Paths.get("src/test/resources/cucumber/bpp_features/featuresFromGUI/" + featureNameField.getText() + ".feature");
+
+        Path p = Paths.get(featurePath.getText() + featureNameField.getText() + ".feature");
 
         try {
             OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE));
