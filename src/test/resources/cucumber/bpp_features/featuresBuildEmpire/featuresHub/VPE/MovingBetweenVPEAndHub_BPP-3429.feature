@@ -1,4 +1,4 @@
-@Hub @VPE
+@Hub @VPE @Mobile
 Feature: The Hub - Law School - Moving between Hub and VPE
   As a user, I expect to be able to access my VPE from the Hub dashboard, as this will be a way for me to access content within my VPE
 

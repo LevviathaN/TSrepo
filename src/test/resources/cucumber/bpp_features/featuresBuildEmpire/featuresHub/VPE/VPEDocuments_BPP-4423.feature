@@ -1,4 +1,4 @@
-@Hub @VPE
+@Hub @VPE @Mobile
 Feature: The Hub - Law School - Documents (Files/Labels activity type)
   Webpages within a Topic should appear as clickable webpages within Topic within VPE
 

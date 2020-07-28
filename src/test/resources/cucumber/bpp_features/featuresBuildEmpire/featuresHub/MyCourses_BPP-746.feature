@@ -1,4 +1,4 @@
-@Hub
+@Hub @Mobile
 Feature: BPP University Hub My Courses
   As a learner
   I'd like to be able to see a summary of my most recently accessed Courses and my progression for each within the dashboard

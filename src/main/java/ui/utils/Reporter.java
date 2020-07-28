@@ -14,9 +14,7 @@ import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-import ui.pages.BasePage;
 import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.PropertiesHelper;
 
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -432,10 +430,10 @@ public class Reporter {
             if (System.getProperties().containsKey("driver") && System.getProperties().getProperty("driver").contains("CHROME")) {
                 BPPLogManager.getLogger().info("Taking Screen Shot For Chrome ");
                 screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100))
-                        .takeScreenshot(BasePage.driver.get());
+                        .takeScreenshot(SeleniumHelper.driver.get());
             } else {
                 screenshot = new AShot()
-                        .takeScreenshot(BasePage.driver.get());
+                        .takeScreenshot(SeleniumHelper.driver.get());
             }
 
             ImageIO.write(screenshot.getImage(), "PNG", new File(screenshotPath.toString()));

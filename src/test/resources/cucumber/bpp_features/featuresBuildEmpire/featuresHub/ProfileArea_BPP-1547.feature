@@ -1,4 +1,4 @@
-@Hub
+@Hub @Mobile
 Feature: BPP University Hub Profile Area
   As a user
   I expect to see an updated link to access my profile

@@ -1,6 +1,5 @@
 package ui.utils;
 
-import ui.pages.BasePage;
 import ui.utils.bpp.TestParametersController;
 
 /**
@@ -8,7 +7,7 @@ import ui.utils.bpp.TestParametersController;
  * <p> Allows to create and check different condisions. Currently is used only in StepDefinitions </p>
  *
  */
-public class Conditions extends BasePage {
+public class Conditions extends SeleniumHelper {
 
     /**
      * Method to check, if given condition is true.

@@ -3,7 +3,6 @@ package ui.utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ui.pages.BasePage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,19 +15,19 @@ import java.util.Map;
 public enum UiHandlers {
 
     PF_SPINNER_HANDLER((element, e) -> {
-        BasePage.isHandled.put("pfSpinnerHandler", false);
-        WebDriverWait wait = new WebDriverWait(BasePage.driver(), BasePage.DEFAULT_TIMEOUT,300);
+        SeleniumHelper.isHandled.put("pfSpinnerHandler", false);
+        WebDriverWait wait = new WebDriverWait(SeleniumHelper.driver(), SeleniumHelper.DEFAULT_TIMEOUT,300);
         if (e.getMessage().contains("opacity: 1; transition: opacity 225ms cubic-bezier")){
             Reporter.log("Handling PF Spinner");
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));
-            BasePage.clickWithJS(element);
-            BasePage.isHandled.put("pfSpinnerHandler", true);
-            BasePage.repeatAction = false;
+            SeleniumHelper.clickWithJS(element);
+            SeleniumHelper.isHandled.put("pfSpinnerHandler", true);
+            SeleniumHelper.repeatAction = false;
         }
     }),
 
     WAIT_HANDLER((element, e) -> {
-        BasePage.isHandled.put("waitHandler", false);
+        SeleniumHelper.isHandled.put("waitHandler", false);
         if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")||
                 e.getMessage().contains("panel slds-modal transitioning movetocenter")||
                 e.getMessage().contains("panel slds-modal slds-fade-in-open transitioning movefromcenter")||
@@ -38,62 +37,62 @@ public enum UiHandlers {
                 e.getMessage().contains("jss243")||e.getMessage().contains("bodyWrapper")||
                 e.getMessage().contains("loading-wrapper")){
             Reporter.log("Handling overlay by Wait");
-            BasePage.sleepFor(9000);
-            BasePage.isHandled.put("waitHandler", true);
+            SeleniumHelper.sleepFor(9000);
+            SeleniumHelper.isHandled.put("waitHandler", true);
         }
     }),
 
     PF_SCROLL_HANDLER((element, e) -> {
-        BasePage.isHandled.put("pfScrollHandler", false);
+        SeleniumHelper.isHandled.put("pfScrollHandler", false);
         if(e.getMessage().contains("jss1bndbcl")||
                 e.getMessage().contains("jss1wye7u4")){
             Reporter.log("Handling click overlay by scrolling 300 pixels down");
-            BasePage.scrollBy(0,300);
-            BasePage.isHandled.put("pfScrollHandler", true);
+            SeleniumHelper.scrollBy(0,300);
+            SeleniumHelper.isHandled.put("pfScrollHandler", true);
         }
     }),
 
     PF_SCROLL_TO_ELEMENT_HANDLER((element, e) -> {
-        BasePage page = new BasePage();
-        BasePage.isHandled.put("pfScrollToElementHandler", false);
+        SeleniumHelper page = new SeleniumHelper();
+        SeleniumHelper.isHandled.put("pfScrollToElementHandler", false);
         if(e.getMessage().contains("Other element would receive the click: <button")){
             Reporter.log("Handling click overlay by scrolling to element");
-            BasePage.scrollToElement(page.findElement(element));
-            BasePage.isHandled.put("pfScrollToElementHandler", true);
+            SeleniumHelper.scrollToElement(page.findElement(element));
+            SeleniumHelper.isHandled.put("pfScrollToElementHandler", true);
         }
     }),
 
     SF_CLICK_HANDLER((element, e) -> {
-        BasePage.isHandled.put("sfClickHandler", false);
+        SeleniumHelper.isHandled.put("sfClickHandler", false);
         if(e.getMessage().contains("javascript error: Cannot read property 'defaultView' of undefined") ||
                 e.getMessage().contains("Other element would receive the click: <one-record-home-flexipage2")){
             Reporter.log("Handling SF Click with JS");
-            BasePage.clickWithJS(element);
-            BasePage.repeatAction = false;
-            BasePage.isHandled.put("sfClickHandler", true);
+            SeleniumHelper.clickWithJS(element);
+            SeleniumHelper.repeatAction = false;
+            SeleniumHelper.isHandled.put("sfClickHandler", true);
         }
     }),
 
     PAGE_NOT_LOAD_HANDLER((element, e) -> {
 
-        BasePage page = new BasePage();
+        SeleniumHelper page = new SeleniumHelper();
         StackTraceElement[] stackTraceElementArray = e.getStackTrace();
         StackTraceElement s = stackTraceElementArray[2];
         Boolean bool = s.getMethodName().contains("waitForPageToLoad")
                 && e.getCause()==null;
 
-        BasePage.isHandled.put("pageNotLoadHandler", false);
+        SeleniumHelper.isHandled.put("pageNotLoadHandler", false);
         if(bool){
             Reporter.log("Handling Page not load");
             page.executeJSCode("window.stop()");
-            BasePage.repeatAction = false;
-            BasePage.isHandled.put("pageNotLoadHandler", true);
+            SeleniumHelper.repeatAction = false;
+            SeleniumHelper.isHandled.put("pageNotLoadHandler", true);
         }
     }),
 
     ACCEPT_ALERT((element, e) -> {
-        BasePage page = new BasePage();
-        BasePage.isHandled.put("acceptAlert", false);
+        SeleniumHelper page = new SeleniumHelper();
+        SeleniumHelper.isHandled.put("acceptAlert", false);
         if(e.getCause()!=null){
             if (e.getCause().toString().contains("Are you sure want to review this application?")
                     ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
@@ -106,19 +105,19 @@ public enum UiHandlers {
                 BPPLogManager.getLogger().info("Handling an expected JS Alert" );
                 Reporter.log("Handling an expected JS Alert");
                 page.acceptAlertMessage();
-                BasePage.repeatAction = false;
-                BasePage.isHandled.put("acceptAlert", true);
+                SeleniumHelper.repeatAction = false;
+                SeleniumHelper.isHandled.put("acceptAlert", true);
             }
         }
     }),
 
     DEFAULT_HANDLER((element, e) -> {
         boolean handled = false;
-        for (Boolean value : BasePage.isHandled.values()) {
+        for (Boolean value : SeleniumHelper.isHandled.values()) {
             if (value) handled = true;
         }
         if (!handled){
-            BasePage.repeatAction = false;
+            SeleniumHelper.repeatAction = false;
             Reporter.log("Default Handler: FAIL");
             Reporter.fail(Tools.getStackTrace(e));
             throw new RuntimeException("Failure clicking on element");

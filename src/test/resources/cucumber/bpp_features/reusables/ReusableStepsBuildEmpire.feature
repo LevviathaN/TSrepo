@@ -19,7 +19,7 @@ Feature: BuildEmpire
     And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
-    And I should see the "Direct App My Applications Left Menu Link" element
+    And I should see the "Timeline and Dashboard" "element"
 
   Scenario: Log In to Hub as Admin
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREADMINURL" URL
