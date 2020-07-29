@@ -359,6 +359,7 @@
   "Direct App Student Left Hand Nav Second Item": "xpath=//ul[@class='aside-navigation ']/li[3]/a",
   "Direct App My Learning No Course Placeholder": "css=div.intro-empty>p",
   "Direct App My Learning First Course Tutor Name": "xpath=//div[@class='course-tutor']",
+  "Direct App Mobile Hamburger Menu": "xpath=//button[@class='btn-toggle-menu']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
