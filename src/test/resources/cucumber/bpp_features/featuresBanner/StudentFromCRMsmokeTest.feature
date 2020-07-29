@@ -2,7 +2,7 @@
 Feature: Student from CRM Smoke Test
   Description
 
-  @Positive #TC-547
+  @Positive @BET #TC-547
   Scenario: Student from CRM to Banner Qualification
     #Create Student
     When I execute "Log In To Salesforce" reusable step
@@ -33,5 +33,12 @@ Feature: Student from CRM Smoke Test
     Then Attribute "title" of "Banner SOATEST Test Score Source full name" should have value "EC_QUALIFICATION_INSTITUTION"
     Then I validate text "EC_G" to be displayed for "Banner SOATEST Test Score score number" element
     Then I remember "KW_AUTO_TODAY|MM/DD/YYYY" text as "EC_TODAY" variable
-    Then I validate text "EC_TODAY" to be displayed for "Banner SOATEST TEst Score date" element
+    Then I validate text "EC_TODAY" to be displayed for "Banner SOATEST Test Score date" element
+    Then Attribute "title" of "Banner SOATEST Test Score Admission Request" should have value "Qual used for ADM Offer"
+#    Then Attribute "aria-checked" of "Banner SOATEST Equivalency Indicator checkbox" should have value "true"
+    #Second page for SOATEST form
+    Then I click on the "Banner SOATEST Test Scores second tab" element
+    Then Attribute "title" of "Banner SOATEST Status filed value" should have value "EC_STATUS"
+    Then I click on the "Banner SOATEST Test Scores third tab" element
+    Then Attribute "title" of "Banner SOATEST SAT Essay ID filed value" should have value "EC_TARIFF_POINT"
 

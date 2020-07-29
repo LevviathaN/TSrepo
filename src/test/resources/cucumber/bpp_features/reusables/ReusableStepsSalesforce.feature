@@ -105,10 +105,17 @@ Feature: Salesforce
     And I set "ACC" text to the "Qualification Type" "Salesforce New Qualification input fields"
     And I click on the "Salesforce First Qualification Subject" link
     And I capture text data "Salesforce Qualification Type Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
+    And I remember "KW_AUTO_RANDOMNUMBER|####" text as "EC_TARIFF_POINT" variable
+    And I set "EC_TARIFF_POINT" text to the "Tariff Points" "Salesforce New Qualification input fields"
     And I click on the "Status" "Salesforce dropdown field"
     And I click on the "Actual" "Salesforce dropdown field option"
+    And I capture text data "Salesforce Qualification Status value" as "EC_STATUS" variable
     And I set "KW_AUTO_TODAY|DD/MM/YYYY" text to the "Qualification Date" "Salesforce date field"
     And I set "G[####]" text to the "Grade" "Salesforce text field"
+    And I "check" "Salesforce Qualification Used for Offer checkbox" checkbox
+    And I "check" "Salesforce Qualification Naric indicator checkbox" checkbox
+    And I click on the "NARIC Equivalent Grade" "Salesforce dropdown field"
+    And I click on the "8~ Specialist awards" "Salesforce dropdown field option"
     And I click on the "Salesforce Account Creation Save button" link
     Then I should see the " was created." message
     Then I wait for "5" seconds
