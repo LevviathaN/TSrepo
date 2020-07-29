@@ -1,4 +1,4 @@
-package ui.pages;
+package ui.utils;
 
 import com.google.common.base.Function;
 import org.hamcrest.Matcher;
@@ -30,7 +30,7 @@ import static ui.utils.bpp.TestParametersController.initElementByLocator;
  * @author rlevytskyi
  */
 
-public class BasePage {
+public class SeleniumHelper {
 
     public static Map<String,String> specialLocatorsMap;
     public static Map<String,String> locatorsMap;
@@ -67,7 +67,7 @@ public class BasePage {
     //____________________________________________________________________________________________________________
 
     //constructor
-    public BasePage() {
+    public SeleniumHelper() {
     }
 
     //Getter, that ensures only one driver instance exists in project

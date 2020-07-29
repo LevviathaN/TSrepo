@@ -6,7 +6,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import ui.pages.BasePage;
 import ui.utils.bpp.*;
 
 import java.io.IOException;
@@ -40,19 +39,19 @@ public class BaseUITest {
         Reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
 
         preProcessFiles = new PreProcessFiles();
-        BasePage.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
-        BasePage.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
+        SeleniumHelper.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
+        SeleniumHelper.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
             //temporary hardcoded solution to run PF Cleanup on Firefox
             if (method.getName().equals("runPFDatabaseCleanup")) {
                 DriverProvider.instance.set(DriverProvider.getFirefoxBrowserStack());
-                BasePage.driver.set(DriverProvider.instance.get());
+                SeleniumHelper.driver.set(DriverProvider.instance.get());
             } else {
-                BasePage.driver.set(DriverProvider.getDriver());
+                SeleniumHelper.driver.set(DriverProvider.getDriver());
             }
-            BasePage.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            SeleniumHelper.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (Exception e) {
             Reporter.failTryTakingScreenshot("Before test failure during Driver creation. Please check options for test executions ");
             Reporter.flush();
@@ -108,10 +107,10 @@ public class BaseUITest {
                 Reporter.addLinkToReport(Reporter.getScreencastLinkFromBrowserStack(sessionId));
 
                 Reporter.updateBrowserStackJob(testResult.toString().contains("FAILURE") ? "fail" : "pass", sessionId);
-                BasePage.driver().quit();
+                SeleniumHelper.driver().quit();
                 DriverProvider.closeDriver();
             } else {
-                BasePage.driver().quit();
+                SeleniumHelper.driver().quit();
                 DriverProvider.closeDriver();
             }
         } catch (MalformedURLException e) {

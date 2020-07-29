@@ -1,7 +1,7 @@
 package ui.utils.bpp;
 
 import org.openqa.selenium.By;
-import ui.pages.BasePage;
+import ui.utils.SeleniumHelper;
 import ui.utils.Reporter;
 import ui.utils.Tools;
 
@@ -370,7 +370,7 @@ public class TestParametersController {
     public static By getFrame(String locatorInFrame) {
         String[] elements = locatorInFrame.split(">");
         String frameName = elements[0].substring(8);
-        BasePage page = new BasePage();
+        SeleniumHelper page = new SeleniumHelper();
         By element = page.initElementLocator(frameName);
         page.switchToFrame(element);
         return By.xpath(elements[1].substring(6));

@@ -1,4 +1,4 @@
-@Hub
+@Hub @Mobile @Smoke
 Feature: BPP University Hub My Learning
   As a learner
   I need an easy way to access the My Learning page from the navigation of The Hub

@@ -1,4 +1,4 @@
-@DirectApps @UniversityDegreeApprenticeships
+@DirectApps @UniversityDegreeApprenticeships @Smoke
 Feature: University Degree Apprenticeships
 
   @Positive @Smoke @Scotland

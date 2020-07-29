@@ -1,4 +1,4 @@
-@DirectApps @ProfessionalApprenticeships
+@DirectApps @ProfessionalApprenticeships @Smoke
 Feature: Submit Professional Apprenticeship Applications
 
   Background:
