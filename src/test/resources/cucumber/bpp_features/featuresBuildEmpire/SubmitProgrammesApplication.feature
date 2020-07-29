@@ -1,4 +1,4 @@
-@DirectApps @Programmes
+@DirectApps @Programmes @Smoke
 Feature: Submit BPP University Programmes Application
 
   Background:

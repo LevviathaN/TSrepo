@@ -6,28 +6,22 @@ import io.cucumber.java.en.*;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.NoSuchWindowException;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
-import ui.pages.BasePage;
+import ui.utils.SeleniumHelper;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.JavaScriptHelper;
 import ui.utils.bpp.TestParametersController;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
-import static ui.utils.bpp.ExecutionContextHandler.getExecutionContextValueByKey;
 
 /**
  * Created by Ruslan Levytskyi on 15/3/2019.
  */
-public class StepDefinitions extends BasePage {
+public class StepDefinitions extends SeleniumHelper {
 
     @AfterStep
     public void postActions() {
@@ -379,7 +373,7 @@ public class StepDefinitions extends BasePage {
         String actualValue = "";
         Reporter.log("Executing step: I validate " + text + " to be displayed for: " + element);
         if (element.equalsIgnoreCase("CHECK_URL")) {
-            actualValue = BasePage.driver().getCurrentUrl();
+            actualValue = SeleniumHelper.driver().getCurrentUrl();
             Reporter.log("Validating URL to match :" + text);
             assertThat(actualValue, containsString(text));
         } else {

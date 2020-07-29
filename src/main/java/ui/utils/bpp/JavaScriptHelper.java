@@ -3,10 +3,8 @@ package ui.utils.bpp;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-//import ui.utils.bpp.NoahLogManager;
 import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
-//import ui.utils.bpp.Reporter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +14,6 @@ import java.util.concurrent.TimeUnit;
  * Author: Nick
  */
 public class JavaScriptHelper {
-
 
     /**
      *

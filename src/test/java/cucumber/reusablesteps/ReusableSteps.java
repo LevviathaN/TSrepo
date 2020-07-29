@@ -1,6 +1,5 @@
 package cucumber.reusablesteps;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import gherkin.pickles.Pickle;
 import gherkin.pickles.PickleStep;
 import io.cucumber.testng.CucumberOptions;
@@ -64,7 +63,6 @@ public class ReusableSteps {
     }
 
     @AfterClass(alwaysRun = true)
-    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     public void tearDownClass() {
         if (this.testNGCucumberRunner != null) {
             this.testNGCucumberRunner.finish();

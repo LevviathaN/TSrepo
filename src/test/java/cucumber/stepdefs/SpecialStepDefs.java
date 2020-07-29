@@ -1,9 +1,8 @@
 package cucumber.stepdefs;
 
 import io.cucumber.java.en.*;
-import org.openqa.selenium.By;
 import org.testng.Assert;
-import ui.pages.BasePage;
+import ui.utils.SeleniumHelper;
 import ui.utils.Conditions;
 import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
@@ -11,7 +10,7 @@ import ui.utils.UiHandlers;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
-public class SpecialStepDefs extends BasePage {
+public class SpecialStepDefs extends SeleniumHelper {
 
     /**
      * Definition to click an element on the page

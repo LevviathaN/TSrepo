@@ -1,4 +1,4 @@
-@DigitalSite
+@DigitalSite @Smoke
 Feature: BPP Digital Changing Student Personal Password
 
   Background:
