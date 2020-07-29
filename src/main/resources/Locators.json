@@ -503,6 +503,7 @@
   "Hub VPE Calendar Right Arrow": "xpath=//*[@class='fal fa-chevron-right']",
   "Hub VPE Calendar Left Arrow": "xpath=//*[@class='fal fa-chevron-left']",
   "Hub VPE Calendar Current Date": "xpath=//div[@class='plain-day event today']",
+  "Hub VPE Mobile Hamburger Menu": "xpath=//div[@id='mobile-burger']",
 
   "Totara Login": "id=loginbtn",
   "Totara Account Expandable Menu": "id=action-menu-toggle-0",

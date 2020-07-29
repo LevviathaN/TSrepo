@@ -11,6 +11,7 @@ Feature: The Hub - Law School - Pages - Overview
     And I should see the "VPE Course Automation" "Build Empire My Learning Right Block Course name"
     Then I click on the "VPE Course Automation" "Build Empire My Learning Right Block Course name"
     And I switch to window with index "2"
+    And I click on the "Hub VPE Mobile Hamburger Menu" button if "Hub VPE Mobile Hamburger Menu" "element is present"
     And I click on the "Hub VPE Pages-Overview Header" element
     Then I should see the "Automation Page" "text contained in P element"
     And I should see the "Created for automated scripts. PLEASE DO NOT AMEND!" "text contained in element"
