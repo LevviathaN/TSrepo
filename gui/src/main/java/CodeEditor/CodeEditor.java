@@ -512,7 +512,7 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     private TreeItem<String> trimFileTreeView(TreeItem<File> fileTree) {
         TreeItem<String> nameTree = new TreeItem<>();
-        String separator = DriverProvider.OS_EXTENTION.equals("_mac") ? "/" : String.valueOf('\\');
+        String separator = DriverProvider.OS_EXTENTION.equals("_mac") ? "/" : String.valueOf('/');
         String rootName = fileTree.getValue().getPath()
                 .split(separator)[fileTree.getValue().getPath().split(separator).length-1];
         nameTree.setValue(rootName);
