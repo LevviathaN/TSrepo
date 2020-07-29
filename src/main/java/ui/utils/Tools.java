@@ -179,8 +179,13 @@ public class Tools {
     }
 
     /** Read file to string */
-    public static String readFile(String path, Charset encoding) throws IOException {
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
+    public static String readFile(String path, Charset encoding) {
+        byte[] encoded = new byte[1];
+        try {
+            encoded = Files.readAllBytes(Paths.get(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return new String(encoded, encoding);
     }
 

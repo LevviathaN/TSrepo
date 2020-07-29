@@ -99,7 +99,7 @@ public class Reporter {
             htmlReporter.config().setReportName("Regression cycle");
             htmlReporter.config().setTheme(Theme.DARK);
 
-            String js = ReadFileInText.readFile("ReportJQuery.js");
+            String js = Tools.readFile("src/main/resources/ReportJQuery.js", StandardCharsets.UTF_8);
             if (!js.equals("")) {
                 htmlReporter.config().setJS(js);
             } else {
@@ -107,7 +107,7 @@ public class Reporter {
             }
 
             //adding a custom style sheet to the report
-            String css = ReadFileInText.readFile("ReportStyle.css");
+            String css = Tools.readFile("src/main/resources/ReportStyle.css", StandardCharsets.UTF_8);
             if (!css.equals("")) {
                 htmlReporter.config().setCSS(css);
             } else {

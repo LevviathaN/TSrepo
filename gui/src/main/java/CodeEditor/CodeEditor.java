@@ -30,12 +30,8 @@ public class CodeEditor extends StackPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
-        try {
-            editingTemplate = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
-            editingCode = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        editingTemplate = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
+        editingCode = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
     }
 
     private final GherkinValidator validator = new GherkinValidator();
@@ -202,12 +198,8 @@ public class CodeEditor extends StackPane implements Initializable {
 
     /** Load button listener */
    public void loadFeature() {
-        String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
-       try {
-           editingCode = Tools.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
+       String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
+       editingCode = Tools.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
        setCode();
    }
 
