@@ -1,6 +1,5 @@
 package ui.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -63,7 +62,6 @@ public class DriverProvider {
         }
     }
 
-    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     static public ChromeDriver getChrome() {
 
         try {
@@ -108,7 +106,6 @@ public class DriverProvider {
         }
     }
 
-    @SuppressFBWarnings("RV_RETURN_VALUE_IGNORED_BAD_PRACTICE")
     static public RemoteWebDriver getChromeBrowserStack() {
 
         try {

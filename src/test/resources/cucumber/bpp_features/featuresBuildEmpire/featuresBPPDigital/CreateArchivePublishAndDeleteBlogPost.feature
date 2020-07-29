@@ -1,4 +1,4 @@
-@DigitalSite
+@DigitalSite @Smoke
 Feature: BPP Digital Create Archive Publish and Delete a Blog Post
 
   Background:

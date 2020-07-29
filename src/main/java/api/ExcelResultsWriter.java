@@ -1,7 +1,6 @@
 package api;
 
 import com.aventstack.extentreports.IReport;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -119,7 +118,6 @@ public class ExcelResultsWriter {
         return hash;
     }
 
-    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     private static ArrayList<String> getColumnHeaders(String schema) {
 
         JSONParser parser = new JSONParser();

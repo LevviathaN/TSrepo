@@ -1,4 +1,4 @@
-@Hub @Mobile
+@Hub @Mobile @Smoke
 Feature: BPP University Hub Direct App Notifications
   As a Hub user
   I would like to see notifications on my dashboard in regards to Direct Apps

@@ -5,7 +5,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.PatternLayout;
@@ -37,7 +36,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * Provides the reporting interface
  * </p>
  */
-@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class Reporter {
 
     private static ExtentReports extent;
