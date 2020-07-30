@@ -333,7 +333,7 @@
   "Direct App App Bottom Key Activity Body": "xpath=(//div[@class='topic-content']/div/div[2]//p)[3]",
   "Direct App Bottom Key Activity Submit Button": "xpath=(//div[@class='topic-content']/div/div[2]//a/p)[2]",
   "Direct App Topic Read More": "xpath=//div[@class='section-description']//div[2]//button",
-  "Direct App Topic Key Activities": "xpath=//div[contains(@class,'single-section')][12]/a",
+  "Direct App Topic Key Activities": "xpath=//div[normalize-space()='Topic to test adding activities']/a[contains(@href,'/my/learning/course/')]",
   "Direct App Remove Application Pack": "xpath=(//p[@class='file-name' and @title='Application pack']/following::span[@class='bppicon icon-cancel'])[1]",
   "Direct App Left Navigation Panel menu logo image": "xpath=//div[contains(@class,'item-logo')]//img[1]",
   "Direct App Announcement Megaphone icon": "xpath=//div[contains(@class,'announcement-box')]/img",
