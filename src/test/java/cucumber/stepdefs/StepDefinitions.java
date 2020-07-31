@@ -90,7 +90,15 @@ public class StepDefinitions extends SeleniumHelper {
         Conditions conditions = new Conditions();
         if (conditions.checkCondition(condition, conditionParameter)) {
             Reporter.log("Executing step: I click on the '" + element + "' element");
-            clickOnElement(initElementLocator(element), UiHandlers.ACCEPT_ALERT, UiHandlers.PF_SPINNER_HANDLER);
+            clickOnElement(initElementLocator(element),
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
         } else {
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
         }

@@ -18,7 +18,7 @@ Feature: BuildEmpire
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
-    Then I click on the "Direct App Login Button" button
+    Then I click on the "Direct App Login Button" button by JS
     And I should see the "Timeline and Dashboard" "element"
 
   Scenario: Log In to Hub as Admin
