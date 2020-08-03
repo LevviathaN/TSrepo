@@ -644,14 +644,14 @@
 
   "VLE Website Usermenu": "xpath=//div[@class='usermenu']",
 
-  "Hub VPE Mobile Hamburger Menu": "xpath=//div[@id='mobile-burger']",
-  "Hub VPE Mobile Samsung Hamburger Menu": "xpath=//button[@class='btn-toggle-menu']",
+  "Hub VPE Mobile Hamburger Menu": "xpath=//button[@class='btn-toggle-menu']",
   "Hub VPE Mobile Pages-Overview Header": "xpath=(//u[text()='Pages - Overview'])[2]",
   "Hub VPE Mobile Pages Back Button": "xpath=//div[contains(@class,'page-nav-button')]",
   "Hub VPE Mobile iPad My Learning Right Block Course name": "xpath=(//div[@class='single-course']//h3[text()=\"VPE Course Automation\"])[2]",
   "Hub VPE Mobile My Learning Header": "xpath=(//u[text()='My Learning'])[2]",
-  "Hub VPE Mobile Samsung My Learning Header": "xpath=//ul[@class='aside-navigation ']//*[contains(text(),'My Learning')]",
+  "Hub VPE Mobile Samsung My Learning Header": "xpath=//ul[contains(@class,'aside-navigation')]//*[contains(text(),'My Learning')]",
   "Hub VPE Mobile My Learning Course Automation": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[1]",
   "Hub VPE Mobile IPad My Learning Course Automation": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[2]",
-  "Hub VPE Mobile Allow Popup": "xpath=//*[contains(text(),'Allow')]"
+  "Hub VPE Mobile Allow Popup": "xpath=//*[contains(text(),'Allow')]",
+  "Hub VPE Mobile Documents Header": "xpath=(//u[text()='Documents'])[2]"
 }
