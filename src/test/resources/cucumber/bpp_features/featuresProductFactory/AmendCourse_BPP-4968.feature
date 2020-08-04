@@ -113,7 +113,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
   @Positive @P2 #TC-2407
   Scenario: Amend Non Draft Course Instance Additional Scenario
     And I execute "Create Course Instance" reusable step replacing some steps
-      |10|I fill the "Product Factory Number Of Sessions Edit Field" field with "2"|
+      |14|I set "2" text to the "Number of Sessions" "Product Factory text field"|
 
     #Create second instance
     Then I click on the "Create" "Product Factory button"
