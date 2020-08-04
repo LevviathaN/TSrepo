@@ -1,4 +1,4 @@
-@Hub @VPE @Mobile
+@Hub @VPE
 Feature: The Hub - Law School - Calendar - Side View
 
   @Positive @Calendar #TC-2806, TC-2810, TC-2811, TC-2807, TC-2823
