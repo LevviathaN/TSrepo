@@ -83,24 +83,8 @@ Feature: Add/Amend Region to Location - BPP-3673
     And I execute "Create Material" reusable step
 
     #Course Creation
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I click on the "Create" "Product Factory button"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory select button"
-    And I click on the "EC_LEVEL_NAME" "Product Factory select button"
-    And I click on the "EC_SITTING_NAME" "Product Factory select button"
-    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
-    And I click on the "EC_REGION_NAME" "Product Factory select button"
-    And I click on the "Product Factory Number Of Sessions Edit Button" button
-    And I fill the "Product Factory Number Of Sessions Edit Field" field with "1"
-    And I click on the "Save" "Product Factory button"
-    And I click on the "Finish" "Product Factory button"
-    Then I click on the "Create" "Product Factory button"
-    And I click on the "Default Session Duration" "Product Factory dropdown"
-    And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
-    And I click on the "Default Location" "Product Factory dropdown"
-    And I click on the "EC_LOCATION_NAME" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
+    When I execute "Create Course Instance" reusable step
+
     And I click on the "Activate" "Product Factory button"
     And I click on the "Product Factory Course Instances Arrow Down Icon" element
     And I click on the "Product Factory Course Instances Sessions Number of Dates Icon" element
@@ -119,4 +103,4 @@ Feature: Add/Amend Region to Location - BPP-3673
     And I click on the "Region" "Product Factory dropdown"
     And I click on the "EC_REGION_NAME_TWO" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
-    Then I validate text "The Location is already linked to one or more Sessions, so you cannot change the Region" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
+    Then I validate text "The Location is already linked to one or more Instances, so you cannot change the Region" to be displayed for "Product Factory Toast Error Message Top-Right corner" element

@@ -57,6 +57,8 @@ Feature: CBA - Edit - BPP-3200
     And I execute "Create CBA Record" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     And I click on the "Sitting" "Product Factory edit button"
     And I click on the "EC_SITTING_NAME_TWO" "Product Factory select button"
@@ -77,6 +79,8 @@ Feature: CBA - Edit - BPP-3200
     And I shouldn't see the "05:50" "element"
     And I click on the "Save" "Product Factory button"
     Then I click on the "CBAs" "Product Factory button title"
+    And I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory edit button"
 
   @Positive @Regression @P1 #TC-2865
@@ -101,4 +105,6 @@ Feature: CBA - Edit - BPP-3200
     And I shouldn't see the "05:50" "element"
     And I click on the "Save" "Product Factory button"
     Then I click on the "CBAs" "Product Factory button title"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I should see the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
