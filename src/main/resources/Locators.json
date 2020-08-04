@@ -390,7 +390,7 @@
   "BPP Digital Breadcrumb Level Three": "xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
   "BPP Digital Site Page Header": "xpath=//h2[@class='section-header']/span",
   "BPP Digital Site Left Side Page Header": "xpath=//div[@class='component-content']/h1",
-  "BPP Digital Login link": "xpath=//span[text()='Login']",
+  "BPP Digital Login link": "xpath=//a[text()='Login']",
   "BPP Digital Section First Article name": "xpath=(//div[@class='search-results-list']/article/h3)[1]",
   "BPP Digital Filter by title search field": "xpath=//input[@placeholder='Filter by title']",
   "BPP Digital First CMS Component First Select button": "css=a[data-file-name]:first-child",
@@ -484,6 +484,7 @@
   "BPP Digital Admin Edit Application Save": "xpath=//*[@type='submit']",
   "BPP Digital Admin Edit Application Variation": "xpath=(//span[@class='select2-selection select2-selection--single'])[2]",
   "BPP Digital Admin Edit Application Location": "xpath=(//span[@class='select2-selection select2-selection--single'])[3]",
+  "BPP Digital Register Link on Login Page": "xpath=//*[contains(text(),'Register')]",
 
   "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
   "HUb VPE Banner": "xpath=(//*[@class='welcome-banner'])[2]",
