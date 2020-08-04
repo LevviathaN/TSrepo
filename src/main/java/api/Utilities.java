@@ -1,7 +1,5 @@
 package api;
 
-
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -70,7 +68,6 @@ public class Utilities {
     /**
      * @param requestTemplate - the name of Json file which will be used to retrieve Json file as an Object
      */
-    @SuppressFBWarnings("DM_DEFAULT_ENCODING")
     JSONObject getJsonObject(String requestTemplate) {
 
         JSONParser parser = new JSONParser();

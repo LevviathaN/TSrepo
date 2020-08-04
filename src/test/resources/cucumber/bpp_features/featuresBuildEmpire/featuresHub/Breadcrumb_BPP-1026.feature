@@ -1,4 +1,4 @@
-@Hub @Breadcrumb
+@Hub @Breadcrumb @Mobile
 Feature: The Hub - Breadcrumb
   As a user, I expect to see a 'breadcrumb trail' which updates, as I navigate throughout the Hub
 

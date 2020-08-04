@@ -70,9 +70,10 @@ Feature: BPP Digital General Review
     Then I validate text "Professional Development" to be displayed for "BPP Digital Breadcrumb Level Three" element
     And I wait for "3" seconds
     #Login Existing User
-    When I hover over the "BPP Digital Login link" element
-    Then I should see the "Student Applications" "BPP Digital Student Applications Menu link"
-    When I click on the "Student Applications" "BPP Digital Student Applications Menu link"
+    And I should scroll to the "top" of the page
+    When I click on the "BPP Digital Login link" element
+    And I wait for "3" seconds
+    Then I click on the "BPP Digital Register Link on Login Page" button by JS
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINUSER"
     And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_BUILDEMPIRENEILADMINPASSWORD"
     And I click on the "Direct App Login Button" button
