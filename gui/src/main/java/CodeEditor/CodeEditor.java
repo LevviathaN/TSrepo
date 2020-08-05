@@ -7,16 +7,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebView;
 import org.openqa.selenium.WebElement;
 import org.w3c.dom.Document;
-import ui.pages.BasePage;
-import ui.utils.DriverProvider;
-import ui.utils.Tools;
 
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathException;
 import javax.xml.xpath.XPathFactory;
 import java.io.*;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,8 +26,8 @@ public class CodeEditor extends StackPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
-        editingTemplate = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
-        editingCode = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
+        editingTemplate = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
+        editingCode = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
     }
 
     private final GherkinValidator validator = new GherkinValidator();
@@ -61,9 +57,9 @@ public class CodeEditor extends StackPane implements Initializable {
 
     public Map<String,String> featureFilesMap = new HashMap<>();
 
-    public List<String> validLocatorsList = new ArrayList<>(BasePage.locatorsMap.keySet());
-    public List<String> validSpecialLocatorsList = new ArrayList<>(BasePage.specialLocatorsMap.keySet());
-    public List<String> validStepdefsList = new ArrayList<>(BasePage.stepPatternsMap.values());
+    public List<String> validLocatorsList = new ArrayList<>(GherkinValidator.locatorsMap.keySet());
+    public List<String> validSpecialLocatorsList = new ArrayList<>(GherkinValidator.specialLocatorsMap.keySet());
+    public List<String> validStepdefsList = new ArrayList<>(GherkinValidator.stepPatternsMap.values());
 
     /** Set Feature Template button listener */
     public void setCode() {
@@ -97,7 +93,7 @@ public class CodeEditor extends StackPane implements Initializable {
             lineText = lineText.replaceAll("^(Given |When |Then |And |But )", "");
         }
 
-        for (String stepPattern : BasePage.stepPatternsMap.values()) {
+        for (String stepPattern : GherkinValidator.stepPatternsMap.values()) {
             if (lineText.matches(stepPattern)) {
                 originalStepdef = CodeEditor.beutifyStepdef(stepPattern).substring(1,CodeEditor.beutifyStepdef(stepPattern).length()-1);
                 break;
@@ -118,7 +114,7 @@ public class CodeEditor extends StackPane implements Initializable {
                     break;
                 case "REUSABLE":
                     System.out.println("REUSABLE");
-                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,BasePage.reusablesList,8));
+                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,GherkinValidator.reusablesList,8));
                     break;
                 case "PARAM":
                     System.out.println("PARAM");
@@ -199,7 +195,7 @@ public class CodeEditor extends StackPane implements Initializable {
     /** Load button listener */
    public void loadFeature() {
        String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
-       editingCode = Tools.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
+       editingCode = GuiHelper.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
        setCode();
    }
 
@@ -434,8 +430,8 @@ public class CodeEditor extends StackPane implements Initializable {
     private void fixStepdef() {
         if (!predictedStepdefsList.getSelectionModel().isEmpty()) {
             String fixedLine = predictedStepdefsList.getSelectionModel().getSelectedItem();
-            List<String> params = Tools.getQuoted(editableLine,'"');
-            List<String> signature = Tools.getQuoted(predictedStepdefsList.getSelectionModel().getSelectedItem(),'"');
+            List<String> params = GuiHelper.getQuoted(editableLine,'"');
+            List<String> signature = GuiHelper.getQuoted(predictedStepdefsList.getSelectionModel().getSelectedItem(),'"');
             for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
                 fixedLine = fixedLine.replaceFirst(signature.get(i),params.get(i));
             }
@@ -455,8 +451,8 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     public static Map<String,String> getStepSignatureMap(String step, String template) {
         Map<String,String> stepSignatureMap = new HashMap<>();
-        List<String> params = Tools.getQuoted(step,'"');
-        List<String> signature = Tools.getQuoted(template,'"');
+        List<String> params = GuiHelper.getQuoted(step,'"');
+        List<String> signature = GuiHelper.getQuoted(template,'"');
         for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
             stepSignatureMap.put(params.get(i),signature.get(i));
         }
@@ -471,7 +467,7 @@ public class CodeEditor extends StackPane implements Initializable {
 
         List<String> beutifiedStepdefs = new ArrayList<>();
         for (String stepdef : stepDefs) {
-            List<String> signature = new ArrayList<>(Arrays.asList(BasePage.stepSignaturesMap.get(stepdef).split(",")));
+            List<String> signature = new ArrayList<>(Arrays.asList(GherkinValidator.stepSignaturesMap.get(stepdef).split(",")));
             for (String element : signature) {
                 stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
             }
@@ -485,7 +481,7 @@ public class CodeEditor extends StackPane implements Initializable {
      * @author Ruslan Levytskyi
      * */
     public static String beutifyStepdef(String stepdef) {
-        List<String> signature = new ArrayList<>(Arrays.asList(BasePage.stepSignaturesMap.get(stepdef).split(",")));
+        List<String> signature = new ArrayList<>(Arrays.asList(GherkinValidator.stepSignaturesMap.get(stepdef).split(",")));
         for (String element : signature) {
             stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
         }
@@ -512,7 +508,7 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     private TreeItem<String> trimFileTreeView(TreeItem<File> fileTree) {
         TreeItem<String> nameTree = new TreeItem<>();
-        String separator = DriverProvider.OS_EXTENTION.equals("_mac") ? "/" : String.valueOf('/');
+        String separator = "/";
         String rootName = fileTree.getValue().getPath()
                 .split(separator)[fileTree.getValue().getPath().split(separator).length-1];
         nameTree.setValue(rootName);

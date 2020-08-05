@@ -1,30 +1,32 @@
 package CodeEditor;
 
-import api.RestApiController;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import ui.pages.BasePage;
-import ui.utils.Reporter;
-import ui.utils.Tools;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GherkinValidator {
 
-    RestApiController apiController = new RestApiController();
+    public static Map<String,String> specialLocatorsMap;
+    public static Map<String,String> locatorsMap;
+    public static Map<String,String> stepPatternsMap;
+    public static Map<String,String> stepSignaturesMap;
+    public static List<String> reusablesList;
+
 
     public GherkinValidator() {
-        BasePage.locatorsMap = BasePage.getLocatorsMap("src/main/resources/NewLocators.json");
-        BasePage.specialLocatorsMap = BasePage.getLocatorsMap("src/main/resources/NewSpecialLocators.json");
-        BasePage.stepPatternsMap = BasePage.getLocatorsMap("src/main/resources/NewStepPatterns.json");
-        BasePage.stepSignaturesMap = BasePage.getLocatorsMap("src/main/resources/NewStepSignatures.json");
-        BasePage.reusablesList = getReusableScenariosList();
+        locatorsMap = GuiHelper.getLocatorsMap("src/main/resources/NewLocators.json");
+        specialLocatorsMap = GuiHelper.getLocatorsMap("src/main/resources/NewSpecialLocators.json");
+        stepPatternsMap = GuiHelper.getLocatorsMap("src/main/resources/NewStepPatterns.json");
+        stepSignaturesMap = GuiHelper.getLocatorsMap("src/main/resources/NewStepSignatures.json");
+        reusablesList = getReusableScenariosList();
     }
 
 
@@ -33,14 +35,14 @@ public class GherkinValidator {
      * @author Ruslan Levytskyi
      * */
     public List<String> getInvalidParameters(Document doc) {
-        List<Node> parametersNodeList = Tools.getNodeList(doc, "span","class","cm-string");
+        List<Node> parametersNodeList = GuiHelper.getNodeList(doc, "span","class","cm-string");
         List<String> invalidParameters = new ArrayList<>();
 
         for (Node parameterNode : parametersNodeList) {
             String parameterText = parameterNode.getTextContent();
             if (parameterText.startsWith("\"") && parameterText.endsWith("\"")) {
                 String parameterWithoutParentheses = parameterText.substring(1,parameterText.length()-1);
-                if (!BasePage.locatorsMap.containsKey(parameterWithoutParentheses)) {
+                if (!locatorsMap.containsKey(parameterWithoutParentheses)) {
                     invalidParameters.add(parameterWithoutParentheses);
                 }
             }
@@ -53,7 +55,7 @@ public class GherkinValidator {
      * @author Ruslan Levytskyi
      * */
     public List<String> getInvalidStepdefs(Document doc) {
-        List<Node> linessNodeList = Tools.getNodeList(doc, "span","role","presentation");
+        List<Node> linessNodeList = GuiHelper.getNodeList(doc, "span","role","presentation");
         List<String> invalidStepdefs = new ArrayList<>();
 
         for (Node lineNode : linessNodeList) {
@@ -74,11 +76,11 @@ public class GherkinValidator {
      * @author Ruslan Levytskyi
      * */
     public List<String> getInvalidParameters(String doc) {
-        List<String> quotedList = Tools.getQuoted(doc,'"');
+        List<String> quotedList = GuiHelper.getQuoted(doc,'"');
         List<String> invalidParameters = new ArrayList<>();
 
         for (String quoted : quotedList) {
-            if (!BasePage.locatorsMap.containsKey(quoted)) {
+            if (!locatorsMap.containsKey(quoted)) {
                 invalidParameters.add(quoted);
             }
         }
@@ -87,7 +89,7 @@ public class GherkinValidator {
 
     public boolean isValidStepdef(String stepdef) {
         boolean validNode = false;
-        for (String stepPattern : BasePage.stepPatternsMap.values()) {
+        for (String stepPattern : stepPatternsMap.values()) {
             if (stepdef.matches(stepPattern)) {
                 validNode = true;
                 break;

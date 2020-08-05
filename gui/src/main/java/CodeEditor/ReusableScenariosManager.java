@@ -5,13 +5,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import ui.utils.Reporter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -105,7 +103,6 @@ public class ReusableScenariosManager {
             Element reusablesElement = (Element) reusablesNode;
 
             NodeList reusablesList = reusablesElement.getElementsByTagName("reusable");
-            boolean isReusableExist = false;
             for (int i = 0; i < reusablesList.getLength(); i++) {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
@@ -115,16 +112,7 @@ public class ReusableScenariosManager {
                     for (int j = 0; j < steps.getLength(); j++) {
                         stepsList.add(steps.item(j).getTextContent());
                     }
-                    isReusableExist = true;
                 }
-            }
-            if (!isReusableExist) {
-                Reporter.fail(reusableName + " reusable step does not exist. " +
-                        "Here is a list of available reusable steps: ");
-                for (String availStep : availableReusableStepsList) {
-                    Reporter.log("  " + availStep);
-                }
-                throw new RuntimeException("Reusable step does not exist");
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -79,19 +79,19 @@ public class BasePage {
         return driver.get();
     }
 
-    public static Map<String,String> getLocatorsMap(String locatorsFile) {
-        Map<String,String> locatorsMap = new HashMap<>();
-        try {
-            List<Locator> locators = JSONReader.toObjectListFromFile(Locator[].class,
-                    new File(locatorsFile));
-            for (Locator locator : locators) {
-                locatorsMap.put(locator.getName(),locator.getValue());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return locatorsMap;
-    }
+//    public static Map<String,String> getLocatorsMap(String locatorsFile) {
+//        Map<String,String> locatorsMap = new HashMap<>();
+//        try {
+//            List<Locator> locators = JSONReader.toObjectListFromFile(Locator[].class,
+//                    new File(locatorsFile));
+//            for (Locator locator : locators) {
+//                locatorsMap.put(locator.getName(),locator.getValue());
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return locatorsMap;
+//    }
 
     //_______________________________________________Basic Assertions_______________________________________________
 

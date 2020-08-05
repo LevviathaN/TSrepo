@@ -11,12 +11,12 @@
 
     <artifactId>gui</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>bdd_automation_framework</groupId>
-            <artifactId>bdd_automation_framework</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>bdd_automation_framework</groupId>-->
+<!--            <artifactId>bdd_automation_framework</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.openjfx</groupId>-->
 <!--            <artifactId>javafx-controls</artifactId>-->
@@ -42,11 +42,11 @@
 <!--            <artifactId>javafx-web</artifactId>-->
 <!--            <version>11</version>-->
 <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>net.java.openjfx.backport</groupId>-->
-<!--            <artifactId>openjfx-78-backport</artifactId>-->
-<!--            <version>1.8.0-ea-b96.1</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>net.java.openjfx.backport</groupId>
+            <artifactId>openjfx-78-backport</artifactId>
+            <version>1.8.0-ea-b96.1</version>
+        </dependency>
     </dependencies>
 
 
