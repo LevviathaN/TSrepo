@@ -99,6 +99,8 @@
   "Salesforce Student Creation Capture Gender Identity": "xpath=(//span[normalize-space()='Gender Identity']/following::div)[1]",
   "Salesforce Student Creation Capture Religion": "xpath=(//span[normalize-space()='Religion']/following::div)[1]",
   "Salesforce Student Creation Capture Sexual Orientation": "xpath=(//span[normalize-space()='Sexual Orientation']/following::div)[1]",
+  "Salesforce Account Related Tab": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[normalize-space()='Related']",
+  "Salesforce Addresses link": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='Addresses'])[1]",
 
   "Banner Username": "xpath=//*[@id='username']",
   "Banner Password": "xpath=//*[@id='password']",
@@ -136,6 +138,10 @@
   "Banner SPAIDEN Alternate Identification tab": "inframe=Banner Frame>xpath=//a[@id='tabGIdenTabCanvas_tab1']",
   "Banner SPAIDEN Alternate Last Name filed value": "inframe=Banner Frame>xpath=//input[@name='spridenLastName_0']",
   "Banner SPAIDEN Alternate First Name filed value": "inframe=Banner Frame>xpath=//input[@name='spridenFirstName_0']",
+  "Banner SPAIDEN Street Line Two field value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine2_0']",
+  "Banner SPAIDEN Street Line Three field value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine3_0']",
+  "Banner SPAIDEN Street Line Four field value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine4_0']",
+  "Banner SPAIDEN Nation field": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrNatnCode_0']",
 
   "Direct App Admin Email": "xpath=//input[@type='email']",
   "Direct App Admin Password": "xpath=//input[@type='password']",

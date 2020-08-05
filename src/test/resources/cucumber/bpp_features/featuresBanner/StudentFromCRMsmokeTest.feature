@@ -133,41 +133,100 @@ Feature: Student from CRM Smoke Test
     Then Attribute "title" of "Banner SPAIDEN Alternate Last Name filed value" should have value "EC_AUTO_LASTNAME"
     Then Attribute "title" of "Banner SPAIDEN Alternate First Name filed value" should have value "EC_AUTO_FIRSTNAME"
 
+  @Positive #TC-547
+  Scenario: Student from CRM to Banner Address Update
+    #Create Student
+    When I execute "Log In To Salesforce" reusable step
+    Then I remember "KW_AUTO_ZIPCODE|#####" text as "EC_BILLING_ZIP_CODE" variable
+    Then I remember "KW_AUTO_ZIPCODE|#####" text as "EC_MAILING_ZIP_CODE" variable
+    Then I remember "KW_AUTO_STREET" text as "EC_BILLING_STREET_ONE" variable
+    Then I remember "KW_AUTO_STREET" text as "EC_BILLING_STREET_TWO" variable
+    Then I remember "KW_AUTO_STREET" text as "EC_BILLING_STREET_THREE" variable
+    Then I remember "KW_AUTO_STREET" text as "EC_BILLING_STREET_FOUR" variable
+    Then I remember "KW_AUTO_STREET" text as "EC_MAILING_STREET" variable
+    And I execute "Create Student Account" reusable step
+    And I wait for "3" seconds
+    #Create Address
+    And I click on the "Addresses" "Salesforce related new button"
+    And I click on the "Address Type" "Salesforce dropdown field"
+    And I click on the "Billing" "option"
+    And I set "EC_BILLING_STREET_ONE" text to the "Address Line 1" "Salesforce text field"
+    And I set "EC_BILLING_STREET_TWO" text to the "Address Line 2" "Salesforce text field"
+    And I set "EC_BILLING_STREET_THREE" text to the "Address Line 3" "Salesforce text field"
+    And I set "EC_BILLING_STREET_FOUR" text to the "Address Line 4" "Salesforce text field"
+    And I set "Ottawa" text to the "City" "Salesforce text field"
+    And I set "EC_BILLING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"
+    And I set "Canada" text to the "Country" "Salesforce search field"
+    Then I wait for "1" seconds
+    And I click on the "Canada" "option"
+    And I click on the "Save" "button"
+    Then I should see the " was created." message
+    And I wait for "3" seconds
+    #Create Second Address
+    And I execute "Create Address" reusable step replacing some steps
+      |3|I click on the "Mailing" "option"|
+      |4|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field"|
+      |5|I set "Manchester" text to the "City" "Salesforce text field"|
+      |6|I set "EC_MAILING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"|
+      |7|I set "United Kingdom" text to the "Country" "Salesforce search field"|
+      |9|I click on the "Kingdom" "option"|
+    And I wait for "10" seconds
+    And I execute "Get Profile ID" reusable step
+    And I execute "Create Opportunity" reusable step
+    And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
+    And I click on the "Product Catalog Items" "Salesforce related new button"
+    And I click on the "New" "Salesforce dropdown option"
+    And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
+    And I click on the "Salesforce Search" button
+    And I "check" "Salesforce Offering Checkbox" checkbox
+    And I click on the "Salesforce Add Products" button
+    Then I execute "Submit Application" reusable step
+   #Login to Banner
+    And I execute "window.open()" JS code
+    And I switch to window with index "2"
+    When I execute "Log In To Banner" reusable step
+    And I execute "Navigate To Form" reusable step replacing some steps
+      |1|I fill the "Banner Go To Form" field with "SPAIDEN"|
+    When I fill the "Banner Id Text" field with "EC_BANNER_ID"
+    Then I click on the "Banner Go" button
+    And I wait for "2" seconds
+    #Verify Billing Address block
+    When I click on the "Banner SPAIDEN Address tab" link
+    Then Attribute "title" of "Banner SPAIDEN Address Type field value" should have value "Billing"
+    Then Attribute "title" of "Banner SPAIDEN Street Line One field value" should have value "EC_BILLING_STREET_ONE"
+    Then Attribute "title" of "Banner SPAIDEN Street Line Two field value" should have value "EC_BILLING_STREET_TWO"
+    Then Attribute "title" of "Banner SPAIDEN Street Line Three field value" should have value "EC_BILLING_STREET_THREE"
+    Then Attribute "title" of "Banner SPAIDEN Street Line Four field value" should have value "EC_BILLING_STREET_FOUR"
+    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Ottawa"
+    Then Attribute "title" of "Banner SPAIDEN ZIP Code field value" should have value "EC_BILLING_ZIP_CODE"
+    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "Canada"
+    #Change Billing Address block
+    And I fill the "Banner SPAIDEN Street Line One field value" field with "StreetOne[####]"
+    And I fill the "Banner SPAIDEN Street Line Two field value" field with "StreetTwo[####]"
+    And I fill the "Banner SPAIDEN Street Line Three field value" field with "StreetThree[####]"
+    And I fill the "Banner SPAIDEN Street Line Four field value" field with "StreetFour[####]"
+    And I fill the "Banner SPAIDEN City field value" field with "Toronto"
+    And I fill the "Banner SPAIDEN ZIP Code field value" field with "ZIP[###]"
+    And I fill the "Banner SPAIDEN Nation field" field with "ALB"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Banner SPAIDEN Nation field"
+    Then I click on the "Banner Save" button
+    #Verify Mailing Address block
+    When I click on the "Banner Next Page" element
+    Then Attribute "title" of "Banner SPAIDEN Address Type field value" should have value "Mailing"
+    Then Attribute "title" of "Banner SPAIDEN Street Line One field value" should have value "EC_MAILING_STREET"
+    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Manchester"
+    Then Attribute "title" of "Banner SPAIDEN ZIP Code field value" should have value "EC_MAILING_ZIP_CODE"
+    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "United Kingdom"
+    #Verify Address in CRM (Billing)
+    And I switch to window with index "1"
+    And I wait for "3" seconds
+    And I click on the "Salesforce Account Related Tab" link by JS
+    And I click on the "Salesforce Addresses link" link
+    And I click on the "Billing" "Salesforce Address Type link"
+    Then I should see the "EC_STREET_ONE" element
+    Then I should see the "EC_STREET_TWO" element
+    Then I should see the "EC_STREET_THREE" element
+    Then I should see the "EC_STREET_FOUR" element
+    Then I should see the "Albania" element
+    Then I should see the "EC_ZIP" element
 
-
-#    Then I remember "KW_AUTO_ZIPCODE|#####" text as "EC_ZIP_CODE_ONE" variable
-#    Then I remember "KW_AUTO_ZIPCODE|#####" text as "EC_ZIP_CODE_TWO" variable
-#    Then I remember "KW_AUTO_STREET" text as "EC_STREET_ONE" variable
-#    Then I remember "KW_AUTO_STREET" text as "EC_STREET_TWO" variable
-#    #Address block
-#    When I click on the "Banner SPAIDEN Address tab" link
-#    Then Attribute "title" of "Banner SPAIDEN Address Type field value" should have value "Billing"
-#    Then Attribute "title" of "Banner SPAIDEN Street Line One field value" should have value "EC_STREET_ONE"
-#    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Ottawa"
-#    Then Attribute "title" of "Banner SPAIDEN ZIP Code field value" should have value "EC_ZIP_CODE_ONE"
-#    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "Canada"
-#    When I click on the "Banner Next Page" element
-#    Then Attribute "title" of "Banner SPAIDEN Address Type field value" should have value "Mailing"
-#    Then Attribute "title" of "Banner SPAIDEN Street Line One field value" should have value "EC_STREET_TWO"
-#    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Manchester"
-#    Then Attribute "title" of "Banner SPAIDEN ZIP Code field value" should have value "EC_ZIP_CODE_TWO"
-#    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "United Kingdom"
-#
-
-#
-#    #Create Address
-#    And I execute "Create Address" reusable step replacing some steps
-#      |3|I click on the "Billing" "option"|
-#      |4|I set "EC_STREET_ONE" text to the "Address Line 1" "Salesforce text field"|
-#      |5|I set "Ottawa" text to the "City" "Salesforce text field"|
-#      |6|I set "EC_ZIP_CODE_ONE" text to the "Postal Code" "Salesforce text field"|
-#      |7|I set "Canada" text to the "Country" "Salesforce search field"|
-#      |9|I click on the "Canada" "option"|
-#    And I wait for "3" seconds
-#    And I execute "Create Address" reusable step replacing some steps
-#      |3|I click on the "Mailing" "option"|
-#      |4|I set "EC_STREET_TWO" text to the "Address Line 1" "Salesforce text field"|
-#      |5|I set "Manchester" text to the "City" "Salesforce text field"|
-#      |6|I set "EC_ZIP_CODE_TWO" text to the "Postal Code" "Salesforce text field"|
-#      |7|I set "United Kingdom" text to the "Country" "Salesforce search field"|
-#      |9|I click on the "Kingdom" "option"|
