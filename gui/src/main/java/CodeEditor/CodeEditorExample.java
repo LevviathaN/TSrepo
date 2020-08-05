@@ -21,7 +21,7 @@ public class CodeEditorExample extends Application {
         rootFolder = PreProcessFiles.ROOT_FOLDER_PATH;
         guiFolder = PreProcessFiles.GUI_FOLDER_PATH;
 
-        URL url = new URL("file:" + guiFolder + "/src/main/java/CodeEditor/CodeEditorLayout.fxml");
+        URL url = new URL("file:" + guiFolder + "/src/main/resources/CodeEditorLayout.fxml");
         final FXMLLoader loader = new FXMLLoader(url);
         final Parent root = loader.load();
 

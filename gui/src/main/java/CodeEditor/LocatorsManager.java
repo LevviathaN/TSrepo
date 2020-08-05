@@ -45,7 +45,7 @@ public class LocatorsManager {
      * Displays "Save Feature File modal window"
      */
     public void display() throws Exception {
-        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/LocatorsManagerLayout.fxml");
+        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/resources/LocatorsManagerLayout.fxml");
         Parent root = FXMLLoader.load(url);
         locatorsManagerWindow = new Stage();
 //        createFeatureWindow.initModality(Modality.APPLICATION_MODAL);

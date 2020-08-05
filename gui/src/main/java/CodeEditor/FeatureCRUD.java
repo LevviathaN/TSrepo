@@ -25,7 +25,7 @@ public class FeatureCRUD {
 
     /** Displays "Save Feature File modal window" */
     public void display() throws Exception {
-        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/CreateFeatureModal.fxml");
+        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/resources/CreateFeatureModal.fxml");
         Parent root = FXMLLoader.load(url);
         createFeatureWindow = new Stage();
 //        createFeatureWindow.initModality(Modality.APPLICATION_MODAL);

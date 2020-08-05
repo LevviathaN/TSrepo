@@ -30,8 +30,8 @@ public class CodeEditor extends StackPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
-        editingTemplate = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/htmlFileContent.txt", StandardCharsets.UTF_8);
-        editingCode = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
+        editingTemplate = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
+        editingCode = Tools.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
     }
 
     private final GherkinValidator validator = new GherkinValidator();

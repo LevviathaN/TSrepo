@@ -28,7 +28,7 @@ public class ReusableScenariosManager {
 
     /** Displays "Reusable Scenarios Manager" */
     public void display() throws Exception {
-        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/java/CodeEditor/ReusableScenariosManagerLayout.fxml");
+        URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/resources/ReusableScenariosManagerLayout.fxml");
         Parent root = FXMLLoader.load(url);
         reusableScenariosWindow = new Stage();
         reusableScenariosWindow.setTitle("Reusable Scenarios Manager");
