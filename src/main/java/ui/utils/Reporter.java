@@ -627,7 +627,7 @@ public class Reporter {
 
     public static void addQtestLink(String testID) {
 
-            qtestBuild = String.format("https://globalqatest.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
+            qtestBuild = String.format("https://bpp.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
                     + testID);
 
         String link = String.format("<a target='_blank' href='%s'>qTest Link</a>", qtestBuild);
