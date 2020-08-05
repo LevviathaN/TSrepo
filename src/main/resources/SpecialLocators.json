@@ -147,6 +147,7 @@
   "Salesforce Related Buttons link": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[@title='PARAMETER']/following::div//a[normalize-space()='New'])[1]",
   "Salesforce drop down option with same Name and Title": "xpath=//a[normalize-space()='PARAMETER' and @title='PARAMETER']",
   "Salesforce New Qualification input fields": "xpath=//div[contains(@class,'groupDependentFieldEnabled')]//span[text()='PARAMETER']/following::input[1]",
+  "Salesforce Address Type link": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='PARAMETER']/parent::td/preceding-sibling::th//a",
 
   "Totara Input field with Id Parameter": "xpath=//input[@id=\"PARAMETER\"]",
   "Totara text field": "xpath=//label[normalize-space()='PARAMETER']/../following-sibling::div/input",
