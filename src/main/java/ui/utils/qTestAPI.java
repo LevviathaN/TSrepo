@@ -52,7 +52,7 @@ public class qTestAPI {
         String ProjectID = FileIO.getConfigProperty("QTest_Test_ProjectID");
 
         // request URL
-        String baseURI = "https://globalqatest.qtestnet.com/api/v3/projects/" + ProjectID + "/test-runs/" + TestRunID + "/test-logs";
+        String baseURI = "https://bpp.qtestnet.com/api/v3/projects/" + ProjectID + "/test-runs/" + TestRunID + "/test-logs";
 
         // define  json file
         Object obj = new JSONParser().parse(new FileReader("src/main/resources/api/requestBody/qTestGetTestRunIDfromSuite.json"));
@@ -130,7 +130,7 @@ public class qTestAPI {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_SF_SuiteID");
         }
 
-        String baseURI = "https://globalqatest.qtestnet.com/api/v3/projects/" + ProjectID + "/test-suites/" + TestSuiteID + "/test-runs";
+        String baseURI = "https://bpp.qtestnet.com/api/v3/projects/" + ProjectID + "/test-suites/" + TestSuiteID + "/test-runs";
         Response response = given()
                 .header("Authorization", bearerToken)
                 .baseUri(baseURI)

@@ -23,6 +23,7 @@ Feature: Product Factory - Region - BPP-3648
     When I execute "Create Region" reusable step
     When I execute "Create Region" reusable step replacing some steps
       |4|I set "EC_REGION_NAME" text to the "Name" "Product Factory text field"|
+      |8|I should see the "Name must be unique" message                             |
     Then I validate text "Name must be unique" to be displayed for "Product Factory Toast Error Message Top-Right corner" element
     Then I validate text "Name must be unique" to be displayed for "Product Factory Name Filed Validation Error Message" element
 

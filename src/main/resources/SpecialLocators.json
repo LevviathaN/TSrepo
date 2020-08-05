@@ -110,7 +110,7 @@
   "BPP Digital Admin Mandatory checkbox": "xpath=//label[text()=\"PARAMETER\"]/preceding-sibling::input[@type='checkbox']",
   "BPP Digital Admin Mandatory Second checkbox": "xpath=(//label[text()=\"PARAMETER\"]/preceding-sibling::input[@type='checkbox'])[2]",
   "BPP Digital Admin Pages Edit Button for Specific Component name": "xpath=//div[@class='list-group-item']//div[contains(text(),'PARAMETER')]/following-sibling::div/a[text()='Edit']",
-  "BPP Digital Admin Pages Delete Button for Specific Component name": "xpath=//div[@class='list-group-item']//div[contains(text(),'PARAMETER')]/following-sibling::div/a[text()='Delete']",
+  "BPP Digital Admin Pages Delete Button for Specific Component name": "xpath=//*[contains(.,'PARAMETER')]/following-sibling::*/a[text()='Delete']",
   "BPP Digital Mandatory text area field": "xpath=//label[normalize-space()=\"PARAMETER\"]/following-sibling::textarea",
   "BPP Digital Admin Media Popup Block Name link": "xpath=//ul[@class='list-group']/a[contains(text(),\"PARAMETER\")]",
   "BPP Digital Web Site CMS Anchors ID": "xpath=//div[contains(@class,'cms-page')]//div[@id=\"PARAMETER\"]",

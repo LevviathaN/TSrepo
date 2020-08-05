@@ -102,7 +102,7 @@ public class BaseUITest {
         }
 
         try {
-            if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK")) {
+            if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK")|| DriverProvider.getCurrentBrowserName().toUpperCase().contains("MOBILE")) {
                 sessionId = ((RemoteWebDriver) DriverProvider.getDriver()).getSessionId().toString();
                 Reporter.addLinkToReport(Reporter.getScreencastLinkFromBrowserStack(sessionId));
 

@@ -31,16 +31,22 @@ Feature: Digital Content Id - Multiple Course Types - BPP-7203
   @Positive @P1 #TC-3203
   Scenario: Create Digital Content Multiple Course Types
     Given I execute "Create Digital Content" reusable step with some additional steps
-      |16|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |17|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |18|I click on the "Search" "Product Factory button two"|
+      |19|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "EC_BODY_SHORT_NAME" element
 
   @Negative @P1 #TC-3204
   Scenario: Create Digital Content Multiple Course Types Duplicate
     Given I execute "Create Digital Content" reusable step with some additional steps
-      |16|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |17|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |18|I click on the "Search" "Product Factory button two"|
+      |19|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I execute "Create Digital Content" reusable step with some additional steps
-      |16|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
+      |17|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |18|I click on the "Search" "Product Factory button two"|
+      |19|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "Digital Content already exists" "text contained in element"
 
   @Positive @P1 #TC-3205, TC-3206

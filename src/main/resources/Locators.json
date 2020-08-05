@@ -390,6 +390,7 @@
   "Direct App Student Left Hand Nav Second Item": "xpath=//ul[@class='aside-navigation ']/li[3]/a",
   "Direct App My Learning No Course Placeholder": "css=div.intro-empty>p",
   "Direct App My Learning First Course Tutor Name": "xpath=//div[@class='course-tutor']",
+  "Direct App Mobile Hamburger Menu": "xpath=//button[@class='btn-toggle-menu']",
 
   "Harakirimail Inbox Name": "xpath=//input[@id='inbox-name']",
   "Harakirimail Get Inbox": "xpath=//button[@id='getinbox']",
@@ -408,7 +409,7 @@
   "BPP Digital Breadcrumb Level Three": "xpath=//ul[contains(@class,'breadcrumb-inner')]/li[3]",
   "BPP Digital Site Page Header": "xpath=//h2[@class='section-header']/span",
   "BPP Digital Site Left Side Page Header": "xpath=//div[@class='component-content']/h1",
-  "BPP Digital Login link": "xpath=//span[text()='Login']",
+  "BPP Digital Login link": "xpath=//a[text()='Login']",
   "BPP Digital Section First Article name": "xpath=(//div[@class='search-results-list']/article/h3)[1]",
   "BPP Digital Filter by title search field": "xpath=//input[@placeholder='Filter by title']",
   "BPP Digital First CMS Component First Select button": "css=a[data-file-name]:first-child",
@@ -502,6 +503,7 @@
   "BPP Digital Admin Edit Application Save": "xpath=//*[@type='submit']",
   "BPP Digital Admin Edit Application Variation": "xpath=(//span[@class='select2-selection select2-selection--single'])[2]",
   "BPP Digital Admin Edit Application Location": "xpath=(//span[@class='select2-selection select2-selection--single'])[3]",
+  "BPP Digital Register Link on Login Page": "xpath=//*[contains(text(),'Register')]",
 
   "Hub VPE Image Logo": "xpath=(//*[text()='Virtual Practice Environment']//following::img)[1]",
   "HUb VPE Banner": "xpath=(//*[@class='welcome-banner'])[2]",
@@ -663,5 +665,18 @@
   "Proctorio Account": "xpath=//a[@id='action-menu-toggle-0']",
   "Proctorio Logout": "xpath=//span[text()='Log out']",
 
-  "VLE Website Usermenu": "xpath=//div[@class='usermenu']"
+  "VLE Website Usermenu": "xpath=//div[@class='usermenu']",
+
+  "Hub VPE Mobile Hamburger Menu": "xpath=//button[@class='btn-toggle-menu']",
+  "Hub VPE Course Mobile Hamburger Menu": "xpath=//div[@id='mobile-burger']",
+  "Hub VPE Mobile Pages-Overview Header": "xpath=(//u[text()='Pages - Overview'])[2]",
+  "Hub VPE Mobile Pages Back Button": "xpath=//div[contains(@class,'page-nav-button')]",
+  "Hub VPE Mobile iPad My Learning Right Block Course name": "xpath=(//div[@class='single-course']//h3[text()=\"VPE Course Automation\"])[2]",
+  "Hub VPE Mobile My Learning Header": "xpath=(//u[text()='My Learning'])[2]",
+  "Hub VPE Mobile Samsung My Learning Header": "xpath=//ul[contains(@class,'aside-navigation')]//*[contains(text(),'My Learning')]",
+  "Hub VPE Mobile My Learning Course Automation": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[1]",
+  "Hub VPE Mobile Course Automation Courses Page": "xpath=//div[@class='my-learning']//ul/li[1]",
+  "Hub VPE Mobile IPad My Learning Course Automation": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[2]",
+  "Hub VPE Mobile Allow Popup": "xpath=//*[contains(text(),'Allow')]",
+  "Hub VPE Mobile Documents Header": "xpath=(//u[text()='Documents'])[2]"
 }
