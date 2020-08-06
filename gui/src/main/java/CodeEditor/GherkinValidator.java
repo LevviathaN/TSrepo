@@ -22,10 +22,10 @@ public class GherkinValidator {
 
 
     public GherkinValidator() {
-        locatorsMap = GuiHelper.getLocatorsMap("src/main/resources/NewLocators.json");
-        specialLocatorsMap = GuiHelper.getLocatorsMap("src/main/resources/NewSpecialLocators.json");
-        stepPatternsMap = GuiHelper.getLocatorsMap("src/main/resources/NewStepPatterns.json");
-        stepSignaturesMap = GuiHelper.getLocatorsMap("src/main/resources/NewStepSignatures.json");
+        locatorsMap = GuiHelper.getLocatorsMap(CodeEditorExample.rootFolder + "/src/main/resources/NewLocators.json");
+        specialLocatorsMap = GuiHelper.getLocatorsMap(CodeEditorExample.rootFolder + "/src/main/resources/NewSpecialLocators.json");
+        stepPatternsMap = GuiHelper.getLocatorsMap(CodeEditorExample.rootFolder + "/src/main/resources/NewStepPatterns.json");
+        stepSignaturesMap = GuiHelper.getLocatorsMap(CodeEditorExample.rootFolder + "/src/main/resources/NewStepSignatures.json");
         reusablesList = getReusableScenariosList();
     }
 
@@ -102,7 +102,7 @@ public class GherkinValidator {
         ArrayList<String> availableReusableStepsList = new ArrayList<>();
 
         try {
-            File inputFile = new File("src/main/resources/data/bpp/ReusableTestSteps.xml");
+            File inputFile = new File(CodeEditorExample.rootFolder + "/src/main/resources/data/bpp/ReusableTestSteps.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
