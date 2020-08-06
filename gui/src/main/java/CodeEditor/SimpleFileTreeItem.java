@@ -1,9 +1,10 @@
 package CodeEditor;
-import java.io.File;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
+
+import java.io.File;
 
 /**
  * @author Alexander Bolte - Bolte Consulting (2010 - 2014).
