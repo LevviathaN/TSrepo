@@ -293,7 +293,7 @@ public class TestParametersController {
                     } else if (element.endsWith("VPE")) {
                         if (element.contains("CALENDAR")) {
                             String time = String.valueOf(Tools.getCurDateTimeInMilliseconds());
-                            timePattern = time.substring(0,5);
+                            timePattern = time.substring(0,4);
                         } else {
                             timePattern = "MMM d yyyy";
                         }
