@@ -1,0 +1,178 @@
+[
+  {
+    "name": "BROWSER_PERFORMS_COMMAND",
+    "value": "^Browser performs \"([^\"]*)\" command$"
+  },
+  {
+    "name": "ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE",
+    "value": "^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
+  },
+  {
+    "name": "ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL",
+    "value": "^Attribute \"([^\"]*)\" of \"([^\"]*)\" \"([^\"]*)\" should have value \"([^\"]*)\"$"
+  },
+  {
+    "name": "FILL_THE_FIELD",
+    "value": "^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$"
+  },
+  {
+    "name": "HOVER_OVER",
+    "value": "^I hover over the \"([^\"]*)\" (?:button|link|option|element)$"
+  },
+  {
+    "name": "I_AM_LOGGED_IN_PF_AS",
+    "value": "^I am logged into Product Factory as \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_AM_ON_URL",
+    "value": "^I am on \"([^\"]*)\" URL$"
+  },
+  {
+    "name": "I_CAPTURE_DATA",
+    "value": "^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$"
+  },
+  {
+    "name": "I_CAPTURE_SPECIAL_DATA",
+    "value": "^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$"
+  },
+  {
+    "name": "I_CAPTURE_URL_AS_VARIABLE",
+    "value": "^I capture current URL as \"([^\"]*)\" variable$"
+  },
+  {
+    "name": "I_CHECK_UNCHECK",
+    "value": "^I \"(check|uncheck)\" \"([^\"]*)\" checkbox$"
+  },
+  {
+    "name": "I_CHECK_UNCHECK_SPECIAL",
+    "value": "^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_CLICK_ON_ELEMENT_SPECIAL",
+    "value": "^I click on the \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL",
+    "value": "^I click on the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL_IF",
+    "value": "^I click on the \"([^\"]*)\" \"([^\"]*)\" if \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_CLICK_ON_THE_BUTTON",
+    "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$"
+  },
+  {
+    "name": "I_CLICK_ON_THE_BUTTON_IF",
+    "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_CLICK_WITH_JS",
+    "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$"
+  },
+  {
+    "name": "I_EXECUTE_JS_CODE",
+    "value": "^I execute \"([^\"]*)\" JS code$"
+  },
+  {
+    "name": "I_EXECUTE_JS_CODE_FOR_ELEMENT",
+    "value": "^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$"
+  },
+  {
+    "name": "I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL",
+    "value": "^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_EXECUTE_REUSABLE_STEP",
+    "value": "^I execute \"([^\"]*)\" reusable step$"
+  },
+  {
+    "name": "I_EXECUTE_REUSABLE_STEP_IF",
+    "value": "^I execute \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_FILL_PF_FIELD",
+    "value": "^I fill the \"([^\"]*)\" PF field with \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_PRESS_KEY",
+    "value": "^I press \"([^\"]*)\" for \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_REMEMBER_TEXT",
+    "value": "^I remember \"([^\"]*)\" text as \"([^\"]*)\" variable$"
+  },
+  {
+    "name": "I_SELECT_FROM_DIALOG",
+    "value": "^I select \"([^\"]*)\" from PF dialog$"
+  },
+  {
+    "name": "I_SELECT_FROM_DROPDOWN",
+    "value": "I select \"([^\"]*)\" from \"([^\"]*)\" element"
+  },
+  {
+    "name": "I_SELECT_FROM_ELEMENT_SPECIAL",
+    "value": "^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_SET_TEXT_SPECIAL",
+    "value": "^I set \"([^\"]*)\" text to the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_SET_TEXT_WITH_JS",
+    "value": "^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$"
+  },
+  {
+    "name": "I_SHOULD_BE_REDIRECTED_TO_THE_PAGE",
+    "value": "^I should be redirected to the \"([^\"]*)\" page$"
+  },
+  {
+    "name": "I_SHOULD_NOT_SEE_ELEMENT",
+    "value": "I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"
+  },
+  {
+    "name": "I_SHOULD_SCROLL_TO_THE_TOP_BOTTOM_OF_THE_PAGE",
+    "value": "^I should scroll to the \"(top|bottom)\" of the page$"
+  },
+  {
+    "name": "I_SHOULD_SEE_MESSAGE_IN_FRAME",
+    "value": "^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$"
+  },
+  {
+    "name": "I_SHOULD_SEE_NUMBER_OF_ELEMENTS",
+    "value": "^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL",
+    "value": "^I should see \"([^\"]*)\" \"([^\"]*)\" in quantity of \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_SHOULD_SEE_SPECIAL",
+    "value": "^I should see \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_SHOULD_SEE_THE_MESSAGE_LOCATED_IN_FRAME",
+    "value": "^I should see the \"([^\"]*)\" message in \"([^\"]*)\" frame$"
+  },
+  {
+    "name": "I_SHOULD_SEE_THE_TEXT",
+    "value": "^I should see the \"([^\"]*)\" (?:button|message|element)$"
+  },
+  {
+    "name": "I_SWITCH_TO_WINDOW",
+    "value": "^I switch to window with index \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_UPLOAD_FILE",
+    "value": "I upload \"([^\"]*)\" file to \"([^\"]*)\" element"
+  },
+  {
+    "name": "I_VALIDATE_TEXT",
+    "value": "^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$"
+  },
+  {
+    "name": "WAIT_FOR",
+    "value": "^I wait for \"([^\"]*)\" seconds$"
+  }
+]
