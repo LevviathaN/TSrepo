@@ -10,6 +10,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>framework</artifactId>
+    <groupId>framework</groupId>
+    <version>1.0</version>
 
     <properties>
         <tests>smoke.xml</tests>
@@ -93,5 +95,13 @@
 
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>gui</groupId>
+            <artifactId>gui</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

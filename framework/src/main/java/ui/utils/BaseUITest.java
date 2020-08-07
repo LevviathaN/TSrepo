@@ -1,5 +1,6 @@
 package ui.utils;
 
+import CodeEditor.GuiHelper;
 import api.RestApiController;
 import org.jooq.tools.json.ParseException;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -45,10 +46,6 @@ public class BaseUITest {
         Reporter.logForEveryTest(method.getAnnotation(Test.class).testName());
 
         preProcessFiles = new PreProcessFiles();
-        SeleniumHelper.specialLocatorsMap = apiController.processLocatorProperties("//src/main/resources/SpecialLocators.json");
-        SeleniumHelper.locatorsMap = apiController.processLocatorProperties("//src/main/resources/Locators.json");
-        SeleniumHelper.stepPatternsMap = apiController.processLocatorProperties("//src/main/resources/StepPatterns.json");
-        SeleniumHelper.stepSignaturesMap = apiController.processLocatorProperties("//src/main/resources/StepSignatures.json");
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
@@ -71,6 +68,11 @@ public class BaseUITest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        SeleniumHelper.locatorsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewLocators.json");
+        SeleniumHelper.specialLocatorsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewSpecialLocators.json");
+        SeleniumHelper.stepPatternsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewStepPatterns.json");
+        SeleniumHelper.stepSignaturesMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewStepSignatures.json");
 
         KeywordsHandler.instantiate();
         MetaDataHandler.instantiate();
