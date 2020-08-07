@@ -11,7 +11,10 @@ import org.w3c.dom.Document;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathException;
 import javax.xml.xpath.XPathFactory;
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -25,7 +28,7 @@ public class CodeEditor extends StackPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
+        fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.frameworkFolder + "/src/test/resources/cucumber/bpp_features"))));
         editingTemplate = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
         editingCode = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
     }
@@ -157,7 +160,7 @@ public class CodeEditor extends StackPane implements Initializable {
         try {
             crud.display();
             fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(
-                    CodeEditorExample.rootFolder + "/src/test/resources/cucumber/bpp_features"))));
+                    CodeEditorExample.frameworkFolder + "/src/test/resources/cucumber/bpp_features"))));
         } catch (Exception e) {
             e.printStackTrace();
         }
