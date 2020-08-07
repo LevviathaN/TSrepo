@@ -11,12 +11,14 @@ import java.net.URL;
 public class CodeEditorExample extends Application {
 
     public static String rootFolder;
+    public static String frameworkFolder;
     public static String guiFolder;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         rootFolder = System.getProperty("user.dir").replace("\\", "/");
         guiFolder = rootFolder + "/gui";
+        frameworkFolder = rootFolder + "/framework";
 
         URL url = new URL("file:" + guiFolder + "/src/main/resources/CodeEditorLayout.fxml");
         final FXMLLoader loader = new FXMLLoader(url);

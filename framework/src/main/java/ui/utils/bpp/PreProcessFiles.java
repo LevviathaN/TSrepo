@@ -13,7 +13,7 @@ public class PreProcessFiles {
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings("MS_PKGPROTECT")
 	protected static String METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = null;
 	protected static String PROPERTIES_FILES_FOLDER_PATH = null;
-	public static String ROOT_FOLDER_PATH = null;
+	public static String FRAMEWORK_FOLDER_PATH = null;
 	public static String GUI_FOLDER_PATH = null;
 	public static String TEST_FILES_FOLDER_PATH = null;
 
@@ -37,22 +37,22 @@ public class PreProcessFiles {
 		String rootFolder = System.getProperty("user.dir").replace("\\", "/");
 		if (!classJar.startsWith("jar:")) {
 
-			ROOT_FOLDER_PATH = rootFolder;
+			FRAMEWORK_FOLDER_PATH = rootFolder + "/framework";
 			GUI_FOLDER_PATH = rootFolder + "/gui";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/keywords.metadata";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = FRAMEWORK_FOLDER_PATH + "/src/main/resources/data/bpp/keywords.metadata";
 
 			if(moduleUI){
-			PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/default.properties";
-			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
+			PROPERTIES_FILES_FOLDER_PATH = FRAMEWORK_FOLDER_PATH + "/src/main/resources/default.properties";
+			TEST_FILES_FOLDER_PATH = FRAMEWORK_FOLDER_PATH + "/testFilesToUpload";
 			}
 		}
 		else {
-			ROOT_FOLDER_PATH = rootFolder;
+			FRAMEWORK_FOLDER_PATH = rootFolder;
 			GUI_FOLDER_PATH = rootFolder + "/gui";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
-			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = FRAMEWORK_FOLDER_PATH + "/resources/data/bpp/keywords.metadata";
+			TEST_FILES_FOLDER_PATH = FRAMEWORK_FOLDER_PATH + "/testFilesToUpload";
 			if (moduleUI) {
-				PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/resources/default.properties";
+				PROPERTIES_FILES_FOLDER_PATH = FRAMEWORK_FOLDER_PATH + "/resources/default.properties";
 			}
 		}
 	}

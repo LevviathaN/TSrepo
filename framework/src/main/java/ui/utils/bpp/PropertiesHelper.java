@@ -37,7 +37,7 @@ public class PropertiesHelper {
         properties = new Properties();
         InputStream inputStream;
         try {
-            inputStream = new FileInputStream(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/api/configuration.properties");
+            inputStream = new FileInputStream(PreProcessFiles.FRAMEWORK_FOLDER_PATH + "/src/main/resources/api/configuration.properties");
             properties.load(inputStream);
             inputStream.close();
         } catch (FileNotFoundException e) {
