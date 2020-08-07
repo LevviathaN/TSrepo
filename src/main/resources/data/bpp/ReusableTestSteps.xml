@@ -29,8 +29,8 @@
         <step>I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL</step>
         <step>I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"</step>
         <step>I set "EC_PASSWORD" text to the "Password" "Build Empire text field"</step>
-        <step>I click on the "Direct App Login Button" button</step>
-        <step>I should see the "Direct App My Applications Left Menu Link" element</step>
+        <step>I click on the "Direct App Login Button" button by JS</step>
+        <step>I should see the "Timeline and Dashboard" "element"</step>
     </reusable>
     <reusable name="Log In to Hub as Admin">
         <step>I am on "MD_COMMON_LINKS_BUILDEMPIREADMINURL" URL</step>
@@ -2251,11 +2251,11 @@
         <step>I capture text data "Salesforce Qualification Type Capture information" as "EC_QUALIFICATION_INSTITUTION"
             variable
         </step>
-        <step>I click on the "Status" "Salesforce dropdown field"</step>
+        <step>I remember "KW_AUTO_RANDOMNUMBER|####" text as "EC_TARIFF_POINT" variable</step><step>I set "EC_TARIFF_POINT" text to the "Tariff Points" "Salesforce New Qualification input fields"</step><step>I click on the "Status" "Salesforce dropdown field"</step>
         <step>I click on the "Actual" "Salesforce dropdown field option"</step>
-        <step>I set "KW_AUTO_TODAY|DD/MM/YYYY" text to the "Qualification Date" "Salesforce date field"</step>
+        <step>I capture text data "Salesforce Qualification Status value" as "EC_STATUS" variable</step><step>I set "KW_AUTO_TODAY|DD/MM/YYYY" text to the "Qualification Date" "Salesforce date field"</step>
         <step>I set "G[####]" text to the "Grade" "Salesforce text field"</step>
-        <step>I click on the "Salesforce Account Creation Save button" link</step>
+        <step>I "check" "Salesforce Qualification Used for Offer checkbox" checkbox</step><step>I "check" "Salesforce Qualification Naric indicator checkbox" checkbox</step><step>I click on the "NARIC Equivalent Grade" "Salesforce dropdown field"</step><step>I click on the "8~ Specialist awards" "Salesforce dropdown field option"</step><step>I click on the "Salesforce Account Creation Save button" link</step>
         <step>I should see the " was created." message</step>
         <step>I wait for "5" seconds</step>
     </reusable>

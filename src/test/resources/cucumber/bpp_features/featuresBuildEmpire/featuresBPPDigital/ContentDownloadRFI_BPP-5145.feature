@@ -1,5 +1,6 @@
 @DigitalSite @RFI
-Feature: As a user, viewing a "content download RFI", I expect to see an RFI form that I can download a file from
+Feature: As a user, viewing a "content download RFI",
+  I expect to see an RFI form that I can download a file from
 
   Background:
     Given I execute "Log In to Hub as Admin" reusable step

@@ -1,4 +1,4 @@
-@DigitalSite
+@DigitalSite @Smoke
 Feature: BPP Digital Create and Validate New Category
 
   Background:

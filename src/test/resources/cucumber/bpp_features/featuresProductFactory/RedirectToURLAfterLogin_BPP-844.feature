@@ -108,6 +108,9 @@ Feature: Redirect to Requested URL after Authentication - BPP-844
       |1|I am on "EC_SAVED_URL" URL|
     Then I should see the "Deactivation Reasons" element
 
+  @Positive @Regression @P1 #TC-3445
+  Scenario: Redirect to URL after Authentication 2 - Senior Product Setter
+    Given I execute "Log In" reusable step
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
     Then I capture current URL as "EC_SAVED_URL" variable
@@ -341,6 +344,11 @@ Feature: Redirect to Requested URL after Authentication - BPP-844
       |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
     Then I should see the "Streams" element
 
+  @Positive @Regression @P1 #TC-3446
+  Scenario: Redirect to URL after Authentication 2 - Simple Product Setter
+    Given I execute "Log In" reusable step replacing some steps
+      |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|
+      |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
     Then I capture current URL as "EC_SAVED_URL" variable

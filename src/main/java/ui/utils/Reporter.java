@@ -5,7 +5,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.PatternLayout;
@@ -14,9 +13,7 @@ import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-import ui.pages.BasePage;
 import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.PropertiesHelper;
 
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -39,7 +36,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * Provides the reporting interface
  * </p>
  */
-@SuppressFBWarnings("DM_DEFAULT_ENCODING")
 public class Reporter {
 
     private static ExtentReports extent;
@@ -204,6 +200,10 @@ public class Reporter {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/internet-explorer_9-11/internet-explorer_9-11_64x64.png' class='BrowserLogo'>";
         } else if (browserName.equalsIgnoreCase("safari") || browserName.equalsIgnoreCase("bstack_safari")) {
             browserLink = "<img src='https://cdnjs.cloudflare.com/ajax/libs/browser-logos/45.10.0/archive/safari_1-7/safari_1-7_64x64.png' class='BrowserLogo'>";
+        } else if (browserName.contains("IOS")) {
+            browserLink = "<img src='https://img.icons8.com/nolan/64/ios-logo.png' class='BrowserLogo'>";
+        } else if (browserName.contains("ANDROID")) {
+            browserLink = "<img src='https://img.icons8.com/color/48/000000/android-os.png' class='BrowserLogo'>";
         }
 
         test.assignCategory(browserName.concat("<span>&nbsp;-&nbsp;Browser</span>"));
@@ -428,10 +428,10 @@ public class Reporter {
             if (System.getProperties().containsKey("driver") && System.getProperties().getProperty("driver").contains("CHROME")) {
                 BPPLogManager.getLogger().info("Taking Screen Shot For Chrome ");
                 screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100))
-                        .takeScreenshot(BasePage.driver.get());
+                        .takeScreenshot(SeleniumHelper.driver.get());
             } else {
                 screenshot = new AShot()
-                        .takeScreenshot(BasePage.driver.get());
+                        .takeScreenshot(SeleniumHelper.driver.get());
             }
 
             ImageIO.write(screenshot.getImage(), "PNG", new File(screenshotPath.toString()));
@@ -627,7 +627,7 @@ public class Reporter {
 
     public static void addQtestLink(String testID) {
 
-            qtestBuild = String.format("https://globalqatest.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
+            qtestBuild = String.format("https://bpp.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
                     + testID);
 
         String link = String.format("<a target='_blank' href='%s'>qTest Link</a>", qtestBuild);

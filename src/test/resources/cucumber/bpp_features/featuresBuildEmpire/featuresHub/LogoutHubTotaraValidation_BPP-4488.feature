@@ -57,6 +57,7 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     Then I execute "Logout as Admin Totara" reusable step
     When I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "EC_AUTO_ONE_EMAIL" text to the "Email" "Build Empire text field"|
+    And I wait for "3" seconds
     And I click on the "ICAEW Accounting Full" "Build Empire Homepage My Learning Course"
     And I click on the "Course Expires" "Build Empire Course Topic"
     And I click on the "TEST BUTTON" button
@@ -64,10 +65,12 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     Then I execute "window.stop()" JS code
     And I validate text "CONTAINS=EC_AUTO_ONE_FIRSTNAME" to be displayed for "Totara User Text" element
     And I am on "https://staging.bppdigital.buildempire.app/my/learning/" URL
+    And I wait for "3" seconds
     Then I execute "Log Out from Hub Student" reusable step
     And I should see the "Already registered? Log in" message
     When I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "EC_AUTO_TWO_EMAIL" text to the "Email" "Build Empire text field"|
+    And I wait for "3" seconds
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course"
     And I click on the "Topic 3" "Build Empire Course Topic"
     And I click on the "TEST SUBMIT" button
