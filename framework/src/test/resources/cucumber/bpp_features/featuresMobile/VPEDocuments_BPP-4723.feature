@@ -1,8 +1,8 @@
-@Hub @VPE @Mobile
+@VPE @Mobile
 Feature: The Hub - Law School - Documents (Files/Labels activity type)
   Webpages within a Topic should appear as clickable webpages within Topic within VPE
 
-  @Positive @Documents #TC-2451, TC-2452
+  @Positive #TC-2451, TC-2452
   Scenario: The Hub - Law School - Documents_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field" |
