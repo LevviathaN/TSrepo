@@ -72,7 +72,7 @@ public class PreProcessFiles {
 
 		try {
 			initPaths(true);
-			PropertiesHelper.gatherPropertiesFromJSON();
+			//PropertiesHelper.gatherPropertiesFromJSON();
 
 			return true;
 

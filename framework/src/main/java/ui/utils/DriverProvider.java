@@ -243,8 +243,8 @@ public class DriverProvider {
             capabilities.setCapability("browserstack.console", "errors");
             capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
             capabilities.setCapability("browserstack.appium_version", "1.17.0");
-            capabilities.setCapability("autoAcceptAlerts",true);
-            capabilities.setCapability("autoDismissAlerts", true);
+            //capabilities.setCapability("autoAcceptAlerts",true);
+            //capabilities.setCapability("autoDismissAlerts", true);
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
             //configure capability to set the job name with Test Case name

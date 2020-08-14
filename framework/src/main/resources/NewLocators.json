@@ -797,7 +797,7 @@
   },
   {
     "name": "Direct App Application Progress Percentage After Review",
-    "value": "xpath=//div[@class='app-progress']"
+    "value": "xpath=(//div[@class='app-progress'])[1]"
   },
   {
     "name": "Direct App Apprenticeships Upload Documents",
@@ -1465,7 +1465,7 @@
   },
   {
     "name": "Diret App Scholarship Dropdown",
-    "value": "xpath=//div[@class='scholarships-row ']//span[@class='ember-power-select-status-icon']"
+    "value": "xpath=//div[@class='programmes-row ']//span[@class='ember-power-select-status-icon']"
   },
   {
     "name": "Diret App Sexual Orientation Dropdown",
