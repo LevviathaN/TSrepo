@@ -410,6 +410,8 @@ Feature: Product Factory
   Scenario: Create CBA Course
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "Create" "Product Factory button"
     And I "check" "EC_BODY_SHORT_NAME" "Product Factory checkbox"
