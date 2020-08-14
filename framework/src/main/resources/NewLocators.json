@@ -1112,6 +1112,10 @@
     "value": "xpath=//ul[@class='user-menu']//a[contains(text(),'Logout')]"
   },
   {
+    "name": "Direct App Mobile Logout",
+    "value": "xpath=//li[@class='item-link item-logout']"
+  },
+  {
     "name": "Direct App Mark As Complete Checkbox",
     "value": "xpath=//div[contains(@class,'step-completed')]//input"
   },
@@ -1600,12 +1604,44 @@
     "value": "xpath=//*[@class='col to']"
   },
   {
+    "name": "Hub VPE Course Mobile Hamburger Menu",
+    "value": "xpath=//div[@id='mobile-burger']"
+  },
+  {
     "name": "Hub VPE Documents Folder",
     "value": "xpath=//i[contains(@class,'fa-folder')]"
   },
   {
     "name": "Hub VPE Documents Header",
     "value": "xpath=(//u[text()='Documents'])[1]"
+  },
+  {
+    "name": "Hub VPE Mobile Documents Header",
+    "value": "xpath=(//u[text()='Documents'])[2]"
+  },
+  {
+    "name": "Hub VPE Mobile My Learning Header",
+    "value": "xpath=(//u[text()='My Learning'])[2]"
+  },
+  {
+    "name": "Hub VPE Mobile Samsung My Learning Header",
+    "value": "xpath=//ul[contains(@class,'aside-navigation')]//*[contains(text(),'My Learning')]"
+  },
+  {
+    "name": "Hub VPE Mobile My Learning Course Automation",
+    "value": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[1]"
+  },
+  {
+    "name": "Hub VPE Mobile Course Automation Courses Page",
+    "value": "xpath=//div[@class='my-learning']//ul/li[1]"
+  },
+  {
+    "name": "Hub VPE Mobile IPad My Learning Course Automation",
+    "value": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[2]"
+  },
+  {
+    "name": "Hub VPE Mobile Allow Popup",
+    "value": "xpath=//*[contains(text(),'Allow')]"
   },
   {
     "name": "Hub VPE Email Assignment Date",
@@ -1626,6 +1662,22 @@
   {
     "name": "Hub VPE Pages-Overview Header",
     "value": "xpath=(//u[text()='Pages - Overview'])[1]"
+  },
+  {
+    "name": "Hub VPE Mobile Pages-Overview Header",
+    "value": "xpath=(//u[text()='Pages - Overview'])[2]"
+  },
+  {
+    "name": "Hub VPE Mobile Hamburger Menu",
+    "value": "xpath=//button[@class='btn-toggle-menu']"
+  },
+  {
+    "name": "Hub VPE Mobile Pages Back Button",
+    "value": "xpath=//div[contains(@class,'page-nav-button')]"
+  },
+  {
+    "name": "Hub VPE Mobile iPad My Learning Right Block Course name",
+    "value": "xpath=(//div[@class='single-course']//h3[text()=\"VPE Course Automation\"])[2]"
   },
   {
     "name": "Hub VPE Resubmit",
