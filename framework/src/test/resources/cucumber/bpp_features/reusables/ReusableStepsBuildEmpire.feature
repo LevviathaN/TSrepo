@@ -443,6 +443,7 @@ Feature: BuildEmpire
     And I fill the "Direct App Examining Body" field with "AutoBody"
     And I click on the "Direct App Add Assesment" button
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I fill the "Direct App Job Title" field with "Job Title"
     And I set "32" text to the "contracted working hours?" "Build Empire employment element"
