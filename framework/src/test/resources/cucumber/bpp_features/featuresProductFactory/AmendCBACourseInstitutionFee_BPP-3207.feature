@@ -76,6 +76,8 @@ Feature: CBA - Update CBA Course Institution fee - BPP-3207
     And I wait for "3" seconds
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
+    And I set "EC_SITTING_NAME" text to the "Sitting" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
     And I click on the "EC_SITTING_NAME" "Product Factory edit button"
     And Browser performs "REFRESH" command
     Then I should see the "[EC_UPDATED_PM_PRICE].00" element
