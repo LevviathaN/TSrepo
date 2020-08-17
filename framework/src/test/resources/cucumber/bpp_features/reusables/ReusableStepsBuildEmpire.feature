@@ -20,6 +20,7 @@ Feature: BuildEmpire
     And I set "EC_AUTO_EMAIL" text to the "Email" "Build Empire text field"
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button by JS
+    And I wait for "1" seconds
     And I should see the "Timeline and Dashboard" "element"
 
   Scenario: Log In to Hub as Admin
@@ -31,10 +32,14 @@ Feature: BuildEmpire
 
   Scenario: Create Scholarships Application
     Given I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "BPP University Scholarships" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Programme Dropdown" button
     And I click on the "Direct App Programme Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "Legal Practice Course (LPC)" "Build Empire application type"
     And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
@@ -56,7 +61,9 @@ Feature: BuildEmpire
 
   Scenario: Create Academic Appeals Application
     Given I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
+    And I wait for "1" seconds
     Then I click on the "BPP University Academic Appeals" "Build Empire application type"
     And I click on the "Direct App Create Application" button
 
@@ -72,9 +79,13 @@ Feature: BuildEmpire
 
   Scenario: Create Mitigating Circumstances Application
     Given I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "BPP University Mitigating Circumstances" "Build Empire application type"
+    And I wait for "1" seconds
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Accept Mitigating Circumstances As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
@@ -120,6 +131,7 @@ Feature: BuildEmpire
     And I click on the "Eligibility criteria" "Build Empire application section"
     And I click on the "Direct App Final Award In Relation To Programme" button
     And I click on the "Direct App Ten Working Days To Submit Application Yes" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I fill the "Diret App Phone Number" field with "EC_PHONE"
     And I click on the "Direct App Country Dropdown" button
@@ -133,6 +145,7 @@ Feature: BuildEmpire
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App DOB"
     And I set "London" text to the "Town/City*" "Build Empire text field"
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I set "12345" text to the "SRN" "Build Empire course details element"
     And I set "Auto Location" text to the "Location" "Build Empire course details element"
@@ -145,6 +158,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Course Details School" element
     And I click on the "Direct App Course Details School Law" element
     And I click on the "Direct App Mark As Complete Checkbox" button
+    Then I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I click on the "Direct App Add Assesment" button
     And I fill the "Direct App Assesment Title" field with "AutoTitle"
@@ -160,23 +174,30 @@ Feature: BuildEmpire
     And I click on the "Direct App Did You Apply For Deferral" button
     And I click on the "Direct App Add Filled Assesment" button
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     Then I upload "directApp.pdf" file to "Direct App Upload File" element
     And I fill the "Direct App Uploaded File Description" field with "Test"
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Save And Return" button
 
   Scenario: Create Bespoke Scotland Application
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
     And I wait for "2" seconds
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
+    And I wait for "1" seconds
     Then I click on the "Professional Career Development Programmes Scotland" "Build Empire application type"
-    And I wait for "2" seconds
+    And I wait for "1" seconds
+    And I hover over the "Direct App Programmes Programm Dropdown" button
     And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "Chartered Manager" "Build Empire application type"
-    And I wait for "2" seconds
+    And I wait for "1" seconds
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Pre Approve Apprenticeships Application As Admin
     Given I click on the "Direct App Admin Apps Top Link" button
@@ -267,6 +288,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Company Country Dropdown UK Option" element
     And I set "12345" text to the "Postcode" "Build Empire employment element"
     And I click on the "Direct App Mark As Complete Checkbox" button
+    Then I wait for "1" seconds
     And I click on the "Direct App Save And Return" button
 
   Scenario: Attach Automation Line Manager
@@ -330,12 +352,16 @@ Feature: BuildEmpire
   Scenario: Create Bespoke England Application
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
     And I wait for "2" seconds
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
     And I wait for "2" seconds
     Then I click on the "Professional Career Development Programmes England" "Build Empire application type"
+    And I hover over the "Direct App Programmes Programm Dropdown" button
     And I click on the "Direct App Programmes Programm Dropdown" element
+    And I wait for "1" seconds
     Then I click on the "Chartered Manager" "Build Empire application type"
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Complete Bespoke England Application
     Given I click on the "I Understand" "button"
@@ -367,8 +393,9 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
+    And I wait for "1" seconds
     And I click on the "employment status?:" "Build Empire nationality dropdown"
-    And I click on the "I am a recent" "Build Empire nationality option"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
@@ -384,6 +411,7 @@ Feature: BuildEmpire
     And I click on the "Diret App Sexual Orientation Heterosexual" element
     And I click on the "Diret App Learning Disability No" element
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
     And I click on the "United Kingdom" "Build Empire nationality option"
@@ -435,6 +463,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Company Country Dropdown UK Option" element
     And I set "12345" text to the "Postcode" "Build Empire employment element"
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I click on the "Direct App Privacy Notice By Email" button
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -532,28 +561,43 @@ Feature: BuildEmpire
 
   Scenario: Create Programmes Application
     Given I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I wait for "1" seconds
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "BPP University Programmes" "Build Empire application type"
+    And I hover over the "Direct App Programmes Programm Dropdown" button
     And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "Build Empire Programmes Nursing Programme" element
+    And I hover over the "Direct App Location Dropdown" button
     And I click on the "Direct App Location Dropdown" element
+    Then I wait for "1" seconds
     Then I click on the "Online GDL" "Build Empire application type"
+    And I hover over the "Direct App Start Date Application Dropdown" button
     And I click on the "Direct App Start Date Application Dropdown" element
+    And I wait for "1" seconds
     Then I click on the "Full time- Aug-2020" "Build Empire application type"
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Create Professional Apprenticeships Application Chartered Manager
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
     And I wait for "2" seconds
     Then I click on the "BPP Professional Apprenticeships" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Programmes Programm Dropdown" button
     And I click on the "Direct App Programmes Programm Dropdown" element
+    And I wait for "1" seconds
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire application type"
+    And I hover over the "Direct App Location Dropdown" button
     And I click on the "Direct App Location Dropdown" element
     And I wait for "2" seconds
     Then I click on the "Scotland" "Build Empire application type"
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Complete Professional Apprenticeships Application Chartered Manager
     Given I click on the "Direct App Start Application" button
@@ -586,7 +630,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
     And I click on the "employment status?:" "Build Empire nationality dropdown"
-    And I click on the "I am a recent" "Build Empire nationality option"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
@@ -665,6 +709,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Privacy Notice By Email" button
     And I click on the "Direct App Mark As Complete Checkbox" button
+    Then I wait for "1" seconds
     And I click on the "Direct App Save And Return" button
 
   Scenario: Line Manager Review Apprenticeships
@@ -772,13 +817,21 @@ Feature: BuildEmpire
 
   Scenario: Create University Degree Apprenticeships Application
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I wait for "1" seconds
+    Then I hover over the "Direct App What Are You Applying For Dropdown" element
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP University Degree Apprenticeships" "Build Empire application type"
+    Then I wait for "1" seconds
+    Then I hover over the "Direct App Programmes Programm Dropdown" element
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire application type"
-    And I click on the "Location" "Build Empire dropdown"
+    Then I wait for "1" seconds
+    And I hover over the "Direct App Location Dropdown" button
+    And I click on the "Direct App Location Dropdown" element
+    Then I wait for "1" seconds
     And I click on the "Scotland" "Build Empire dropdown option"
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Complete University Degree Apprenticeships Application Chartered Manager
     Given I click on the "Direct App Start Application" button
@@ -793,6 +846,7 @@ Feature: BuildEmpire
     And I click on the "Are you applying for a programme" "Build Empire bespoke Scotland eligibility"
     And I click on the "Do you confirm that your job is a" "Build Empire bespoke Scotland eligibility"
     And I click on the "Do you confirm that you have discussed" "Build Empire bespoke Scotland eligibility"
+    Then I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I click on the "Title" "Build Empire dropdown"
     And I click on the "Mr" "Build Empire dropdown option"
@@ -814,7 +868,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
     And I click on the "employment status?:" "Build Empire nationality dropdown"
-    And I click on the "I am a recent" "Build Empire nationality option"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
@@ -890,6 +944,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Privacy Notice By Email" button
     And I click on the "Direct App Mark As Complete Checkbox" button
+    Then I wait for "1" seconds
     And I click on the "Direct App Save And Return" button
 
   Scenario: Line Manager Review University Degree Apprenticeships Scotland
@@ -992,7 +1047,7 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
     And I click on the "employment status?:" "Build Empire nationality dropdown"
-    And I click on the "I am a recent" "Build Empire nationality option"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
@@ -1060,33 +1115,46 @@ Feature: BuildEmpire
   Scenario: Create Professional Apprenticeships Application UAT Accounting Option Two
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
     And I wait for "1" seconds
+    And I hover over the "Direct App What Are You Applying For Dropdown" element
     And I click on the "Direct App What Are You Applying For Dropdown" element
     Then I click on the "BPP Professional Apprenticeships" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Programmes Programm Dropdown" element
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Start Date Application Dropdown" element
     And I click on the "Direct App Start Date Application Dropdown" element
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
     And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
+    Then I wait for "1" seconds
 
   Scenario: Create Professional Apprenticeships Application UAT Accounting Option Three
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
     And I wait for "2" seconds
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
     And I click on the "Direct App What Are You Applying For Dropdown" element
+    And I wait for "1" seconds
     Then I click on the "BPP Professional Apprenticeships" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Programmes Programm Dropdown" button
     And I click on the "Direct App Programmes Programm Dropdown" element
+    And I wait for "2" seconds
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Start Date Application Dropdown" button
     And I click on the "Direct App Start Date Application Dropdown" element
+    And I wait for "2" seconds
     Then I click on the "UAT Assisstant Accountant - Option 3" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Which Application you want Application Dropdown" button
     And I click on the "Direct App Which Application you want Application Dropdown" element
+    And I wait for "2" seconds
     Then I click on the "ACCA" "Build Empire application type"
     And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
+    And I wait for "1" seconds
 
   Scenario: Complete Professional Apprenticeships UAT Accounting Assistant
     Given I click on the "Direct App Start Application" button
@@ -1119,7 +1187,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
     And I click on the "employment status?:" "Build Empire nationality dropdown"
-    And I click on the "I am a recent" "Build Empire nationality option"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
@@ -1242,8 +1310,9 @@ Feature: BuildEmpire
 
   Scenario: Create Channel Islands Mk2 Application
     Given I click on the "Direct App My Applications Left Menu Link" button by JS
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     And I click on the "Direct App Create Application" button
+    And I wait for "2" seconds
 
   Scenario: Complete Channel Islands Mk2 Application
     Given I click on the "Direct App Start Application" button
@@ -1281,6 +1350,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Direct App Channel Islands Compliance" button
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Save And Return" button
 
   Scenario: Approve Channel Isalnds Application as Training Manager
@@ -1339,7 +1409,8 @@ Feature: BuildEmpire
       And I click on the "Direct App Additional Info Aged 19" element
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "employment status?:" "Build Empire nationality dropdown"
-      And I click on the "I am a recent" "Build Empire nationality option"
+      And I wait for "1" seconds
+      And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
       And I click on the "Direct App Mark As Complete Checkbox" button
       And I wait for "2" seconds
       And I click on the "Direct App Next" button
@@ -1397,7 +1468,9 @@ Feature: BuildEmpire
       Then I click on the "Foundation degree" "Build Empire application type"
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "Direct App Subject Dropdown" button
+      And I wait for "1" seconds
       And I fill the "Direct App Education Search Field Dropdown" field with "Applied Law (QCF)"
+      And I wait for "2" seconds
       Then I click on the "Applied Law (QCF)" "Build Empire application type"
       And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
       And I click on the "Direct App Awarding Institution Dropdown" button
