@@ -241,7 +241,11 @@
   },
   {
     "name": "BPP Digital Login link",
-    "value": "xpath=//span[text()='Login']"
+    "value": "xpath=//*[text()='Login']"
+  },
+  {
+    "name": "BPP Digital Register Link on Login Page",
+    "value": "xpath=//*[contains(text(),'Register')]"
   },
   {
     "name": "BPP Digital Marketing Cloud Log Show button",

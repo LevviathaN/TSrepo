@@ -6,7 +6,7 @@ Feature: Harakirimail, Guerrillamail
     Then I click on the "Guerilla Edit" button
     And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
     Then I click on the "Guerilla Email Set" button
-    And I wait for "7" seconds
+    And I wait for "10" seconds
     Given I am on "https://www.guerrillamail.com/" URL
     Then I click on the "Guerilla Edit" button
     And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
@@ -20,7 +20,7 @@ Feature: Harakirimail, Guerrillamail
     Then I click on the "Guerilla Edit" button
     And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
     Then I click on the "Guerilla Email Set" button
-    And I wait for "7" seconds
+    And I wait for "10" seconds
     Given I am on "https://www.guerrillamail.com/" URL
     Then I click on the "Guerilla Edit" button
     And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
@@ -65,7 +65,7 @@ Feature: Harakirimail, Guerrillamail
     Then I click on the "Guerilla Edit" button
     And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"
     Then I click on the "Guerilla Email Set" button
-    And I wait for "7" seconds
+    And I wait for "10" seconds
     Given I am on "https://www.guerrillamail.com/" URL
     Then I click on the "Guerilla Edit" button
     And I fill the "Guerilla Email Input" field with "EC_AUTO_EMAIL"

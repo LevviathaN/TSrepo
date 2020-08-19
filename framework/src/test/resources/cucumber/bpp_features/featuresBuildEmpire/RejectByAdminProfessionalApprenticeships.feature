@@ -8,7 +8,7 @@ Feature: Reject Professional Apprenticeship Applications
   Scenario: Reject Professional Apprenticeship By Admin
     When I execute "Create Professional Apprenticeships Application Chartered Manager" reusable step
     Given I execute "Complete Professional Apprenticeships Application Chartered Manager" reusable step replacing some steps
-    |29|I click on the "I am a school / college leaver (This is my first professional role)" "Build Empire nationality option"|
+    |31|I click on the "I am a school / college leaver (This is my first professional role)" "Build Empire nationality option"|
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step

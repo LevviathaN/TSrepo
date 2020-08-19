@@ -19,6 +19,7 @@ Feature: As a student who, is under 18, I expect to provide more information abo
     And I click on the "Are you applying for a programme" "Build Empire bespoke Scotland eligibility"
     And I click on the "Do you confirm that your job is a new job role relevant to the career development" "Build Empire bespoke Scotland eligibility"
     And I click on the "Do you confirm that you have discussed" "Build Empire bespoke Scotland eligibility"
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I click on the "Title" "Build Empire dropdown"
     And I click on the "Mr" "Build Empire dropdown option"
@@ -46,8 +47,9 @@ Feature: As a student who, is under 18, I expect to provide more information abo
     And I click on the "Direct App Next" button
     And I click on the "Direct App Additional Info Aged 19" element
     And I click on the "employment status?:" "Build Empire nationality dropdown"
-    And I click on the "I am a graduate (This is my first professional role)" "Build Empire nationality option"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
     And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "1" seconds
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
     And I click on the "Diret App Gender Not To Say" element
