@@ -301,6 +301,7 @@ Feature: BuildEmpire
 
   Scenario: Complete Bespoke Sctotland Application After Review
     Given I click on the "Direct App My Applications Left Menu Link" link by JS
+    And I wait for "3" seconds
     Then I validate text "CONTAINS=82" to be displayed for "Direct App Application Progress Percentage After Review" element
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"

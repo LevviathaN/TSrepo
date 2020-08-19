@@ -25,20 +25,9 @@ MD_ADMINISTRATEADMINUSERNAME,VolodymyrVeiko@bpp.com,descr.
 MD_ADMINISTRATEADMINPASSWORD,Liberty2015,descr.
 MD_TOTARAADMINUSER,bppadmin@bpp.com,descr.
 MD_TOTARAADMINPASSWORD,Password1!!!,descr.
-MD_BPPADMINUSER,automation@bpp.com.noahuat,descr.
-MD_BPPADMINPASSWORD,Welcome1@,descr.
-MD_YAHOOEMAILCSAUSER,nadineanja@yahoo.com,descr.
-MD_YAHOOEMAILCSAPASSWORD,Wake Up 19!,descr.
-MD_BPPBANNERUSER,BP9014536,descr.
-MD_BPPBANNERPASSWORD,Zo060419,descr.
 MD_ENTER,ENTER,descr.
 MD_REFRESH,F5,descr.
 MD_INSPECT,F12,descr.
-MD_SALESFORCEURL,https://cs21.salesforce.com/home/home.jsp,descr.
-MD_VLENOCASLOGINURL,https://vle-stage.bppuniversity.com/vle/login/index.php?authCAS=NOCAS,descr.
-MD_VLECASLOGINURL,https://login-stage.bppuniversity.com/ncas/login?service=https%3A%2F%2Fvle-stage.bppuniversity.com%2Fvle%2Flogin%2Findex.php%3FauthCAS%3DCAS,descr.
-MD_YAHOOMAILURL,https://login.yahoo.com/?.src=ym&.lang=en-US&.intl=us&.done=https%3A%2F%2Fmail.yahoo.com%2Fd,descr.
-MD_BPPBANNERURL,http://pprdbpp-sis-stage.apolloglobal.int/,descr.
 MD_ESCAPE,ESCAPE,descr.
 MD_LANDDPORTALURL,https://landdportal-stage.bpp.com/auth/saml/login.php,descr.
 MD_VLELMSURL,https://lms-stage.bpp.com/login/index.php,descr.
@@ -59,8 +48,6 @@ MD_BPPBARCLEYCARDURL,https://ca-test.barclaycardsmartpay.com/ca/ca/login.shtml,d
 MD_BPPADMINISTRATEURL,https://bppsandbox.administrateapp.com,descr.
 MD_TOTARALOGINURL,https://totara.staging.bppdigital.buildempire.app/login/index.php,descr.
 MD_CUSTOMERGROUP,SELFFUND,descr.
-MD_LEGALPRACTICECOURSE,Legal Practice Course (LPC) [Bristol] - Full Time SEP-2018,descr.
-MD_SFOFFERING,598587,descr.
 MD_CREDITCARDNUMBER,4111 1111 1111 1111,descr.
 MD_CREDITCARDHOLDERNAME,Adyen Test,descr.
 MD_CREDITCARDEXPIRYMONTH,10,descr.
