@@ -1593,7 +1593,7 @@
   },
   {
     "name": "Hub VPE Calendar Current Date",
-    "value": "xpath=//div[@class='plain-day event today']"
+    "value": "xpath=//td[contains(@class,'day today')]/div"
   },
   {
     "name": "Hub VPE Calendar Left Arrow",
@@ -1602,6 +1602,34 @@
   {
     "name": "Hub VPE Calendar Right Arrow",
     "value": "xpath=//*[@class='fal fa-chevron-right']"
+  },
+  {
+    "name": "Hub VPE Calendar First Group Event",
+    "value": "xpath=//*[text()='BPP events ']/../../following-sibling::div[1]//div[@class='col event-name']"
+  },
+  {
+    "name": "Hub VPE Calendar First Group Event Description",
+    "value": "xpath=//*[text()='BPP events ']/../../following-sibling::div[1]//div[@class='col event-description']"
+  },
+  {
+    "name": "Hub VPE Calendar First Course Event Description",
+    "value": "xpath=//*[text()='Course events ']/../../following-sibling::div[1]//div[@class='col event-description']/h5"
+  },
+  {
+    "name": "Hub VPE Calendar First Course Event",
+    "value": "xpath=//*[text()='Course events ']/../../following-sibling::div[1]//div[@class='col event-name']"
+  },
+  {
+    "name": "Hub VPE Calendar Task Due Date",
+    "value": "xpath=//div[@class='event calendar_event_course' and contains(text(),'24')]"
+  },
+  {
+    "name": "Hub VPE Calendar Task Due Sender",
+    "value": "xpath=//*[contains(text(),'Tasks due')]/../../following-sibling::div[1]//h3"
+  },
+  {
+    "name": "Hub VPE Calendar Task Due Assignment",
+    "value": "xpath=//*[contains(text(),'Tasks due')]/../../following-sibling::div[1]//h5"
   },
   {
     "name": "Hub VPE Call To",

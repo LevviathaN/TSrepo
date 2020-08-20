@@ -1,4 +1,4 @@
-@VPE @Mobile
+@Mobile
 Feature: The Hub - Law School - Pages - Overview
   Webpages within a Topic should appear as clickable webpages within Topic within VPE
 

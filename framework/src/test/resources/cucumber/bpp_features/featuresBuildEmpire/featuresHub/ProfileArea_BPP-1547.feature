@@ -3,7 +3,7 @@ Feature: BPP University Hub Profile Area
   As a user
   I expect to see an updated link to access my profile
 
-  @Positive #TC-1170
+  @ProfileArea @Positive #TC-1170
   Scenario: Hub Profile Area
     #Register New Student
     And I execute "Register New Student Account" reusable step
