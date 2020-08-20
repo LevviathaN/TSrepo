@@ -632,4 +632,56 @@ public class StepDefinitions extends SeleniumHelper {
         } else
             Reporter.log("Cannot save EC value with an empty key. Check your parameters.");
     }
+
+    /**
+     * Definition to click an element on the page until given condition is true, up to 10 times
+     *
+     * @author Ruslan Levytskyi
+     */
+    @When("^I click on the \"([^\"]*)\" element until \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_click_on_element_until(String element, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        int attempt = 1;
+        Reporter.log("Executing step: I click on the '" + element + "' element");
+        do {
+            Reporter.log("attempt " + attempt);
+            clickOnElement(initElementLocator(element),
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
+            attempt++;
+            if (attempt > 5) {
+                Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
+                break;
+            } else {
+                sleepFor(5000);
+            }
+        } while (!conditions.checkCondition(condition, conditionParameter));
+    }
+
+    /**
+     * Definition to click an element on the page if given condition is true
+     *
+     * @param element locator for element you want to click on
+     *                initElementLocator builds locator with JS, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @author Ruslan Levytskyi
+     */
+    @When("^I click on the \"([^\"]*)\" (?:button|link|option|element) with JS if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_click_on_the_button_with_js_if(String element, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        if (conditions.checkCondition(condition, conditionParameter)) {
+            Reporter.log("Executing step: I click on the '" + element + "' element with JS");
+            clickWithJS(initElementLocator(element));
+        } else {
+            Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
+        }
+    }
 }

@@ -1,4 +1,4 @@
-@Mobile
+@Mobile @Tablet
 Feature: The Hub - Web Pages - CMS pages with parent/child relationships
   As an admin, when creating a CMS page,
   I expect to be able to add a CMS page as a CHILD of another CMS page and have that reflected in the Hub

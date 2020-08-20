@@ -1,4 +1,4 @@
-@Hub @Breadcrumb @Mobile
+@Hub @Breadcrumb @Tablet
 Feature: The Hub - Breadcrumb
   As a user, I expect to see a 'breadcrumb trail' which updates, as I navigate throughout the Hub
 
@@ -22,7 +22,9 @@ Feature: The Hub - Breadcrumb
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab"
     And I click on the "Additional information" "Build Empire application section"
     And I should see the "Additional Information" "Build Empire Breadcrumb Not Clickable Tab"
-    Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab"
+    Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab" if "Chartered Manager Degree Apprenticeship,Build Empire Breadcrumb Tab" "special element is present"
+    Then I click on the "Direct App My Applications Left Menu Link" element with JS if "Emergency contact,Build Empire application section" "special element is absent"
+    And I click on the "Direct App Go To Application" element if "Emergency contact,Build Empire application section" "special element is absent"
     And I click on the "Emergency contact" "Build Empire application section"
     And I should see the "Emergency contact" "Build Empire Breadcrumb Not Clickable Tab"
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab"
@@ -48,5 +50,5 @@ Feature: The Hub - Breadcrumb
     And I click on the "Moodle Quiz" "Build Empire Course Topic"
     And I should see the "Moodle Quiz" "Build Empire Breadcrumb Not Clickable Tab"
     #Breadcrumb for help&support
-    And I click on the "Direct App Help And Support Left Menu Link" link
+    And I click on the "Direct App Help And Support Left Menu Link" link by JS
     And I should see the "Help & Support" "Build Empire Breadcrumb Not Clickable Tab"
