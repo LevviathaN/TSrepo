@@ -18,13 +18,25 @@ public class Conditions extends SeleniumHelper {
      * "Bodies element is present", "Save button element is present"
      */
     public boolean checkCondition(String condition, String conditionParameter){
-        switch (condition) {
+        String elementLocator;
+        String elementType;
+                switch (condition) {
             case "element is present":
                 return isElementPresentAndDisplay(initElementLocator(conditionParameter));
             case "element is absent":
                 return !isElementPresentAndDisplay(initElementLocator(conditionParameter));
             case "EC variable is needed":
                 return !conditionParameter.equals(TestParametersController.checkIfSpecialParameter(conditionParameter));
+            case "JavaScript is loaded":
+                return waitForJavaScriptToRun();
+            case "special element is present":
+                elementLocator = conditionParameter.split(",")[0];
+                elementType = conditionParameter.split(",")[1];
+                return isElementPresentAndDisplay(initElementLocator(getSpecialElementXPath(elementLocator,elementType)));
+            case "special element is absent":
+                elementLocator = conditionParameter.split(",")[0];
+                elementType = conditionParameter.split(",")[1];
+                return !isElementPresentAndDisplay(initElementLocator(getSpecialElementXPath(elementLocator,elementType)));
             default:
                 return false;
         }

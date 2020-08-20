@@ -15,6 +15,7 @@ import ui.utils.bpp.TestParametersController;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.Matchers.*;
@@ -533,6 +534,17 @@ public class SeleniumHelper {
     }
 
     /**
+     * Method to XPath of element (basically replacing PARAMETER in elementType with element locator)
+     *
+     * @return special locator
+     */
+    public String getSpecialElementXPath(String elementLocator, String elementType) {
+        String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+        String xpathTemplate = specialLocatorsMap.get(elementType);
+        return xpathTemplate.replaceAll("PARAMETER", processedLocator);
+    }
+
+    /**
      * Method to find element by locator checking presence of element (not visibility)
      *
      * @param element locator of element to find
@@ -975,5 +987,27 @@ public class SeleniumHelper {
             }
         }
         throw new NotFoundException("Requested element was not found by " + regexSuitableLocator);
+    }
+
+    public static boolean waitForJavaScriptToRun(int... timeout) {
+        int timeoutForJS = timeout.length < 1 ? SHORT_TIMEOUT : timeout[0];
+        try {
+            Reporter.log("Waiting for JavaScript to updated the DOM");
+
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver();
+            driver().manage().timeouts().setScriptTimeout(timeoutForJS, TimeUnit.SECONDS);
+
+            //entire DOM tree is checked
+            javascriptExecutor.executeAsyncScript("var callback = arguments[arguments.length - 1];" +
+                    "document.addEventListener('DOMSubtreeModified', function(event) {" +
+                    "callback();" +
+                    "});");
+
+            Reporter.log("JavaScript has updated the DOM");
+            driver().manage().timeouts().setScriptTimeout(0, TimeUnit.MICROSECONDS);
+        } catch (Exception e) {
+            Reporter.log("Seems like JS has already updated the DOM");
+        }
+        return true;
     }
 }

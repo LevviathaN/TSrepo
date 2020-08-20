@@ -71,6 +71,8 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CAPTURE_SPECIAL_DATA"), () -> stepDefs.i_capture_special_data(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SET_TEXT_WITH_JS"), () -> stepDefs.i_set_text_with_js(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CAPTURE_URL_AS_VARIABLE"), () -> stepDefs.i_capture_url_as_variable(arg1));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_UNTIL"), () -> stepDefs.i_click_on_element_until(arg1, arg2, arg3));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_THE_BUTTON_WITH_JS_IF"), () -> stepDefs.i_click_on_the_button_with_js_if(arg1, arg2, arg3));
 
         //Special stepdefs
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
@@ -82,6 +84,8 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SELECT_FROM_ELEMENT_SPECIAL"),() -> specialStepDefs.i_select_from_element_special(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SHOULD_SEE_NUMBER_OF_ELEMENTS_SPECIAL"),() -> specialStepDefs.i_should_see_number_of_elements_special(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL"),() -> specialStepDefs.i_execute_js_code_for_element_special(arg1, arg2, arg3));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_UNTIL_SPECIAL"),() -> specialStepDefs.i_click_on_element_until_special(arg1, arg2, arg3, arg4));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("HOVER_OVER_ELEMENT_SPECIAL"),() -> specialStepDefs.hover_over_element_special(arg1, arg2));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();

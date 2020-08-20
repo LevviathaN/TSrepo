@@ -291,4 +291,60 @@ public class SpecialStepDefs extends SeleniumHelper {
             Reporter.fail("No such locator template key");
         }
     }
+
+    /**
+     * Definition to click an element on the page until given condition is true, up to 10 times
+     *
+     * @author Ruslan Levytskyi
+     */
+    @When("^I click on the \"([^\"]*)\" \"([^\"]*)\" until \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_click_on_element_until_special(String elementLocator, String elementType, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        int attempt = 1;
+        Reporter.log("Executing step: I click on the '" + elementLocator + "' element");
+        do {
+            Reporter.log("attempt " + attempt);
+            if(specialLocatorsMap.containsKey(elementType)) {
+                String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+                String xpathTemplate = specialLocatorsMap.get(elementType);
+                String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+                clickOnElement(initElementLocator(resultingXpath),
+                        UiHandlers.PF_SCROLL_HANDLER,
+                        UiHandlers.ACCEPT_ALERT,
+                        UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                        UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                        UiHandlers.PF_SPINNER_HANDLER,
+                        UiHandlers.DEFAULT_HANDLER);
+                if(!elementLocator.equals(processedLocator)){
+                    Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+                }
+            } else {
+                Reporter.fail("No such locator template key");
+            }
+            attempt++;
+            if (attempt > 5) {
+                Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + elementLocator + "' element step will not be clicked");
+                break;
+            } else {
+                sleepFor(5000);
+            }
+        } while (!conditions.checkCondition(condition, conditionParameter));
+    }
+
+    /**
+     * Definition to hover over element
+     *
+     * @param elementLocator locator of element you want to hover over
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
+     */
+    @When("^I hover over the \"([^\"]*)\" \"([^\"]*)\"$")
+    public void hover_over_element_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I hover over the '" + elementLocator + "' element");
+        String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+        String xpathTemplate = specialLocatorsMap.get(elementType);
+        String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+        BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
+        hoverItem(initElementLocator(resultingXpath));
+    }
 }
