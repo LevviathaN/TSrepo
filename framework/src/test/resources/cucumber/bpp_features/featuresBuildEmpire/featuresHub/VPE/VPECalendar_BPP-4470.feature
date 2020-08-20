@@ -1,7 +1,7 @@
 @Hub @VPE
 Feature: The Hub - Law School - Calendar - Summary
 
-  @Positive @Calendar #TC-2819, TC-2820, TC-2821, TC-3067, TC-3068, TC-3069
+  @Positive @Calendar @Summary #TC-2819, TC-2820, TC-2821, TC-3067, TC-3068, TC-3069
   Scenario: The Hub - Law School - Calendar Summary
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field" |

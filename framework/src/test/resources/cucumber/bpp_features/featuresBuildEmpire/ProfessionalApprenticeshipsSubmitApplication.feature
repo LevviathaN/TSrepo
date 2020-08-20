@@ -15,7 +15,7 @@ Feature: Submit Professional Apprenticeship Applications
     And I execute "Attach Automation Line Manager Apprenticeships" reusable step
    #Validate employment status
     Then I should scroll to the "top" of the page
-    And I validate text "CONTAINS=GRAD" to be displayed for "Direct App Admin Employment Status for Apprenticeships" element
+    And I validate text "CONTAINS=>2 YEARS" to be displayed for "Direct App Admin Employment Status for Apprenticeships" element
     And I execute "Log Out from Hub Admin" reusable step
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     And I set "02917uk7sr@harakirimail.com" text to the "Email" "Build Empire text field"

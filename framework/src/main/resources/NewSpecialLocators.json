@@ -57,7 +57,7 @@
   },
   {
     "name": "BPP Digital Admin Pages Delete Button for Specific Component name",
-    "value": "xpath=//div[@class='list-group-item']//div[contains(text(),'PARAMETER')]/following-sibling::div/a[text()='Delete']"
+    "value": "xpath=//div[@class='list-group-item']//div[contains(text(),'PARAMETER')]/../following-sibling::div/a[text()='Delete']"
   },
   {
     "name": "BPP Digital Admin Pages Edit Button for Specific Component name",
