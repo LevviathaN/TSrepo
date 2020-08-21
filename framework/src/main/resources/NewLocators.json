@@ -416,52 +416,60 @@
     "value": "xpath=(//div[@id='CMS Blockquote']//img)[4]"
   },
   {
-    "name": "Banner Application Navigator",
-    "value": "xpath=//a[contains(text(),'Application Navigator')]"
-  },
-  {
-    "name": "Banner Decision Code",
-    "value": "inframe=Banner Frame>xpath=//div[@id='page_applDecisions_grdSarappd']/div[4]/div[3]/div/div[2]/div[1]/div/input"
-  },
-  {
-    "name": "Banner Frame",
-    "value": "id=bannerHS"
-  },
-  {
-    "name": "Banner Go",
-    "value": "inframe=Banner Frame>xpath=//span[text()='Go']/.."
-  },
-  {
-    "name": "Banner Go To Form",
-    "value": "id=search-landing"
-  },
-  {
-    "name": "Banner Home form",
-    "value": "xpath=//a[@title='Dashboard (CTRL+SHIFT+X)']/span/i"
-  },
-  {
-    "name": "Banner Id Text",
-    "value": "inframe=Banner Frame>xpath=//input[@name='id']"
-  },
-  {
-    "name": "Banner Login",
-    "value": "xpath=//*[@value='LOGIN']"
+    "name": "Banner Username",
+    "value": "xpath=//*[@id='username']"
   },
   {
     "name": "Banner Password",
     "value": "xpath=//*[@id='password']"
   },
   {
+    "name": "Banner Login",
+    "value": "xpath=//*[@value='LOGIN']"
+  },
+  {
+    "name": "Banner Application Navigator",
+    "value": "xpath=//a[contains(text(),'Application Navigator')]"
+  },
+  {
+    "name": "Banner User Menu Icon",
+    "value": "id=user-info-toggle"
+  },
+  {
+    "name": "Banner Go To Form",
+    "value": "id=search-landing"
+  },
+  {
+    "name": "Banner Id Text",
+    "value": "inframe=Banner Frame>xpath=//input[@name='id']"
+  },
+  {
+    "name": "Banner Term Code",
+    "value": "inframe=Banner Frame>xpath=//label[text()='Term']/following-sibling::input"
+  },
+  {
+    "name": "Banner Go",
+    "value": "inframe=Banner Frame>xpath=//span[text()='Go']/.."
+  },
+  {
     "name": "Banner SAADCRV Set Desicison Insert Button",
     "value": "inframe=Banner Frame>xpath=//div[@id='tabSaadcrv2TabCanvas-page_applDecisions']//span[text()='Insert']/ancestor::a"
   },
   {
-    "name": "Banner SOATEST TEst Score date",
-    "value": "inframe=Banner Frame>xpath=(//div[@data-member='DISP_TEST_DATE'])[1]"
+    "name": "Banner Frame",
+    "value": "id=bannerHS"
   },
   {
-    "name": "Banner SOATEST Test Score Source full name",
-    "value": "inframe=Banner Frame>xpath=//input[@name='stvtsrcDesc']"
+    "name": "Banner Decision Code",
+    "value": "inframe=Banner Frame>xpath=//div[@id='page_applDecisions_grdSarappd']/div[4]/div[3]/div/div[2]/div[1]/div/input"
+  },
+  {
+    "name": "Banner Save",
+    "value": "inframe=Banner Frame>xpath=//*[text()='Save']"
+  },
+  {
+    "name": "Banner Home form",
+    "value": "xpath=//a[@title='Dashboard (CTRL+SHIFT+X)']/span/i"
   },
   {
     "name": "Banner SOATEST Test Score description",
@@ -472,24 +480,160 @@
     "value": "inframe=Banner Frame>xpath=(//div[@data-member='SORTEST_TEST_SCORE'])[1]"
   },
   {
-    "name": "Banner Save",
-    "value": "inframe=Banner Frame>xpath=//*[text()='Save']"
+    "name": "Banner SOATEST Test Score date",
+    "value": "inframe=Banner Frame>xpath=(//div[@data-member='DISP_TEST_DATE'])[1]"
   },
   {
-    "name": "Banner Term Code",
-    "value": "inframe=Banner Frame>xpath=//label[text()='Term']/following-sibling::input"
+    "name": "Banner SOATEST Test Score Source full name",
+    "value": "inframe=Banner Frame>xpath=//input[@name='stvtsrcDesc']"
   },
   {
-    "name": "Banner User Menu Icon",
-    "value": "id=user-info-toggle"
+    "name": "Banner SOATEST Test Score Admission Request",
+    "value": "inframe=Banner Frame>xpath=//input[@name='stvadmrDesc']"
   },
   {
-    "name": "Banner Username",
-    "value": "xpath=//*[@id='username']"
+    "name": "Banner SOATEST Equivalency Indicator checkbox",
+    "value": "inframe=Banner Frame>xpath=//button[@id='inp:sortestEquivInd_btn']"
+  },
+  {
+    "name": "Banner SOATEST Test Scores second tab",
+    "value": "inframe=Banner Frame>xpath=//a[@id='tabSortest2TabCanvas_tab1']"
+  },
+  {
+    "name": "Banner SOATEST Test Scores third tab",
+    "value": "inframe=Banner Frame>xpath=//a[@id='tabSortest2TabCanvas_tab2']"
+  },
+  {
+    "name": "Banner SOATEST Status filed value",
+    "value": "inframe=Banner Frame>xpath=//input[@name='stvtefrDesc']"
+  },
+  {
+    "name": "Banner SOATEST SAT Essay ID filed value",
+    "value": "inframe=Banner Frame>xpath=//input[@name='sortestSatEssayId']"
+  },
+  {
+    "name": "Banner SPAIDEN Last Name filed value",
+    "value": "inframe=Banner Frame>xpath=//input[@name='persLastName']"
+  },
+  {
+    "name": "Banner SPAIDEN First Name filed value",
+    "value": "inframe=Banner Frame>xpath=//input[@name='persFirstName']"
+  },
+  {
+    "name": "Banner SPAIDEN Address tab",
+    "value": "inframe=Banner Frame>xpath=//a[@id='tabGIdenTabCanvas_tab2']"
+  },
+  {
+    "name": "Banner SPAIDEN Address Type field value",
+    "value": "inframe=Banner Frame>xpath=//span[@id='inp:atypDescription_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Street Line One field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine1_0']"
+  },
+  {
+    "name": "Banner SPAIDEN City field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrCity_0']"
+  },
+  {
+    "name": "Banner SPAIDEN ZIP Code field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrZip_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Nation field value",
+    "value": "inframe=Banner Frame>xpath=//span[@id='inp:natnDescription_0']"
+  },
+  {
+    "name": "Banner Next Page",
+    "value": "inframe=Banner Frame>xpath=(//span[@aria-label='Next Page'])[1]"
+  },
+  {
+    "name": "Banner SPAIDEN Alternate Identification tab",
+    "value": "inframe=Banner Frame>xpath=//a[@id='tabGIdenTabCanvas_tab1']"
+  },
+  {
+    "name": "Banner SPAIDEN Alternate Last Name filed value",
+    "value": "inframe=Banner Frame>xpath=//input[@name='spridenLastName_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Alternate First Name filed value",
+    "value": "inframe=Banner Frame>xpath=//input[@name='spridenFirstName_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Street Line Two field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine2_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Street Line Three field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine3_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Street Line Four field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrStreetLine4_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Nation field",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:spraddrNatnCode_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Telephone tab",
+    "value": "inframe=Banner Frame>xpath=//a[@id='tabGIdenTabCanvas_tab3']"
+  },
+  {
+    "name": "Banner SPAIDEN Telephone Type field value",
+    "value": "inframe=Banner Frame>xpath=//span[@id='inp:teleDescription_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Telephone Area Code field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:sprtelePhoneArea_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Telephone Phone Number field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:sprtelePhoneNumber_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Telephone Primary checkbox",
+    "value": "inframe=Banner Frame>xpath=//button[@id='inp:sprtelePrimaryInd_0_btn']"
+  },
+  {
+    "name": "Banner SPAIDEN Email tab",
+    "value": "inframe=Banner Frame>xpath=//a[@id='tabGIdenTabCanvas_tab5']"
+  },
+  {
+    "name": "Banner SPAIDEN Email Type one field value",
+    "value": "inframe=Banner Frame>xpath=//span[@id='inp:emailDesc_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Email Type two field value",
+    "value": "inframe=Banner Frame>xpath=//span[@id='inp:emailDesc_1']"
+  },
+  {
+    "name": "Banner SPAIDEN Email Type three field value",
+    "value": "inframe=Banner Frame>xpath=//span[@id='inp:emailDesc_2']"
+  },
+  {
+    "name": "Banner SPAIDEN Email Primary checkbox",
+    "value": "inframe=Banner Frame>xpath=//span[normalize-space()='Personal E-Mail']/following::button[@id='inp:goremalPreferredInd_0_btn']"
+  },
+  {
+    "name": "Banner SPAIDEN Email one field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:goremalEmailAddress_0']"
+  },
+  {
+    "name": "Banner SPAIDEN Email two field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:goremalEmailAddress_1']"
+  },
+  {
+    "name": "Banner SPAIDEN Email three field value",
+    "value": "inframe=Banner Frame>xpath=//input[@id='inp:goremalEmailAddress_2']"
   },
   {
     "name": "Build Empire Programmes Nursing Programme",
     "value": "xpath=//li[text()='BSc (Hons) Nursing  [Diploma to Degree]']"
+  },
+  {
+    "name": "Build Empire Assessment Step Error",
+    "value": "xpath=//div[@class='step-error']"
   },
   {
     "name": "Direct App Accept Cookie",
@@ -2154,6 +2298,66 @@
   {
     "name": "Salesforce Username",
     "value": "id=username"
+  },
+  {
+    "name": "Salesforce Qualification Used for Offer checkbox",
+    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='Used for Offer']/following-sibling::input"
+  },
+  {
+    "name": "Salesforce Qualification Naric indicator checkbox",
+    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='NARIC Indicator']/following-sibling::input"
+  },
+  {
+    "name": "Salesforce Qualification Status value",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//span[normalize-space()='Status']/following::div[@data-aura-class='uiMenu']//div)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Capture Ethnic Code",
+    "value": "xpath=(//span[normalize-space()='Ethnic Code Select']/following::div)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Capture Gender Identity",
+    "value": "xpath=(//span[normalize-space()='Gender Identity']/following::div)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Capture Religion",
+    "value": "xpath=(//span[normalize-space()='Religion']/following::div)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Capture Sexual Orientation",
+    "value": "xpath=(//span[normalize-space()='Sexual Orientation']/following::div)[1]"
+  },
+  {
+    "name": "Salesforce Account Related Tab",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[normalize-space()='Related']"
+  },
+  {
+    "name": "Salesforce Addresses link",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='Addresses'])[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Validate Personal Email",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Personal Email']/following::div[1]/span)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Validate Work Email",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Work Email']/following::div[1]/span)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Validate BPP Email",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='BPP Email']/following::div[1]/span)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Validate Home Phone",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Home Phone']/following::div[1]/span)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Validate Work Phone",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Work Phone']/following::div[1]/span)[1]"
+  },
+  {
+    "name": "Salesforce Student Creation Validate Mobile",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Mobile']/following::div[1]/span)[1]"
   },
   {
     "name": "TestName",
