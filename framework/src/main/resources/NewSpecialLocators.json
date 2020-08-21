@@ -437,7 +437,11 @@
   },
   {
     "name": "Salesforce New Qualification input fields",
-    "value": "xpath=(//span[text()='PARAMETER']/following::input)[1]"
+    "value": "xpath=//div[contains(@class,'groupDependentFieldEnabled')]//span[text()='PARAMETER']/following::input[1]"
+  },
+  {
+    "name": "Salesforce Address Type link",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='PARAMETER']/parent::td/preceding-sibling::th//a"
   },
   {
     "name": "Salesforce Related Buttons link",

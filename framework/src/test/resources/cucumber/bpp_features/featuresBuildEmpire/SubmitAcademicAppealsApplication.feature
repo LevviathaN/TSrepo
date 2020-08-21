@@ -5,7 +5,7 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     Given I execute "Register New Student Account" reusable step
     When I execute "Create Academic Appeals Application" reusable step
 
-  @Smoke
+  @Smoke #TC-3182
   Scenario: Complete Academic Appeals Application
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"
@@ -67,6 +67,20 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And I click on the "Direct App Save And Return" button
     Then I execute "Submit Application Hub" reusable step
     Then I validate text "CONTAINS=100" to be displayed for "Direct App Application Progress Percentage" element
+    #Validate assessment details not populated from previous application
+    Then I click on the "Direct App My Applications Left Menu Link" button by JS
+    And I click on the "Direct App Start New Application Button" button
+    And I hover over the "Direct App What Are You Applying For Dropdown" button
+    And I click on the "Direct App What Are You Applying For Dropdown" element
+    And I wait for "1" seconds
+    Then I click on the "BPP University Academic Appeals" "Build Empire application type"
+    And I click on the "Direct App Create Application" button
+    And I wait for "1" seconds
+    Given I click on the "Direct App Start Application" button
+    And I click on the "Assessment details" "Build Empire application section"
+    And I wait for "1" seconds
+    Then I validate text "CONTAINS=Please add at least one assessment" to be displayed for "Build Empire Assessment Step Error" element
+    And I shouldn't see the "AutoTitle" "element"
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Accept Academic Appeals As Admin" reusable step

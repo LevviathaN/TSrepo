@@ -1,4 +1,4 @@
-@EndToEnd @Smoke
+@EndToEnd @Smoke @Banner
 Feature: Student from CRM Smoke Test
   Description
 
