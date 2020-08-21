@@ -1384,6 +1384,10 @@
     "value": "xpath=//button[contains(.,'Save review and next')]"
   },
   {
+    "name" : "Direct App Scholarship Dropdown",
+    "value": "xpath=//div[@class='scholarships-row ']//span[@class='ember-power-select-status-icon']"
+  },
+  {
     "name": "Direct App Scholarship Add",
     "value": "xpath=//button[normalize-space()='+ Add']"
   },
