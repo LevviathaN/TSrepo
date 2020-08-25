@@ -144,7 +144,7 @@ public class TestParametersController {
 
     private static boolean isSimplifiedRandom(String value) {
 //        Matcher possibleSimplifiedRandomMatcher = GENERAL_SIMPLIFIED_RANDOM_PATTERN.matcher(value);
-        return (value.contains("[") && value.contains("]") && !value.contains("//"));
+        return (value.contains("[") && value.contains("]") && !value.contains("//") && !value.contains("getElements"));
     }
 
     /**
