@@ -1264,6 +1264,18 @@
     "value": "xpath=//li[@class='item-link item-logout']"
   },
   {
+    "name": "Hub VPE Mobile User Avatar Icon",
+    "value": "xpath=//*[@class='item-user-avatar']"
+  },
+  {
+    "name": "Hub Mobile Account Link Hamburger Menu",
+    "value": "xpath=//*[@class='item-link item-account']/a"
+  },
+  {
+    "name": "Hub Mobile Account Email",
+    "value": "xpath=//*[@class='user-profile-details info']//a"
+  },
+  {
     "name": "Direct App Mark As Complete Checkbox",
     "value": "xpath=//div[contains(@class,'step-completed')]//input"
   },
