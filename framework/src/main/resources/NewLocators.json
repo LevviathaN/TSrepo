@@ -1276,6 +1276,22 @@
     "value": "xpath=//*[@class='user-profile-details info']//a"
   },
   {
+    "name": "Hub Mobile My Learning Link Hamburger Menu",
+    "value": "xpath=//*[@class='item-link item-learning']/a"
+  },
+  {
+    "name": "Hub Mobile My Learning Course Card",
+    "value": "xpath=//*[@class='course-card-link ember-view']"
+  },
+  {
+    "name": "Hub Mobile Book Exam",
+    "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
+  },
+  {
+    "name": "Totara Course Select Forum Mobile",
+    "value": "xpath=//div[@class='course-details-mobile']//button[text()='Select Forum']"
+  },
+  {
     "name": "Direct App Mark As Complete Checkbox",
     "value": "xpath=//div[contains(@class,'step-completed')]//input"
   },
@@ -1882,6 +1898,10 @@
   {
     "name": "Hub VPE View Next Activity",
     "value": "xpath=//div[contains(@class,'next-activity')]//div/a"
+  },
+  {
+    "name": "Hub Book Exam",
+    "value": "xpath=//*[@class='course-details-desktop']//*[@class='course-data book-data']"
   },
   {
     "name": "Moodle Staging Confirm Activity Delete Button",
