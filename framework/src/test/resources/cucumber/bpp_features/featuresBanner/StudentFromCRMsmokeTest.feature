@@ -170,7 +170,7 @@ Feature: Student from CRM Smoke Test
       |6|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field"|
       |7|I set "Manchester" text to the "City" "Salesforce text field"|
       |8|I set "EC_MAILING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"|
-      |9|And I fill the "Salesforce Address Page Country Field" field with "Canada"|
+      |9|I fill the "Salesforce Address Page Country Field" field with "Canada"|
       |11|I click on the "Canada" "option"|
     And I wait for "10" seconds
     And I execute "Get Profile ID" reusable step

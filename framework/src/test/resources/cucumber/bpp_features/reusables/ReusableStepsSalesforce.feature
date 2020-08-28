@@ -54,7 +54,6 @@ Feature: Salesforce
     And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
     And I set "London" text to the "City" "Salesforce text field"
     And I set "KW_AUTO_ZIPCODE|#####" text to the "Postal Code" "Salesforce text field"
-    #And I set "United Kingdom" text to the "Country" "Salesforce search field"
     And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
     Then I wait for "1" seconds
     And I click on the "Kingdom" "option"
