@@ -46,17 +46,21 @@ Feature: Salesforce
 
 
   Scenario: Create Address
-    And I click on the "Addresses" "Salesforce related new button"
+    And I click on the "Salesforce Addresses Quick Link Tab" button
+    And I wait for "1" seconds
+    And I click on the "Salesforce Student Account Pages New button" button
     And I click on the "Address Type" "Salesforce dropdown field"
     And I click on the "Billing" "option"
     And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
     And I set "London" text to the "City" "Salesforce text field"
     And I set "KW_AUTO_ZIPCODE|#####" text to the "Postal Code" "Salesforce text field"
-    And I set "United Kingdom" text to the "Country" "Salesforce search field"
+    #And I set "United Kingdom" text to the "Country" "Salesforce search field"
+    And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
     Then I wait for "1" seconds
     And I click on the "Kingdom" "option"
-    And I click on the "Save" "button"
+    And I click on the "Salesforce Account Creation Save button" element
     Then I should see the " was created." message
+    And I click on the "Salesforce Student Account Link Address Page" element
 
   Scenario: Get Profile ID
     #And I click on the "Salesforce More Actions Dropdown" button
@@ -65,7 +69,8 @@ Feature: Salesforce
     Then I should see the "Profile Id created Successfully" message
 
   Scenario: Create Opportunity
-    And I click on the "Opportunities" "Salesforce related new button"
+    Then I click on the "Salesforce Opportunities Quick Link Tab" element
+    And I click on the "Salesforce Student Account Pages New button" button
     And I click on the "Application" "Salesforce radiobutton"
     And I click on the "Next" "button"
     And I set "OpportunityName[###]" text to the "Opportunity Name" "Salesforce text field"
@@ -76,7 +81,7 @@ Feature: Salesforce
     And I click on the "Application Type" "Salesforce dropdown field"
     And I click on the "University Application" "Salesforce dropdown field option"
     And I set "31/01/2022" text to the "Close Date" "Salesforce date field"
-    And I click on the "Save" "button"
+    And I click on the "Salesforce Account Creation Save button" element
     And I should see the " was created." message
 
   # This reusable scenario is not working, because its steps are not treated as separate Gherkin steps, so AfterStep
@@ -85,6 +90,7 @@ Feature: Salesforce
   Scenario: Add Product Catalog Item
     And I click on the "EC_AUTO_LASTNAME" "Salesforce link"
     And I click on the "Product Catalog Items" "Salesforce related new button"
+    And I wait for "1" seconds
     And I click on the "New" "Salesforce dropdown option"
     And I fill the "Salesforce Offering Text Field" field with "2381626"
     And I click on the "Salesforce Search" button
