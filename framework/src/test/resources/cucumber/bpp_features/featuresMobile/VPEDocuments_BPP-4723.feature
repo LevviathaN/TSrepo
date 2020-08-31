@@ -12,8 +12,8 @@ Feature: The Hub - Law School - Documents (Files/Labels activity type)
     And I click on the "Hub VPE Documents Header" element if "Hub VPE Documents Header" "element is present"
     And I click on the "Hub VPE Course Mobile Hamburger Menu" button if "Hub VPE Course Mobile Hamburger Menu" "element is present"
     And I click on the "Hub VPE Mobile Documents Header" button if "Hub VPE Mobile Documents Header" "element is present"
-    Then I should see the "TEST LABEL'S 1.*" "Product Factory Locked Applies To drop-down item"
-    And I click on the "TEST LABEL'S 1.*" "Product Factory Locked Applies To drop-down item"
+    And I validate text "TEST LABEL'S 1.*" to be displayed for "Hub VPE Documents Folder Name" element
+    And I click on the "Hub VPE Documents Folder Name" element
     Then I should see the "Hub VPE Documents Folder" element
     Then I should see the "File 1" "text contained in A element"
     Then I should see the "File Two With Long Naaaaaame" "text contained in A element"
