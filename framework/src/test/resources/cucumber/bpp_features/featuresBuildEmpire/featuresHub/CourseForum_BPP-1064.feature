@@ -1,4 +1,4 @@
-@Hub @Mobile
+@Hub
 Feature: BPP University Hub Course Forum
   As a learner within the hub
   If there is a course specific forum
@@ -36,7 +36,9 @@ Feature: BPP University Hub Course Forum
     Then I should see the "Book Exam" button
     And I click on the "Book Exam" "exact element"
     And I switch to window with index "2"
-    And I am on "https://totara.staging.bppdigital.buildempire.app/mod/url/view.php?id=2899" URL
+    And I wait for "1" seconds
+    And I validate text "https://staging.bppdigital.buildempire.app" to be displayed for "CHECK_URL" element
+    #And I am on "https://totara.staging.bppdigital.buildempire.app/mod/url/view.php?id=2899" URL
     And I switch to window with index "1"
     #Navigate to Course Forum
     When I click on the "Totara Course Select Forum link" link

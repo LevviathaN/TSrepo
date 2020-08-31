@@ -1276,6 +1276,22 @@
     "value": "xpath=//*[@class='user-profile-details info']//a"
   },
   {
+    "name": "Hub Mobile My Learning Link Hamburger Menu",
+    "value": "xpath=//*[@class='item-link item-learning']/a"
+  },
+  {
+    "name": "Hub Mobile My Learning Course Card",
+    "value": "xpath=//*[@class='course-card-link ember-view']"
+  },
+  {
+    "name": "Hub Mobile Book Exam",
+    "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
+  },
+  {
+    "name": "Totara Course Select Forum Mobile",
+    "value": "xpath=//div[@class='course-details-mobile']//button[text()='Select Forum']"
+  },
+  {
     "name": "Direct App Mark As Complete Checkbox",
     "value": "xpath=//div[contains(@class,'step-completed')]//input"
   },
@@ -1884,6 +1900,10 @@
     "value": "xpath=//div[contains(@class,'next-activity')]//div/a"
   },
   {
+    "name": "Hub Book Exam",
+    "value": "xpath=//*[@class='course-details-desktop']//*[@class='course-data book-data']"
+  },
+  {
     "name": "Moodle Staging Confirm Activity Delete Button",
     "value": "xpath=//input[@type='button' and @value='Yes']"
   },
@@ -2209,7 +2229,7 @@
   },
   {
     "name": "Salesforce Frame",
-    "value": "xpath=//iframe"
+    "value": "xpath=//div[@class='iframe-parent slds-template_iframe slds-card']//iframe"
   },
   {
     "name": "Salesforce Get Profile ID",
@@ -2300,6 +2320,14 @@
     "value": "xpath=(//span[@class='slds-grid slds-grid--align-spread']/a[contains(text(),'EC_AUTO_FIRSTNAME')])[1]"
   },
   {
+    "name": "Salesforce Student Account Link Address Page",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'EC_AUTO_FIRSTNAME')]"
+  },
+  {
+    "name": "Salesforce Address Page Country Field",
+    "value": "xpath=//input[@title='Search Countries']"
+  },
+  {
     "name": "Salesforce Student Accounts link",
     "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//li[normalize-space()='Student Accounts']/following-sibling::li//a"
   },
@@ -2350,6 +2378,14 @@
   {
     "name": "Salesforce Addresses link",
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='Addresses'])[1]"
+  },
+  {
+    "name": "Salesforce Addresses Quick Link Tab",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')]"
+  },
+  {
+    "name": "Salesforce Opportunities Quick Link Tab",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Opportunities')]"
   },
   {
     "name": "Salesforce Student Creation Validate Personal Email",

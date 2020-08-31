@@ -133,7 +133,7 @@ Feature: Student from CRM Smoke Test
     Then Attribute "title" of "Banner SPAIDEN Alternate Last Name filed value" should have value "EC_AUTO_LASTNAME"
     Then Attribute "title" of "Banner SPAIDEN Alternate First Name filed value" should have value "EC_AUTO_FIRSTNAME"
 
-  @Positive #TC-547
+  @Positive @Address #TC-547
   Scenario: Student from CRM to Banner Address Update
     #Create Student
     When I execute "Log In To Salesforce" reusable step
@@ -147,7 +147,9 @@ Feature: Student from CRM Smoke Test
     And I execute "Create Student Account" reusable step
     And I wait for "3" seconds
     #Create Address
-    And I click on the "Addresses" "Salesforce related new button"
+    And I click on the "Salesforce Addresses Quick Link Tab" button
+    And I wait for "1" seconds
+    And I click on the "Salesforce Student Account Pages New button" button
     And I click on the "Address Type" "Salesforce dropdown field"
     And I click on the "Billing" "option"
     And I set "EC_BILLING_STREET_ONE" text to the "Address Line 1" "Salesforce text field"
@@ -156,20 +158,20 @@ Feature: Student from CRM Smoke Test
     And I set "EC_BILLING_STREET_FOUR" text to the "Address Line 4" "Salesforce text field"
     And I set "Ottawa" text to the "City" "Salesforce text field"
     And I set "EC_BILLING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"
-    And I set "Canada" text to the "Country" "Salesforce search field"
+    And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
     Then I wait for "1" seconds
-    And I click on the "Canada" "option"
-    And I click on the "Save" "button"
+    And I click on the "Kingdom" "option"
+    And I click on the "Salesforce Account Creation Save button" element
     Then I should see the " was created." message
     And I wait for "3" seconds
     #Create Second Address
     And I execute "Create Address" reusable step replacing some steps
-      |3|I click on the "Mailing" "option"|
-      |4|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field"|
-      |5|I set "Manchester" text to the "City" "Salesforce text field"|
-      |6|I set "EC_MAILING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"|
-      |7|I set "United Kingdom" text to the "Country" "Salesforce search field"|
-      |9|I click on the "Kingdom" "option"|
+      |5|I click on the "Mailing" "option"|
+      |6|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field"|
+      |7|I set "Manchester" text to the "City" "Salesforce text field"|
+      |8|I set "EC_MAILING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"|
+      |9|I fill the "Salesforce Address Page Country Field" field with "Canada"|
+      |11|I click on the "Canada" "option"|
     And I wait for "10" seconds
     And I execute "Get Profile ID" reusable step
     And I execute "Create Opportunity" reusable step
