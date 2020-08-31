@@ -1900,6 +1900,10 @@
     "value": "xpath=//div[contains(@class,'next-activity')]//div/a"
   },
   {
+    "name": "Hub VPE Documents Folder Name",
+    "value": "xpath=(//div[contains(@class,'document-folder-name')])[1]"
+  },
+  {
     "name": "Hub Book Exam",
     "value": "xpath=//*[@class='course-details-desktop']//*[@class='course-data book-data']"
   },
