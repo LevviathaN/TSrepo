@@ -72,10 +72,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And Attribute "tabindex" of "EC_LOCATION_NAME" "Product Factory course instance Publish button" should have value "-1"
     When I click on the "Default Location" "Product Factory edit button"
     And I click on the "EC_LOCATION_NAME_TWO" "Product Factory select button"
-    And Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "0"
-    And I click on the "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button"
-    And I click on the "Yes" "Product Factory button"
-    Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
+    And I click on the "No" "Product Factory button"
 
     When I click on the "Capacity" "Product Factory edit button"
     And I set "2" text to the "Capacity" "Product Factory text field"
@@ -194,10 +191,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And Attribute "tabindex" of "EC_LOCATION_NAME" "Product Factory course instance Publish button" should have value "-1"
     When I click on the "Default Location" "Product Factory edit button"
     And I click on the "EC_LOCATION_NAME_TWO" "Product Factory select button"
-    And Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "0"
-    And I click on the "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button"
-    And I click on the "Yes" "Product Factory button"
-    Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
+    And I click on the "No" "Product Factory button"
 
     #Edit capacity of first instance
     When I click on the "Capacity" "Product Factory edit button"
