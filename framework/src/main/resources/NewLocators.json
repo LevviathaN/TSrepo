@@ -1908,6 +1908,14 @@
     "value": "xpath=//*[@class='course-details-desktop']//*[@class='course-data book-data']"
   },
   {
+    "name": "Hub Topic Three Test External Tool Inactive",
+    "value": "xpath=//div[@class='sub-topics-container']/div/div[last()]//div//span"
+  },
+  {
+    "name": "Hub Topic Three Test External Tool Info Restriction",
+    "value": "xpath=//div[@class='sub-topics-container']/div/div[last()]//div//div[2]"
+  },
+  {
     "name": "Moodle Staging Confirm Activity Delete Button",
     "value": "xpath=//input[@type='button' and @value='Yes']"
   },
