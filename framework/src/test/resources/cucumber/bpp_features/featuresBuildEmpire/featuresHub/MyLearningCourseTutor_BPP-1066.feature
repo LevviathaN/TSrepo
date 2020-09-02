@@ -1,4 +1,4 @@
-@Hub @Mobile
+@Hub
 Feature: BPP University Hub My Learning Course Tutor
 
   Background:

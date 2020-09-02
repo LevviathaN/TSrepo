@@ -4,7 +4,7 @@ Feature: Validate Key Activity Without Completion Settings On Topic Overview Pag
   when a Key Activity, has been set without any completion settings,
   then I expect this to be reflected in the Topic Overview page within the Hub
 
-  @Positive @NoCompletion #TC-2827
+  @Positive @NoCompletion #TC-2827, BPP-7057
   Scenario: Validate Key Activity Without Completion Settings On Topic Overview Page
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
@@ -27,3 +27,5 @@ Feature: Validate Key Activity Without Completion Settings On Topic Overview Pag
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course"
     And I click on the "Topic 3" "Build Empire Course Topic"
     And I shouldn't see the "Direct App Course Topic Key Activity Completion Settings" element
+    Then I should see the "Hub Topic Three Test External Tool Inactive" element
+    And I validate text "CONTAINS=Available until end of" to be displayed for "Hub Topic Three Test External Tool Info Restriction" element

@@ -16,12 +16,10 @@ Feature: The Hub - Law School - Documents (Files/Labels activity type)
     Then I click on the "VPE Course Automation" "Build Empire My Learning Right Block Course name"
     And I switch to window with index "2"
     And I click on the "Hub VPE Documents Header" element
-    Then I should see the "TEST LABEL 1" "Product Factory Locked Applies To drop-down item"
-    And I click on the "TEST LABEL 1" "Product Factory Locked Applies To drop-down item"
+    And I validate text "TEST LABEL'S 1.*" to be displayed for "Hub VPE Documents Folder Name" element
+    And I click on the "Hub VPE Documents Folder Name" element
     Then I should see the "Hub VPE Documents Folder" element
     Then I should see the "File 1" "text contained in A element"
-    Then I should see the "File 2" "text contained in A element"
-    And I click on the "File 2" "text contained in A element"
+    Then I should see the "File Two With Long Naaaaaame" "text contained in A element"
+    And I click on the "File Two With Long Naaaaaame" "text contained in A element"
     And I click on the "File 1" "text contained in A element"
-    And I switch to window with index "1"
-    When I execute "Log Out from Hub Student" reusable step
