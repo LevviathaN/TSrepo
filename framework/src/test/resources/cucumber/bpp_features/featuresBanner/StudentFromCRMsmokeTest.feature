@@ -114,7 +114,7 @@ Feature: Student from CRM Smoke Test
     And I click on the "Edit" "Salesforce dropdown option"
     And I set "Updated[FIRSTNAME]" text to the "First Name" "Salesforce text field"
     And I set "Updated[LASTNAME]" text to the "Last Name" "Salesforce text field"
-    And I click on the "Save" "button"
+    And I click on the "Salesforce Account Edit Save button" button
     And I wait for "35" seconds
     #Login to Banner
     And I execute "window.open()" JS code
@@ -156,8 +156,8 @@ Feature: Student from CRM Smoke Test
     And I set "EC_BILLING_STREET_TWO" text to the "Address Line 2" "Salesforce text field"
     And I set "EC_BILLING_STREET_THREE" text to the "Address Line 3" "Salesforce text field"
     And I set "EC_BILLING_STREET_FOUR" text to the "Address Line 4" "Salesforce text field"
-    And I set "Ottawa" text to the "City" "Salesforce text field"
-    And I set "EC_BILLING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"
+    And I set "Manchester" text to the "City" "Salesforce text field"
+    And I set "EC_BILLING_ZIP_CODE" text to the "Zip/Postal Code" "Salesforce text field"
     And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
     Then I wait for "1" seconds
     And I click on the "Kingdom" "option"
@@ -168,10 +168,10 @@ Feature: Student from CRM Smoke Test
     And I execute "Create Address" reusable step replacing some steps
       |5|I click on the "Mailing" "option"|
       |6|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field"|
-      |7|I set "Manchester" text to the "City" "Salesforce text field"|
-      |8|I set "EC_MAILING_ZIP_CODE" text to the "Postal Code" "Salesforce text field"|
+      |7|I set "Ottawa" text to the "City" "Salesforce text field"|
+      |8|I set "EC_MAILING_ZIP_CODE" text to the "Zip/Postal Code" "Salesforce text field"|
       |9|I fill the "Salesforce Address Page Country Field" field with "Canada"|
-      |11|I click on the "Canada" "option"|
+      |11|I click on the "Salesforce Address Country item" link|
     And I wait for "10" seconds
     And I execute "Get Profile ID" reusable step
     And I execute "Create Opportunity" reusable step
@@ -199,9 +199,9 @@ Feature: Student from CRM Smoke Test
     Then Attribute "title" of "Banner SPAIDEN Street Line Two field value" should have value "EC_BILLING_STREET_TWO"
     Then Attribute "title" of "Banner SPAIDEN Street Line Three field value" should have value "EC_BILLING_STREET_THREE"
     Then Attribute "title" of "Banner SPAIDEN Street Line Four field value" should have value "EC_BILLING_STREET_FOUR"
-    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Ottawa"
+    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Manchester"
     Then Attribute "title" of "Banner SPAIDEN ZIP Code field value" should have value "EC_BILLING_ZIP_CODE"
-    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "Canada"
+    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "United Kingdom"
     #Change Billing Address block
     And I fill the "Banner SPAIDEN Street Line One field value" field with "StreetOne[####]"
     And I fill the "Banner SPAIDEN Street Line Two field value" field with "StreetTwo[####]"
@@ -216,9 +216,9 @@ Feature: Student from CRM Smoke Test
     When I click on the "Banner Next Page" element
     Then Attribute "title" of "Banner SPAIDEN Address Type field value" should have value "Mailing"
     Then Attribute "title" of "Banner SPAIDEN Street Line One field value" should have value "EC_MAILING_STREET"
-    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Manchester"
+    Then Attribute "title" of "Banner SPAIDEN City field value" should have value "Ottawa"
     Then Attribute "title" of "Banner SPAIDEN ZIP Code field value" should have value "EC_MAILING_ZIP_CODE"
-    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "United Kingdom"
+    Then Attribute "title" of "Banner SPAIDEN Nation field value" should have value "Canada"
     #Verify Address in CRM (Billing)
     And I switch to window with index "1"
     And I wait for "3" seconds
