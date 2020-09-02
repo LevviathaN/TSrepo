@@ -1908,6 +1908,14 @@
     "value": "xpath=//*[@class='course-details-desktop']//*[@class='course-data book-data']"
   },
   {
+    "name": "Hub Topic Three Test External Tool Inactive",
+    "value": "xpath=//div[@class='sub-topics-container']/div/div[last()]//div//span"
+  },
+  {
+    "name": "Hub Topic Three Test External Tool Info Restriction",
+    "value": "xpath=//div[@class='sub-topics-container']/div/div[last()]//div//div[2]"
+  },
+  {
     "name": "Moodle Staging Confirm Activity Delete Button",
     "value": "xpath=//input[@type='button' and @value='Yes']"
   },
@@ -2118,6 +2126,10 @@
   {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
+  },
+  {
+    "name": "Salesforce Account Edit Save button",
+    "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//button[normalize-space()='Save'])[1]"
   },
   {
     "name": "Salesforce Account Details Tab",
@@ -2414,6 +2426,14 @@
   {
     "name": "Salesforce Student Creation Validate Mobile",
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Mobile']/following::div[1]/span)[1]"
+  },
+  {
+    "name": "Salesforce Opportunity Close Date field",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//span[text()='Close Date']/following::div/input[@class=' input'])[1]"
+  },
+  {
+    "name": "Salesforce Address Country item",
+    "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']/a)[1]"
   },
   {
     "name": "TestName",

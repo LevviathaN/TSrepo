@@ -53,7 +53,7 @@ Feature: Salesforce
     And I click on the "Billing" "option"
     And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
     And I set "London" text to the "City" "Salesforce text field"
-    And I set "KW_AUTO_ZIPCODE|#####" text to the "Postal Code" "Salesforce text field"
+    And I set "KW_AUTO_ZIPCODE|#####" text to the "Zip/Postal Code" "Salesforce text field"
     And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
     Then I wait for "1" seconds
     And I click on the "Kingdom" "option"
@@ -80,6 +80,7 @@ Feature: Salesforce
     And I click on the "Application Type" "Salesforce dropdown field"
     And I click on the "University Application" "Salesforce dropdown field option"
     And I set "31/01/2022" text to the "Close Date" "Salesforce date field"
+    And I fill the "Salesforce Opportunity Close Date field" field with "31/01/2022"
     And I click on the "Salesforce Account Creation Save button" element
     And I should see the " was created." message
 
