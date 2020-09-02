@@ -50,7 +50,7 @@ Feature: CBA - deactivation/reactivation - BPP-3211
     And I execute "Create Pricing Matrix Full" reusable step
     And I execute "Create Digital Content" reusable step
 
-  @Positive @Regression @P1 @Run #TC-3119
+  @Positive @Regression @P1 #TC-3119
   Scenario: Deactivate CBA Course With Prevent Reactivation Option On
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
