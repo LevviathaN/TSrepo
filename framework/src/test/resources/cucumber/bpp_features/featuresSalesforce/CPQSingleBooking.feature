@@ -68,3 +68,11 @@ Feature: Create Student Account
     And I wait for "2" seconds
     And I validate text "EC_AVAILABILITY_NUMBER" to be displayed for "Salesforce Instance Availability Data Field" element
     And I capture text data "Salesforce Instance Availability Data Field" as "EC_MINUSONE_BOOKING" variable
+    And I click on the "Salesforce Instance Page First Booking Link" element
+    Then I click on the "Salesforce Quotes Edit" element
+    And I click on the "Status" "Salesforce dropdown field"
+    And I click on the "Cancelled" "option"
+    And I set "Automation Cancelled" text to the "Cancellation Reason" "Salesforce text field"
+    And I click on the "Salesforce Quote Edited Save" element
+    Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
+    #Add step to validate capacity is +1 after bug will be fixed

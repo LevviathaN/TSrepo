@@ -2432,8 +2432,6 @@
     "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']/a)[1]"
   },
   {
-    "name": "TestName",
-    "value": "TestValue"
     "name": "Salesforce Create Quote",
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[@title='Create Quote'])[1]"
   },
@@ -2512,6 +2510,10 @@
   {
     "name": "Salesforce Instance Availability Data Field",
     "value": "xpath=//*[text()='Availability']//following-sibling::p/slot//slot/*"
+  },
+  {
+    "name": "Salesforce Instance Page First Booking Link",
+    "value": "xpath=//*[text()='Booking Number']//following::tr[1]//th[1]//a"
   },
   {
     "name": "Totara Account Expandable Menu",
