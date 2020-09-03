@@ -2128,6 +2128,11 @@
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },
   {
+    "name": "Salesforce Account Edit Save button",
+    "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//button[normalize-space()='Save'])[1]"
+
+  },
+  {
     "name": "Salesforce Account Details Tab",
     "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']/descendant::a[@data-label='Details']"
   },
