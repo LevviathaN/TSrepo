@@ -1,5 +1,5 @@
 @Salesforce @CPQ
-Feature: Create Student Account
+Feature: Create a Single Booking
   Description
 
   @Positive #TC-2609
@@ -66,7 +66,7 @@ Feature: Create Student Account
     Then I execute "Add A Booking" reusable step
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
     And I wait for "2" seconds
-    And I validate text "EC_AVAILABILITY_NUMBER" to be displayed for "Salesforce Instance Availability Data Field" element
+    And I should see the "[SUM(EC_AVAILABILITY_NUMBER,-1)]" element
     And I capture text data "Salesforce Instance Availability Data Field" as "EC_MINUSONE_BOOKING" variable
     And I click on the "Salesforce Instance Page First Booking Link" element
     Then I click on the "Salesforce Quotes Edit" element
