@@ -7,6 +7,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import ui.utils.bpp.ExecutionContextHandler;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -184,13 +185,5 @@ public class Tools {
             e.printStackTrace();
         }
         return new String(encoded, encoding);
-    }
-
-    /** Write string to file */
-    public static void writeFile(String fileName, String content) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-        writer.write(content);
-
-        writer.close();
     }
 }
