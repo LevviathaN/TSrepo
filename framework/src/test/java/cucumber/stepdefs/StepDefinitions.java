@@ -426,18 +426,10 @@ public class StepDefinitions extends SeleniumHelper {
                 Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
                 BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
             } else if (text.contains("EC_")) {
-                if (text.equalsIgnoreCase("EC_AVAILABILITY_NUMBER")) {
-                    String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
-                    int i = Integer.parseInt(executionContextValue);
-                    int subtracted = i - 1;
-                    String checkedNumber = Integer.toString(subtracted);
-                    assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(checkedNumber.toLowerCase()));
-                } else {
-                    String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
-                    assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
-                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
-                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
-                }
+                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
+                Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
+                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
             } else {
                 assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
                 BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
