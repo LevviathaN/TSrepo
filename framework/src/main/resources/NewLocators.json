@@ -1797,7 +1797,7 @@
   },
   {
     "name": "Hub VPE Calendar Task Due Date",
-    "value": "xpath=//div[@class='event calendar_event_course' and contains(text(),'24')]"
+    "value": "xpath=//div[@class='event calendar_event_group' and contains(text(),'24')]"
   },
   {
     "name": "Hub VPE Calendar Task Due Sender",
@@ -2130,6 +2130,7 @@
   {
     "name": "Salesforce Account Edit Save button",
     "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//button[normalize-space()='Save'])[1]"
+
   },
   {
     "name": "Salesforce Account Details Tab",
@@ -2436,8 +2437,88 @@
     "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']/a)[1]"
   },
   {
-    "name": "TestName",
-    "value": "TestValue"
+    "name": "Salesforce Create Quote",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[@title='Create Quote'])[1]"
+  },
+  {
+    "name": "Salesforce Quotes Quick Link Tab",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(@class,'forceRelatedListQuickLinksContainer')]//*[contains(text(),'Quotes')]"
+  },
+  {
+    "name": "Salesforce Quotes First Link",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Quote Number')]//following::tbody/tr//th/span/a"
+  },
+  {
+    "name": "Salesforce Quote Save",
+    "value": "xpath=//button[contains(@class,'cuf-publisherShareButton')]"
+  },
+  {
+    "name": "Salesforce Quotes Ordered Checkbox",
+    "value": "xpath=//div[contains(@class,'forcePageBlockSectionRow')]//*[text()='Ordered']//following::input[1]"
+  },
+  {
+    "name": "Salesforce Quotes Edit Lines",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[@title='Edit Lines'])[1]"
+  },
+  {
+    "name": "Salesforce Quotes Add Products",
+    "value": "inframe=Salesforce Frame>xpath=(//div[@class='flex layout horizontal wrap end-justified start centered style-scope sb-page-header']//div[@id='actions']//*[@id='mainButton'])[1]"
+  },
+  {
+    "name": "Salesforce Quotes Search Products",
+    "value": "inframe=Salesforce Frame>xpath=(//input[@placeholder='Search Products'])[2]"
+  },
+  {
+    "name": "Salesforce Quotes Product Checkbox",
+    "value": "inframe=Salesforce Frame>xpath=//sb-group[contains(@class,'th style-scope')]"
+  },
+  {
+    "name": "Salesforce Quotes Select Product Button",
+    "value": "inframe=Salesforce Frame>xpath=//*[@id='plSelect']"
+  },
+  {
+    "name": "Salesforce Quotes Select Product Page Save",
+    "value": "inframe=Salesforce Frame>xpath=(//*[@id='mainButton'])[last()]"
+  },
+  {
+    "name": "Salesforce Quotes Edit",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[@title='Edit'])[1]"
+  },
+  {
+    "name": "Salesforce Quote Edited Save",
+    "value": "xpath=//button[@title='Save']"
+  },
+  {
+    "name": "Salesforce Quote Edited Quote Number",
+    "value": "xpath=//div[contains(@class,'forceRecordLayout')]//span[contains(.,'Quote Number')]/../following-sibling::div/span[1]"
+  },
+  {
+    "name": "Salesforce Orders Quick Link Tab on Quote Page",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(@class,'forceRelatedListQuickLinksContainer')]//*[contains(text(),'Orders')]"
+  },
+  {
+    "name": "Salesforce Orders First Link",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Order Number')]//following::tbody/tr//th/span/a"
+  },
+  {
+    "name": "Salesforce Booking Search Account",
+    "value": "xpath=(//label[contains(.,'Student')]//following::input[@title='Search Accounts'])[1]"
+  },
+  {
+    "name": "Salesforce Booking Search Instance",
+    "value": "xpath=(//label[contains(.,'Instance')]//following::input[@title='Search Instances'])[1]"
+  },
+  {
+    "name": "Salesforce Booking Number Data Field",
+    "value": "xpath=(//div[contains(@class,'oneContent active lafPageHost')]//*[text()='Booking Number']/../following::div/a)[1]"
+  },
+  {
+    "name": "Salesforce Instance Availability Data Field",
+    "value": "xpath=//*[text()='Availability']//following-sibling::p/slot//slot/*"
+  },
+  {
+    "name": "Salesforce Instance Page First Booking Link",
+    "value": "xpath=//*[text()='Booking Number']//following::tr[1]//th[1]//a"
   },
   {
     "name": "Totara Account Expandable Menu",

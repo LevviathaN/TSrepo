@@ -14,6 +14,7 @@ import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
+import java.io.IOException;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
@@ -30,9 +31,8 @@ public class StepDefinitions extends SeleniumHelper {
     public void postActions() {
         try {
             driver().switchTo().defaultContent();
-        }
-        catch (NoSuchWindowException e) {
-            BPPLogManager.getLogger().info("Catching exception: " + e.getMessage().substring(0,44));
+        } catch (NoSuchWindowException e) {
+            BPPLogManager.getLogger().info("Catching exception: " + e.getMessage().substring(0, 44));
         }
     }
 
@@ -258,8 +258,8 @@ public class StepDefinitions extends SeleniumHelper {
     @When("^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
     public void elements_attribute_should_have_value(String attributeName, String elementLocator, String attributeValue) {
         Reporter.log("Executing step: Attribute '" + attributeName + "' of '" + elementLocator + "' should have value '" + attributeValue + "'");
-       if (attributeValue.toUpperCase().contains("CONTAINS=")) {
-           String attributeValueCropped = attributeValue.substring("CONTAINS=".length());
+        if (attributeValue.toUpperCase().contains("CONTAINS=")) {
+            String attributeValueCropped = attributeValue.substring("CONTAINS=".length());
             if (attributeValue.contains("EC_")) {
                 String executionContextValue = TestParametersController.checkIfSpecialParameter(ExecutionContextHandler.getExecutionContextValueByKey(attributeValueCropped));
                 Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).contains(executionContextValue));
@@ -268,7 +268,7 @@ public class StepDefinitions extends SeleniumHelper {
             String executionContextValue = TestParametersController.checkIfSpecialParameter(ExecutionContextHandler.getExecutionContextValueByKey(attributeValue));
             Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(executionContextValue));
         } else {
-        Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
+            Assert.assertTrue(findElement(initElementLocator(elementLocator)).getAttribute(attributeName).equalsIgnoreCase(attributeValue));
         }
     }
 
@@ -343,9 +343,9 @@ public class StepDefinitions extends SeleniumHelper {
     /**
      * Definition to verify that a certain number of elements are present on the page
      *
-     * @author Ruslan Levytskyi
-     * @param element xpath of needed element
+     * @param element          xpath of needed element
      * @param expectedQuantity expected quantity of elements to be present on the page
+     * @author Ruslan Levytskyi
      */
     @When("^I should see the \"([^\"]*)\"(?: button| message| element| text)? in quantity of \"([^\"]*)\"$")
     public void i_should_see_number_of_elements(String element, String expectedQuantity) {
@@ -389,7 +389,7 @@ public class StepDefinitions extends SeleniumHelper {
             assertThat(actualValue, containsString(text));
         } else {
             actualValue = getTextValueFromField(initElementLocator(element));
-            String newValue = text.replaceAll("''","\"");
+            String newValue = text.replaceAll("''", "\"");
             if (text.toUpperCase().trim().startsWith("RE=")) {
                 newValue = newValue.substring("RE=".length());
                 assertThat(actualValue.trim(), matchesPattern(newValue));
@@ -426,10 +426,18 @@ public class StepDefinitions extends SeleniumHelper {
                 Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
                 BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
             } else if (text.contains("EC_")) {
-                String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
-                assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
-                Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
-                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
+                if (text.equalsIgnoreCase("EC_AVAILABILITY_NUMBER")) {
+                    String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                    int i = Integer.parseInt(executionContextValue);
+                    int subtracted = i - 1;
+                    String checkedNumber = Integer.toString(subtracted);
+                    assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(checkedNumber.toLowerCase()));
+                } else {
+                    String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                    assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
+                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
+                }
             } else {
                 assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
                 BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
@@ -486,7 +494,6 @@ public class StepDefinitions extends SeleniumHelper {
 
     /**
      * Perform click using JavaScript
-     *
      */
     @When("^I click on the \"([^\"]*)\" (?:button|link|option|element) by JS$")
     public void i_click_with_JS(String element) {
@@ -551,16 +558,15 @@ public class StepDefinitions extends SeleniumHelper {
     /**
      * Definition scroll the page to the bottom after page is loaded
      *
-     * @param element locator of element you want to check if it's visible and soon to put into Execution Context
+     * @param element          locator of element you want to check if it's visible and soon to put into Execution Context
      * @param executionContext Name that starts with 'EC_' that is used to store saved text value from element
-     *
      * @author Andrii Yakymchuk
      */
 
     @And("^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$")
     public void i_capture_text_data_as_variable(String element, String executionContext) {
         String value = getTextValueFromField(initElementLocator(element));
-        Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
+        Reporter.log("Capturing data from : " + initElementLocator(element) + ": " + executionContext);
         if (!executionContext.equals("")) {
             if (value.equals("")) {
                 Reporter.log("Saving EC key " + executionContext + " with an empty string. No application data found.");
@@ -596,22 +602,21 @@ public class StepDefinitions extends SeleniumHelper {
     @And("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" element$")
     public void i_execute_js_code_for_element(String jsCode, String element) {
         Reporter.log("Executing JS code: " + jsCode);
-        executeJSCodeForElement(initElementLocator(element),TestParametersController.checkIfSpecialParameter(jsCode));
+        executeJSCodeForElement(initElementLocator(element), TestParametersController.checkIfSpecialParameter(jsCode));
     }
 
     /**
      * Definition to get specific data using REGEX. Required for BE Create New Line Manager workflow
      *
-     * @param element locator of element you want to check is visible
+     * @param element          locator of element you want to check is visible
      * @param executionContext Name that starts with 'EC_' that is used to store saved text value from element
-     *
      * @author yzosin
      */
     @And("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$")
     public void i_capture_special_data(String element, String executionContext) {
 
         String value = selectSpecificData(initElementLocator(element));
-        Reporter.log("Capturing data from : " + initElementLocator(element) +": " + executionContext);
+        Reporter.log("Capturing data from : " + initElementLocator(element) + ": " + executionContext);
         if (!executionContext.equals("")) {
             if (value.equals("")) {
                 Reporter.log("Saving EC key " + executionContext + " with an empty string. No application data found.");
