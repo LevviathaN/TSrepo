@@ -2424,6 +2424,16 @@
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[normalize-space()='Mobile']/following::div[1]/span)[1]"
   },
   {
+    "name": "Salesforce Opportunity Close Date field",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//span[text()='Close Date']/following::div/input[@class=' input'])[1]"
+  },
+  {
+    "name": "Salesforce Address Country item",
+    "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']/a)[1]"
+  },
+  {
+    "name": "TestName",
+    "value": "TestValue"
     "name": "Salesforce Create Quote",
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[@title='Create Quote'])[1]"
   },

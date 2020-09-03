@@ -429,7 +429,7 @@
   },
   {
     "name": "Product Factory text field",
-    "value": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea"
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea|//span[text()='PARAMETER']/following-sibling::div//input"
   },
   {
     "name": "Product Factory text field two",
