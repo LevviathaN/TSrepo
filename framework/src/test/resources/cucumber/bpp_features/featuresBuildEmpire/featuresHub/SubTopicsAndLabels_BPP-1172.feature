@@ -1,4 +1,4 @@
-@Hub
+@Hub @SubTopics
 Feature: BPP University Hub Sub Topics and Labels
 
   Background:
