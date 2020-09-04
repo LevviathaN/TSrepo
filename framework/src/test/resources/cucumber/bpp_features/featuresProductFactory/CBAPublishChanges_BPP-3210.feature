@@ -1,8 +1,8 @@
 @ProductFactory @CBA @Deactivation
-Feature: CBA - deactivation/reactivation - BPP-3211
+Feature: CBA - Publish changes - BPP-3210
   As a Product Setter
-  when I am editing a CBA
-  I want the ability to deactivate the CBA (and the associated Courses).
+  when I am editing a non-draft CBA, with unpublished changes,
+  I want the ability to Publish the CBA and the associated Courses, Instances
 
   Background:
     Given I execute "Log In" reusable step
