@@ -1,8 +1,8 @@
 @ProductFactory @CBA @Deactivation
-Feature: CBA - Publish changes - BPP-3210
+Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
   As a Product Setter
-  when I am editing a non-draft CBA, with unpublished changes,
-  I want the ability to Publish the CBA and the associated Courses, Instances
+  I want changes to CBA (Header)
+  to Propagate to created/linked CBA courses.
 
   Background:
     Given I execute "Log In" reusable step
@@ -39,6 +39,9 @@ Feature: CBA - Publish changes - BPP-3210
       |5|I set "LocationAddressTwo[######]" text to the "Address" "Product Factory text field"|
       |7|I click on the "EC_REGION_NAME_TWO" "Product Factory dropdown option"                |
     And I execute "Create Client" reusable step
+    And I execute "Create Client" reusable step replacing some steps
+      |4|I set "ClientNameTwo[######]" text to the "Name" "Product Factory text field"|
+      |6|I should see the "EC_CLIENT_NAME_TWO" element|
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step with some additional steps
       |5|I "check" "CBA Paper?" "Product Factory checkbox"|
@@ -50,8 +53,8 @@ Feature: CBA - Publish changes - BPP-3210
     And I execute "Create Pricing Matrix Full" reusable step
     And I execute "Create Digital Content" reusable step
 
-  @Positive @Regression @P1 #TC-3106
-  Scenario: Publish CBA Changes Validation
+  @Positive @Regression @P1 #TC-2934
+  Scenario: CBA Changes Updating Courde Validation
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
     When I click on the "exit_to_app" button
@@ -75,23 +78,17 @@ Feature: CBA - Publish changes - BPP-3210
     And I click on the "Edit CBA" element
     Then I should see the "Date updated on CBA Course Sessions." element
     And I should see the "Unpublished changes" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
-
-    And I click on the "Start Time" "Product Factory edit button"
-    And I set "11:00" text to the "Start Time" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    And I should see the "11:00" message
-    And I should see the "Times updated on CBA Course Sessions." message
-    And I should see the "Unpublished changes" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+    And I should see the "01/09/2025" element
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "CBAs" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
     And I click on the "Default Institute Fee (£)" "Product Factory edit button"
     And I set "~UpdatedInstituteFee[###]" text to the "Default Institute Fee (£)" "Product Factory text field"
@@ -100,11 +97,6 @@ Feature: CBA - Publish changes - BPP-3210
     And I should see the "Institute Fees Updated on CBA Courses." message
     Then I should see the "[EC_UPDATED_INSTITUTE_FEE].00" element in quantity of "2"
     And I should see the "Unpublished changes" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
 
     And I click on the "Capacity" "Product Factory edit button"
     And I set "2" text to the "Capacity" "Product Factory text field"
@@ -112,38 +104,41 @@ Feature: CBA - Publish changes - BPP-3210
     Then I should see the "Capacity updated on Course Instances." message
     Then I should see the "2" element
     And I should see the "Unpublished changes" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
-
-    Then I click on the "EC_BODY_SHORT_NAME" "Product Factory CBA Course Institute Fee edit button"
-    And I set "~UpdatedInstituteFee[###]" text to the "EC_BODY_SHORT_NAME" "Product Factory CBA Course Institute Fee input field"
-    And I click on the "Yes" "Product Factory button title"
-    Then I should see the "[EC_UPDATED_INSTITUTE_FEE].00" element
-    And I should see the "Unpublished changes" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+    And I should see the "2" element
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "CBAs" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
     And I click on the "Clients" element
     And I click on the "Edit" "Product Factory button"
+    And I "check" "EC_CLIENT_NAME_TWO" "Product Factory checkbox"
     And I "check" "EC_CLIENT_NAME" "Product Factory checkbox"
     And I click on the "Save" "Product Factory button"
     And I should see the "Clients updated on CBA Courses." message
     And I should see the "Unpublished changes" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+    And I click on the "Clients" element
+    And I should see the "EC_CLIENT_NAME_TWO" element
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "CBAs" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
 
-  @Positive @Regression @P1 #TC-3110
-  Scenario: Publish CBA Changes Validation Additional Scenarios
+  @Positive @Regression @P1 #TC-2936
+  Scenario: CBA Changes Updating Courde Validation Additional Scenarios
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
     When I click on the "exit_to_app" button
@@ -163,61 +158,21 @@ Feature: CBA - Publish changes - BPP-3210
     And I should see the "Deactivate" "Product Factory button"
     And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
 
-    #Canceling
-    And I click on the "Start Time" "Product Factory edit button"
-    And I set "11:00" text to the "Start Time" "Product Factory text field"
-    And I click on the "Cancel" "Product Factory button"
-    And I shouldn't see the "11:00" message
-    And I shouldn't see the "Times updated on CBA Course Sessions." message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
-
-    And I click on the "Default Institute Fee (£)" "Product Factory edit button"
-    And I set "~UpdatedInstituteFee[###]" text to the "Default Institute Fee (£)" "Product Factory text field"
-    And I click on the "Cancel" "Product Factory button"
-    And I shouldn't see the "Institute Fees Updated on CBA Courses." message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
-
-    And I click on the "Capacity" "Product Factory edit button"
-    And I set "2" text to the "Capacity" "Product Factory text field"
-    And I click on the "Cancel" "Product Factory button"
-    Then I shouldn't see the "Capacity updated on Course Instances." message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
-
-    Then I click on the "EC_BODY_SHORT_NAME" "Product Factory CBA Course Institute Fee edit button"
-    And I set "~UpdatedInstituteFee[###]" text to the "EC_BODY_SHORT_NAME" "Product Factory CBA Course Institute Fee input field"
-    And I click on the "Cancel" "Product Factory button title"
-    Then I shouldn't see the "[EC_UPDATED_INSTITUTE_FEE].00" element
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
-
     #Amending all at once
     And I set "01/09/2025" text to the "Date" "Product Factory text field"
     And I click on the "Edit CBA" element
     Then I should see the "Date updated on CBA Course Sessions." element
-
-    And I click on the "Start Time" "Product Factory edit button"
-    And I set "11:00" text to the "Start Time" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    And I should see the "11:00" message
-    And I should see the "Times updated on CBA Course Sessions." message
-
-    And I click on the "Default Institute Fee (£)" "Product Factory edit button"
-    And I set "~UpdatedInstituteFee[###]" text to the "Default Institute Fee (£)" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    And I should see the "Institute Fees Updated on CBA Courses." message
 
     And I click on the "Capacity" "Product Factory edit button"
     And I set "2" text to the "Capacity" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Capacity updated on Course Instances." message
 
-    Then I click on the "EC_BODY_SHORT_NAME" "Product Factory CBA Course Institute Fee edit button"
-    And I set "~UpdatedInstituteFee[###]" text to the "EC_BODY_SHORT_NAME" "Product Factory CBA Course Institute Fee input field"
-    And I click on the "Yes" "Product Factory button title"
-    Then I should see the "[EC_UPDATED_INSTITUTE_FEE].00" element
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
 
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "0"
-    And I click on the "Publish" "Product Factory button"
-    And I click on the "Yes" "Product Factory button"
-    Then I should see the "Published" message
-    And Attribute "tabindex" of "Publish" "Product Factory button" should have value "-1"
+    And I should see the "01/09/2025" element
+    And I should see the "2" element
