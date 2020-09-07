@@ -120,6 +120,7 @@ public static ReusableRunner getInstance() {
                 BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
                 reusable.add(i, subSteps.get(i+1));
             }
+            BPPLogManager.getLogger().info("Reusable scenario step " + (i+1) + ":");
             executeStep(reusable.get(i));
         }
     }
@@ -145,6 +146,52 @@ public static ReusableRunner getInstance() {
                 reusable.remove(i);
                 reusable.add(i, subSteps.get(i+1));
             }
+            BPPLogManager.getLogger().info("Reusable scenario step " + (i+1) + ":");
+            executeStep(reusable.get(i));
+        }
+    }
+
+    /**
+     * Execute reusable scenario modified
+     *
+     * @param reusableName name of scenario, that you want to use as a reusable step.
+     *                     This scenario must be in src/main/resources/data/bpp/ReusableTestSteps.xml
+     * @param subSteps     Map of steps you want to to modify,
+     * @author Ruslan Levytskyi
+     */
+    public void executeReusableModified(String reusableName, List<List<String>> subSteps) {
+
+        reusable = getStepsOfReusableScenario(reusableName);
+        Map<Integer,List<String>> subStepsMap= new HashMap<>();
+
+        for (List<String> step: subSteps) {
+            List<String> stepList = new ArrayList<>();
+            stepList.add(step.get(1));
+            stepList.add(step.get(2));
+            subStepsMap.put(Integer.parseInt(step.get(0)), stepList);
+        }
+
+        for (int i = 0; i < reusable.size(); i++) {
+            if (subStepsMap.containsKey(i+1)) {
+                String action = subStepsMap.get(i+1).get(0);
+                switch(action) {
+                    case "Add":
+                        BPPLogManager.getLogger().info("Adding \"" + subStepsMap.get(i+1).get(1) + "\" on the " + (i+1) + " position");
+                        reusable.add(i, subStepsMap.get(i+1).get(1));
+                        break;
+                    case "Delete":
+                        BPPLogManager.getLogger().info("Deleting step (" + reusable.get(i) + ") on the " + (i+1) + " position");
+                        reusable.remove(i);
+                        break;
+                    case "Replace":
+                        BPPLogManager.getLogger().info("Replacing existing step (" + reusable.get(i) + ") with \"" + subStepsMap.get(i+1).get(1) + "\" on the " + (i+1) + " position");
+                        reusable.remove(i);
+                        reusable.add(i, subStepsMap.get(i+1).get(1));
+                        break;
+
+                }
+            }
+            BPPLogManager.getLogger().info("Reusable scenario step " + (i+1) + ":");
             executeStep(reusable.get(i));
         }
     }
@@ -161,6 +208,7 @@ public static ReusableRunner getInstance() {
         reusable = getStepsOfReusableScenario(reusableName);
         BPPLogManager.getLogger().info("Executing: " + reusableName + " reusable step");
         for (int i = 0; i < reusable.size(); i++) {
+            BPPLogManager.getLogger().info("Reusable scenario step " + (i+1) + ":");
             executeStep(reusable.get(i));
         }
     }

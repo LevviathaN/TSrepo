@@ -15,6 +15,7 @@ import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
@@ -214,6 +215,12 @@ public class StepDefinitions extends SeleniumHelper {
     public void i_execute_reusable_step_replace(String reusableName, Map<Integer, String> steps) {
         Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
         ReusableRunner.getInstance().executeReusableReplaceStep(TestParametersController.checkIfSpecialParameter(reusableName), steps);
+    }
+
+    @Then("^I execute modified \"([^\"]*)\" reusable step$")
+    public void i_execute_reusable_step_modified(String reusableName, List<List<String>> steps) {
+        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
+        ReusableRunner.getInstance().executeReusableModified(reusableName,steps);
     }
 
     /**
