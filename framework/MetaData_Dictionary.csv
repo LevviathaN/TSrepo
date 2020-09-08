@@ -65,3 +65,5 @@ MD_SALESFORCEINSTANCE,https://bpp-13fd3e55182--noahqa.lightning.force.com/lightn
 MD_CUSTOMERGROUP,SELFFUND,descr.
 MD_MSCMANAGEMENTOFFERING,MSc Management CRO PTD 201819 for student application,descr.
 MD_SFOFFERING,2381626,descr.
+MD_SFCPQPRODUCT,SF CPQ test - SF CPQ test - SF CPQ flow test - London - Classroom - AutoTest Sitting,descr.
+MD_SFCPQINSTANCENUMBER,I-1443,descr.

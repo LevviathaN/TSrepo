@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import ui.utils.bpp.PropertiesHelper;
 
 import java.io.File;
@@ -138,7 +139,7 @@ public class DriverProvider {
             chromePreferences.put("profile.default_content_settings.popups", 0);
             chromePreferences.put("download.default_directory", folder.getAbsolutePath());
             options.setCapability("chrome.prefs", chromePreferences);
-            options.setCapability("browser_version", FileIO.getConfigProperty("ch_version"));
+            options.setCapability("browser_version", "latest-2");
             options.setCapability("os", FileIO.getConfigProperty("os"));
             options.setCapability("os_version", FileIO.getConfigProperty("os_version"));
             options.setCapability("resolution", "1920x1080");
@@ -160,6 +161,40 @@ public class DriverProvider {
 
             //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
             //driver.setFileDetector(new LocalFileDetector());
+            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
+
+        } catch (Exception e) {
+            throw new WebDriverException("Unable to launch the browser", e);
+        }
+    }
+    static public RemoteWebDriver getSafariBrowserStack() {
+
+        try {
+            File folder = new File("downloads");
+            if (folder != null) {
+                folder.mkdir();
+            }
+            SafariOptions options = new SafariOptions();
+            options.setCapability("os", "OS X");
+            options.setCapability("os_version", "Catalina");
+            options.setCapability("browser", "Safari");
+            options.setCapability("browser_version", "12.0");
+            //options.setCapability("browserstack.selenium_version", "3.14.0");
+            options.setCapability("browserstack.safari.enablePopups", "true");
+            options.setCapability("browserstack.debug", "true");
+            options.setCapability("browserstack.video", "true");
+            options.setCapability("browserstack.networkLogs", "false");
+            options.setCapability("build", "automation");
+            options.setCapability("browserstack.local", "true");
+            options.setCapability("browserstack.console", "errors");
+            options.setCapability("browserstack.localIdentifier", "TestAutomation");
+            options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            //configure capability to set the job name with Test Case name
+            String testName = Reporter.getCurrentTestName();
+            options.setCapability("name", testName);
+            SafariOptions.fromCapabilities(options);
+            //options.setCapability(SafariOptions.CAPABILITY,options);
+
             return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
 
         } catch (Exception e) {
@@ -195,7 +230,7 @@ public class DriverProvider {
             options.addArguments("--disable-gpu");
             options.addArguments("enable-automation");
             options.setPageLoadStrategy(PageLoadStrategy.NONE);
-            options.setCapability("browser_version", FileIO.getConfigProperty("ff_version"));
+            options.setCapability("browser_version", "latest-2");
             options.setCapability("os", FileIO.getConfigProperty("os"));
             options.setCapability("os_version", FileIO.getConfigProperty("os_version"));
             options.setCapability("resolution", "1920x1080");
@@ -307,6 +342,8 @@ public class DriverProvider {
                 instance.set(getChromeBrowserStack());
             } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_FIREFOX")) {
                 instance.set(getFirefoxBrowserStack());
+            } else if (getCurrentBrowserName().equalsIgnoreCase("BSTACK_SAFARI")) {
+                instance.set(getSafariBrowserStack());
             } else if (getCurrentBrowserName().equalsIgnoreCase("MOBILE_IOS")) {
                 instance.set(getIOSMobileDevice());
             } else if (getCurrentBrowserName().equalsIgnoreCase("MOBILE_ANDROID")) {
@@ -331,7 +368,9 @@ public class DriverProvider {
                 BROWSER_TYPE = "BSTACK_CHROME";
             } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("BSTACK_FIREFOX")) {
                 BROWSER_TYPE = "BSTACK_FIREFOX";
-            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("MOBILE_ANDROID")) {
+            } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("BSTACK_SAFARI")) {
+                BROWSER_TYPE = "BSTACK_SAFARI";
+            }else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("MOBILE_ANDROID")) {
                 BROWSER_TYPE = "MOBILE_ANDROID";
             } else if (PropertiesHelper.determineEffectivePropertyValue("driver").equalsIgnoreCase("MOBILE_IOS")) {
                 BROWSER_TYPE = "MOBILE_IOS";
