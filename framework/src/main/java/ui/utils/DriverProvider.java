@@ -145,7 +145,7 @@ public class DriverProvider {
             options.setCapability("resolution", "1920x1080");
             options.setCapability("browserstack.debug", "true");
             options.setCapability("browserstack.video", "true");
-            options.setCapability("browserstack.networkLogs", "false");
+            options.setCapability("browserstack.networkLogs", "true");
             options.setCapability("build", "automation");
             options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
@@ -174,28 +174,28 @@ public class DriverProvider {
             if (folder != null) {
                 folder.mkdir();
             }
-            SafariOptions options = new SafariOptions();
-            options.setCapability("os", "OS X");
-            options.setCapability("os_version", "Catalina");
-            options.setCapability("browser", "Safari");
-            options.setCapability("browser_version", "12.0");
-            //options.setCapability("browserstack.selenium_version", "3.14.0");
-            options.setCapability("browserstack.safari.enablePopups", "true");
-            options.setCapability("browserstack.debug", "true");
-            options.setCapability("browserstack.video", "true");
-            options.setCapability("browserstack.networkLogs", "false");
-            options.setCapability("build", "automation");
-            options.setCapability("browserstack.local", "true");
-            options.setCapability("browserstack.console", "errors");
-            options.setCapability("browserstack.localIdentifier", "TestAutomation");
-            options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setCapability("os", "OS X");
+            caps.setCapability("os_version", "Mojave");
+            caps.setCapability("browser", "Safari");
+            caps.setCapability("browser_version", "12.1");
+            caps.setCapability("browserstack.selenium_version", "3.14.0");
+            caps.setCapability("browserstack.safari.enablePopups", "true");
+            caps.setCapability("browserstack.debug", "true");
+            caps.setCapability("browserstack.video", "true");
+            caps.setCapability("browserstack.networkLogs", "true");
+            caps.setCapability("build", "automation");
+            caps.setCapability("browserstack.local", "true");
+            caps.setCapability("browserstack.console", "errors");
+            caps.setCapability("browserstack.localIdentifier", "TestAutomation");
+            caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            caps.setCapability("safari.cleansession", true);
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();
-            options.setCapability("name", testName);
-            SafariOptions.fromCapabilities(options);
-            //options.setCapability(SafariOptions.CAPABILITY,options);
+            caps.setCapability("name", testName);
+            SafariOptions.fromCapabilities(caps);
 
-            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
+            return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), caps);
 
         } catch (Exception e) {
             throw new WebDriverException("Unable to launch the browser", e);
