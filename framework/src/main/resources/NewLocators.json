@@ -1292,6 +1292,34 @@
     "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
   },
   {
+    "name": "Digital Site Mobile BPP Logo",
+    "value": "xpath=//div[contains(@class,'item-logo')]/a"
+  },
+  {
+    "name": "Digital Site Mobile Hamburger Menu",
+    "value": "xpath=//*[contains(@class,'btn-mobile-menu')]"
+  },
+  {
+    "name": "Digital Site Mobile Hamburger Courses",
+    "value": "xpath=//ul[@class='second-level-list']/li/span[text()='Courses']"
+  },
+  {
+    "name": "Digital Site Mobile Hamburger Events",
+    "value": "xpath=//ul[contains(@class,'main-level')]//a[contains(.,'Events')]"
+  },
+  {
+    "name": "Digital Site Mobile Page Heading",
+    "value": "xpath=//div[@class='component-content']/h1"
+  },
+  {
+    "name": "Digital Site Mobile Page Courses Heading",
+    "value": "xpath=//*[@class='content-wrapper']//h2"
+  },
+  {
+    "name": "Digital Site Mobile Page Events Heading",
+    "value": "xpath=//div[@class='events-page']//h2"
+  },
+  {
     "name": "Totara Course Select Forum Mobile",
     "value": "xpath=//div[@class='course-details-mobile']//button[text()='Select Forum']"
   },
