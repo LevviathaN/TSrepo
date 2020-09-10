@@ -133,7 +133,7 @@
   },
   {
     "name": "BPP Digital Search Label Button",
-    "value": "xpath=//button[normalize-space()='PARAMETER']"
+    "value": "xpath=(//button[normalize-space()='PARAMETER'])[1]"
   },
   {
     "name": "BPP Digital Student Applications Menu link",

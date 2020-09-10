@@ -1656,6 +1656,10 @@
     "value": "xpath=//ul[@role='listbox']/li[4]"
   },
   {
+    "name":"Direct App First Timeline Title Four text",
+    "value": "xpath=(//div[@class='timeline-cards loaded']//h4[contains(text(),'You started an')])[1]"
+  },
+  {
     "name": "Guerilla BPP Email",
     "value": "xpath=//tbody[@id='email_list']//td[contains(.,'no-reply@staging.bppdigital.buildempire.co.uk ')]"
   },
