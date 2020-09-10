@@ -133,6 +133,8 @@ public class qTestAPI {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_BE_SuiteID");
         } else if (System.getProperty("qtestSuite").contains("SF")) {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_SF_SuiteID");
+        } else if (System.getProperty("qtestSuite").contains("BA")) {
+            TestSuiteID = FileIO.getConfigProperty("QTest_Test_BA_SuiteID");
         }
 
         String baseURI = "https://bpp.qtestnet.com/api/v3/projects/" + ProjectID + "/test-suites/" + TestSuiteID + "/test-runs";
