@@ -614,5 +614,13 @@
   {
     "name": "text contained in element",
     "value": "xpath=//*[contains(text(),'PARAMETER')]"
+  },
+  {
+    "name": "BPP Digital Mobile Courses Menu",
+    "value": "xpath=//div[@class='third-level active']//div[@class='third-level-list-container']//a[contains(.,'PARAMETER')]"
+  },
+  {
+    "name": "BPP Digital Mobile Second Expandable Menu",
+    "value": "xpath=//div[@class='second-level']//a[contains(.,'PARAMETER')]"
   }
 ]

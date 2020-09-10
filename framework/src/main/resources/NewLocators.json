@@ -1280,12 +1280,44 @@
     "value": "xpath=//*[@class='item-link item-learning']/a"
   },
   {
+    "name": "Hub Mobile Home Link Hamburger Menu",
+    "value": "xpath=//*[@class='item-link item-home']/a"
+  },
+  {
     "name": "Hub Mobile My Learning Course Card",
     "value": "xpath=//*[@class='course-card-link ember-view']"
   },
   {
     "name": "Hub Mobile Book Exam",
     "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
+  },
+  {
+    "name": "Digital Site Mobile BPP Logo",
+    "value": "xpath=//div[contains(@class,'item-logo')]/a"
+  },
+  {
+    "name": "Digital Site Mobile Hamburger Menu",
+    "value": "xpath=//*[contains(@class,'btn-mobile-menu')]"
+  },
+  {
+    "name": "Digital Site Mobile Hamburger Courses",
+    "value": "xpath=//ul[@class='second-level-list']/li/span[text()='Courses']"
+  },
+  {
+    "name": "Digital Site Mobile Hamburger Events",
+    "value": "xpath=//ul[contains(@class,'main-level')]//a[contains(.,'Events')]"
+  },
+  {
+    "name": "Digital Site Mobile Page Heading",
+    "value": "xpath=//div[@class='component-content']/h1"
+  },
+  {
+    "name": "Digital Site Mobile Page Courses Heading",
+    "value": "xpath=//*[@class='content-wrapper']//h2"
+  },
+  {
+    "name": "Digital Site Mobile Page Events Heading",
+    "value": "xpath=//div[@class='events-page']//h2"
   },
   {
     "name": "Totara Course Select Forum Mobile",
@@ -1897,7 +1929,23 @@
   },
   {
     "name": "Hub VPE View Next Activity",
-    "value": "xpath=//div[contains(@class,'next-activity')]//div/a"
+    "value": "xpath=//div[contains(@class,'next-activity')]//div//a"
+  },
+  {
+    "name": "Hub VPE Next Activity Header",
+    "value": "xpath=//div[contains(@class,'next-activity')]/header/*"
+  },
+  {
+    "name": "Hub VPE Next Activity Course",
+    "value": "xpath=(//div[contains(@class,'next-activity')]/div/span/*)[1]"
+  },
+  {
+    "name": "Hub VPE Next Activity Name",
+    "value": "xpath=(//div[contains(@class,'next-activity')]/div//p)[1]"
+  },
+  {
+    "name": "Hub VPE Activity Completed Name",
+    "value": "xpath=(//div[contains(@class,'activity-completed')]//p)[1]"
   },
   {
     "name": "Hub VPE Documents Folder Name",
@@ -2763,6 +2811,10 @@
   {
     "name": "Totara Edit Topic Dropdown",
     "value": "xpath=(//a[contains(.,'Topic')]/../../following::a[contains(.,'Edit')])[2]"
+  },
+  {
+    "name": "Totara Edit Submission",
+    "value": "xpath=//input[@value='Edit submission']"
   },
   {
     "name": "Totara Enrol Button",

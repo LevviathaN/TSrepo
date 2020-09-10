@@ -35,6 +35,8 @@ Feature: Create a Single Booking
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
     Then I execute "Create Business Account" reusable step
+    #TODO: Commented reusable step will be removed after all fields in UAT will match QA
+    #Then I execute "Create Business Account UAT" reusable step
     Then I execute "Create Business Opportunity" reusable step
     #Add Quote
     And I click on the "EC_AUTO_OPPORTUNITY" "Salesforce link"
@@ -47,7 +49,7 @@ Feature: Create a Single Booking
     Then I wait for "10" seconds
     And I hover over the "Salesforce Quotes Add Products" button
     And I click on the "Salesforce Quotes Add Products" element
-    Then I fill the "Salesforce Quotes Search Products" field with "SF CPQ test - SF CPQ test - SF CPQ flow test - London - Classroom - AutoTest Sitting"
+    Then I fill the "Salesforce Quotes Search Products" field with "MD_COMMON_VALIDDATA_SFCPQPRODUCT"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Salesforce Quotes Search Products"
     Then I click on the "Salesforce Quotes Product Checkbox" option
     And I click on the "Salesforce Quotes Select Product Button" element
@@ -75,4 +77,4 @@ Feature: Create a Single Booking
     And I set "Automation Cancelled" text to the "Cancellation Reason" "Salesforce text field"
     And I click on the "Salesforce Quote Edited Save" element
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
-    #Add step to validate capacity is +1 after bug will be fixed
+    #TODO: Add step to validate capacity is +1 after bug will be fixed
