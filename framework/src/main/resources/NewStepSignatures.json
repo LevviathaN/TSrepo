@@ -44,6 +44,10 @@
     "value": "LOC_PARAM,LOC_TEMPLATE,CON_PARAM,CONDITION"
   },
   {
+    "name": "^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS$",
+    "value": "LOC_PARAM,LOC_TEMPLATE"
+  },
+  {
     "name": "^I click on the \"([^\"]*)\" \"([^\"]*)\"$",
     "value": "LOC_PARAM,LOC_TEMPLATE"
   },
