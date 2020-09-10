@@ -36,7 +36,6 @@ Feature: BPP University Hub Direct App Notifications
     #Withdraw Application
     And I click on the "Hub VPE Mobile Hamburger Menu" element
     And I wait for "3" seconds
-    ##############################################################
     And I click on the "Direct App My Applications Left Menu Link" link
     And I wait for "1" seconds
     And I click on the "Start Application" "button"
