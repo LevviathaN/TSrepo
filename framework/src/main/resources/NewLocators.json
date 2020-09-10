@@ -2569,6 +2569,14 @@
     "value": "xpath=//*[text()='Booking Number']//following::tr[1]//th[1]//a"
   },
   {
+    "name": "Salesforce Address Primary Delivery",
+    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='Primary Delivery?']/following-sibling::input"
+  },
+  {
+    "name": "Salesforce Booking Lines Number",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Booking Lines')]/following::span)[1]"
+  },
+  {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
   },

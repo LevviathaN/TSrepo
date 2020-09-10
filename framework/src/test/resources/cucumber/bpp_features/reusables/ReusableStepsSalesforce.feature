@@ -510,7 +510,9 @@ Feature: Salesforce
     And I set "London" text to the "Head Office City" "Salesforce text field"
     And I set "Automation 1" text to the "Head Office Address 1" "Salesforce text field"
     And I set "W3H56" text to the "Head Office Postal Code" "Salesforce text field"
-    And I set "United Kingdom" text to the "Head Office County" "Salesforce text field"
+    And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
+    And I wait for "1" seconds
+    And I click on the "Kingdom" "option"
     And I click on the "Salesforce Account Creation Save button" element
     Then I should see the " was created." message
 
@@ -541,6 +543,10 @@ Feature: Salesforce
     Then I should see the " was created." message
     And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
     And I capture current URL as "EC_BOOKING_URL" variable
+    And I wait for "2" seconds
+    Then Browser performs "REFRESH" command
+    And I wait for "2" seconds
+    And I should see the "Salesforce Booking Lines Number" element
 
   Scenario: Create Business Account UAT
     When I click on the "Accounts" "Salesforce navigation menu dropdown"
