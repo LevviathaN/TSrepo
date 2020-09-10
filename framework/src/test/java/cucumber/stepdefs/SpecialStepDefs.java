@@ -48,6 +48,30 @@ public class SpecialStepDefs extends SeleniumHelper {
     }
 
     /**
+     * Definition to click an element on the page using JS
+     *
+     * @author Ruslan Levytskyi
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
+     * @param elementType xpath template of needed element
+     */
+    @When("^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS$")
+    public void i_click_on_element_with_parameter_by_js_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I click on the '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element with JS");
+            clickWithJS(initElementLocator(resultingXpath));
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
      * Definition to click an element on the page if given condition is true
      *
      * @author Ruslan Levytskyi

@@ -92,7 +92,7 @@ Feature: Salesforce
     And I click on the "Product Catalog Items" "Salesforce related new button"
     And I wait for "1" seconds
     And I click on the "New" "Salesforce dropdown option"
-    And I fill the "Salesforce Offering Text Field" field with "2381626"
+    And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox
     And I "check" "Salesforce Product Checkbox" checkbox
@@ -495,3 +495,63 @@ Feature: Salesforce
     Then I click on the "Health" "Salesforce cases dropdown option"
     And I click on the "Save" "Product Factory button title"
     And I wait for "3" seconds
+
+  Scenario: Create Business Account
+    When I click on the "Accounts" "Salesforce navigation menu dropdown"
+    And I wait for "2" seconds
+    And I click on the "New Account" "Salesforce navigation menu dropdown option"
+    And I click on the "Business Development Account" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I set "AutoBusiness[FIRSTNAME]" text to the "Account Name" "Salesforce text field"
+    And I click on the "Client Category" "Salesforce dropdown field"
+    And I click on the "Key Client" "option"
+    And I set "[PHONE]" text to the "Phone" "Salesforce text field"
+    And I set "www.bpp.com" text to the "Website" "Salesforce text field"
+    And I set "London" text to the "Head Office City" "Salesforce text field"
+    And I set "Automation 1" text to the "Head Office Address 1" "Salesforce text field"
+    And I set "W3H56" text to the "Head Office Postal Code" "Salesforce text field"
+    And I set "United Kingdom" text to the "Head Office County" "Salesforce text field"
+    And I click on the "Salesforce Account Creation Save button" element
+    Then I should see the " was created." message
+
+  Scenario: Create Business Opportunity
+    Then I click on the "Salesforce Opportunities Quick Link Tab" element
+    And I click on the "Salesforce Student Account Pages New button" button
+    And I wait for "1" seconds
+    And I set "AutoOpportunity[###]" text to the "Opportunity Name" "Salesforce text field"
+    And I set "1000" text to the "Amount" "Salesforce text field"
+    And I click on the "Status" "Salesforce dropdown field"
+    And I click on the "Prospecting" "Salesforce dropdown field option"
+    And I set "31/01/2021" text to the "Close Date" "Salesforce date field"
+    And I set "31/01/2021" text to the "Desired Start Date" "Salesforce date field"
+    And I click on the "Type" "Salesforce dropdown field"
+    And I click on the "New Business: New Client" "Salesforce dropdown field option"
+    And I click on the "Salesforce Account Creation Save button" element
+    And I should see the " was created." message
+
+  Scenario: Add A Booking
+    And I click on the "Bookings" "Salesforce related new button"
+    And I fill the "Salesforce Booking Search Account" field with "EC_AUTO"
+    And I click on the "EC_AUTO" "option"
+    And I click on the "Status" "Salesforce dropdown field"
+    And I click on the "Confirmed" "option"
+    And I fill the "Salesforce Booking Search Instance" field with "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER"
+    And I click on the "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER" "option"
+    And I click on the "Salesforce Quote Edited Save" element
+    Then I should see the " was created." message
+    And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
+    And I capture current URL as "EC_BOOKING_URL" variable
+
+  Scenario: Create Business Account UAT
+    When I click on the "Accounts" "Salesforce navigation menu dropdown"
+    And I wait for "2" seconds
+    And I click on the "New Account" "Salesforce navigation menu dropdown option"
+    And I click on the "Business Development Account" "Salesforce radiobutton"
+    And I click on the "Next" "button"
+    And I set "AutoBusiness[FIRSTNAME]" text to the "Account Name" "Salesforce text field"
+    And I click on the "Client Category" "Salesforce dropdown field"
+    And I click on the "Key Client" "option"
+    And I set "[PHONE]" text to the "Phone" "Salesforce text field"
+    And I set "www.bpp.com" text to the "Website" "Salesforce text field"
+    And I click on the "Salesforce Account Creation Save button" element
+    Then I should see the " was created." message
