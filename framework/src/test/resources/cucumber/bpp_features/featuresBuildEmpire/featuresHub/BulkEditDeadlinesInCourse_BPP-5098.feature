@@ -1,4 +1,4 @@
-@Hub @BulkEditDeadlines
+@Hub @BulkEditDeadlines @Totara
 Feature: As a Totara admin, I expect to be able to bulk edit deadlines in courses
   within the course administration
 

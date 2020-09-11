@@ -1,4 +1,4 @@
-@Hub @QuizAssesment
+@Hub @QuizAssesment @Totara
 Feature: Moodle Quiz Key Activity On Topic Overview Page With No Submit
   As a user in the Hub,
   when a MOODLE QUIZ has been set as the Key Activity on my Topic Overview page

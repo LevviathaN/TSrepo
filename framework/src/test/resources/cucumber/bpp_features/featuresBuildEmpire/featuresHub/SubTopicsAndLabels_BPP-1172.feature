@@ -1,4 +1,4 @@
-@Hub @SubTopics
+@Hub @SubTopics @Totara
 Feature: BPP University Hub Sub Topics and Labels
 
   Background:
@@ -9,6 +9,7 @@ Feature: BPP University Hub Sub Topics and Labels
     #Logout as a User
     And I wait for "3" seconds
     Then I execute "Log Out from Hub Student" reusable step
+    And I wait for "5" seconds
     #Admin Login With Walkaround
     When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
     And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"

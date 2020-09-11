@@ -1,4 +1,4 @@
-@Hub
+@Hub @Totara
 Feature: BPP University Hub Course Forum
   As a learner within the hub
   If there is a course specific forum

@@ -1,4 +1,4 @@
-@Hub
+@Hub @Totara
 Feature: BPP University Hub My Learning Course Tutor
 
   Background:
