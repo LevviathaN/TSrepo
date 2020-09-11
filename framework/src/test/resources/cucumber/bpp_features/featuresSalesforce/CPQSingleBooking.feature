@@ -37,7 +37,6 @@ Feature: Create a Single Booking
     And I execute "Create Address" reusable step with some additional steps
     |12|I click on the "Salesforce Address Primary Delivery" button|
     Then I execute "Create Business Account" reusable step
-    #Then I execute "Create Business Account UAT" reusable step
     Then I execute "Create Business Opportunity" reusable step
     #Add Quote
     And I click on the "EC_AUTO_OPPORTUNITY" "Salesforce link"
