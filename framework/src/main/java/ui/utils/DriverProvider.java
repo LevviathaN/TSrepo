@@ -150,7 +150,7 @@ public class DriverProvider {
             options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
             options.setCapability("browserstack.localIdentifier", "TestAutomation");
-
+            options.setCapability("browserstack.idleTimeout", "180");
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability(ChromeOptions.CAPABILITY, options);
@@ -241,7 +241,7 @@ public class DriverProvider {
 //            options.setCapability("browserstack.local", "true");
 //            options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability(FirefoxDriver.PROFILE, profile);
-
+            options.setCapability("browserstack.idleTimeout", "180");
             //configure capability for setting up Test Case name for Sauce Jobs
             String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
