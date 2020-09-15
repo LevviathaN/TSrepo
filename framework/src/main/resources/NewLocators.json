@@ -1552,6 +1552,26 @@
     "value": "xpath=//div[@class='section-description']//div[2]//button"
   },
   {
+    "name": "Direct App Topic Learning Material Header",
+    "value": "xpath=//*[@class='topic-activities']//*[@class='topic-title']"
+  },
+  {
+    "name": "Direct App Topic Learning Material Legend One",
+    "value": "xpath=//*[@class='topic-activities']//*[@class='topic-legend']/div[1]"
+  },
+  {
+    "name": "Direct App Topic Learning Material Legend Two",
+    "value": "xpath=//*[@class='topic-activities']//*[@class='topic-legend']/div[2]"
+  },
+  {
+    "name": "Direct App Topic Learning Material Subtopic One",
+    "value": "xpath=(//*[@class='topic-activities']//div[contains(@class,'sub-topic-content')]/div)[1]"
+  },
+  {
+    "name": "Direct App Topic Learning Material Subtopic Activity List",
+    "value": "xpath=//*[@class='sub-topic-activities-list']"
+  },
+  {
     "name": "Direct App Upload File",
     "value": "xpath=//input[@type='file']"
   },
