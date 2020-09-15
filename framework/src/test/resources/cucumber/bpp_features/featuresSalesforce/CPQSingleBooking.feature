@@ -34,6 +34,8 @@ Feature: Create a Single Booking
     And I click on the "Personal" "Salesforce dropdown field option"
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Save" "button"
+    And I execute "Create Address" reusable step with some additional steps
+    |12|I click on the "Salesforce Address Primary Delivery" button|
     Then I execute "Create Business Account" reusable step
     #TODO: Commented reusable step will be removed after all fields in UAT will match QA
     #Then I execute "Create Business Account UAT" reusable step
@@ -43,6 +45,7 @@ Feature: Create a Single Booking
     Then I click on the "Salesforce Create Quote" element
     And I wait for "3" seconds
     And I click on the "Salesforce Quote Save" button
+    And I wait for "1" seconds
     And I click on the "Salesforce Quotes Quick Link Tab" element
     Then I click on the "Salesforce Quotes First Link" element
     And I click on the "Salesforce Quotes Edit Lines" element
@@ -59,9 +62,9 @@ Feature: Create a Single Booking
     And I click on the "Salesforce Quotes Ordered Checkbox" element
     And I capture text data "Salesforce Quote Edited Quote Number" as "EC_QUOTE" variable
     And I click on the "Salesforce Quote Edited Save" element
-    And I wait for "1" seconds
+    And I wait for "2" seconds
     Then Browser performs "REFRESH" command
-    And I wait for "5" seconds
+    And I wait for "3" seconds
     And I click on the "Salesforce Orders Quick Link Tab on Quote Page" element
     Then I click on the "Salesforce Orders First Link" link
     And I wait for "1" seconds
