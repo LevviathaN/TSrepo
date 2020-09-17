@@ -7,12 +7,11 @@ Feature: BPP University Hub Sub Topics and Labels
   @Positive #TC-867
   Scenario: Hub Sub Topics and Labels
     #Logout as a User
-    And I wait for "3" seconds
-    Then I execute "Log Out from Hub Student" reusable step
-    And I wait for "5" seconds
+    #Then I execute "Log Out from Hub Student" reusable step
     #Admin Login With Walkaround
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    #When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    #And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Enrol To course for ICAEW Course
     When I click on the "Totara ICAEW Course" link by JS
@@ -61,7 +60,7 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Automation Quiz Question Text Order List Icon" link by JS
     And I set "12" text to the element with ID "id_defaultmark" using JS
     And I select "True" from "Totara Automation Quiz Correct Answer Drop Down" element
-    And I click on the "Save changes" "Totara button"
+    And I click on the "Save changes" "Totara button" by JS
     And I wait for "3" seconds
     And I click on the "Totara Breadcrambs ICAEW Course Item" button by JS
     And I click on the "Totara Automation Quiz Name Edit Quiz Button" button by JS
@@ -70,6 +69,7 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Automation Quiz Name Edit Move Right Item" link by JS
     #Admin Logout
     And I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
     #Login As student
     And I execute "Log In to Hub as Student Fixed" reusable step
     #Navigate to Created Sub Topics
@@ -89,10 +89,9 @@ Feature: BPP University Hub Sub Topics and Labels
     And Attribute "data-icon" of "BPP Digital Automation Validate Quiz Check Svg Item" should have value "check"
     And Attribute "class" of "BPP Digital Automation Validate Green Check Icon" should have value "CONTAINS=complete"
     #Student Logout
-    And I execute "Log Out from Hub Student" reusable step
+    #And I execute "Log Out from Hub Student" reusable step
     #Admin Login With Walkaround
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Delete SubTopics
     When I click on the "Totara ICAEW Course" link by JS
@@ -110,6 +109,4 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Automation Sub Topic Edit Button" link
     And I click on the "Totara Automation Sub Topic Delete Button" link
     And I click on the "Moodle Staging Confirm Activity Delete Button" link
-    And I wait for "2" seconds
-    #Admin Logout
-    And I execute "Logout as Admin Totara" reusable step
+    And I wait for "5" seconds

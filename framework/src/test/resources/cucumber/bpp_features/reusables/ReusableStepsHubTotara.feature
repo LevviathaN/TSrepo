@@ -24,3 +24,9 @@ Feature: Hub, Totara
     And I click on the "Totara Enrol User Search button" button by JS
     And I click on the "Totara Enrol Button" button by JS
     And I click on the "Totara Finish Enroling Users button" button by JS
+
+  Scenario: Logout Totara Workaround
+    Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    Then I click on the "Totara Account Expandable Menu" element by JS
+    Then I click on the "Totara Logout Link" button by JS
+    And I wait for "3" seconds

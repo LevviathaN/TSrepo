@@ -12,10 +12,8 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #Student Log out
     When I execute "Log Out from Hub Student" reusable step
-    And I should see the "Already registered? Log in" message
     #Admin Login With Walkaround
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Enrol to a course
     When I click on the "Totara ICAEW Course" link by JS
@@ -29,6 +27,7 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     And I click on the "Totara Finish Enroling Users button" button by JS
     #Admin Logout
     Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
     #Register New Student
     When I execute "Register New Student Account" reusable step replacing some steps
       |3|I set "AutoTwo[FIRSTNAME]" text to the "First name" "Build Empire text field"|
@@ -38,10 +37,8 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #Student Log out
     When I execute "Log Out from Hub Student" reusable step
-    And I should see the "Already registered? Log in" message
     #Admin Login With Walkaround
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Enrol to a course
     When I click on the "Totara Volodymyr Course" link by JS
@@ -55,6 +52,7 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     And I click on the "Totara Finish Enroling Users button" button by JS
     #Admin Logout
     Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
     When I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "EC_AUTO_ONE_EMAIL" text to the "Email" "Build Empire text field"|
     And I wait for "3" seconds
@@ -67,7 +65,6 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     And I am on "https://staging.bppdigital.buildempire.app/my/learning/" URL
     And I wait for "3" seconds
     Then I execute "Log Out from Hub Student" reusable step
-    And I should see the "Already registered? Log in" message
     When I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "EC_AUTO_TWO_EMAIL" text to the "Email" "Build Empire text field"|
     And I wait for "3" seconds

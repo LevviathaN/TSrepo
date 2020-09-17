@@ -49,7 +49,8 @@ public enum StepPatterns {
     I_CAPTURE_SPECIAL_DATA("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$"),
     I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL("^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" \"([^\"]*)\"$"),
     I_SET_TEXT_WITH_JS("^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$"),
-    I_CAPTURE_URL_AS_VARIABLE("^I capture current URL as \"([^\"]*)\" variable$");
+    I_CAPTURE_URL_AS_VARIABLE("^I capture current URL as \"([^\"]*)\" variable$"),
+    BROWSER_DELETES_COOKIE("^Browser deletes \"([^\"]*)\" cookie$");
 
     private final String pattern;
 

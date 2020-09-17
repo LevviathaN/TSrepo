@@ -7,13 +7,14 @@ Feature: BPP University Hub Course Forum
   Background:
     Given I execute "Register New Student Account" reusable step
 
-  @Positive #TC-722 TC-723
+  @Positive @CourseForum #TC-722 TC-723
   Scenario: Hub Course Forum
     #Logout as a User
-    Then I execute "Log Out from Hub Student" reusable step
+    #Then I execute "Log Out from Hub Student" reusable step
     #Admin Login With Walkaround
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    #When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    #And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
     When I execute "Login as Admin Totara" reusable step
     #Enrol To course for ICAEW Course
     When I click on the "Totara ICAEW Course" link by JS
@@ -28,6 +29,7 @@ Feature: BPP University Hub Course Forum
     #Admin Logout
     Then I execute "Logout as Admin Totara" reusable step
     And I wait for "4" seconds
+    And Browser deletes cookies
     #Login As student
     When I execute "Log In to Hub as Student" reusable step
     #Navigate to Course

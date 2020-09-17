@@ -2606,7 +2606,7 @@
   },
   {
     "name": "Totara Activities Dropdown",
-    "value": "id=id_activities"
+    "value": "xpath=//select[@id='id_activities']"
   },
   {
     "name": "Totara Add Activity Bottom Key",
@@ -2958,7 +2958,7 @@
   },
   {
     "name": "Totara Volodymyr Course",
-    "value": "xpath=//h3[contains(text(),'Mini Course for Volodymyr')]"
+    "value": "xpath=//*[contains(text(),'Mini Course for Volodymyr')]"
   },
   {
     "name": "TotaraScromFrame",
