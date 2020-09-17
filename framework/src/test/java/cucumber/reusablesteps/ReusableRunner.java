@@ -73,6 +73,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CAPTURE_URL_AS_VARIABLE"), () -> stepDefs.i_capture_url_as_variable(arg1));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_UNTIL"), () -> stepDefs.i_click_on_element_until(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_THE_BUTTON_WITH_JS_IF"), () -> stepDefs.i_click_on_the_button_with_js_if(arg1, arg2, arg3));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("BROWSER_DELETES_COOKIES"), ()-> stepDefs.delete_cookies());
 
         //Special stepdefs
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));

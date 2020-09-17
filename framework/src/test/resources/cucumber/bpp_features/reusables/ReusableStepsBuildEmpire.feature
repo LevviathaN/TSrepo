@@ -40,11 +40,11 @@ Feature: BuildEmpire
     And I hover over the "Direct App Scholarship Dropdown" button
     And I click on the "Direct App Scholarship Dropdown" element
     Then I click on the "Career Guarantee Scholarship" "Build Empire application type"
-    And I hover over the "Direct App Programme Dropdown" button
-    And I click on the "Direct App Programme Dropdown" element
-    Then I wait for "1" seconds
-    Then I click on the "Legal Practice Course (LPC)" "Build Empire application type"
-    And I wait for "2" seconds
+    #And I hover over the "Direct App Programme Dropdown" button
+    #And I click on the "Direct App Programme Dropdown" element
+    #Then I wait for "1" seconds
+    #Then I click on the "Legal Practice Course (LPC)" "Build Empire application type"
+    #And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
 
   Scenario: Submit Application Hub

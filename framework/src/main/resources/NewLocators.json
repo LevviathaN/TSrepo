@@ -2618,7 +2618,7 @@
   },
   {
     "name": "Totara Activities Dropdown",
-    "value": "id=id_activities"
+    "value": "xpath=//select[@id='id_activities']"
   },
   {
     "name": "Totara Add Activity Bottom Key",
@@ -2674,7 +2674,7 @@
   },
   {
     "name": "Totara Automation Course",
-    "value": "xpath=//div[@class='block_current_learning  block']//div[2]//li[contains(.,'Mini Course')]//a"
+    "value": "xpath=//div[@class='content block-content']//a[contains(.,'Mini Course')]"
   },
   {
     "name": "Totara Automation Exp Label Delete Item",
@@ -2894,7 +2894,7 @@
   },
   {
     "name": "Totara ICAEW Course",
-    "value": "xpath=//h3[normalize-space()='ICAEW Accounting Full']/parent::a"
+    "value": "xpath=//a[@title='ICAEW Accounting Full']"
   },
   {
     "name": "Totara Key Activities Administration Link",
@@ -2906,7 +2906,7 @@
   },
   {
     "name": "Totara Login",
-    "value": "id=loginbtn"
+    "value": "xpath=//*[@class='login']/a"
   },
   {
     "name": "Totara Login Confirmation Popup window",
@@ -2970,7 +2970,7 @@
   },
   {
     "name": "Totara Volodymyr Course",
-    "value": "xpath=//h3[contains(text(),'Mini Course for Volodymyr')]"
+    "value": "xpath=//*[contains(text(),'Mini Course for Volodymyr')]"
   },
   {
     "name": "TotaraScromFrame",

@@ -4,6 +4,10 @@
     "value": "^Browser performs \"([^\"]*)\" command$"
   },
   {
+    "name": "BROWSER_DELETES_COOKIES",
+    "value": "^Browser deletes cookies$"
+  },
+  {
     "name": "ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE",
     "value": "^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
   },

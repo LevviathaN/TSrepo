@@ -1,18 +1,18 @@
-@Hub @KeyActivities
+@Hub @KeyActivities @Totara
 Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB - BPP-5483
   As a user in the Hub,
   when a URL, FEEDBACK or PAGE learning activity has been set as the Key Activity on my Topic Overview page,
   I expect it to have the following workflow
 
-  #Do not run currently
   @Positive @Smoke @URL #TC-2886
   Scenario: URL Feedback or Page Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
-    When I execute "Log Out from Hub Student" reusable step
-    And I should see the "Already registered? Log in" message
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
+    #When I execute "Log Out from Hub Student" reusable step
+    #And I should see the "Already registered? Log in" message
+    #When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    #And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
     Then I execute "Login as Admin Totara" reusable step
     When I click on the "Totara Volodymyr Course" link by JS
     And I click on the "Totara Left Menu Users link" link by JS
@@ -24,6 +24,7 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
     And I click on the "Totara Enrol Button" button by JS
     And I click on the "Totara Finish Enroling Users button" button by JS
     Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
     And I execute "Log In to Hub as Student" reusable step
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course"
     And I click on the "URL" "Build Empire Course Topic"

@@ -688,4 +688,15 @@ public class StepDefinitions extends SeleniumHelper {
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
         }
     }
+
+    /**
+     * Provides the ability to delete browser's cookies. Added to avoid BPP-10241
+     *
+     */
+    @Then("^Browser deletes cookies$")
+    public void delete_cookies () {
+        Reporter.log("Executing step: Browser deletes cookies");
+        driver().manage().deleteAllCookies();
+        BPPLogManager.getLogger().info("Browser has deleted cookies");
+    }
 }
