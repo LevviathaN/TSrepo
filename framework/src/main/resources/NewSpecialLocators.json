@@ -61,7 +61,11 @@
   },
   {
     "name": "BPP Digital Admin Pages Edit Button for Specific Component name",
-    "value": "xpath=//div[@class='list-group-item']//div[contains(text(),'PARAMETER')]/following-sibling::div/a[text()='Edit']"
+    "value": "xpath=//div[@class='list-group-item']//div[contains(text(),'PARAMETER')]/../following-sibling::div/a[text()='Edit']"
+  },
+  {
+    "name": "BPP Digital Admin Pages Edit Button for Grid Component with number",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/../following-sibling::div/a[text()='Edit'])[PARAMETER]"
   },
   {
     "name": "BPP Digital Admin Sub Menu Item links",
