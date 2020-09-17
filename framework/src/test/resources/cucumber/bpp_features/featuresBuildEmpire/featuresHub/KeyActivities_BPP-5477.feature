@@ -2,7 +2,7 @@
 Feature: As an admin, setting up a course in Totara, I expect to see new controls associated with each topic
   that allows me to set the 'Key Activities' for each Topic
 
-  @Totara #TC-2633 TC-2634 TC-2635 TC-2713
+  @Add #TC-2633 TC-2634 TC-2635 TC-2713
   Scenario: Add and validate Key Activities for Topic
     And I execute "Login as Admin Totara" reusable step
     Then I click on the "Totara Automation Course" button by JS
@@ -29,6 +29,7 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     And I validate text "Testing Activities" to be displayed for "Totara Bottom Key Activity Name" element
     And I execute "Logout as Admin Totara" reusable step
     And I wait for "2" seconds
+    And Browser deletes cookies
     Then I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "automationregression@yopmail.com" text to the "Email" "Build Empire text field"|
       |3|I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"|
@@ -46,8 +47,7 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     Then I validate text "SubmitTopAutomation" to be displayed for "Direct App Top Key Activity Submit Button" element
     Then I validate text "MainBottomAutomation" to be displayed for "Direct App App Bottom Key Activity Body" element
     Then I validate text "SubmitBottomAutomation" to be displayed for "Direct App Bottom Key Activity Submit Button" element
-    Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "Log out" "BPP Digital Admin Value attribute button"
+    And I execute "Logout Totara Workaround" reusable step
     And I execute "Login as Admin Totara" reusable step
     Then I click on the "Totara Automation Course" button by JS
     And I click on the "Totara Key Activities Administration Link" link by JS

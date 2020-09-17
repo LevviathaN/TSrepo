@@ -3,7 +3,7 @@ Feature: BPP University Hub My Learning
   As a learner
   I need an easy way to access the My Learning page from the navigation of The Hub
 
-  @Positive #TC-1119 TC-1121
+  @Positive @Cookie #TC-1119 TC-1121
   Scenario: HUB - My Learning
     #Register New Student
     When I execute "Register New Student Account" reusable step
@@ -14,10 +14,9 @@ Feature: BPP University Hub My Learning
     Then Attribute "alt" of "Direct App Left Navigation Panel menu logo image" should have value "BPP University"
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #Student Log out
-    When I execute "Log Out from Hub Student" reusable step
+    #When I execute "Log Out from Hub Student" reusable step
     #Admin Login With Walkaround
-    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Enrol to a course
     When I click on the "Totara ICAEW Course" link by JS
@@ -31,6 +30,7 @@ Feature: BPP University Hub My Learning
     And I click on the "Totara Finish Enroling Users button" button by JS
     #Admin Logout
     Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
     #Login As student
     When I execute "Log In to Hub as Student" reusable step
     #My Learning Validation

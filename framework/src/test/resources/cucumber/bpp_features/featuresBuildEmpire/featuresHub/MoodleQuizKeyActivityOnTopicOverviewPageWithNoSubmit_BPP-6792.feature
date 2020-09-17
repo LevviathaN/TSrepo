@@ -1,11 +1,11 @@
-@Hub @QuizAssesment
+@QuizAssesment @Totara
 Feature: Moodle Quiz Key Activity On Topic Overview Page With No Submit
   As a user in the Hub,
   when a MOODLE QUIZ has been set as the Key Activity on my Topic Overview page
   when I attempt the Moodle Quiz, but do not submit it
   I do not expect to see it as failed on a Hub
 
-  @Negative
+  @Negative #Do not run until BPP-6792 will be resolved
   Scenario: Moodle Quiz Key Activity On Topic Overview Page With No Submit
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
