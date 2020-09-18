@@ -416,6 +416,18 @@
     "value": "xpath=(//div[@id='CMS Blockquote']//img)[4]"
   },
   {
+    "name": "BPP Digital Admin Pages HTML Anchor information of the First Grid Component",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[1]"
+  },
+  {
+    "name": "BPP Digital Admin Pages HTML Anchor information of the Second Grid Component",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[2]"
+  },
+  {
+    "name": "BPP Digital Admin Pages HTML Anchor information of the Third Grid Component",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[3]"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -2322,7 +2334,7 @@
   },
   {
     "name": "Salesforce Get Profile ID",
-    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Get Profile ID LEX']"
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/*[@title='Get Profile ID LEX']"
   },
   {
     "name": "Salesforce Log Out",
