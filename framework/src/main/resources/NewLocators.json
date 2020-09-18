@@ -2334,7 +2334,7 @@
   },
   {
     "name": "Salesforce Get Profile ID",
-    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Get Profile ID LEX']"
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/*[@title='Get Profile ID LEX']"
   },
   {
     "name": "Salesforce Log Out",
