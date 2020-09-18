@@ -7,7 +7,7 @@ Feature: BPP Digital Visibility of Components via Grid System
   Background:
     Given I execute "Log In to Hub as Admin" reusable step
 
-  @Positive @Smoke @BET #TC-3786
+  @Positive @Smoke #TC-3786
   Scenario: Visibility of Components via Grid System
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     And I execute "Create CMS Page" reusable step
