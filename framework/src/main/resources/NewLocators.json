@@ -428,6 +428,54 @@
     "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[3]"
   },
   {
+    "name": "BPP Digital Full Width Text Block Content Font Iframe",
+    "value": "xpath=//iframe[@class='cke_panel_frame']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element One",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[2]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Two",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[3]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Three",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[4]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Four",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[5]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Five",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[6]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Six",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[7]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Styles Dropdown",
+    "value": "xpath=//a[@title='Formatting Styles']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Lozenge Style",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//a[@title='Lozenge']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Lozenge Style text",
+    "value": "inframe=BPP Digital Description frame>xpath=//span[@class='lozenge']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Dropdown",
+    "value": "xpath=//a[@title='Font Name']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Source Button",
+    "value": "xpath="
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },

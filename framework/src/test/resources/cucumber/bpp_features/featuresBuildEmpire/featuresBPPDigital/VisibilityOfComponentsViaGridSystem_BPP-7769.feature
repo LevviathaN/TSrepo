@@ -12,14 +12,6 @@ Feature: BPP Digital Visibility of Components via Grid System
     When I execute "Admin Hub Navigate to CMS Pages" reusable step
     And I execute "Create CMS Page" reusable step
     #Add Components:
-    #Add Accordion Component:
-    When I click on the "Add component" "BPP Digital Search Label Button"
-    And I click on the "Accordion" "BPP Digital Admin Sub Menu Item links"
-    And I set "CMS Accordion" text to the "Html" "BPP Digital Mandatory input field"
-    And I click on the "Add" "BPP Digital Search Label Button"
-    And I set "AccordionTitle[####]" text to the "Title" "BPP Digital Mandatory input field"
-    And I fill the "BPP Digital Component Description field" field with "AccordionDescription[####]"
-    Then I click on the "Save" "BPP Digital Admin Value attribute button"
     #Add Grid Component 1:
     When I click on the "Add component" "BPP Digital Search Label Button"
     And I click on the "Grid" "BPP Digital Admin Sub Menu Item links"
