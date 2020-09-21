@@ -472,10 +472,6 @@
     "value": "xpath=//a[@title='Font Name']"
   },
   {
-    "name": "BPP Digital Full Width Text Block Source Button",
-    "value": "xpath="
-  },
-  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
