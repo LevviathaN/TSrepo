@@ -93,22 +93,20 @@ public enum UiHandlers {
     ACCEPT_ALERT((element, e) -> {
         SeleniumHelper page = new SeleniumHelper();
         SeleniumHelper.isHandled.put("acceptAlert", false);
-        if(e.getCause()!=null){
-            if (e.getCause().toString().contains("Are you sure want to review this application?")
-                    ||e.getCause().toString().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
-                    ||e.getCause().toString().contains("Are you sure want to publish this blog post?")
-                    ||e.getCause().toString().contains("Are you sure want to archive this blog post?")
-                    ||e.getCause().toString().contains("Are you sure?")
-                    ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
-                    ||e.getCause().toString().contains("Some questions are not answered yet.")
-                    ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
+            if (e.getMessage().contains("Are you sure want to review this application?")
+                    ||e.getMessage().contains("Please make sure that the EPA Gateway Time is set correctly for this application before continuing. Do you wish to proceed changing the application status?")
+                    ||e.getMessage().contains("Are you sure want to publish this blog post?")
+                    ||e.getMessage().contains("Are you sure want to archive this blog post?")
+                    ||e.getMessage().contains("Are you sure?")
+                    ||e.getMessage().contains("Are you sure want to remove this component from a page?")
+                    ||e.getMessage().contains("Some questions are not answered yet.")
+                    ||e.getMessage().contains("Are you sure want to publish this page?")) {
                 BPPLogManager.getLogger().info("Handling an expected JS Alert" );
                 Reporter.log("Handling an expected JS Alert");
                 page.acceptAlertMessage();
                 SeleniumHelper.repeatAction = false;
                 SeleniumHelper.isHandled.put("acceptAlert", true);
             }
-        }
     }),
 
     DEFAULT_HANDLER((element, e) -> {

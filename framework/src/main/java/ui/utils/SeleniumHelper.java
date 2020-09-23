@@ -737,12 +737,18 @@ public class SeleniumHelper {
      */
     public static void waitForPageToLoad(){
         Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT, 1000).ignoring(WebDriverException.class);
-        wait.until(new Function<WebDriver, Boolean>() {
+        if (driver().getTitle().contains("BPP Totara Staging") || driver().getTitle().contains("BPPTS: Automation Board")) {
+            sleepFor(2);
+            JavascriptExecutor executor = (JavascriptExecutor) driver();
+            BPPLogManager.getLogger().info("Executing JavaScript code");
+            executor.executeScript("window.stop()");
+        }
+        else {wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
                         .equals("complete");
             }
-        });
+        }); }
     }
 
     /**

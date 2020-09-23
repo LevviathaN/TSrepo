@@ -96,8 +96,8 @@ public class KeywordsHandler {
      *
      */
     public static String salesForceDateAPIdateFormat() {
-        LocalDate startDate = LocalDate.of(1940,1,1);
-        LocalDate endDate = LocalDate.of(2001,1,1);
+        LocalDate startDate = LocalDate.of(1960,1,1);
+        LocalDate endDate = LocalDate.of(2001,10,20);
         long start = startDate.toEpochDay();
         long end = endDate.toEpochDay();
         Date randomDate = new Date(ThreadLocalRandom.current()

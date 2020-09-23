@@ -416,6 +416,62 @@
     "value": "xpath=(//div[@id='CMS Blockquote']//img)[4]"
   },
   {
+    "name": "BPP Digital Admin Pages HTML Anchor information of the First Grid Component",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[1]"
+  },
+  {
+    "name": "BPP Digital Admin Pages HTML Anchor information of the Second Grid Component",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[2]"
+  },
+  {
+    "name": "BPP Digital Admin Pages HTML Anchor information of the Third Grid Component",
+    "value": "xpath=(//div[@class='list-group-item']//div[contains(text(),'Grid')]/following-sibling::div[1])[3]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Iframe",
+    "value": "xpath=//iframe[@class='cke_panel_frame']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element One",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[2]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Two",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[3]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Three",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[4]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Four",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[5]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Five",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[6]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Element Six",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//ul[@class='cke_panel_list']/li[7]"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Styles Dropdown",
+    "value": "xpath=//a[@title='Formatting Styles']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Lozenge Style",
+    "value": "inframe=BPP Digital Full Width Text Block Content Font Iframe>xpath=//a[@title='Lozenge']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Lozenge Style text",
+    "value": "inframe=BPP Digital Description frame>xpath=//span[@class='lozenge']"
+  },
+  {
+    "name": "BPP Digital Full Width Text Block Content Font Dropdown",
+    "value": "xpath=//a[@title='Font Name']"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -2322,7 +2378,7 @@
   },
   {
     "name": "Salesforce Get Profile ID",
-    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Get Profile ID LEX']"
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/*[@title='Get Profile ID LEX']"
   },
   {
     "name": "Salesforce Log Out",
@@ -2606,7 +2662,7 @@
   },
   {
     "name": "Totara Activities Dropdown",
-    "value": "id=id_activities"
+    "value": "xpath=//select[@id='id_activities']"
   },
   {
     "name": "Totara Add Activity Bottom Key",
@@ -2662,7 +2718,7 @@
   },
   {
     "name": "Totara Automation Course",
-    "value": "xpath=//div[@class='block_current_learning  block']//div[2]//li[contains(.,'Mini Course')]//a"
+    "value": "xpath=//div[@class='content block-content']//a[contains(.,'Mini Course')]"
   },
   {
     "name": "Totara Automation Exp Label Delete Item",
@@ -2882,7 +2938,7 @@
   },
   {
     "name": "Totara ICAEW Course",
-    "value": "xpath=//h3[normalize-space()='ICAEW Accounting Full']/parent::a"
+    "value": "xpath=//a[@title='ICAEW Accounting Full']"
   },
   {
     "name": "Totara Key Activities Administration Link",
@@ -2894,7 +2950,7 @@
   },
   {
     "name": "Totara Login",
-    "value": "id=loginbtn"
+    "value": "xpath=//*[@class='login']/a"
   },
   {
     "name": "Totara Login Confirmation Popup window",
@@ -2958,7 +3014,7 @@
   },
   {
     "name": "Totara Volodymyr Course",
-    "value": "xpath=//h3[contains(text(),'Mini Course for Volodymyr')]"
+    "value": "xpath=//*[contains(text(),'Mini Course for Volodymyr')]"
   },
   {
     "name": "TotaraScromFrame",

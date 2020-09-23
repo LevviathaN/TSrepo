@@ -29,9 +29,11 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     Then I should see the "News was successfully created." "BPP Digital Admin Alert Message"
     And I wait for "1" seconds
     Then I execute "Log Out from Hub Admin" reusable step
+    And Browser deletes cookies
     And I wait for "3" seconds
     #Validate News displayed
     Given I execute "Log In to Hub as Student" reusable step
+    And I wait for "3" seconds
     And I validate text "CONTAINS=EC_AUTOMATION_NEWS" to be displayed for "Direct Apps Home News Title" element
     And I validate text "CONTAINS=Automation Team" to be displayed for "Direct Apps Home News Author" element
     And I validate text "CONTAINS=Summary" to be displayed for "Direct Apps Home News Content" element
@@ -50,6 +52,7 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     And I wait for "1" seconds
     Then I execute "Log Out from Hub Admin" reusable step
+    And Browser deletes cookies
     Given I execute "Log In to Hub as Student" reusable step
     And I shouldn't see the "News&Information" "text contained in element"
     And I click on the "Hub VPE Mobile Hamburger Menu" element
