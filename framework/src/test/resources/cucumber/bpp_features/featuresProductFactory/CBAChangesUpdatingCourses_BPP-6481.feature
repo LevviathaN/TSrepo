@@ -54,7 +54,7 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I execute "Create Digital Content" reusable step
 
   @Positive @Regression @P1 #TC-2934
-  Scenario: CBA Changes Updating Courde Validation
+  Scenario: CBA Changes Updating Course Validation
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
     When I click on the "exit_to_app" button
@@ -138,7 +138,7 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
 
 
   @Positive @Regression @P1 #TC-2936
-  Scenario: CBA Changes Updating Courde Validation Additional Scenarios
+  Scenario: CBA Changes Updating Course Validation Additional Scenarios
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
     When I click on the "exit_to_app" button

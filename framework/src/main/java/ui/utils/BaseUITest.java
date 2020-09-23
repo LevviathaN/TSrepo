@@ -134,6 +134,7 @@ public class BaseUITest {
         Reporter.flush();
         ExecutionContextHandler.resetExecutionContextValues();
         RetryAnalyzer.deletePreviousAttemptsFromHtmlReport();
+        SpreadsheetsHelper.manageSpreadsheet();
     }
 
     public static void setExecutionEnvironmentInfo() {

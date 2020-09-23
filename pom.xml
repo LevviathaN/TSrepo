@@ -187,6 +187,25 @@
             <artifactId>spring-core</artifactId>
             <version>4.3.5.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.gdata</groupId>
+            <artifactId>core</artifactId>
+            <version>1.47.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-sheets -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-sheets</artifactId>
+            <version>v4-rev612-1.25.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.api.client</groupId>
+            <artifactId>google-api-data-spreadsheet-v3</artifactId>
+            <version>1.0.10-alpha</version>
+        </dependency>
     </dependencies>
 
 </project>

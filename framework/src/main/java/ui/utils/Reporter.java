@@ -293,6 +293,8 @@ public class Reporter {
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
             RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
+        } else {
+            RetryAnalyzer.passMap.put(currentTestName,"pass");
         }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
@@ -723,6 +725,8 @@ public class Reporter {
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
             RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
+        } else {
+            RetryAnalyzer.passMap.put(currentTestName,"pass");
         }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
