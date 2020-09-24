@@ -102,7 +102,7 @@ public class SpreadsheetsHelper {
         Map<String,String> testResults = RetryAnalyzer.passMap;
         List<List<Object>> valuesToUpdate = new ArrayList<>();
         valuesToUpdate.add(Arrays.asList(correctDate));
-        List<String> availableScenarios = getAvailableTests();
+        List<String> availableScenarios = getAvailableTests("ProductFactory");
         List<String> excessTestsSpreadsh = new ArrayList<>();
         for (String name : testNames) {
             if (testResults.containsKey(name)) {
@@ -119,19 +119,23 @@ public class SpreadsheetsHelper {
         }
 
         //Console log about actuality of test cases in spreadsheet
-        System.out.println("\n_________________________________________________________________");
-        System.out.println("Following tests availale in framework, but absent in spreadsheet:\n");
-        for (String name : availableScenarios) {
-            System.out.println(name);
+        if (!excessTestsSpreadsh.isEmpty()) {
+            System.out.println("\n_________________________________________________________________");
+            System.out.println("Following tests availale in framework, but absent in spreadsheet:\n");
+            for (String name : availableScenarios) {
+                System.out.println(name);
+            }
+            System.out.println("_________________________________________________________________");
         }
-        System.out.println("_________________________________________________________________");
 
-        System.out.println("\n_________________________________________________________________");
-        System.out.println("Following tests availale in spreadsheet, but absent in framework:\n");
-        for (String name : excessTestsSpreadsh) {
-            System.out.println(name);
+        if (!excessTestsSpreadsh.isEmpty()) {
+            System.out.println("\n_________________________________________________________________");
+            System.out.println("Following tests availale in spreadsheet, but absent in framework:\n");
+            for (String name : excessTestsSpreadsh) {
+                System.out.println(name);
+            }
+            System.out.println("_________________________________________________________________");
         }
-        System.out.println("_________________________________________________________________");
 
         if (!testResults.isEmpty()) {
             System.out.println("\n_________________________________________________________________");
@@ -159,7 +163,7 @@ public class SpreadsheetsHelper {
      * @return list of steps of reusable scenario with specified name
      * @author Ruslan Levytskyi
      */
-    private static synchronized List<String> getAvailableTests() {
+    private static synchronized List<String> getAvailableTests(String application) {
 
         List<String> availableReusableStepsList = new ArrayList<>();
 
@@ -178,7 +182,13 @@ public class SpreadsheetsHelper {
             for (int i = 0; i < reusablesList.getLength(); i++) {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
-                availableReusableStepsList.add(reusableElement.getAttribute("name"));
+                NodeList tagsList = reusableElement.getElementsByTagName("tag");
+                boolean correctApp = false;
+                for (int j = 0; j < tagsList.getLength(); j++) {
+                    Node tag = tagsList.item(j);
+                    correctApp = tag.getTextContent().contains(application) || correctApp;
+                }
+                if (correctApp) availableReusableStepsList.add(reusableElement.getAttribute("name"));
             }
         } catch (Exception e) {
             e.printStackTrace();
