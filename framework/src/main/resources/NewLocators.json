@@ -2810,7 +2810,7 @@
   },
   {
     "name": "Totara Breadcrambs ICAEW Course Item",
-    "value": "xpath=//span[contains(text(), 'ICAEW Accounting Short')]"
+    "value": "xpath=//span[contains(text(), 'ICAEW Accounting Full')]"
   },
   {
     "name": "Totara Bulk Due Date Enable Checkbox",

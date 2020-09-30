@@ -7,11 +7,11 @@ Feature: BPP University Hub Sub Topics and Labels
   @Positive #TC-867
   Scenario: Hub Sub Topics and Labels
     #Logout as a User
-    #Then I execute "Log Out from Hub Student" reusable step
+    Then I execute "Log Out from Hub Student" reusable step
+    And I execute "Logout Totara Workaround" reusable step
     #Admin Login With Walkaround
     #When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
     #And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
-    And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Enrol To course for ICAEW Course
     When I click on the "Totara ICAEW Course" link by JS
@@ -91,6 +91,7 @@ Feature: BPP University Hub Sub Topics and Labels
     #Student Logout
     #And I execute "Log Out from Hub Student" reusable step
     #Admin Login With Walkaround
+    And I execute "Log Out from Hub Student" reusable step
     And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Delete SubTopics
