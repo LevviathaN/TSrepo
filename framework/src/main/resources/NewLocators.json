@@ -2085,27 +2085,27 @@
   },
   {
     "name": "Product Factory Audit Log Created By Node",
-    "value": "xpath=//div[@role='document']/div/div[1]/span[2]"
+    "value": "xpath=//div[@role='document']/div/div[1]/div/div[2]/div/div[2]/p"
   },
   {
     "name": "Product Factory Audit Log Created Node",
-    "value": "xpath=//div[@role='document']/div/div[1]/span[1]"
+    "value": "xpath=//div[@role='document']/div/div[1]/div/div[1]/h5"
   },
   {
     "name": "Product Factory Audit Log Created When Node",
-    "value": "xpath=//div[@role='document']/div/div[1]/span[3]"
+    "value": "xpath=//div[@role='document']/div/div[1]/div/div[3]/div/div[2]/p"
   },
   {
     "name": "Product Factory Audit Log Updated By Node",
-    "value": "xpath=//div[@role='document']/div/div[2]/span[2]"
+    "value": "xpath=//div[@role='document']/div/div[2]/div/div[2]/div/div[2]/p"
   },
   {
     "name": "Product Factory Audit Log Updated Node",
-    "value": "xpath=//div[@role='document']/div/div[2]/span[1]"
+    "value": "xpath=//div[@role='document']/div/div[2]/div/div[1]/h5"
   },
   {
     "name": "Product Factory Audit Log Updated When Node",
-    "value": "xpath=//div[@role='document']/div/div[2]/span[3]"
+    "value": "xpath=//div[@role='document']/div/div[2]/div/div[3]/div/div[2]/p"
   },
   {
     "name": "Product Factory Body Link",

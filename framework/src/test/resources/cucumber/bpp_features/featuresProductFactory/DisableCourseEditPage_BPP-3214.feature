@@ -30,7 +30,7 @@ Feature: CBA - Disable Course Edit Page - BPP-3214
     And I execute "Create Pricing Matrix Full" reusable step
 
 
-  @Positive @Regression @P1 @Run #TC-2587
+  @Positive @Regression @P1 #TC-2587
   Scenario: Disable Course Edit Page
     When I click on the "exit_to_app" button
     And I execute "Log In" reusable step replacing some steps
