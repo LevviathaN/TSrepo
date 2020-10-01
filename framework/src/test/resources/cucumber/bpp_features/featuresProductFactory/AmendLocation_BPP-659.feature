@@ -21,7 +21,7 @@ Feature: Amend Reference Data - Location - BPP-659
     When I click on the "Locations" "Product Factory navigation sub item"
     Then I click on the "EC_LOCATION_NAME" "Product Factory edit button"
     And I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"
-    And I set "LocationAddressTwo[######]" text to the "Address" "Product Factory text field"
+    And I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"
     And I click on the "Region" "Product Factory dropdown"
     And I click on the "EC_REGION_NAME_TWO" "Product Factory dropdown option"
     And I click on the "Financial Dimension" "Product Factory dropdown"
