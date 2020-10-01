@@ -18,8 +18,13 @@ public class SpreadsheetsHelper {
 
     //A map of literal and numeric ordinal numbers of spreadsheet columns
     private static Map<Integer,String> columns;
+    private static Map<String,String> squads;
     public static void initializeColumns() {
-        columns = new HashMap();
+        squads = new HashMap<>();
+        squads.put("ProductFactory","Terra");
+        squads.put("Salesforce","Titan");
+        squads.put("DirectApps","Venus");
+        columns = new HashMap<>();
         columns.put(0,"A");
         columns.put(1,"B");
         columns.put(2,"C");
@@ -74,15 +79,15 @@ public class SpreadsheetsHelper {
         columns.put(51,"AZ");
     }
 
-    public static void updateRegressionResults() {
+    public static void updateRegressionResults(String application) {
         //getting all regression dates
-        List<List<Object>> values = SpreadsheetsAPI.getValues("Terra!A1:1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0");
+        List<List<Object>> values = SpreadsheetsAPI.getValues(squads.get(application) + "!A1:1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0");
         int qtt = values.get(0).size();
         String last = values.get(0).get(qtt-1).toString();
         System.out.println(last);
 
         //getting all tests from the spreadsheet
-        List<List<Object>> testNamesColumn = SpreadsheetsAPI.getValues("Terra!B2:B","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0");
+        List<List<Object>> testNamesColumn = SpreadsheetsAPI.getValues(squads.get(application) + "!B2:B","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0");
         List<String> testNames = new ArrayList<>();
         for (List<Object> row : testNamesColumn) {
             if (!row.isEmpty()) {
@@ -102,7 +107,7 @@ public class SpreadsheetsHelper {
         Map<String,String> testResults = RetryAnalyzer.passMap;
         List<List<Object>> valuesToUpdate = new ArrayList<>();
         valuesToUpdate.add(Arrays.asList(correctDate));
-        List<String> availableScenarios = getAvailableTests("ProductFactory");
+        List<String> availableScenarios = getAvailableTests(application);
         List<String> excessTestsSpreadsh = new ArrayList<>();
         for (String name : testNames) {
             if (testResults.containsKey(name)) {
@@ -148,13 +153,13 @@ public class SpreadsheetsHelper {
         }
 
         //writing date and results right after last regression column in spreadsheet
-        SpreadsheetsAPI.updateTable("Terra!" + columns.get(qtt) + "1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0", valuesToUpdate);
+        SpreadsheetsAPI.updateTable(squads.get(application) + "!" + columns.get(qtt) + "1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0", valuesToUpdate);
     }
 
-    public static void manageSpreadsheet() {
+    public static void manageSpreadsheet(String application) {
         initializeColumns();
         SpreadsheetsAPI.initiate();
-        updateRegressionResults();
+        updateRegressionResults(application);
     }
 
     /**

@@ -2,12 +2,14 @@
     <test name="Cucumber Test">
         <groups>
             <dependencies>
-                <group name="BPP Automation" depends-on="DatabaseCleanup" />
+                <group name="BPPAutomation" depends-on="DatabaseCleanup" />
+                <group name="SpreadsheetsUpdate" depends-on="BPPAutomation" />
             </dependencies>
         </groups>
         <classes>
             <class name="cucumber.runners.PFCleanupRunner" />
             <class name="cucumber.CucumberUITest" />
+            <class name="cucumber.regressionSpreadsheetUpdate.UpdatePFRegression" />
         </classes>
     </test> <!-- test -->
 </suite> <!-- suite -->
