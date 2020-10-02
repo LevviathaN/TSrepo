@@ -521,7 +521,7 @@
   },
   {
     "name": "Salesforce related new button",
-    "value": "xpath=//span[text()='PARAMETER']/ancestor::header/following-sibling::div[@class='slds-no-flex']/descendant::a"
+    "value": "xpath=(//span[text()='PARAMETER']/following::div/a)[1]"
   },
   {
     "name": "Salesforce search field",

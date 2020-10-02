@@ -2378,7 +2378,7 @@
   },
   {
     "name": "Salesforce Get Profile ID",
-    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/*[@title='Get Profile ID LEX']"
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li//button[normalize-space()='Get Profile ID LEX']"
   },
   {
     "name": "Salesforce Log Out",
@@ -2478,7 +2478,7 @@
   },
   {
     "name": "Salesforce Submit Application",
-    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li/a[@title='Submit Application LEX']"
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li//button[normalize-space()='Submit Application LEX']"
   },
   {
     "name": "Salesforce User Menu Icon",
@@ -2810,7 +2810,7 @@
   },
   {
     "name": "Totara Breadcrambs ICAEW Course Item",
-    "value": "xpath=//span[contains(text(), 'ICAEW Accounting Short')]"
+    "value": "xpath=//span[contains(text(), 'ICAEW Accounting Full')]"
   },
   {
     "name": "Totara Bulk Due Date Enable Checkbox",
