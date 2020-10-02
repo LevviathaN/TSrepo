@@ -4,7 +4,7 @@ Feature: Validate Key Activity Without Completion Settings On Topic Overview Pag
   when a Key Activity, has been set without any completion settings,
   then I expect this to be reflected in the Topic Overview page within the Hub
 
-  @Positive @NoCompletion @GET #TC-2827, BPP-7057
+  @Positive @NoCompletion #TC-2827, BPP-7057
   Scenario: Validate Key Activity Without Completion Settings On Topic Overview Page
     When I execute "Register New Student Account" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
