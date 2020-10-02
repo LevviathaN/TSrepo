@@ -35,7 +35,7 @@ Feature: CBA - Edit - BPP-3200
     And I execute "Create Location" reusable step
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|
-      |5|I set "LocationAddressTwo[######]" text to the "Address" "Product Factory text field"|
+      |5|I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"|
       |7|I click on the "EC_REGION_NAME_TWO" "Product Factory dropdown option"                |
     And I execute "Create Client" reusable step
     And I execute "Create Level" reusable step

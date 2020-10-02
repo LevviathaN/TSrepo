@@ -17,10 +17,10 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And I execute "Create Location" reusable step
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|
-      |5|I set "LocationAddressTwo[######]" text to the "Address" "Product Factory text field"|
+      |5|I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"|
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "LocationNameThree[######]" text to the "Name" "Product Factory text field"|
-      |5|I set "LocationAddressThree[######]" text to the "Address" "Product Factory text field"|
+      |5|I set "LocationAddressThree[######]" text to the "Address Line 1" "Product Factory text field"|
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Level" reusable step

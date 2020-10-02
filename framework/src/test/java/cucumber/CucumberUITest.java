@@ -31,7 +31,7 @@ public class CucumberUITest extends BaseUITest {
     }
 
     @Test(
-            groups = {"BPP Automation"},
+            groups = {"BPPAutomation"},
             dataProvider = "scenarios",
             retryAnalyzer = RetryAnalyzer.class
     )

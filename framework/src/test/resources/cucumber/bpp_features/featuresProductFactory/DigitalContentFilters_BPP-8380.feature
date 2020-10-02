@@ -54,7 +54,7 @@ Feature: Digital Content List - add Search Filter - BPP-8380
       |8|I should see the "EC_REGION_NAME_TWO" element|
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|
-      |5|I set "LocationAddressTwo[######]" text to the "Address" "Product Factory text field"|
+      |5|I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"|
       |11|I should see the "EC_LOCATION_NAME_TWO" element|
     And I execute "Create Level" reusable step replacing some steps
       |4|I set "LevelShortNameTwo[######]" text to the "Short Name" "Product Factory text field"|
