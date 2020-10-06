@@ -1,4 +1,4 @@
-@DigitalSite @CMS
+@DigitalSite @CMS @BuildEmpire
 Feature: As an admin, if I try to update a CMS page's "published to" setting and this page has children pages,
   I expect to see a message telling me that these pages will also be updated,
   and ask me to confirm that I wish to do this

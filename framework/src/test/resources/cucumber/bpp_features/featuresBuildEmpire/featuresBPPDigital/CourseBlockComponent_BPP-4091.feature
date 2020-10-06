@@ -1,4 +1,4 @@
-@DigitalSite @CourseBlock
+@BuildEmpire @DigitalSite @CourseBlock
 Feature: As an admin, I expect the ability to add a "course block" component,
   so this can be used by BPP
 

@@ -1,4 +1,4 @@
-@Hub
+@BuildEmpire @Hub
 Feature: BPP University Hub Bulk Upload Existing Users
   As an admin, if I upload a user via CSV import, and there is an email address that already has a user in the database,
   I expect this to update the current user in the database, rather than skip, so my import works as I expect

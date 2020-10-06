@@ -1,4 +1,4 @@
-@DirectApps @MitigatingCircumstances
+@BuildEmpire @DirectApps @MitigatingCircumstances
 Feature: Mitigating Circumstances Application in Review
 
   Background:

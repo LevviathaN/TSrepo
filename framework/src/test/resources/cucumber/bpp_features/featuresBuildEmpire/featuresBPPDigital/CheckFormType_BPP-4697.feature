@@ -1,4 +1,4 @@
-@DigitalSite @Form
+@BuildEmpire @DigitalSite @Form
 Feature: As a user, viewing a "employer (basic)" form,
   I expect to see a form with the same fields as the current RFI form,
   but without the "employer / student" toggle

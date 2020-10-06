@@ -1,4 +1,4 @@
-@Hub @VPE
+@BuildEmpire @Hub @VPE
 Feature: The Hub - Law School - Calendar - Summary
 
   @Positive @Calendar @Summary #TC-2819, TC-2820, TC-2821, TC-3067, TC-3068, TC-3069

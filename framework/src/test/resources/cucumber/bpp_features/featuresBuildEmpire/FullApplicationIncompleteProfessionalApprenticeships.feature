@@ -1,4 +1,4 @@
-@DirectApps @ProfessionalApprenticeships
+@BuildEmpire @DirectApps @ProfessionalApprenticeships
 Feature: Professional Apprenticeship Applications
 
   @Positive @P1 @FullApplicationIncomplete

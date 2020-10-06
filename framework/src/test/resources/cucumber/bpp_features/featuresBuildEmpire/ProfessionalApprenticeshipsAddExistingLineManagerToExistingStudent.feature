@@ -1,4 +1,4 @@
-@DirectApps @ProfessionalApprenticeships
+@BuildEmpire @DirectApps @ProfessionalApprenticeships
 Feature: Professional Apprenticeships
 
   @Positive @Smoke @AddExistingLineManagerToExistingStudent

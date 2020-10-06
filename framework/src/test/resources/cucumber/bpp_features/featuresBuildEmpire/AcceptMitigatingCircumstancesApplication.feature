@@ -1,4 +1,4 @@
-@DirectApps @MitigatingCircumstances
+@BuildEmpire @DirectApps @MitigatingCircumstances
 Feature: Accept Mitigating Circumstances Application
 
   Background:

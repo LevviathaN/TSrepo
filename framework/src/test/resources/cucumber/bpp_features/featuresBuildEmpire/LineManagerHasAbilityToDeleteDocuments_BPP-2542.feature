@@ -1,4 +1,4 @@
-@DirectApps
+@BuildEmpire @DirectApps
 Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mistake
 
   Background:

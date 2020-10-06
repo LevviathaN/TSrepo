@@ -1,4 +1,4 @@
-@DigitalSite @Smoke
+@DigitalSite @Smoke @BuildEmpire
 Feature: BPP Digital Changing Student Personal Password
 
   Background:

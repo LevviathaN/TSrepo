@@ -1,4 +1,4 @@
-@DirectApps @Timestamp
+@BuildEmpire @DirectApps @Timestamp
 Feature: As an admin, viewing my downloads in the admin area,
   I expect to see a timestamp of when document was generated
 

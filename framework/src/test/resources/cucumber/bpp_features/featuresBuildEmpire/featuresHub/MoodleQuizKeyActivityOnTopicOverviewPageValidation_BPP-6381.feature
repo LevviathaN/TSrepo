@@ -1,4 +1,4 @@
-@Hub @SCORM @KeyActivities @Totara
+@BuildEmpire @Hub @SCORM @KeyActivities @Totara
 Feature: Verify Moodle Quiz Key Activity Complition Appearance In HUB - BPP-6381
   As a user in the Hub,
   when a MOODLE QUIZ has been set as the Key Activity on my Topic Overview page,

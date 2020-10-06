@@ -1,4 +1,4 @@
-@DigitalSite @Smoke
+@BuildEmpire @DigitalSite @Smoke
 Feature: BPP Digital Create and Validate CMS Page Components
 
   Background:

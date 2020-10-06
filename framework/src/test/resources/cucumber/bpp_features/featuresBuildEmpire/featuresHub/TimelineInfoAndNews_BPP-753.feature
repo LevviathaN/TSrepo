@@ -1,4 +1,4 @@
-@Hub @Timeline @InfoAndNews @Smoke
+@BuildEmpire @Hub @Timeline @InfoAndNews @Smoke
 Feature: The Hub - Dashboard / Timeline - Info & News
   As a Hub Admin,
   I would like to be able to provide my learners with general information and news and for it to be available via their Dashboard

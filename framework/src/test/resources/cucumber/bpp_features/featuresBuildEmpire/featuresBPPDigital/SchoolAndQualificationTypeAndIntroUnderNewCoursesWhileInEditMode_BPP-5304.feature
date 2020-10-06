@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital Edit New Course page to see School and Qualification type and Intro
   As an admin
   when editing a 'New Course' type CMS page

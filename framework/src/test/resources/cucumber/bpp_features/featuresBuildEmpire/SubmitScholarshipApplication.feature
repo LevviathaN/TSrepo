@@ -1,4 +1,4 @@
-@DirectApps @Scholarship
+@BuildEmpire @DirectApps @Scholarship
 Feature: Complete BPP University Scholarship Application
 
   Background:

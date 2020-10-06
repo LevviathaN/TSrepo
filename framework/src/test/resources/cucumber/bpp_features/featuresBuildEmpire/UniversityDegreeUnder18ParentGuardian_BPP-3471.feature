@@ -1,4 +1,4 @@
-@DirectApps @UniversityDegreeApprenticeships
+@BuildEmpire @DirectApps @UniversityDegreeApprenticeships
 Feature: As a student who, is under 18, I expect to provide more information about my Parent/Legal Guardian
 
   Background:

@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital Professions and Courses CMS pages Under Courses
   As an admin
   I expect "Professions (New) and Courses (new)" CMS pages to appear under "courses" in search

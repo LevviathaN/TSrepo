@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital Profession Related Content on an Appropriate URL Structure
 
   Background:

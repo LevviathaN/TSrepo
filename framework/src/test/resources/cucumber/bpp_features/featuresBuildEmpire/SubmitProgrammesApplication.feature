@@ -1,4 +1,4 @@
-@DirectApps @Programmes @Smoke
+@BuildEmpire @DirectApps @Programmes @Smoke
 Feature: Submit BPP University Programmes Application
 
   Background:

@@ -1,4 +1,4 @@
-@DirectApps @UniversityDegreeApprenticeships
+@BuildEmpire @DirectApps @UniversityDegreeApprenticeships
 Feature: BPP University Degree Line Manager Pop up confirmation for application without completed actions
 
   Background:

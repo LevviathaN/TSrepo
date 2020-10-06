@@ -23,60 +23,48 @@ public class SpreadsheetsHelper {
         squads = new HashMap<>();
         squads.put("ProductFactory","Terra");
         squads.put("Salesforce","Titan");
-        squads.put("DirectApps","Venus");
+        squads.put("BuildEmpire","Venus");
         columns = new HashMap<>();
-        columns.put(0,"A");
-        columns.put(1,"B");
-        columns.put(2,"C");
-        columns.put(3,"D");
-        columns.put(4,"E");
-        columns.put(5,"F");
-        columns.put(6,"G");
-        columns.put(7,"H");
-        columns.put(8,"I");
-        columns.put(9,"J");
-        columns.put(10,"K");
-        columns.put(11,"L");
-        columns.put(12,"M");
-        columns.put(13,"N");
-        columns.put(14,"O");
-        columns.put(15,"P");
-        columns.put(16,"Q");
-        columns.put(17,"R");
-        columns.put(18,"S");
-        columns.put(19,"T");
-        columns.put(20,"U");
-        columns.put(21,"V");
-        columns.put(22,"W");
-        columns.put(23,"X");
-        columns.put(24,"Y");
-        columns.put(25,"Z");
-        columns.put(26,"AA");
-        columns.put(27,"AB");
-        columns.put(28,"AC");
-        columns.put(29,"AD");
-        columns.put(30,"AE");
-        columns.put(31,"AF");
-        columns.put(32,"AG");
-        columns.put(33,"AH");
-        columns.put(34,"AI");
-        columns.put(35,"AJ");
-        columns.put(36,"AK");
-        columns.put(37,"AL");
-        columns.put(38,"AM");
-        columns.put(39,"AN");
-        columns.put(40,"AO");
-        columns.put(41,"AP");
-        columns.put(42,"AQ");
-        columns.put(43,"AR");
-        columns.put(44,"AS");
-        columns.put(45,"AT");
-        columns.put(46,"AU");
-        columns.put(47,"AV");
-        columns.put(48,"AW");
-        columns.put(49,"AX");
-        columns.put(50,"AY");
-        columns.put(51,"AZ");
+        columns.put(1,"A");
+        columns.put(2,"B");
+        columns.put(3,"C");
+        columns.put(4,"D");
+        columns.put(5,"E");
+        columns.put(6,"F");
+        columns.put(7,"G");
+        columns.put(8,"H");
+        columns.put(9,"I");
+        columns.put(10,"J");
+        columns.put(11,"K");
+        columns.put(12,"L");
+        columns.put(13,"M");
+        columns.put(14,"N");
+        columns.put(15,"O");
+        columns.put(16,"P");
+        columns.put(17,"Q");
+        columns.put(18,"R");
+        columns.put(19,"S");
+        columns.put(20,"T");
+        columns.put(21,"U");
+        columns.put(22,"V");
+        columns.put(23,"W");
+        columns.put(24,"X");
+        columns.put(25,"Y");
+        columns.put(26,"Z");
+    }
+
+    public static String getColumnName(int inputNumber) {
+        String columnName = "";
+        if (inputNumber < 26) {
+            columnName = columns.get(inputNumber);
+        } else {
+            while (inputNumber > 26) {
+                columnName = columnName + columns.get(inputNumber % 26);
+                inputNumber = inputNumber / 26;
+            }
+            columnName = columnName + columns.get(inputNumber);
+        }
+        return new StringBuilder(columnName).reverse().toString();
     }
 
     public static void updateRegressionResults(String application) {
@@ -153,7 +141,7 @@ public class SpreadsheetsHelper {
         }
 
         //writing date and results right after last regression column in spreadsheet
-        SpreadsheetsAPI.updateTable(squads.get(application) + "!" + columns.get(qtt) + "1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0", valuesToUpdate);
+        SpreadsheetsAPI.updateTable(squads.get(application) + "!" + getColumnName(qtt+1) + "1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0", valuesToUpdate);
     }
 
     public static void manageSpreadsheet(String application) {

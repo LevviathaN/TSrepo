@@ -1,4 +1,4 @@
-@DigitalSite @Form @Smoke
+@BuildEmpire @DigitalSite @Form @Smoke
 Feature: As an admin I can set a form display as Modal and can access it via link as user
 
   Background:
