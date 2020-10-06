@@ -472,6 +472,14 @@
     "value": "xpath=//a[@title='Font Name']"
   },
   {
+    "name": "BPP Digital Overwritten Start Date",
+    "value": "xpath=//input[@id='direct_application_overwritten_start_date']"
+  },
+  {
+    "name": "BPP Digital Overwritten End Date",
+    "value": "xpath=//input[@id='direct_application_overwritten_end_date']"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -818,6 +826,14 @@
   {
     "name": "Direct App Admin Employment Status for Apprenticeships",
     "value": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]"
+  },
+  {
+    "name": "Direct App Admin Start Date for Apprenticeships",
+    "value": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][8]//div[2]"
+  },
+  {
+    "name": "Direct App Admin End Date for Apprenticeships",
+    "value": "xpath=//*[contains(.,'Apprenticeship application')]/../div[@class='card-body']/div[@class='row'][9]//div[2]"
   },
   {
     "name": "Direct App Admin Filter By Assesment",
@@ -1909,7 +1925,7 @@
   },
   {
     "name": "Hub VPE Calendar Task Due Date",
-    "value": "xpath=//div[@class='event calendar_event_group' and contains(text(),'24')]"
+    "value": "xpath=//div[@class='event calendar_event_course_deadline' and contains(text(),'24')]"
   },
   {
     "name": "Hub VPE Calendar Task Due Sender",
