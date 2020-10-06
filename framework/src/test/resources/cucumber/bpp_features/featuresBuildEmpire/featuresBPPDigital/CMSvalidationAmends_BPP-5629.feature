@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital CMS Validation Amends
   As an admin
   I expect to be able to give a CMS page the same NAME as a page that already exists, provided that the it has a different parent (either "CMS Page Parent" OR "Custom parent URL")

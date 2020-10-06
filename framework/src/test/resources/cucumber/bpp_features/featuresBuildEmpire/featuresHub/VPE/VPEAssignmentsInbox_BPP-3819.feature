@@ -1,4 +1,4 @@
-@Hub @VPE
+@BuildEmpire @Hub @VPE
 Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
   As a user, if an "assignment" has been added to a topic in a VPE course,
   I expect each assignment to display as a separate "email" on the left hand side of the page

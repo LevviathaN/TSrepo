@@ -1,4 +1,4 @@
-@DigitalSite @RFI
+@BuildEmpire @DigitalSite @RFI
 Feature: As a user, viewing a "content download RFI",
   I expect to see an RFI form that I can download a file from
 

@@ -1,4 +1,4 @@
-@DirectApps @ProfessionalApprenticeships
+@BuildEmpire @DirectApps @ProfessionalApprenticeships
 Feature: Submit Professional Apprenticeship Applications
 
   Background:

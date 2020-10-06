@@ -1,4 +1,4 @@
-@Hub @KeyActivities @Totara
+@BuildEmpire @Hub @KeyActivities @Totara
 Feature: Validate Key Activity Without Completion Settings On Topic Overview Page - BPP-6382
   As a user in the Hub,
   when a Key Activity, has been set without any completion settings,

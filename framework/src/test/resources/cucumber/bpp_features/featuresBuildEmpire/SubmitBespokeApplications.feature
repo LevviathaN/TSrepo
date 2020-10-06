@@ -1,4 +1,4 @@
-@DirectApps @Bespoke
+@BuildEmpire @DirectApps @Bespoke
 Feature: Submit Bespoke Applications
 
   Background:

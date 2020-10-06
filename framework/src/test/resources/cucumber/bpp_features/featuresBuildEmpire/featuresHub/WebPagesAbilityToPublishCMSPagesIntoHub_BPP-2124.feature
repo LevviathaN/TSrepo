@@ -1,4 +1,4 @@
-@DigitalSite @WebPages
+@BuildEmpire @DigitalSite @WebPages
 Feature: Web Pages - Ability to publish CMS pages into Hub and View webpages in Hub
   As an admin, when creating a CMS page,
   I expect the option to select that a CMS page is published into the Hub

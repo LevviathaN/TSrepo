@@ -1,4 +1,4 @@
-@DirectApps @ChannelIslands @Smoke
+@BuildEmpire @DirectApps @ChannelIslands @Smoke
 Feature: Approve Channel Islands Application
 
   @Positive @Smoke #TC-1268 TC-1269

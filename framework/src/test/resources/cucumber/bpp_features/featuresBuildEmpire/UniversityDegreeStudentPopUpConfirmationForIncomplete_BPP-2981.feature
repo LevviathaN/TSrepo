@@ -1,4 +1,4 @@
-@DirectApps @UniversityDegreeApprenticeships
+@BuildEmpire @DirectApps @UniversityDegreeApprenticeships
 Feature: University Degree Apprenticeships
 
   @PopUpStudent @Positive #TC-1572

@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital Visibility of Components via Grid System
   As an admin
   I'd like more visibility of the components used within the grid system

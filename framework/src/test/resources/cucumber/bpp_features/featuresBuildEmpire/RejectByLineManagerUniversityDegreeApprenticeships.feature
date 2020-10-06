@@ -1,4 +1,4 @@
-@DirectApps @UniversityDegreeApprenticeships @Smoke
+@BuildEmpire @DirectApps @UniversityDegreeApprenticeships @Smoke
 Feature: University Degree Apprenticeships
 
   @Negative @P1 @RejectByLineManager

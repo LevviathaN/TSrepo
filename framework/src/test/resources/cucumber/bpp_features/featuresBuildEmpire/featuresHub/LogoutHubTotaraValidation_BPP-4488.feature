@@ -1,4 +1,4 @@
-@Hub @LogoutValidation @Totara
+@BuildEmpire @Hub @LogoutValidation @Totara
 Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/Totara - BPP-4488
 
   @Positive @Smoke #TC-2499

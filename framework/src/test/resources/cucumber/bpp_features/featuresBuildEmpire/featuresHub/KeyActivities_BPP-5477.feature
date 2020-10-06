@@ -1,4 +1,4 @@
-@Hub @KeyActivities @Smoke
+@BuildEmpire @Hub @KeyActivities @Smoke
 Feature: As an admin, setting up a course in Totara, I expect to see new controls associated with each topic
   that allows me to set the 'Key Activities' for each Topic
 

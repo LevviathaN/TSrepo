@@ -1,4 +1,4 @@
-@DirectApps @Negative
+@BuildEmpire @DirectApps @Negative
 Feature: Negative Scenarios Apprenticeship Application
 
   Background:

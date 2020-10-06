@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital New options inside the WYSIWYG text editor
   As a developer
   I would like to add a number of new options to the WYSIWYG text editor in the admin panel

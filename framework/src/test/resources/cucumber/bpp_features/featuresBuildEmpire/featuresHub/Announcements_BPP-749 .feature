@@ -1,4 +1,4 @@
-@Hub
+@BuildEmpire @Hub
 Feature: BPP University Hub Announcements
     As a Hub Admin
     I would like to be able to provide my learners with important announcements in The Hub

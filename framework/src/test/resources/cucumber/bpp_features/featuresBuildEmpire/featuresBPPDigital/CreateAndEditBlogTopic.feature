@@ -1,4 +1,4 @@
-@DigitalSite @Smoke
+@BuildEmpire @DigitalSite @Smoke
 Feature: BPP Digital Create and Edit Blog Topic
 
   Background:

@@ -1,4 +1,4 @@
-@DigitalSite
+@BuildEmpire @DigitalSite
 Feature: BPP Digital Course and Insight Card Style Changes
 
   Background:

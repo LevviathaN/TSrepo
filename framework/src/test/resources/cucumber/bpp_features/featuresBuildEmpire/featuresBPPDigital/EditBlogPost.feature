@@ -1,4 +1,4 @@
-@DigitalSite @EditBlogPost
+@BuildEmpire @DigitalSite @EditBlogPost
 Feature: BPP Digital Edit Blog Post
 
   Background:

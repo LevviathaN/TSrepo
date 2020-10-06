@@ -1,4 +1,4 @@
-@DirectApps @ProfessionalApprenticeships
+@BuildEmpire @DirectApps @ProfessionalApprenticeships
 Feature: Reject Professional Apprenticeship Applications
 
   Background:

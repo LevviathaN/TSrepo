@@ -1,4 +1,4 @@
-@DigitalSite @BlogPost
+@BuildEmpire @DigitalSite @BlogPost
 Feature: BPP Digital Create Archive Publish and Delete a Blog Post
 
   Background:

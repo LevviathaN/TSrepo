@@ -1,4 +1,4 @@
-@Hub @SubTopics @Totara
+@BuildEmpire @Hub @SubTopics @Totara
 Feature: BPP University Hub Sub Topics and Labels
 
   Background:

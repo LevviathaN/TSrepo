@@ -1,4 +1,4 @@
-@DirectApps @Appeals
+@BuildEmpire @DirectApps @Appeals
 Feature: Complete Academic Appeals Application - BPPPMO-1091
 
   Background:

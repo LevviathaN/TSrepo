@@ -1,4 +1,4 @@
-@DirectApps @ProfessionalApprenticeships @Smoke
+@BuildEmpire @DirectApps @ProfessionalApprenticeships @Smoke
 Feature: Submit Professional Apprenticeship Applications With New Line Manager
 
   Background:
