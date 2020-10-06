@@ -103,7 +103,7 @@ public class SalesforceBusinessProcessesUAT {
         ArrayList<String> recordData = utils.getRecordData(utils.getResponseProperty(dataResponse));
         GlobalDataBridge.getInstance().setBufferValueByKey("Student UAT".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
-        assertThat(recordData.get(85), matchesPattern("BP[0-9]+"));
+        assertThat(recordData.get(86), matchesPattern("BP[0-9]+"));
 
         return this;
     }
