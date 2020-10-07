@@ -280,6 +280,31 @@ public class StepDefinitions extends SeleniumHelper {
     }
 
     /**
+     * Definition to verify presence of element on the page
+     *
+     * @param attributeName  name of css attribute of element you want to check
+     * @param elementLocator name or value of needed element
+     * @param cssValue value that tested attribute should have
+     * @author Ruslan Levytskyi
+     */
+    @When("^Сss \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
+    public void element_сss_should_have_value(String attributeName, String elementLocator, String cssValue) {
+        Reporter.log("Executing step: CSS value '" + attributeName + "' of '" + elementLocator + "' should have value '" + cssValue + "'");
+        if (cssValue.toUpperCase().contains("CONTAINS=")) {
+            String attributeValueCropped = cssValue.substring("CONTAINS=".length());
+            if (cssValue.contains("EC_")) {
+                String executionContextValue = TestParametersController.checkIfSpecialParameter(ExecutionContextHandler.getExecutionContextValueByKey(attributeValueCropped));
+                Assert.assertTrue(findElement(initElementLocator(elementLocator)).getCssValue(attributeName).contains(executionContextValue));
+            }
+        } else if (cssValue.contains("EC_")) {
+            String executionContextValue = TestParametersController.checkIfSpecialParameter(ExecutionContextHandler.getExecutionContextValueByKey(cssValue));
+            Assert.assertTrue(findElement(initElementLocator(elementLocator)).getCssValue(attributeName).equalsIgnoreCase(executionContextValue));
+        } else {
+            Assert.assertTrue(findElement(initElementLocator(elementLocator)).getCssValue(attributeName).equalsIgnoreCase(cssValue));
+        }
+    }
+
+    /**
      * Definition to check or uncheck the checkbox
      * If svalue is check, but the checkbox is unchecked, than this method checks the checkbox
      * Vice versa.
