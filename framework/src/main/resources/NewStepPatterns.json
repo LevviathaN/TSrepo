@@ -8,6 +8,10 @@
     "value": "^Browser deletes cookies$"
   },
   {
+    "name": "ELEMENT_CSS_SHOULD_HAVE_VALUE",
+    "value": "^Сss \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
+  },
+  {
     "name": "ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE",
     "value": "^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
   },
