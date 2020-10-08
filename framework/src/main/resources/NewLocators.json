@@ -1892,6 +1892,10 @@
     "value": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[2]"
   },
   {
+    "name": "Hub VPE Assignment First Card Title",
+    "value": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[2]/div/h4)[1]"
+  },
+  {
     "name": "Hub VPE BPP Lion Image Logo",
     "value": "xpath=(//*[@class='navbar-left d-none d-lg-block']//following::img)[1]"
   },
