@@ -620,6 +620,14 @@
     "value": "xpath=//*[contains(text(),'PARAMETER')]"
   },
   {
+    "name": "Totara Edit Activity Dropdown Button",
+    "value": "xpath=(//span[contains(.,'PARAMETER')]/../../following::a[contains(.,'Edit')])[1]"
+  },
+  {
+    "name": "Totara Edit Activity Edit Settings option",
+    "value": "xpath=(//span[contains(.,'PARAMETER')]/../../following::ul[@data-rel='menu-content']//a)[1]"
+  },
+  {
     "name": "BPP Digital Mobile Courses Menu",
     "value": "xpath=//div[@class='third-level active']//div[@class='third-level-list-container']//a[contains(.,'PARAMETER')]"
   },
