@@ -152,6 +152,10 @@
     "value": "xpath=//div[contains(@class,'cms-page')]//div[@id=\"PARAMETER\"]"
   },
   {
+    "name": "BPP Digital Booking Payment Data",
+    "value": "xpath=//input[@id='PARAMETER']"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
