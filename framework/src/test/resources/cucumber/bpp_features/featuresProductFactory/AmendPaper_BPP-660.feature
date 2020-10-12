@@ -33,9 +33,9 @@ Feature: Amend Reference Data - Paper - BPP-660
   @Negative @P2 #TC-831
   Scenario: Amend a Paper Where Description Already Exists
     Given I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
-      |7|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"   |
-      |9|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                       |
+      |5|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
+      |8|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"   |
+      |10|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                       |
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
