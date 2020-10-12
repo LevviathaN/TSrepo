@@ -1,4 +1,4 @@
-@BuildEmpire @GeneralReview
+@DigitalSite @BuildEmpire @GeneralReview
 Feature: BPP Digital General Review
 
   Background:
