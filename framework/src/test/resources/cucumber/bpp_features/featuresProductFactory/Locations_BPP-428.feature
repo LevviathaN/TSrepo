@@ -15,7 +15,13 @@ Feature: Reference Data - Location - BPP-428
     When I click on the "Locations" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "LocationName[######]" text to the "Name" "Product Factory text field"
-    And I set "LocationAddress[######]" text to the "Address Line 1" "Product Factory text field"
+    And I set "LocationAddressLineOne[######]" text to the "Address Line 1" "Product Factory text field"
+    And I set "LocationAddressLineTwo[######]" text to the "Address Line 2" "Product Factory text field"
+    And I set "LocationAddressLineThree[######]" text to the "Address Line 3" "Product Factory text field"
+    And I set "City[###]" text to the "City" "Product Factory text field"
+    And I click on the "Country" "Product Factory dropdown"
+    And I click on the "Albania" "Product Factory dropdown option"
+    And I set "~Postcode[######]" text to the "Postcode" "Product Factory text field"
     And I click on the "Region" "Product Factory dropdown"
     And I click on the "EC_REGION_NAME" "Product Factory dropdown option"
     And I click on the "Financial Dimension" "Product Factory dropdown"
@@ -44,3 +50,16 @@ Feature: Reference Data - Location - BPP-428
     And I click on the "EC_LOCATION_FD_DESCRIPTION" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Name must be unique" "message"
+
+  @Positive @Regression @P1 #TC-4180
+  Scenario: Add a New Location Populate Only Mandatory Fields
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Locations" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "LocationName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Region" "Product Factory dropdown"
+    And I click on the "EC_REGION_NAME" "Product Factory dropdown option"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_LOCATION_FD_DESCRIPTION" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_LOCATION_NAME" element
