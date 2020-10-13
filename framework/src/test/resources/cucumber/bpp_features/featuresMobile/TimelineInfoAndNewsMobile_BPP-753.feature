@@ -33,7 +33,7 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     And I wait for "3" seconds
     #Validate News displayed
     Given I execute "Log In to Hub as Student" reusable step
-    And I wait for "3" seconds
+    And I wait for "5" seconds
     And I validate text "CONTAINS=EC_AUTOMATION_NEWS" to be displayed for "Direct Apps Home News Title" element
     And I validate text "CONTAINS=Automation Team" to be displayed for "Direct Apps Home News Author" element
     And I validate text "CONTAINS=Summary" to be displayed for "Direct Apps Home News Content" element
@@ -62,6 +62,7 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "AutoAdonisDuarte6846@guerrillamail.info" text to the "Email" "Build Empire text field" |
       | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"                    |
+    And I wait for "10" seconds
     And I validate text "CONTAINS=EC_AUTOMATION_NEWS" to be displayed for "Direct Apps Home News Title" element
     And I validate text "CONTAINS=Automation Team" to be displayed for "Direct Apps Home News Author" element
     And I validate text "CONTAINS=Summary" to be displayed for "Direct Apps Home News Content" element

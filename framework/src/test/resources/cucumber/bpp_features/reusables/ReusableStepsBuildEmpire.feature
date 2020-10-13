@@ -1593,3 +1593,11 @@ Feature: BuildEmpire
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     And I click on the "Direct App Login Button" button by JS
     Then I should see the "Direct App My Applications Left Menu Link" element
+
+  Scenario: Log In to Hub as Student VPE Mobile
+    Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
+    And I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field"
+    And I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"
+    Then I click on the "Direct App Login Button" button by JS
+    And I wait for "1" seconds
+    And I should see the "Timeline and Dashboard" "element"
