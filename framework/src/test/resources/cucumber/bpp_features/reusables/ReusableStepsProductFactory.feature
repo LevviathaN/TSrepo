@@ -113,6 +113,7 @@ Feature: Product Factory
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
+    And I set "PprSN[#####]" text to the "Short Name" "Product Factory text field"
     And I set "PaperDescription[######]" text to the "Description" "Product Factory text field two"
     And I click on the "Save" "Product Factory button"
     And I wait for "5" seconds
@@ -148,7 +149,7 @@ Feature: Product Factory
     And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
+    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
@@ -290,8 +291,9 @@ Feature: Product Factory
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "~Price[####]" text to the "Price (£)" "Product Factory text field"
     And I set "~Weight[##]" text to the "Weight (kg)" "Product Factory text field"
-    And I set "~ISBN[####]" text to the "ISBN" "Product Factory text field"
+    And I set "~ISBN[$0]$-[####]$-[####]$-[$5]" text to the "ISBN" "Product Factory text field"
     And I set "10/10/2022" text to the "Expiry Date" "Product Factory text field"
+    And I set "1020" text to the "Edition" "Product Factory text field"
     And I click on the "Learning Media VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
     And I click on the "Course Material VAT Rule" "Product Factory change button"
