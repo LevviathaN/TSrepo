@@ -18,7 +18,6 @@ Feature: Topic Overview Page
     And I click on the "Direct App Scorm Topic" element
     And I wait for "2" seconds
     Then I should see the "Failed" message
-    And I should see the "Direct App Topic Learning Material Header" element
     And I should see the "Direct App Topic Learning Material Legend One" element
     And I validate text "CONTAINS=You can mark these as complete" to be displayed for "Direct App Topic Learning Material Legend One" element
     And I should see the "Direct App Topic Learning Material Legend Two" element

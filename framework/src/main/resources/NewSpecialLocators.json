@@ -152,6 +152,10 @@
     "value": "xpath=//div[contains(@class,'cms-page')]//div[@id=\"PARAMETER\"]"
   },
   {
+    "name": "BPP Digital Booking Payment Data",
+    "value": "xpath=//input[@id='PARAMETER']"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
@@ -618,6 +622,14 @@
   {
     "name": "text contained in element",
     "value": "xpath=//*[contains(text(),'PARAMETER')]"
+  },
+  {
+    "name": "Totara Edit Activity Dropdown Button",
+    "value": "xpath=(//span[contains(.,'PARAMETER')]/../../following::a[contains(.,'Edit')])[1]"
+  },
+  {
+    "name": "Totara Edit Activity Edit Settings option",
+    "value": "xpath=(//span[contains(.,'PARAMETER')]/../../following::ul[@data-rel='menu-content']//a)[1]"
   },
   {
     "name": "BPP Digital Mobile Courses Menu",

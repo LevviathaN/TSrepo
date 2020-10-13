@@ -61,9 +61,9 @@ Feature: Digital Content List - add Search Filter - BPP-8380
       |5|I set "LevelNameTwo[######]" text to the "Name" "Product Factory text field"|
       |7|I should see the "EC_LEVEL_SHORT_NAME_TWO" element|
     And I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
-      |7|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_PAPER_DESCRIPTION_TWO" element|
+      |5|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
+      |8|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
+      |10|I should see the "EC_PAPER_DESCRIPTION_TWO" element|
     And I execute "Link Body To Level" reusable step replacing some steps
       |3|I click on the "EC_BODY_NAME_TWO" "Product Factory Link Levels button"|
       |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"       |

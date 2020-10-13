@@ -17,9 +17,9 @@ Feature: Pricing Matrix - price creation validation to prevent duplicates - BPP-
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Paper" reusable step
     When I execute "Create Paper" reusable step replacing some steps
-      |4|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
-      |7|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"       |
-      |9|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                     |
+      |5|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
+      |8|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"       |
+      |10|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                     |
     When I execute "Link Body To Paper" reusable step replacing some steps
       |3|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"|
       |5|I click on the "EC_PAPER_DESCRIPTION_NEW" "Product Factory Change Body button"|

@@ -3,7 +3,7 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
   As a user, if an "assignment" has been added to a topic in a VPE course,
   I expect each assignment to display as a separate "email" on the left hand side of the page
 
-  @Positive @Assignment #TC-1916, TC-2109, TC-2112, TC-2081, TC-2076, TC-2133, TC-2608, TC-2881,
+  @Positive @AssignmentInbox #TC-1916, TC-2109, TC-2112, TC-2081, TC-2076, TC-2133, TC-2608, TC-2881,
                         #TC-2096, TC-2098, TC-2085, TC-2087, TC-2090, TC-2101, TC-2110, TC-2725, TC-2880, TC-2878, TC-2136, TC-2621, TC-2108
   Scenario: The Hub - Law School - Assignments and Emails - Inbox Overview
     Then I execute "Login as Admin Totara" reusable step

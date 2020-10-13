@@ -480,6 +480,26 @@
     "value": "xpath=//input[@id='direct_application_overwritten_end_date']"
   },
   {
+    "name": "BPP Digital Course Booking Title Dropdown",
+    "value": "xpath=(//span[@class='ember-power-select-status-icon'])[1]"
+  },
+  {
+    "name": "BPP Digital Course Booking Country Dropdown",
+    "value": "xpath=(//span[@class='ember-power-select-status-icon'])[2]"
+  },
+  {
+    "name": "BPP Digital Course Booking Conditions Checkbox",
+    "value": "xpath=//div[@class='radio-container terms-and-conditions']"
+  },
+  {
+    "name": "BPP Digital Course Card Month Dropdown",
+    "value": "xpath=//select[@id='card.expiryMonth']"
+  },
+  {
+    "name": "BPP Digital Course Card Year Dropdown",
+    "value": "xpath=//select[@id='card.expiryYear']"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -1838,6 +1858,10 @@
   {
     "name": "Guerilla Your MC Referred",
     "value": "xpath=//tbody[@id='email_list']//td[contains(.,'Your Mitigating Circumstances application has been referred')]"
+  },
+  {
+    "name": "Guerilla Your BPP Invoice",
+    "value": "xpath=//td[contains(.,'Your BPP Invoice')]"
   },
   {
     "name": "HUb VPE Banner",
