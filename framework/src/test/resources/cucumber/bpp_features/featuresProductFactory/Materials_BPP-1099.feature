@@ -32,8 +32,10 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "1000" text to the "Price (£)" "Product Factory text field"
     And I set "10" text to the "Weight (kg)" "Product Factory text field"
-    And I set "123" text to the "ISBN" "Product Factory text field"
+    And I set "~ISBN[$0]$-[####]$-[####]$-[$5]" text to the "ISBN" "Product Factory text field"
+    And I shouldn't see the "The ISBN specified is not Valid" message
     And I set "10/10/2022" text to the "Expiry Date" "Product Factory text field"
+    And I set "1020" text to the "Edition" "Product Factory text field"
     And I click on the "Learning Media VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
     And I click on the "Course Material VAT Rule" "Product Factory change button"
@@ -47,6 +49,11 @@ Feature: Materials - Create Materials - BPP-1099
     And I "check" "EC_SITTING_NAME" "Product Factory checkbox"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Materials" "Product Factory navigation sub item"
+    And I set "EC_MATERIAL_TYPE_NAME" text to the "Material Type" "Product Factory text field"
+    And I click on the "Search" "Product Factory button"
+    And I should see the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
 
   @Positive @P1 @Amend
   Scenario: Amend Material Using Modal
@@ -96,8 +103,9 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "EC_MATERIAL_TYPE_NAME_TWO" "Product Factory select button"
     And I set "999" text to the "Price (£)" "Product Factory text field"
     And I set "9" text to the "Weight (kg)" "Product Factory text field"
-    And I set "456" text to the "ISBN" "Product Factory text field"
+    And I set "~NewISBN[$0]$-[####]$-[####]$-[$5]" text to the "ISBN" "Product Factory text field"
     And I set "09/09/2022" text to the "Expiry Date" "Product Factory text field"
+    And I set "1020" text to the "Edition" "Product Factory text field"
     And I click on the "Learning Media VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE_TWO" "Product Factory select button"
     And I click on the "Course Material VAT Rule" "Product Factory change button"
