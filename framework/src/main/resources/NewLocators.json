@@ -1912,6 +1912,10 @@
     "value": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[1]"
   },
   {
+    "name": "Hub VPE Automation Course card",
+    "value": "xpath=//span[contains(@class,'_my__learning')]/*[name()='svg']"
+  },
+  {
     "name": "Hub VPE Assignment Second Card Due Date",
     "value": "xpath=(//h3[contains(.,'Inbox')]//following::div[@class='card']//div[3]//p)[2]"
   },
@@ -1996,12 +2000,20 @@
     "value": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[1]"
   },
   {
+    "name": "Hub VPE Mobile Welcome Banner text",
+    "value": "xpath=(//div[@class='welcome-banner']/p)[2]"
+  },
+  {
     "name": "Hub VPE Mobile Course Automation Courses Page",
     "value": "xpath=//div[@class='my-learning']//ul/li[1]"
   },
   {
     "name": "Hub VPE Mobile IPad My Learning Course Automation",
     "value": "xpath=(//div[@class='courses']//h3[text()='VPE Course Automation'])[2]"
+  },
+  {
+    "name": "Hub VPE Mobile Automation Course item",
+    "value": "xpath=(//div[@class='home-content']//h3[text()='VPE Course Automation'])[1]"
   },
   {
     "name": "Hub VPE Mobile Allow Popup",
@@ -2715,6 +2727,10 @@
   {
     "name": "Totara Add Activity For VPE Last Topic",
     "value": "xpath=//li[@id='section-6']//following::span[contains(text(),'Add an activity or resource')][1]"
+  },
+  {
+    "name": "Totara VPE Header Lion Logo Mobile",
+    "value": "xpath=(//img[@alt='lion_head_logo'])[1]"
   },
   {
     "name": "Totara Add Activity Top Key",
