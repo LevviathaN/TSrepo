@@ -5,7 +5,7 @@ Feature: The Hub - VPE to HUB back functionality
   I expect to be able to navigate back to the Hub
 
   @Positive #TC-4340
-  Scenario: The Hub - The Hub - VPE to HUB back functionality_Mobile
+  Scenario: The Hub - VPE to HUB back functionality_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 1 | I am on "https://totara.staging.bppdigital.buildempire.app/course/view.php?id=227" URL|
       | 2 | I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field" |
