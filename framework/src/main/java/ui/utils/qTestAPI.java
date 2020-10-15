@@ -127,14 +127,16 @@ public class qTestAPI {
         String bearerToken = FileIO.getConfigProperty("QTest_Bearer_token");
         String ProjectID = FileIO.getConfigProperty("QTest_Test_ProjectID");
 
-        if(System.getProperty("qtestSuite").contains("PF")) {
+        if(System.getProperty("qtestSuite").equals("PF")) {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_PF_SuiteID");
-        } else if (System.getProperty("qtestSuite").contains("BE")) {
+        } else if (System.getProperty("qtestSuite").equals("BE")) {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_BE_SuiteID");
-        } else if (System.getProperty("qtestSuite").contains("SF")) {
+        } else if (System.getProperty("qtestSuite").equals("SF")) {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_SF_SuiteID");
-        } else if (System.getProperty("qtestSuite").contains("BA")) {
+        } else if (System.getProperty("qtestSuite").equals("BA")) {
             TestSuiteID = FileIO.getConfigProperty("QTest_Test_BA_SuiteID");
+        } else if (System.getProperty("qtestSuite").equals("MOBILE_BE")) {
+            TestSuiteID = FileIO.getConfigProperty("QTest_Test_MOBILE_BE_SuiteID");
         }
 
         String baseURI = "https://bpp.qtestnet.com/api/v3/projects/" + ProjectID + "/test-suites/" + TestSuiteID + "/test-runs";
