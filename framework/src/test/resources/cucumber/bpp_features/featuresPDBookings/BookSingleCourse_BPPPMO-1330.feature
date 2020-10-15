@@ -1,4 +1,4 @@
-@PDBooking
+@PDBooking @DigitalSite
 Feature: As a BPP PD Learner I need to Book Single Courses online
 
   #Created the first part of test without checking Administrate (required after BPP-10802)
@@ -31,4 +31,5 @@ Feature: As a BPP PD Learner I need to Book Single Courses online
     And I click on the "Continue >" "BPP Digital Admin Value attribute button"
     Then I should see the "Step 3: Please review and complete your payment" "text"
     And I click on the "Pay" "BPP Digital Admin Value attribute button"
-    And I wait for "2" seconds
+    And I wait for "3" seconds
+    And I validate text "CONTAINS=Placeholder: Thank you for your payment." to be displayed for "BPP Digital Course Booking Success Message Form" element
