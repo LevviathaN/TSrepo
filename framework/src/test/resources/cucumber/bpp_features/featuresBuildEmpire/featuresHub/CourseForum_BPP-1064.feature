@@ -39,7 +39,7 @@ Feature: BPP University Hub Course Forum
     And I click on the "Book Exam" "exact element"
     And I switch to window with index "2"
     And I wait for "1" seconds
-    And I validate text "https://staging.bppdigital.buildempire.app" to be displayed for "CHECK_URL" element
+    And I validate text "https://web-stage-bppdigital.bppuniversity.com" to be displayed for "CHECK_URL" element
     #And I am on "https://totara.staging.bppdigital.buildempire.app/mod/url/view.php?id=2899" URL
     And I switch to window with index "1"
     #Navigate to Course Forum

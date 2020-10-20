@@ -8,7 +8,7 @@ Feature: The Hub - Law School - Documents (Files/Labels activity type)
       | 2 | I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field" |
       | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"        |
     And I wait for "10" seconds
-    And I am on "https://totara.staging.bppdigital.buildempire.app/course/view.php?id=227" URL
+    And I am on "https://totara-stage-bppdigital.bppuniversity.com/course/view.php?id=227" URL
     And I click on the "Hub VPE Documents Header" element if "Hub VPE Documents Header" "element is present"
     And I click on the "Hub VPE Course Mobile Hamburger Menu" button if "Hub VPE Course Mobile Hamburger Menu" "element is present"
     And I click on the "Hub VPE Mobile Documents Header" button if "Hub VPE Mobile Documents Header" "element is present"

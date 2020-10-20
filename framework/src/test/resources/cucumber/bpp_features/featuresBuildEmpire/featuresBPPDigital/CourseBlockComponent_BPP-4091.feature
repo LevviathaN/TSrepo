@@ -24,7 +24,7 @@ Feature: As an admin, I expect the ability to add a "course block" component,
     When I should scroll to the "top" of the page
     Then I execute "Publish a CMS or Blog Post page" reusable step
     And I wait for "2" seconds
-    When I am on "https://staging.bppdigital.buildempire.app/university-board/<EC_AUTO_CMS_URL>" URL
+    When I am on "https://web-stage-bppdigital.bppuniversity.com/university-board/<EC_AUTO_CMS_URL>" URL
     And I click on the "Subject" "element"
     And I should see the "Business" element
     And I should see the "Accountancy and Tax" element
@@ -32,7 +32,7 @@ Feature: As an admin, I expect the ability to add a "course block" component,
     Then I should see the "CMS Courses Block" "BPP Digital Web Site CMS Anchors ID"
     And I click on the "Accountancy and Tax" element
     And I should see the "BSc (Hons) Accounting and Finance" element
-    When I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/pages" URL
+    When I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     And I execute "Search for CMS Page" reusable step
     When I click on the "EC_AUTO_CMS_PAGE" "BPP Digital Admin Edit Button for Specific name"
     And I click on the "BPP Digital Edit Form Button" element
