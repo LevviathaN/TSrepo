@@ -11,7 +11,7 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
   @Positive #TC-1318
   Scenario: Validate Web Pages Parent Child Relationships
     #Create Parent CMS Page
-    And I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/pages" URL
+    And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     When I click on the "Add" "BPP Digital Admin Page Button"
     And I set "AutoParentCMSPage[#####]" text to the "Name *" "BPP Digital Mandatory input field"
     And I select "CMS page" from "Page type *" "BPP Digital Mandatory select field"
@@ -32,7 +32,7 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     Then I execute "Publish a CMS or Blog Post page" reusable step
 
     #Create Child CMS Page
-    And I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/pages" URL
+    And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     When I click on the "Add" "BPP Digital Admin Page Button"
     And I set "AutoChildCMSPage[#####]" text to the "Name *" "BPP Digital Mandatory input field"
     And I select "CMS page" from "Page type *" "BPP Digital Mandatory select field"
@@ -71,7 +71,7 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     #Delete created CMS pages
     When I execute "Log In to Hub as Admin" reusable step replacing some steps
       |5|I wait for "15" seconds|
-    And I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/pages" URL
+    And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     When I fill the "BPP Digital Filter by name search field" field with "EC_AUTO_CHILD_CMS_PAGE"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Filter by name search field"
     Then I should see the "EC_AUTO_CHILD_CMS_PAGE" element

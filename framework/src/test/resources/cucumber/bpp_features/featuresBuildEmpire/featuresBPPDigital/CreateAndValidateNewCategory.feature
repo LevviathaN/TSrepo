@@ -24,7 +24,7 @@ Feature: BPP Digital Create and Validate New Category
     When I execute "Log Out from Hub Admin" reusable step
     #Create new User for Created Category
     And I execute "Register New Student Account" reusable step replacing some steps
-    |1|I am on "https://staging.bppdigital.buildempire.app/account?registration_type=bpp-automation" URL|
+    |1|I am on "https://web-stage-bppdigital.bppuniversity.com/account?registration_type=bpp-automation" URL|
     #Register to Created Category
     When I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element

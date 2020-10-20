@@ -7,7 +7,7 @@ Feature: BPP University Hub My Learning Course Tutor
   @Positive @CourseTutor #TC-721
   Scenario: Hub My Learning Course Tutor
     #Validate No Course Attributes
-    Then Attribute "href" of "Direct App Student Left Hand Nav Second Item" should have value "https://staging.bppdigital.buildempire.app/my/applications"
+    Then Attribute "href" of "Direct App Student Left Hand Nav Second Item" should have value "https://web-stage-bppdigital.bppuniversity.com/my/applications"
     Then I validate text "CONTAINS=When you enrol on a course your progress will appear here" to be displayed for "Direct App My Learning No Course Placeholder" element
     #Then I execute "Log Out from Hub Student" reusable step
     And I wait for "10" seconds

@@ -7,7 +7,7 @@ Feature: Registration via Auth0 and Capturing GClid Parameter BPP-2632
   @Positive @NoRun #TC-1515
   Scenario: Registration via Auth Zero and Validating GClid parameter
     #Student Registration with gClid Parameter
-    Given I am on "https://staging.bppdigital.buildempire.app/?gclid=test3" URL
+    Given I am on "https://web-stage-bppdigital.bppuniversity.com/?gclid=test3" URL
     When I hover over the "BPP Digital Login link" element
     Then I should see the "Student Applications" "BPP Digital Student Applications Menu link"
     When I click on the "Student Applications" "BPP Digital Student Applications Menu link"

@@ -81,7 +81,7 @@ Feature: BPP University Hub Direct App Notifications
     And I click on the "Direct App Next" button
     And I wait for "5" seconds
     #Navigate Home and verify timeline notification
-    And I am on "https://staging.bppdigital.buildempire.app/my/home" URL
+    And I am on "https://web-stage-bppdigital.bppuniversity.com/my/home" URL
     Then I validate text "CONTAINS=You started an application" to be displayed for "Direct App First Timeline Title Four text" element
 
 

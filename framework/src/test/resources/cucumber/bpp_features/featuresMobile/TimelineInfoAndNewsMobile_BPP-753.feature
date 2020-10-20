@@ -17,7 +17,7 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |4|I click on the "Direct App Login Button" element by JS|
       |5|I wait for "5" seconds|
-    When I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/news" URL
+    When I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/news" URL
     When I click on the "Add" "BPP Digital Admin Page Button"
     And I fill the "BPP Digital News Title Field" field with "AutomationNews[####]"
     And I fill the "BPP Digital News URL Field" field with "www.bpp.com"
@@ -45,7 +45,7 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |4|I click on the "Direct App Login Button" element by JS|
       |5|I wait for "5" seconds|
-    When I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/news" URL
+    When I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/news" URL
     And I click on the "BPP Digital Edit News" button
     And I click on the "BPP Digital Remove Visibility Group" element
     And I select "Companies > #34 Automation" from "Visibility groups" "BPP Digital Mandatory select field"
@@ -73,6 +73,6 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |4|I click on the "Direct App Login Button" element by JS|
       |5|I wait for "5" seconds|
-    When I am on "https://admin.staging.bppdigital.buildempire.app/admin/cms/news" URL
+    When I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/news" URL
     And I click on the "BPP Digital Delete News" button
     Then I should see the "News was successfully removed." "BPP Digital Admin Alert Message"
