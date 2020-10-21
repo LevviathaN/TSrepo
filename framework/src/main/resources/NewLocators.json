@@ -1353,7 +1353,7 @@
   },
   {
     "name": "Direct App Mobile Logout",
-    "value": "xpath=//li[@class='item-link item-logout']"
+    "value": "xpath=(//li[@class='item-link item-logout']/a)[1]"
   },
   {
     "name": "Hub VPE Mobile User Avatar Icon",
@@ -1414,6 +1414,10 @@
   {
     "name": "Totara Course Select Forum Mobile",
     "value": "xpath=//div[@class='course-details-mobile']//button[text()='Select Forum']"
+  },
+  {
+    "name": "Totara You Are not Logged In",
+    "value": "xpath=//span[@class='login']/a"
   },
   {
     "name": "Direct App Mark As Complete Checkbox",
@@ -2715,6 +2719,10 @@
   {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
+  },
+  {
+    "name": "Totara VPE Course Automation link",
+    "value": "xpath=//a[@title='VPE Course Automation']"
   },
   {
     "name": "Totara Activities Dropdown",
