@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import ui.utils.BaseUITest;
 import ui.utils.SpreadsheetsHelper;
 
-public class UpdatePFRegression extends BaseUITest {
+public class UpdatePFRegression {
 
     @Test(groups = {"SpreadsheetsUpdate"})
     public void udateSpreadsheet() {

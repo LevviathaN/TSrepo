@@ -500,6 +500,10 @@
     "value": "xpath=//select[@id='card.expiryYear']"
   },
   {
+    "name": "BPP Digital Course Booking Success Message Form",
+    "value": "xpath=//div[@class='form-content']/p/b"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -1586,6 +1590,10 @@
   {
     "name": "Direct App Start Application",
     "value": "xpath=//button[contains(.,'Start Application')]"
+  },
+  {
+    "name": "Direct App Start Applications Home Page",
+    "value": "xpath=//a[contains(.,'Start applications')]"
   },
   {
     "name": "Direct App Start Date Application Dropdown",

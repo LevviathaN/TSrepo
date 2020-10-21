@@ -24,7 +24,7 @@ Feature: BPP Digital Professions and Courses CMS pages Under Courses
     #Admin Logout
     And I execute "Log Out from Hub Admin" reusable step
     #Navigate to Staging website
-    And I am on "https://staging.bppdigital.buildempire.app" URL
+    And I am on "MD_COMMON_LINKS_BPPDIGITALINDEXURL" URL
     When I fill the "BPP Digital Find a Course Search Field" field with "EC_NEW_COURSE_NAME"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Find a Course Search Field"
     And I validate text "EC_NEW_COURSE_NAME" to be displayed for "BPP Digital Search Result Under Courses Block" element

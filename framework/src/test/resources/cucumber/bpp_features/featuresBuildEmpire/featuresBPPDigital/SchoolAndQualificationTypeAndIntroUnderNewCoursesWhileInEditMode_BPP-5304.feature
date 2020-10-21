@@ -44,7 +44,7 @@ Feature: BPP Digital Edit New Course page to see School and Qualification type a
     And I execute "Log Out from Hub Admin" reusable step
     #Verify on site
     #Navigate to Staging website
-    And I am on "https://staging.bppdigital.buildempire.app" URL
+    And I am on "MD_COMMON_LINKS_BPPDIGITALINDEXURL" URL
     When I fill the "BPP Digital Find a Course Search Field" field with "EC_NEW_COURSE_NAME"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Find a Course Search Field"
     And I validate text "EC_NEW_COURSE_NAME" to be displayed for "BPP Digital Search Result Under Courses Block" element

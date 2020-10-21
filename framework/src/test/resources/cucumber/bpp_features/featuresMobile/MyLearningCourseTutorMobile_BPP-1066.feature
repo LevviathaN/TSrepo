@@ -46,7 +46,7 @@ Feature: BPP University Hub My Learning Course Tutor
     And I wait for "10" seconds
     #Validate My Learning Course Tutor Name
     And I wait for "5" seconds
-    And I am on "https://staging.bppdigital.buildempire.app/my/learning" URL
+    And I am on "https://web-stage-bppdigital.bppuniversity.com/my/learning" URL
     And I wait for "4" seconds
     And I validate text "CONTAINS=EC_CURRENT_TUTOR" to be displayed for "Direct App My Learning First Course Tutor Name" element
     #Student Logout
@@ -75,6 +75,6 @@ Feature: BPP University Hub My Learning Course Tutor
     And I wait for "15" seconds
     #Validate My Learning Course Tutor Name
     And I wait for "3" seconds
-    And I am on "https://staging.bppdigital.buildempire.app/my/learning" URL
+    And I am on "https://web-stage-bppdigital.bppuniversity.com/my/learning" URL
     And I wait for "4" seconds
     And I validate text "NOT_CONTAINS=EC_CURRENT_TUTOR" to be displayed for "Direct App My Learning First Course Tutor Name" element

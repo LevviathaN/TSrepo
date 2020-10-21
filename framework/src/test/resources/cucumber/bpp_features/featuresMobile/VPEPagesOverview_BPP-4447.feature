@@ -12,7 +12,7 @@ Feature: The Hub - Law School - Pages - Overview
     #Then I click on the "Hub VPE Mobile IPad My Learning Course Automation" element if "Hub VPE Mobile IPad My Learning Course Automation" "element is present"
     #And I click on the "Hub VPE Mobile Allow Popup" element if "Hub VPE Mobile Allow Popup" "element is present"
     #And I switch to window with index "2"
-    And I am on "https://totara.staging.bppdigital.buildempire.app/course/view.php?id=227" URL
+    And I am on "https://totara-stage-bppdigital.bppuniversity.com/course/view.php?id=227" URL
     And I click on the "Hub VPE Pages-Overview Header" element if "Hub VPE Pages-Overview Header" "element is present"
     And I click on the "Hub VPE Course Mobile Hamburger Menu" button if "Hub VPE Course Mobile Hamburger Menu" "element is present"
     And I click on the "Hub VPE Mobile Pages-Overview Header" button if "Hub VPE Mobile Pages-Overview Header" "element is present"

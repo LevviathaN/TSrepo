@@ -7,7 +7,7 @@ Feature: Pre-Auth0 user submits RFI forms as a student/employer BPP-2521
   @Positive @NoRun #TC-1514
   Scenario: Submit RFI form for non logged Users as Learner
     #RFI Submitting Student
-    When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test1" URL
+    When I am on "https://web-stage-bppdigital.bppuniversity.com/request-information?gclid=test1" URL
     When I click on the "I am a Learner" "Build Empire RFI Label text item"
     And I set "Auto[FIRSTNAME]" text to the "Enter your first name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Enter your last name" "Build Empire text field"
@@ -36,7 +36,7 @@ Feature: Pre-Auth0 user submits RFI forms as a student/employer BPP-2521
   @Positive @NoRun #TC-1514
     Scenario: Submit RFI form for non logged Users as Learner URL Two
     #RFI Submitting Student Site 2
-    When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test2" URL
+    When I am on "https://web-stage-bppdigital.bppuniversity.com/request-information?gclid=test2" URL
     When I click on the "I am a Learner" "Build Empire RFI Label text item"
     And I set "Auto[FIRSTNAME]" text to the "Enter your first name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Enter your last name" "Build Empire text field"
@@ -65,7 +65,7 @@ Feature: Pre-Auth0 user submits RFI forms as a student/employer BPP-2521
   @Positive @NoRun #TC-1533
   Scenario: Submit RFI form for non logged Users as Employer
     #RFI Submitting Employer
-    When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test3" URL
+    When I am on "https://web-stage-bppdigital.bppuniversity.com/request-information?gclid=test3" URL
     When I click on the "I am an Employer" "Build Empire RFI Label text item"
     And I set "Auto[FIRSTNAME]" text to the "Enter your first name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Enter your last name" "Build Empire text field"
@@ -94,7 +94,7 @@ Feature: Pre-Auth0 user submits RFI forms as a student/employer BPP-2521
   @Positive @NoRun #TC-1533
   Scenario: Submit RFI form for non logged Users as Employer URL Two
     #RFI Submitting Student Site 2
-    When I am on "https://staging.bppdigital.buildempire.app/request-information?gclid=test4" URL
+    When I am on "https://web-stage-bppdigital.bppuniversity.com/request-information?gclid=test4" URL
     When I click on the "I am an Employer" "Build Empire RFI Label text item"
     And I set "Auto[FIRSTNAME]" text to the "Enter your first name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Enter your last name" "Build Empire text field"
