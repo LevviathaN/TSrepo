@@ -4,6 +4,7 @@ Feature: Add/Amend Region to Location - BPP-3673
   I need to be able to set a Price Region against a Location
 
   Background:
+    Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
 
   @Positive @Regression @P1 #TC-1869

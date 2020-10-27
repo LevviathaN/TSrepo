@@ -44,12 +44,12 @@ Feature: CBA - Disable Course Edit Page - BPP-3214
     And I click on the "Finish" "Product Factory button"
     And I wait for "3" seconds
 
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
-    
-    Then I shouldn't see the "Level" "Product Factory edit button"
-    And I shouldn't see the "Paper" "Product Factory edit button"
-    And I shouldn't see the "Sitting" "Product Factory edit button"
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+#
+#    Then I shouldn't see the "Level" "Product Factory edit button"
+#    And I shouldn't see the "Paper" "Product Factory edit button"
+#    And I shouldn't see the "Sitting" "Product Factory edit button"

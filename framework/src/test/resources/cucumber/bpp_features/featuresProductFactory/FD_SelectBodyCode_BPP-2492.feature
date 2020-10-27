@@ -5,6 +5,7 @@ Feature: Financial Dimension - Select Body Code - BPP-2492
   so that I can track this for accounting purposes.
 
   Background:
+    Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
 
   @Negative @Regression @P1 #TC-1756

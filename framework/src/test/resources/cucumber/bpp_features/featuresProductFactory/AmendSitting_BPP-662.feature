@@ -18,7 +18,7 @@ Feature: Amend Reference Data - Sitting - BPP-662
     And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "10/10/2020" text as "EC_SITTING_END_DATE" variable
+    And I remember "KW_AUTO_TODAY_+7|DD/MM/YYYY" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_SITTING_NAME" element
