@@ -5,6 +5,7 @@ Feature: Course - Copy Instance Location to Sessions Option
   so that I don't have to update each individual session.
 
   Background:
+    Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
     When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step

@@ -291,9 +291,12 @@ Feature: Product Factory
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "~Price[####]" text to the "Price (£)" "Product Factory text field"
     And I set "~Weight[##]" text to the "Weight (kg)" "Product Factory text field"
-    And I set "~ISBN[$0]$-[####]$-[####]$-[$5]" text to the "ISBN" "Product Factory text field"
+    And I set "EC_ISBN" text to the "ISBN" "Product Factory text field"
+    And I set "From[TODAY]" text to the "Available From" "Product Factory text field"
     And I set "10/10/2022" text to the "Expiry Date" "Product Factory text field"
     And I set "1020" text to the "Edition" "Product Factory text field"
+    And I click on the "Production Method" "Product Factory dropdown"
+    And I click on the "Not Applicable" "Product Factory dropdown option"
     And I click on the "Learning Media VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
     And I click on the "Course Material VAT Rule" "Product Factory change button"
@@ -443,3 +446,9 @@ Feature: Product Factory
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Save" "Product Factory button"
+
+  Scenario: Generate ISBN
+    Given I am on "https://generate.plus/en/number/isbn" URL
+    And I click on the " generate" "button"
+    And I capture text data "ISBN Generator Number Field" as "EC_ISBN" variable
+    And I am on "MD_COMMON_LINKS_PRODUCTFACTORYURLNEW" URL

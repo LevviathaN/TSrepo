@@ -5,6 +5,7 @@ Feature: Create Course Instance - BPP-429
   so that I can sell, schedule and publish a Course.
 
   Background:
+    Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
     When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step

@@ -5,6 +5,7 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
   I can track appropriate figures for accounting purposes.
 
   Background:
+    Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
     When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step
