@@ -274,9 +274,9 @@ public class DriverProvider {
             capabilities.setCapability("browserstack.video", "true");
             capabilities.setCapability("browserstack.networkLogs", "true");
             capabilities.setCapability("build", "automation");
-            capabilities.setCapability("browserstack.local", "true");
+            //capabilities.setCapability("browserstack.local", "true");
             capabilities.setCapability("browserstack.console", "errors");
-            capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+            //capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
             capabilities.setCapability("browserstack.appium_version", "1.17.0");
             //capabilities.setCapability("autoAcceptAlerts",true);
             //capabilities.setCapability("autoDismissAlerts", true);
@@ -315,9 +315,9 @@ public class DriverProvider {
             capabilities.setCapability("browserstack.video", "true");
             capabilities.setCapability("browserstack.networkLogs", "true");
             capabilities.setCapability("build", "automation");
-            capabilities.setCapability("browserstack.local", "true");
+            //capabilities.setCapability("browserstack.local", "true");
             capabilities.setCapability("browserstack.console", "errors");
-            capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+            //capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
 
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();

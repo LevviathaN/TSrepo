@@ -163,4 +163,3 @@ Feature: Registry Case Management
     And I wait for "1" seconds
     Then I validate text "CONTAINS=Student Query - Work Started" to be displayed for "Salesforce Case Milestones Tab First Milestone Name" element
     Then I validate text "CONTAINS=Student Query - Ready to Close" to be displayed for "Salesforce Case Milestones Tab Second Milestone Name" element
-    Then I validate text "RE=9.+" to be displayed for "Salesforce Case Milestones Tab Milestone One" element

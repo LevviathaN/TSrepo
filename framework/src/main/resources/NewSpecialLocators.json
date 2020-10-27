@@ -156,6 +156,18 @@
     "value": "xpath=//input[@id='PARAMETER']"
   },
   {
+    "name": "BPP Digital Admin Grid Component Padding Top",
+    "value": "xpath=(//h4[contains(.,'PARAMETER')]//following::div[contains(@class,'padding__top')]//input)[1]"
+  },
+  {
+    "name": "BPP Digital Admin Grid Component Padding Bottom",
+    "value": "xpath=(//h4[contains(.,'PARAMETER')]//following::div[contains(@class,'padding__bottom')]//input)[1]"
+  },
+  {
+    "name": "BPP Digital Admin Grid Bottom Margin",
+    "value": "xpath=//*[contains(.,'Bottom margin')]/../following::div[contains(.,'PARAMETER')]/input"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
