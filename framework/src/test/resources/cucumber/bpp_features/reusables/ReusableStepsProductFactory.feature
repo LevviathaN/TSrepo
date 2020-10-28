@@ -451,4 +451,3 @@ Feature: Product Factory
     Given I am on "https://generate.plus/en/number/isbn" URL
     And I click on the " generate" "button"
     And I capture text data "ISBN Generator Number Field" as "EC_ISBN" variable
-    And I am on "MD_COMMON_LINKS_PRODUCTFACTORYURLNEW" URL

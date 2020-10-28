@@ -185,6 +185,7 @@ public static ReusableRunner getInstance() {
                     case "Delete":
                         BPPLogManager.getLogger().info("Deleting step (" + reusable.get(i) + ") on the " + (i+1) + " position");
                         reusable.remove(i);
+                        reusable.add(i, "I wait for \"1\" seconds");
                         break;
                     case "Replace":
                         BPPLogManager.getLogger().info("Replacing existing step (" + reusable.get(i) + ") with \"" + subStepsMap.get(i+1).get(1) + "\" on the " + (i+1) + " position");
