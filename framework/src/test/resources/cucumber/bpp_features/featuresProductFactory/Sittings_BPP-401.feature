@@ -17,7 +17,7 @@ Feature: Reference Data - Sitting - BPP-401
     And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY_+7|DD/MM/YYYY" text as "EC_SITTING_END_DATE" variable
+    And I remember "22/10/2025" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
@@ -38,7 +38,7 @@ Feature: Reference Data - Sitting - BPP-401
     And I set "SittingName[######]" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY_+7|DD/MM/YYYY" text as "EC_SITTING_END_DATE" variable
+    And I remember "22/10/2025" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
     And I "check" "EC_BODY_NAME_NEW" "Product Factory dialog checkbox"
@@ -61,8 +61,8 @@ Feature: Reference Data - Sitting - BPP-401
     And I set "EC_SITTING_NAME" text to the "Name" "Product Factory text field"
     And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY_+7|DD/MM/YYYY" text as "EC_SITTING_END_DATE" variable
+    And I remember "22/10/2025" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
     And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
-    Then I should see the "The combination of Name and Dates must be unique" "message"
+    Then I should see the "A Sitting with the same name has already been attached to Body" "text contained in element"

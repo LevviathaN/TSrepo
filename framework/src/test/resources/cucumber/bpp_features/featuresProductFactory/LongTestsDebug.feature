@@ -65,6 +65,7 @@ Feature: Long Tests Debug
       |6|I set "~Price[2000]" text to the "Price (£)" "Product Factory text field"|
       |7|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
 
+    @Runn
   Scenario: Set EC Variables
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step

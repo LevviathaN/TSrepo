@@ -31,8 +31,10 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
 
   @Negative @P1 #TC-1079
   Scenario: Verify Link Materials Restriction Negative
-    Given I execute "Create Material" reusable step with some additional steps
-      |16|I "check" "Is Course Material" "Product Factory checkbox"|
+    Given I execute modified "Create Material" reusable step
+      |7|Add|I "check" "Is Course Material" "Product Factory checkbox"|
+      |17|Delete|                                                     |
+      |18|Delete|                                                     |
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
