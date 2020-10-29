@@ -2,7 +2,7 @@
 Feature: As an admin, setting up a course in Totara, I expect to see new controls associated with each topic
   that allows me to set the 'Key Activities' for each Topic
 
-  @Add #TC-2633 TC-2634 TC-2635 TC-2713
+  @AddActivities #TC-2633 TC-2634 TC-2635 TC-2713
   Scenario: Add and validate Key Activities for Topic
     And I execute "Login as Admin Totara" reusable step
     Then I click on the "Totara Automation Course" button by JS
@@ -47,7 +47,7 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     Then I validate text "SubmitTopAutomation" to be displayed for "Direct App Top Key Activity Submit Button" element
     Then I validate text "MainBottomAutomation" to be displayed for "Direct App App Bottom Key Activity Body" element
     Then I validate text "SubmitBottomAutomation" to be displayed for "Direct App Bottom Key Activity Submit Button" element
-    And I execute "Logout Totara Workaround" reusable step
+    And I execute "Log Out from Hub Student" reusable step
     And I execute "Login as Admin Totara" reusable step
     Then I click on the "Totara Automation Course" button by JS
     And I click on the "Totara Key Activities Administration Link" link by JS
