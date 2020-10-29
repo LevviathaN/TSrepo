@@ -3151,5 +3151,9 @@
   {
     "name": "Yopmail Search Field",
     "value": "xpath=//td[@class='nw']/input[2]"
+  },
+  {
+    "name": "ISBN Generator Number Field",
+    "value": "xpath=//*[@class='content single text-center text-bold h1 char-break']"
   }
 ]

@@ -20,7 +20,7 @@ Feature: Amend Reference Data - Body - BPP-624
     Then I should see the "EC_BODY_SHORT_NAME" element
 
   @Negative @P2 #TC-814
-  Scenario: Submitting Incomplete Body Fields
+  Scenario: Amend Submitting Incomplete Body Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"

@@ -88,12 +88,12 @@ Feature: CBA - deactivation/reactivation - BPP-3211
     And I click on the "Confirm Deactivation" "Product Factory button"
     And Attribute "tabindex" of "Reactivate" "Product Factory button" should have value "-1"
 
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I should see the "Deactivated" message
-    And I shouldn't see the "Activated" message
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I should see the "Deactivated" message
+#    And I shouldn't see the "Activated" message
 
   @Positive @Regression @P1 #TC-3118, TC-3121
   Scenario: Deactivate CBA Course With Prevent Reactivation Option Off
@@ -132,12 +132,12 @@ Feature: CBA - deactivation/reactivation - BPP-3211
     And I click on the "Confirm Deactivation" "Product Factory button"
     And Attribute "tabindex" of "Reactivate" "Product Factory button" should have value "0"
 
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I should see the "Deactivated" message
-    And I shouldn't see the "Activated" message
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I should see the "Deactivated" message
+#    And I shouldn't see the "Activated" message
 
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
