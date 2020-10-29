@@ -305,7 +305,11 @@
   },
   {
     "name": "BPP Digital Site Left Side Page Header",
-    "value": "xpath=//div[@class='component-content']/h1"
+    "value": "xpath=//div[contains(@class,'header-wrapper')]/h2"
+  },
+  {
+    "name": "BPP Digital Courses Page Header",
+    "value": "xpath=//div[@class='component-content']/h2"
   },
   {
     "name": "BPP Digital Site Page Header",
@@ -502,6 +506,10 @@
   {
     "name": "BPP Digital Course Booking Success Message Form",
     "value": "xpath=//div[@class='form-content']/p/b"
+  },
+  {
+    "name": "BPP Digital Accordion Mobile Item",
+    "value": "xpath=(//div[contains(@class,'cms-accordion-component container')])[2]"
   },
   {
     "name": "Banner Username",
