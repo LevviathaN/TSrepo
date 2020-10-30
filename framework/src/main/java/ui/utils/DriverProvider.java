@@ -147,9 +147,9 @@ public class DriverProvider {
             options.setCapability("browserstack.video", "true");
             options.setCapability("browserstack.networkLogs", "true");
             options.setCapability("build", "automation");
-            //options.setCapability("browserstack.local", "true");
+            options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
-            //options.setCapability("browserstack.localIdentifier", "TestAutomation");
+            options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability("browserstack.idleTimeout", "180");
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
@@ -274,9 +274,9 @@ public class DriverProvider {
             capabilities.setCapability("browserstack.video", "true");
             capabilities.setCapability("browserstack.networkLogs", "true");
             capabilities.setCapability("build", "automation");
-            //capabilities.setCapability("browserstack.local", "true");
+            capabilities.setCapability("browserstack.local", "true");
             capabilities.setCapability("browserstack.console", "errors");
-            //capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+            capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
             capabilities.setCapability("browserstack.appium_version", "1.17.0");
             //capabilities.setCapability("autoAcceptAlerts",true);
             //capabilities.setCapability("autoDismissAlerts", true);
@@ -315,9 +315,9 @@ public class DriverProvider {
             capabilities.setCapability("browserstack.video", "true");
             capabilities.setCapability("browserstack.networkLogs", "true");
             capabilities.setCapability("build", "automation");
-            //capabilities.setCapability("browserstack.local", "true");
+            capabilities.setCapability("browserstack.local", "true");
             capabilities.setCapability("browserstack.console", "errors");
-            //capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+            capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
 
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();
