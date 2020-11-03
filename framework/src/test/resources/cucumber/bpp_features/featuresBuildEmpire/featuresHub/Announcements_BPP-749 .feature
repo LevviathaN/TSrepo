@@ -29,3 +29,11 @@ Feature: BPP University Hub Announcements
     Then I validate text "EC_AUTO_ANNOUNCEMENT_CONTENT" to be displayed for "Direct App Announcement Text" element
     Then I click on the "Close" "BPP Digital Search Label Button"
     Then I shouldn't see the "EC_AUTO_ANNOUNCEMENT_CONTENT" message
+    When I execute "Log Out from Hub Student" reusable step
+    And Browser deletes cookies
+    When I execute "Log In to Hub as Admin" reusable step
+    And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/announcements" URL
+    Then I should see the "EC_AUTO_ANNOUNCEMENT_CONTENT" element
+    And I click on the "EC_AUTO_ANNOUNCEMENT_CONTENT" "BPP Digital Admin Delete Button for Specific name"
+    And I wait for "3" seconds
+    Then I shouldn't see the "EC_AUTO_ANNOUNCEMENT_CONTENT" "element"
