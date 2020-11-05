@@ -80,6 +80,10 @@
     "value": "xpath=//a[text()='Automation Quiz Name']"
   },
   {
+    "name": "BPP Digital Automation Mobile Validate Sub Topic Quiz Link",
+    "value": "xpath=//a[text()='Automation Mobile Quiz Name']"
+  },
+  {
     "name": "BPP Digital Automation Validate Topic Header",
     "value": "xpath=//h2[@class='section-title']"
   },
@@ -318,6 +322,10 @@
   {
     "name": "BPP Digital Student Icaew Course Page Open First Topic Sticker",
     "value": "xpath=//div[contains(@class,'single-section')][1]/a"
+  },
+  {
+    "name": "BPP Digital Student Icaew Course Page Open Second Topic Sticker",
+    "value": "xpath=//div[contains(@class,'single-section')][2]/a"
   },
   {
     "name": "BPP Digital Student My Learning Page Open First Course Sticker",
@@ -1421,7 +1429,7 @@
   },
   {
     "name": "Totara You Are not Logged In",
-    "value": "xpath=//span[@class='login']/a"
+    "value": "xpath=//span[text()='You are not logged in. ']"
   },
   {
     "name": "Direct App Mark As Complete Checkbox",
@@ -2729,6 +2737,10 @@
     "value": "id=action-menu-toggle-0"
   },
   {
+    "name": "Totara Account Avatar icon",
+    "value": "xpath=//span[@class='avatar current']/img"
+  },
+  {
     "name": "Totara VPE Course Automation link",
     "value": "xpath=//a[@title='VPE Course Automation']"
   },
@@ -2798,15 +2810,27 @@
   },
   {
     "name": "Totara Automation Exp Label Delete Item",
-    "value": "xpath=//div[normalize-space()='Automation Expandable Lable']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
+    "value": "xpath=//div[normalize-space()='Automation Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
+  },
+  {
+    "name": "Totara Automation Mobile Exp Label Delete Item",
+    "value": "xpath=//div[normalize-space()='Automation Mobile Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
   },
   {
     "name": "Totara Automation Exp Label Edit Move Right Item",
-    "value": "xpath=(//div[normalize-space()='Automation Expandable Lable']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
+    "value": "xpath=(//div[normalize-space()='Automation Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
+  },
+  {
+    "name": "Totara Automation Mobile Exp Label Edit Move Right Item",
+    "value": "xpath=(//div[normalize-space()='Automation Mobile Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
   },
   {
     "name": "Totara Automation Exp Label Edit button",
-    "value": "xpath=(//div[normalize-space()=\"Automation Expandable Lable\"]/following::a[text()='Edit'])[1]"
+    "value": "xpath=(//div[normalize-space()=\"Automation Expandable Label\"]/following::a[text()='Edit'])[1]"
+  },
+  {
+    "name": "Totara Automation Mobile Exp Label Edit button",
+    "value": "xpath=(//div[normalize-space()=\"Automation Mobile Expandable Label\"]/following::a[text()='Edit'])[1]"
   },
   {
     "name": "Totara Automation Quiz Correct Answer Drop Down",
@@ -2837,16 +2861,32 @@
     "value": "xpath=//span[normalize-space()='Automation Quiz Name']"
   },
   {
+    "name": "Totara Automation Mobile Quiz Link",
+    "value": "xpath=//span[normalize-space()='Automation Mobile Quiz Name']"
+  },
+  {
     "name": "Totara Automation Quiz Name Delete Quiz Button",
     "value": "xpath=//span[normalize-space()='Automation Quiz Name']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
+  },
+  {
+    "name": "Totara Automation Mobile Quiz Name Delete Quiz Button",
+    "value": "xpath=//span[normalize-space()='Automation Mobile Quiz Name']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
   },
   {
     "name": "Totara Automation Quiz Name Edit Move Right Item",
     "value": "xpath=(//span[normalize-space()='Automation Quiz Name']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
   },
   {
+    "name": "Totara Automation Mobile Quiz Name Edit Move Right Item",
+    "value": "xpath=(//span[normalize-space()='Automation Mobile Quiz Name']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
+  },
+  {
     "name": "Totara Automation Quiz Name Edit Quiz Button",
     "value": "xpath=(//span[normalize-space()='Automation Quiz Name']/following::a[text()='Edit'])[1]"
+  },
+  {
+    "name": "Totara Automation Mobile Quiz Name Edit Quiz Button",
+    "value": "xpath=(//span[normalize-space()='Automation Mobile Quiz Name']/following::a[text()='Edit'])[1]"
   },
   {
     "name": "Totara Automation Quiz Question Add Button",
@@ -2869,12 +2909,24 @@
     "value": "xpath=//div[normalize-space()='Automation Sub-Topic']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
   },
   {
+    "name": "Totara Automation Mobile Sub Topic Delete Button",
+    "value": "xpath=//div[normalize-space()='Automation Mobile Sub-Topic']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
+  },
+  {
     "name": "Totara Automation Sub Topic Edit Button",
     "value": "xpath=//div[normalize-space()='Automation Sub-Topic']/following::a[text()='Edit'][1]"
   },
   {
+    "name": "Totara Automation Mobile Sub Topic Edit Button",
+    "value": "xpath=//div[normalize-space()='Automation Mobile Sub-Topic']/following::a[text()='Edit'][1]"
+  },
+  {
     "name": "Totara Automation Topic Add an Activity or Resource",
     "value": "xpath=//span[@data-editlabel='New name for topic Automation']/following::span[contains(text(),'Add an activity or resource')][1]"
+  },
+  {
+    "name": "Totara Automation Mobile Topic Add an Activity or Resource",
+    "value": "xpath=//span[@data-editlabel='New name for topic Automation Mobile']/following::span[contains(text(),'Add an activity or resource')][1]"
   },
   {
     "name": "Totara Bottom Key Activity Name",
@@ -2887,6 +2939,10 @@
   {
     "name": "Totara Breadcrambs ICAEW Course Item",
     "value": "xpath=//span[contains(text(), 'ICAEW Accounting Full')]"
+  },
+  {
+    "name": "Totara Breadcrambs VPE Course Item",
+    "value": "xpath=//span[contains(text(), 'VPE Course Automation') and @itemprop='title']"
   },
   {
     "name": "Totara Bulk Due Date Enable Checkbox",

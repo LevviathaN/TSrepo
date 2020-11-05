@@ -36,7 +36,7 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Automation Topic Add an Activity or Resource" element
     And I click on the "Totara Add an Activity Label Radio button" element
     And I click on the "Totara Add an Activity Add Button" button
-    And I fill the "Totara Adding a New Label Text Field" field with "Automation Expandable Lable"
+    And I fill the "Totara Adding a New Label Text Field" field with "Automation Expandable Label"
     And I click on the "Save and return to course" "BPP Digital Admin Value attribute button"
     And I click on the "Totara Automation Exp Label Edit button" element
     And I click on the "Totara Automation Exp Label Edit Move Right Item" element
@@ -79,7 +79,7 @@ Feature: BPP University Hub Sub Topics and Labels
     Then I validate text "Automation" to be displayed for "BPP Digital Automation Validate Topic Header" element
     Then I validate text "CONTAINS=Automation Sub-Topic" to be displayed for "BPP Digital Automation Validate Sub Topic Header" element
     Then Attribute "data-icon" of "BPP Digital Automation Validate Angle Down Icon" should have value "angle-down"
-    Then I validate text "Automation Expandable Lable" to be displayed for "BPP Digital Automation Validate Expandable Sub Topic Header" element
+    Then I validate text "Automation Expandable Label" to be displayed for "BPP Digital Automation Validate Expandable Sub Topic Header" element
     And I click on the "BPP Digital Automation Validate Expandable Sub Topic Header" element by JS
     Then I validate text "Automation Quiz Name" to be displayed for "BPP Digital Automation Validate Sub Topic Quiz Link" element
     Then Attribute "data-icon" of "BPP Digital Automation Validate Quiz Square Svg Item" should have value "check"
