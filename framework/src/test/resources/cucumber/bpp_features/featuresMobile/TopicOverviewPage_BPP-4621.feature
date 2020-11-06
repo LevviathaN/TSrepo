@@ -1,11 +1,11 @@
-@Mobile @Tablet
+@Mobile
 Feature: Topic Overview Page
   The completion status key is below the Learning Material heading
   Labels, sub labels and learning activities appear across only one column
   As a Hub user, viewing the Topic Overview page, expect to see a new "completion status" indicator on labels that are not indented,
   that indicates how many sub-labels / unindented activities under this label have been completed
 
-  #TC-2232
+  @Positive @iPad @iPhone @Samsung #TC-2232
   Scenario: Topic Overview Page_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "automaureenmerritt7112@guerrillamail.info" text to the "Email" "Build Empire text field" |

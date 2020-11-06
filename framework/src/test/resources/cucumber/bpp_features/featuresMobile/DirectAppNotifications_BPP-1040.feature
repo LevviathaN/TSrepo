@@ -1,4 +1,4 @@
-@Mobile @Tablet
+@Mobile
 Feature: BPP University Hub Direct App Notifications
   As a Hub user
   I would like to see notifications on my dashboard in regards to Direct Apps
@@ -7,7 +7,7 @@ Feature: BPP University Hub Direct App Notifications
     Given I execute "Register New Student Account" reusable step replacing some steps
       |12|I wait for "5" seconds|
 
-  @Positive #TC-1130 TC-1104 TC-1171
+  @Positive @iPad @iPhone @Samsung #TC-1130 TC-1104 TC-1171
   Scenario: Direct App Notifications_Mobile
     And I click on the "Hub VPE Mobile Hamburger Menu" button if "Hub VPE Mobile Hamburger Menu" "element is present"
     And I click on the "Home" "Build Empire Navigation Menu elements"

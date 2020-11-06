@@ -1,11 +1,11 @@
-@BuildEmpire @Hub @SubTopics @Totara
+@Mobile
 Feature: BPP University Hub Sub Topics and Labels
 
   Background:
     Given I execute "Register New Student Account" reusable step replacing some steps
       |12|I wait for "5" seconds|
 
-  @Positive @BET #TC-867
+  @Positive @iPhone @Samsung #TC-867
   Scenario: Hub Sub Topics and Labels_Mobile
     #login to Totara as an Admin
     Then Browser deletes cookies
@@ -18,6 +18,7 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "8" seconds
     Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
     And I wait for "3" seconds
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
     Then I click on the "Totara Login" button by JS
     And I wait for "4" seconds
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_TOTARAADMINUSER"
@@ -42,9 +43,9 @@ Feature: BPP University Hub Sub Topics and Labels
     When I click on the "Dashboard" "text contained in SPAN element"
     And I execute "arguments[0].click()" JS code for "ICAEW Accounting Full" "BPP Digital Student Applications Menu link"
     And I wait for "4" seconds
-    And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
+    And I click on the "Turn editing on" "BPP Digital Admin Value attribute button" by JS
     And I wait for "4" seconds
-    And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element
+    And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
     And I click on the "Totara Add an Activity Label Radio button" element
     And I click on the "Totara Add an Activity Add Button" button
@@ -53,7 +54,7 @@ Feature: BPP University Hub Sub Topics and Labels
     Then I execute "document.getElementById('id_introeditoreditable').innerText = 'Automation Mobile Sub-Topic'" JS code for "Totara Adding a New Label Text Field" element
     And I click on the "Save and return to course" "BPP Digital Admin Value attribute button"
     And I wait for "4" seconds
-    And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element
+    And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
     And I click on the "Totara Add an Activity Label Radio button" element
     And I wait for "4" seconds
@@ -66,7 +67,12 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "4" seconds
     And I click on the "Totara Automation Mobile Exp Label Edit Move Right Item" element
     And I wait for "4" seconds
-    And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element
+    #SMTH NEW##########################################################
+    #SMTH NEW##########################################################
+    #SMTH NEW##########################################################
+    #SMTH NEW##########################################################
+    And I execute "return document.readyState = 'complete'" JS code
+    And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
     And I click on the "Totara Add an Activity Quiz Radio button" button
     And I click on the "Totara Add an Activity Add Button" button
@@ -128,6 +134,8 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Hub VPE Mobile Hamburger Menu" button
     And I wait for "3" seconds
     And I click on the "Direct App Mobile Logout" element
+    And I wait for "4" seconds
+    And Browser deletes cookies
     #Admin Login With Walkaround
     And I wait for "8" seconds
     Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
@@ -139,7 +147,8 @@ Feature: BPP University Hub Sub Topics and Labels
     Then I click on the "Direct App Login Button" button
     And I wait for "4" seconds
     #Delete SubTopics
-    When I click on the "Totara ICAEW Course" link by JS
+    And I execute "arguments[0].click()" JS code for "ICAEW Accounting Full" "BPP Digital Student Applications Menu link"
+#    When I click on the "Totara ICAEW Course" link by JS
     And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
     And I click on the "Totara Automation Mobile Quiz Name Edit Quiz Button" link
     And I click on the "Totara Automation Mobile Quiz Name Delete Quiz Button" link

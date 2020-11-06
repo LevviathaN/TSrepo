@@ -1,4 +1,4 @@
-@Mobile @Tablet
+@Mobile
 Feature: The Hub - Web Pages - CMS pages with parent/child relationships
   As an admin, when creating a CMS page,
   I expect to be able to add a CMS page as a CHILD of another CMS page and have that reflected in the Hub
@@ -8,7 +8,7 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |5|I wait for "15" seconds|
 
-  @Positive #TC-1318
+  @Positive @iPad @iPhone @Samsung #TC-1318
   Scenario: Validate Web Pages Parent Child Relationships
     #Create Parent CMS Page
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL

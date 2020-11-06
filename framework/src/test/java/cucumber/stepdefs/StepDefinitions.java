@@ -288,7 +288,7 @@ public class StepDefinitions extends SeleniumHelper {
      * @author Ruslan Levytskyi
      */
     @When("^Сss \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$")
-    public void element_сss_should_have_value(String attributeName, String elementLocator, String cssValue) {
+    public void element_css_should_have_value(String attributeName, String elementLocator, String cssValue) {
         Reporter.log("Executing step: CSS value '" + attributeName + "' of '" + elementLocator + "' should have value '" + cssValue + "'");
         if (cssValue.toUpperCase().contains("CONTAINS=")) {
             String attributeValueCropped = cssValue.substring("CONTAINS=".length());

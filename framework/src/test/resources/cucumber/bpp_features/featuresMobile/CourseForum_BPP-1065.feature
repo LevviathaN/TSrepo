@@ -1,10 +1,10 @@
-@Mobile @NotIOS
+@Mobile
 Feature: BPP University Hub Course Forum
   As a learner within the hub
   If there is a course specific forum
   I expect an easy way to navigate to this forum
 
-  @Positive #TC-722 TC-723
+  @Positive @Samsung #TC-722 TC-723
   #Not to run on IOS devices as Book Exam button is not clickable on Safari
   Scenario: Hub Course Forum_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps

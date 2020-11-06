@@ -1,8 +1,8 @@
-@Mobile @Tablet
+@Mobile
 Feature: The Hub - Law School - Pages - Overview
   Webpages within a Topic should appear as clickable webpages within Topic within VPE
 
-  #TC-2622, TC-2626
+ @Positive @iPad @iPhone @Samsung  #TC-2622, TC-2626
   Scenario: The Hub - Law School - Pages - Overview_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field" |
