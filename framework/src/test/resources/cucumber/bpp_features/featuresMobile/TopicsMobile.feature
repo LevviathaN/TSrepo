@@ -13,11 +13,8 @@ Feature: The Hub - My Learning - Course Overview Page - Topics
     And I click on the "Hub VPE Mobile Hamburger Menu" button if "Hub VPE Mobile Hamburger Menu" "element is present"
     Then I click on the "Hub Mobile My Learning Link Hamburger Menu" element
     And I click on the "Hub Mobile My Learning Course Card" element
-
     And I validate text "BPP Admin" to be displayed for "Hub Course Page Course Tutor" element if "Hub Course Page Course Tutor" "element is present"
     And I validate text "BPP Admin" to be displayed for "Hub Course Page Course Tutor Mobile" element if "Hub Course Page Course Tutor Mobile" "element is present"
-
-    #And I validate text "BPP Admin" to be displayed for "Hub Course Page Course Tutor Mobile" element
     And I validate text "Automation Test Course" to be displayed for "Hub Course Page Course Name" element
     And I validate text "CONTAINS=%" to be displayed for "Hub Course Page Progress Percentage" element
     And Сss "background-color" of "Build Empire Course SCORM Topic Status Section" should have value "rgba(250, 202, 143, 1)"
