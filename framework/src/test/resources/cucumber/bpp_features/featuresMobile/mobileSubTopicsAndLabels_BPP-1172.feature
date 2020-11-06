@@ -67,10 +67,6 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "4" seconds
     And I click on the "Totara Automation Mobile Exp Label Edit Move Right Item" element
     And I wait for "4" seconds
-    #SMTH NEW##########################################################
-    #SMTH NEW##########################################################
-    #SMTH NEW##########################################################
-    #SMTH NEW##########################################################
     And I execute "return document.readyState = 'complete'" JS code
     And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
@@ -109,13 +105,10 @@ Feature: BPP University Hub Sub Topics and Labels
     And I execute "Log In to Hub as Student Fixed" reusable step replacing some steps
       |7|Wait for "10" seconds|
     #Navigate to Created Sub Topics
-#    Given I am on "https://web-stage-bppdigital.bppuniversity.com/my/learning/course/3" URL
-#    And I wait for "5" seconds
     And I click on the "Hub VPE Mobile Hamburger Menu" button by JS
     And I click on the "Hub Mobile My Learning Link Hamburger Menu" option by JS
     And I click on the "BPP Digital Student My Learning Page Open First Course Sticker" element
     And I click on the "BPP Digital Student Icaew Course Page Open Second Topic Sticker" element
-    #EVALUATIONG STEP######################################################################
     Then I validate text "Automation Mobile" to be displayed for "BPP Digital Automation Validate Topic Header" element
     Then I validate text "CONTAINS=Automation Mobile Sub-Topic" to be displayed for "BPP Digital Automation Validate Sub Topic Header" element
     Then Attribute "data-icon" of "BPP Digital Automation Validate Angle Down Icon" should have value "angle-down"
