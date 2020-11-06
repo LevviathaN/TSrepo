@@ -2,9 +2,8 @@
 Feature: The Hub - Breadcrumb
   As a user, I expect to see a 'breadcrumb trail' which updates, as I navigate throughout the Hub
 
-  @Positive #TC-1350
+  @Positive @iPad #TC-1350
   Scenario: Hub - Breadcrumb
-
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "AutoAdonisDuarte6846@guerrillamail.info" text to the "Email" "Build Empire text field" |
       | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"                    |
