@@ -1,4 +1,4 @@
-@Mobile @Tablet
+@Mobile
 Feature: The Hub - My Learning - Course Overview Page - Topics
   As a learner, at a glance, I'd like to be able to see all topics within my course,
   and my current progress on each topic,

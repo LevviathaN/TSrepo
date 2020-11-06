@@ -8,7 +8,7 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |5|I wait for "15" seconds|
 
-  @Positive #TC-1318
+  @Positive @iPad @iPhone @Samsung  #TC-1318
   Scenario: Validate Web Pages Parent Child Relationships_Mobile
     #Create Parent CMS Page
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL

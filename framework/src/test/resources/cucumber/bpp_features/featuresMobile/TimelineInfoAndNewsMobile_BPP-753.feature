@@ -1,4 +1,4 @@
-@Mobile @Tablet
+@Mobile
 Feature: The Hub - Dashboard / Timeline - Info & News
   As a Hub Admin,
   I would like to be able to provide my learners with general information and news and for it to be available via their Dashboard
@@ -8,7 +8,7 @@ Feature: The Hub - Dashboard / Timeline - Info & News
     Given I execute "Register New Student Account" reusable step replacing some steps
       |12|I wait for "5" seconds|
 
-  @Positive #TC-1315 TC-1317
+  @Positive @iPad @iPhone @Samsung #TC-1315 TC-1317
   Scenario: Hub Timeline - Info and News_Mobile
     And I wait for "3" seconds
     And I click on the "Hub VPE Mobile Hamburger Menu" element

@@ -1,11 +1,11 @@
-@Hub @Mobile @Tablet
+@Mobile
 Feature: BPP University Hub My Learning Course Tutor
 
   Background:
     Given I execute "Register New Student Account" reusable step replacing some steps
       |12|I wait for "5" seconds|
 
-  @Positive #TC-721
+  @Positive @iPad @iPhone @Samsung #TC-721
   Scenario: Hub My Learning Course Tutor_Mobile
     #Student Logout
     And I wait for "3" seconds

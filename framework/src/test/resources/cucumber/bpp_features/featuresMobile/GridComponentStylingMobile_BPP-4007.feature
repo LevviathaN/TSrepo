@@ -1,4 +1,4 @@
-@Mobile @Tablet
+@Mobile
 Feature: As an admin, when I create a grid component with a "STANDARD" style,
   I expect to have the option to enter the padding for the top and bottom of the grid background,
   with separate inputs for desktop, mobile and tablet
@@ -7,7 +7,7 @@ Feature: As an admin, when I create a grid component with a "STANDARD" style,
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |5|I wait for "20" seconds|
 
-  @Grid
+  @Positive @iPad @iPhone @Samsung
   Scenario: Create and Validate Grid Styling_Mobile
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     And I execute "Create CMS Page" reusable step

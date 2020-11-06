@@ -1,9 +1,9 @@
-@Mobile @Tablet
+@Mobile
 Feature: BPP University Hub Profile Area
   As a user
   I expect to see an updated link to access my profile
 
-  @Positive #TC-1170
+  @Positive @iPad @iPhone @Samsung #TC-1170
   Scenario: Hub Profile Area_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "vpecourse@guerillamail.info" text to the "Email" "Build Empire text field" |

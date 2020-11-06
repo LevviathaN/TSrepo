@@ -580,6 +580,10 @@
     "value": "xpath=//label[normalize-space()='PARAMETER']/../following-sibling::div/input"
   },
   {
+    "name": "Totara field by ID tag",
+    "value": "xpath=//*[@id='PARAMETER']"
+  },
+  {
     "name": "VLE Login Fields",
     "value": "xpath=//input[@name='PARAMETER']"
   },
