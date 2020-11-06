@@ -69,8 +69,8 @@ public class BaseUITest {
             e.printStackTrace();
         }
 
-        SeleniumHelper.locatorsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewLocators.json");
-        SeleniumHelper.specialLocatorsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewSpecialLocators.json");
+        SeleniumHelper.locatorsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/Locators.json");
+        SeleniumHelper.specialLocatorsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/SpecialLocators.json");
         SeleniumHelper.stepPatternsMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewStepPatterns.json");
         SeleniumHelper.stepSignaturesMap = GuiHelper.getLocatorsMap(PreProcessFiles.ROOT_FOLDER_PATH + "/src/main/resources/NewStepSignatures.json");
 

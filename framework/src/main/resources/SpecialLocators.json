@@ -592,6 +592,10 @@
     "value": "xpath=//*[text()='PARAMETER']"
   },
   {
+    "name": "element by value",
+    "value": "xpath=//*[@value='PARAMETER']"
+  },
+  {
     "name": "exact element",
     "value": "xpath=//*[normalize-space()=\"PARAMETER\"]"
   },
@@ -638,6 +642,14 @@
   {
     "name": "Totara Edit Activity Dropdown Button",
     "value": "xpath=(//span[contains(.,'PARAMETER')]/../../following::a[contains(.,'Edit')])[1]"
+  },
+  {
+    "name": "Totara Edit Week Name Dropdown Button",
+    "value": "xpath=(//*[@class='hidden sectionname' and contains(.,'PARAMETER')]//following::div[2]//li/a[contains(.,'Edit')])[1]"
+  },
+  {
+    "name": "Totara Edit Week Edit Settings option",
+    "value": "xpath=(//*[@class='hidden sectionname' and contains(.,'PARAMETER')]//following::div[2]//ul[@data-rel='menu-content']//a)[1]"
   },
   {
     "name": "Totara Edit Activity Edit Settings option",
