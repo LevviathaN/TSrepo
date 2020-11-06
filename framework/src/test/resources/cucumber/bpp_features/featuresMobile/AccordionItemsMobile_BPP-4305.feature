@@ -1,8 +1,8 @@
-@Tablet
+@Mobile
 Feature: BPP Accordion Items
   As a tablet/mobile user, I expect accordion items to be styled as indicated in BPP designs
 
-  @Accordion #TC-2059, TC-2060
+  @Positive @iPad #TC-2059, TC-2060
   Scenario: Accordion Items_Mobile
     Given I am on "https://web-stage-bppdigital.bppuniversity.com/locations/thetestpage" URL
     And I wait for "10" seconds
