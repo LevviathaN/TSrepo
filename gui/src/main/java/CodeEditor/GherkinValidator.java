@@ -22,8 +22,8 @@ public class GherkinValidator {
 
 
     public GherkinValidator() {
-        locatorsMap = GuiHelper.getLocatorsMap(CodeEditorExample.frameworkFolder + "/src/main/resources/NewLocators.json");
-        specialLocatorsMap = GuiHelper.getLocatorsMap(CodeEditorExample.frameworkFolder + "/src/main/resources/NewSpecialLocators.json");
+        locatorsMap = GuiHelper.getLocatorsMap(CodeEditorExample.frameworkFolder + "/src/main/resources/Locators.json");
+        specialLocatorsMap = GuiHelper.getLocatorsMap(CodeEditorExample.frameworkFolder + "/src/main/resources/SpecialLocators.json");
         stepPatternsMap = GuiHelper.getLocatorsMap(CodeEditorExample.frameworkFolder + "/src/main/resources/NewStepPatterns.json");
         stepSignaturesMap = GuiHelper.getLocatorsMap(CodeEditorExample.frameworkFolder + "/src/main/resources/NewStepSignatures.json");
         reusablesList = getReusableScenariosList();

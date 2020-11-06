@@ -4,6 +4,7 @@ import io.cucumber.java.en.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
 import ui.utils.SeleniumHelper;
 import ui.utils.BPPLogManager;
@@ -12,6 +13,11 @@ import ui.utils.Reporter;
 import ui.utils.UiHandlers;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
+
+import static com.jcabi.matchers.RegexMatchers.matchesPattern;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 
 public class SpecialStepDefs extends SeleniumHelper {
 
@@ -102,6 +108,77 @@ public class SpecialStepDefs extends SeleniumHelper {
             }
         } else{
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + elementLocator + elementType + "' element step will not be clicked");
+        }
+    }
+
+    /**
+     * Definition to validate an element on the page if given condition is true
+     *
+     * @param text     : value to be checked
+     * @param element: By locator of element to press key
+     * @author Ruslan Levytskyi
+     */
+    @When("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_validate_text_to_be_displayed_for_element_special_if(String text, String element, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        String actualValue = "";
+        if (conditions.checkCondition(condition, conditionParameter)) {
+            Reporter.log("Executing step: I validate " + text + " to be displayed for: " + element);
+            if (element.equalsIgnoreCase("CHECK_URL")) {
+                actualValue = SeleniumHelper.driver().getCurrentUrl();
+                Reporter.log("Validating URL to match :" + text);
+                assertThat(actualValue, containsString(text));
+            } else {
+                actualValue = getTextValueFromField(initElementLocator(element));
+                String newValue = text.replaceAll("''", "\"");
+                if (text.toUpperCase().trim().startsWith("RE=")) {
+                    newValue = newValue.substring("RE=".length());
+                    assertThat(actualValue.trim(), matchesPattern(newValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'</pre>");
+                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'");
+                } else if (text.toUpperCase().startsWith("CONTAINS=")) {
+                    newValue = newValue.substring("CONTAINS=".length());
+                    if (text.contains("EC")) {
+                        String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                        assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(executionContextValue.toLowerCase()));
+                    } else {
+                        assertThat(actualValue.trim(), Matchers.containsString(newValue));
+                        Reporter.log("<pre>Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'</pre>");
+                        BPPLogManager.getLogger().info("Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'");
+                    }
+                } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
+                    newValue = newValue.substring("NOT_CONTAINS=".length());
+                    if (text.contains("EC")) {
+                        String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                        assertThat(actualValue.trim(), not(Matchers.containsString(executionContextValue)));
+                    } else {
+                        assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
+                        Reporter.log("<pre>Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'</pre>");
+                        BPPLogManager.getLogger().info("Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'");
+                    }
+                } else if (text.toUpperCase().startsWith("CASE=")) {
+                    newValue = newValue.substring("CASE=".length());
+                    assertThat(actualValue.trim(), Matchers.equalTo(newValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'</pre>");
+                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'");
+                } else if (text.toUpperCase().contains("STARTS-WITH=")) {
+                    newValue = newValue.substring("STARTS-WITH=".length());
+                    assertThat(actualValue.trim(), Matchers.startsWith(newValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
+                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
+                } else if (text.contains("EC_")) {
+                    String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                    assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
+                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
+                } else {
+                    assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
+                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
+                }
+            }
+        } else {
+            Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + text + "' element step will not be validated");
         }
     }
 

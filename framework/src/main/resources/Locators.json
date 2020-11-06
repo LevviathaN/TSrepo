@@ -309,7 +309,11 @@
   },
   {
     "name": "BPP Digital Site Left Side Page Header",
-    "value": "xpath=//div[@class='component-content']/h1"
+    "value": "xpath=//div[contains(@class,'header-wrapper')]/h2"
+  },
+  {
+    "name": "BPP Digital Courses Page Header",
+    "value": "xpath=//div[@class='component-content']/h2"
   },
   {
     "name": "BPP Digital Site Page Header",
@@ -510,6 +514,10 @@
   {
     "name": "BPP Digital Course Booking Success Message Form",
     "value": "xpath=//div[@class='form-content']/p/b"
+  },
+  {
+    "name": "BPP Digital Accordion Mobile Item",
+    "value": "xpath=(//div[contains(@class,'cms-accordion-component container')])[2]"
   },
   {
     "name": "Banner Username",
@@ -2120,6 +2128,38 @@
     "value": "xpath=//div[@class='sub-topics-container']/div/div[last()]//div//div[2]"
   },
   {
+    "name": "Hub Course Page Course Name",
+    "value": "xpath=//div[@class='my-learning']//h2"
+  },
+  {
+    "name": "Hub Course Page Course Tutor",
+    "value": "xpath=(//div[@class='my-learning']//*[@class='course-tutor-data'])[1]"
+  },
+  {
+    "name": "Hub Course Page Course Tutor Mobile",
+    "value": "xpath=(//div[@class='my-learning']//*[@class='course-tutor-data'])[2]"
+  },
+  {
+    "name": "Hub Course Page Progress Percentage",
+    "value": "xpath=(//div[@class='course-overview']//div[@class='course-progress-percentage'])[1]"
+  },
+  {
+    "name": "Build Empire Course Topic Section Message",
+    "value": "xpath=//div[@class='section-name' and text()='SCORM Topic']//following-sibling::div[@class='section-messages']/span[1]"
+  },
+  {
+    "name": "Build Empire Course Topic Section Overdue Message",
+    "value": "xpath=//div[@class='section-name' and text()='SCORM Topic']//following-sibling::div[@class='section-messages']/span[2]"
+  },
+  {
+    "name": "Build Empire Course SCORM Topic Status Section",
+    "value": "xpath=//div[@class='section-name' and text()='SCORM Topic']/../preceding-sibling::div[@class='section-status']"
+  },
+  {
+    "name": "Build Empire Course Moodle Topic Status Section",
+    "value": "xpath=//div[@class='section-name' and text()='Moodle Quiz']/../preceding-sibling::div[@class='section-status']"
+  },
+  {
     "name": "Moodle Staging Confirm Activity Delete Button",
     "value": "xpath=//input[@type='button' and @value='Yes']"
   },
@@ -2809,6 +2849,10 @@
     "value": "xpath=//div[@class='content block-content']//a[contains(.,'Mini Course')]"
   },
   {
+    "name": "Totara Automation Second Course",
+    "value": "xpath=//div[@class='content block-content']//a[contains(.,'Automation Test Course')]"
+  },
+  {
     "name": "Totara Automation Exp Label Delete Item",
     "value": "xpath=//div[normalize-space()='Automation Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='delete'][1]"
   },
@@ -3207,5 +3251,9 @@
   {
     "name": "Yopmail Search Field",
     "value": "xpath=//td[@class='nw']/input[2]"
+  },
+  {
+    "name": "ISBN Generator Number Field",
+    "value": "xpath=//*[@class='content single text-center text-bold h1 char-break']"
   }
 ]

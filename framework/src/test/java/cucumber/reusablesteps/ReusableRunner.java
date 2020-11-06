@@ -89,6 +89,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_EXECUTE_JS_CODE_FOR_ELEMENT_SPECIAL"),() -> specialStepDefs.i_execute_js_code_for_element_special(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_UNTIL_SPECIAL"),() -> specialStepDefs.i_click_on_element_until_special(arg1, arg2, arg3, arg4));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("HOVER_OVER_ELEMENT_SPECIAL"),() -> specialStepDefs.hover_over_element_special(arg1, arg2));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_VALIDATE_TEXT_IF"), () -> specialStepDefs.i_validate_text_to_be_displayed_for_element_special_if(arg1, arg2, arg3, arg4));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();
@@ -185,6 +186,7 @@ public static ReusableRunner getInstance() {
                     case "Delete":
                         BPPLogManager.getLogger().info("Deleting step (" + reusable.get(i) + ") on the " + (i+1) + " position");
                         reusable.remove(i);
+                        reusable.add(i, "I wait for \"1\" seconds");
                         break;
                     case "Replace":
                         BPPLogManager.getLogger().info("Replacing existing step (" + reusable.get(i) + ") with \"" + subStepsMap.get(i+1).get(1) + "\" on the " + (i+1) + " position");

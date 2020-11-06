@@ -5,6 +5,7 @@ Feature: Financial Dimension - Select Material Code - Initial Selection - BPP-24
   so that I can track this for accounting purposes.
 
   Background:
+    Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
     When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step

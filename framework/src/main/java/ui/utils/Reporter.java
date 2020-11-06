@@ -182,9 +182,9 @@ public class Reporter {
     public static void addTest(Method m, String testName) {
 
         String finalTestName = testName;
-        if (RetryAnalyzer.counterMap.containsKey(testName.substring(1,testName.length()-1))) {
-            int retryAttempt = RetryAnalyzer.counterMap.get(testName.substring(1,testName.length()-1));
-            finalTestName = testName.substring(1,testName.length()-1) + "_attempt_" + retryAttempt;
+        if (RetryAnalyzer.counterMap.containsKey(testName.substring(1, testName.length() - 1))) {
+            int retryAttempt = RetryAnalyzer.counterMap.get(testName.substring(1, testName.length() - 1));
+            finalTestName = testName.substring(1, testName.length() - 1) + "_attempt_" + retryAttempt;
         }
         ExtentTest test = extent.createTest(finalTestName);
         testStorage.put(Thread.currentThread().getId(), test);
@@ -292,9 +292,9 @@ public class Reporter {
     public static void pass(String log) {
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
-            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
+            RetryAnalyzer.passMap.put(currentTestName.substring(0, currentTestName.length() - 10), "pass");
         } else {
-            RetryAnalyzer.passMap.put(currentTestName,"pass");
+            RetryAnalyzer.passMap.put(currentTestName, "pass");
         }
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
@@ -309,7 +309,7 @@ public class Reporter {
     public static synchronized void fail(String log) {
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
-            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"fail");
+            RetryAnalyzer.passMap.put(currentTestName.substring(0, currentTestName.length() - 10), "fail");
         }
         try {
             String screenshotPath = takeScreenshot();
@@ -326,7 +326,7 @@ public class Reporter {
 
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
-            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"fail");
+            RetryAnalyzer.passMap.put(currentTestName.substring(0, currentTestName.length() - 10), "fail");
         }
 
         try {
@@ -629,8 +629,8 @@ public class Reporter {
 
     public static void addQtestLink(String testID) {
 
-            qtestBuild = String.format("https://bpp.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
-                    + testID);
+        qtestBuild = String.format("https://bpp.qtestnet.com/p/39036/portal/project#tab=testexecution&object=3&id="
+                + testID);
 
         String link = String.format("<a target='_blank' href='%s'>qTest Link</a>", qtestBuild);
         node("qTest Execution Link", link);
@@ -638,8 +638,22 @@ public class Reporter {
 
     // ============= BROWSER STACK ====================
     public static String getScreencastLinkFromBrowserStack(String sessionId) {
-        return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
+        if (System.getProperties().containsKey("BstackPlan")
+                && System.getProperty("BstackPlan").equalsIgnoreCase("Mobile")) {
+            return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackMobileBuild") + "/sessions/" + sessionId);
+        } else if (System.getProperties().containsKey("BstackPlan")
+                && System.getProperty("BstackPlan").equalsIgnoreCase("Venus")) {
+            return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackVenusBuild") + "/sessions/" + sessionId);
+        } else if (System.getProperties().containsKey("BstackPlan")
+                && System.getProperty("BstackPlan").equalsIgnoreCase("Terra")) {
+            return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackTerraBuild") + "/sessions/" + sessionId);
+        } else if (System.getProperties().containsKey("BstackPlan")
+                && System.getProperty("BstackPlan").equalsIgnoreCase("Terra")) {
+            return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackTitanBuild") + "/sessions/" + sessionId);
+        } else
+            return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
     }
+
 
     public static void addLinkToReport(String ref) {
         String link = String.format("<a target='_blank' href='%s'>Screencast Link</a>", ref);

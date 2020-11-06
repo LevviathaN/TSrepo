@@ -147,13 +147,16 @@ public class DriverProvider {
             options.setCapability("browserstack.video", "true");
             options.setCapability("browserstack.networkLogs", "true");
             options.setCapability("build", "automation");
-            //options.setCapability("browserstack.local", "true");
+            options.setCapability("browserstack.local", "true");
             options.setCapability("browserstack.console", "errors");
-            //options.setCapability("browserstack.localIdentifier", "TestAutomation");
+            options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability("browserstack.idleTimeout", "180");
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability(ChromeOptions.CAPABILITY, options);
+            if (System.getProperties().containsKey("BstackPlan")) {
+                options.setCapability("project", System.getProperty("BstackPlan"));
+            }
 
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();
@@ -281,6 +284,9 @@ public class DriverProvider {
             //capabilities.setCapability("autoAcceptAlerts",true);
             //capabilities.setCapability("autoDismissAlerts", true);
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+            if (System.getProperties().containsKey("BstackPlan")) {
+                capabilities.setCapability("project", System.getProperty("BstackPlan"));
+            }
 
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();
@@ -318,6 +324,9 @@ public class DriverProvider {
             capabilities.setCapability("browserstack.local", "true");
             capabilities.setCapability("browserstack.console", "errors");
             capabilities.setCapability("browserstack.localIdentifier", "TestAutomation");
+            if (System.getProperties().containsKey("BstackPlan")) {
+                capabilities.setCapability("project", System.getProperty("BstackPlan"));
+            }
 
             //configure capability to set the job name with Test Case name
             String testName = Reporter.getCurrentTestName();

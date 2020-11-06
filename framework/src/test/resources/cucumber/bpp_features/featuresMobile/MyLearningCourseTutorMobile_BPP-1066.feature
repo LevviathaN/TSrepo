@@ -53,7 +53,7 @@ Feature: BPP University Hub My Learning Course Tutor
     #And I click on the "Hub VPE Mobile Hamburger Menu" element
     #Then I click on the "Direct App Mobile Logout" element
     #Admin Login With Walkaround
-    And I execute "Logout Totara Workaround" reusable step
+    And I execute "Logout as Admin Totara" reusable step
     Then I execute "Login as Admin Totara" reusable step
     #Totara UnAssign Tutor Role
     And I wait for "10" seconds

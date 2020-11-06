@@ -51,7 +51,7 @@ Feature: BPP Digital General Review
     #View all
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "View all" "BPP Digital Explore Our Subjects item link"
-    Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Left Side Page Header" element
+    Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Page Header" element
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "Professional Qualifications" "BPP Digital Qualifications at Every Level item link"
     Then I validate text "CONTAINS=Professional Qualifications" to be displayed for "BPP Digital Breadcrumb Level Three" element
@@ -59,11 +59,6 @@ Feature: BPP Digital General Review
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "Master's & Undergraduate Degrees" "BPP Digital Qualifications at Every Level item link"
     Then I validate text "Degree Courses" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    And I wait for "3" seconds
-    When I click on the "Digital Site Mobile BPP Logo" link
-    And I click on the "Professional Development" "BPP Digital Qualifications at Every Level item link"
-    And I wait for "1" seconds
-    Then I validate text "CONTAINS=Professional Development" to be displayed for "BPP Digital Breadcrumb Level Three" element
     And I wait for "3" seconds
     #Login Existing User
     And I should scroll to the "top" of the page
@@ -96,6 +91,7 @@ Feature: BPP Digital General Review
     And I click on the "Digital Site Mobile Hamburger Courses" button by JS
     And I wait for "1" seconds
     And I click on the "Management" "BPP Digital Mobile Courses Menu"
+    And I wait for "1" seconds
     Then I validate text "CONTAINS=Business" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Innovation and Technology
@@ -143,15 +139,6 @@ Feature: BPP Digital General Review
     And I click on the "Human Resources" "BPP Digital Mobile Courses Menu"
     Then I validate text "CONTAINS=Human Resources" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
-    #Tax
-    And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Tax" "BPP Digital Mobile Courses Menu"
-    Then I validate text "CONTAINS=Tax" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "1" seconds
     #Insolvency
     And I click on the "Digital Site Mobile Hamburger Menu" element
     When I click on the "Study" "BPP Digital Study expandable link"
@@ -162,7 +149,7 @@ Feature: BPP Digital General Review
     Then I validate text "CONTAINS=Insolvency" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Actuary
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "Study" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "Digital Site Mobile Hamburger Courses" button by JS
@@ -171,7 +158,7 @@ Feature: BPP Digital General Review
     Then I validate text "CONTAINS=Actuary" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Chiropractic
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "Study" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "Digital Site Mobile Hamburger Courses" button by JS
@@ -180,7 +167,7 @@ Feature: BPP Digital General Review
     Then I validate text "CONTAINS=Chiropractic" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Psychology
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "Study" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "Digital Site Mobile Hamburger Courses" button by JS
@@ -190,7 +177,7 @@ Feature: BPP Digital General Review
     Then I validate text "CONTAINS=Psychology" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #View all courses
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "Study" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "Digital Site Mobile Hamburger Courses" button by JS
@@ -198,43 +185,37 @@ Feature: BPP Digital General Review
     And I click on the "View all courses" "BPP Digital Mobile Courses Menu"
     Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "1" seconds
-    #Working with businesses
-    And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Business" "BPP Digital Study expandable link"
-    And I wait for "2" seconds
-    And I click on the "Working with businesses" "BPP Digital Mobile Second Expandable Menu"
-    Then I validate text "CONTAINS=Business" to be displayed for "BPP Digital Breadcrumb Level Two" element
-    Then I wait for "2" seconds
     #About Us
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "About Us" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "About Us" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=About Us" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "2" seconds
     #Our People
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "About Us" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "Our People" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Our People" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #BPP University
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "About Us" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "About BPP University" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=BPP University" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Locations
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button
+    And I wait for "1" seconds
     When I click on the "About Us" "BPP Digital Study expandable link"
     And I wait for "1" seconds
     And I click on the "Study Centre Locations" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Locations" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Events
-    And I click on the "Digital Site Mobile Hamburger Menu" element
+    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
     When I click on the "Digital Site Mobile Hamburger Events" element
     Then I validate text "CONTAINS=Events" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "2" seconds
@@ -242,6 +223,9 @@ Feature: BPP Digital General Review
     When I click on the "Contact us" "BPP Digital Student Applications Menu link"
     Then I wait for "4" seconds
     Then I validate text "CONTAINS=Contact Us" to be displayed for "BPP Digital Breadcrumb Level Two" element
+
+
+
 
   @Mobile
   Scenario: General Review_Mobile
@@ -291,11 +275,8 @@ Feature: BPP Digital General Review
     And I click on the "Master's & Undergraduate Degrees" "BPP Digital Qualifications at Every Level item link"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Degrees" to be displayed for "Digital Site Mobile Page Heading" element
-    And I wait for "3" seconds
+    And I wait for "2" seconds
     When I click on the "Digital Site Mobile BPP Logo" link
-    And I click on the "Professional Development" "BPP Digital Qualifications at Every Level item link"
-    And I wait for "1" seconds
-    Then I validate text "CONTAINS=Professional Development" to be displayed for "Digital Site Mobile Page Heading" element
     And I wait for "3" seconds
     #Login Existing User
     And I should scroll to the "top" of the page
@@ -380,16 +361,6 @@ Feature: BPP Digital General Review
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Human Resources" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
-    #Tax
-    And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Tax" "BPP Digital Mobile Courses Menu"
-    Then I wait for "1" seconds
-    Then I validate text "CONTAINS=Accountancy and Tax courses" to be displayed for "Digital Site Mobile Page Heading" element
-    Then I wait for "1" seconds
     #Insolvency
     And I click on the "Digital Site Mobile Hamburger Menu" element
     When I click on the "Study" "BPP Digital Study expandable link"
@@ -437,7 +408,7 @@ Feature: BPP Digital General Review
     And I click on the "Digital Site Mobile Hamburger Courses" button by JS
     And I wait for "1" seconds
     And I click on the "View all courses" "BPP Digital Mobile Courses Menu"
-    Then I validate text "CONTAINS=Our Courses" to be displayed for "Digital Site Mobile Page Heading" element
+    Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Page Header" element
     Then I wait for "1" seconds
     #Working with businesses
     And I click on the "Digital Site Mobile Hamburger Menu" element

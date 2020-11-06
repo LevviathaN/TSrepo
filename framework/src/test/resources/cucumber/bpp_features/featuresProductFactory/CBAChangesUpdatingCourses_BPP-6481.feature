@@ -78,12 +78,12 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I click on the "Edit CBA" element
     Then I should see the "Date updated on CBA Course Sessions." element
     And I should see the "Unpublished changes" message
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
-    And I should see the "01/09/2025" element
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+#    And I should see the "01/09/2025" element
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
@@ -104,12 +104,12 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     Then I should see the "Capacity updated on Course Instances." message
     Then I should see the "2" element
     And I should see the "Unpublished changes" message
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
-    And I should see the "2" element
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+#    And I should see the "2" element
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
@@ -123,13 +123,13 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I click on the "Save" "Product Factory button"
     And I should see the "Clients updated on CBA Courses." message
     And I should see the "Unpublished changes" message
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
-    And I click on the "Clients" element
-    And I should see the "EC_CLIENT_NAME_TWO" element
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+#    And I click on the "Clients" element
+#    And I should see the "EC_CLIENT_NAME_TWO" element
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
@@ -137,7 +137,7 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
 
-  @Positive @Regression @P1 #TC-2936
+  @Positive @Regression @P1 @Runn #TC-2936
   Scenario: CBA Changes Updating Course Validation Additional Scenarios
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
@@ -168,11 +168,11 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I click on the "Save" "Product Factory button"
     Then I should see the "Capacity updated on Course Instances." message
 
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
-
-    And I should see the "01/09/2025" element
-    And I should see the "2" element
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
+#    And I click on the "Search" "Product Factory button"
+#    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+#
+#    And I should see the "01/09/2025" element
+#    And I should see the "2" element

@@ -1,4 +1,4 @@
-@Mobile
+@Mobile @Tablet
 Feature: The Hub - Web Pages - CMS pages with parent/child relationships
   As an admin, when creating a CMS page,
   I expect to be able to add a CMS page as a CHILD of another CMS page and have that reflected in the Hub
@@ -8,8 +8,8 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
       |5|I wait for "15" seconds|
 
-  @Positive @iPad @iPhone @Samsung #TC-1318
-  Scenario: Validate Web Pages Parent Child Relationships
+  @Positive @iPad @iPhone @Samsung  #TC-1318
+  Scenario: Validate Web Pages Parent Child Relationships_Mobile
     #Create Parent CMS Page
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     When I click on the "Add" "BPP Digital Admin Page Button"
@@ -53,6 +53,8 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     When I should scroll to the "top" of the page
     Then I execute "Publish a CMS or Blog Post page" reusable step
     And I execute "Log Out from Hub Admin" reusable step
+    And Browser deletes cookies
+    And I wait for "2" seconds
 
     #Validate in HUB
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
@@ -67,6 +69,7 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     And I click on the "Hub VPE Mobile Hamburger Menu" element
     And I should see the "EC_AUTO_CHILD_CMS_PAGE" element
     Then I click on the "Direct App Mobile Logout" element
+    And Browser deletes cookies
 
     #Delete created CMS pages
     When I execute "Log In to Hub as Admin" reusable step replacing some steps
