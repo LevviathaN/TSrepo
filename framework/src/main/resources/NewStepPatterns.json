@@ -184,6 +184,10 @@
     "value": "^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$"
   },
   {
+    "name": "I_VALIDATE_TEXT_IF",
+    "value": "^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element if \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
     "name": "WAIT_FOR",
     "value": "^I wait for \"([^\"]*)\" seconds$"
   },

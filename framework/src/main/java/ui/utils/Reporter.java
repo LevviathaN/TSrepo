@@ -645,10 +645,10 @@ public class Reporter {
                 && System.getProperty("BstackPlan").equalsIgnoreCase("Venus")) {
             return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackVenusBuild") + "/sessions/" + sessionId);
         } else if (System.getProperties().containsKey("BstackPlan")
-                & System.getProperty("BstackPlan").equalsIgnoreCase("Terra")) {
+                && System.getProperty("BstackPlan").equalsIgnoreCase("Terra")) {
             return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackTerraBuild") + "/sessions/" + sessionId);
         } else if (System.getProperties().containsKey("BstackPlan")
-                & System.getProperty("BstackPlan").equalsIgnoreCase("Terra")) {
+                && System.getProperty("BstackPlan").equalsIgnoreCase("Terra")) {
             return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackTitanBuild") + "/sessions/" + sessionId);
         } else
             return String.format("https://api.browserstack.com/automate/builds/" + FileIO.getConfigProperty("browserStackBuild") + "/sessions/" + sessionId);
