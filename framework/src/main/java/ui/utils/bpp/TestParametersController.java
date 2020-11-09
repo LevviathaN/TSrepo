@@ -169,10 +169,6 @@ public class TestParametersController {
                 return parameter;
             }
 
-            if (parameter.equals(KEYWORD_SF_DATE)) {
-                return KeywordsHandler.salesForceDateAPIdateFormat();
-            }
-
             //split parameter into two parts: static text, and KW_ value itself
             String[] splitArray = parameter.split("[<>]");
             StringBuilder resultingValue = new StringBuilder();
