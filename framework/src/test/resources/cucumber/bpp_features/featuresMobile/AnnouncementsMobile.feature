@@ -48,7 +48,7 @@ Feature: BPP University Hub Announcements
     And I wait for "3" seconds
     Then I shouldn't see the "EC_AUTO_ANNOUNCEMENT_CONTENT" "element"
 
-  @Tablet @IOS
+  @iPad @iPhone
   Scenario: Hub Announcements_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "autolawandasalazar5614@guerrillamail.info" text to the "Email" "Build Empire text field" |

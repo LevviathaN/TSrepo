@@ -16,7 +16,7 @@
     "06~ Christian - Presbyterian Church in Ireland","07~ Christian - Church of Ireland","08~ Christian - Methodist Church in Ireland",
     "09~ Christian - Other denomination","10~ Hindu","11~ Jewish","12~ Muslim","13~ Sikh","14~ Spiritual","80~ Any other religion or belief","98~ Information refused"],
   "Student_Occupation__pc":["1111~ Senior officials in national government","1133~ Purchasing managers","2128~ Planning & quality control engineers","2432~ Town planners"],
-  "PersonBirthdate":"KW_AUTO_SFDATE",
+  "PersonBirthdate":"1995-10-10",
   "Gender__pc":["Male","Female"],
   "Passport_Number__pc":"KW_AUTO_RANDOMNUMBER|########",
   "Primary_Nationality__pc":["a0Qg00000038bB4EAI","a0Qg00000038bB5EAI","a0Qg00000038bCIEAY","a0Qg00000038bAPEAY","a0Qg00000038bB2EAI"],

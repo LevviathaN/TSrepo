@@ -224,10 +224,7 @@ Feature: BPP Digital General Review
     Then I wait for "4" seconds
     Then I validate text "CONTAINS=Contact Us" to be displayed for "BPP Digital Breadcrumb Level Two" element
 
-
-
-
-  @Mobile
+  @Mobile @iPhone
   Scenario: General Review_Mobile
     When I fill the "BPP Digital Find a Course Search Field" field with "Law"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Find a Course Search Field"
