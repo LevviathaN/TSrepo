@@ -58,8 +58,8 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
 
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
     Then I should see the "Default Location" "Product Factory edit button"
@@ -108,7 +108,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And I click on the "Yes" "Product Factory button"
     Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
 
-  @Positive @P2 #TC-2407
+  @Positive @P2 @Run #TC-2407
   Scenario: Amend Non Draft Course Instance Additional Scenario
     And I execute "Create Course Instance" reusable step replacing some steps
       |14|I set "2" text to the "Number of Sessions" "Product Factory text field"|
@@ -165,8 +165,8 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     #Verify absence of Course edit buttons
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     Then I should see the "Default Location" "Product Factory edit button"
     And I should see the "Capacity" "Product Factory edit button"

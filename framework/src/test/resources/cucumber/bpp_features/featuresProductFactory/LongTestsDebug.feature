@@ -1,6 +1,7 @@
 Feature: Long Tests Debug
   Created to make debuging late stages of long Product Factory tests (Courses, Materials, CBAs) effectively
 
+  @Runn
   Scenario: Create Debugging Data
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
@@ -108,3 +109,13 @@ Feature: Long Tests Debug
 #    And I execute "Create Material" reusable step replacing some steps
 #      |6|I set "~Price[2000]" text to the "Price (£)" "Product Factory text field"|
 #      |7|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
+      Given I execute "Create Course Instance" reusable step
+      When I click on the "Products" "Product Factory navigation item"
+      When I click on the "Courses" "Product Factory navigation sub item"
+
+      And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+      And I click on the "submit" "element by type"
+      Then I should see the "EC_BODY_SHORT_NAME" element
+      And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+      When I click on the "Clear the search text" "element by title"
+      Then Attribute "value" of "Search" "Product Factory text field" should have value ""

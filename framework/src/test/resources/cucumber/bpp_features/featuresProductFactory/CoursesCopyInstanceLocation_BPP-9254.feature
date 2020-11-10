@@ -39,8 +39,8 @@ Feature: Course - Copy Instance Location to Sessions Option
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     Then I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Default Location" "Product Factory edit button"
     And I click on the "EC_LOCATION_NAME_TWO" "Product Factory select button"
