@@ -4,6 +4,7 @@ import api.RestApiController;
 import api.SoapApiController;
 import api.Utilities;
 import io.restassured.response.Response;
+import ui.utils.BPPLogManager;
 import ui.utils.GlobalDataBridge;
 import ui.utils.Reporter;
 import ui.utils.bpp.ExecutionContextHandler;
@@ -104,6 +105,7 @@ public class SalesforceBusinessProcessesUAT {
         GlobalDataBridge.getInstance().setBufferValueByKey("Student UAT".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
         assertThat(recordData.get(86), matchesPattern("BP[0-9]+"));
+        BPPLogManager.getLogger().info("Banner ID: " + recordData.get(86));
 
         return this;
     }

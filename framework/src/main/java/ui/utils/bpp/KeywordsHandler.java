@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -89,22 +90,5 @@ public class KeywordsHandler {
         else {
             return i + "-" + checkLastDigit;
         }
-    }
-
-    /**
-     * Used to create keyword special for Salesforce API date format
-     *
-     */
-    public static String salesForceDateAPIdateFormat() {
-        LocalDate startDate = LocalDate.of(1980,2,1);
-        LocalDate endDate = LocalDate.of(2001,10,20);
-        long start = startDate.toEpochDay();
-        long end = endDate.toEpochDay();
-        Date randomDate = new Date(ThreadLocalRandom.current()
-                .nextLong(start, end));
-        String pattern = "yyyy-MM-dd";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String date = simpleDateFormat.format(randomDate);
-        return date;
     }
 }
