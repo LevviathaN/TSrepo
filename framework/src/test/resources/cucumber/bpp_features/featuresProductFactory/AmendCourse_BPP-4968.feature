@@ -108,7 +108,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And I click on the "Yes" "Product Factory button"
     Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
 
-  @Positive @P2 @Run #TC-2407
+  @Positive @P2 #TC-2407
   Scenario: Amend Non Draft Course Instance Additional Scenario
     And I execute "Create Course Instance" reusable step replacing some steps
       |14|I set "2" text to the "Number of Sessions" "Product Factory text field"|
