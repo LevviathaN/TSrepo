@@ -46,7 +46,7 @@ Feature: Salesforce
 
 
   Scenario: Create Address
-    And I click on the "Salesforce Addresses Quick Link Tab" button
+    And I click on the "Salesforce Addresses Quick Link Tab" button by JS
     And I wait for "1" seconds
     And I click on the "Salesforce Student Account Pages New button" button
     And I click on the "Address Type" "Salesforce dropdown field"

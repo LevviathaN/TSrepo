@@ -2642,7 +2642,7 @@
   },
   {
     "name": "Salesforce Addresses Quick Link Tab",
-    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')])[1]"
   },
   {
     "name": "Salesforce Opportunities Quick Link Tab",
