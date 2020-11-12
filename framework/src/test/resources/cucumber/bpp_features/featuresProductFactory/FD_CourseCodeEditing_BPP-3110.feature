@@ -8,7 +8,7 @@ Feature: Financial Dimension - Course Code - Editing - BPP-3110
     Given I execute "Log In" reusable step
     And I execute "Create Course Financial Dimension" reusable step
 
-  @Positive @P1 @DoNotRun #TC-1674, TC-1676 Potential bug: Cannot change Financials
+  @Positive @P1 #TC-1674, TC-1676
   Scenario: Edit FD Code on Courses Page
     When I click on the "Products" "Product Factory navigation item"
     And I click on the "Courses" "Product Factory navigation sub item"

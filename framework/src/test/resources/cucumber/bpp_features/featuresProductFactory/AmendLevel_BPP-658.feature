@@ -19,7 +19,7 @@ Feature: Amend Reference Data - Level - BPP-658
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
   @Negative @P2 #TC-822
-  Scenario: Submitting Incomplete Level Fields
+  Scenario: Amend Submitting Incomplete Level Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Levels" "Product Factory navigation sub item"
     When I click on the "EC_LEVEL_NAME" "Product Factory edit button"
