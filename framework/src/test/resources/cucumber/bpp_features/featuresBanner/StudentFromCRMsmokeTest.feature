@@ -89,8 +89,8 @@ Feature: Student from CRM Smoke Test
     And I execute "Get Profile ID" reusable step
     And I execute "Create Opportunity" reusable step
     And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
-    And I click on the "Product Catalog Items" "Salesforce related new button"
-    And I click on the "New" "Salesforce dropdown option"
+    And I click on the "Product Catalog Items" "Salesforce cases status option"
+    And I click on the "Salesforce New Case Button" button
     And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox
@@ -110,8 +110,8 @@ Feature: Student from CRM Smoke Test
     Then Attribute "title" of "Banner SPAIDEN First Name filed value" should have value "EC_AUTO_FIRSTNAME"
     And I switch to window with index "1"
     #Edit Student
-    And I click on the "Salesforce More Actions Dropdown" button
-    And I click on the "Edit" "Salesforce dropdown option"
+    And I click on the "Salesforce Quotes Edit" button
+    And I wait for "2" seconds
     And I set "Updated[FIRSTNAME]" text to the "First Name" "Salesforce text field"
     And I set "Updated[LASTNAME]" text to the "Last Name" "Salesforce text field"
     And I click on the "Salesforce Account Edit Save button" button
@@ -176,8 +176,8 @@ Feature: Student from CRM Smoke Test
     And I execute "Get Profile ID" reusable step
     And I execute "Create Opportunity" reusable step
     And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
-    And I click on the "Product Catalog Items" "Salesforce related new button"
-    And I click on the "New" "Salesforce dropdown option"
+    And I click on the "Product Catalog Items" "Salesforce cases status option"
+    And I click on the "Salesforce New Case Button" button
     And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox
@@ -223,7 +223,7 @@ Feature: Student from CRM Smoke Test
     And I switch to window with index "1"
     And I wait for "3" seconds
     And I click on the "Salesforce Account Related Tab" link by JS
-    And I click on the "Salesforce Addresses link" link
+    And I click on the "/Addresses__r/view" "link address" by JS
     And I click on the "Billing" "Salesforce Address Type link"
     Then I should see the "EC_STREET_ONE" element
     Then I should see the "EC_STREET_TWO" element
