@@ -312,6 +312,10 @@
     "value": "xpath=//label[contains(normalize-space(),'PARAMETER')]/following-sibling::*/descendant-or-self::input"
   },
   {
+    "name": "Hub Deadline Activity Name",
+    "value": "xpath=//h2[text()='PARAMETER']"
+  },
+  {
     "name": "Product Factory CBA Course Institute Fee edit button",
     "value": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Edit']"
   },

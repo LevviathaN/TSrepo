@@ -1,4 +1,4 @@
-@BuildEmpire @DigitalSite
+@BuildEmpire @DigitalSite @CourseAndInsights
 Feature: BPP Digital Course and Insight Card Style Changes
 
   Background:
@@ -6,8 +6,7 @@ Feature: BPP Digital Course and Insight Card Style Changes
 
   @Positive @Smoke #TC-1971
   Scenario: Course and Insight Card Style Changes
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    And I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Law" "BPP Digital Student Applications Menu link"
     And I wait for "2" seconds
     Then I validate text "Law" to be displayed for "BPP Digital Course Card Profession text field" element

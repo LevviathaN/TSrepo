@@ -5,7 +5,7 @@ Feature: As a student who, is under 18, I expect to provide more information abo
     Given I execute "Register New Student Account" reusable step
 
   @Under18 @ParentGuardian #TC-1734, TC-1757, TC-1759
-  Scenario: As a student who, is under 18, I expect to provide more information about my Parent/Legal Guardian
+  Scenario: As a student who, is under 18, I expect to provide more information about my Legal Guardian
     When I execute "Create University Degree Apprenticeships Application" reusable step
     Given I click on the "Direct App Start Application" button
     And I click on the "Eligibility criteria" "Build Empire application section"

@@ -7,7 +7,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import ui.utils.bpp.ExecutionContextHandler;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -94,10 +93,11 @@ public class Tools {
         return result;
     }
 
-    /** Convert Document into a String
+    /**
+     * Convert Document into a String
      *
      * @author Ruslan Levytskyi
-     * */
+     */
     public static String getHtmlFromDocument(Document doc) {
         String htmlString;
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -112,10 +112,11 @@ public class Tools {
         }
     }
 
-    /** Method to convert Document into OutputStream
+    /**
+     * Method to convert Document into OutputStream
      *
      * @author Ruslan Levytskyi
-     * */
+     */
     public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
@@ -133,9 +134,11 @@ public class Tools {
         byte[] data = fileContent.getBytes();
         Path p = Paths.get(fileName);
 
-        try{
+        try {
             Files.deleteIfExists(p);
-        }catch(IOException e){e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try {
             OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE));
@@ -146,24 +149,25 @@ public class Tools {
         }
     }
 
-    /** Method to get desired node from document by nodeName and nodeAttribute
+    /**
+     * Method to get desired node from document by nodeName and nodeAttribute
      *
      * @author Ruslan Levytskyi
-     * */
+     */
     public static List<Node> getNodeList(Document doc, String nodeName, String attributeName, String attributeValue) {
         List<Node> neededNodesList = new ArrayList<>();
         NodeList nodeList = doc.getElementsByTagName(nodeName);
 
         Node nodeFromList;
         List<String> nodeValuesList = new ArrayList<>();
-        for (int i=0; i < nodeList.getLength(); i++) {
+        for (int i = 0; i < nodeList.getLength(); i++) {
             nodeFromList = nodeList.item(i);
             NamedNodeMap nodeFromListAttributes = nodeFromList.getAttributes();
 
             Node attributeNode;
-            for (int j=0; j < nodeFromListAttributes.getLength(); j++) {
+            for (int j = 0; j < nodeFromListAttributes.getLength(); j++) {
                 attributeNode = nodeFromListAttributes.item(j);
-                if (attributeNode.getNodeName().contains(attributeName)){
+                if (attributeNode.getNodeName().contains(attributeName)) {
                     if (attributeNode.getNodeValue().contains(attributeValue)) {
                         neededNodesList.add(nodeFromList);
                         String spanNodeValue = nodeFromList.getTextContent();
@@ -176,7 +180,9 @@ public class Tools {
         return neededNodesList;
     }
 
-    /** Read file to string */
+    /**
+     * Read file to string
+     */
     public static String readFile(String path, Charset encoding) {
         byte[] encoded = new byte[1];
         try {
@@ -185,5 +191,60 @@ public class Tools {
             e.printStackTrace();
         }
         return new String(encoded, encoding);
+    }
+
+    /**
+     * editMonth() and editDay() are created to cover BPP-741 for activity deadlines
+     */
+    public static String editMonth(String value, int start, int end) {
+        String trimmedNumber = value.substring(start, end);
+        String month = null;
+        switch (trimmedNumber) {
+            case "01":
+                month = "January";
+                break;
+            case "02":
+                month = "February";
+                break;
+            case "03":
+                month = "March";
+                break;
+            case "04":
+                month = "April";
+                break;
+            case "05":
+                month = "May";
+                break;
+            case "06":
+                month = "June";
+                break;
+            case "07":
+                month = "July";
+                break;
+            case "08":
+                month = "August";
+                break;
+            case "09":
+                month = "September";
+                break;
+            case "10":
+                month = "October";
+                break;
+            case "11":
+                month = "November";
+                break;
+            case "12":
+                month = "December";
+                break;
+            default:
+                BPPLogManager.getLogger().info("EC variable with DEADLINEMONTH not found!");
+        }
+        BPPLogManager.getLogger().info("Changed month number to: " + month);
+        return month;
+    }
+
+    public static String editDay(String value, int start, int end) {
+        String trimmedNumber = value.substring(start, end);
+        return trimmedNumber;
     }
 }
