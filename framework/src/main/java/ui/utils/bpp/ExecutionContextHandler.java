@@ -3,6 +3,7 @@ package ui.utils.bpp;
 import datageneration.execution.ExecutionContext;
 import ui.utils.BPPLogManager;
 import ui.utils.Reporter;
+import ui.utils.Tools;
 
 import java.util.Map;
 
@@ -41,8 +42,12 @@ public class ExecutionContextHandler {
         }
     }
 
-    public static synchronized void setExecutionContextValueByKey(String key, String value){
-        handler.get().setValue(key, value);
+    public static synchronized void setExecutionContextValueByKey(String key, String value) {
+        if (key.contains("DEADLINEDAY")) {
+            handler.get().setValue(key, Tools.editDay(value, 0, 2));
+        } else {
+            handler.get().setValue(key, value);
+        }
     }
 
     public static void resetExecutionContextValues(){

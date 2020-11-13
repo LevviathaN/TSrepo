@@ -495,7 +495,7 @@ public class StepDefinitions extends SeleniumHelper {
             Reporter.log("Selected \"" + autoSelectedValue + "\" value from " + element);
         } else {
             Reporter.log("Selecting \"" + value + "\" value from " + element);
-            selectValueFromDropDown(initElementLocator(element), value);
+            selectValueFromDropDown(initElementLocator(element), TestParametersController.checkIfSpecialParameter(value));
         }
     }
 
