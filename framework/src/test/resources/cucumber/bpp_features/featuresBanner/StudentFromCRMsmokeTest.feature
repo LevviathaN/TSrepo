@@ -14,8 +14,8 @@ Feature: Student from CRM Smoke Test
     And I execute "Create Opportunity" reusable step replacing some steps
     |12|I click on the "Salesforce Account Creation Save button" link|
     And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
-    And I click on the "Product Catalog Items" "Salesforce related new button"
-    And I click on the "New" "Salesforce dropdown option"
+    And I click on the "Product Catalog Items" "Salesforce cases status option"
+    And I click on the "Salesforce New Case Button" button
     And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox

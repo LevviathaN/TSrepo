@@ -516,6 +516,10 @@
     "value": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*"
   },
   {
+    "name": "Salesforce navigation href links",
+    "value": "xpath=//a[contains(@href,'PARAMETER')]/span"
+  },
+  {
     "name": "Salesforce navigation menu dropdown option",
     "value": "xpath=//span[text()='PARAMETER']/../.."
   },

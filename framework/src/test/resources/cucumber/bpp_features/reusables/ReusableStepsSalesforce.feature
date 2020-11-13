@@ -18,15 +18,16 @@ Feature: Salesforce
     And I click on the "Sales" "Salesforce app launcher app"
 
   Scenario: Create Student Account
-    When I click on the "Accounts" "Salesforce navigation menu dropdown"
+    When I click on the "Account/home" "Salesforce navigation href links"
     And I wait for "2" seconds
-    And I click on the "New Account" "Salesforce navigation menu dropdown option"
+    And I click on the "Salesforce New Case Button" button
     And I click on the "Student Account" "Salesforce radiobutton"
     And I click on the "Next" "button"
     And I set "Auto[FIRSTNAME]" text to the "First Name" "Salesforce text field"
     And I set "Auto[LASTNAME]" text to the "Last Name" "Salesforce text field"
     And I click on the "Student Type" "Salesforce dropdown field"
-    And I click on the "Domestic" "option"
+    And I wait for "2" seconds
+    And I click on the "Domestic" "element by title"
     And I set "31/01/1998" text to the "Date of Birth" "Salesforce date field"
     And I click on the "Gender" "Salesforce dropdown field"
     And I click on the "Male" "option"
@@ -39,10 +40,11 @@ Feature: Salesforce
     And I set "[PHONE]" text to the "Home Phone" "Salesforce text field"
     And I click on the "Legal Entity" "Salesforce dropdown field"
     And I click on the "UC~COL" "Salesforce dropdown field option"
+    And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
     And I click on the "Preferred Email" "Salesforce dropdown field"
     And I click on the "Personal" "Salesforce dropdown field option"
-    And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
-    And I click on the "Save" "button"
+    And I click on the "Salesforce Save Account Button" button by JS
+    And I wait for "4" seconds
 
 
   Scenario: Create Address
@@ -55,8 +57,8 @@ Feature: Salesforce
     And I set "London" text to the "City" "Salesforce text field"
     And I set "KW_AUTO_ZIPCODE|#####" text to the "Zip/Postal Code" "Salesforce text field"
     And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
-    Then I wait for "1" seconds
-    And I click on the "Kingdom" "option"
+    Then I wait for "2" seconds
+    And I click on the "Kingdom" "option" by JS
     And I click on the "Salesforce Account Creation Save button" element
     Then I should see the " was created." message
     And I click on the "Salesforce Student Account Link Address Page" element
@@ -103,13 +105,16 @@ Feature: Salesforce
     And I click on the "Salesforce Qualifications link" element
     And I click on the "Salesforce Student Account Pages New button" button
     And I set "LAW" text to the "Qualification Subject" "Salesforce New Qualification input fields"
-    And I click on the "Salesforce First Qualification Subject" link
+    And I wait for "2" seconds
+    And I click on the "Salesforce First Qualification Subject" link by JS
     And I capture text data "Salesforce Qualification Subject Capture information" as "EC_QUALIFICATION_SUBJECT" variable
     And I set "ACC" text to the "Qualification Institution" "Salesforce New Qualification input fields"
-    And I click on the "Salesforce First Qualification Subject" link
+    And I wait for "2" seconds
+    And I click on the "Salesforce First Qualification Subject" link by JS
     And I capture text data "Salesforce Qualification Institution Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
     And I set "ACC" text to the "Qualification Type" "Salesforce New Qualification input fields"
-    And I click on the "Salesforce First Qualification Subject" link
+    And I wait for "2" seconds
+    And I click on the "Salesforce First Qualification Subject" link by JS
     And I capture text data "Salesforce Qualification Type Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
     And I remember "KW_AUTO_RANDOMNUMBER|####" text as "EC_TARIFF_POINT" variable
     And I set "EC_TARIFF_POINT" text to the "Tariff Points" "Salesforce New Qualification input fields"

@@ -2,7 +2,7 @@
 Feature: Admitting a single student in Banner - BPP-350
   As a member of the Admissions team, I want to admit a student in Banner.
 
-  @Positive @AdmitStudent @BET #TC-547
+  @Positive @AdmitStudent #TC-547
   Scenario: Admit Student in Banner
     Given I execute "Log In To Salesforce" reusable step
     Given I execute "Create Student Account" reusable step
