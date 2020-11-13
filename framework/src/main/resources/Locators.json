@@ -2610,7 +2610,7 @@
   },
   {
     "name": "Salesforce Qualifications link",
-    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='Qualifications'])[1]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[contains(text(),'Qualifications')])[1]"
   },
   {
     "name": "Salesforce Search",
@@ -2686,7 +2686,7 @@
   },
   {
     "name": "Salesforce Addresses Quick Link Tab",
-    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')])[1]"
   },
   {
     "name": "Salesforce Opportunities Quick Link Tab",
@@ -2815,6 +2815,10 @@
   {
     "name": "Salesforce Booking Lines Number",
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Booking Lines')]/following::span)[1]"
+  },
+  {
+    "name": "Salesforce Save Account Button",
+    "value": "xpath=//button[contains(@class,'forceActionButton')]/span[normalize-space()='Save']"
   },
   {
     "name": "Totara Account Expandable Menu",
