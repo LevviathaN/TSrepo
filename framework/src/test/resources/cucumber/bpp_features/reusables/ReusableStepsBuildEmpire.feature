@@ -6,7 +6,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Register Link on Login Page" button
     And I set "Auto[FIRSTNAME]" text to the "First name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Surname" "Build Empire text field"
-    And I set "Auto[EMAIL-GUERILLA]" text to the "Email" "Build Empire text field"
+    And I set "Auto[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"
     And I set "[PHONE-0913]" text to the "Telephone number" "Build Empire text field"
     Then I remember "A@polloGlobal2020" text as "EC_PASSWORD" variable
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
@@ -194,11 +194,11 @@ Feature: BuildEmpire
     And I wait for "1" seconds
     Then I click on the "Professional Career Development Programmes Scotland" "Build Empire application type"
     And I wait for "1" seconds
-    And I hover over the "Direct App Programmes Programm Dropdown" button
-    And I click on the "Direct App Programmes Programm Dropdown" element
-    Then I wait for "1" seconds
-    Then I click on the "Chartered Manager" "Build Empire application type"
-    And I wait for "1" seconds
+    #And I hover over the "Direct App Programmes Programm Dropdown" button
+    #And I click on the "Direct App Programmes Programm Dropdown" element
+    #Then I wait for "1" seconds
+    #Then I click on the "Chartered Manager" "Build Empire application type"
+    #And I wait for "1" seconds
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -328,8 +328,8 @@ Feature: BuildEmpire
     And Browser performs "Refresh" command
     And I wait for "5" seconds
     And I click on the "Application documents" "Build Empire application section"
-    And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    #And I click on the "Download Application of" "Build Empire application section"
+    #Then I switch to window with index "0"
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -360,10 +360,10 @@ Feature: BuildEmpire
     And I click on the "Direct App What Are You Applying For Dropdown" element
     And I wait for "2" seconds
     Then I click on the "Professional Career Development Programmes England" "Build Empire application type"
-    And I hover over the "Direct App Programmes Programm Dropdown" button
-    And I click on the "Direct App Programmes Programm Dropdown" element
-    And I wait for "1" seconds
-    Then I click on the "Chartered Manager" "Build Empire application type"
+    #And I hover over the "Direct App Programmes Programm Dropdown" button
+    #And I click on the "Direct App Programmes Programm Dropdown" element
+    #And I wait for "1" seconds
+    #Then I click on the "Chartered Manager" "Build Empire application type"
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -405,14 +405,14 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
     And I click on the "Diret App Gender Not To Say" element
-    And I click on the "Diret App Gender At Birth Dropdown" element
-    And I click on the "Diret App Gender At Birth Yes" element
+    #And I click on the "Diret App Gender At Birth Dropdown" element
+    #And I click on the "Diret App Gender At Birth Yes" element
     And I click on the "Diret App Ethnicity Dropdown" element
     And I click on the "Diret App Ethnicity White And Black African" element
-    And I click on the "Diret App Religion Dropdown" element
-    And I click on the "Diret App Religion Chrisitan" element
-    And I click on the "Diret App Sexual Orientation Dropdown" element
-    And I click on the "Diret App Sexual Orientation Heterosexual" element
+    #And I click on the "Diret App Religion Dropdown" element
+    #And I click on the "Diret App Religion Chrisitan" element
+    #And I click on the "Diret App Sexual Orientation Dropdown" element
+    #And I click on the "Diret App Sexual Orientation Heterosexual" element
     And I click on the "Diret App Learning Disability No" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "1" seconds
@@ -1300,7 +1300,7 @@ Feature: BuildEmpire
     And I wait for "1" seconds
     And I fill the "Direct App Admin Company Text Field Line Manager Creation" field with "Automation"
     Then I click on the "Automation" "Build Empire application type"
-    Then I remember "Email[#####]/@/guerrillamail.info" text as "EC_LINEMANAGER_EMAIL" variable
+    Then I remember "Email[#####]/@/harakirimail.com" text as "EC_LINEMANAGER_EMAIL" variable
     And I fill the "Direct App Admin Email Line Manager Creation" field with "EC_LINEMANAGER_EMAIL"
     And I fill the "Direct App Admin Firstname Line Manager Creation" field with "AutoFirst"
     And I fill the "Direct App Admin Lastname Line Manager Creation" field with "AutoLast"
