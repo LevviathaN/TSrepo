@@ -1928,6 +1928,34 @@
     "value": "xpath=//div[@id='email_viewer_header']/following::h1"
   },
   {
+    "name": "Harakirimail Validate Mitigating Circumstances Submitted Link",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[7]/td[normalize-space()='Your Mitigating Circumstances has been submitted']"
+  },
+  {
+    "name": "Harakirimail Your MC Are Now Reviewed",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[6]/td[normalize-space()='Your Mitigating Circumstances are now being reviewed']"
+  },
+  {
+    "name": "Harakirimail Your MC Referred",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[5]/td[normalize-space()='Your Mitigating Circumstances application has been referred']"
+  },
+  {
+    "name": "Harakirimail Your MC Progressing",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[4]/td[normalize-space()='Your Mitigating Circumstances is progressing']"
+  },
+  {
+    "name": "Harakirimail Your MC Outcome",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[3]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
+  },
+  {
+    "name": "Harakirimail Your MC Accepted",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[2]/td[normalize-space()='Your Mitigating Circumstances application has been accepted']"
+  },
+  {
+    "name": "Harakirimail Your MC Outcome Second",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
+  },
+  {
     "name": "Hub VPE Active First Topic",
     "value": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]"
   },
