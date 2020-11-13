@@ -38,8 +38,8 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
     And I click on the "Add Material" "button"
@@ -51,8 +51,8 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
     And I click on the "Add Material" "button"
@@ -64,8 +64,8 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
     And I click on the "Add Material" "button"
@@ -81,8 +81,8 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
     And I click on the "Add Material" "button"

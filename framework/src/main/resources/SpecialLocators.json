@@ -401,7 +401,7 @@
   },
   {
     "name": "Product Factory course instance Activate button",
-    "value": "xpath=//p[text()='PARAMETER']/../../../../following-sibling::div/button/span[text()='Activate']/.."
+    "value": "xpath=//p[text()='PARAMETER']/../../../following-sibling::div/button/span[text()='Activate']/.."
   },
   {
     "name": "Product Factory course instance Deactivate button",
@@ -413,11 +413,11 @@
   },
   {
     "name": "Product Factory course instance Publish button",
-    "value": "xpath=//p[text()='PARAMETER']/../../../../following-sibling::div/button/span[text()='Publish']/.."
+    "value": "xpath=//p[text()='PARAMETER']/../../../following-sibling::div/button/span[text()='Publish']/.."
   },
   {
     "name": "Product Factory course instance sessions dropdown button",
-    "value": "xpath=//p[text()='PARAMETER']/../../../../../../following-sibling::div/span[1]"
+    "value": "xpath=//p[text()='PARAMETER']/../../../../../following-sibling::div/span[1]"
   },
   {
     "name": "Product Factory dialog checkbox",
@@ -602,6 +602,14 @@
   {
     "name": "element by value",
     "value": "xpath=//*[@value='PARAMETER']"
+  },
+  {
+    "name": "element by title",
+    "value": "xpath=//*[@title='PARAMETER']"
+  },
+  {
+    "name": "element by type",
+    "value": "xpath=//*[@type='PARAMETER']"
   },
   {
     "name": "exact element",

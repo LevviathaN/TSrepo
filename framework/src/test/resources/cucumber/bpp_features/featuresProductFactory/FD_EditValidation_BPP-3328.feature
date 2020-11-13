@@ -146,7 +146,7 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
     And I click on the "Cancel" "Product Factory button"
 
-  @Positive @Negative @P2 @DoNotRun #TC-1807 Potential bug: Cannot change Financials
+  @Positive @Negative @P2 #TC-1807
   Scenario: Verify that Financial Dimensions for Material or Course can not be changed after at least one item is created
     ######Precondition Create Material Financial Dimensions
     ###First Financial Dimension for Material Block (Pre-requisite)
