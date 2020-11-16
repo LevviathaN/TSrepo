@@ -520,6 +520,10 @@
     "value": "xpath=(//div[contains(@class,'cms-accordion-component container')])[2]"
   },
   {
+    "name": "BPP Digital Insights Container",
+    "value": "xpath=//div[@class='show-insights']/div[@class='container']"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -2474,7 +2478,7 @@
   },
   {
     "name": "Salesforce Case Milestones Tab",
-    "value": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//ul[@class='slds-grid slds-wrap list']/li[6]"
+    "value": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//ul[@class='slds-grid slds-wrap list']/li//a[contains(.,'Case Milestones')]"
   },
   {
     "name": "Salesforce Case Milestones Tab First Milestone Name",
