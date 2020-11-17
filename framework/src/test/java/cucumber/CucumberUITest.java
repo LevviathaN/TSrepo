@@ -13,7 +13,7 @@ import ui.utils.Reporter;
 import ui.utils.RetryAnalyzer;
 
 @CucumberOptions(
-        features = "src/test/resources/cucumber/bpp_features",
+        features = "src/test/resources/cucumber",
         glue = {"cucumber.stepdefs"},
         tags = {"@ProductFactory and not @BlockedByIssue and not @DoNotRun and not @DataGeneration"},
         plugin = {"pretty"})

@@ -96,6 +96,10 @@
     "value": "LOCATOR"
   },
   {
+    "name": "^I hover over the \"([^\"]*)\" \"([^\"]*)\"$",
+    "value": "LOC_PARAM,LOC_TEMPLATE"
+  },
+  {
     "name": "^I press \"([^\"]*)\" for \"([^\"]*)\"$",
     "value": "PARAM,LOCATOR"
   },

@@ -49,15 +49,10 @@ public class BaseUITest {
 
         try {
             BPPLogManager.getLogger().info("Driver creation");
-            //temporary hardcoded solution to run PF Cleanup on Firefox
-            if (method.getName().equals("runPFDatabaseCleanup")) {
-                DriverProvider.instance.set(DriverProvider.getFirefoxBrowserStack());
-                SeleniumHelper.driver.set(DriverProvider.instance.get());
-            } else {
-                SeleniumHelper.driver.set(DriverProvider.getDriver());
-            }
+            SeleniumHelper.driver.set(DriverProvider.getDriver());
             SeleniumHelper.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (Exception e) {
+            e.printStackTrace();
             Reporter.failTryTakingScreenshot("Before test failure during Driver creation. Please check options for test executions ");
             Reporter.flush();
             Assert.fail();

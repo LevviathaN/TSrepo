@@ -20,6 +20,10 @@
     "value": "^I hover over the \"([^\"]*)\" (?:button|link|option|element)$"
   },
   {
+    "name": "HOVER_OVER_SPECIAL",
+    "value": "^I hover over the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
     "name": "I_AM_LOGGED_IN_PF_AS",
     "value": "^I am logged into Product Factory as \"([^\"]*)\"$"
   },

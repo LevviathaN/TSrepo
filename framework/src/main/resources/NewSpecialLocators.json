@@ -559,6 +559,11 @@
     "name": "VLE Login Fields",
     "value": "xpath=//input[@name='PARAMETER']"
   },
+
+
+
+
+
   {
     "name": "button",
     "value": "xpath=//*[text()='PARAMETER']"
@@ -610,5 +615,32 @@
   {
     "name": "text contained in element",
     "value": "xpath=//*[contains(text(),'PARAMETER')]"
+  },
+  {
+    "name": "element by name",
+    "value": "xpath=//*[@name='PARAMETER']"
+  },
+  {
+    "name": "element by id",
+    "value": "xpath=//*[@id='PARAMETER']"
+  },
+  {
+    "name": "element by value",
+    "value": "xpath=//*[@value='PARAMETER']"
+  },
+  {
+    "name": "element by type",
+    "value": "xpath=//*[@type='PARAMETER']"
+  },
+
+
+
+  {
+    "name": "AutomationPractice PLP Add to Cart Button",
+    "value": "xpath=//*[normalize-space()='PARAMETER']/../following-sibling::div[@class='button-container']/a[@title='Add to cart']"
+  },
+  {
+    "name": "AutomationPractice PLP Product Tile",
+    "value": "xpath=//a[normalize-space()='PARAMETER']/parent::h5[@itemprop='name']"
   }
 ]

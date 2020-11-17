@@ -291,4 +291,28 @@ public class SpecialStepDefs extends SeleniumHelper {
             Reporter.fail("No such locator template key");
         }
     }
+
+    /**
+     * Definition to hover over element
+     *
+     * @param elementLocator locator of element you want to hover over
+     *                Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
+     */
+    @When("^I hover over the \"([^\"]*)\" \"([^\"]*)\"$")
+    public void hover_over_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I hover over the '" + elementLocator + "' element");
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            BPPLogManager.getLogger().info("Hovering over: " + elementLocator + " element");
+            hoverItem(initElementLocator(resultingXpath));
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
 }
