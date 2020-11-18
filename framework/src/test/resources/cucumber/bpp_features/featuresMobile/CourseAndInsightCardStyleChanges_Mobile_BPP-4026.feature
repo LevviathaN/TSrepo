@@ -4,7 +4,7 @@ Feature: BPP Digital Course and Insight Card Style Changes
   Background:
     Given I am on "MD_COMMON_LINKS_BPPDIGITALINDEXURL" URL
 
-  @Positive @BET #TC-1971
+  @Positive @iPad @iPhone @Samsung #TC-1971
   Scenario: Course and Insight Card Style Changes
     And I click on the "Digital Site Mobile Hamburger Menu" element by JS
     And I wait for "2" seconds
