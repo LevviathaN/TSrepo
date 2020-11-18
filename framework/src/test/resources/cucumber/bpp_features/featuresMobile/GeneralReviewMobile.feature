@@ -51,6 +51,7 @@ Feature: BPP Digital General Review
     #View all
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "View all" "BPP Digital Explore Our Subjects item link"
+    And I wait for "1" seconds
     Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Page Header" element
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "Professional Qualifications" "BPP Digital Qualifications at Every Level item link"
@@ -77,141 +78,102 @@ Feature: BPP Digital General Review
     #Validate Main Menu Items
     #Law
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Law" "BPP Digital Mobile Courses Menu"
+    When I click on the "Courses" "BPP Digital Study expandable link"
+    And I click on the "Law" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Law" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Management
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Management" "BPP Digital Mobile Courses Menu"
+    #And I click on the "Digital Site Mobile Hamburger Courses" button by JS
+    And I click on the "Management" "BPP Digital Mobile Second Expandable Menu"
     And I wait for "1" seconds
     Then I validate text "CONTAINS=Business" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Innovation and Technology
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Innovation & Technology" "BPP Digital Mobile Courses Menu"
+    And I click on the "Innovation & Technology" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Innovation and Technology" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Financial Services
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Financial Services" "BPP Digital Mobile Courses Menu"
+    And I click on the "Financial Services" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Financial Services" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Governance, Risk and Compliance
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Governance, Risk & Compliance" "BPP Digital Mobile Courses Menu"
+    And I click on the "Governance, Risk & Compliance" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Governance, Risk and Compliance" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Nursing and Healthcare
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Nursing & Healthcare" "BPP Digital Mobile Courses Menu"
+    And I click on the "Nursing & Healthcare" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Nursing and Healthcare" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Human Resources
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Human Resources" "BPP Digital Mobile Courses Menu"
+    And I click on the "Human Resources" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Human Resources" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Insolvency
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Insolvency" "BPP Digital Mobile Courses Menu"
+    And I click on the "Insolvency" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Insolvency" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "1" seconds
-    #Actuary
-    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Actuary" "BPP Digital Mobile Courses Menu"
-    Then I validate text "CONTAINS=Actuary" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Chiropractic
     And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Chiropractic" "BPP Digital Mobile Courses Menu"
+    And I click on the "Chiropractic" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Chiropractic" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #Psychology
     And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Psychology" "BPP Digital Mobile Courses Menu"
+    And I click on the "Psychology" "BPP Digital Mobile Second Expandable Menu"
     And I wait for "1" seconds
     Then I validate text "CONTAINS=Psychology" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "1" seconds
     #View all courses
     And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
+    And I click on the "View all courses" "BPP Digital Mobile Second Expandable Menu"
     And I wait for "1" seconds
-    And I click on the "View all courses" "BPP Digital Mobile Courses Menu"
     Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "1" seconds
     #About Us
-    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "About Us" "BPP Digital Study expandable link"
+    Given I am on "https://web-stage-bppdigital.bppuniversity.com/about-bpp" URL
     And I wait for "1" seconds
-    And I click on the "About Us" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=About Us" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "2" seconds
     #Our People
-    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "About Us" "BPP Digital Study expandable link"
+    Given I am on "https://web-stage-bppdigital.bppuniversity.com/about-bpp/our-people" URL
     And I wait for "1" seconds
-    And I click on the "Our People" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Our People" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #BPP University
-    And I click on the "Digital Site Mobile Hamburger Menu" button by JS
-    When I click on the "About Us" "BPP Digital Study expandable link"
+    Given I am on "https://web-stage-bppdigital.bppuniversity.com/about-bpp/bpp-university" URL
     And I wait for "1" seconds
-    And I click on the "About BPP University" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=BPP University" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Locations
-    And I click on the "Digital Site Mobile Hamburger Menu" button
+    Given I am on "https://web-stage-bppdigital.bppuniversity.com/about-bpp/locations" URL
     And I wait for "1" seconds
-    When I click on the "About Us" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Study Centre Locations" "BPP Digital Mobile Second Expandable Menu"
     Then I validate text "CONTAINS=Locations" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Events
@@ -263,6 +225,7 @@ Feature: BPP Digital General Review
     #View all
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "View all" "BPP Digital Explore Our Subjects item link"
+    And I wait for "1" seconds
     Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Left Side Page Header" element
     When I click on the "Digital Site Mobile BPP Logo" link
     And I click on the "Professional Qualifications" "BPP Digital Qualifications at Every Level item link"
@@ -290,121 +253,84 @@ Feature: BPP Digital General Review
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Find a Course Search Field"
     Then I validate text "Automation General Review Profession Page" to be displayed for "BPP Digital Section First Article name" element
     #Validate Main Menu Items
-    #Law
-    And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Law" "BPP Digital Mobile Courses Menu"
-    Then I wait for "1" seconds
     #Management
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Management" "BPP Digital Mobile Courses Menu"
+    And I click on the "Management" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Business and Management" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Innovation and Technology
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Innovation & Technology" "BPP Digital Mobile Courses Menu"
+    And I click on the "Innovation & Technology" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Innovation and Technology" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Financial Services
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Financial Services" "BPP Digital Mobile Courses Menu"
+    And I click on the "Financial Services" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Financial Services" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Governance, Risk and Compliance
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Governance, Risk & Compliance" "BPP Digital Mobile Courses Menu"
+    And I click on the "Governance, Risk & Compliance" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Governance, Risk and Compliance" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Nursing and Healthcare
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Nursing & Healthcare" "BPP Digital Mobile Courses Menu"
+    And I click on the "Nursing & Healthcare" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Nursing and Healthcare" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Human Resources
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Human Resources" "BPP Digital Mobile Courses Menu"
+    And I click on the "Human Resources" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Human Resources" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Insolvency
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Insolvency" "BPP Digital Mobile Courses Menu"
+    And I click on the "Insolvency" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Insolvency" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
-    #Actuary
-    And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Actuary" "BPP Digital Mobile Courses Menu"
-    Then I wait for "1" seconds
-    Then I validate text "CONTAINS=Actuary" to be displayed for "Digital Site Mobile Page Courses Heading" element
-    Then I wait for "1" seconds
     #Chiropractic
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Chiropractic" "BPP Digital Mobile Courses Menu"
+    And I click on the "Chiropractic" "BPP Digital Mobile Second Expandable Menu"
     Then I wait for "1" seconds
     Then I validate text "CONTAINS=Chiropractic" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #Psychology
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
-    And I wait for "1" seconds
-    And I click on the "Psychology" "BPP Digital Mobile Courses Menu"
+    And I click on the "Psychology" "BPP Digital Mobile Second Expandable Menu"
     And I wait for "1" seconds
     Then I validate text "CONTAINS=Psychology" to be displayed for "Digital Site Mobile Page Courses Heading" element
     Then I wait for "1" seconds
     #View all courses
     And I click on the "Digital Site Mobile Hamburger Menu" element
-    When I click on the "Study" "BPP Digital Study expandable link"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I wait for "1" seconds
-    And I click on the "Digital Site Mobile Hamburger Courses" button by JS
+    And I click on the "View all courses" "BPP Digital Mobile Second Expandable Menu"
     And I wait for "1" seconds
-    And I click on the "View all courses" "BPP Digital Mobile Courses Menu"
     Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Site Page Header" element
     Then I wait for "1" seconds
     #Working with businesses

@@ -141,7 +141,7 @@
   },
   {
     "name": "BPP Digital Student Applications Menu link",
-    "value": "xpath=//a[normalize-space()='PARAMETER']"
+    "value": "xpath=(//a[normalize-space()='PARAMETER'])[1]"
   },
   {
     "name": "BPP Digital Study expandable link",
