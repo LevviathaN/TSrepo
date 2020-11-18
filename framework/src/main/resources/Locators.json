@@ -136,6 +136,18 @@
     "value": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[2]"
   },
   {
+    "name": "BPP Digital Course Card Content More Information link",
+    "value": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[3]"
+  },
+  {
+    "name": "BPP Digital Course Card",
+    "value": "xpath=(//div[@class='posts-container']//a)[1]"
+  },
+  {
+    "name": "BPP Digital Course Card Hover Arrow Right",
+    "value": "xpath=(//div[@class='posts-container']//span[@class='fa-icon-container'])[1]"
+  },
+  {
     "name": "BPP Digital Course Card Profession text field",
     "value": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[@class='post-info']/div[1]"
   },
