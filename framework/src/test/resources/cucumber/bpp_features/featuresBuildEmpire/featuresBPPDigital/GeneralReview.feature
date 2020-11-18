@@ -81,99 +81,80 @@ Feature: BPP Digital General Review
     Then I validate text "Automation General Review Profession Page" to be displayed for "BPP Digital Section First Article name" element
     #Validate Main Menu Items
     #Law
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
+    #And I click on the "Courses" "BPP Digital Courses Menu Item links"
     And I click on the "Law" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Law" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
-    #Management
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
-    And I click on the "Management" "BPP Digital Student Applications Menu link"
-    Then I validate text "CONTAINS=Business" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "2" seconds
     #Innovation and Technology
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
+    And I wait for "2" seconds
+    Then I hover over the "Innovation & Technology" "BPP Digital Student Applications Menu link"
     And I click on the "Innovation & Technology" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Innovation and Technology" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Financial Services
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Financial Services" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Financial Services" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Governance, Risk and Compliance
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Governance, Risk & Compliance" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Governance, Risk and Compliance" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Nursing and Healthcare
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Nursing & Healthcare" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Nursing and Healthcare" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Human Resources
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Human Resources" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Human Resources" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Tax
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Tax" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Tax" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Insolvency
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Insolvency" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Insolvency" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
-    #Actuary
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
-    And I click on the "Actuary" "BPP Digital Student Applications Menu link"
-    Then I validate text "CONTAINS=Actuary" to be displayed for "BPP Digital Breadcrumb Level Three" element
-    Then I wait for "2" seconds
     #Chiropractic
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Chiropractic" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Chiropractic" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #Psychology
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "Psychology" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Psychology" to be displayed for "BPP Digital Breadcrumb Level Three" element
     Then I wait for "2" seconds
     #View all courses
-    When I click on the "Study" "BPP Digital Study expandable link"
-    And I click on the "Courses" "BPP Digital Courses Menu Item links"
+    When I click on the "Courses" "BPP Digital Study expandable link"
     And I click on the "View all courses" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Courses" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "2" seconds
     #Business main menu link
     #Working with businesses
     When I click on the "Business" "BPP Digital Study expandable link"
+    And I wait for "1" seconds
     And I click on the "Working with businesses" "BPP Digital Student Applications Menu link"
     Then I validate text "CONTAINS=Business" to be displayed for "BPP Digital Breadcrumb Level Two" element
     Then I wait for "2" seconds
     #Industries
-#    When I click on the "Business" "BPP Digital Study expandable link"
-#    And I click on the "Industries" "BPP Digital Student Applications Menu link"
-#    Then I validate text "CONTAINS=Industries" to be displayed for "BPP Digital Breadcrumb Level Three" element
-#    Then I wait for "2" seconds
+    When I click on the "Business" "BPP Digital Study expandable link"
+    And I click on the "Industries" "BPP Digital Student Applications Menu link"
+    Then I validate text "CONTAINS=Industries" to be displayed for "BPP Digital Breadcrumb Level Three" element
+    Then I wait for "2" seconds
     #Our Services
-#    When I click on the "Business" "BPP Digital Study expandable link"
-#    And I click on the "Our Services" "BPP Digital Student Applications Menu link"
-#    Then I validate text "CONTAINS=Our services" to be displayed for "BPP Digital Breadcrumb Level Three" element
-#    Then I wait for "2" seconds
+    When I click on the "Business" "BPP Digital Study expandable link"
+    And I click on the "Our Services" "BPP Digital Student Applications Menu link"
+    Then I validate text "CONTAINS=Our services" to be displayed for "BPP Digital Breadcrumb Level Three" element
+    Then I wait for "2" seconds
     #About Us
     When I click on the "About Us" "BPP Digital Study expandable link"
     And I click on the "About Us" "BPP Digital Student Applications Menu link"

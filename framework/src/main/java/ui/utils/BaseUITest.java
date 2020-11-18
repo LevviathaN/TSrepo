@@ -61,6 +61,7 @@ public class BaseUITest {
             Reporter.failTryTakingScreenshot("Before test failure during Driver creation. Please check options for test executions ");
             Reporter.flush();
             Assert.fail();
+            BPPLogManager.getLogger().error("Driver set up failed! Please check configurations in VM options!");
         }
 
         try {
