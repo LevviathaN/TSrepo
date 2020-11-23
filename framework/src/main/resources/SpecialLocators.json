@@ -141,7 +141,7 @@
   },
   {
     "name": "BPP Digital Student Applications Menu link",
-    "value": "xpath=//a[normalize-space()='PARAMETER']"
+    "value": "xpath=(//a[normalize-space()='PARAMETER'])[1]"
   },
   {
     "name": "BPP Digital Study expandable link",
@@ -310,6 +310,10 @@
   {
     "name": "Build Empire text field by title",
     "value": "xpath=//label[contains(normalize-space(),'PARAMETER')]/following-sibling::*/descendant-or-self::input"
+  },
+  {
+    "name": "Hub Deadline Activity Name",
+    "value": "xpath=//h2[text()='PARAMETER']"
   },
   {
     "name": "Product Factory CBA Course Institute Fee edit button",
@@ -514,6 +518,10 @@
   {
     "name": "Salesforce navigation menu dropdown",
     "value": "xpath=//span[text()='PARAMETER' and @class='slds-truncate']/../following-sibling::*/div/*"
+  },
+  {
+    "name": "Salesforce navigation href links",
+    "value": "xpath=//a[contains(@href,'PARAMETER')]/span"
   },
   {
     "name": "Salesforce navigation menu dropdown option",

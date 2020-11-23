@@ -38,11 +38,11 @@ Feature: Submit BPP University Programmes Application
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Country of birth" "Build Empire nationality dropdown"
-    And I click on the "United Kingdom" "Build Empire nationality option"
+    And I click on the "United States" "Build Empire nationality option"
     And I click on the "Country of nationality" "Build Empire nationality dropdown"
-    And I click on the "United Kingdom" "Build Empire nationality option"
+    And I click on the "United States" "Build Empire nationality option"
     And I click on the "Country of domicile/permanent residency" "Build Empire nationality dropdown"
-    And I click on the "United Kingdom" "Build Empire nationality option"
+    And I click on the "United States" "Build Empire nationality option"
     And I click on the "Is English your first language?" "Build Empire nationality dropdown"
     And I click on the "Yes" "Build Empire nationality option"
     And I click on the "Direct App Nationality No Visa" element

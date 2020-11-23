@@ -19,9 +19,9 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     And I click on the "Topic to test adding activities" link by JS
     Then I click on the "Totara Add Activity Bottom Key" button by JS
     Then I execute "window.stop()" JS code
+    #And I select "[url] Testing Activities" from "Totara Activities Dropdown" element
     And I fill the "Totara Main Box Text Field" field with "MainBottomAutomation"
     And I fill the "Totara Submit Button Text Field" field with "SubmitBottomAutomation"
-    And I select "[url] Testing Activities" from "Totara Activities Dropdown" element
     Then I click on the "Totara Save" button by JS
     And I click on the "Totara Continue" button by JS
     And I click on the "Topic to test adding activities" link by JS
@@ -48,7 +48,9 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     Then I validate text "MainBottomAutomation" to be displayed for "Direct App App Bottom Key Activity Body" element
     Then I validate text "SubmitBottomAutomation" to be displayed for "Direct App Bottom Key Activity Submit Button" element
     And I execute "Log Out from Hub Student" reusable step
-    And I execute "Login as Admin Totara" reusable step
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
+    Then I execute "Login as Admin Totara" reusable step
     Then I click on the "Totara Automation Course" button by JS
     And I click on the "Totara Key Activities Administration Link" link by JS
     And I click on the "Topic to test adding activities" link by JS

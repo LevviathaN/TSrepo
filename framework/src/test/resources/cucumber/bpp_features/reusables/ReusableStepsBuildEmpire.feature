@@ -194,11 +194,11 @@ Feature: BuildEmpire
     And I wait for "1" seconds
     Then I click on the "Professional Career Development Programmes Scotland" "Build Empire application type"
     And I wait for "1" seconds
-    And I hover over the "Direct App Programmes Programm Dropdown" button
-    And I click on the "Direct App Programmes Programm Dropdown" element
-    Then I wait for "1" seconds
-    Then I click on the "Chartered Manager" "Build Empire application type"
-    And I wait for "1" seconds
+    #And I hover over the "Direct App Programmes Programm Dropdown" button
+    #And I click on the "Direct App Programmes Programm Dropdown" element
+    #Then I wait for "1" seconds
+    #Then I click on the "Chartered Manager" "Build Empire application type"
+    #And I wait for "1" seconds
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -328,8 +328,8 @@ Feature: BuildEmpire
     And Browser performs "Refresh" command
     And I wait for "5" seconds
     And I click on the "Application documents" "Build Empire application section"
-    And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    #And I click on the "Download Application of" "Build Empire application section"
+    #Then I switch to window with index "0"
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
     And I click on the "Direct App Mark As Complete Checkbox" button
@@ -360,10 +360,10 @@ Feature: BuildEmpire
     And I click on the "Direct App What Are You Applying For Dropdown" element
     And I wait for "2" seconds
     Then I click on the "Professional Career Development Programmes England" "Build Empire application type"
-    And I hover over the "Direct App Programmes Programm Dropdown" button
-    And I click on the "Direct App Programmes Programm Dropdown" element
-    And I wait for "1" seconds
-    Then I click on the "Chartered Manager" "Build Empire application type"
+    #And I hover over the "Direct App Programmes Programm Dropdown" button
+    #And I click on the "Direct App Programmes Programm Dropdown" element
+    #And I wait for "1" seconds
+    #Then I click on the "Chartered Manager" "Build Empire application type"
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -405,14 +405,14 @@ Feature: BuildEmpire
     And I click on the "Direct App Next" button
     And I click on the "Diret App Gender Dropdown" element
     And I click on the "Diret App Gender Not To Say" element
-    And I click on the "Diret App Gender At Birth Dropdown" element
-    And I click on the "Diret App Gender At Birth Yes" element
+    #And I click on the "Diret App Gender At Birth Dropdown" element
+    #And I click on the "Diret App Gender At Birth Yes" element
     And I click on the "Diret App Ethnicity Dropdown" element
     And I click on the "Diret App Ethnicity White And Black African" element
-    And I click on the "Diret App Religion Dropdown" element
-    And I click on the "Diret App Religion Chrisitan" element
-    And I click on the "Diret App Sexual Orientation Dropdown" element
-    And I click on the "Diret App Sexual Orientation Heterosexual" element
+    #And I click on the "Diret App Religion Dropdown" element
+    #And I click on the "Diret App Religion Chrisitan" element
+    #And I click on the "Diret App Sexual Orientation Dropdown" element
+    #And I click on the "Diret App Sexual Orientation Heterosexual" element
     And I click on the "Diret App Learning Disability No" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "1" seconds

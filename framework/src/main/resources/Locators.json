@@ -136,6 +136,18 @@
     "value": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[2]"
   },
   {
+    "name": "BPP Digital Course Card Content More Information link",
+    "value": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[3]"
+  },
+  {
+    "name": "BPP Digital Course Card",
+    "value": "xpath=(//div[@class='posts-container']//a)[1]"
+  },
+  {
+    "name": "BPP Digital Course Card Hover Arrow Right",
+    "value": "xpath=(//div[@class='posts-container']//span[@class='fa-icon-container'])[1]"
+  },
+  {
     "name": "BPP Digital Course Card Profession text field",
     "value": "xpath=//div[contains(@class,'posts-wrapper')]/div[1]//div[@class='data-wrapper']/div[@class='post-info']/div[1]"
   },
@@ -518,6 +530,10 @@
   {
     "name": "BPP Digital Accordion Mobile Item",
     "value": "xpath=(//div[contains(@class,'cms-accordion-component container')])[2]"
+  },
+  {
+    "name": "BPP Digital Insights Container",
+    "value": "xpath=//div[@class='show-insights']/div[@class='container']"
   },
   {
     "name": "Banner Username",
@@ -1908,6 +1924,10 @@
     "value": "css=tbody#mail_list_body>tr:nth-child(1)>td:nth-child(2)>a"
   },
   {
+    "name": "Harakirimail First Email Body",
+    "value": "css=div#email_body_html|https:\\/\\/bpp-stage.eu.auth0.com\\/lo\\/reset.+[aA-zZ0-9]\\#"
+  },
+  {
     "name": "Harakirimail Get Inbox",
     "value": "xpath=//button[@id='getinbox']"
   },
@@ -1922,6 +1942,34 @@
   {
     "name": "Harakirimail Validate Mitigating Header",
     "value": "xpath=//div[@id='email_viewer_header']/following::h1"
+  },
+  {
+    "name": "Harakirimail Validate Mitigating Circumstances Submitted Link",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[7]/td[normalize-space()='Your Mitigating Circumstances has been submitted']"
+  },
+  {
+    "name": "Harakirimail Your MC Are Now Reviewed",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[6]/td[normalize-space()='Your Mitigating Circumstances are now being reviewed']"
+  },
+  {
+    "name": "Harakirimail Your MC Referred",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[5]/td[normalize-space()='Your Mitigating Circumstances application has been referred']"
+  },
+  {
+    "name": "Harakirimail Your MC Progressing",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[4]/td[normalize-space()='Your Mitigating Circumstances is progressing']"
+  },
+  {
+    "name": "Harakirimail Your MC Outcome",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[3]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
+  },
+  {
+    "name": "Harakirimail Your MC Accepted",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[2]/td[normalize-space()='Your Mitigating Circumstances application has been accepted']"
+  },
+  {
+    "name": "Harakirimail Your MC Outcome Second",
+    "value": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
   },
   {
     "name": "Hub VPE Active First Topic",
@@ -1985,7 +2033,7 @@
   },
   {
     "name": "Hub VPE Calendar Task Due Date",
-    "value": "xpath=//div[@class='event calendar_event_course_deadline' and contains(text(),'24')]"
+    "value": "xpath=//div[@class='event calendar_event_course_deadline' and contains(text(),'25')]"
   },
   {
     "name": "Hub VPE Calendar Task Due Sender",
@@ -2142,6 +2190,18 @@
   {
     "name": "Hub Course Page Progress Percentage",
     "value": "xpath=(//div[@class='course-overview']//div[@class='course-progress-percentage'])[1]"
+  },
+  {
+    "name": "Hub Home Page Top Deadline",
+    "value": "xpath=(//div[@class='activity-deadline-info']/span)[1]"
+  },
+  {
+    "name": "Hub Home Page Bottom Deadline",
+    "value": "xpath=(//div[@class='activity-deadline-info']/span)[2]"
+  },
+  {
+    "name": "Hub Scorm Deadline View",
+    "value": "xpath=//h2[contains(.,'Scorm Deadline Assignment')]/../div//a"
   },
   {
     "name": "Build Empire Course Topic Section Message",
@@ -2430,7 +2490,7 @@
   },
   {
     "name": "Salesforce Case Milestones Tab",
-    "value": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//ul[@class='slds-grid slds-wrap list']/li[6]"
+    "value": "xpath=//div[contains(@class,'oneContent active lafPageHost')]//ul[@class='slds-grid slds-wrap list']/li//a[contains(.,'Case Milestones')]"
   },
   {
     "name": "Salesforce Case Milestones Tab First Milestone Name",
@@ -2566,7 +2626,7 @@
   },
   {
     "name": "Salesforce Qualifications link",
-    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='Qualifications'])[1]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[contains(text(),'Qualifications')])[1]"
   },
   {
     "name": "Salesforce Search",
@@ -2642,7 +2702,7 @@
   },
   {
     "name": "Salesforce Addresses Quick Link Tab",
-    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Addresses')])[1]"
   },
   {
     "name": "Salesforce Opportunities Quick Link Tab",
@@ -2773,6 +2833,10 @@
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Booking Lines')]/following::span)[1]"
   },
   {
+    "name": "Salesforce Save Account Button",
+    "value": "xpath=//button[contains(@class,'forceActionButton')]/span[normalize-space()='Save']"
+  },
+  {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
   },
@@ -2843,6 +2907,22 @@
   {
     "name": "Totara Assignment Due Date Year",
     "value": "xpath=//select[@id='id_duedate_year']"
+  },
+  {
+    "name": "Totara Assignment Due Date Month",
+    "value": "xpath=//select[@id='id_duedate_month']"
+  },
+  {
+    "name": "Totara Assignment Due Date Day",
+    "value": "xpath=//select[@id='id_duedate_day']"
+  },
+  {
+    "name": "Totara Completion Expected Day",
+    "value": "xpath=//select[@id='id_completionexpected_day']"
+  },
+  {
+    "name": "Totara Completion Expected Month",
+    "value": "xpath=//select[@id='id_completionexpected_month']"
   },
   {
     "name": "Totara Automation Course",
@@ -3195,6 +3275,10 @@
   {
     "name": "TotaraScromFrame",
     "value": "xpath=//iframe[@id='scorm_object']"
+  },
+  {
+    "name": "Totara Completed Activity Checkbox",
+    "value": "xpath=//input[@id='tfiid_completed_core_completion_form_activity_completion']"
   },
   {
     "name": "VLE Website Usermenu",

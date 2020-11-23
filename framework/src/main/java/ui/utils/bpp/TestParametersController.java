@@ -54,7 +54,6 @@ public class TestParametersController {
     private static final String KEYWORD_NAME_PREFIX = "KW_AUTO_";
     private static final String EXECUTION_CONTEXT_PREFIX = "EC_";
     private static final String KEYWORD_NAME_TO_SKIP = "KW_AUTO_SELECT";
-    private static final String KEYWORD_SF_DATE = "KW_AUTO_SFDATE";
 
     /**
      * The method performs two-levels verification of passed value to be a metadata key.
@@ -203,7 +202,11 @@ public class TestParametersController {
             StringBuilder splittedValue = new StringBuilder();
             for (String element : splitArray)
                 if (element.startsWith(EXECUTION_CONTEXT_PREFIX)) {
-                    splittedValue.append(ExecutionContextHandler.getExecutionContextValueByKey(element));
+                    if (element.contains("DEADLINEMONTH")) {
+                        splittedValue.append(Tools.editMonth(ExecutionContextHandler.getExecutionContextValueByKey(element), 2, 4));
+                    } else {
+                        splittedValue.append(ExecutionContextHandler.getExecutionContextValueByKey(element));
+                    }
                 } else {
                     splittedValue.append(element);
                 }
@@ -289,7 +292,7 @@ public class TestParametersController {
                     } else if (element.endsWith("VPE")) {
                         if (element.contains("CALENDAR")) {
                             String time = String.valueOf(Tools.getCurDateTimeInMilliseconds());
-                            timePattern = time.substring(0,4);
+                            timePattern = time.substring(0, 4);
                         } else {
                             timePattern = "MMM d yyyy";
                         }
