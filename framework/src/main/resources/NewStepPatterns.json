@@ -41,7 +41,7 @@
   },
   {
     "name": "I_CAPTURE_SPECIAL_DATA",
-    "value": "^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$"
+    "value": "^I capture a part of \"([^\"]*)\" element text by \"([^\"]*)\" regex and save as \"([^\"]*)\" variable$"
   },
   {
     "name": "I_CAPTURE_URL_AS_VARIABLE",

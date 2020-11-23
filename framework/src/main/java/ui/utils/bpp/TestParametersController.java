@@ -244,11 +244,11 @@ public class TestParametersController {
                     ecVarNameSimplified.append("CITYUSA");
                 }
                 else if (element.startsWith("EMAIL")){
-                    if (element.contains("GUERILLA")){
+                    if (element.contains("MAILDROP")){
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_FIRSTNAME"));
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_LASTNAME"));
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|####"));
-                        resultingValueSimplified.append("@guerrillamail.info");
+                        resultingValueSimplified.append("@maildrop.cc");
                     } else {
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_EMAIL"));
                     }
@@ -313,6 +313,17 @@ public class TestParametersController {
                     resultingValueSimplified.append(sum);
                     ecVarNameSimplified.append("_");
                     ecVarNameSimplified.append("SUM");
+                }
+                else if (element.startsWith("SUBSTRING")){
+                    String prenthesis = element.substring(10,element.length()-1);
+                    String[] operands = prenthesis.split("[,]");
+                    String actualParameter = checkIfSpecialParameter(operands[0]);
+                    int begIndex = operands[1].startsWith("-") ? actualParameter.length() - Integer.parseInt(operands[1].substring(1)) : Integer.parseInt(operands[1]);
+                    int endIndex = operands[2].startsWith("-") ? actualParameter.length() - Integer.parseInt(operands[2].substring(1)) : Integer.parseInt(operands[2]);
+                    String substr = actualParameter.substring(begIndex,endIndex);
+                    resultingValueSimplified.append(substr);
+                    ecVarNameSimplified.append("_");
+                    ecVarNameSimplified.append("SUBSTRING");
                 }
                 //if part is NOT KW_ value
                 else {

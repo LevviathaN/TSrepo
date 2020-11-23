@@ -68,7 +68,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_EXECUTE_JS_CODE"),() -> stepDefs.i_execute_js_code(arg1));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_EXECUTE_JS_CODE_FOR_ELEMENT"),() -> stepDefs.i_execute_js_code_for_element(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SHOULD_SEE_NUMBER_OF_ELEMENTS"),() -> stepDefs.i_should_see_number_of_elements(arg1, arg2));
-        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CAPTURE_SPECIAL_DATA"), () -> stepDefs.i_capture_special_data(arg1, arg2));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CAPTURE_SPECIAL_DATA"), () -> stepDefs.i_capture_special_data(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SET_TEXT_WITH_JS"), () -> stepDefs.i_set_text_with_js(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CAPTURE_URL_AS_VARIABLE"), () -> stepDefs.i_capture_url_as_variable(arg1));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_UNTIL"), () -> stepDefs.i_click_on_element_until(arg1, arg2, arg3));

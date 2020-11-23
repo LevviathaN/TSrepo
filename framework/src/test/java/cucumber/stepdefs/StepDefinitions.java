@@ -636,11 +636,17 @@ public class StepDefinitions extends SeleniumHelper {
      * @param executionContext Name that starts with 'EC_' that is used to store saved text value from element
      * @author yzosin
      */
-    @And("^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$")
-    public void i_capture_special_data(String element, String executionContext) {
+    @And("^I capture a part of \"([^\"]*)\" element text by \"([^\"]*)\" regex and save as \"([^\"]*)\" variable$")
+    public void i_capture_special_data(String element, String regex, String executionContext) {
 
-        String value = selectSpecificData(initElementLocator(element));
-        Reporter.log("Capturing data from : " + initElementLocator(element) + ": " + executionContext);
+        String data = findElement(initElementLocator(element)).getText().trim();
+        String value = "";
+        for (String singleElement : data.split(" ")) {
+            if (singleElement.matches(regex)) {
+                value = singleElement;
+            }
+        }
+        Reporter.log("Capturing data from : " + element + ": " + executionContext);
         if (!executionContext.equals("")) {
             if (value.equals("")) {
                 Reporter.log("Saving EC key " + executionContext + " with an empty string. No application data found.");

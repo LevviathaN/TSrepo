@@ -608,6 +608,18 @@
     "value": "xpath=//*[@type='PARAMETER']"
   },
   {
+    "name": "element by name",
+    "value": "xpath=//*[@name='PARAMETER']"
+  },
+  {
+    "name": "element by id",
+    "value": "xpath=//*[@id='PARAMETER']"
+  },
+  {
+    "name": "element by class",
+    "value": "xpath=//*[@class='PARAMETER']"
+  },
+  {
     "name": "exact element",
     "value": "xpath=//*[normalize-space()=\"PARAMETER\"]"
   },
@@ -674,5 +686,13 @@
   {
     "name": "BPP Digital Mobile Second Expandable Menu",
     "value": "xpath=//div[@class='second-level']//a[contains(.,'PARAMETER')]"
+  },
+  {
+    "name": "Maildrop Specific BPP Email",
+    "value": "xpath=//div[@class='messagelist-from' and text()='BPP <no-reply@staging.bppdigital.buildempire.co.uk>']/following-sibling::div/span[text()='PARAMETER']"
+  },
+  {
+    "name": "Nada BPP Specific Email",
+    "value": "xpath=//a[contains(.,'PARAMETER')]"
   }
 ]
