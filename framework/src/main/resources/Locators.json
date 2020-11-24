@@ -2462,7 +2462,7 @@
   },
   {
     "name": "Salesforce App Launcher",
-    "value": "xpath=//nav[contains(@class,'appLauncher')]"
+    "value": "xpath=//button[@class='slds-button slds-show']"
   },
   {
     "name": "Salesforce Banner ID Field",
@@ -2645,6 +2645,10 @@
     "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'EC_AUTO_FIRSTNAME')]"
   },
   {
+    "name": "Salesforce Business Account Link Address Page",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'EC_AUTO_BUSINESS_FIRSTNAME')]"
+  },
+  {
     "name": "Salesforce Address Page Country Field",
     "value": "xpath=//input[@title='Search Countries']"
   },
@@ -2746,7 +2750,7 @@
   },
   {
     "name": "Salesforce Quotes Quick Link Tab",
-    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(@class,'forceRelatedListQuickLinksContainer')]//*[contains(text(),'Quotes')]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Quotes')])[1]"
   },
   {
     "name": "Salesforce Quotes First Link",
@@ -2758,7 +2762,7 @@
   },
   {
     "name": "Salesforce Quotes Ordered Checkbox",
-    "value": "xpath=//div[contains(@class,'forcePageBlockSectionRow')]//*[text()='Ordered']//following::input[1]"
+    "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//span[text()='Ordered']//following::input[1]"
   },
   {
     "name": "Salesforce Quotes Edit Lines",
@@ -2790,15 +2794,15 @@
   },
   {
     "name": "Salesforce Quote Edited Save",
-    "value": "xpath=//button[@title='Save']"
+    "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//button[text()='Save']"
   },
   {
     "name": "Salesforce Quote Edited Quote Number",
-    "value": "xpath=//div[contains(@class,'forceRecordLayout')]//span[contains(.,'Quote Number')]/../following-sibling::div/span[1]"
+    "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//span[contains(.,'Quote Number')]/../following-sibling::div/span[1]"
   },
   {
     "name": "Salesforce Orders Quick Link Tab on Quote Page",
-    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(@class,'forceRelatedListQuickLinksContainer')]//*[contains(text(),'Orders')]"
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Orders')])[1]"
   },
   {
     "name": "Salesforce Orders First Link",
@@ -2833,8 +2837,24 @@
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Booking Lines')]/following::span)[1]"
   },
   {
+    "name": "Salesforce New Booking",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@title='New Booking'])[1]"
+  },
+  {
     "name": "Salesforce Save Account Button",
     "value": "xpath=//button[contains(@class,'forceActionButton')]/span[normalize-space()='Save']"
+  },
+  {
+    "name": "Salesforce Save Booking Button",
+    "value": "xpath=//div[@class='modal-footer slds-modal__footer']//button[2]"
+  },
+  {
+    "name": "Salesforce Billing Application Main Menu",
+    "value": "xpath=//span[@title='Salesforce Billing']"
+  },
+  {
+    "name": "Salesforce View All Application",
+    "value": "xpath=//button[@class='slds-button']"
   },
   {
     "name": "Totara Account Expandable Menu",

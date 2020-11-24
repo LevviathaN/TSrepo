@@ -504,6 +504,14 @@
     "value": "xpath=//span[text()='PARAMETER']/../following-sibling::div[contains(@class,'uiMenu')]"
   },
   {
+    "name": "Salesforce booking dropdown field",
+    "value": "xpath=(//label[contains(.,'PARAMETER')]//following-sibling::div[contains(@class,'slds-form-element__control')]//div)[1]"
+  },
+  {
+    "name": "Salesforce booking dropdown option",
+    "value": "xpath=//span[text()='PARAMETER' and @title='PARAMETER']"
+  },
+  {
     "name": "Salesforce dropdown field option",
     "value": "xpath=//a[text()='PARAMETER' and @title='PARAMETER']"
   },
