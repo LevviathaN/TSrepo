@@ -757,9 +757,12 @@ public class StepDefinitions extends SeleniumHelper {
         Reporter.log("Executing step: For each '" + element + "' element");
         List<WebElement> elements = findElements(initElementLocator(element));
         String xpathLocator = "";
+        BPPLogManager.getLogger().info("There are " + elements.size() + " '" + element + "' elements found on the page");
         //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
         for(int i = 1; i <= elements.size(); i++) {
+            BPPLogManager.getLogger().info("For " + i + " element");
             for(String step : steps) {
+                BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
                 if (locatorsMap.containsKey(element)) {
                     xpathLocator = locatorsMap.get(element).replace("xpath=","xpath=(") + ")[" + i + "]";
                 } else {
