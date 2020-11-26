@@ -254,6 +254,10 @@ public class TestParametersController {
                         resultingValueSimplified.append("@maildrop.cc");
                     } else if (element.contains("NADA")){
                         resultingValueSimplified.append("@getnada.com");
+                    } else if (element.contains("HARAKIRI")){
+                        resultingValueSimplified.append("@harakirimail.com");
+                    } else if (element.contains("GUERILLA")){
+                        resultingValueSimplified.append("@guerillamail.info");
                     } else {
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_EMAIL"));
                     }
