@@ -15,18 +15,6 @@ Feature: Harakirimail, Guerrillamail
     And I validate text "CONTAINS=Your Mitigating Circumstances application outcome" to be displayed for "Guerilla Email Header" element
     And I validate text "CONTAINS=Your application has been rejected" to be displayed for "Guerilla Email Body" element
 
-  Scenario: Maildrop Mitigating Circustances Reject Validation
-    Given I am on "https://maildrop.cc/" URL
-    And I fill the "Maildrop Email Field" field with "[SUBSTRING(EC_AUTO_EMAIL,0,-12)]"
-    And I wait for "10" seconds
-    Then I click on the "Maildrop View Inbox Button" button
-    And I wait for "50" seconds
-    And I click on the "Reload" button
-    And I wait for "40" seconds
-    And I click on the "Reload" button
-    And I wait for "10" seconds
-    And I should see the "Your Mitigating Circumstances application outcome" element
-
   Scenario: Guerillamail Mitigating Circustances Status Validations
     Given I am on "https://www.guerrillamail.com/" URL
     Then I click on the "Guerilla Edit" button
@@ -56,28 +44,6 @@ Feature: Harakirimail, Guerrillamail
     And I validate text "CONTAINS=Mitigating Circumstances application has been accepted" to be displayed for "Guerilla Email Header" element
     Then I click on the "Guerilla Back To Inbox" button
 
-  Scenario: Maildrop Mitigating Circustances Status Validations
-    Given I am on "https://maildrop.cc/" URL
-    And I fill the "Maildrop Email Field" field with "[SUBSTRING(EC_AUTO_EMAIL,0,-12)]"
-    And I wait for "10" seconds
-    Then I click on the "Maildrop View Inbox Button" button
-    And I wait for "50" seconds
-    And I click on the "Reload" button
-    And I wait for "40" seconds
-    And I click on the "Reload" button
-    And I wait for "10" seconds
-    And I should see the "Your Mitigating Circumstances application outcome" "Maildrop Specific BPP Email"
-    And I wait for "2" seconds
-    And I should see the "Your Mitigating Circumstances has been submitted" "Maildrop Specific BPP Email"
-    And I wait for "2" seconds
-    And I should see the "Your Mitigating Circumstances are now being reviewed" "Maildrop Specific BPP Email"
-    And I wait for "2" seconds
-    And I should see the "Your Mitigating Circumstances application has been referred" "Maildrop Specific BPP Email"
-    And I wait for "2" seconds
-    And I should see the "Your Mitigating Circumstances is progressing" "Maildrop Specific BPP Email"
-    And I wait for "2" seconds
-    And I should see the "Mitigating Circumstances application has been accepted" "Maildrop Specific BPP Email"
-
   Scenario: Guerillamail Reset Line Manager Password
     Given I am on "https://www.guerrillamail.com/" URL
     Then I click on the "Guerilla Edit" button
@@ -94,34 +60,6 @@ Feature: Harakirimail, Guerrillamail
     Then I click on the "Guerilla BPP Email" element
     Then I capture a part of "Guerilla New Line Manager Email" element text by "https:\/\/bpp-stage.eu.auth0.com\/lo\/reset.+[aA-zZ0-9]\#" regex and save as "EC_RESET_PASSWORD" variable
 
-  Scenario: Nada Reset Line Manager Password
-    Given I am on "https://getnada.com/" URL
-    And I click on the "Nada Add More Inboxes Button" button
-    And I wait for "5" seconds
-    And I fill the "Nada User Name Field" field with "[SUBSTRING(EC_LINEMANAGER_EMAIL,0,-12)]"
-    Then I select "@getnada.com" from "Nada Domain Select" element
-    And I wait for "10" seconds
-    And I click on the "Add now!" "exact element"
-    And I wait for "2" seconds
-    Then I click on the "Nada BPP Email" element by JS
-    Then I capture a part of "Nada Email Body" element text by "https:\/\/bpp-stage.eu.auth0.com\/lo\/reset.+[aA-zZ0-9]\#" regex and save as "EC_RESET_PASSWORD" variable
-
-  Scenario: Maildrop Reset Line Manager Password
-    Given I am on "https://maildrop.cc/" URL
-    And I fill the "Maildrop Email Field" field with "[SUBSTRING(EC_LINEMANAGER_EMAIL,0,-12)]"
-    And I wait for "10" seconds
-    Then I click on the "Maildrop View Inbox Button" button
-    And I wait for "50" seconds
-    And I click on the "Reload" button
-    And I wait for "40" seconds
-    And Browser performs "REFRESH" command
-    And I wait for "60" seconds
-    And I click on the "Reload" button
-    And I wait for "10" seconds
-    And I click on the "BPP <no-reply@staging.bppdigital.buildempire.co.uk>" element
-    And I wait for "2" seconds
-    Then I capture a part of "Maildrop Email Body Framed" element text by "https:\/\/bpp-stage.eu.auth0.com\/lo\/reset.+[aA-zZ0-9]\#" regex and save as "EC_RESET_PASSWORD" variable
-
   Scenario: Harakirimail Validate Accepted Application Email
     Given I am on "https://www.guerrillamail.com/" URL
     Then I click on the "Guerilla Edit" button
@@ -134,18 +72,6 @@ Feature: Harakirimail, Guerrillamail
     Then I click on the "Guerilla Email Set" button
     Then I click on the "Guerilla BPP Email" element
     And I validate text "Your application has been approved" to be displayed for "Guerilla Email Header" element
-
-  Scenario: Maildrop Validate Accepted Application Email
-    Given I am on "https://maildrop.cc/" URL
-    And I fill the "Maildrop Email Field" field with "[SUBSTRING(EC_AUTO_EMAIL,0,-12)]"
-    And I wait for "10" seconds
-    Then I click on the "Maildrop View Inbox Button" button
-    And I wait for "50" seconds
-    And I click on the "Reload" button
-    And I wait for "40" seconds
-    And I click on the "Reload" button
-    And I wait for "10" seconds
-    And I should see the "Your application has been approved" element
 
   Scenario: Harakirimail Mitigating Circustances Reject Validation
     Given I am on "https://harakirimail.com/" URL
@@ -187,4 +113,4 @@ Feature: Harakirimail, Guerrillamail
     Then I fill the "Harakirimail Inbox Name" field with "EC_LINEMANAGER_EMAIL"
     Then I click on the "Harakirimail Get Inbox" element
     Then I click on the "Harakirimail First Email" element
-    Then I capture special data "Harakirimail First Email Body" as "EC_RESET_PASSWORD" variable
+#    Then I capture special data "Harakirimail First Email Body" as "EC_RESET_PASSWORD" variable

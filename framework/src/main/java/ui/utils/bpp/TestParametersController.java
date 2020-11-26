@@ -247,11 +247,13 @@ public class TestParametersController {
                     ecVarNameSimplified.append("CITYUSA");
                 }
                 else if (element.startsWith("EMAIL")){
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_FIRSTNAME"));
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_LASTNAME"));
+                    resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|####"));
                     if (element.contains("MAILDROP")){
-                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_FIRSTNAME"));
-                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_LASTNAME"));
-                        resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_RANDOMNUMBER|####"));
                         resultingValueSimplified.append("@maildrop.cc");
+                    } else if (element.contains("NADA")){
+                        resultingValueSimplified.append("@getnada.com");
                     } else {
                         resultingValueSimplified.append(KeywordsHandler.getValueByKeyword("AUTO_EMAIL"));
                     }

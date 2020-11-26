@@ -3350,7 +3350,7 @@
   },
   {
     "name": "Maildrop Email Body",
-    "value": "xpath=//div[@class='messagesource-container']/*/*/*/*/*/*"
+    "value": "xpath=//div[@class='messagesource-container']/*/*/*/*/*"
   },
   {
     "name": "Maildrop Email Body Framed",

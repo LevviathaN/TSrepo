@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ui.utils.SeleniumHelper;
 import ui.utils.*;
@@ -729,5 +730,43 @@ public class StepDefinitions extends SeleniumHelper {
         Reporter.log("Executing step: Browser deletes cookies");
         driver().manage().deleteAllCookies();
         BPPLogManager.getLogger().info("Browser has deleted cookies");
+    }
+
+    /**
+     * Definition to execute a list of steps for each element found on the page by given locator
+     *
+     * @param element locator for element you want to click on
+     *                initElementLocator builds locator, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @param steps list of steps to execute for each element found on page by given locator
+     *              To perform some action whith iterated element from current iteration, use FOR_ITEM as the locator.
+     *              For example, if you say:
+     *                  For each "OK Button" element:
+     *                  |I click on the "FOR_ITEM" element|
+     *              where "OK Button" is specified in your Locators.json file as "xpath=//button[text()='OK']",
+     *              and there was 2 such elements found by given locator, then "I click on the "FOR_ITEM" element" step
+     *              will be executed 2 times: first on "xpath=(//button[text()='OK'])[1]", and second on
+     *              "xpath=(//button[text()='OK'])[2]" element.
+     * @author Ruslan Levytskyi
+     */
+    @When("^For each \"([^\"]*)\" element:$")
+    public void for_each(String element, List<String> steps) {
+        //todo: To be tested properly
+        Reporter.log("Executing step: For each '" + element + "' element");
+        List<WebElement> elements = findElements(initElementLocator(element));
+        String xpathLocator = "";
+        //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
+        for(int i = 1; i <= elements.size(); i++) {
+            for(String step : steps) {
+                if (locatorsMap.containsKey(element)) {
+                    xpathLocator = locatorsMap.get(element).replace("xpath=","xpath=(") + ")[" + i + "]";
+                } else {
+                    xpathLocator = "xpath=(//*[text()=']" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
+                }
+                ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
+            }
+        }
     }
 }
