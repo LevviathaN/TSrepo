@@ -17,6 +17,11 @@ Feature: Salesforce
     When I click on the "View All" link
     And I click on the "Sales" "Salesforce app launcher app"
 
+  Scenario: Switch to Key Clients App
+    Given I click on the "Salesforce App Launcher" button
+    When I click on the "Salesforce View All Application" link
+    And I click on the "Key Clients" "Salesforce app launcher app" by JS
+
   Scenario: Create Student Account
     When I click on the "Account/home" "Salesforce navigation href links"
     And I wait for "2" seconds
@@ -46,7 +51,6 @@ Feature: Salesforce
     And I click on the "Salesforce Save Account Button" button by JS
     And I wait for "4" seconds
 
-
   Scenario: Create Address
     And I click on the "Salesforce Addresses Quick Link Tab" button by JS
     And I wait for "1" seconds
@@ -56,6 +60,7 @@ Feature: Salesforce
     And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
     And I set "London" text to the "City" "Salesforce text field"
     And I set "KW_AUTO_ZIPCODE|#####" text to the "Zip/Postal Code" "Salesforce text field"
+    And I click on the "Salesforce Address Primary Delivery" button
     And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
     Then I wait for "2" seconds
     And I click on the "Kingdom" "option" by JS
@@ -537,14 +542,14 @@ Feature: Salesforce
     And I should see the " was created." message
 
   Scenario: Add A Booking
-    And I click on the "Bookings" "Salesforce related new button"
+    And I click on the "Salesforce New Booking" button
     And I fill the "Salesforce Booking Search Account" field with "EC_AUTO"
     And I click on the "EC_AUTO" "option"
     And I click on the "Status" "Salesforce dropdown field"
     And I click on the "Confirmed" "option"
     And I fill the "Salesforce Booking Search Instance" field with "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER"
     And I click on the "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER" "option"
-    And I click on the "Salesforce Quote Edited Save" element
+    And I click on the "Salesforce Save Booking Button" element
     Then I should see the " was created." message
     And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
     And I capture current URL as "EC_BOOKING_URL" variable
@@ -566,3 +571,20 @@ Feature: Salesforce
     And I set "www.bpp.com" text to the "Website" "Salesforce text field"
     And I click on the "Salesforce Account Creation Save button" element
     Then I should see the " was created." message
+
+  Scenario: Create Address Business Account
+    And I click on the "Salesforce Addresses Quick Link Tab" button by JS
+    And I wait for "1" seconds
+    And I click on the "Salesforce Student Account Pages New button" button
+    And I click on the "Address Type" "Salesforce dropdown field"
+    And I click on the "Mailing" "option" by JS
+    And I set "KW_AUTO_STREET" text to the "Address Line 1" "Salesforce text field"
+    And I set "London" text to the "City" "Salesforce text field"
+    And I set "KW_AUTO_ZIPCODE|#####" text to the "Zip/Postal Code" "Salesforce text field"
+    And I click on the "Salesforce Address Primary Delivery" button
+    And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
+    Then I wait for "2" seconds
+    And I click on the "Kingdom" "option" by JS
+    And I click on the "Salesforce Account Creation Save button" element
+    Then I should see the " was created." message
+    And I click on the "Salesforce Business Account Link Address Page" element
