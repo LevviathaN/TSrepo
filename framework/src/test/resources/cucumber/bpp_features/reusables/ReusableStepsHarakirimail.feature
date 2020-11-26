@@ -58,7 +58,7 @@ Feature: Harakirimail, Guerrillamail
     And Browser performs "Refresh" command
     And I wait for "2" seconds
     Then I click on the "Guerilla BPP Email" element
-    Then I capture special data "Guerilla New Line Manager Email" as "EC_RESET_PASSWORD" variable
+    Then I capture a part of "Guerilla New Line Manager Email" element text by "https:\/\/bpp-stage.eu.auth0.com\/lo\/reset.+[aA-zZ0-9]\#" regex and save as "EC_RESET_PASSWORD" variable
 
   Scenario: Harakirimail Validate Accepted Application Email
     Given I am on "https://www.guerrillamail.com/" URL
@@ -113,4 +113,4 @@ Feature: Harakirimail, Guerrillamail
     Then I fill the "Harakirimail Inbox Name" field with "EC_LINEMANAGER_EMAIL"
     Then I click on the "Harakirimail Get Inbox" element
     Then I click on the "Harakirimail First Email" element
-    Then I capture special data "Harakirimail First Email Body" as "EC_RESET_PASSWORD" variable
+#    Then I capture special data "Harakirimail First Email Body" as "EC_RESET_PASSWORD" variable

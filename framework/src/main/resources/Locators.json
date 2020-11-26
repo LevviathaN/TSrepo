@@ -3359,5 +3359,53 @@
   {
     "name": "ISBN Generator Number Field",
     "value": "xpath=//*[@class='content single text-center text-bold h1 char-break']"
+  },
+  {
+    "name": "Maildrop Email Field",
+    "value": "xpath=//input[@placeholder='view-this-inbox']"
+  },
+  {
+    "name": "Maildrop View Inbox Button",
+    "value": "xpath=//span[text()='View Inbox']/.."
+  },
+  {
+    "name": "Maildrop Email Body",
+    "value": "xpath=//div[@class='messagesource-container']/*/*/*/*/*"
+  },
+  {
+    "name": "Maildrop Email Body Framed",
+    "value": "inframe=Maildrop Email Frame>xpath=//body"
+  },
+  {
+    "name": "Maildrop Email Frame",
+    "value": "xpath=//iframe[@class='messagedata-iframe']"
+  },
+  {
+    "name": "iframe",
+    "value": "xpath=//iframe"
+  },
+  {
+    "name": "Nada Add More Inboxes Button",
+    "value": "xpath=//h1[normalize-space()='Disposable Temporary Email']/following-sibling::button"
+  },
+  {
+    "name": "Nada User Name Field",
+    "value": "xpath=//input[@placeholder='user name']"
+  },
+  {
+    "name": "Nada Domain Select",
+    "value": "xpath=//select"
+  },
+  {
+    "name": "Nada Email Body Frame",
+    "value": "xpath=//iframe[@id='the_message_iframe']"
+  },
+  {
+    "name": "Nada Email Body",
+    "value": "inframe=Nada Email Body Frame>xpath=//body"
+  },
+  {
+    "name": "Nada BPP Email",
+    "value": "xpath=//a[contains(.,'staging.bppdigital.buildempire.co.uk')]"
   }
 ]

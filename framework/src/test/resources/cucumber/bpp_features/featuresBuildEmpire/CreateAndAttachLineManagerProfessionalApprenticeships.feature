@@ -14,7 +14,7 @@ Feature: Submit Professional Apprenticeship Applications With New Line Manager
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step
     And I execute "Create Automation Line Manager" reusable step
     And I execute "Log Out from Hub Admin" reusable step
-    And I execute "Guerillamail Reset Line Manager Password" reusable step
+    And I execute "Nada Reset Line Manager Password" reusable step
     And I execute "Reset Line Manager Password" reusable step
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     And I set "EC_LINEMANAGER_EMAIL" text to the "Email" "Build Empire text field"

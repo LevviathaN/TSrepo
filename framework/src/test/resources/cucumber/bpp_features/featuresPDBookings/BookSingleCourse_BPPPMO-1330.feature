@@ -8,7 +8,7 @@ Feature: As a BPP PD Learner I need to Book Single Courses online
     Then I click on the "Book Now" "text contained in element"
     And I set "Auto[FIRSTNAME]" text to the "First name*" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Last name*" "Build Empire text field"
-    And I set "Auto[EMAIL-GUERILLA]" text to the "Email*" "Build Empire text field"
+    And I set "Auto[EMAIL-MAILDROP]" text to the "Email*" "Build Empire text field"
     And I set "[PHONE-0913]" text to the "Telephone number*" "Build Empire text field"
     And I click on the "BPP Digital Course Booking Title Dropdown" button
     Then I click on the "Dr" "Build Empire application type"

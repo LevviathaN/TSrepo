@@ -28,8 +28,8 @@
     "value": "PARAM"
   },
   {
-    "name": "^I capture special data \"([^\"]*)\" as \"([^\"]*)\" variable$",
-    "value": "PARAM,PARAM"
+    "name": "^I capture a part of \"([^\"]*)\" element text by \"([^\"]*)\" regex and save as \"([^\"]*)\" variable$",
+    "value": "LOCATOR,PARAM,PARAM"
   },
   {
     "name": "^I capture text data \"([^\"]*)\" as \"([^\"]*)\" variable$",
