@@ -13,6 +13,7 @@ Feature: Create a Single Booking
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
     And I capture text data "Salesforce Instance Availability Data Field" as "EC_AVAILABILITY_NUMBER" variable
     #Create Student Account
+    And I hover over the "Accounts" "Salesforce navigation menu dropdown"
     When I click on the "Accounts" "Salesforce navigation menu dropdown"
     And I wait for "2" seconds
     And I click on the "New Account" "Salesforce navigation menu dropdown option"
