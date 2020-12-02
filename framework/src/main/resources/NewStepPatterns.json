@@ -24,6 +24,10 @@
     "value": "^I fill the \"([^\"]*)\" field with \"([^\"]*)\"$"
   },
   {
+    "name": "FOR_EACH",
+    "value": "^For each \"([^\"]*)\" element:$"
+  },
+  {
     "name": "HOVER_OVER",
     "value": "^I hover over the \"([^\"]*)\" (?:button|link|option|element)$"
   },
@@ -110,6 +114,10 @@
   {
     "name": "I_PRESS_KEY",
     "value": "^I press \"([^\"]*)\" for \"([^\"]*)\"$"
+  },
+  {
+    "name" : "I_PRESS_FROM_KEYBOARD_SPECIAL",
+    "value": "^I press \"([^\"]*)\" for \"([^\"]*)\" \"([^\"]*)\"$"
   },
   {
     "name": "I_REMEMBER_TEXT",

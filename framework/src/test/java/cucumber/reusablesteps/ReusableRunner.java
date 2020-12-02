@@ -90,6 +90,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_UNTIL_SPECIAL"),() -> specialStepDefs.i_click_on_element_until_special(arg1, arg2, arg3, arg4));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("HOVER_OVER_ELEMENT_SPECIAL"),() -> specialStepDefs.hover_over_element_special(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_VALIDATE_TEXT_IF"), () -> specialStepDefs.i_validate_text_to_be_displayed_for_element_special_if(arg1, arg2, arg3, arg4));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_PRESS_FROM_KEYBOARD_SPECIAL"), () -> specialStepDefs.i_press_from_keyboard_special(arg1, arg2, arg3));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();
