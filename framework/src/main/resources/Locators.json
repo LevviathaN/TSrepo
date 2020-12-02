@@ -224,6 +224,14 @@
     "value": "xpath=//label[contains(.,'I am an Employer')]"
   },
   {
+    "name": "BPP Digital Form I Am Employer Tab Mobile",
+    "value": "xpath=(//label[contains(.,'I am an Employer')])[last()]"
+  },
+  {
+    "name": "BPP Digital Form Submit Button Mobile",
+    "value": "xpath=(//button[@type='submit'])[2]"
+  },
+  {
     "name": "BPP Digital Green Import button",
     "value": "xpath=//button[@type='submit'][normalize-space()='Import']"
   },
@@ -526,6 +534,10 @@
   {
     "name": "BPP Digital Course Booking Success Message Form",
     "value": "xpath=//div[@class='form-content']/p/b"
+  },
+  {
+    "name": "BPP Digital Form Success Message Title",
+    "value": "xpath=//div[@class='form-confirmation']//*[@class='form-title']"
   },
   {
     "name": "BPP Digital Accordion Mobile Item",
@@ -1318,6 +1330,10 @@
   {
     "name": "Direct App I Am Happy To Receive Information",
     "value": "xpath=//label[normalize-space()='I am happy to receive information from BPP']"
+  },
+  {
+    "name": "Direct App I Am Happy To Receive Information Mobile",
+    "value": "xpath=(//label[normalize-space()='I am happy to receive information from BPP'])[last()]"
   },
   {
     "name": "Direct App If You Are Under 18 Note",
