@@ -208,6 +208,10 @@
     "value": "xpath=//div[@class='home-col right-col']//h3[text()=\"PARAMETER\"]"
   },
   {
+    "name": "Build Empire My Learning Timeline Course name Mobile",
+    "value": "xpath=//div[@class='home-col timeline-col']//h3[text()=\"PARAMETER\"]"
+  },
+  {
     "name": "Build Empire Navigation Menu elements",
     "value": "xpath=//li[normalize-space()=\"PARAMETER\"]"
   },
