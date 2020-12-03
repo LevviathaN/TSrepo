@@ -1,14 +1,15 @@
 @Mobile
-Feature: BPP University Hub My Courses
+Feature: BPP University Hub My Courses Mobile
   As a learner
   I'd like to be able to see a summary of my most recently accessed Courses and my progression for each within the dashboard
   So that I can see where I am up to at a glance
 
-  @Positive @iPad @iPhone @Samsung #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
-  Scenario: HUB - My Courses
-    #Register New Student
-    And I execute "Register New Student Account" reusable step replacing some steps
+  Background:
+    Given I execute "Register New Student Account" reusable step replacing some steps
       |12|I wait for "5" seconds|
+
+  @Positive @iPad @iPhone @Samsung #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
+  Scenario: HUB - My Courses Mobile
     #Validate Timeline block
     Then I should see the "Timeline" message
     Then I should see the "Welcome to your new logged in area." message
@@ -54,10 +55,8 @@ Feature: BPP University Hub My Courses
     #My Learning Validation
     Then I should see the "You are now enrolled onto ICAEW Accounting Full" message
     Then I should see the "ICAEW Accounting Full" message
-#    Then I should see the "ICAEW Accounting Full" "Build Empire My Learning Timeline Course name Mobile"
     Then Attribute "alt" of "Direct App Announcement Megaphone icon" should have value "megaphone-icon"
     #Click Most Recent Course
-#    When I click on the "ICAEW Accounting Full" "Build Empire My Learning Timeline Course name Mobile"
     When I click on the "Hub Mobile My Learning Right Block Course name" element if "Hub Mobile My Learning Right Block Course name" "element is present"
     When I click on the "Hub Mobile  My Learning Timeline Course name Mobile" element if "Hub Mobile  My Learning Timeline Course name Mobile" "element is present"
     #Validate Recent Course Name and Percentage
