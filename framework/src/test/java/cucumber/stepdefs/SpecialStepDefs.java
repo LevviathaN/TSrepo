@@ -448,4 +448,25 @@ public class SpecialStepDefs extends SeleniumHelper {
         BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
         hoverItem(initElementLocator(resultingXpath));
     }
+
+    /**
+     * Definition to imitate key press from keyboard
+     *
+     * @param fieldValue : value to be entered in appropriate field using metadata values
+     * @param elementType:   By locator of element to press key
+     */
+    @Then("^I press \"([^\"]*)\" for \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_press_from_keyboard_special(String fieldValue,String elementLocator, String elementType) {
+        Reporter.log("Executing step: I press the " + fieldValue + " from keyboard for special parameter");
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedText = TestParametersController.checkIfSpecialParameter(fieldValue);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
+                    TestParametersController.checkIfSpecialParameter(elementLocator));
+            pressKeyFromKeyboard(initElementLocator(resultingXpath), TestParametersController.checkIfSpecialParameter(processedText));
+            waitForPageToLoad();
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
 }

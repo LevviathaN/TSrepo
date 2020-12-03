@@ -132,6 +132,14 @@
     "value": "xpath=//label[contains(text(), 'PARAMETER')]/..//input"
   },
   {
+    "name": "BPP Digital Mobile RFI Input Field",
+    "value": "xpath=(//label[contains(text(), 'PARAMETER')]/..//input)[last()]"
+  },
+  {
+    "name": "BPP Digital Mobile RFI Input Field Green Checkmark",
+    "value": "xpath=//label[contains(text(), 'PARAMETER')]/..//*[local-name()='svg']"
+  },
+  {
     "name": "BPP Digital Search Courses label",
     "value": "xpath=//label[normalize-space()='PARAMETER']"
   },
