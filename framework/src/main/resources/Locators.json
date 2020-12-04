@@ -1436,6 +1436,14 @@
     "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
   },
   {
+    "name": "Hub Mobile My Learning Right Block Course name",
+    "value": "xpath=//div[@class='home-col right-col']//h3[text()=\"ICAEW Accounting Full\"]"
+  },
+  {
+    "name": "Hub Mobile  My Learning Timeline Course name Mobile",
+    "value": "xpath=//div[@class='home-col timeline-col']//h3[text()=\"ICAEW Accounting Full\"]"
+  },
+  {
     "name": "Digital Site Mobile BPP Logo",
     "value": "xpath=//div[contains(@class,'item-logo')]/a"
   },
