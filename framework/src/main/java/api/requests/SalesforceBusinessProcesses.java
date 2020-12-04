@@ -137,9 +137,9 @@ public class SalesforceBusinessProcesses {
         ArrayList<String> recordData = utils.getRecordData(utils.getResponseProperty(dataResponse));
         GlobalDataBridge.getInstance().setBufferValueByKey("Student".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
-        assertThat(recordData.get(89), matchesPattern("BP[0-9]+"));
+        assertThat(recordData.get(93), matchesPattern("BP[0-9]+"));
 
-        BPPLogManager.getLogger().info("Banner Id: " + recordData.get(68));
+        BPPLogManager.getLogger().info("Banner Id: " + recordData.get(93));
         return this;
     }
 

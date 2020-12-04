@@ -224,6 +224,14 @@
     "value": "xpath=//label[contains(.,'I am an Employer')]"
   },
   {
+    "name": "BPP Digital Form I Am Employer Tab Mobile",
+    "value": "xpath=(//label[contains(.,'I am an Employer')])[last()]"
+  },
+  {
+    "name": "BPP Digital Form Submit Button Mobile",
+    "value": "xpath=(//button[@type='submit'])[2]"
+  },
+  {
     "name": "BPP Digital Green Import button",
     "value": "xpath=//button[@type='submit'][normalize-space()='Import']"
   },
@@ -526,6 +534,10 @@
   {
     "name": "BPP Digital Course Booking Success Message Form",
     "value": "xpath=//div[@class='form-content']/p/b"
+  },
+  {
+    "name": "BPP Digital Form Success Message Title",
+    "value": "xpath=//div[@class='form-confirmation']//*[@class='form-title']"
   },
   {
     "name": "BPP Digital Accordion Mobile Item",
@@ -1320,6 +1332,10 @@
     "value": "xpath=//label[normalize-space()='I am happy to receive information from BPP']"
   },
   {
+    "name": "Direct App I Am Happy To Receive Information Mobile",
+    "value": "xpath=(//label[normalize-space()='I am happy to receive information from BPP'])[last()]"
+  },
+  {
     "name": "Direct App If You Are Under 18 Note",
     "value": "xpath=//div[contains(text(),'If you are under 18')]"
   },
@@ -1418,6 +1434,14 @@
   {
     "name": "Hub Mobile Book Exam",
     "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
+  },
+  {
+    "name": "Hub Mobile My Learning Right Block Course name",
+    "value": "xpath=//div[@class='home-col right-col']//h3[text()=\"ICAEW Accounting Full\"]"
+  },
+  {
+    "name": "Hub Mobile  My Learning Timeline Course name Mobile",
+    "value": "xpath=//div[@class='home-col timeline-col']//h3[text()=\"ICAEW Accounting Full\"]"
   },
   {
     "name": "Digital Site Mobile BPP Logo",
@@ -2799,6 +2823,14 @@
   {
     "name": "Salesforce Quote Edited Quote Number",
     "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//span[contains(.,'Quote Number')]/../following-sibling::div/span[1]"
+  },
+  {
+    "name": "Salesforce Quote Booking Type Dropdown",
+    "value": "xpath=(//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//label[contains(.,'Booking Type')]//following-sibling::div//div[1])[1]"
+  },
+  {
+    "name": "Salesforce Quote Booking Type Apprenticeships Chargeable",
+    "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//label[contains(.,'Booking Type')]//following-sibling::div//div[2]//span[@title='Apprenticeship chargeable bookings']"
   },
   {
     "name": "Salesforce Orders Quick Link Tab on Quote Page",
