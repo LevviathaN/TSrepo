@@ -4,7 +4,7 @@ Feature: The Hub - My Learning - Course Overview Page - Topics
   and my current progress on each topic,
   so that I can easily see where I am up to within a course and navigate to each topic
 
-  @Samsung @iPhoneXR @iPad
+  @Samsung @iPhoneXR @iPad #TC-724
   Scenario: The Hub Course Overview Page - Topics_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "autoselinarichard2247@guerrillamail.info" text to the "Email" "Build Empire text field" |
