@@ -576,6 +576,18 @@
     "value": "xpath=//span[text()='PARAMETER']/../following-sibling::input|(//label[normalize-space()='PARAMETER']/following::input)[1]"
   },
   {
+    "name": "Salesforce Inframe select",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//label[normalize-space()='PARAMETER']/following-sibling::select"
+  },
+  {
+    "name": "Salesforce Inframe select option",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//option[normalize-space()='PARAMETER']"
+  },
+  {
+    "name": "Salesforce Inframe select options",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//label[normalize-space()='PARAMETER']/following-sibling::select[1]/option"
+  },
+  {
     "name": "Totara Assessment radiobutton",
     "value": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../preceding-sibling::td/input"
   },

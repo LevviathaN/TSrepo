@@ -2889,6 +2889,38 @@
     "value": "xpath=//button[@class='slds-button']"
   },
   {
+    "name": "Salesforce Opportunity Tier 1 field",
+    "value": "xpath=//span[text()='Tier 1']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 2 field",
+    "value": "xpath=//span[text()='Tier 2']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 3 field",
+    "value": "xpath=//span[text()='Tier 3']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 4 field",
+    "value": "xpath=//span[text()='Tier 4']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 5 field",
+    "value": "xpath=//span[text()='Tier 5']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 6 field",
+    "value": "xpath=//span[text()='Tier 6']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Save Tiers button",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//input[@value='Save']"
+  },
+  {
+    "name": "SalesforceEditTiersFrame",
+    "value": "xpath=(//iframe)[1]"
+  },
+  {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
   },

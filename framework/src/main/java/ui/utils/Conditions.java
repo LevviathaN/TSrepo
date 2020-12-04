@@ -37,6 +37,10 @@ public class Conditions extends SeleniumHelper {
                 elementLocator = conditionParameter.split(",")[0];
                 elementType = conditionParameter.split(",")[1];
                 return !isElementPresentAndDisplay(initElementLocator(getSpecialElementXPath(elementLocator,elementType)));
+            case "value is empty":
+                return conditionParameter.isEmpty();
+            case "value is not empty":
+                return !conditionParameter.isEmpty();
             default:
                 return false;
         }
