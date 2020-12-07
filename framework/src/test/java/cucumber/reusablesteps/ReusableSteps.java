@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardOpenOption.CREATE;
 
 @CucumberOptions(
-        features = "src/test/resources/cucumber/bpp_features",
+        features = "src/test/resources/cucumber",
         glue = {"cucumber.stepdefs"},
         tags = {"@Reusable"},
         plugin = {"pretty"})
@@ -74,7 +74,7 @@ public class ReusableSteps {
 
             fileContent = fileContent + "</reusables>";
             byte[] data = fileContent.getBytes();
-            Path p = Paths.get("src/main/resources/data/bpp/ReusableTestSteps.xml");
+            Path p = Paths.get("src/main/resources/data/ReusableTestSteps.xml");
 
             try{
                 Files.deleteIfExists(p);

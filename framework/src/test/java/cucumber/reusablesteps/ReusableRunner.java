@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ui.utils.SeleniumHelper;
-import ui.utils.BPPLogManager;
+import ui.utils.LogManager;
 import ui.utils.Reporter;
 import ui.utils.Tools;
 
@@ -114,7 +114,7 @@ public static ReusableRunner getInstance() {
         for (int i = 0; i < reusable.size(); i++) {
 
             if (subSteps.containsKey(i+1)) {
-                BPPLogManager.getLogger().info("Adding \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
+                LogManager.getLogger().info("Adding \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
                 reusable.add(i, subSteps.get(i+1));
             }
             executeStep(reusable.get(i));
@@ -138,7 +138,7 @@ public static ReusableRunner getInstance() {
         for (int i = 0; i < reusable.size(); i++) {
 
             if (subSteps.containsKey(i+1)) {
-                BPPLogManager.getLogger().info("Replacing \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
+                LogManager.getLogger().info("Replacing \"" + subSteps.get(i+1) + "\" on the " + (i+1) + " position");
                 reusable.remove(i);
                 reusable.add(i, subSteps.get(i+1));
             }
@@ -156,7 +156,7 @@ public static ReusableRunner getInstance() {
     public void executeReusable(String reusableName) {
 
         reusable = getStepsOfReusableScenario(reusableName);
-        BPPLogManager.getLogger().info("Executing: " + reusableName + " reusable step");
+        LogManager.getLogger().info("Executing: " + reusableName + " reusable step");
         for (int i = 0; i < reusable.size(); i++) {
             executeStep(reusable.get(i));
         }
@@ -188,7 +188,7 @@ public static ReusableRunner getInstance() {
 
         for (String regx : stepDefsMap.keySet()) {
             if (step.matches(regx)) {
-                BPPLogManager.getLogger().info("Executing step: " + step);
+                LogManager.getLogger().info("Executing step: " + step);
                 stepDefsMap.get(regx).runReusable();
             }
         }
@@ -206,7 +206,7 @@ public static ReusableRunner getInstance() {
         ArrayList<String> stepsList = new ArrayList<>();
 
         try {
-            File inputFile = new File("src/main/resources/data/bpp/ReusableTestSteps.xml");
+            File inputFile = new File("src/main/resources/data/ReusableTestSteps.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);

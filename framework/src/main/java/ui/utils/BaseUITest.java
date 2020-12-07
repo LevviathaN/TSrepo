@@ -1,7 +1,6 @@
 package ui.utils;
 
 import CodeEditor.GuiHelper;
-import api.RestApiController;
 import org.jooq.tools.json.ParseException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -10,10 +9,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.KeywordsHandler;
-import ui.utils.bpp.MetaDataHandler;
-import ui.utils.bpp.PreProcessFiles;
+import ui.utils.specialDataHandlers.ExecutionContextHandler;
+import ui.utils.specialDataHandlers.KeywordsHandler;
+import ui.utils.specialDataHandlers.MetaDataHandler;
+import ui.utils.specialDataHandlers.PreProcessFiles;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -25,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * <p>Base test class for all ui tests.</p>
- * @author yzosin
+ * @author rlevytskyi
  */
 public class BaseUITest {
 
@@ -37,7 +36,6 @@ public class BaseUITest {
 
     @BeforeMethod
     public void beforeWithData(Object[] data, Method method) {
-        RestApiController apiController = new RestApiController();
 
         //init reporter
         Reporter.instantiate();
@@ -48,7 +46,7 @@ public class BaseUITest {
         preProcessFiles = new PreProcessFiles();
 
         try {
-            BPPLogManager.getLogger().info("Driver creation");
+            LogManager.getLogger().info("Driver creation");
             SeleniumHelper.driver.set(DriverProvider.getDriver());
             SeleniumHelper.driver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         } catch (Exception e) {
@@ -93,10 +91,10 @@ public class BaseUITest {
                 if (qTestAPI.getTestRunIDfromSuite().containsKey(scenarioName)) {
                     String qtestID = qTestAPI.getTestRunIDfromSuite().get(scenarioName);
                     if (testResult.toString().contains("SUCCESS")){
-                        BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");
+                        LogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");
                         qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Passed", 601, qtestID, "");
                     } else {
-                        BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " FAILED");
+                        LogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " FAILED");
                         qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Failed", 602, qtestID, testResult.getThrowable().toString());
                     }
                     Reporter.addQtestLink(qtestID);

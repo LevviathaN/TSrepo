@@ -1,6 +1,6 @@
 package ui.utils;
 
-import ui.utils.bpp.TestParametersController;
+import ui.utils.specialDataHandlers.TestParametersController;
 
 /**
  * @author rlevytskyi

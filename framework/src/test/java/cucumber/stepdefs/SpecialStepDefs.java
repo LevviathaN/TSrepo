@@ -1,17 +1,22 @@
 package cucumber.stepdefs;
 
-import io.cucumber.java.en.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.hamcrest.Matchers;
 import org.testng.Assert;
 import ui.utils.SeleniumHelper;
-import ui.utils.BPPLogManager;
+import ui.utils.LogManager;
 import ui.utils.Conditions;
 import ui.utils.Reporter;
 import ui.utils.UiHandlers;
-import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.TestParametersController;
+import ui.utils.specialDataHandlers.ExecutionContextHandler;
+import ui.utils.specialDataHandlers.TestParametersController;
+
+import static com.jcabi.matchers.RegexMatchers.matchesPattern;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
 
 public class SpecialStepDefs extends SeleniumHelper {
 
@@ -29,7 +34,7 @@ public class SpecialStepDefs extends SeleniumHelper {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-            BPPLogManager.getLogger().info("Clicking on: " + elementLocator + " element");
+            LogManager.getLogger().info("Clicking on: " + elementLocator + " element");
             clickOnElement(initElementLocator(resultingXpath),
                     UiHandlers.PF_SPINNER_HANDLER,
                     UiHandlers.ACCEPT_ALERT,
@@ -100,7 +105,7 @@ public class SpecialStepDefs extends SeleniumHelper {
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             setText(initElementLocator(resultingXpath), processedText);
             if(!text.equals(processedText)){
-                BPPLogManager.getLogger().info("Setting " + processedText + " to " + elementLocator + " element");
+                LogManager.getLogger().info("Setting " + processedText + " to " + elementLocator + " element");
                 Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + "' [output value]</pre>");
             }
         } else {
@@ -122,7 +127,7 @@ public class SpecialStepDefs extends SeleniumHelper {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            BPPLogManager.getLogger().info("Validating presence of " + elementLocator);
+            LogManager.getLogger().info("Validating presence of " + elementLocator);
             Assert.assertTrue(isElementPresentAndDisplay(initElementLocator(resultingXpath)));
         } else {
             Reporter.fail("No such locator template key");
@@ -144,7 +149,7 @@ public class SpecialStepDefs extends SeleniumHelper {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
-            BPPLogManager.getLogger().info("Validating the number of elements is " + expectedQuantity);
+            LogManager.getLogger().info("Validating the number of elements is " + expectedQuantity);
             Assert.assertTrue(expectedQuantity.equals(numberOfElements(initElementLocator(resultingXpath))));
             int actualNumberOfElements = numberOfElements(initElementLocator(resultingXpath));
             if (expectedQuantity.contains("more than")) {
@@ -282,7 +287,7 @@ public class SpecialStepDefs extends SeleniumHelper {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
             isElementPresentAndDisplay(initElementLocator(resultingXpath));
-            BPPLogManager.getLogger().info("Executing JS code: " + jsCode + " for: " + elementLocator + " element");
+            LogManager.getLogger().info("Executing JS code: " + jsCode + " for: " + elementLocator + " element");
             executeJSCodeForElement(initElementLocator(resultingXpath),jsCode);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
@@ -306,7 +311,7 @@ public class SpecialStepDefs extends SeleniumHelper {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
-            BPPLogManager.getLogger().info("Hovering over: " + elementLocator + " element");
+            LogManager.getLogger().info("Hovering over: " + elementLocator + " element");
             hoverItem(initElementLocator(resultingXpath));
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
@@ -314,5 +319,79 @@ public class SpecialStepDefs extends SeleniumHelper {
         } else {
             Reporter.fail("No such locator template key");
         }
+    }
+
+    /**
+     * Definition to validate text from web element
+     *
+     * @param text     : value to be checked
+     * @param elementLocator: By locator of element to press key
+     */
+    @Then("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" \"([^\"]*)\"")
+    public void i_validate_text_to_be_displayed_for_element_special(String text, String elementLocator, String elementType) {
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            LogManager.getLogger().info("Hovering over: " + elementLocator + " element");
+
+            String actualValue = "";
+            Reporter.log("Executing step: I validate " + text + " to be displayed for: " + elementLocator);
+            if (elementLocator.equalsIgnoreCase("CHECK_URL")) {
+                actualValue = SeleniumHelper.driver().getCurrentUrl();
+                Reporter.log("Validating URL to match :" + text);
+                assertThat(actualValue, containsString(text));
+            } else {
+                actualValue = getTextValueFromField(initElementLocator(resultingXpath));
+                String newValue = text.replaceAll("''","\"");
+                if (text.toUpperCase().trim().startsWith("RE=")) {
+                    newValue = newValue.substring("RE=".length());
+                    assertThat(actualValue.trim(), matchesPattern(newValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'</pre>");
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'");
+                } else if (text.toUpperCase().startsWith("CONTAINS=")) {
+                    newValue = newValue.substring("CONTAINS=".length());
+                    if (text.contains("EC")) {
+                        String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                        assertThat(actualValue.trim().toLowerCase(), Matchers.containsString(executionContextValue.toLowerCase()));
+                    } else {
+                        assertThat(actualValue.trim(), Matchers.containsString(newValue));
+                        Reporter.log("<pre>Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'</pre>");
+                        LogManager.getLogger().info("Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'");
+                    }
+                } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
+                    newValue = newValue.substring("NOT_CONTAINS=".length());
+                    if (text.contains("EC")) {
+                        String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                        assertThat(actualValue.trim(), not(Matchers.containsString(executionContextValue)));
+                    } else {
+                        assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
+                        Reporter.log("<pre>Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'</pre>");
+                        LogManager.getLogger().info("Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'");
+                    }
+                } else if (text.toUpperCase().startsWith("CASE=")) {
+                    newValue = newValue.substring("CASE=".length());
+                    assertThat(actualValue.trim(), Matchers.equalTo(newValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'</pre>");
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'");
+                } else if (text.toUpperCase().contains("STARTS-WITH=")) {
+                    newValue = newValue.substring("STARTS-WITH=".length());
+                    assertThat(actualValue.trim(), Matchers.startsWith(newValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
+                } else if (text.contains("EC_")) {
+                    String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
+                    assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
+                } else {
+                    assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
+                    Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
+                }
+            }
+        }
+
+
     }
 }

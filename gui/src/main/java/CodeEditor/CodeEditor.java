@@ -28,7 +28,7 @@ public class CodeEditor extends StackPane implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.frameworkFolder + "/src/test/resources/cucumber/bpp_features"))));
+        fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.frameworkFolder + "/src/test/resources/cucumber"))));
         editingTemplate = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
         editingCode = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
     }

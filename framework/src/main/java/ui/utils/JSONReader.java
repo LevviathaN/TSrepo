@@ -20,8 +20,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 /**
- * Created by odiachuk on 13.07.17.
- *
+ * Created by rlevytskyi
  *
  * Interaction with JSON files
  *

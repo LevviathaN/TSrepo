@@ -1,8 +1,8 @@
-package ui.utils.bpp;
+package ui.utils.specialDataHandlers;
 
 import datageneration.metadata.MetaData;
 import datageneration.metadata.MetaDataManager;
-import ui.utils.BPPLogManager;
+import ui.utils.LogManager;
 import ui.utils.Reporter;
 
 import java.nio.file.Path;
@@ -10,12 +10,8 @@ import java.nio.file.Paths;
 import java.util.Set;
 import java.util.TreeSet;
 
-//import ui.utils.bpp.NoahLogManager;
-//import ui.utils.bpp.Reporter;
-
 /**
- * Functionality requested in AGQA-813
- * Created by Nick B.
+ * Created by rlevytskyi.
  * <p>The class is used for handling the metadata passed as test parameters.
  * This class is implemented using the DataManagementUtil-1.5.1 library provided by UTOPIA SOLUTIONS.
  * Note: The class handles two scenarios when metadata key cannot be used:
@@ -45,7 +41,7 @@ public class MetaDataHandler {
                 metaDataManager = new MetaDataManager(METADATA_FILE_PATH, PREFIX);
             }
         } catch (NullPointerException e) {
-            BPPLogManager.getLogger().error("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString());
+            LogManager.getLogger().error("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString());
             //reporter.fail("Failed to read metadata file located in the " + METADATA_FILE_PATH.toString() + "<br>Please read the log file to get more information");
             throw new NullPointerException("Failed to read metadata file.");
         }
@@ -59,7 +55,7 @@ public class MetaDataHandler {
         if ((metadataKeyExists(metadataKey))) {
             return metaDataManager.getMetaData(metadataKey).getValue();
         } else {
-            BPPLogManager.getLogger().error("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
+            LogManager.getLogger().error("Requested " + metadataKey + " metadata key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- the requested key is misspelled" +
                     "\n\t\t- metadata excel file(s) located in the " + METADATA_FILE_PATH.toString() +
                     " folder is(are) missing required data. Tag, Value and Description should be provided for each row.\n" +

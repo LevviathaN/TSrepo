@@ -1,4 +1,4 @@
-package ui.utils.bpp;
+package ui.utils.specialDataHandlers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author yzosin
+ * @author rlevytskyi
  * <p>Class contains static methods that check whether passed string locator matches any of CSS, XPATH or ID pattern </p>
  */
 public class PageLocatorMatcher {

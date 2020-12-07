@@ -1,15 +1,12 @@
-package ui.utils.bpp;
+package ui.utils.specialDataHandlers;
 
 import datageneration.execution.ExecutionContext;
-import ui.utils.BPPLogManager;
+import ui.utils.LogManager;
 import ui.utils.Reporter;
 
 import java.util.Map;
 
-//import ui.utils.bpp.Reporter;
-
 /**
- * Functionality requested in AGQA-865
  * <p>The class is used for handling the execution context variables during the tests running.
  * This class is implemented using the DataManagementUtil-2.8.2 library provided by UTOPIA SOLUTIONS </p>
  */
@@ -31,7 +28,7 @@ public class ExecutionContextHandler {
         if (executionContext.getValues().containsKey(key)) {
             return executionContext.getValue(key);
         } else {
-            BPPLogManager.getLogger().error("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
+            LogManager.getLogger().error("Requested " + key + " execution context key is absent.\n\t\tPossible reasons are:\n" +
                     "\t\t- some previous CaptureData action(s) failed;\n" +
                     "\t\t- the requested key is misspelled");
             Reporter.fail("Requested " + key + " execution context key is absent.<pre>Possible reasons are:<br>" +

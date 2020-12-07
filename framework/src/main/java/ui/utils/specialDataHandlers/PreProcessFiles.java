@@ -1,9 +1,7 @@
-package ui.utils.bpp;
-
-import java.io.IOException;
+package ui.utils.specialDataHandlers;
 
 /**
- * @author yzosin
+ * @author rlevytskyi
  * <p>
  * The class defines apropriate paths to framework resources
  * </p>
@@ -19,13 +17,8 @@ public class PreProcessFiles {
 	public PreProcessFiles(){
 	}
 
-	public static synchronized String setPropertiesFiles() {
-		return PROPERTIES_FILES_FOLDER_PATH;
-	}
-
 	String className = this.getClass().getName().replace('.', '/');
-	String classJar =
-			this.getClass().getResource("/" + className + ".class").toString();
+	String classJar = this.getClass().getResource("/" + className + ".class").toString();
 
 
 	/**
@@ -38,7 +31,7 @@ public class PreProcessFiles {
 
 			ROOT_FOLDER_PATH = rootFolder;
 			GUI_FOLDER_PATH = rootFolder + "/gui";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/bpp/keywords.metadata";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/data/keywords.metadata";
 
 			if(moduleUI){
 				PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/default.properties";
@@ -48,7 +41,7 @@ public class PreProcessFiles {
 		else {
 			ROOT_FOLDER_PATH = rootFolder;
 			GUI_FOLDER_PATH = rootFolder + "/gui";
-			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
+			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/keywords.metadata";
 			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
 			if (moduleUI) {
 				PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/resources/default.properties";
@@ -65,21 +58,15 @@ public class PreProcessFiles {
 	 *
 	 * @author tchin
 	 * @param args criteria specified by manual qa
-	 * @throws IOException will throw exception ending the test execution if invalid information is available
 	 * @return returns true if all test configurations are correct and normal test execution can proceed
 	 */
-	public boolean preProcessTestConfiguration(String... args) throws IOException {
-
+	public boolean preProcessTestConfiguration(String... args) {
 		try {
 			initPaths(true);
-			//PropertiesHelper.gatherPropertiesFromJSON();
-
 			return true;
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			return  false;
 		}
 	}
-
 }

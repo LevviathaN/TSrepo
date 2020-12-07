@@ -103,15 +103,15 @@ public class qTestAPI {
                 .post();
 
         if (response.getStatusCode() == 201) {
-            BPPLogManager.getLogger().info("Response code: " + response.getStatusCode() + " - Test Run Status was successfully updated for " + test + " test");
+            LogManager.getLogger().info("Response code: " + response.getStatusCode() + " - Test Run Status was successfully updated for " + test + " test");
         } else if (response.getStatusCode() == 400) {
-            BPPLogManager.getLogger().error("Response code: " + response.getStatusCode() + " - Bad Request. Test Run Status wasn't updated for " + test + " test");
+            LogManager.getLogger().error("Response code: " + response.getStatusCode() + " - Bad Request. Test Run Status wasn't updated for " + test + " test");
             response.prettyPrint();
         } else if (response.getStatusCode() == 500) {
-            BPPLogManager.getLogger().error("Response code: " + response.getStatusCode() + " - Internal Server Error. Test Run Status wasn't updated for " + test + " test");
+            LogManager.getLogger().error("Response code: " + response.getStatusCode() + " - Internal Server Error. Test Run Status wasn't updated for " + test + " test");
             response.prettyPrint();
         } else {
-            BPPLogManager.getLogger().error("Response code: " + response.getStatusCode() + " Test Run Status wasn't updated for " + test + " test");
+            LogManager.getLogger().error("Response code: " + response.getStatusCode() + " Test Run Status wasn't updated for " + test + " test");
             response.prettyPrint();
         }
     }

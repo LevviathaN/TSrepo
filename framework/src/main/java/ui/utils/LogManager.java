@@ -6,12 +6,12 @@ import org.apache.log4j.Logger;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author yzosin
+ * @author rlevytskyi
  * <p>
  * The logger class
  * </p>
  */
-public class BPPLogManager {
+public class LogManager {
     private static final ConcurrentHashMap<Long, Logger> loggers = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<Long, FileAppender> appenders = new ConcurrentHashMap<>();
 

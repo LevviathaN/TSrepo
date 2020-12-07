@@ -36,13 +36,13 @@ public class FileIO {
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            BPPLogManager.getLogger().error("Config was not found");
+            LogManager.getLogger().error("Config was not found");
         } catch (IOException e) {
             e.printStackTrace();
-            BPPLogManager.getLogger().error("Config was not opened");
+            LogManager.getLogger().error("Config was not opened");
         } catch (Exception e) {
             e.printStackTrace();
-            BPPLogManager.getLogger().error("Field was not found: " + fieldName);
+            LogManager.getLogger().error("Field was not found: " + fieldName);
         }
         return result;
     }

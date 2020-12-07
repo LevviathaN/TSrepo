@@ -1,4 +1,4 @@
-package ui.utils.bpp;
+package ui.utils.specialDataHandlers;
 
 import org.openqa.selenium.By;
 import ui.utils.SeleniumHelper;
@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author nick.
+ * @author rlevytskyi.
  *
  * <p>This class provides an ability to check whether the passed from excel sheet parameter is
  * a keyword, a metadata or an execution context key and convert such appropriately.</p>
@@ -167,10 +167,6 @@ public class TestParametersController {
             if (parameter.equals(KEYWORD_NAME_TO_SKIP)) {
                 //just return input parameter without changes
                 return parameter;
-            }
-
-            if (parameter.equals(KEYWORD_SF_DATE)) {
-                return KeywordsHandler.salesForceDateAPIdateFormat();
             }
 
             //split parameter into two parts: static text, and KW_ value itself

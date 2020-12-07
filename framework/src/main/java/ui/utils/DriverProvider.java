@@ -12,7 +12,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import ui.utils.bpp.PropertiesHelper;
+import ui.utils.specialDataHandlers.PropertiesHelper;
 
 import java.io.File;
 import java.net.MalformedURLException;

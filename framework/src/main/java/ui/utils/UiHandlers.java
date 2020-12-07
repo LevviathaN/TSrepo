@@ -102,7 +102,7 @@ public enum UiHandlers {
                     ||e.getCause().toString().contains("Are you sure want to remove this component from a page?")
                     ||e.getCause().toString().contains("Some questions are not answered yet.")
                     ||e.getCause().toString().contains("Are you sure want to publish this page?")) {
-                BPPLogManager.getLogger().info("Handling an expected JS Alert" );
+                LogManager.getLogger().info("Handling an expected JS Alert" );
                 Reporter.log("Handling an expected JS Alert");
                 page.acceptAlertMessage();
                 SeleniumHelper.repeatAction = false;

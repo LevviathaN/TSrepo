@@ -11,8 +11,8 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.testng.Assert;
 import ui.utils.SeleniumHelper;
 import ui.utils.*;
-import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.TestParametersController;
+import ui.utils.specialDataHandlers.ExecutionContextHandler;
+import ui.utils.specialDataHandlers.TestParametersController;
 
 import java.util.Map;
 
@@ -32,7 +32,7 @@ public class StepDefinitions extends SeleniumHelper {
             driver().switchTo().defaultContent();
         }
         catch (NoSuchWindowException e) {
-            BPPLogManager.getLogger().info("Catching exception: " + e.getMessage().substring(0,44));
+            LogManager.getLogger().info("Catching exception: " + e.getMessage().substring(0,44));
         }
     }
 
@@ -120,7 +120,7 @@ public class StepDefinitions extends SeleniumHelper {
     public void fill_field(String element, String text) {
         Reporter.log("Executing step: I fill the  '" + element + "' field with '" + text + "'");
         String processedText = TestParametersController.checkIfSpecialParameter(text);
-        BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
+        LogManager.getLogger().info("Setting: " + element + " with value: " + text);
         setText(initElementLocator(element), processedText);
         if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
@@ -394,7 +394,7 @@ public class StepDefinitions extends SeleniumHelper {
                 newValue = newValue.substring("RE=".length());
                 assertThat(actualValue.trim(), matchesPattern(newValue));
                 Reporter.log("<pre>Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'</pre>");
-                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'");
+                LogManager.getLogger().info("Actual value '" + actualValue + "' matches the pattern " + "'" + newValue + "'");
             } else if (text.toUpperCase().startsWith("CONTAINS=")) {
                 newValue = newValue.substring("CONTAINS=".length());
                 if (text.contains("EC")) {
@@ -403,7 +403,7 @@ public class StepDefinitions extends SeleniumHelper {
                 } else {
                     assertThat(actualValue.trim(), Matchers.containsString(newValue));
                     Reporter.log("<pre>Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'</pre>");
-                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'");
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' contains the string " + "'" + newValue + "'");
                 }
             } else if (text.toUpperCase().startsWith("NOT_CONTAINS=")) {
                 newValue = newValue.substring("NOT_CONTAINS=".length());
@@ -413,26 +413,26 @@ public class StepDefinitions extends SeleniumHelper {
                 } else {
                     assertThat(actualValue.trim(), not(Matchers.containsString(newValue)));
                     Reporter.log("<pre>Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'</pre>");
-                    BPPLogManager.getLogger().info("Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'");
+                    LogManager.getLogger().info("Actual value '" + actualValue + "' not contains the string " + "'" + newValue + "'");
                 }
             } else if (text.toUpperCase().startsWith("CASE=")) {
                 newValue = newValue.substring("CASE=".length());
                 assertThat(actualValue.trim(), Matchers.equalTo(newValue));
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'</pre>");
-                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'");
+                LogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case sensitive string " + "'" + newValue + "'");
             } else if (text.toUpperCase().contains("STARTS-WITH=")) {
                 newValue = newValue.substring("STARTS-WITH=".length());
                 assertThat(actualValue.trim(), Matchers.startsWith(newValue));
                 Reporter.log("<pre>Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'</pre>");
-                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
+                LogManager.getLogger().info("Actual value '" + actualValue + "' starts with case sensitive string " + "'" + newValue + "'");
             } else if (text.contains("EC_")) {
                 String executionContextValue = ExecutionContextHandler.getExecutionContextValueByKey(newValue);
                 assertThat(actualValue.trim(), Matchers.equalTo(executionContextValue));
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
-                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
+                LogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
             } else {
                 assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
-                BPPLogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
+                LogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
             }
         }
@@ -513,7 +513,7 @@ public class StepDefinitions extends SeleniumHelper {
         executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + text + "')");
 
         String processedText = TestParametersController.checkIfSpecialParameter(text);
-        BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
+        LogManager.getLogger().info("Setting: " + element + " with value: " + text);
         executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + processedText + "')");
         if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
@@ -531,19 +531,19 @@ public class StepDefinitions extends SeleniumHelper {
         Reporter.log("Executing step: Performing browser " + browserOperation + " operation");
         switch (browserOperation) {
             case "FORWARD":
-                BPPLogManager.getLogger().info("Browser FORWARD operation executing.");
+                LogManager.getLogger().info("Browser FORWARD operation executing.");
                 driver().navigate().forward();
                 break;
             case "BACK":
-                BPPLogManager.getLogger().info("Browser BACK operation executing.");
+                LogManager.getLogger().info("Browser BACK operation executing.");
                 driver().navigate().back();
                 break;
             case "REFRESH":
-                BPPLogManager.getLogger().info("Browser REFRESH operation executing.");
+                LogManager.getLogger().info("Browser REFRESH operation executing.");
                 driver().navigate().refresh();
                 break;
             default:
-                BPPLogManager.getLogger().info("No navigation operation performed.  Check spelling for page navigation parameter.  Only 'Forward', 'Back', and 'Refresh' are supported.");
+                LogManager.getLogger().info("No navigation operation performed.  Check spelling for page navigation parameter.  Only 'Forward', 'Back', and 'Refresh' are supported.");
                 break;
         }
     }

@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-import ui.utils.bpp.ExecutionContextHandler;
+import ui.utils.specialDataHandlers.ExecutionContextHandler;
 
 import javax.imageio.ImageIO;
 import java.io.*;
@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author yzosin
+ * @author rlevytskyi
  * <p>
  * Provides the reporting interface
  * </p>
@@ -91,7 +91,7 @@ public class Reporter {
 
             // report configuration
             htmlReporter.config().setChartVisibilityOnOpen(false);
-            htmlReporter.config().setDocumentTitle("BPP Automation");
+            htmlReporter.config().setDocumentTitle("Automation");
             htmlReporter.config().setReportName("Regression cycle");
             htmlReporter.config().setTheme(Theme.DARK);
 
@@ -99,7 +99,7 @@ public class Reporter {
             if (!js.equals("")) {
                 htmlReporter.config().setJS(js);
             } else {
-                BPPLogManager.getLogger().warn("ReportJQuery.js file is empty");
+                LogManager.getLogger().warn("ReportJQuery.js file is empty");
             }
 
             //adding a custom style sheet to the report
@@ -107,7 +107,7 @@ public class Reporter {
             if (!css.equals("")) {
                 htmlReporter.config().setCSS(css);
             } else {
-                BPPLogManager.getLogger().warn("ReportStyle.css file is empty");
+                LogManager.getLogger().warn("ReportStyle.css file is empty");
             }
 
             extent.attachReporter(htmlReporter);
@@ -222,12 +222,12 @@ public class Reporter {
 
     public static synchronized void startReporting(Method m, Object[] data) {
         addTest(m, getTestName(m, data));
-        BPPLogManager.getLogger().info("Started test: " + getTestName(m, data));
+        LogManager.getLogger().info("Started test: " + getTestName(m, data));
     }
 
     public static synchronized void startReportingAPI(Method m, Object[] data) {
         addApiTest(m, getTestName(m, data));
-        BPPLogManager.getLogger().info("Started test: " + getTestName(m, data));
+        LogManager.getLogger().info("Started test: " + getTestName(m, data));
     }
 
     /**
@@ -426,7 +426,7 @@ public class Reporter {
 
             //verify if Chrome is specified from maven or config.properties
             if (System.getProperties().containsKey("driver") && System.getProperties().getProperty("driver").contains("CHROME")) {
-                BPPLogManager.getLogger().info("Taking Screen Shot For Chrome ");
+                LogManager.getLogger().info("Taking Screen Shot For Chrome ");
                 screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(100))
                         .takeScreenshot(SeleniumHelper.driver.get());
             } else {
@@ -503,7 +503,7 @@ public class Reporter {
 
         String testCaseName = testStorage.get(Thread.currentThread().getId()).getModel().getName().replace(" ", "_");
 
-        BPPLogManager.getLogger().info("Saving the EC values as HTML report for the test: " + testCaseName);
+        LogManager.getLogger().info("Saving the EC values as HTML report for the test: " + testCaseName);
 
         try {
             for (Map.Entry entry : ExecutionContextHandler.getAllValues().entrySet()) {
@@ -511,7 +511,7 @@ public class Reporter {
             }
         } catch (IOException e) {
             fail("Unable to write EC variable into html report!");
-            BPPLogManager.getLogger().error("Unable to write EC variable into html report!");
+            LogManager.getLogger().error("Unable to write EC variable into html report!");
         }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy_HH.mm.ss");
@@ -524,7 +524,7 @@ public class Reporter {
             if (Files.notExists(ecFolder))
                 Files.createDirectory(ecFolder);
         } catch (IOException e) {
-            BPPLogManager.getLogger().info("Unable to create folder to store EC variables");
+            LogManager.getLogger().info("Unable to create folder to store EC variables");
         }
 
         String fileName = "EC_" + "Test" + testCaseName.replace("\"", "_") + "_" + formattedDateTime + ".html";
@@ -538,7 +538,7 @@ public class Reporter {
             writer.close();
             htmlStringBuilder.setLength(0);
         } else {
-            BPPLogManager.getLogger().info("During the " + testCaseName
+            LogManager.getLogger().info("During the " + testCaseName
                     + " test execution no EC variables were found to be saved into report.");
         }
 
@@ -560,7 +560,7 @@ public class Reporter {
         }
 
         String testCaseName = testStorage.get(Thread.currentThread().getId()).getModel().getName();
-        BPPLogManager.getLogger().info("Saving all EC values in text file for the test: " + testCaseName);
+        LogManager.getLogger().info("Saving all EC values in text file for the test: " + testCaseName);
 
         for (Map.Entry entry : ExecutionContextHandler.getAllValues().entrySet()) {
             String fileName = "Execution_Context_Variables" + ".txt";
@@ -613,7 +613,7 @@ public class Reporter {
             if (Files.notExists(logFolder))
                 Files.createDirectory(logFolder);
         } catch (IOException e) {
-            BPPLogManager.getLogger().info("Unable to create logs folder");
+            LogManager.getLogger().info("Unable to create logs folder");
         }
         FileAppender fileApp = new FileAppender();
         //String file = fileName.replaceAll("\"", "_");
@@ -622,7 +622,7 @@ public class Reporter {
         fileApp.setLayout(new PatternLayout("%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %C{1}:%L - %m%n"));
         fileApp.setAppend(true);
         fileApp.activateOptions();
-        BPPLogManager.addFileAppender(fileApp);
+        LogManager.addFileAppender(fileApp);
     }
 
     public static void addQtestLink(String testID) {

@@ -2542,5 +2542,21 @@
   {
     "name": "Yopmail Search Field",
     "value": "xpath=//td[@class='nw']/input[2]"
+  },
+
+
+
+
+  {
+    "name": "Automationpractice Add to Cart Total Price",
+    "value": "xpath=//span[@id='layer_cart_product_price']"
+  },
+  {
+    "name": "Automationpractice Add to Cart Product Attributes",
+    "value": "xpath=//span[@id='layer_cart_product_attributes']"
+  },
+  {
+    "name": "Automationpractice Compare Button Items",
+    "value": "xpath=//strong[@class='total-compare-val']"
   }
 ]

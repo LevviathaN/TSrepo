@@ -8,9 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.*;
-import ui.utils.*;
-import ui.utils.bpp.PreProcessFiles;
-import ui.utils.bpp.TestParametersController;
+import ui.utils.specialDataHandlers.PreProcessFiles;
+import ui.utils.specialDataHandlers.TestParametersController;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -31,7 +30,6 @@ public class SeleniumHelper {
     public static Map<String,String> locatorsMap;
     public static Map<String,String> stepPatternsMap;
     public static Map<String,String> stepSignaturesMap;
-    public static List<String> reusablesList;
 
     public static final ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
     private final String fileUploadPath = PreProcessFiles.TEST_FILES_FOLDER_PATH;
@@ -73,19 +71,6 @@ public class SeleniumHelper {
         return driver.get();
     }
 
-//    public static Map<String,String> getLocatorsMap(String locatorsFile) {
-//        Map<String,String> locatorsMap = new HashMap<>();
-//        try {
-//            List<Locator> locators = JSONReader.toObjectListFromFile(Locator[].class,
-//                    new File(locatorsFile));
-//            for (Locator locator : locators) {
-//                locatorsMap.put(locator.getName(),locator.getValue());
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return locatorsMap;
-//    }
 
     //_______________________________________________Basic Assertions_______________________________________________
 
@@ -189,7 +174,7 @@ public class SeleniumHelper {
 
     public void setText(By element, String value) {
         if (value != null) {
-            BPPLogManager.getLogger().info("Setting: " + element +" with value: " + value);
+            LogManager.getLogger().info("Setting: " + element +" with value: " + value);
             try {
                 clearEntireField(element);
                 findElement(element).sendKeys(value);
@@ -351,13 +336,13 @@ public class SeleniumHelper {
      */
     private void waitForOptions(By locator) {
         try {
-            BPPLogManager.getLogger().info("Waiting for options to be available...");
+            LogManager.getLogger().info("Waiting for options to be available...");
             WebElement webelement = driver().findElement(locator);
             Select dropdown = new Select(webelement);
             new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(30, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
                     .until((Function<WebDriver, Boolean>) d -> (dropdown.getOptions().size() >= 2));
         } catch (StaleElementReferenceException s) {
-            BPPLogManager.getLogger().info("Seems like the web page is being updated. Waiting...");
+            LogManager.getLogger().info("Seems like the web page is being updated. Waiting...");
             WebElement webelement = driver().findElement(locator);
             Select dropdown = new Select(webelement);
             new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(30, ChronoUnit.SECONDS)).pollingEvery(Duration.ofMillis(10))
@@ -376,7 +361,7 @@ public class SeleniumHelper {
     }
 
     public WebElement findByText(String element) {
-        BPPLogManager.getLogger().info("Trying to find element: " + element );
+        LogManager.getLogger().info("Trying to find element: " + element );
         return findElement(byText(element));
     }
 
@@ -418,7 +403,7 @@ public class SeleniumHelper {
                 try {
                     elem.click();
                 }  catch(ElementClickInterceptedException clk){
-                    BPPLogManager.getLogger().info("Looks like some other element received a click. Will try again");
+                    LogManager.getLogger().info("Looks like some other element received a click. Will try again");
                     driver().findElement(element).click();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -457,7 +442,7 @@ public class SeleniumHelper {
         try {
             (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
-            BPPLogManager.getLogger().info("Clicking on: " + element );
+            LogManager.getLogger().info("Clicking on: " + element );
             driver().findElement(element).click();
             waitForPageToLoad();
             repeatAction = true;
@@ -476,7 +461,7 @@ public class SeleniumHelper {
      * @param element locator of element to click on
      */
     public static void clickWithJS(By element){
-        BPPLogManager.getLogger().info("Clicking by JS on: " + element);
+        LogManager.getLogger().info("Clicking by JS on: " + element);
         JavascriptExecutor executor = (JavascriptExecutor)driver();
         executor.executeScript("arguments[0].click();", driver().findElement(element));
     }
@@ -488,7 +473,7 @@ public class SeleniumHelper {
      * @param jsCode JS code to execute
      */
     public static void executeJSCodeForElement(By element, String jsCode){
-        BPPLogManager.getLogger().info("Executing JS code on element: " + element);
+        LogManager.getLogger().info("Executing JS code on element: " + element);
         JavascriptExecutor executor = (JavascriptExecutor)driver();
         executor.executeScript(jsCode, driver().findElement(element));
     }
@@ -501,10 +486,10 @@ public class SeleniumHelper {
     public void executeJSCode(String jsCode){
       try {
           JavascriptExecutor executor = (JavascriptExecutor) driver();
-          BPPLogManager.getLogger().info("Executing JavaScript code");
+          LogManager.getLogger().info("Executing JavaScript code");
           executor.executeScript(jsCode);
       } catch (StaleElementReferenceException e1) {
-          BPPLogManager.getLogger().info("StaleElementReferenceExeption caught. Try to execute JavaScript code");
+          LogManager.getLogger().info("StaleElementReferenceExeption caught. Try to execute JavaScript code");
           JavascriptExecutor executor = (JavascriptExecutor) driver();
           executor.executeScript(jsCode);
         }
@@ -526,7 +511,7 @@ public class SeleniumHelper {
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver().findElement(element);
         } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            LogManager.getLogger().error(Tools.getStackTrace(e));
             Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding element");
         }
@@ -543,7 +528,7 @@ public class SeleniumHelper {
     public WebElement findPresentElement(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        BPPLogManager.getLogger().info("Checking the presence of an element: " + element);
+        LogManager.getLogger().info("Checking the presence of an element: " + element);
         new FluentWait<WebDriver>(driver()).withTimeout(Duration.of(timeoutForFindElement, ChronoUnit.SECONDS))
                 .pollingEvery(Duration.ofMillis(1000))
                 .ignoring(TimeoutException.class).ignoring(NoSuchElementException.class)
@@ -562,13 +547,13 @@ public class SeleniumHelper {
     public List<WebElement> findElements(By element, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        BPPLogManager.getLogger().info("Finding elements: " + element);
+        LogManager.getLogger().info("Finding elements: " + element);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.presenceOfElementLocated(element));
             return driver().findElements(element);
         } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            LogManager.getLogger().error(Tools.getStackTrace(e));
             Reporter.failTryTakingScreenshot(Tools.getStackTrace(e));
             throw new RuntimeException("Failure finding elements");
         }
@@ -605,7 +590,7 @@ public class SeleniumHelper {
     public String getElementAttribute(By element, String attributeName, int... timeout) {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
-        BPPLogManager.getLogger().info("Getting an: " + element + " by attribute: " + attributeName);
+        LogManager.getLogger().info("Getting an: " + element + " by attribute: " + attributeName);
         try {
             (new WebDriverWait(driver(), timeoutForFindElement))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -650,7 +635,7 @@ public class SeleniumHelper {
     public void checkCheckbox(By element, boolean shouldBeChecked){
         WebElement checkbox = findElement(element);
         if((!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked)){
-            BPPLogManager.getLogger().info("Checking the checkbox " + checkbox);
+            LogManager.getLogger().info("Checking the checkbox " + checkbox);
             checkbox.click();
         }
     }
@@ -668,7 +653,7 @@ public class SeleniumHelper {
         WebElement checkbox = findElement(element);
         boolean toClick = (!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked);
         if(toClick){
-            BPPLogManager.getLogger().info("Checking the checkbox " + checkbox);
+            LogManager.getLogger().info("Checking the checkbox " + checkbox);
             try{
                 checkbox.click();
                 repeatAction = true;
@@ -689,7 +674,7 @@ public class SeleniumHelper {
      */
     public static void scrollToElement(WebElement element) {
         waitForPageToLoad();
-        BPPLogManager.getLogger().info("Scrolling to element: " + element);
+        LogManager.getLogger().info("Scrolling to element: " + element);
         ((JavascriptExecutor) driver()).executeScript("arguments[0].scrollIntoView();", element);
     }
 
@@ -697,7 +682,7 @@ public class SeleniumHelper {
      * Method to scroll to the bottom of the page
      */
     public static void scrollToBottomOfPage() {
-        BPPLogManager.getLogger().info("Scrolling to the bottom of the page.");
+        LogManager.getLogger().info("Scrolling to the bottom of the page.");
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         waitForPageToLoad();
     }
@@ -706,7 +691,7 @@ public class SeleniumHelper {
      * Method to scroll to the top of the page
      */
     public static void scrollToTopOfPage() {
-        BPPLogManager.getLogger().info("Scrolling to the top of the page.");
+        LogManager.getLogger().info("Scrolling to the top of the page.");
         ((JavascriptExecutor) driver()).executeScript("window.scrollTo(0, 0)");
         waitForPageToLoad();
     }
@@ -715,7 +700,7 @@ public class SeleniumHelper {
      * Method to scroll by a certain amount of pixels
      */
     public static void scrollBy(int x, int y) {
-        BPPLogManager.getLogger().info("Scrolling horizontally by " + x + " pixels, vertically by " + y + " pixels");
+        LogManager.getLogger().info("Scrolling horizontally by " + x + " pixels, vertically by " + y + " pixels");
         ((JavascriptExecutor) driver()).executeScript("window.scrollBy(" + x + ", " + y +")");
         waitForPageToLoad();
     }
@@ -741,7 +726,7 @@ public class SeleniumHelper {
     //unused functionality. To be removed in next commits
     static void waitForElement(By by) {
         WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
-        BPPLogManager.getLogger().info("Waiting for element: " + by);
+        LogManager.getLogger().info("Waiting for element: " + by);
         wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
@@ -764,7 +749,7 @@ public class SeleniumHelper {
      */
     static void waitForAlert(int timeout) {
         int i = 0;
-        BPPLogManager.getLogger().info("Waiting for alert");
+        LogManager.getLogger().info("Waiting for alert");
         while (i++ < timeout) try {
             driver().switchTo().alert();
             break;
@@ -783,7 +768,7 @@ public class SeleniumHelper {
     // Does not work in Firefox because of geckodriver_mac bug
     // https://stackoverflow.com/questions/40360223/webdriverexception-moveto-did-not-match-a-known-command
     public void hoverItem(By element) {
-        BPPLogManager.getLogger().info("Hover over an alement: " + element);
+        LogManager.getLogger().info("Hover over an alement: " + element);
         Actions action = new Actions(driver());
         action.moveToElement(findElement(element)).build().perform();
     }
@@ -794,7 +779,7 @@ public class SeleniumHelper {
      * @param frameName locator of iFrame you need to switch to
      */
     public void switchToFrame(By frameName) {
-        BPPLogManager.getLogger().info("Switching to frame: " + frameName);
+        LogManager.getLogger().info("Switching to frame: " + frameName);
         WebDriverWait wait = new WebDriverWait(driver(), 3);
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
         sleepFor(2);
@@ -829,7 +814,7 @@ public class SeleniumHelper {
             try {
                 waitWhileExpectedWindowsLeft(5, 1);
             } catch (Exception e) {
-                BPPLogManager.getLogger().warn("Seems like several windows are still opened." +
+                LogManager.getLogger().warn("Seems like several windows are still opened." +
                         " This may mean that some windows don't close themselves automatically." +
                         " Trying to close them...");
                 windows = new ArrayList<String>(driver().getWindowHandles());
@@ -884,7 +869,7 @@ public class SeleniumHelper {
                 e.printStackTrace();
             }
         } else {
-            BPPLogManager.getLogger().error("No value defined for 'PressKey'. Check your parameters");
+            LogManager.getLogger().error("No value defined for 'PressKey'. Check your parameters");
         }
     }
 
@@ -896,10 +881,10 @@ public class SeleniumHelper {
     public boolean checkIfElementNotExist(By element) {
         waitForPageToLoad();
         if (driver().findElements(element).size() != 0) {
-            BPPLogManager.getLogger().info("Element: " + element + " is not displayed");
+            LogManager.getLogger().info("Element: " + element + " is not displayed");
             return true;
         } else {
-            BPPLogManager.getLogger().info("Element: " + element + " is displayed");
+            LogManager.getLogger().info("Element: " + element + " is displayed");
             return false;
         }
     }
@@ -927,7 +912,7 @@ public class SeleniumHelper {
         String data = webelement.getText().trim();
         if (data.isEmpty()) {
             try {
-                BPPLogManager.getLogger().info("Getting text from value attribute");
+                LogManager.getLogger().info("Getting text from value attribute");
                 data = webelement.getAttribute("value").trim();
             } catch (Exception e) {
                 data = "";
