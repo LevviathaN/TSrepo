@@ -64,6 +64,10 @@
     "value": "^I click on the \"([^\"]*)\"$"
   },
   {
+    "name": "I_CLICK_ON_ELEMENT_WITH_PARAMETER_BY_JS_SPECIAL_IF",
+    "value": "^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS if \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
     "name": "I_CLICK_ON_ELEMENT_WITH_PARAMETER_BY_JS_SPECIAL",
     "value": "^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS$"
   },

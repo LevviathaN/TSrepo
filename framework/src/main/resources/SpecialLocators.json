@@ -208,6 +208,10 @@
     "value": "xpath=//div[@class='home-col right-col']//h3[text()=\"PARAMETER\"]"
   },
   {
+    "name": "Build Empire My Learning Timeline Course name Mobile",
+    "value": "xpath=//div[@class='home-col timeline-col']//h3[text()=\"PARAMETER\"]"
+  },
+  {
     "name": "Build Empire Navigation Menu elements",
     "value": "xpath=//li[normalize-space()=\"PARAMETER\"]"
   },
@@ -570,6 +574,18 @@
   {
     "name": "Salesforce text field",
     "value": "xpath=//span[text()='PARAMETER']/../following-sibling::input|(//label[normalize-space()='PARAMETER']/following::input)[1]"
+  },
+  {
+    "name": "Salesforce Inframe select",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//label[normalize-space()='PARAMETER']/following-sibling::select"
+  },
+  {
+    "name": "Salesforce Inframe select option",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//option[normalize-space()='PARAMETER']"
+  },
+  {
+    "name": "Salesforce Inframe select options",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//label[normalize-space()='PARAMETER']/following-sibling::select[1]/option"
   },
   {
     "name": "Totara Assessment radiobutton",

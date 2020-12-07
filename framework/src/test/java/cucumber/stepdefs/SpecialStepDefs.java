@@ -112,6 +112,34 @@ public class SpecialStepDefs extends SeleniumHelper {
     }
 
     /**
+     * Definition to click an element on the page by JS if given condition is true
+     *
+     * @author Ruslan Levytskyi
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
+     * @param elementType xpath template of needed element
+     */
+    @When("^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_click_on_element_with_parameter_by_js_special_if(String elementLocator, String elementType, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        if(conditions.checkCondition(condition,conditionParameter)){
+            Reporter.log("Executing step: I click on the '" + elementLocator + "' " + elementType);
+            if(specialLocatorsMap.containsKey(elementType)) {
+                String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+                String xpathTemplate = specialLocatorsMap.get(elementType);
+                String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+                clickWithJS(initElementLocator(resultingXpath));
+                if(!elementLocator.equals(processedLocator)){
+                    Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+                }
+            } else {
+                Reporter.fail("No such locator template key");
+            }
+        } else{
+            Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + elementLocator + elementType + "' element step will not be clicked");
+        }
+    }
+
+    /**
      * Definition to validate an element on the page if given condition is true
      *
      * @param text     : value to be checked
@@ -246,13 +274,16 @@ public class SpecialStepDefs extends SeleniumHelper {
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             BPPLogManager.getLogger().info("Validating the number of elements is " + expectedQuantity);
-            Assert.assertTrue(expectedQuantity.equals(numberOfElements(initElementLocator(resultingXpath))));
+//            Assert.assertTrue(expectedQuantity.equals(numberOfElements(initElementLocator(resultingXpath))));
             int actualNumberOfElements = numberOfElements(initElementLocator(resultingXpath));
             if (expectedQuantity.contains("more than")) {
+                BPPLogManager.getLogger().info("Expected quantity of " + elementLocator + " is more than " + expectedQuantity + ", but found " + actualNumberOfElements);
                 Assert.assertTrue(actualNumberOfElements > Integer.parseInt(expectedQuantity.substring(10)));
             } else if (expectedQuantity.contains("less than")) {
+                BPPLogManager.getLogger().info("Expected quantity of " + elementLocator + " is less than " + expectedQuantity + ", but found " + actualNumberOfElements);
                 Assert.assertTrue(actualNumberOfElements < Integer.parseInt(expectedQuantity.substring(10)));
             } else {
+                BPPLogManager.getLogger().info("Expected quantity of " + elementLocator + " is: " + expectedQuantity + ", but found " + actualNumberOfElements);
                 Assert.assertTrue(expectedQuantity.equals(String.valueOf(actualNumberOfElements)));
             }
         } else {

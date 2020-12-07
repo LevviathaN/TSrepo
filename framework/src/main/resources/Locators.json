@@ -1436,6 +1436,14 @@
     "value": "xpath=//*[@class='course-details-mobile']//*[@class='course-data book-data']/a"
   },
   {
+    "name": "Hub Mobile My Learning Right Block Course name",
+    "value": "xpath=//div[@class='home-col right-col']//h3[text()=\"ICAEW Accounting Full\"]"
+  },
+  {
+    "name": "Hub Mobile  My Learning Timeline Course name Mobile",
+    "value": "xpath=//div[@class='home-col timeline-col']//h3[text()=\"ICAEW Accounting Full\"]"
+  },
+  {
     "name": "Digital Site Mobile BPP Logo",
     "value": "xpath=//div[contains(@class,'item-logo')]/a"
   },
@@ -2816,6 +2824,14 @@
     "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//span[contains(.,'Quote Number')]/../following-sibling::div/span[1]"
   },
   {
+    "name": "Salesforce Quote Booking Type Dropdown",
+    "value": "xpath=(//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//label[contains(.,'Booking Type')]//following-sibling::div//div[1])[1]"
+  },
+  {
+    "name": "Salesforce Quote Booking Type Apprenticeships Chargeable",
+    "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//label[contains(.,'Booking Type')]//following-sibling::div//div[2]//span[@title='Apprenticeship chargeable bookings']"
+  },
+  {
     "name": "Salesforce Orders Quick Link Tab on Quote Page",
     "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Orders')])[1]"
   },
@@ -2870,6 +2886,38 @@
   {
     "name": "Salesforce View All Application",
     "value": "xpath=//button[@class='slds-button']"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 1 field",
+    "value": "xpath=//span[text()='Tier 1']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 2 field",
+    "value": "xpath=//span[text()='Tier 2']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 3 field",
+    "value": "xpath=//span[text()='Tier 3']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 4 field",
+    "value": "xpath=//span[text()='Tier 4']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 5 field",
+    "value": "xpath=//span[text()='Tier 5']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Opportunity Tier 6 field",
+    "value": "xpath=//span[text()='Tier 6']/../following-sibling::div//lightning-formatted-text"
+  },
+  {
+    "name": "Salesforce Save Tiers button",
+    "value": "inframe=SalesforceEditTiersFrame>xpath=//input[@value='Save']"
+  },
+  {
+    "name": "SalesforceEditTiersFrame",
+    "value": "xpath=(//iframe)[1]"
   },
   {
     "name": "Totara Account Expandable Menu",
