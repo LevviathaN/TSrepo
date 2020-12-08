@@ -4,7 +4,7 @@ Feature: BPP University Hub My Learning Course Expiry Date
   I need an easy way to access the My Learning page from the navigation of The Hub
 
   @Positive @MyLearning #TC-718
-  Scenario: HUB - My Learning Course Expiry DateK
+  Scenario: HUB - My Learning Course Expiry Date
     #Register New Student
     When I execute "Register New Student Account" reusable step
     And I execute "Nada Student Email Verification" reusable step
