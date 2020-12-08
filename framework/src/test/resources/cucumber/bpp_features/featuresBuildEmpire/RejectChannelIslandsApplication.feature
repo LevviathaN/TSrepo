@@ -21,7 +21,7 @@ Feature: Reject Channel Islands Application
     Then I execute "Reject Channel Isalnds Application as Training Manager" reusable step
     And I wait for "10" seconds
     And I execute "Nada Validate Accepted Application Email" reusable step replacing some steps
-      | 10 | I should see the "Your application has been rejeсted" element |
+      | 10 | I should see the "Your application has been rejected" element |
 
   @Negative
   Scenario: Reject Channel Islands Application as Training Manager on Review Application Details Page
@@ -47,4 +47,4 @@ Feature: Reject Channel Islands Application
     And I click on the "Direct App Channel Islands Training Manager OK" button
     And I wait for "10" seconds
     And I execute "Nada Validate Accepted Application Email" reusable step replacing some steps
-      | 10 | I should see the "Your application has been rejeсted" element |
+      | 10 | I should see the "Your application has been rejected" element |
