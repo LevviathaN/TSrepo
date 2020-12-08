@@ -1,33 +1,15 @@
 @Mobile
 Feature: BPP University Hub My Learning Course Tutor
 
-  Background:
-    Given I execute "Register New Student Account" reusable step
-    Then I execute "Nada Student Email Verification" reusable step
-    Then I execute "Log In to Hub as Student" reusable step
-
-  @Positive @iPad @iPhone @Samsung #TC-721
+  @NoRun #TC-721
   Scenario: Hub My Learning Course Tutor_Mobile
-    #Student Logout
-    And I wait for "5" seconds
-    #And I click on the "Hub VPE Mobile Hamburger Menu" element
-    #Then I click on the "Direct App Mobile Logout" element
+    #Then I execute "Login as Admin Totara" reusable step
+    Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    Then I click on the "Totara Login" button
+    And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_TOTARAADMINUSER"
+    And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_TOTARAADMINPASSWORD"
+    Then I click on the "Direct App Login Button" button
     And I wait for "10" seconds
-    #Admin Login With Walkaround
-    And I execute "Logout Totara Workaround" reusable step
-    Then I execute "Login as Admin Totara" reusable step
-    And I wait for "10" seconds
-    #Enrol To course for ICAEW Course
-    When I click on the "Totara ICAEW Course" link by JS
-    And I click on the "Totara Left Menu Users link" link by JS
-    And I click on the "Totara Enrolled Users button" button by JS
-    And I wait for "3" seconds
-    And I click on the "Totara Enrol User button" button by JS
-    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
-    And I click on the "Totara Enrol User Search button" button by JS
-    And I click on the "Totara Enrol Button" button by JS
-    And I wait for "2" seconds
-    And I click on the "Totara Finish Enroling Users button" button by JS
     #Totara Assign Tutor Role
     When I click on the "Dashboard" "text contained in SPAN element"
     When I click on the "Totara ICAEW Course" link by JS
@@ -43,7 +25,9 @@ Feature: BPP University Hub My Learning Course Tutor
     And I wait for "3" seconds
     When I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
     And Browser performs "Refresh" command
-    And I execute "Log In to Hub as Student" reusable step if "Login" "element is present"
+    And I execute "Log In to Hub as Student" reusable step replacing some steps
+      | 2 | I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
+      | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
     And I wait for "10" seconds
     #Validate My Learning Course Tutor Name
     And I wait for "5" seconds
