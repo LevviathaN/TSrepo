@@ -7,7 +7,10 @@ Feature: BPP University Hub My Learning
   Scenario: HUB - My Learning
     #Register New Student
     When I execute "Register New Student Account" reusable step
+    And I execute "Nada Student Email Verification" reusable step
     #Student Log out
+    When I execute "Log In to Hub as Student" reusable step
+    And I wait for "3" seconds
     When I execute "Log Out from Hub Student" reusable step
     #Admin Login With Walkaround
     And I execute "Logout Totara Workaround" reusable step
