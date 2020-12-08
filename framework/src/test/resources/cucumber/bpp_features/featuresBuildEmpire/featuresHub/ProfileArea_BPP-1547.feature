@@ -7,6 +7,8 @@ Feature: BPP University Hub Profile Area
   Scenario: Hub Profile Area
     #Register New Student
     And I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     #Profile Area validation
     Then I validate text "CONTAINS=EC_AUTO_FIRSTNAME" to be displayed for "Direct App Account Name Drop Down" element
     Then Attribute "style" of "Direct App Account Avatar Image" should have value "CONTAINS=/assets/icons/avatar-icon.svg"

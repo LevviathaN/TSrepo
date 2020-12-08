@@ -2,13 +2,14 @@
 Feature: BPP University Hub My Learning Course Tutor
 
   Background:
-    Given I execute "Register New Student Account" reusable step replacing some steps
-      |12|I wait for "5" seconds|
+    Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @iPad @iPhone @Samsung #TC-721
   Scenario: Hub My Learning Course Tutor_Mobile
     #Student Logout
-    And I wait for "3" seconds
+    And I wait for "5" seconds
     #And I click on the "Hub VPE Mobile Hamburger Menu" element
     #Then I click on the "Direct App Mobile Logout" element
     And I wait for "10" seconds

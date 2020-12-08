@@ -8,6 +8,8 @@ Feature: BPP University Hub My Courses
   Scenario: HUB - My Courses
     #Register New Student
     And I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     #Validate Timeline block
     Then I should see the "Timeline" message
     Then I should see the "Welcome to your new logged in area." message
