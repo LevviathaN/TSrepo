@@ -2458,7 +2458,6 @@
   {
     "name": "Salesforce Account Edit Save button",
     "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//button[normalize-space()='Save'])[1]"
-
   },
   {
     "name": "Salesforce Account Details Tab",
@@ -3363,6 +3362,34 @@
   {
     "name": "Totara Completed Activity Checkbox",
     "value": "xpath=//input[@id='tfiid_completed_core_completion_form_activity_completion']"
+  },
+  {
+    "name": "Totara expiry Course Date Day dropdown",
+    "value": "xpath=//select[@name='enddate[day]']"
+  },
+  {
+    "name": "Totara expiry Course Date Month dropdown",
+    "value": "xpath=//select[@name='enddate[month]']"
+  },
+  {
+    "name": "Totara expiry Course Date Year dropdown",
+    "value": "xpath=//select[@name='enddate[year]']"
+  },
+  {
+    "name": "Totara expiry Course Date Day selected",
+    "value": "xpath=//select[@name='enddate[day]']/option[@selected='selected']"
+  },
+  {
+    "name": "Totara expiry Course Date Month selected",
+    "value": "xpath=//select[@name='enddate[month]']/option[@selected='selected']"
+  },
+  {
+    "name": "Totara expiry Course Date Year selected",
+    "value": "xpath=//select[@name='enddate[year]']/option[@selected='selected']"
+  },
+  {
+    "name": "Totara Edit Course Setting link",
+    "value": "xpath=(//div[@class='content block-content'])[1]/following::a[contains(@href,'course/edit.php')]"
   },
   {
     "name": "VLE Website Usermenu",
