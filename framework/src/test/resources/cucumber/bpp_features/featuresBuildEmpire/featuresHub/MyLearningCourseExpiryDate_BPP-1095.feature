@@ -1,10 +1,10 @@
 @BuildEmpire @Hub @Smoke
-Feature: BPP University Hub My Learning
+Feature: BPP University Hub My Learning Course Expiry Date
   As a learner
   I need an easy way to access the My Learning page from the navigation of The Hub
 
-  @Positive @MyLearning #TC-1119 TC-1121
-  Scenario: HUB - My Learning
+  @Positive @MyLearning #TC-718
+  Scenario: HUB - My Learning Course Expiry DateK
     #Register New Student
     When I execute "Register New Student Account" reusable step
     And I execute "Nada Student Email Verification" reusable step
