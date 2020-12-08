@@ -2,8 +2,9 @@
 Feature: BPP University Hub Sub Topics and Labels
 
   Background:
-    Given I execute "Register New Student Account" reusable step replacing some steps
-      |12|I wait for "5" seconds|
+    Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @iPhone @Samsung #TC-867
   Scenario: Hub Sub Topics and Labels_Mobile

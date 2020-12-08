@@ -3,6 +3,8 @@ Feature: Complete BPP University Scholarship Application
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     When I execute "Create Scholarships Application" reusable step
 
   @Positive @Smoke #TC-1247

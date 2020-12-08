@@ -5,12 +5,13 @@ Feature: The Hub - Dashboard / Timeline - Info & News
   so that I have a means of direct communication to my learners
 
   Background:
-    Given I execute "Register New Student Account" reusable step replacing some steps
-      |12|I wait for "5" seconds|
+    Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @iPad @iPhone @Samsung #TC-1315 TC-1317
   Scenario: Hub Timeline - Info and News_Mobile
-    And I wait for "3" seconds
+    And I wait for "5" seconds
     And I click on the "Hub VPE Mobile Hamburger Menu" element
     Then I click on the "Direct App Mobile Logout" element
     #Create News

@@ -16,6 +16,7 @@ import java.util.*;
  * */
 public class SpreadsheetsHelper {
 
+    private static final String SPREADSHEET_ID = "1Ji59wwrYIBa88zKEWIJRRSJGsbpVVR3trT9cRyeVyEQ";
     //A map of literal and numeric ordinal numbers of spreadsheet columns
     private static Map<Integer,String> columns;
     private static Map<String,String> squads;
@@ -69,13 +70,13 @@ public class SpreadsheetsHelper {
 
     public static void updateRegressionResults(String application) {
         //getting all regression dates
-        List<List<Object>> values = SpreadsheetsAPI.getValues(squads.get(application) + "!A1:1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0");
+        List<List<Object>> values = SpreadsheetsAPI.getValues(squads.get(application) + "!A1:1",SPREADSHEET_ID);
         int qtt = values.get(0).size();
         String last = values.get(0).get(qtt-1).toString();
         System.out.println(last);
 
         //getting all tests from the spreadsheet
-        List<List<Object>> testNamesColumn = SpreadsheetsAPI.getValues(squads.get(application) + "!B2:B","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0");
+        List<List<Object>> testNamesColumn = SpreadsheetsAPI.getValues(squads.get(application) + "!B2:B",SPREADSHEET_ID);
         List<String> testNames = new ArrayList<>();
         for (List<Object> row : testNamesColumn) {
             if (!row.isEmpty()) {
@@ -84,10 +85,9 @@ public class SpreadsheetsHelper {
         }
 
         //getting report date
-        String filePath = Reporter.getReportPath().toString().concat("/report.html");
-        String[] path = filePath.split("/report");
-        String fileName = path[path.length - 2];
-        String date = fileName.substring(1,11);
+        String filePath = Reporter.getReportPath().toString();
+        String[] path = filePath.split("_");
+        String date = path[1];
         String[] dateFrag = date.split("-");
         String correctDate = dateFrag[2] + "." + dateFrag[1] + "." + dateFrag[0];
 
@@ -141,7 +141,7 @@ public class SpreadsheetsHelper {
         }
 
         //writing date and results right after last regression column in spreadsheet
-        SpreadsheetsAPI.updateTable(squads.get(application) + "!" + getColumnName(qtt+1) + "1","1tlA52m--hmgHW5hm5xLmraHiokUWsS8vLgpPfgqM0C0", valuesToUpdate);
+        SpreadsheetsAPI.updateTable(squads.get(application) + "!" + getColumnName(qtt+1) + "1",SPREADSHEET_ID, valuesToUpdate);
     }
 
     public static void manageSpreadsheet(String application) {

@@ -7,6 +7,8 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
   @Positive #TC-2826
   Scenario: Moodle Quiz Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #When I execute "Log Out from Hub Student" reusable step
     And I execute "Logout Totara Workaround" reusable step

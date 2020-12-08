@@ -3480,6 +3480,10 @@
     "value": "xpath=//h1[normalize-space()='Disposable Temporary Email']/following-sibling::button"
   },
   {
+    "name": "Nada Add Inbox",
+    "value": "xpath=//*[@class='items-center']//button"
+  },
+  {
     "name": "Nada User Name Field",
     "value": "xpath=//input[@placeholder='user name']"
   },
@@ -3498,5 +3502,9 @@
   {
     "name": "Nada BPP Email",
     "value": "xpath=//a[contains(.,'staging.bppdigital.buildempire.co.uk')]"
+  },
+  {
+    "name": "Nada Verify Email",
+    "value": "inframe=Nada Email Body Frame>xpath=//a[contains(.,'Verify')]"
   }
 ]

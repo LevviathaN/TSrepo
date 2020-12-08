@@ -6,14 +6,14 @@ Feature: BuildEmpire
     Then I click on the "Direct App Register Link on Login Page" button
     And I set "Auto[FIRSTNAME]" text to the "First name" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Surname" "Build Empire text field"
-    And I set "Auto[EMAIL-MAILDROP]" text to the "Email" "Build Empire text field"
+    And I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"
     And I set "[PHONE-0913]" text to the "Telephone number" "Build Empire text field"
     Then I remember "A@polloGlobal2020" text as "EC_PASSWORD" variable
     And I set "EC_PASSWORD" text to the "Password" "Build Empire text field"
     And I click on the "Direct App I Am Happy To Receive Information" button
     Then I click on the "Direct App Register" button
-    And I wait for "5" seconds
-    And I should see the "Direct App My Applications Left Menu Link" button
+    And I wait for "3" seconds
+    And I should see the "Thanks for registering, please verify your email address." "message"
 
   Scenario: Log In to Hub as Student
     Given I am on "MD_COMMON_LINKS_BUILDEMPIREURL" URL
@@ -309,7 +309,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "directApp.pdf" file to "Direct App Upload Other Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
@@ -488,7 +488,7 @@ Feature: BuildEmpire
     And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
@@ -504,7 +504,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "directApp.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
@@ -732,7 +732,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Save Review And Next" button
     And I wait for "1" seconds
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
@@ -755,7 +755,7 @@ Feature: BuildEmpire
     Then I click on the "Direct App Go To Application" button
     And I click on the "documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "directApp.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
@@ -966,7 +966,7 @@ Feature: BuildEmpire
     And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
@@ -1001,7 +1001,7 @@ Feature: BuildEmpire
     And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
@@ -1285,7 +1285,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Line Manager Review Health And Safety Checkbox" element
     And I click on the "Direct App Save Review And Next" button
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "2" seconds
