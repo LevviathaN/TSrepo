@@ -1,9 +1,8 @@
 @BuildEmpire @Hub @Smoke
 Feature: BPP University Hub My Learning Course Expiry Date
-  As a learner
-  I need an easy way to access the My Learning page from the navigation of The Hub
+  As a learner, at a glance, I'd like to be able to see when the access to my course expires
 
-  @Positive @MyLearning #TC-718
+  @Positive #TC-718
   Scenario: HUB - My Learning Course Expiry Date
     #Register New Student
     When I execute "Register New Student Account" reusable step
