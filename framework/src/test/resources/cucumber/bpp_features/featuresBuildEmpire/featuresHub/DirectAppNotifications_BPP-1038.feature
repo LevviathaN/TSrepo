@@ -7,6 +7,8 @@ Feature: BPP University Hub Direct App Notifications
   Scenario: Direct App Notifications
     #Register New Student
     When I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     And I click on the "Home" "Build Empire Navigation Menu elements"
     Then I should see the "Direct App Announcement Bar" element
     Then I should see the "Welcome to your new logged in area." message

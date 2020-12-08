@@ -3,6 +3,8 @@ Feature: Submit Professional Apprenticeship Applications
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @TwoQualifications
   Scenario: Submit Professional Apprenticeship With Two Qualifications

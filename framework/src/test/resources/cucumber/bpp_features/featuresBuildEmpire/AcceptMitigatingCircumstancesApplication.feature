@@ -3,6 +3,9 @@ Feature: Accept Mitigating Circumstances Application
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    And I wait for "2" seconds
     When I execute "Create Mitigating Circumstances Application" reusable step
 
   @Positive @Smoke #TC-1266 #TC-1257
