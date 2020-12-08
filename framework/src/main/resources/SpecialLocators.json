@@ -624,10 +624,6 @@
     "value": "xpath=//*[@id='PARAMETER']"
   },
   {
-    "name": "Totara expiry date dropdown",
-    "value": "xpath=//select[@name='PARAMETER']"
-  },
-  {
     "name": "VLE Login Fields",
     "value": "xpath=//input[@name='PARAMETER']"
   },
