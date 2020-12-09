@@ -4,7 +4,7 @@ Feature: University Degree Apprenticeships
   @Negative @P1 @RejectByLineManager
   Scenario: Reject University Degree Apprenticeships Application By Line Manager
     Given I execute "Register New Student Account" reusable step
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     And I wait for "2" seconds
     When I execute "Create University Degree Apprenticeships Application" reusable step

@@ -3,7 +3,7 @@ Feature: As a student who, is under 18, I expect to provide more information abo
 
   Background:
     Given I execute "Register New Student Account" reusable step
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
 
   @Under18 @ParentGuardian #TC-1734, TC-1757, TC-1759

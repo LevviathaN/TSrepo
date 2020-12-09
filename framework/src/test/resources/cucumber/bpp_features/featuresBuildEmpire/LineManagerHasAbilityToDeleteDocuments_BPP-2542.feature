@@ -3,7 +3,7 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
 
   Background:
     Given I execute "Register New Student Account" reusable step
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @BPP-2542 #TC-3632
