@@ -35,7 +35,7 @@ Feature: The Hub - Dashboard / Timeline - Activity Deadline
     And I should see the "Automation Test Course" "Build Empire My Learning Right Block Course name"
     And I should see the "DEADLINES" "element"
     And I should see the "Assignment Deadline" "Hub Deadline Activity Name"
-    And I should see the "Scorm Deadline Assignment" "Hub Deadline Activity Name"
+    And I should see the "Scorm Deadline Assignment" "Hub Deadline Activity Name Second"
     Then I click on the "Hub Scorm Deadline View" element
     And I switch to window with index "2"
     And I click on the "Totara Completed Activity Checkbox" element
@@ -51,7 +51,7 @@ Feature: The Hub - Dashboard / Timeline - Activity Deadline
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "autoselinarichard2247@guerrillamail.info" text to the "Email" "Build Empire text field" |
       | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"        |
-    And I should see the "Scorm Deadline Assignment" "Hub Deadline Activity Name"
+    And I should see the "Scorm Deadline Assignment" "Hub Deadline Activity Name Second"
     And I should see the "Assignment Deadline" "Hub Deadline Activity Name"
     When I execute "Log Out from Hub Student" reusable step
     Then Browser deletes cookies

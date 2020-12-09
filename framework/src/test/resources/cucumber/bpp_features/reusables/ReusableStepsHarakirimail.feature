@@ -114,3 +114,14 @@ Feature: Harakirimail, Guerrillamail
     Then I click on the "Harakirimail Get Inbox" element
     Then I click on the "Harakirimail First Email" element
 #    Then I capture special data "Harakirimail First Email Body" as "EC_RESET_PASSWORD" variable
+
+  Scenario: Harakirimail Verify Email
+    Given I am on "https://harakirimail.com/" URL
+    And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
+    Then I click on the "Harakirimail Get Inbox" button
+    Then I click on the "Harakirimail First Email" element
+    And I wait for "2" seconds
+    Then I click on the "Harakirimail Verify Email" button
+    And I switch to window with index "2"
+    And I wait for "2" seconds
+    And I should see the "Email address verified! Please log in." "message"

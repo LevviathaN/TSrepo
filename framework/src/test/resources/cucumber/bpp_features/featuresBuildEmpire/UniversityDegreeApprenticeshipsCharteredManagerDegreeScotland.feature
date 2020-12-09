@@ -4,7 +4,7 @@ Feature: University Degree Apprenticeships
   @Positive @Smoke @Scotland
   Scenario: Create University Degree Apprenticeships Application Chartered Manager Degree Scotland
     Given I execute "Register New Student Account" reusable step
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     And I wait for "2" seconds
     When I execute "Create University Degree Apprenticeships Application" reusable step

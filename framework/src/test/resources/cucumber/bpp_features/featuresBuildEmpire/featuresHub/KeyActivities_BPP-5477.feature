@@ -56,6 +56,6 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     And I click on the "Topic to test adding activities" link by JS
     Then I click on the "Totara Top Key Activity Remove" button by JS
     And I click on the "Totara Continue" button by JS
-    Then I click on the "Totara Bottom Key Activity Remove" button by JS
-    And I click on the "Totara Continue" button by JS
+    #Then I click on the "Totara Bottom Key Activity Remove" button by JS
+    #And I click on the "Totara Continue" button by JS
     And I execute "Logout as Admin Totara" reusable step

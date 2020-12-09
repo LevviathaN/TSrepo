@@ -1996,6 +1996,10 @@
     "value": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
   },
   {
+    "name": "Harakirimail Verify Email",
+    "value": "xpath=//a[contains(.,'Verify')]"
+  },
+  {
     "name": "Hub VPE Active First Topic",
     "value": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]"
   },
@@ -2225,7 +2229,7 @@
   },
   {
     "name": "Hub Scorm Deadline View",
-    "value": "xpath=//h2[contains(.,'Scorm Deadline Assignment')]/../div//a"
+    "value": "xpath=//p[contains(.,'Scorm Deadline Assignment')]/../div//a"
   },
   {
     "name": "Build Empire Course Topic Section Message",

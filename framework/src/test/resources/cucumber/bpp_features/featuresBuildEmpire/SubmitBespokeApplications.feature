@@ -7,7 +7,7 @@ Feature: Submit Bespoke Applications
 
   @Scotland @Smoke #TC-2433 #TC-2434 #TC-2435 #TC-2436 #TC-2437 #TC-2432
   Scenario: Submit Bespoke Scotland Application
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     When I execute "Create Bespoke Scotland Application" reusable step
     Given I execute "Complete Bespoke Scotland Application" reusable step
@@ -36,7 +36,7 @@ Feature: Submit Bespoke Applications
 
   @England @Smoke #TC-1202 #TC-1204 #TC-1217 #TC-1218 #TC-1219
   Scenario: Submit Bespoke England Application
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     When I execute "Create Bespoke England Application" reusable step
     Given I execute "Complete Bespoke England Application" reusable step
