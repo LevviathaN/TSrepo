@@ -7,6 +7,8 @@ Feature: Verify URL Feedback or Page Key Activity Complition Appearance In HUB -
   @Positive @Smoke @URL #TC-2886
   Scenario: URL Feedback or Page Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     And I execute "Logout Totara Workaround" reusable step
     #When I execute "Log Out from Hub Student" reusable step

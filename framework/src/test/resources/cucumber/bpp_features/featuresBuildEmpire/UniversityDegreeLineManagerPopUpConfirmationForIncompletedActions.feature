@@ -3,6 +3,8 @@ Feature: BPP University Degree Line Manager Pop up confirmation for application 
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @Popup #TC-1574
   Scenario: BPP University Degree Line Manager Pop up confirmation for application without completed actions

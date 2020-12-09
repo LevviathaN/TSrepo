@@ -4,7 +4,7 @@ Feature: BPP University Hub Announcements
     I would like to be able to provide my learners with important announcements in The Hub
     So that I can get important information out quickly
 
-  @Positive @Samsung
+  @Positive @Samsung #TC-1105 TC-1109 TC-1107
   Scenario: Hub Announcements_Mobile
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "autolawandasalazar5614@guerrillamail.info" text to the "Email" "Build Empire text field" |

@@ -27,6 +27,6 @@ Feature: Hub, Totara
 
   Scenario: Logout Totara Workaround
     Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    Then I click on the "Totara Account Expandable Menu" element by JS
-    Then I click on the "Totara Logout Link" button by JS
+    Then I click on the "Totara Account Expandable Menu" element with JS if "Totara Account Expandable Menu" "element is present"
+    Then I click on the "Totara Logout Link" element with JS if "Totara Logout Link" "element is present"
     And I wait for "3" seconds

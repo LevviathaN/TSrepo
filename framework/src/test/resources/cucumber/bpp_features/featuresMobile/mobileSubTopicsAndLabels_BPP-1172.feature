@@ -1,9 +1,10 @@
-@Mobile
+@Mobile @test
 Feature: BPP University Hub Sub Topics and Labels
 
   Background:
-    Given I execute "Register New Student Account" reusable step replacing some steps
-      |12|I wait for "5" seconds|
+    And I execute "Log In to Hub as Student" reusable step replacing some steps
+      | 2 | I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
+      | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
 
   @Positive @iPhone @Samsung #TC-867
   Scenario: Hub Sub Topics and Labels_Mobile
@@ -27,18 +28,6 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "4" seconds
     #Enrol student to VPE Automation
     And I execute "arguments[0].click()" JS code for "ICAEW Accounting Full" "BPP Digital Student Applications Menu link"
-    And I click on the "Totara Left Menu Users link" link by JS
-    And I click on the "Totara Enrolled Users button" button by JS
-    And I wait for "3" seconds
-    And I click on the "Totara Enrol User button" button by JS
-    And I wait for "3" seconds
-    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
-    And I wait for "2" seconds
-    And I click on the "Totara Enrol User Search button" button by JS
-    And I click on the "Totara Enrol Button" button by JS
-    And I wait for "6" seconds
-    And I click on the "Totara Finish Enroling Users button" button by JS
-    And I wait for "2" seconds
     #Totara Add Subtopic and Content
     When I click on the "Dashboard" "text contained in SPAN element"
     And I execute "arguments[0].click()" JS code for "ICAEW Accounting Full" "BPP Digital Student Applications Menu link"
@@ -102,8 +91,10 @@ Feature: BPP University Hub Sub Topics and Labels
     And Browser deletes cookies
     And I wait for "4" seconds
     #Login As student
-    And I execute "Log In to Hub as Student Fixed" reusable step replacing some steps
-      |7|Wait for "10" seconds|
+    And I execute "Log In to Hub as Student" reusable step replacing some steps
+      | 2 | I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
+      | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
+    And I wait for "5" seconds
     #Navigate to Created Sub Topics
     And I click on the "Hub VPE Mobile Hamburger Menu" button by JS
     And I click on the "Hub Mobile My Learning Link Hamburger Menu" option by JS
