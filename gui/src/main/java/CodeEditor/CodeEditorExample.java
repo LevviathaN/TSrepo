@@ -30,7 +30,7 @@ public class CodeEditorExample extends Application {
     }
 
 
-    public void startCodeEditor(String[] args) {
+    public static void main(String[] args) {
         launch(args);
     }
 

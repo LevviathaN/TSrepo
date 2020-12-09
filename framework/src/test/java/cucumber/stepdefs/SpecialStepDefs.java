@@ -53,6 +53,30 @@ public class SpecialStepDefs extends SeleniumHelper {
     }
 
     /**
+     * Definition to click an element on the page using JS
+     *
+     * @author Ruslan Levytskyi
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
+     * @param elementType xpath template of needed element
+     */
+    @When("^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS$")
+    public void i_click_on_element_with_parameter_by_js_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I click on the '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            LogManager.getLogger().info("Clicking on: " + elementLocator + " element with JS");
+            clickWithJS(initElementLocator(resultingXpath));
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
      * Definition to click an element on the page if given condition is true
      *
      * @author Ruslan Levytskyi
@@ -330,6 +354,7 @@ public class SpecialStepDefs extends SeleniumHelper {
     @Then("^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" \"([^\"]*)\"")
     public void i_validate_text_to_be_displayed_for_element_special(String text, String elementLocator, String elementType) {
         if(specialLocatorsMap.containsKey(elementType)) {
+            String processedText = TestParametersController.checkIfSpecialParameter(text);
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
@@ -385,7 +410,8 @@ public class SpecialStepDefs extends SeleniumHelper {
                     Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
                     LogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
                 } else {
-                    assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
+                    Assert.assertTrue(actualValue.trim().equals(text));
+//                      assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
                     LogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
                     Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
                 }

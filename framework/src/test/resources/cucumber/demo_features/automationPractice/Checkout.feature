@@ -24,6 +24,6 @@ Feature: Checkout Process
     Then I should see the "Product successfully added to your shopping cart" "exact element"
     And I click on the "Close window" "element by title"
     When I hover over the "Cart" button
-    And I click on the "Printed Summer Dress" "AutomationPractice Mini Cart Delete Button"
+    And I click on the "Printed Su..." "AutomationPractice Mini Cart Delete Button"
     When I hover over the "Cart" button
     Then I shouldn't see the "Printed Summer Dress" "AutomationPractice Mini Cart Delete Button"

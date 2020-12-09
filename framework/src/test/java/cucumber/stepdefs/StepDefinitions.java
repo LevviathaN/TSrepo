@@ -431,7 +431,8 @@ public class StepDefinitions extends SeleniumHelper {
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'</pre>");
                 LogManager.getLogger().info("Actual value '" + actualValue + "' equals to " + "'" + newValue + ": " + executionContextValue + "'");
             } else {
-                assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
+                Assert.assertTrue(actualValue.trim().equals(text));
+//                assertThat(actualValue.trim(), Matchers.equalToIgnoringWhiteSpace(text));
                 LogManager.getLogger().info("Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'");
                 Reporter.log("<pre>Actual value '" + actualValue + "' equals to the case insensitive string " + "'" + newValue + "'</pre>");
             }
@@ -441,7 +442,7 @@ public class StepDefinitions extends SeleniumHelper {
     /**
      * Definition scroll the page to the bottom after page is loaded
      *
-     * @author Andrii Yakymchuk
+     * @author rlevytskyi
      */
     @And("^I should scroll to the \"(top|bottom)\" of the page$")
     public void i_should_scroll_to_top_bottom_of_the_page(String value) {
@@ -451,6 +452,18 @@ public class StepDefinitions extends SeleniumHelper {
         } else if (value.equals("bottom")) {
             scrollToBottomOfPage();
         }
+
+    }
+
+    /**
+     * Definition scroll the page to the bottom after page is loaded
+     *
+     * @author rlevytskyi
+     */
+    @And("^I scroll the page by \"([^\"]*)\" horizontal and \"([^\"]*)\" vertical$")
+    public void i_scroll_by(String x, String y) {
+        Reporter.log("Executing step: I should scroll by " + x + " horizontal and " + y + " vertical");
+        scrollBy(Integer.parseInt(x),Integer.parseInt(y));
 
     }
 

@@ -644,6 +644,10 @@
     "value": "xpath=//*[normalize-space()='PARAMETER']/../following-sibling::div[@class='button-container']/a[@title='Add to cart']"
   },
   {
+    "name": "AutomationPractice PLP More Button",
+    "value": "xpath=//*[normalize-space()='PARAMETER']/../following-sibling::div[@class='button-container']/a[@title='View']"
+  },
+  {
     "name": "AutomationPractice PLP Add to Compare Button",
     "value": "xpath=//*[normalize-space()='PARAMETER']/../../div//a[@class='add_to_compare']"
   },
@@ -654,6 +658,10 @@
   {
     "name": "AutomationPractice Mini Cart Price",
     "value": "xpath=//a[@title='PARAMETER']/parent::dt//span[@class='price']"
+  },
+  {
+    "name": "AutomationPractice Shopping Cart Price",
+    "value": "xpath=//a[text()='PARAMETER']/../../following-sibling::td[@class='cart_total']/span[@class='price']"
   },
   {
     "name": "AutomationPractice Mini Cart Attributes",
