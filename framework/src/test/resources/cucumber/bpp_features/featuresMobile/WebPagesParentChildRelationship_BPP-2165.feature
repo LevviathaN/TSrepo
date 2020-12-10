@@ -26,7 +26,6 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     And I "check" "Show in hub" "BPP Digital Admin Mandatory checkbox"
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I should see the "CMS Page was successfully created." "BPP Digital Admin Alert Message"
-
     #Publish Parent CMS Page
     When I should scroll to the "top" of the page
     Then I execute "Publish a CMS or Blog Post page" reusable step
@@ -48,14 +47,12 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     And I "check" "Show in hub" "BPP Digital Admin Mandatory checkbox"
     And I click on the "Save" "BPP Digital Admin Value attribute button"
     Then I should see the "CMS Page was successfully created." "BPP Digital Admin Alert Message"
-
     #Publish Child CMS Page
     When I should scroll to the "top" of the page
     Then I execute "Publish a CMS or Blog Post page" reusable step
     And I execute "Log Out from Hub Admin" reusable step
     And Browser deletes cookies
     And I wait for "2" seconds
-
     #Validate in HUB
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "AutoLeanneTrujillo4140@guerrillamail.info" text to the "Email" "Build Empire text field"|
@@ -70,7 +67,6 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     And I should see the "EC_AUTO_CHILD_CMS_PAGE" element
     Then I click on the "Direct App Mobile Logout" element
     And Browser deletes cookies
-
     #Delete created CMS pages
     When I execute "Log In to Hub as Admin" reusable step replacing some steps
       |5|I wait for "15" seconds|

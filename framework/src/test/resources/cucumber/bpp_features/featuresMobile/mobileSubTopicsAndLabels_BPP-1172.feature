@@ -1,32 +1,16 @@
-@Mobile @test
+@Mobile
 Feature: BPP University Hub Sub Topics and Labels
-
-  Background:
-    And I execute "Log In to Hub as Student" reusable step replacing some steps
-      | 2 | I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
-      | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
 
   @Positive @iPhone @Samsung #TC-867
   Scenario: Hub Sub Topics and Labels_Mobile
     #login to Totara as an Admin
-    Then Browser deletes cookies
-    And I wait for "2" seconds
-    And I click on the "Hub VPE Mobile Hamburger Menu" button
-    And I wait for "3" seconds
-    And I click on the "Direct App Mobile Logout" element
-    And I wait for "8" seconds
-    Then Browser deletes cookies
-    And I wait for "8" seconds
     Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I wait for "3" seconds
-    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
     Then I click on the "Totara Login" button by JS
     And I wait for "4" seconds
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_TOTARAADMINUSER"
     And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_TOTARAADMINPASSWORD"
-    Then I click on the "Direct App Login Button" button
+    Then I click on the "Direct App Login Button" button by JS
     And I wait for "4" seconds
-    #Enrol student to VPE Automation
     And I execute "arguments[0].click()" JS code for "ICAEW Accounting Full" "BPP Digital Student Applications Menu link"
     #Totara Add Subtopic and Content
     When I click on the "Dashboard" "text contained in SPAN element"
@@ -36,8 +20,8 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "4" seconds
     And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
-    And I click on the "Totara Add an Activity Label Radio button" element
-    And I click on the "Totara Add an Activity Add Button" button
+    And I click on the "Totara Add an Activity Label Radio button" element by JS
+    And I click on the "Totara Add an Activity Add Button" button by JS
     And I wait for "2" seconds
     And I click on the "id_introeditoreditable" "Totara field by ID tag"
     Then I execute "document.getElementById('id_introeditoreditable').innerText = 'Automation Mobile Sub-Topic'" JS code for "Totara Adding a New Label Text Field" element
@@ -45,22 +29,22 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "4" seconds
     And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
-    And I click on the "Totara Add an Activity Label Radio button" element
+    And I click on the "Totara Add an Activity Label Radio button" element by JS
     And I wait for "4" seconds
-    And I click on the "Totara Add an Activity Add Button" button
+    And I click on the "Totara Add an Activity Add Button" button by JS
     And I wait for "4" seconds
     And I click on the "id_introeditoreditable" "Totara field by ID tag"
     Then I execute "document.getElementById('id_introeditoreditable').innerText = 'Automation Mobile Expandable Label'" JS code for "Totara Adding a New Label Text Field" element
     And I click on the "Save and return to course" "BPP Digital Admin Value attribute button"
-    And I click on the "Totara Automation Mobile Exp Label Edit button" element
+    And I click on the "Totara Automation Mobile Exp Label Edit button" element by JS
     And I wait for "4" seconds
-    And I click on the "Totara Automation Mobile Exp Label Edit Move Right Item" element
+    And I click on the "Totara Automation Mobile Exp Label Edit Move Right Item" element by JS
     And I wait for "4" seconds
     And I execute "return document.readyState = 'complete'" JS code
     And I click on the "Totara Automation Mobile Topic Add an Activity or Resource" element by JS
     And I wait for "6" seconds
-    And I click on the "Totara Add an Activity Quiz Radio button" button
-    And I click on the "Totara Add an Activity Add Button" button
+    And I click on the "Totara Add an Activity Quiz Radio button" button by JS
+    And I click on the "Totara Add an Activity Add Button" button by JS
     And I fill the "Totara Add New Quiz Name Text Field" field with "Automation Mobile Quiz Name"
     And I wait for "4" seconds
     And I set "Automation Mobile Description" text to the element with ID "id_introeditoreditable" using JS
@@ -123,7 +107,6 @@ Feature: BPP University Hub Sub Topics and Labels
     #Admin Login With Walkaround
     And I wait for "8" seconds
     Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I wait for "3" seconds
     Then I click on the "Totara Login" button by JS
     And I wait for "4" seconds
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_TOTARAADMINUSER"

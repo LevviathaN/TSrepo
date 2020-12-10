@@ -684,6 +684,10 @@
     "value": "xpath=//*[text()='PARAMETER']"
   },
   {
+    "name": "message mobile",
+    "value": "xpath=(//*[text()='PARAMETER'])[1]"
+  },
+  {
     "name": "option",
     "value": "xpath=//*[text()='PARAMETER']"
   },
