@@ -124,7 +124,7 @@
     "value": "PARAM,LOC_PARAM,LOC_TEMPLATE"
   },
   {
-    "name": "^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$",
+    "name": "^I set \"([^\"]*)\" text to the element with (Id|Name|ClassName|TagName) \"([^\"]*)\" using JS$",
     "value": "PARAM,PARAM"
   },
   {
