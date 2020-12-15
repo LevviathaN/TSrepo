@@ -7,9 +7,10 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     When I execute "Register New Student Account" reusable step replacing some steps
       |3|I set "AutoOne[FIRSTNAME]" text to the "First name" "Build Empire text field"|
       |4|I set "AutoOne[LASTNAME]" text to the "Surname" "Build Empire text field"    |
-      |5|I set "AutoOne[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+      |5|I set "AutoOne[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"|
     #Verify Left panel
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step replacing some steps
+    |2|I fill the "Harakirimail Inbox Name" field with "EC_AUTO_ONE_EMAIL"|
     Then I execute "Log In to Hub as Student" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #Student Log out
@@ -34,8 +35,9 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     When I execute "Register New Student Account" reusable step replacing some steps
       |3|I set "AutoTwo[FIRSTNAME]" text to the "First name" "Build Empire text field"|
       |4|I set "AutoTwo[LASTNAME]" text to the "Surname" "Build Empire text field"    |
-      |5|I set "AutoTwo[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
-    Then I execute "Nada Student Email Verification" reusable step
+      |5|I set "AutoTwo[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"|
+    Then I execute "Harakirimail Verify Email" reusable step replacing some steps
+      |2|I fill the "Harakirimail Inbox Name" field with "EC_AUTO_TWO_EMAIL"|
     Then I execute "Log In to Hub as Student" reusable step
     #Verify Left panel
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"

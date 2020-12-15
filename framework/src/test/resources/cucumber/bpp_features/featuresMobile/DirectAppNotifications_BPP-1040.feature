@@ -39,6 +39,4 @@ Feature: BPP University Hub Direct App Notifications
     And I wait for "5" seconds
     #Navigate Home and verify timeline notification
     And I am on "https://web-stage-bppdigital.bppuniversity.com/my/home" URL
-    Then I validate text "CONTAINS=You started" to be displayed for "Direct App First Timeline Title Four text" element
-
-
+    Then I should see the "You started an application for UAT Accounting Assitant" "message mobile"

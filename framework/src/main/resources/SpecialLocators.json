@@ -328,6 +328,10 @@
     "value": "xpath=//h2[text()='PARAMETER']"
   },
   {
+    "name": "Hub Deadline Activity Name Second",
+    "value": "xpath=//p[text()='PARAMETER']"
+  },
+  {
     "name": "Product Factory CBA Course Institute Fee edit button",
     "value": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Edit']"
   },
@@ -678,6 +682,10 @@
   {
     "name": "message",
     "value": "xpath=//*[text()='PARAMETER']"
+  },
+  {
+    "name": "message mobile",
+    "value": "xpath=(//*[text()='PARAMETER'])[1]"
   },
   {
     "name": "option",

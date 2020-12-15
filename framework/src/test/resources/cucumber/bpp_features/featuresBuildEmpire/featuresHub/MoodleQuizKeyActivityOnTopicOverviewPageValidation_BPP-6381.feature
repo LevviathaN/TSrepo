@@ -7,7 +7,7 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
   @Positive #TC-2826
   Scenario: Moodle Quiz Key Activity On Topic Overview Page Validation
     When I execute "Register New Student Account" reusable step
-    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #When I execute "Log Out from Hub Student" reusable step
@@ -33,7 +33,7 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
     And I click on the "Submit" "Build Empire button"
     And I wait for "4" seconds
     Then I execute "window.stop()" JS code
-    Then I switch to window with index "2"
+    Then I switch to window with index "3"
     And I click on the "Attempt quiz now" "Totara button"
     Then I execute "window.stop()" JS code
     And I click on the "Start attempt" "Totara button"
@@ -47,7 +47,7 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
     And I click on the "Finish attempt" "Totara button"
     And I click on the "Submit all and finish" "Totara button"
     And I click on the "Totara Submit all and finish Button" button
-    When I switch to window with index "1"
+    When I switch to window with index "2"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course" if "Submit" "element is absent"
@@ -56,7 +56,7 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
     And I click on the "Submit" "Build Empire button"
     And I wait for "4" seconds
     Then I execute "window.stop()" JS code
-    Then I switch to window with index "2"
+    Then I switch to window with index "4"
     And I click on the "Re-attempt quiz" "Totara button"
     And I click on the "Start attempt" "Totara button"
     And I click on the "False" "Totara Moodle Quiz radiobutton"
@@ -65,7 +65,7 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
     And I click on the "Finish attempt" "Totara button"
     And I click on the "Submit all and finish" "Totara button"
     And I click on the "Totara Submit all and finish Button" button
-    When I switch to window with index "1"
+    When I switch to window with index "2"
     And Browser performs "REFRESH" command
     Then I execute "Log In to Hub as Student" reusable step if "Already registered? Log in" "element is present"
     And I click on the "Mini Course for Volodymyr" "Build Empire Homepage My Learning Course" if "Submit" "element is absent"
