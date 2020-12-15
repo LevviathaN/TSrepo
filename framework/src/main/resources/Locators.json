@@ -1872,6 +1872,10 @@
     "value": "xpath=(//div[@class='timeline-cards ']//h4)[1]"
   },
   {
+    "name":"Direct App Expiry Date status field",
+    "value": "xpath=//div[@class='course-info']"
+  },
+  {
     "name": "Guerilla BPP Email",
     "value": "xpath=//tbody[@id='email_list']//td[contains(.,'no-reply@staging.bppdigital.buildempire.co.uk ')]"
   },
@@ -2881,7 +2885,7 @@
   },
   {
     "name": "Salesforce Billing Application Main Menu",
-    "value": "xpath=//span[@title='Salesforce Billing']"
+    "value": "xpath=//span[contains(@title,'Salesforce Billing')]"
   },
   {
     "name": "Salesforce View All Application",
@@ -3390,6 +3394,10 @@
   {
     "name": "Totara Edit Course Setting link",
     "value": "xpath=(//div[@class='content block-content'])[1]/following::a[contains(@href,'course/edit.php')]"
+  },
+  {
+    "name": "Totara Edit Course Setting link Mobile",
+    "value": "xpath=//a[normalize-space()='Edit settings']"
   },
   {
     "name": "VLE Website Usermenu",
