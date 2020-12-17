@@ -206,6 +206,11 @@
             <artifactId>google-api-data-spreadsheet-v3</artifactId>
             <version>1.0.10-alpha</version>
         </dependency>
+        <dependency>
+            <groupId>com.testautomationguru.pdfutil</groupId>
+            <artifactId>pdf-util</artifactId>
+            <version>0.0.2</version>
+        </dependency>
     </dependencies>
 
 </project>
