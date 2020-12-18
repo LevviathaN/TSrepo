@@ -3,7 +3,9 @@ Feature: Mitigating Circumstances Application in Review
 
   Background:
     Given I execute "Register New Student Account" reusable step replacing some steps
-    |5|I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+      | 5 | I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     When I execute "Create Mitigating Circumstances Application" reusable step
 
   @Negative #TC-1265

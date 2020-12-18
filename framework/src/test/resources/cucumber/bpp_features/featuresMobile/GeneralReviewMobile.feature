@@ -4,7 +4,7 @@ Feature: BPP Digital General Review
   Background:
     Given I am on "MD_COMMON_LINKS_BPPDIGITALINDEXURL" URL
 
-  @Positive @iPad
+  @Positive @iPad #TC-2266
   Scenario: General Review_Mobile
     When I fill the "BPP Digital Find a Course Search Field" field with "Law"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Find a Course Search Field"

@@ -8,6 +8,8 @@ Feature: Moodle Quiz Key Activity On Topic Overview Page With No Submit
   @Negative #Do not run until BPP-6792 will be resolved
   Scenario: Moodle Quiz Key Activity On Topic Overview Page With No Submit
     When I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     When I execute "Log Out from Hub Student" reusable step
     And I should see the "Already registered? Log in" message

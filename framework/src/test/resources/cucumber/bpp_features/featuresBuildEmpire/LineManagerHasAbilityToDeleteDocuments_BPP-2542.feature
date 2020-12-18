@@ -3,6 +3,8 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @BPP-2542 #TC-3632
   Scenario: Line Manager has an Ability to Delete Documents that were Uploaded by Mistake
@@ -33,7 +35,7 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
     And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "0"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds

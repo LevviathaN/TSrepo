@@ -5,9 +5,10 @@ Feature: As an admin, when I create a grid component with a "STANDARD" style,
 
   Background:
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
+      |4|I click on the "Direct App Login Button" button by JS|
       |5|I wait for "20" seconds|
 
-  @Positive @iPad @iPhone @Samsung
+  @Positive @iPad @iPhone @Samsung #TC-1977, TC-2045, TC-2046
   Scenario: Create and Validate Grid Styling_Mobile
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
     And I execute "Create CMS Page" reusable step

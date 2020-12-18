@@ -4,6 +4,8 @@ Feature: As an admin, viewing my downloads in the admin area,
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     When I execute "Create Academic Appeals Application" reusable step
 
   Scenario: As an Admin, I Expect to See a Timestamp of When Document Was Generated

@@ -3,6 +3,8 @@ Feature: Submit Professional Apprenticeship Applications
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive @UATAccounting @Smoke #TC-1021 #TC-1022
   Scenario: Submit Professional Apprenticeship UAT Accounting

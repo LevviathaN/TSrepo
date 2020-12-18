@@ -1,4 +1,4 @@
-@BuildEmpire @DigitalSite @Form
+@BuildEmpire @DigitalSite
 Feature: As a user, viewing a "employer (basic)" form,
   I expect to see a form with the same fields as the current RFI form,
   but without the "employer / student" toggle
@@ -32,7 +32,6 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     When I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
@@ -50,7 +49,6 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     And I should see the "BPP Digital Form Area Of Interest" element
@@ -69,7 +67,6 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     And I should see the "Enter your company" "Build Empire text field"
@@ -89,7 +86,6 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     And I should see the "Enter your company" "Build Empire text field"
@@ -111,14 +107,12 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     Then I click on the "BPP Digital Form I Am Employer Tab" element
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     And I should see the "Enter your company" "Build Empire text field"
@@ -138,7 +132,6 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     And I should see the "BPP Digital Form Area Of Interest" element
@@ -146,7 +139,6 @@ Feature: As a user, viewing a "employer (basic)" form,
     And I should see the "Enter your first name" "Build Empire text field"
     And I should see the "Enter your last name" "Build Empire text field"
     And I should see the "Enter your email address" "Build Empire text field"
-    And I should see the "Enter your phone number" "Build Empire text field"
     And I should see the "Add anything else that may help us answer your query as effectively as possible..." "Build Empire RFI Textarea text item"
     And I should see the "Direct App I Am Happy To Receive Information" element
     And I should see the "Enter your company" "Build Empire text field"

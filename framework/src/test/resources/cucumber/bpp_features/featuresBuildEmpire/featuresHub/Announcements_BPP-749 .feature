@@ -6,6 +6,8 @@ Feature: BPP University Hub Announcements
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Positive #TC-1105 TC-1109 TC-1107
   Scenario: Hub Announcements

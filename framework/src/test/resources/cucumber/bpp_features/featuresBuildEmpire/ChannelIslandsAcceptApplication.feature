@@ -5,6 +5,10 @@ Feature: Approve Channel Islands Application
   Scenario: Approve Channel Islands Application as Training Manager
     Given I execute "Register New Student Account" reusable step replacing some steps
       | 1 | I am on "MD_COMMON_LINKS_BUILDEMPIRECHANNELISLANDURL" URL |
+      | 5 | I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    And I wait for "2" seconds
     When I execute "Create Channel Islands Mk2 Application" reusable step
     And I execute "Complete Channel Islands Mk2 Application" reusable step
     Then I execute "Submit Application Hub" reusable step
@@ -17,12 +21,16 @@ Feature: Approve Channel Islands Application
     Then I click on the "Direct App Login Button" button
     And I should see the "Direct App My Approvals Tab" element
     Then I execute "Approve Channel Isalnds Application as Training Manager" reusable step
-    And I execute "Maildrop Validate Accepted Application Email" reusable step
+    And I execute "Nada Validate Accepted Application Email" reusable step
 
   @ApproveApplicationPage
   Scenario: Approve Channel Islands Application as Training Manager on Review Application Details Page
     Given I execute "Register New Student Account" reusable step replacing some steps
       | 1 | I am on "MD_COMMON_LINKS_BUILDEMPIRECHANNELISLANDURL" URL |
+      | 5 | I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    And I wait for "2" seconds
     When I execute "Create Channel Islands Mk2 Application" reusable step
     And I execute "Complete Channel Islands Mk2 Application" reusable step
     Then I execute "Submit Application Hub" reusable step
@@ -40,7 +48,7 @@ Feature: Approve Channel Islands Application
     And I fill the "Direct App Channel Islands Training Manager Reason" field with "Automation Testing"
     And I click on the "Direct App Channel Islands Training Manager OK" button
     And I wait for "1" seconds
-    And I execute "Maildrop Validate Accepted Application Email" reusable step
+    And I execute "Nada Validate Accepted Application Email" reusable step
 
 
 

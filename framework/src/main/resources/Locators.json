@@ -1197,7 +1197,7 @@
   },
   {
     "name": "Direct App Company Country Dropdown UK Option",
-    "value": "xpath=//ul[@role='listbox']/li[1]"
+    "value": "xpath=(//ul[@role='listbox']/li[1])[last()]"
   },
   {
     "name": "Direct App Company Health And Safety",
@@ -1217,7 +1217,7 @@
   },
   {
     "name": "Direct App Country Dropdown UK Option",
-    "value": "xpath=//ul[@role='listbox']/li[contains(.,'United Kingdom')]"
+    "value": "xpath=(//ul[@role='listbox']/li[contains(.,'United Kingdom')])[last()]"
   },
   {
     "name": "Direct App Country of Study Dropdown",
@@ -1869,7 +1869,11 @@
   },
   {
     "name":"Direct App First Timeline Title Four text",
-    "value": "xpath=(//div[@class='timeline-cards loaded']//h4[contains(text(),'You started an')])[1]"
+    "value": "xpath=(//div[@class='timeline-cards ']//h4)[1]"
+  },
+  {
+    "name":"Direct App Expiry Date status field",
+    "value": "xpath=//div[@class='course-info']"
   },
   {
     "name": "Guerilla BPP Email",
@@ -1994,6 +1998,10 @@
   {
     "name": "Harakirimail Your MC Outcome Second",
     "value": "xpath=//tbody[@id='mail_list_body']/tr[1]/td[normalize-space()='Your Mitigating Circumstances application outcome']"
+  },
+  {
+    "name": "Harakirimail Verify Email",
+    "value": "xpath=//a[contains(.,'Verify')]"
   },
   {
     "name": "Hub VPE Active First Topic",
@@ -2225,7 +2233,7 @@
   },
   {
     "name": "Hub Scorm Deadline View",
-    "value": "xpath=//h2[contains(.,'Scorm Deadline Assignment')]/../div//a"
+    "value": "xpath=//p[contains(.,'Scorm Deadline Assignment')]/../div//a"
   },
   {
     "name": "Build Empire Course Topic Section Message",
@@ -2458,7 +2466,6 @@
   {
     "name": "Salesforce Account Edit Save button",
     "value": "xpath=(//div[@class='DESKTOP uiContainerManager']//button[normalize-space()='Save'])[1]"
-
   },
   {
     "name": "Salesforce Account Details Tab",
@@ -2882,7 +2889,7 @@
   },
   {
     "name": "Salesforce Billing Application Main Menu",
-    "value": "xpath=//span[@title='Salesforce Billing']"
+    "value": "xpath=//span[contains(@title,'Salesforce Billing')]"
   },
   {
     "name": "Salesforce View All Application",
@@ -3365,6 +3372,38 @@
     "value": "xpath=//input[@id='tfiid_completed_core_completion_form_activity_completion']"
   },
   {
+    "name": "Totara expiry Course Date Day dropdown",
+    "value": "xpath=//select[@name='enddate[day]']"
+  },
+  {
+    "name": "Totara expiry Course Date Month dropdown",
+    "value": "xpath=//select[@name='enddate[month]']"
+  },
+  {
+    "name": "Totara expiry Course Date Year dropdown",
+    "value": "xpath=//select[@name='enddate[year]']"
+  },
+  {
+    "name": "Totara expiry Course Date Day selected",
+    "value": "xpath=//select[@name='enddate[day]']/option[@selected='selected']"
+  },
+  {
+    "name": "Totara expiry Course Date Month selected",
+    "value": "xpath=//select[@name='enddate[month]']/option[@selected='selected']"
+  },
+  {
+    "name": "Totara expiry Course Date Year selected",
+    "value": "xpath=//select[@name='enddate[year]']/option[@selected='selected']"
+  },
+  {
+    "name": "Totara Edit Course Setting link",
+    "value": "xpath=(//div[@class='content block-content'])[1]/following::a[contains(@href,'course/edit.php')]"
+  },
+  {
+    "name": "Totara Edit Course Setting link Mobile",
+    "value": "xpath=//a[normalize-space()='Edit settings']"
+  },
+  {
     "name": "VLE Website Usermenu",
     "value": "xpath=//div[@class='usermenu']"
   },
@@ -3453,6 +3492,10 @@
     "value": "xpath=//h1[normalize-space()='Disposable Temporary Email']/following-sibling::button"
   },
   {
+    "name": "Nada Add Inbox",
+    "value": "xpath=//*[@class='items-center']//button"
+  },
+  {
     "name": "Nada User Name Field",
     "value": "xpath=//input[@placeholder='user name']"
   },
@@ -3471,5 +3514,9 @@
   {
     "name": "Nada BPP Email",
     "value": "xpath=//a[contains(.,'staging.bppdigital.buildempire.co.uk')]"
+  },
+  {
+    "name": "Nada Verify Email",
+    "value": "inframe=Nada Email Body Frame>xpath=//a[contains(.,'Verify')]"
   }
 ]

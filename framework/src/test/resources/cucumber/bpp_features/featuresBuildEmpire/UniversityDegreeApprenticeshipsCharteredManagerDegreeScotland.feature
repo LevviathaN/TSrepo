@@ -4,6 +4,9 @@ Feature: University Degree Apprenticeships
   @Positive @Smoke @Scotland
   Scenario: Create University Degree Apprenticeships Application Chartered Manager Degree Scotland
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    And I wait for "2" seconds
     When I execute "Create University Degree Apprenticeships Application" reusable step
     And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step replacing some steps
     |35|I click on the "I am a recent (within the last 12 months) graduate (This is my first professional role)" "Build Empire nationality option"|

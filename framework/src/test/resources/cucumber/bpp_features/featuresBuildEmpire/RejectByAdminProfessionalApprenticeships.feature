@@ -3,6 +3,8 @@ Feature: Reject Professional Apprenticeship Applications
 
   Background:
     Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
 
   @Negative @RejectByAdmin #TC-1023, TC-1573
   Scenario: Reject Professional Apprenticeship By Admin
