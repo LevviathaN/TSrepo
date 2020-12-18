@@ -36,42 +36,42 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
 
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
-    And I set "EC_LEVEL_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_LEVEL_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
-    And I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
-    And I set "EC_SITTING_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_SITTING_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
-    And I set "EC_REGION_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_REGION_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
     And I should see the "Product Factory Materials Page Entry" element in quantity of "2"

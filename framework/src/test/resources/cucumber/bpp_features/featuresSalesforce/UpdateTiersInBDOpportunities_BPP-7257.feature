@@ -6,7 +6,7 @@ Feature: Update Tiers in BD Opportunities
 
 
   @Positive #TC-4239, TC-3808, TC-3822, TC-3823, TC-4241
-  Scenario Outline: Validate Tier Values Combination
+  Scenario Outline: Validate Tier Values Combination <t4>
     Given I execute "Log In To Salesforce" reusable step replacing some steps
       |2|I fill the "Salesforce Username" field with "MD_COMMON_CREDENTIALS_SALESFORCECPQUSER"|
       |3|I fill the "Salesforce Password" field with "MD_COMMON_CREDENTIALS_SALESFORCECPQPASSWORD"|
@@ -249,7 +249,7 @@ Feature: Update Tiers in BD Opportunities
 
 
   @Positive #TC-4242, TC-4247
-  Scenario Outline: Validate Tier 5 and 6 Values Combination
+  Scenario Outline: Validate Tier Five and Six Values Combination <t5> <t6>
     Given I execute "Log In To Salesforce" reusable step replacing some steps
       |2|I fill the "Salesforce Username" field with "MD_COMMON_CREDENTIALS_SALESFORCECPQUSER"|
       |3|I fill the "Salesforce Password" field with "MD_COMMON_CREDENTIALS_SALESFORCECPQPASSWORD"|
