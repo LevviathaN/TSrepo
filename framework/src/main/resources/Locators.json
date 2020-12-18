@@ -548,6 +548,14 @@
     "value": "xpath=//div[@class='show-insights']/div[@class='container']"
   },
   {
+    "name": "BPP Digital Website Main Menu link",
+    "value": "xpath=//a[@class='nav-link' and normalize-space()='Website']"
+  },
+  {
+    "name": "BPP Digital Pages Main Sub Menu link",
+    "value": "xpath=//a[@class='dropdown-item' and normalize-space()='Pages']"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
