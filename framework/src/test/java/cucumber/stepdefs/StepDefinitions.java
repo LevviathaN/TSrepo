@@ -539,14 +539,14 @@ public class StepDefinitions extends SeleniumHelper {
      *                Here we also check if text is EC_ or MD_ of KW_
      * @author Ruslan Levytskyi
      */
-    @When("^I set \"([^\"]*)\" text to the element with \"(Id|Name|ClassName|TagName)\" \"([^\"]*)\" using JS$")
-    public void i_set_text_with_js(String text, String attribute, String element) {
-        Reporter.log("Executing step: I set '" + text + "' text to the element with '" + element + "' using JS");
-//        executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + text + "')");
+    @When("^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$")
+    public void i_set_text_with_js(String text, String element) {
+        Reporter.log("Executing step: I set '" + text + "' text to the element with ID '" + element + "' using JS");
+        //executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + text + "')");
 
         String processedText = TestParametersController.checkIfSpecialParameter(text);
         BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);
-        executeJSCode("document.getElementsBy" + attribute + "('" + element + "').item('').setAttribute('value', '" + processedText + "')");
+        executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + processedText + "')");
         if (!text.equals(processedText)) {
             Reporter.log("<pre>[input test parameter] " + text + "' -> '" + processedText + " [output value]</pre>");
         }

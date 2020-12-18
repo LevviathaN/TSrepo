@@ -32,7 +32,7 @@ Feature: BPP University Hub Sub Topics and Labels
     And I wait for "3" seconds
     And I click on the "Totara Enrol User button" button by JS
     And I wait for "3" seconds
-    And I set "EC_AUTO_EMAIL" text to the element with "Id" "enrolusersearch" using JS
+    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
     And I wait for "2" seconds
     And I click on the "Totara Enrol User Search button" button by JS
     And I click on the "Totara Enrol Button" button by JS
@@ -74,7 +74,7 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Add an Activity Add Button" button
     And I fill the "Totara Add New Quiz Name Text Field" field with "Automation Mobile Quiz Name"
     And I wait for "4" seconds
-    And I set "Automation Mobile Description" text to the element with "Id" "id_introeditoreditable" using JS
+    And I set "Automation Mobile Description" text to the element with ID "id_introeditoreditable" using JS
     And I click on the "Save and return to course" "BPP Digital Admin Value attribute button"
     And I click on the "Totara Automation Mobile Quiz Link" link by JS
     And I click on the "Totara Automation Quiz Edit Quiz Button" link by JS
@@ -84,10 +84,10 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Automation Quiz Question to Add True or False Radio Button" button by JS
     And I click on the "Totara Add an Activity Add Button" button by JS
     And I select "Default for Automation Mobile Quiz Name (0)" from "Totara Automation Quiz Creation Category Drop down" element
-    And I set "Questions saved from context Quiz: Auto Quiz One. (1)" text to the element with "Id" "id_name" using JS
+    And I set "Questions saved from context Quiz: Auto Quiz One. (1)" text to the element with ID "id_name" using JS
     And I wait for "4" seconds
     And I click on the "Totara Automation Quiz Question Text Order List Icon" link by JS
-    And I set "12" text to the element with "Id" "id_defaultmark" using JS
+    And I set "12" text to the element with ID "id_defaultmark" using JS
     And I select "True" from "Totara Automation Quiz Correct Answer Drop Down" element
     And I click on the "Save changes" "Totara button" by JS
     And I wait for "3" seconds

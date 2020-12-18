@@ -5,6 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ui.utils.SeleniumHelper;
 import ui.utils.BPPLogManager;
@@ -502,14 +504,13 @@ public class SpecialStepDefs extends SeleniumHelper {
     }
 
     /**
-     * Definition to imitate key press from keyboard
+     * Definition to fill field imitating key press from keyboard
      *
      * @param fieldValue : value to be entered in appropriate field using metadata values
      * @param elementType:   By locator of element to press key
      */
-    @Then("^I set \"([^\"]*)\" to the \"([^\"]*)\" \"([^\"]*)\" from keyboard$")
+    @Then("^I set \"([^\"]*)\" text to the \"([^\"]*)\" \"([^\"]*)\" from keyboard$")
     public void i_set_text_from_keyboard_special(String fieldValue,String elementLocator, String elementType) {
-        //todo
         Reporter.log("Executing step: I press the " + fieldValue + " from keyboard for special parameter");
         if(specialLocatorsMap.containsKey(elementType)) {
             String processedText = TestParametersController.checkIfSpecialParameter(fieldValue);
@@ -517,7 +518,10 @@ public class SpecialStepDefs extends SeleniumHelper {
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             char[] string = processedText.toCharArray();
-            pressKeyFromKeyboard(initElementLocator(resultingXpath), TestParametersController.checkIfSpecialParameter(processedText));
+            for (int i=0; i<string.length; i++) {
+                WebElement keyItem = findElement(initElementLocator(resultingXpath));
+                keyItem.sendKeys(String.valueOf(string[i]));
+            }
             waitForPageToLoad();
         } else {
             Reporter.fail("No such locator template key");

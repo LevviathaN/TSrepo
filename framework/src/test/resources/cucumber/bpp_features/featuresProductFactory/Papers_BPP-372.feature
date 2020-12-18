@@ -7,7 +7,7 @@ Feature: Reference Data - Paper - BPP-372
   Background:
     Given I execute "Log In" reusable step
 
-  @Positive @Regression @Run #TC-772
+  @Positive @Regression #TC-772
   Scenario: Add a New Paper Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
@@ -16,10 +16,8 @@ Feature: Reference Data - Paper - BPP-372
     And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     And I wait for "3" seconds
-#    And I click on the "Search" "Product Factory text field"
-#    Then I execute "document.getElementsByTagName('input').item('').value = 'EC_PAPER_DESCRIPTION'" JS code
-#    And I set "EC_PAPER_DESCRIPTION" text to the element with "TagName" "input" using JS
-    And I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field"
+    And I click on the "Search" "Product Factory text field"
+    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_PAPER_DESCRIPTION" element
 

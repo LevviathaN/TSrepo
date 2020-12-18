@@ -145,7 +145,7 @@
   },
   {
     "name": "I_SET_TEXT_WITH_JS",
-    "value": "^I set \"([^\"]*)\" text to the element with (Id|Name|ClassName|TagName) \"([^\"]*)\" using JS$"
+    "value": "^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$"
   },
   {
     "name": "I_SHOULD_BE_REDIRECTED_TO_THE_PAGE",

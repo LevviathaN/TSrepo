@@ -17,7 +17,7 @@ Feature: Verify Assignment Key Activity Completion Appearance In HUB - BPP-4488
     And I click on the "Totara Enrolled Users button" button by JS
     And I wait for "3" seconds
     And I click on the "Totara Enrol User button" button by JS
-    And I set "EC_AUTO_EMAIL" text to the element with "Id" "enrolusersearch" using JS
+    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
     And I click on the "Totara Enrol User Search button" button by JS
     And I click on the "Totara Enrol Button" button by JS
     And I click on the "Totara Finish Enroling Users button" button by JS

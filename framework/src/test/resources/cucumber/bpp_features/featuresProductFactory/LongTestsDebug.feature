@@ -18,7 +18,7 @@ Feature: Long Tests Debug
       |4|I set "$Debug[CourseTypeFDCode]" text to the "Code" "Product Factory text field"|
       |5|I set "$Debug[CourseTypeFDDescription]" text to the "Description" "Product Factory text field"|
     And I execute "Create Course Type" reusable step replacing some steps
-      |4|I set "$Debug[CourseTypeDescription]" text to the "Description" "Product Factory text field two"|
+      |4|I set "$Debug[CourseTypeDescription]" text to the "Description" "Product Factory text field"|
     And I execute "Create Location Financial Dimension" reusable step replacing some steps
       |4|I set "$Debug[LocationFDCode]" text to the "Code" "Product Factory text field"|
       |5|I set "$Debug[LocationFDDescription]" text to the "Description" "Product Factory text field"|
@@ -41,7 +41,7 @@ Feature: Long Tests Debug
       |5|I set "$Debug[LevelName]" text to the "Name" "Product Factory text field"|
     And I execute "Create Paper" reusable step replacing some steps
       |4|I set "$Debug[PprSN]" text to the "Short Name" "Product Factory text field"|
-      |5|I set "$Debug[PaperDescription]" text to the "Description" "Product Factory text field two"|
+      |5|I set "$Debug[PaperDescription]" text to the "Description" "Product Factory text field"|
     And I execute "Link Body To Level" reusable step
     And I execute "Link Body To Paper" reusable step
     And I execute "Link Paper To Level" reusable step
@@ -109,11 +109,75 @@ Feature: Long Tests Debug
 #    And I execute "Create Material" reusable step replacing some steps
 #      |6|I set "~Price[2000]" text to the "Price (£)" "Product Factory text field"|
 #      |7|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
-      Given I execute "Create Course Instance" reusable step
+#      Given I execute "Create Course Instance" reusable step
+#      When I click on the "Products" "Product Factory navigation item"
+#      When I click on the "Courses" "Product Factory navigation sub item"
+
+      When I click on the "Products" "Product Factory navigation item"
+      When I click on the "Courses" "Product Factory navigation sub item"
+      And I click on the "Create" "Product Factory button"
+#    And I click on the "Search" "Product Factory text field"
+      Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+      And I click on the "submit" "element by type"
+      And I click on the "EC_PAPER_DESCRIPTION" "Product Factory select button"
+      And I click on the "EC_LEVEL_NAME" "Product Factory select button"
+      And I click on the "EC_SITTING_NAME" "Product Factory select button"
+#    And I click on the "Search" "Product Factory text field two"
+      Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
+      And I click on the "submit" "element by type two"
+      And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
+      And I click on the "EC_REGION_NAME" "Product Factory select button"
+      And I click on the "Product Factory Number Of Sessions Edit Button" button
+      When I set "1" text to the "Number of Sessions" "Product Factory text field"
+      And I click on the "Save" "Product Factory button"
+      And I click on the "Finish" "Product Factory button"
+    #todo: separate Course and Course Instance creation
+      Then I click on the "Create" "Product Factory button"
+      And I click on the "Default Session Duration" "Product Factory dropdown"
+      And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
+      And I click on the "Default Location" "Product Factory dropdown"
+      And I click on the "EC_LOCATION_NAME" "Product Factory dropdown option"
+      And I click on the "Save" "Product Factory button"
+
       When I click on the "Products" "Product Factory navigation item"
       When I click on the "Courses" "Product Factory navigation sub item"
 
-      And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+      And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+      And I click on the "submit" "element by type"
+      Then I should see the "EC_BODY_SHORT_NAME" element
+      And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+      When I click on the "Clear the search text" "element by title"
+      Then Attribute "value" of "Search" "Product Factory text field" should have value ""
+
+      And I set "EC_LEVEL_NAME" text to the "Search" "Product Factory text field" from keyboard
+      And I click on the "submit" "element by type"
+      Then I should see the "EC_BODY_SHORT_NAME" element
+      And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+      When I click on the "Clear the search text" "element by title"
+      Then Attribute "value" of "Search" "Product Factory text field" should have value ""
+
+      And I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+      And I click on the "submit" "element by type"
+      Then I should see the "EC_BODY_SHORT_NAME" element
+      And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+      When I click on the "Clear the search text" "element by title"
+      Then Attribute "value" of "Search" "Product Factory text field" should have value ""
+
+      And I set "EC_SITTING_NAME" text to the "Search" "Product Factory text field" from keyboard
+      And I click on the "submit" "element by type"
+      Then I should see the "EC_BODY_SHORT_NAME" element
+      And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+      When I click on the "Clear the search text" "element by title"
+      Then Attribute "value" of "Search" "Product Factory text field" should have value ""
+
+      And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+      And I click on the "submit" "element by type"
+      Then I should see the "EC_BODY_SHORT_NAME" element
+      And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+      When I click on the "Clear the search text" "element by title"
+      Then Attribute "value" of "Search" "Product Factory text field" should have value ""
+
+      And I set "EC_REGION_NAME" text to the "Search" "Product Factory text field" from keyboard
       And I click on the "submit" "element by type"
       Then I should see the "EC_BODY_SHORT_NAME" element
       And I should see the "Product Factory Materials Page Entry" element in quantity of "2"

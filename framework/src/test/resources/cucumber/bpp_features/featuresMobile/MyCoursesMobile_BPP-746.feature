@@ -38,7 +38,7 @@ Feature: BPP University Hub My Courses Mobile
     And I wait for "4" seconds
     And I click on the "Totara Enrol User button" button by JS
     And I wait for "4" seconds
-    And I set "EC_AUTO_EMAIL" text to the element with "Id" "enrolusersearch" using JS
+    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
     And I wait for "4" seconds
     And I click on the "Totara Enrol User Search button" button by JS
     And I click on the "Totara Enrol Button" button by JS
