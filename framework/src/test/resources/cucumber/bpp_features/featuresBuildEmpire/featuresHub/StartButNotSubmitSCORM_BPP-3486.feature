@@ -14,7 +14,7 @@ Feature: SCORM Asessment Not Submit
     #When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
     #And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
     When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    And I execute "Logout as Admin Totara" reusable step
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
     And Browser deletes cookies
     Then I execute "Login as Admin Totara" reusable step
     When I click on the "Totara Volodymyr Course" link by JS

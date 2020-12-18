@@ -1,4 +1,4 @@
-@BuildEmpire @DigitalSite @Smoke
+@BuildEmpire @DigitalSite @Category
 Feature: BPP Digital Create and Validate New Category
 
   Background:
@@ -25,6 +25,9 @@ Feature: BPP Digital Create and Validate New Category
     #Create new User for Created Category
     And I execute "Register New Student Account" reusable step replacing some steps
     |1|I am on "https://web-stage-bppdigital.bppuniversity.com/account?registration_type=bpp-automation" URL|
+    |5| I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
     #Register to Created Category
     When I click on the "Direct App My Applications Left Menu Link" button by JS
     And I click on the "Direct App What Are You Applying For Dropdown" element
