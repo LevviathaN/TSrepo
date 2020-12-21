@@ -11,7 +11,8 @@ Feature: Verify Moodle Quiz Key Activity Completion Appearance In HUB - BPP-6381
     Then I execute "Log In to Hub as Student" reusable step
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #When I execute "Log Out from Hub Student" reusable step
-    And I execute "Logout Totara Workaround" reusable step
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
     Then I execute "Login as Admin Totara" reusable step
     When I click on the "Totara Volodymyr Course" link by JS
     And I click on the "Totara Left Menu Users link" link by JS

@@ -1,15 +1,14 @@
 @BuildEmpire @DirectApps @MitigatingCircumstances
 Feature: Accept Mitigating Circumstances Application
 
-  Background:
-    Given I execute "Register New Student Account" reusable step
+  @Positive @Smoke #TC-1266 #TC-1257
+  Scenario: Accept Mitigating Circumstances
+    Given I execute "Register New Student Account" reusable step replacing some steps
+      | 5 | I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
     Then I execute "Nada Student Email Verification" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     And I wait for "2" seconds
     When I execute "Create Mitigating Circumstances Application" reusable step
-
-  @Positive @Smoke #TC-1266 #TC-1257
-  Scenario: Accept Mitigating Circumstances
     And I execute "Complete Mitigating Circumstances" reusable step
     Then I execute "Submit Application Hub" reusable step
     #Validate assessment details not populated from previous application
@@ -35,6 +34,12 @@ Feature: Accept Mitigating Circumstances Application
 
   @PositiveEmails #TC-1264
   Scenario: Mitigating Circumstances Send Emails to Students
+    Given I execute "Register New Student Account" reusable step replacing some steps
+      | 5 | I set "Auto[EMAIL-NADA]" text to the "Email" "Build Empire text field"|
+    Then I execute "Nada Student Email Verification" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    And I wait for "2" seconds
+    When I execute "Create Mitigating Circumstances Application" reusable step
     And I execute "Complete Mitigating Circumstances" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step

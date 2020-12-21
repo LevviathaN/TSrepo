@@ -43,8 +43,8 @@ Feature: Financial Dimension - Select Course Type Codes - BPP-2496
 
     When I click on the "Types" "Product Factory navigation item"
     When I click on the "Course Types" "Product Factory navigation sub item"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     When I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     And I click on the "Cost Centre Financial Dimension" "Product Factory change button"
     And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"

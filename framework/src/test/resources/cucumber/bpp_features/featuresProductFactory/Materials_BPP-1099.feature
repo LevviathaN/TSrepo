@@ -57,8 +57,8 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "Finish" "Product Factory button"
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Materials" "Product Factory navigation sub item"
-    And I set "EC_MATERIAL_TYPE_NAME" text to the "Material Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_MATERIAL_TYPE_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I should see the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
 
   @Positive @P1 @Amend
@@ -89,8 +89,9 @@ Feature: Materials - Create Materials - BPP-1099
       |4|I "check" "EC_LEVEL_NAME_TWO" "Product Factory dialog checkbox"       |
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Materials" "Product Factory navigation sub item"
-    And I set "EC_MATERIAL_TYPE_NAME" text to the "Material Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I click on the "Search" "Product Factory text field"
+    Then I set "EC_MATERIAL_TYPE_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
     And I click on the "Body" "Product Factory edit button"
     And I click on the "Change Body" "button"
