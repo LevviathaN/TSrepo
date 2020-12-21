@@ -19,10 +19,12 @@ public class PDFBox {
         // true if both files have same content. false otherwise.
         // Default is CompareMode.TEXT_MODE
         pdfUtil.setCompareMode(CompareMode.VISUAL_MODE);
+        pdfUtil.enableLog();
+        //System.out.println(pdfUtil.getText(file1));
+        System.out.println("AMOUNT OF PAGES IN FILE IS: " + pdfUtil.getPageCount(file1));
         pdfUtil.compareAllPages(true);
         pdfUtil.compare(file1, file2);
 
-        //if you need to store the result
         pdfUtil.highlightPdfDifference(true);
         pdfUtil.highlightPdfDifference(Color.RED);
         pdfUtil.setImageDestinationPath(System.getProperty("user.dir").replace("\\", "/") + "/framework/src/main/resources/");
