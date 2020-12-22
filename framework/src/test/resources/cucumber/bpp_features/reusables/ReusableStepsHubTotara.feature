@@ -6,7 +6,7 @@ Feature: Hub, Totara
     Then I click on the "Totara Login" button by JS
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_TOTARAADMINUSER"
     And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_TOTARAADMINPASSWORD"
-    Then I click on the "Direct App Login Button" button
+    Then I click on the "Direct App Login Button" button by JS
 
   Scenario: Logout as Admin Totara
     Then I click on the "Totara Account Expandable Menu" element by JS
