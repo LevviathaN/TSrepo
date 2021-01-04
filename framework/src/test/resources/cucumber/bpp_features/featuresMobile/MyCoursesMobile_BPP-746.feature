@@ -9,7 +9,7 @@ Feature: BPP University Hub My Courses Mobile
       |2| I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
       |3| I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"                |
 
-  @Positive @iPad @iPhone @Samsung @BET #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
+  @Positive @iPad @iPhone @Samsung #TC-1106 TC-1107 TC-1111 TC-1122 TC-1125 TC-1126
   Scenario: HUB - My Courses Mobile
     #Validate Timeline block
     Then I should see the "Timeline" message
