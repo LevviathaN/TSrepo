@@ -1,4 +1,4 @@
-@BuildEmpire @Hub @Smoke
+@BuildEmpire @Hub @Notifications
 Feature: BPP University Hub Direct App Notifications
   As a Hub user
   I would like to see notifications on my dashboard in regards to Direct Apps
@@ -19,6 +19,10 @@ Feature: BPP University Hub Direct App Notifications
     Then I click on the "BPP Professional Apprenticeships" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
+    And I hover over the "Direct App Location Dropdown" button
+    And I click on the "Direct App Location Dropdown" element
+    Then I wait for "1" seconds
+    Then I click on the "Online real-time learning" "Build Empire application type"
     And I click on the "Direct App Start Date Application Dropdown" element
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
     And I click on the "Direct App Create Application" button
@@ -44,6 +48,10 @@ Feature: BPP University Hub Direct App Notifications
     Then I click on the "BPP Professional Apprenticeships" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
+    And I hover over the "Direct App Location Dropdown" button
+    And I click on the "Direct App Location Dropdown" element
+    Then I wait for "1" seconds
+    Then I click on the "Online real-time learning" "Build Empire application type"
     And I click on the "Direct App Start Date Application Dropdown" element
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
     And I click on the "Direct App Create Application" button

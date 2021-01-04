@@ -542,7 +542,7 @@ public class StepDefinitions extends SeleniumHelper {
     @When("^I set \"([^\"]*)\" text to the element with ID \"([^\"]*)\" using JS$")
     public void i_set_text_with_js(String text, String element) {
         Reporter.log("Executing step: I set '" + text + "' text to the element with ID '" + element + "' using JS");
-        executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + text + "')");
+        //executeJSCode("document.getElementById('" + element + "').setAttribute('value', '" + text + "')");
 
         String processedText = TestParametersController.checkIfSpecialParameter(text);
         BPPLogManager.getLogger().info("Setting: " + element + " with value: " + text);

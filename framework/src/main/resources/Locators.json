@@ -1209,7 +1209,7 @@
   },
   {
     "name": "Direct App Company Country Dropdown UK Option",
-    "value": "xpath=//ul[@role='listbox']/li[1]"
+    "value": "xpath=(//ul[@role='listbox']/li[1])[last()]"
   },
   {
     "name": "Direct App Company Health And Safety",
@@ -1229,7 +1229,7 @@
   },
   {
     "name": "Direct App Country Dropdown UK Option",
-    "value": "xpath=//ul[@role='listbox']/li[contains(.,'United Kingdom')]"
+    "value": "xpath=(//ul[@role='listbox']/li[contains(.,'United Kingdom')])[last()]"
   },
   {
     "name": "Direct App Country of Study Dropdown",

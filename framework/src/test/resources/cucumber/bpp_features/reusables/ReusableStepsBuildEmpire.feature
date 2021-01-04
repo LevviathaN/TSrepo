@@ -1128,6 +1128,10 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Location Dropdown" button
+    And I click on the "Direct App Location Dropdown" element
+    Then I wait for "1" seconds
+    Then I click on the "Online real-time learning" "Build Empire application type"
     And I hover over the "Direct App Start Date Application Dropdown" element
     And I click on the "Direct App Start Date Application Dropdown" element
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
@@ -1148,6 +1152,10 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
     And I wait for "2" seconds
+    And I hover over the "Direct App Location Dropdown" button
+    And I click on the "Direct App Location Dropdown" element
+    Then I wait for "1" seconds
+    Then I click on the "Online real-time learning" "Build Empire application type"
     And I hover over the "Direct App Start Date Application Dropdown" button
     And I click on the "Direct App Start Date Application Dropdown" element
     And I wait for "2" seconds
@@ -1583,6 +1591,11 @@ Feature: BuildEmpire
     Then I click on the "BPP University Degree Apprenticeships" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Direct App Level Three Paralegal" element
+    And I hover over the "Direct App Start Date Application Dropdown" button
+    And I click on the "Direct App Start Date Application Dropdown" element
+    And I wait for "2" seconds
+    Then I click on the "January 2021" "Build Empire application type"
+    And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
 
   Scenario: Log In to Hub as Student Fixed
