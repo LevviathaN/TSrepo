@@ -1,7 +1,7 @@
 @Mobile
 Feature: BPP University Hub My Learning Course Tutor
 
-  @NoRun @BET #TC-721
+  @Positive @Samsung @iPad @iPhone #TC-721
   Scenario: Hub My Learning Course Tutor_Mobile
     Then I execute "Login as Admin Totara" reusable step replacing some steps
     |1|I am on "https://totara-stage-bppdigital.bppuniversity.com/auth/saml2/login.php?wants&idp=9ff4f795dc76021c15c1617ffeac8c28&passive=off" URL|
@@ -61,6 +61,7 @@ Feature: BPP University Hub My Learning Course Tutor
       |2| I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
       |3| I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"                |
     #Validate My Learning Course Tutor Name
+    And I wait for "5" seconds
     And I click on the "Hub VPE Mobile Hamburger Menu" button if "Hub VPE Mobile Hamburger Menu" "element is present"
     Then I click on the "Hub Mobile My Learning Link Hamburger Menu" element if "Hub Mobile My Learning Link Hamburger Menu" "element is present"
     And I wait for "7" seconds
