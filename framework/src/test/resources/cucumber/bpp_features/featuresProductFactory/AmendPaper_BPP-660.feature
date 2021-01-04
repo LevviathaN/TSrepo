@@ -12,36 +12,36 @@ Feature: Amend Reference Data - Paper - BPP-660
   Scenario: Amend a Paper Using a Modal
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
-    And I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field two"
+    And I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
-    And I set "EC_PAPER_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     Then I should see the "EC_PAPER_DESCRIPTION_TWO" element
 
   @Negative @P2 #TC-827
   Scenario: Submitting Unchanged Paper Fields
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
 
   @Negative @P2 #TC-831
   Scenario: Amend a Paper Where Description Already Exists
     Given I execute "Create Paper" reusable step replacing some steps
-      |5|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field two"|
-      |8|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"   |
-      |10|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                       |
+      |5|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field"|
+      |9|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Search" "Product Factory text field" from keyboard   |
+      |11|I should see the "EC_PAPER_DESCRIPTION_NEW" element                                       |
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
-    And I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field two"
+    And I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Description must be unique" "message"
 

@@ -81,7 +81,7 @@ Feature: Materials - Create Materials - BPP-1099
       |4|I set "MaterialTypeNameTwo[######]" text to the "Name" "Product Factory text field"|
       |5|I set "MaterialTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
     And I execute "Link Body To Paper" reusable step replacing some steps
-      |3|I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"|
+      |3|I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard|
       |5|I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"|
       |6|I click on the "EC_BODY_NAME_TWO" "Product Factory select button"         |
     And I execute "Link Body To Level" reusable step replacing some steps

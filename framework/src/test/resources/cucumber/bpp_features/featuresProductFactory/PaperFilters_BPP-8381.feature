@@ -20,23 +20,17 @@ Feature: Paper List - add search filter - BPP-8381
     When I click on the "Papers" "Product Factory navigation sub item"
     And I wait for "3" seconds
 
-    And I set "XXX" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "XXX" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I shouldn't see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
+    And I click on the "Clear the search text" "element by title"
 
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I should see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
+    And I click on the "Clear the search text" "element by title"
 
-    And I set "EC_LEVEL_SHORT_NAME" text to the "Level" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_LEVEL_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I should see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
-
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I set "EC_LEVEL_SHORT_NAME" text to the "Level" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I should see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
+    And I click on the "Clear the search text" "element by title"

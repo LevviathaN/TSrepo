@@ -60,6 +60,10 @@
     "value": "^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$"
   },
   {
+    "name": "I_CHECK_UNCHECK_BY_JS_SPECIAL",
+    "value": "^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\" by JS$"
+  },
+  {
     "name": "I_CLICK_ON_ELEMENT_SPECIAL",
     "value": "^I click on the \"([^\"]*)\"$"
   },

@@ -12,8 +12,8 @@ Feature: Reference Data - Link Paper To Level - BPP-472
 
   @Positive @Regression @P1 #TC-714
   Scenario: Link Paper to Level
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Link Levels button"
     And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
