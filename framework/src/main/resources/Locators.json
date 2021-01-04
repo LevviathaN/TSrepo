@@ -352,6 +352,10 @@
     "value": "xpath=//div[contains(@class,'single-section')][2]/a"
   },
   {
+    "name": "BPP Digital Student Icaew Course Automation Mobile Topic Sticker",
+    "value": "xpath=(//div[normalize-space()='Automation Mobile']/following::a)[1]"
+  },
+  {
     "name": "BPP Digital Student My Learning Page Open First Course Sticker",
     "value": "xpath=//ul[@class='courses-list']//following-sibling::a[1]"
   },

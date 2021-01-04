@@ -71,19 +71,22 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Automation Mobile Quiz Name Edit Move Right Item" link by JS
     #Admin Logout
     And I execute "Logout as Admin Totara" reusable step
-    And I wait for "2" seconds
+    And I wait for "5" seconds
     And Browser deletes cookies
-    And I wait for "4" seconds
+    And I wait for "7" seconds
     #Login As student
-    And I execute "Log In to Hub as Student" reusable step replacing some steps
-      | 2 | I set "AutoFrancisMcKnight2507@getnada.com" text to the "Email" "Build Empire text field" |
-      | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
+    And I remember "AutoFrancisMcKnight2507@getnada.com" text as "EC_AUTO_EMAIL" variable
+    And I remember "A@polloGlobal2020" text as "EC_PASSWORD" variable
+    And I execute "Log In to Hub as Student" reusable step
     And I wait for "5" seconds
     #Navigate to Created Sub Topics
     And I click on the "Hub VPE Mobile Hamburger Menu" button by JS
     And I click on the "Hub Mobile My Learning Link Hamburger Menu" option by JS
     And I click on the "BPP Digital Student My Learning Page Open First Course Sticker" element
-    And I click on the "BPP Digital Student Icaew Course Page Open Second Topic Sticker" element
+    And I click on the "BPP Digital Student Icaew Course Automation Mobile Topic Sticker" element
+    And I wait for "10" seconds
+    And Browser performs "Refresh" command
+    And I wait for "10" seconds
     Then I validate text "Automation Mobile" to be displayed for "BPP Digital Automation Validate Topic Header" element
     Then I validate text "CONTAINS=Automation Mobile Sub-Topic" to be displayed for "BPP Digital Automation Validate Sub Topic Header" element
     Then Attribute "data-icon" of "BPP Digital Automation Validate Angle Down Icon" should have value "angle-down"
@@ -92,8 +95,16 @@ Feature: BPP University Hub Sub Topics and Labels
     Then I validate text "Automation Mobile Quiz Name" to be displayed for "BPP Digital Automation Mobile Validate Sub Topic Quiz Link" element
     Then Attribute "data-icon" of "BPP Digital Automation Validate Quiz Square Svg Item" should have value "check"
     And I click on the "BPP Digital Automation Validate Quiz Square Svg Item" element
-    And Browser performs "Refresh" command
+#    And Browser performs "Refresh" command
+#    And I wait for "5" seconds
+#    Then I execute "Log In to Hub as Student" reusable step if "Direct App Login Button" "element is present"
+#    And I wait for "5" seconds
+    ####################
+    And I click on the "Hub Mobile My Learning Link Hamburger Menu" option by JS
+    And I click on the "BPP Digital Student My Learning Page Open First Course Sticker" element
+    And I click on the "BPP Digital Student Icaew Course Automation Mobile Topic Sticker" element
     And I click on the "BPP Digital Automation Validate Expandable Sub Topic Header" link by JS
+    ####################
     And Attribute "data-icon" of "BPP Digital Automation Validate Quiz Check Svg Item" should have value "check"
     And Attribute "class" of "BPP Digital Automation Validate Green Check Icon" should have value "CONTAINS=complete"
     #Student Logout
@@ -102,11 +113,14 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Hub VPE Mobile Hamburger Menu" button
     And I wait for "3" seconds
     And I click on the "Direct App Mobile Logout" element
-    And I wait for "4" seconds
+    And I wait for "5" seconds
     And Browser deletes cookies
     #Admin Login With Walkaround
     And I wait for "8" seconds
     Given I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I wait for "2" seconds
+    And I execute "Logout Totara Workaround" reusable step if "Totara Account Expandable Menu" "element is present"
+    Given I am on "https://totara-stage-bppdigital.bppuniversity.com/" URL
     Then I click on the "Totara Login" button by JS
     And I wait for "4" seconds
     And I fill the "Direct App Admin Email" field with "MD_COMMON_CREDENTIALS_TOTARAADMINUSER"
