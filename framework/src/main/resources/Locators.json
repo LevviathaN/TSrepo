@@ -1393,7 +1393,7 @@
   },
   {
     "name": "Direct App Line Manager Review Application",
-    "value": "xpath=//div[@class='my-application-review']/div[2]/div[1]/div[2]//button[contains(.,'Review application details')]"
+    "value": "xpath=//div[@class='my-application-review']/div[2]//*[contains(.,'EC_AUTO_LASTNAME')]//button[contains(.,'Review application details')]"
   },
   {
     "name": "Direct App Line Manager Review Health And Safety Checkbox",
