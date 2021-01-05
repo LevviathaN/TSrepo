@@ -81,6 +81,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_BY_JS_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_by_js_special(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_BY_JS_SPECIAL_IF"),() -> specialStepDefs.i_click_on_element_with_parameter_by_js_special_if(arg1, arg2, arg3,arg4));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SET_TEXT_SPECIAL"),() -> specialStepDefs.i_set_text_special(arg1, arg2, arg3));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SET_TEXT_FROM_KEYBOARD_SPECIAL"),() -> specialStepDefs.i_set_text_from_keyboard_special(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_SHOULD_SEE_SPECIAL"),() -> specialStepDefs.i_should_see_special(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE_SPECIAL"),() -> specialStepDefs.elements_attribute_should_have_value_special(arg1, arg2, arg3, arg4));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CHECK_UNCHECK_SPECIAL"),() -> specialStepDefs.i_check_uncheck_special(arg1, arg2, arg3));

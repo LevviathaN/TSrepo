@@ -20,6 +20,8 @@ Feature: Product Factory
     And I set "BodyFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Body" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_FD_CODE" element
 
@@ -31,6 +33,8 @@ Feature: Product Factory
     And I set "LocationFDDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Location" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LOCATION_FD_CODE" element
 
@@ -42,6 +46,8 @@ Feature: Product Factory
     And I set "RegionFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Region" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_REGION_FD_CODE" element
 
@@ -53,6 +59,8 @@ Feature: Product Factory
     And I set "CourseTypeFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Course Type" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_FD_CODE" element
 
@@ -64,6 +72,8 @@ Feature: Product Factory
     And I set "MaterialTypeFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Material Type" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_FD_CODE" element
 
@@ -75,6 +85,8 @@ Feature: Product Factory
     And I set "MaterialFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Material" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_FD_CODE" element
 
@@ -86,6 +98,8 @@ Feature: Product Factory
     And I set "CourseFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Course" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_FD_CODE" element
 
@@ -263,7 +277,7 @@ Feature: Product Factory
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I "check" "EC_REGION_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" button
-    And I "check" "EC_PAPER_DESCRIPTION" "Product Factory dialog checkbox"
+    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory dialog checkbox" by JS
     And I click on the "Next" button
     And I set "~PricingMatrixPrice[####]" text to the "Enter a Price (£)" "Product Factory text field"
     And I click on the "Next" button
