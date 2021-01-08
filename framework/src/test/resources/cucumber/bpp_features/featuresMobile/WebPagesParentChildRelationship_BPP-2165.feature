@@ -6,12 +6,17 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
 
   Background:
     Given I execute "Log In to Hub as Admin" reusable step replacing some steps
-      |5|I wait for "15" seconds|
+      |1|I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL|
+      |4|I should scroll to the "bottom" of the page                                   |
+      |5|I click on the "Direct App Login Button" button by JS                         |
 
-  @Positive @iPad @iPhone @Samsung  #TC-1318
+  @Positive @iPad @iPhone @Samsung #TC-1318
   Scenario: Validate Web Pages Parent Child Relationships_Mobile
     #Create Parent CMS Page
+    And I wait for "15" seconds
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
+    And I wait for "5" seconds
+    When I execute "Admin Hub Navigate to CMS Pages" reusable step if "BPP Digital Website Main Menu link" "element is present"
     When I click on the "Add" "BPP Digital Admin Page Button"
     And I set "AutoParentCMSPage[#####]" text to the "Name *" "BPP Digital Mandatory input field"
     And I select "CMS page" from "Page type *" "BPP Digital Mandatory select field"
@@ -52,25 +57,31 @@ Feature: The Hub - Web Pages - CMS pages with parent/child relationships
     Then I execute "Publish a CMS or Blog Post page" reusable step
     And I execute "Log Out from Hub Admin" reusable step
     And Browser deletes cookies
-    And I wait for "2" seconds
+    And I wait for "6" seconds
     #Validate in HUB
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "AutoLeanneTrujillo4140@guerrillamail.info" text to the "Email" "Build Empire text field"|
       |3|I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"|
-    And I wait for "5" seconds
+    And I wait for "6" seconds
     And I click on the "Hub VPE Mobile Hamburger Menu" element
     And I should see the "EC_AUTO_PARENT_CMS_PAGE" element
     And I shouldn't see the "EC_AUTO_CHILD_CMS_PAGE" "element"
     Then I click on the "EC_AUTO_PARENT_CMS_PAGE" element
-    And I wait for "5" seconds
+    And I wait for "6" seconds
     And I click on the "Hub VPE Mobile Hamburger Menu" element
     And I should see the "EC_AUTO_CHILD_CMS_PAGE" element
     Then I click on the "Direct App Mobile Logout" element
     And Browser deletes cookies
     #Delete created CMS pages
-    When I execute "Log In to Hub as Admin" reusable step replacing some steps
-      |5|I wait for "15" seconds|
+    Given I execute "Log In to Hub as Admin" reusable step replacing some steps
+      |1|I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL|
+      |4|I should scroll to the "bottom" of the page                                   |
+      |5|I click on the "Direct App Login Button" button by JS                         |
+    And I wait for "15" seconds
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages" URL
+    And I wait for "7" seconds
+    When I execute "Admin Hub Navigate to CMS Pages" reusable step if "BPP Digital Website Main Menu link" "element is present"
+    And I wait for "3" seconds
     When I fill the "BPP Digital Filter by name search field" field with "EC_AUTO_CHILD_CMS_PAGE"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "BPP Digital Filter by name search field"
     Then I should see the "EC_AUTO_CHILD_CMS_PAGE" element

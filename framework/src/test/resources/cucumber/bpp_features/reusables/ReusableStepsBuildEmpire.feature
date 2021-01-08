@@ -44,7 +44,6 @@ Feature: BuildEmpire
     #And I click on the "Direct App Programme Dropdown" element
     #Then I wait for "1" seconds
     #Then I click on the "Legal Practice Course (LPC)" "Build Empire application type"
-    #And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
 
   Scenario: Submit Application Hub
@@ -719,6 +718,7 @@ Feature: BuildEmpire
 
   Scenario: Line Manager Review Apprenticeships
     Given I click on the "Direct App My Approvals Tab" link by JS
+    And I wait for "2" seconds
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Line Manager End Point Assessment" field with "Automation"
@@ -729,8 +729,12 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Next" button
     And I click on the "Direct App Line Manager Review Health And Safety Checkbox" button
-    And I click on the "Direct App Save Review And Next" button
+    #And I click on the "Direct App Save Review And Next" button
+    And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
+    Then Browser performs "REFRESH" command
+    And I wait for "1" seconds
+    And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
@@ -954,6 +958,7 @@ Feature: BuildEmpire
 
   Scenario: Line Manager Review University Degree Apprenticeships Scotland
     Given I click on the "Direct App My Approvals Tab" link by JS
+    And I wait for "2" seconds
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
@@ -989,6 +994,7 @@ Feature: BuildEmpire
 
   Scenario: Line Manager Review And Reject University Degree Apprenticeships Scotland
     Given I click on the "Direct App My Approvals Tab" link by JS
+    And I wait for "2" seconds
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
@@ -1128,10 +1134,10 @@ Feature: BuildEmpire
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
     And I wait for "2" seconds
-    And I hover over the "Direct App Location Dropdown" button
-    And I click on the "Direct App Location Dropdown" element
-    Then I wait for "1" seconds
-    Then I click on the "Online real-time learning" "Build Empire application type"
+    #And I hover over the "Direct App Location Dropdown" button
+    #And I click on the "Direct App Location Dropdown" element
+    #Then I wait for "1" seconds
+    #Then I click on the "Online real-time learning" "Build Empire application type"
     And I hover over the "Direct App Start Date Application Dropdown" element
     And I click on the "Direct App Start Date Application Dropdown" element
     Then I click on the "UAT Assisstant Accountant - Option 2" "Build Empire application type"
@@ -1152,10 +1158,10 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     Then I click on the "UAT Accounting Assitant" "Build Empire application type"
     And I wait for "2" seconds
-    And I hover over the "Direct App Location Dropdown" button
-    And I click on the "Direct App Location Dropdown" element
-    Then I wait for "1" seconds
-    Then I click on the "Online real-time learning" "Build Empire application type"
+    #And I hover over the "Direct App Location Dropdown" button
+    #And I click on the "Direct App Location Dropdown" element
+    #Then I wait for "1" seconds
+    #Then I click on the "Online real-time learning" "Build Empire application type"
     And I hover over the "Direct App Start Date Application Dropdown" button
     And I click on the "Direct App Start Date Application Dropdown" element
     And I wait for "2" seconds
@@ -1279,6 +1285,7 @@ Feature: BuildEmpire
 
   Scenario: Line Manager Review And Reject Professional Apprenticeships
     Given I click on the "Direct App My Approvals Tab" link by JS
+    And I wait for "2" seconds
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
@@ -1340,7 +1347,7 @@ Feature: BuildEmpire
     And I set "80004" text to the "Postcode" "Build Empire text field by title"
     And I set "London" text to the "Town/City*" "Build Empire text field"
     And I click on the "Country*" "Build Empire dropdown"
-    And I click on the "United Kingdom" "Build Empire dropdown option"
+    And I click on the "Direct App Country Dropdown UK Option" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Next" button
@@ -1354,7 +1361,7 @@ Feature: BuildEmpire
     And I set "AutoTest" text to the "City" "Build Empire Channel Islands text field"
     And I set "12345" text to the "Postcode" "Build Empire Channel Islands text field"
     And I click on the "Direct App Channel Islands Country Dropdown" button
-    And I click on the "Direct App Country Dropdown UK Option" button
+    And I click on the "United Kingdom" "Build Empire dropdown option"
     Then I remember "e-mail[#####]/@/getnada.com" text as "EC_LINEMANAGER_EMAIL" variable
     And I fill the "Direct App Channel Islands Email Training Manager" field with "EC_LINEMANAGER_EMAIL"
     And I fill the "Direct App Channel Islands Address Training Manager" field with "Simple Test 1"

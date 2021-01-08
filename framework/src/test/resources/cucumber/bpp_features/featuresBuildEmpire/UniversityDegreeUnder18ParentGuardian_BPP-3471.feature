@@ -126,7 +126,7 @@ Feature: As a student who, is under 18, I expect to provide more information abo
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step with some additional steps
       | 9 | I validate text "EC_GUARDIAN_EMAIL" to be displayed for "Direct App Admin Parent Guardian Email" element |
-      | 10 | I validate text "1234567890" to be displayed for "Direct App Admin Parent Guardian Phone" element |
+      | 10 | I validate text "+441234567890" to be displayed for "Direct App Admin Parent Guardian Phone" element |
     And I execute "Attach Automation Line Manager Apprenticeships" reusable step replacing some steps
       | 4 | I fill the "Direct App Admin Attach Line Manger Text Field" field with "automationlinemanager9@harakirimail.com" |
       | 5 | I click on the "Automation9 Linemanager9 " "Build Empire line manager option"                                    |

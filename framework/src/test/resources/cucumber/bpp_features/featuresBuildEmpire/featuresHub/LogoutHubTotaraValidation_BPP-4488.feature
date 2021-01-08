@@ -11,7 +11,8 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     #Verify Left panel
     Then I execute "Harakirimail Verify Email" reusable step replacing some steps
     |2|I fill the "Harakirimail Inbox Name" field with "EC_AUTO_ONE_EMAIL"|
-    Then I execute "Log In to Hub as Student" reusable step
+    Then I execute "Log In to Hub as Student" reusable step replacing some steps
+    |2|I set "EC_AUTO_ONE_EMAIL" text to the "Email" "Build Empire text field"|
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #Student Log out
     When I execute "Log Out from Hub Student" reusable step
@@ -38,7 +39,8 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
       |5|I set "AutoTwo[EMAIL-HARAKIRI]" text to the "Email" "Build Empire text field"|
     Then I execute "Harakirimail Verify Email" reusable step replacing some steps
       |2|I fill the "Harakirimail Inbox Name" field with "EC_AUTO_TWO_EMAIL"|
-    Then I execute "Log In to Hub as Student" reusable step
+    Then I execute "Log In to Hub as Student" reusable step replacing some steps
+      |2|I set "EC_AUTO_TWO_EMAIL" text to the "Email" "Build Empire text field"|
     #Verify Left panel
     Then I shouldn't see the "My Learning" "Build Empire Navigation Menu elements"
     #Student Log out
@@ -81,6 +83,3 @@ Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/
     And I click on the "Submit your assignment" "button" by JS
     And I wait for "5" seconds
     Then I execute "window.stop()" JS code
-    #Commented as we face issues with Totara logout and login
-    #Then I switch to window with index "2"
-    # And I validate text "CONTAINS=EC_AUTO_TWO_FIRSTNAME" to be displayed for "Totara User Text" element

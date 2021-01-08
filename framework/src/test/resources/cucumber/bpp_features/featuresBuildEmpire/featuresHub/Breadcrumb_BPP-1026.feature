@@ -19,6 +19,8 @@ Feature: The Hub - Breadcrumb
     And I click on the "Personal details" "Build Empire application section"
     And I should see the "Personal details" "Build Empire Breadcrumb Not Clickable Tab"
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab"
+    And I click on the "Yes" "text contained in element"
+    And I wait for "1" seconds
     And I click on the "Additional information" "Build Empire application section"
     And I should see the "Additional Information" "Build Empire Breadcrumb Not Clickable Tab"
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab" if "Chartered Manager Degree Apprenticeship,Build Empire Breadcrumb Tab" "special element is present"
@@ -36,6 +38,8 @@ Feature: The Hub - Breadcrumb
     And I click on the "Company" "Build Empire application section"
     And I should see the "Company" "Build Empire Breadcrumb Not Clickable Tab"
     Then I click on the "Chartered Manager Degree Apprenticeship" "Build Empire Breadcrumb Tab"
+    And I click on the "Yes" "text contained in element"
+    And I wait for "1" seconds
     And I click on the "Apprenticeship Privacy Notice" "Build Empire application section"
     And I should see the "Apprenticeship Privacy Notice" "Build Empire Breadcrumb Not Clickable Tab"
     Then I click on the "Home" "Build Empire Breadcrumb Tab"
