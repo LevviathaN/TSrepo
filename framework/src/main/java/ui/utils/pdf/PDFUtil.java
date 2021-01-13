@@ -194,8 +194,8 @@ public class PDFUtil {
             for(int iPage = this.startPage - 1; iPage < this.endPage; ++iPage) {
                 BPPLogManager.getLogger().info("Page No : " + (iPage + 1));
                 String fname = this.imageDestinationPath + fileName + "_" + (iPage + 1) + ".png";
-                BufferedImage image = pdfRenderer.renderImageWithDPI(iPage, 1250.0F, ImageType.RGB);
-                ImageIOUtil.writeImage(image, fname, 500);
+                BufferedImage image = pdfRenderer.renderImageWithDPI(iPage, 400.0F, ImageType.RGB);
+                ImageIOUtil.writeImage(image, fname, 400);
                 imgNames.add(fname);
                 BPPLogManager.getLogger().info("PDf Page saved as image : " + fname);
             }
@@ -247,11 +247,12 @@ public class PDFUtil {
             pdfRenderer2 = new PDFRenderer(doc2);
 
             for(int iPage = startPage - 1; iPage < endPage; ++iPage) {
-                String fileName = (new File(file1)).getName().replace(".ui.utils.pdf", "_") + (iPage + 1);
+                //String fileName = (new File(file1)).getName().replace(".ui.utils.pdf", "_") + (iPage + 1);
+                String fileName = Reporter.getCurrentTestName()+ (iPage + 1);
                 fileName = this.getImageDestinationPath() + "/" + fileName + "_diff.png";
                 BPPLogManager.getLogger().info("Comparing Page No : " + (iPage + 1));
-                BufferedImage image1 = pdfRenderer1.renderImageWithDPI(iPage, 500.0F, ImageType.RGB);
-                BufferedImage image2 = pdfRenderer2.renderImageWithDPI(iPage, 500.0F, ImageType.RGB);
+                BufferedImage image1 = pdfRenderer1.renderImageWithDPI(iPage, 400.0F, ImageType.RGB);
+                BufferedImage image2 = pdfRenderer2.renderImageWithDPI(iPage, 400.0F, ImageType.RGB);
                 result = ImageUtil.compareAndHighlight(image1, image2, fileName, this.bHighlightPdfDifference, this.imgColor.getRGB()) && result;
                 if (!this.bCompareAllPages && !result) {
                     break;
