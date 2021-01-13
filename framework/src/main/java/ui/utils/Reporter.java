@@ -42,6 +42,7 @@ public class Reporter {
     private static String root = System.getProperty("user.dir");
     private static String filePath = "report.html";
     private static Path reportPath;
+    private static Path quarkPath;
     private static Path screenshotFolder;
     private static Path ecFolder;
     private static Path logFolder;
@@ -738,11 +739,29 @@ public class Reporter {
 
         String currentTestName = getCurrentTestName();
         if (currentTestName.contains("attempt")) {
-            RetryAnalyzer.passMap.put(currentTestName.substring(0,currentTestName.length()-10),"pass");
+            RetryAnalyzer.passMap.put(currentTestName.substring(0, currentTestName.length() - 10), "pass");
         } else {
-            RetryAnalyzer.passMap.put(currentTestName,"pass");
+            RetryAnalyzer.passMap.put(currentTestName, "pass");
         }
         testStorage.get(Thread.currentThread().getId()).pass(log);
+    }
+
+    public static String getQuarkImagesFolder() {
+        try {
+            Path rootPath = getQuarkScreenshotsPath();
+            // create directory if not exists
+            if (Files.notExists(rootPath))
+                quarkPath = Files.createDirectories(rootPath);
+            else
+                quarkPath = rootPath;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return quarkPath.toString();
+    }
+
+    private static Path getQuarkScreenshotsPath() {
+        return Paths.get(getReportPath().toString(), "QuarkDifferences");
     }
 
 }

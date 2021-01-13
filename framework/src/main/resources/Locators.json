@@ -3530,5 +3530,17 @@
   {
     "name": "Nada Verify Email",
     "value": "inframe=Nada Email Body Frame>xpath=//a[contains(.,'Verify')]"
+  },
+  {
+    "name": "Quark Username",
+    "value": "id=userName"
+  },
+  {
+    "name": "Quark Publishing Logo",
+    "value": "xpath=//*[@class='navbar-brand']"
+  },
+  {
+    "name": "Quark",
+    "value": "xpath=//a[contains(.,'staging.bppdigital.buildempire.co.uk')]"
   }
 ]

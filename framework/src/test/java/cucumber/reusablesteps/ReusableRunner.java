@@ -75,7 +75,8 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_THE_BUTTON_WITH_JS_IF"), () -> stepDefs.i_click_on_the_button_with_js_if(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("BROWSER_DELETES_COOKIES"), ()-> stepDefs.delete_cookies());
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("ELEMENT_CSS_SHOULD_HAVE_VALUE"), ()-> stepDefs.element_css_should_have_value(arg1, arg2, arg3));
-
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_COMPARE_PDF"), ()-> stepDefs.i_compare_pdfs(arg1,arg2));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_COMPARE_PDF_PAGES"), ()-> stepDefs.i_compare_pdf_pages(arg1,arg2, arg3, arg4));
         //Special stepdefs
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_BY_JS_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_by_js_special(arg1, arg2));

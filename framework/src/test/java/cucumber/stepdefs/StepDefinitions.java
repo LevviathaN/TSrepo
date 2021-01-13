@@ -14,6 +14,7 @@ import ui.utils.SeleniumHelper;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
+import ui.utils.pdf.PDFHandler;
 
 import java.io.IOException;
 import java.util.List;
@@ -772,4 +773,35 @@ public class StepDefinitions extends SeleniumHelper {
             }
         }
     }
+
+    // QUARK related Stepdefinitions
+    @And("I compare \"([^\"]*)\" file with \"([^\"]*)\" PDF file")
+    public void i_compare_pdfs(String baseFile, String fileName1) {
+        Reporter.log("Executing step: I check PDF files: " + baseFile + " and " + fileName1);
+        try {
+            Reporter.log("Amount of pages in " + baseFile + " is: " + PDFHandler.getPageCount(baseFile));
+            Reporter.log("Amount of pages in " + fileName1 + " is: " + PDFHandler.getPageCount(fileName1));
+            Assert.assertTrue(PDFHandler.checkPDF(baseFile, fileName1));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Reporter.log("Exception caught! Please check the PDF files!");
+        }
+    }
+
+    @And("I compare \"([^\"]*)\" file with \"([^\"]*)\" PDF file for pages from \"([^\"]*)\" to \"([^\"]*)\"$")
+    public void i_compare_pdf_pages(String baseFile, String fileName1, String beginIndex, String endIndex) {
+        Reporter.log("Executing step: I check PDF files: " + baseFile + " and " + fileName1 +
+                " from page " + beginIndex + " to " +  endIndex + " page");
+        int index1 = Integer.parseInt(beginIndex);
+        int indexEnd = Integer.parseInt(endIndex);
+        try {
+            Reporter.log("Amount of pages in " + baseFile + " is: " + PDFHandler.getPageCount(baseFile));
+            Reporter.log("Amount of pages in " + fileName1 + " is: " + PDFHandler.getPageCount(fileName1));
+            Assert.assertTrue(PDFHandler.checkPDFPAges(baseFile, fileName1, index1, indexEnd));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Reporter.log("Exception caught! Please check the PDF files!");
+        }
+    }
+
 }
