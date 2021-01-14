@@ -9,7 +9,7 @@ Feature: As a BPP PD Learner I need to Book Single Courses online
     And I set "Auto[FIRSTNAME]" text to the "First name*" "Build Empire text field"
     And I set "Auto[LASTNAME]" text to the "Last name*" "Build Empire text field"
     And I set "Auto[EMAIL-MAILDROP]" text to the "Email*" "Build Empire text field"
-    And I set "[PHONE-0913]" text to the "Telephone number*" "Build Empire text field"
+    And I fill the "BPP Digital Course Booking Telephone" field with "[PHONE-0913]"
     And I click on the "BPP Digital Course Booking Title Dropdown" button
     Then I click on the "Dr" "Build Empire application type"
     And I set "Automation Company" text to the "Company Name" "Build Empire text field"
@@ -17,7 +17,7 @@ Feature: As a BPP PD Learner I need to Book Single Courses online
     And I set "London" text to the "City" "Build Empire text field"
     And I set "W5EH32" text to the "Postcode" "Build Empire text field"
     And I click on the "BPP Digital Course Booking Country Dropdown" button
-    And I click on the "Direct App Country Dropdown UK Option" button
+    And I click on the "BPP Digital Course Booking UK Option" button
     And I click on the "Direct App I Am Happy To Receive Information" button
     And I click on the "BPP Digital Course Booking Conditions Checkbox" button
     Then I click on the "Direct App Register" button
@@ -32,4 +32,4 @@ Feature: As a BPP PD Learner I need to Book Single Courses online
     Then I should see the "Step 3: Please review and complete your payment" "text"
     And I click on the "Pay" "BPP Digital Admin Value attribute button"
     And I wait for "3" seconds
-    And I validate text "CONTAINS=Placeholder: Thank you for your payment." to be displayed for "BPP Digital Course Booking Success Message Form" element
+    And I validate text "CONTAINS=Thank you for your order. Your booking has been successful." to be displayed for "BPP Digital Course Booking Success Message Form" element

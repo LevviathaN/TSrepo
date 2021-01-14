@@ -20,6 +20,8 @@ Feature: Salesforce
   Scenario: Switch to Key Clients App
     Given I click on the "Salesforce App Launcher" button
     When I click on the "Salesforce View All Application" link
+    When I click on the "Salesforce View All Application" link by JS
+    And I wait for "2" seconds
     And I click on the "Key Clients" "Salesforce app launcher app" by JS
 
   Scenario: Create Student Account
