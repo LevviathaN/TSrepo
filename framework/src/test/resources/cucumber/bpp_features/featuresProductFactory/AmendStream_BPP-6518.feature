@@ -18,6 +18,10 @@ Feature: Edit Instance - Streams - BPP-6518
     And I execute "Create Location" reusable step
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
+    Given I execute "Create Paper" reusable step replacing some steps
+      |6|I set "PaperDescription[######]~Dummy" text to the "Description" "Product Factory text field"|
+      |10|I set "EC_PAPER_DESCRIPTION_DUMMY" text to the "Search" "Product Factory text field" from keyboard   |
+      |12|I should see the "EC_PAPER_DESCRIPTION_DUMMY" element                                       |
     And I execute "Link Body To Level" reusable step
     And I execute "Link Body To Paper" reusable step
     And I execute "Link Paper To Level" reusable step
@@ -37,7 +41,7 @@ Feature: Edit Instance - Streams - BPP-6518
     And I execute "Create Digital Content" reusable step
     And I execute "Create Course Instance" reusable step
 
-  @Positive @P1 #TC-2951, TC-2968
+  @Positive @P1 @Run #TC-2951, TC-2968
   Scenario: Add a Stream to Course Instance
     Given I click on the "Activate" "Product Factory button"
     And I click on the "Product Factory Course Instances Arrow Down Icon" element

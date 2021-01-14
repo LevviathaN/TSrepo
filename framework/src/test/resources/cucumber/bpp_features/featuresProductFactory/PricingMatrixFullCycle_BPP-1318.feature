@@ -22,7 +22,7 @@ Feature: Pricing Matrix - price creation wizard - BPP-1318
     And I execute "Link Body To Paper" reusable step
     And I execute "Create Pricing Matrix" reusable step
 
-  @Positive @Regression @P1 @FullCycle @Run #TC-1032
+  @Positive @Regression @P1 @FullCycle #TC-1032
   Scenario: Add a New Pricing Matrix Full Cycle
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
     Then I click on the "Create" "Product Factory button"

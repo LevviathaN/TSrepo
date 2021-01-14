@@ -128,13 +128,14 @@ Feature: Product Factory
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "PprSN[#####]" text to the "Short Name" "Product Factory text field"
+    And I set "PaperName[#####]" text to the "Name" "Product Factory text field"
     And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     And I wait for "5" seconds
     And I click on the "Search" "Product Factory text field"
     Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    Then I should see the "EC_PAPER_DESCRIPTION" element
+    Then I should see the "EC_PAPER_NAME" element
     And I click on the "Clear the search text" "element by title"
 
   Scenario: Link Body To Paper
