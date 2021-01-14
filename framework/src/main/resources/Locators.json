@@ -540,6 +540,14 @@
     "value": "xpath=//div[@class='form-content']/p/b"
   },
   {
+    "name": "BPP Digital Course Booking Telephone",
+    "value": "xpath=(//*[@type='tel'])[1]"
+  },
+  {
+    "name": "BPP Digital Course Booking UK Option",
+    "value": "xpath=(//ul[@role='listbox']/li[contains(.,'United Kingdom')])[3]"
+  },
+  {
     "name": "BPP Digital Form Success Message Title",
     "value": "xpath=//div[@class='form-confirmation']//*[@class='form-title']"
   },
@@ -3538,9 +3546,5 @@
   {
     "name": "Quark Publishing Logo",
     "value": "xpath=//*[@class='navbar-brand']"
-  },
-  {
-    "name": "Quark",
-    "value": "xpath=//a[contains(.,'staging.bppdigital.buildempire.co.uk')]"
   }
 ]
