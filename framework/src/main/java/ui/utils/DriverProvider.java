@@ -73,12 +73,7 @@ public class DriverProvider {
 
             System.setProperty("webdriver.chrome.driver", CHROME_PATH);
             ChromeOptions options = new ChromeOptions();
-            Map<String, Object> prefs = new HashMap<String, Object>();
-            prefs.put("credentials_enable_service", false);
-            prefs.put("profile.password_manager_enabled", false);
 
-
-            options.setExperimentalOption("prefs", prefs);
             options.addArguments("--test-type");
             options.addArguments("--start-maximized");
             options.addArguments("--disable-save-password-bubble");
@@ -100,6 +95,7 @@ public class DriverProvider {
             chromePreferences.put("download.default_directory", folder.getAbsolutePath());
 
             options.setCapability("chrome.prefs", chromePreferences);
+            options.setExperimentalOption("prefs", chromePreferences);
 
             return new ChromeDriver(options);
         } catch (Exception e) {
@@ -115,12 +111,6 @@ public class DriverProvider {
                 folder.mkdir();
             }
             ChromeOptions options = new ChromeOptions();
-            Map<String, Object> prefs = new HashMap<String, Object>();
-            prefs.put("credentials_enable_service", false);
-            prefs.put("profile.password_manager_enabled", false);
-
-
-            options.setExperimentalOption("prefs", prefs);
             options.setPageLoadStrategy(PageLoadStrategy.EAGER);
             options.addArguments("--test-type");
             options.addArguments("--start-maximized");
@@ -154,6 +144,7 @@ public class DriverProvider {
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability(ChromeOptions.CAPABILITY, options);
+            options.setExperimentalOption("prefs", chromePreferences);
             if (System.getProperties().containsKey("BstackPlan")) {
                 options.setCapability("project", System.getProperty("BstackPlan"));
             }
