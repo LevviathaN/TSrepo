@@ -45,7 +45,7 @@ public class PDFUtil {
     private int endPage = -1;
 
     public PDFUtil() {
-        this.imgColor = Color.MAGENTA;
+        this.imgColor = Color.RED;
         this.bCompareAllPages = false;
         this.compareMode = CompareMode.TEXT_MODE;
         System.setProperty("sun.java2d.cmm", "sun.java2d.cmm.kcms.KcmsServiceProvider");
@@ -149,7 +149,7 @@ public class PDFUtil {
         String file1Txt = this.getPDFText(file1, startPage, endPage).trim();
         String file2Txt = this.getPDFText(file2, startPage, endPage).trim();
         if (null != this.excludePattern && this.excludePattern.length > 0) {
-            for(int i = 0; i < this.excludePattern.length; ++i) {
+            for (int i = 0; i < this.excludePattern.length; ++i) {
                 file1Txt = file1Txt.replaceAll(this.excludePattern[i], "");
                 file2Txt = file2Txt.replaceAll(this.excludePattern[i], "");
             }
@@ -191,7 +191,7 @@ public class PDFUtil {
             PDDocument document = PDDocument.load(sourceFile);
             PDFRenderer pdfRenderer = new PDFRenderer(document);
 
-            for(int iPage = this.startPage - 1; iPage < this.endPage; ++iPage) {
+            for (int iPage = this.startPage - 1; iPage < this.endPage; ++iPage) {
                 BPPLogManager.getLogger().info("Page No : " + (iPage + 1));
                 String fname = this.imageDestinationPath + fileName + "_" + (iPage + 1) + ".png";
                 BufferedImage image = pdfRenderer.renderImageWithDPI(iPage, 400.0F, ImageType.RGB);
@@ -246,11 +246,11 @@ public class PDFUtil {
             pdfRenderer1 = new PDFRenderer(doc1);
             pdfRenderer2 = new PDFRenderer(doc2);
 
-            for(int iPage = startPage - 1; iPage < endPage; ++iPage) {
+            for (int iPage = startPage - 1; iPage < endPage; ++iPage) {
                 //String fileName = (new File(file1)).getName().replace(".ui.utils.pdf", "_") + (iPage + 1);
-                String fileName = Reporter.getCurrentTestName()+ (iPage + 1);
+                String fileName = Reporter.getCurrentTestName() + "_" + (iPage + 1);
                 fileName = this.getImageDestinationPath() + "/" + fileName + "_diff.png";
-                BPPLogManager.getLogger().info("Comparing Page No : " + (iPage + 1));
+                BPPLogManager.getLogger().info("Comparing Page No: " + (iPage + 1));
                 BufferedImage image1 = pdfRenderer1.renderImageWithDPI(iPage, 400.0F, ImageType.RGB);
                 BufferedImage image2 = pdfRenderer2.renderImageWithDPI(iPage, 400.0F, ImageType.RGB);
                 result = ImageUtil.compareAndHighlight(image1, image2, fileName, this.bHighlightPdfDifference, this.imgColor.getRGB()) && result;
@@ -295,18 +295,18 @@ public class PDFUtil {
             this.updateStartAndEndPages(file, startPage, endPage);
             int totalImages = 1;
 
-            for(int iPage = this.startPage - 1; iPage < this.endPage; ++iPage) {
+            for (int iPage = this.startPage - 1; iPage < this.endPage; ++iPage) {
                 BPPLogManager.getLogger().info("Page No : " + (iPage + 1));
                 PDResources pdResources = list.get(iPage).getResources();
                 Iterator var12 = pdResources.getXObjectNames().iterator();
 
-                while(var12.hasNext()) {
-                    COSName c = (COSName)var12.next();
+                while (var12.hasNext()) {
+                    COSName c = (COSName) var12.next();
                     PDXObject o = pdResources.getXObject(c);
                     if (o instanceof PDImageXObject) {
                         bImageFound = true;
                         String fname = this.imageDestinationPath + "/" + fileName + "_" + totalImages + ".png";
-                        ImageIO.write(((PDImageXObject)o).getImage(), "png", new File(fname));
+                        ImageIO.write(((PDImageXObject) o).getImage(), "png", new File(fname));
                         imgNames.add(fname);
                         ++totalImages;
                     }

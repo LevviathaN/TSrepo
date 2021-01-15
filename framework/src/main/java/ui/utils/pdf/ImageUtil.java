@@ -20,7 +20,7 @@ class ImageUtil {
         if (Arrays.equals(p1, p2)) {
             return true;
         } else {
-            BPPLogManager.getLogger().warn("Image compared - differences found. Please check QuarkDifferences folder");
+            BPPLogManager.getLogger().warn("Image compared - differences found. Please check PDFDifferences folder");
             if (highlight) {
                 for(int i = 0; i < p1.length; ++i) {
                     if (p1[i] != p2[i]) {
@@ -35,7 +35,6 @@ class ImageUtil {
                 out.setRGB(0, 0, w, h, p1, 0, w);
                 saveImage(out, fileName);
             }
-
             return false;
         }
     }

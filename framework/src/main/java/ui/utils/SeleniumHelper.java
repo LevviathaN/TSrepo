@@ -1016,4 +1016,16 @@ public class SeleniumHelper {
         }
         return true;
     }
+
+    /**
+     * Method to perform right mouse click on selected element
+     *
+     * @param element locator of element to perfrom click
+     */
+
+    public void rightMouseClick(By element) {
+        BPPLogManager.getLogger().info("Right mouse click for an element: " + element);
+        Actions action = new Actions(driver());
+        action.contextClick(findElement(element)).build().perform();
+    }
 }

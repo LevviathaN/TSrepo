@@ -749,11 +749,11 @@ public class Reporter {
     public static String getQuarkImagesFolder() {
         try {
             Path rootPath = getQuarkScreenshotsPath();
-            // create directory if not exists
+            Path testFolder = Paths.get(rootPath.toString(), Reporter.getCurrentTestName());
             if (Files.notExists(rootPath))
-                quarkPath = Files.createDirectories(rootPath);
+                quarkPath = Files.createDirectories(testFolder);
             else
-                quarkPath = rootPath;
+                quarkPath = testFolder;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -761,7 +761,6 @@ public class Reporter {
     }
 
     private static Path getQuarkScreenshotsPath() {
-        return Paths.get(getReportPath().toString(), "QuarkDifferences");
+        return Paths.get(getReportPath().toString(), "PDFDifferences");
     }
-
 }
