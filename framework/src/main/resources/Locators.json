@@ -2748,6 +2748,14 @@
     "value": "xpath=(//span[normalize-space()='Sexual Orientation']/following::div)[1]"
   },
   {
+    "name": "Salesforce Student Last Name",
+    "value": "xpath=//span[text()='Last Name']/../following-sibling::input|(//label[contains(.,'Last Name')]/following::input)[1]"
+  },
+  {
+    "name": "Salesforce Student Type Dropdown",
+    "value": "xpath=//label[text()='Student Type']//following-sibling::div//div[contains(@class,'slds-dropdown-trigger slds-dropdown-trigger_click')]"
+  },
+  {
     "name": "Salesforce Account Related Tab",
     "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[normalize-space()='Related']"
   },
@@ -2876,6 +2884,10 @@
     "value": "xpath=(//label[contains(.,'Instance')]//following::input[@title='Search Instances'])[1]"
   },
   {
+    "name": "Salesforce Status Booking",
+    "value": "xpath=//span[text()='Status']/../following-sibling::div[contains(@class,'uiMenu')]//a"
+  },
+  {
     "name": "Salesforce Booking Number Data Field",
     "value": "xpath=(//div[contains(@class,'oneContent active lafPageHost')]//*[text()='Booking Number']/../following::div/a)[1]"
   },
@@ -2889,7 +2901,7 @@
   },
   {
     "name": "Salesforce Address Primary Delivery",
-    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='Primary Delivery?']/following-sibling::input"
+    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//span[normalize-space()='Primary Delivery?']//following-sibling::div//input"
   },
   {
     "name": "Salesforce Booking Lines Number",
@@ -2901,7 +2913,7 @@
   },
   {
     "name": "Salesforce Save Account Button",
-    "value": "xpath=//button[contains(@class,'forceActionButton')]/span[normalize-space()='Save']"
+    "value": "xpath=//button[@name='SaveEdit']"
   },
   {
     "name": "Salesforce Save Booking Button",

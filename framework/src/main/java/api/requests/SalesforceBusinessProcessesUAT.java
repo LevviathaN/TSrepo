@@ -23,10 +23,10 @@ import static org.hamcrest.Matchers.containsString;
 
 public class SalesforceBusinessProcessesUAT {
 
-    private PropertiesHelper propertiesHelper = new PropertiesHelper();
-    private RestApiController restController;
-    private SoapApiController soapController;
-    private Utilities utils;
+    private final PropertiesHelper propertiesHelper = new PropertiesHelper();
+    private final RestApiController restController;
+    private final SoapApiController soapController;
+    private final Utilities utils;
 
 
     public SalesforceBusinessProcessesUAT() {
@@ -104,8 +104,8 @@ public class SalesforceBusinessProcessesUAT {
         ArrayList<String> recordData = utils.getRecordData(utils.getResponseProperty(dataResponse));
         GlobalDataBridge.getInstance().setBufferValueByKey("Student UAT".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
-        assertThat(recordData.get(87), matchesPattern("BP[0-9]+"));
-        BPPLogManager.getLogger().info("Banner ID: " + recordData.get(86));
+        assertThat(recordData.get(92), matchesPattern("BP[0-9]+"));
+        BPPLogManager.getLogger().info("Banner ID: " + recordData.get(92));
 
         return this;
     }
