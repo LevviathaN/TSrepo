@@ -505,7 +505,7 @@
   },
   {
     "name": "Salesforce date field",
-    "value": "xpath=//span[text()='PARAMETER']/../following-sibling::div/input[@class=' input']"
+    "value": "xpath=//label[text()='PARAMETER']//following-sibling::div/input[contains(@class,'input')]"
   },
   {
     "name": "Salesforce drop down option with same Name and Title",
@@ -517,6 +517,10 @@
   },
   {
     "name": "Salesforce dropdown field",
+    "value": "xpath=//label[text()='PARAMETER']//following-sibling::div//div[contains(@class,'slds-dropdown-trigger slds-dropdown-trigger_click')]"
+  },
+  {
+    "name": "Salesforce cases dropdown field",
     "value": "xpath=//span[text()='PARAMETER']/../following-sibling::div[contains(@class,'uiMenu')]"
   },
   {
@@ -529,7 +533,7 @@
   },
   {
     "name": "Salesforce dropdown field option",
-    "value": "xpath=//a[text()='PARAMETER' and @title='PARAMETER']"
+    "value": "xpath=//span[text()='PARAMETER' and @title='PARAMETER']"
   },
   {
     "name": "Salesforce dropdown option",
@@ -569,15 +573,19 @@
   },
   {
     "name": "Salesforce related new button",
-    "value": "xpath=(//span[text()='PARAMETER']/following::div/a)[1]"
+    "value": "xpath=(//span[text()='PARAMETER']//following::div//button)[1]"
   },
   {
     "name": "Salesforce search field",
-    "value": "xpath=//span[text()='PARAMETER']/../following-sibling::div/descendant::input|//input[contains(@placeholder,'PARAMETER')]"
+    "value": "xpath=//label[text()='PARAMETER']//following-sibling::div/descendant::input|//input[contains(@placeholder,'PARAMETER')]"
   },
   {
     "name": "Salesforce text field",
     "value": "xpath=//span[text()='PARAMETER']/../following-sibling::input|(//label[normalize-space()='PARAMETER']/following::input)[1]"
+  },
+  {
+    "name": "Salesforce text field label",
+    "value": "xpath=//span[text()='PARAMETER']/../following-sibling::input|(//label[contains(.,'PARAMETER')]/following::input)[1]"
   },
   {
     "name": "Salesforce Inframe select",

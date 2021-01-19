@@ -23,7 +23,7 @@ Feature: CSA Workflow Alerts
     Then I click on the "Salesforce Edit Case Status" button by JS
     And I click on the "Salesforce Case Status Dropdown" element
     And I click on the "Ready to Close" "Salesforce cases status option"
-    And I click on the "Save" "Product Factory button title"
+    And I click on the "Salesforce Save Account Button" button
     And I wait for "2" seconds
     And I execute "Log Out Salesforce" reusable step
     And I wait for "1" seconds

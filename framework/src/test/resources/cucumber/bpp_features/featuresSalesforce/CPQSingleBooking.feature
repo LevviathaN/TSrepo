@@ -1,4 +1,4 @@
-@Salesforce @CPQ
+@Salesforce @CPQ @Booking
 Feature: Create a Single Booking
   Description
 
@@ -20,22 +20,23 @@ Feature: Create a Single Booking
     And I click on the "Student Account" "Salesforce radiobutton"
     And I click on the "Next" "button"
     And I set "Auto[FIRSTNAME]" text to the "First Name" "Salesforce text field"
-    And I set "Auto[#####]" text to the "Last Name" "Salesforce text field"
+    And I fill the "Salesforce Student Last Name" field with "Auto[LASTNAME]"
     And I click on the "Student Type" "Salesforce dropdown field"
     And I click on the "Domestic" "option"
     And I set "31/01/1998" text to the "Date of Birth" "Salesforce date field"
-    And I click on the "Gender" "Salesforce dropdown field"
+    And I click on the "Gender" "Salesforce dropdown field" by JS
     And I click on the "Male" "option"
     And I set "Canada" text to the "Primary Nationality" "Salesforce search field"
     And I click on the "Canada" "option"
-    And I click on the "Domicile" "Salesforce dropdown field"
-    And I click on the "Canada" "Salesforce dropdown field option"
-    And I click on the "Preferred Phone" "Salesforce dropdown field"
-    And I click on the "Home" "Salesforce dropdown field option"
+    And I click on the "Domicile" "Salesforce dropdown field" by JS
+    And I click on the "Canada" "Salesforce dropdown field option" by JS
+    And I click on the "Preferred Phone" "Salesforce dropdown field" by JS
+    And I click on the "Home" "Salesforce dropdown field option" by JS
     And I set "[PHONE]" text to the "Home Phone" "Salesforce text field"
-    And I click on the "Preferred Email" "Salesforce dropdown field"
-    And I click on the "Personal" "Salesforce dropdown field option"
     And I set "Auto[EMAIL-HARAKIRI]" text to the "Personal Email" "Salesforce text field"
+    And I click on the "Preferred Email" "Salesforce dropdown field" by JS
+    And I click on the "Personal" "Salesforce dropdown field option" by JS
+    And I wait for "1" seconds
     And I click on the "Save" "button"
     And I execute "Create Address" reusable step
     Then I execute "Create Business Account" reusable step
@@ -46,7 +47,7 @@ Feature: Create a Single Booking
     Then I click on the "Salesforce Create Quote" element
     And I wait for "3" seconds
     And I click on the "Salesforce Quote Save" button
-    And I wait for "1" seconds
+    And I wait for "2" seconds
     And I click on the "Salesforce Quotes Quick Link Tab" element
     Then I click on the "Salesforce Quotes First Link" element
     And I click on the "Salesforce Quotes Edit Lines" element
@@ -65,9 +66,9 @@ Feature: Create a Single Booking
     And I click on the "Salesforce Quote Booking Type Apprenticeships Chargeable" element
     And I capture text data "Salesforce Quote Edited Quote Number" as "EC_QUOTE" variable
     And I click on the "Salesforce Quote Edited Save" element
-    And I wait for "10" seconds
+    And I wait for "15" seconds
     Then Browser performs "REFRESH" command
-    And I wait for "3" seconds
+    And I wait for "1" seconds
     And I click on the "Salesforce Orders Quick Link Tab on Quote Page" element
     Then I click on the "Salesforce Orders First Link" link
     And I wait for "1" seconds
@@ -79,9 +80,9 @@ Feature: Create a Single Booking
     And I click on the "Salesforce Instance Page First Booking Link" element
     Then I click on the "Salesforce Quotes Edit" element
     And I wait for "2" seconds
-    And I click on the "Status" "Salesforce booking dropdown field"
+    And I click on the "Status" "Salesforce booking dropdown field" by JS
     And I click on the "Cancelled" "Salesforce booking dropdown option"
-    And I click on the "Status Reason" "Salesforce booking dropdown field"
+    And I click on the "Status Reason" "Salesforce booking dropdown field" by JS
     And I click on the "Changed Mind" "Salesforce booking dropdown option"
     And I set "Automation Cancelled" text to the "Cancellation Reason" "Salesforce text field"
     And I click on the "Salesforce Quote Edited Save" element

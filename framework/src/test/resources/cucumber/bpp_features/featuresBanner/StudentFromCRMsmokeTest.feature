@@ -150,28 +150,28 @@ Feature: Student from CRM Smoke Test
     And I click on the "Salesforce Addresses Quick Link Tab" button
     And I wait for "1" seconds
     And I click on the "Salesforce Student Account Pages New button" button
-    And I click on the "Address Type" "Salesforce dropdown field"
+    And I click on the "Address Type" "Salesforce dropdown field" by JS
     And I click on the "Billing" "option"
-    And I set "EC_BILLING_STREET_ONE" text to the "Address Line 1" "Salesforce text field"
-    And I set "EC_BILLING_STREET_TWO" text to the "Address Line 2" "Salesforce text field"
-    And I set "EC_BILLING_STREET_THREE" text to the "Address Line 3" "Salesforce text field"
-    And I set "EC_BILLING_STREET_FOUR" text to the "Address Line 4" "Salesforce text field"
-    And I set "Manchester" text to the "City" "Salesforce text field"
-    And I set "EC_BILLING_ZIP_CODE" text to the "Zip/Postal Code" "Salesforce text field"
-    And I fill the "Salesforce Address Page Country Field" field with "United Kingdom"
+    And I set "EC_BILLING_STREET_ONE" text to the "Address Line 1" "Salesforce text field label"
+    And I set "EC_BILLING_STREET_TWO" text to the "Address Line 2" "Salesforce text field label"
+    And I set "EC_BILLING_STREET_THREE" text to the "Address Line 3" "Salesforce text field label"
+    And I set "EC_BILLING_STREET_FOUR" text to the "Address Line 4" "Salesforce text field label"
+    And I set "Manchester" text to the "City" "Salesforce text field label"
+    And I set "EC_BILLING_ZIP_CODE" text to the "Zip/Postal Code" "Salesforce text field label"
+    And I set "United Kingdom" text to the "Country" "Salesforce search field"
     Then I wait for "1" seconds
-    And I click on the "Kingdom" "option"
+    And I click on the "Kingdom" "option" by JS
     And I click on the "Salesforce Account Creation Save button" element
     Then I should see the " was created." message
     And I wait for "3" seconds
     #Create Second Address
     And I execute "Create Address" reusable step replacing some steps
       |5|I click on the "Mailing" "option"|
-      |6|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field"|
-      |7|I set "Ottawa" text to the "City" "Salesforce text field"|
-      |8|I set "EC_MAILING_ZIP_CODE" text to the "Zip/Postal Code" "Salesforce text field"|
+      |6|I set "EC_MAILING_STREET" text to the "Address Line 1" "Salesforce text field label"|
+      |7|I set "Ottawa" text to the "City" "Salesforce text field label"|
+      |8|I set "EC_MAILING_ZIP_CODE" text to the "Zip/Postal Code" "Salesforce text field label"|
       |10|I fill the "Salesforce Address Page Country Field" field with "Canada"|
-      |12|I click on the "Salesforce Address Country item" link|
+      |12|I click on the "Salesforce Address Country item" link by JS|
     And I wait for "10" seconds
     And I execute "Get Profile ID" reusable step
     And I execute "Create Opportunity" reusable step
