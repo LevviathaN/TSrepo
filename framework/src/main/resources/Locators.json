@@ -276,6 +276,10 @@
     "value": "xpath=(//td[text()='EC_DATE_TIME']/following-sibling::td/a[text()='Show'])[1]"
   },
   {
+    "name": "BPP Digital Marketing Cloud Log Show button two",
+    "value": "xpath=(//td[text()='EC_DATE_TIME_TWO']/following-sibling::td/a[text()='Show'])[1]"
+  },
+  {
     "name": "BPP Digital News Author Field",
     "value": "xpath=//input[@id='cms_news_author']"
   },
