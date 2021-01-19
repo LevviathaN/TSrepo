@@ -544,6 +544,14 @@
     "value": "xpath=//div[@class='form-content']/p/b"
   },
   {
+    "name": "BPP Digital Course Booking Telephone",
+    "value": "xpath=(//*[@type='tel'])[1]"
+  },
+  {
+    "name": "BPP Digital Course Booking UK Option",
+    "value": "xpath=(//ul[@role='listbox']/li[contains(.,'United Kingdom')])[3]"
+  },
+  {
     "name": "BPP Digital Form Success Message Title",
     "value": "xpath=//div[@class='form-confirmation']//*[@class='form-title']"
   },
@@ -1397,7 +1405,7 @@
   },
   {
     "name": "Direct App Line Manager Review Application",
-    "value": "xpath=//div[@class='my-application-review']/div[2]/div[1]/div[2]//button[contains(.,'Review application details')]"
+    "value": "xpath=//div[@class='my-application-review']/div[2]//*[contains(.,'EC_AUTO_LASTNAME')]//button[contains(.,'Review application details')]"
   },
   {
     "name": "Direct App Line Manager Review Health And Safety Checkbox",
