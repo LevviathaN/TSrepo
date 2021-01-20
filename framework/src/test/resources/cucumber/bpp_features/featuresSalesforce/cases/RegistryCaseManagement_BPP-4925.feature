@@ -12,13 +12,13 @@ Feature: Registry Case Management
     Then I click on the "Salesforce Edit Case Status" button by JS
     And I click on the "Salesforce Case Status Dropdown" element
     And I click on the "In Progress" "Salesforce cases status option"
-    And I click on the "Save" "Product Factory button title"
+    And I click on the "Salesforce Save Account Button" button
     And I wait for "2" seconds
     And I validate text "In Progress" to be displayed for "Salesforce Case Status Data Field" element
     Then I click on the "Salesforce Edit Case Status" button by JS
     And I click on the "Salesforce Case Status Dropdown" element
     And I click on the "Ready to Close" "Salesforce cases status option"
-    And I click on the "Save" "Product Factory button title"
+    And I click on the "Salesforce Save Account Button" button
     And I wait for "2" seconds
     And I validate text "Ready to Close" to be displayed for "Salesforce Case Status Data Field" element
 
