@@ -3,6 +3,7 @@ package ui.utils.pdf;
 import com.testautomationguru.utility.CompareMode;
 //import com.testautomationguru.utility.PDFUtil;
 import ui.utils.Reporter;
+import ui.utils.SeleniumHelper;
 import ui.utils.bpp.PreProcessFiles;
 
 import java.io.IOException;
@@ -40,5 +41,12 @@ public class PDFHandler {
 
     public static String getPageCountDownloadedFile(String fileName) throws IOException {
         return String.valueOf(pdfUtil.getPageCount(downloadedFilesPath + "/" + fileName));
+    }
+
+    public static String checkPdf(String fileName) throws IOException {
+        fileName = SeleniumHelper.driver().getCurrentUrl();
+        pdfUtil.setCompareMode(CompareMode.TEXT_MODE);
+        pdfUtil.getText(fileName);
+        return fileName;
     }
 }

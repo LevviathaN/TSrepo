@@ -14,15 +14,15 @@ Feature: Quark PDF File Comparison
     And I doubleclick on the "ACCA ICAEW Regression test packs" "element by title"
     And I doubleclick on the "ACCA" "element by title"
     And I wait for "1" seconds
-    Then I hover over the "ACCA Print Workbook.xml" "Quark XML File"
+    Then I hover over the "ACCA E-Version Workbook.xml" "Quark XML File"
     And I perform right mouse click on the "ACCA E-Version Workbook.xml" "Quark XML File"
     And I wait for "3" seconds
     Then I hover over the "Quark Publish" element
     And I hover over the "Quark Publish ICAEW PDF" element
-
-
-    #And I compare "<BaseFile>" file with "<QuarkWebPlatformFile>" PDF file
+    Then I click on the "Quark Publish ICAEW PDF" element
+    And I should see the "Quark Generating Output Window" element
+    And I compare "<BaseFile>" file with "<QuarkWebPlatformFile>" PDF file
 
     Examples:
       | BaseFile                     | QuarkWebPlatformFile|
-      | Version_1.pdf                | ACCA E-Version Workbook.pdf|
+      | ACCA E-Version Demo.pdf                | ACCA E-Version Workbook.pdf|
