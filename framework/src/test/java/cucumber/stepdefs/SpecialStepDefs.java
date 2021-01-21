@@ -527,4 +527,60 @@ public class SpecialStepDefs extends SeleniumHelper {
             Reporter.fail("No such locator template key");
         }
     }
+
+    /**
+     * Definition to double-click an element on the page
+     *
+     * @author Yurii Zosin
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
+     * @param elementType xpath template of needed element
+     */
+    @When("^I doubleclick on the \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_doubleclick_on_element_with_parameter_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I double-click on the '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            BPPLogManager.getLogger().info("Double clicking on: " + elementLocator + " element");
+            doubleClick(initElementLocator(resultingXpath),
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
+     * Definition to perform right click an element on the page
+     *
+     * @author Yurii Zosin
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
+     * @param elementType xpath template of needed element
+     */
+    @When("^I perform right mouse click on the \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_right_click_on_element_with_parameter_special(String elementLocator, String elementType) {
+        Reporter.log("Executing step: I perform right mouse click on the '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            BPPLogManager.getLogger().info("Right mouse clicking on: " + elementLocator + " element");
+            rightMouseClick(initElementLocator(resultingXpath));
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
 }

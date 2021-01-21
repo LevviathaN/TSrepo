@@ -92,6 +92,18 @@
     "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$"
   },
   {
+    "name": "I_DOUBLECLICK_ON_THE_BUTTON",
+    "value": "^I doubleclick on the \"([^\"]*)\" (?:button|link|option|element)$"
+  },
+  {
+    "name": "I_DOUBLECLICK_ON_THE_ElEMENT_SPECIAL",
+    "value": "^I doubleclick on the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_PERFORM_RIGHT_MOUSE_CLICK_ON_THE_ElEMENT_SPECIAL",
+    "value": "^I perform right mouse click on the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
     "name": "I_CLICK_ON_THE_BUTTON_IF",
     "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$"
   },

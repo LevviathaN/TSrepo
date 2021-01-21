@@ -795,4 +795,31 @@ public class StepDefinitions extends SeleniumHelper {
             Reporter.log("Please check the PDF files! Some files are missing! ");
         }
     }
+
+
+
+    /**
+     * Definition to doubleclick an element on the page
+     *
+     * @param element locator for element you want to click on
+     *                initElementLocator builds locator, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @author Ruslan Levytskyi
+     */
+    @When("^I doubleclick on the \"([^\"]*)\" (?:button|link|option|element)$")
+    public void i_doubleclick_on_the_button(String element) {
+        Reporter.log("Executing step: I click on the '" + element + "' element");
+        doubleClick(initElementLocator(element),
+                UiHandlers.PF_SPINNER_HANDLER,
+                UiHandlers.ACCEPT_ALERT,
+                UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                UiHandlers.PF_SCROLL_HANDLER,
+                UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                UiHandlers.SF_CLICK_HANDLER,
+                UiHandlers.WAIT_HANDLER,
+                UiHandlers.DEFAULT_HANDLER);
+    }
+
 }
