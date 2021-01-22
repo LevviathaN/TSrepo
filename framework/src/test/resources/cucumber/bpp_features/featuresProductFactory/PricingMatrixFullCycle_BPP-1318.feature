@@ -31,7 +31,7 @@ Feature: Pricing Matrix - price creation wizard - BPP-1318
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I "check" "EC_REGION_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" button
-    And I "check" "EC_PAPER_DESCRIPTION" "Product Factory dialog checkbox"
+    And I click on the "EC_PAPER_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" button
     And I set "1000" text to the "Enter a Price (£)" "Product Factory text field"
     And I click on the "Next" button

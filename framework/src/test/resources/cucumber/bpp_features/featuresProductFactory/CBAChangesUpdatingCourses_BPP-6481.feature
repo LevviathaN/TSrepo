@@ -65,7 +65,7 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I execute "Create CBA Course" reusable step
 
     Then I click on the "CBAs" "Product Factory button title"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "Activate" "Product Factory button"
