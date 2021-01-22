@@ -1,4 +1,4 @@
-@Salesforce @Student
+@Salesforce @SubmitApplication
 Feature: Create Student Account
   Description
 

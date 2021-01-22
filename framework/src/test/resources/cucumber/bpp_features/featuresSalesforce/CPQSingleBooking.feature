@@ -66,7 +66,7 @@ Feature: Create a Single Booking
     And I click on the "Salesforce Quote Booking Type Apprenticeships Chargeable" element
     And I capture text data "Salesforce Quote Edited Quote Number" as "EC_QUOTE" variable
     And I click on the "Salesforce Quote Edited Save" element
-    And I wait for "15" seconds
+    And I wait for "20" seconds
     Then Browser performs "REFRESH" command
     And I wait for "1" seconds
     And I click on the "Salesforce Orders Quick Link Tab on Quote Page" element
