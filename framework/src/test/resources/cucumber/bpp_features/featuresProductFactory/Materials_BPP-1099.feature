@@ -61,7 +61,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "submit" "element by type"
     And I should see the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
 
-  @Positive @P1 @Amend
+  @Positive @P1 @Amend @Runn @NotResolved
   Scenario: Amend Material Using Modal
     When I execute "Create Material" reusable step
     And I execute "Create Body" reusable step replacing some steps

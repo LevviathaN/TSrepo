@@ -12,8 +12,4 @@ Feature: Reference Data - Link Body/Paper(Module) - BPP-471
 
   @Positive @Regression @P1 #TC-697
   Scenario: Link Body to Paper
-    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
-    And I click on the "EC_BODY_NAME" "Product Factory select button"
-    And I click on the "Yes" "button"
+  Given I execute "Link Body to Paper" reusable step

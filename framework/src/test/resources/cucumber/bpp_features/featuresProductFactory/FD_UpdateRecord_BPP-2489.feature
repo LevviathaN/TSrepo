@@ -16,6 +16,8 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
     Then I should see the "EC_FD_DESCRIPTION" element
@@ -62,6 +64,8 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I set "FDDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
     Then I should see the "EC_FD_DESCRIPTION" element
@@ -72,6 +76,8 @@ Feature: Financial Dimension - Reference Data Update Record - BPP-2489
     And I set "FDDescriptionTwo[####]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE_TWO" element
     Then I should see the "EC_FD_DESCRIPTION_TWO" element

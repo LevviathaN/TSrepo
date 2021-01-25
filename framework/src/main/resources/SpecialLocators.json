@@ -648,6 +648,10 @@
     "value": "xpath=//*[@title='PARAMETER']"
   },
   {
+    "name": "element by title two",
+    "value": "xpath=(//*[@title='PARAMETER'])[2]"
+  },
+  {
     "name": "element by type",
     "value": "xpath=//*[@type='PARAMETER']"
   },
