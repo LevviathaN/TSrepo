@@ -1,4 +1,4 @@
-@Salesforce @Student
+@Salesforce @SubmitApplication
 Feature: Create Student Account
   Description
 
@@ -11,7 +11,6 @@ Feature: Create Student Account
     And I execute "Create Opportunity" reusable step
     And I click on the "EC_OPPORTUNITY_NAME" "Salesforce link"
     And I click on the "Product Catalog Items" "Salesforce related new button"
-    And I click on the "New" "Salesforce dropdown option"
     And I fill the "Salesforce Offering Text Field" field with "MD_COMMON_VALIDDATA_SFOFFERING"
     And I click on the "Salesforce Search" button
     And I "check" "Salesforce Offering Checkbox" checkbox

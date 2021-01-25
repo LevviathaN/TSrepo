@@ -1,11 +1,5 @@
 <suite name="Suite" parallel="methods" data-provider-thread-count="4" thread-count="1" preserve-order="true">
     <test name="Cucumber Test">
-<!--        <groups>-->
-<!--            <dependencies>-->
-<!--                <group name="BPPAutomation" depends-on="DatabaseCleanup" />-->
-<!--                <group name="SpreadsheetsUpdate" depends-on="BPPAutomation" />-->
-<!--            </dependencies>-->
-<!--        </groups>-->
         <classes>
             <class name="cucumber.runners.PFCleanupRunner" />
             <class name="cucumber.CucumberUITest" />
