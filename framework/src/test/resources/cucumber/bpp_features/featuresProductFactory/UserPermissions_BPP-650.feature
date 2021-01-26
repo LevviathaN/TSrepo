@@ -25,7 +25,7 @@ Feature: Apply user permissions to frontend features - BPP-650
     When I click on the "Programme" "Product Factory navigation item"
     And I click on the "Papers" "Product Factory navigation sub item"
     Then I shouldn't see the "Product Factory Edit Button"
-    And I should see the "Description" element
+    And I should see the "Name" element
     And I should see the "Body" element
 
     When I click on the "Delivery" "Product Factory navigation item"

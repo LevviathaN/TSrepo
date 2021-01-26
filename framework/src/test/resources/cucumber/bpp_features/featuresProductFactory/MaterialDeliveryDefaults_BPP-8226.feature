@@ -36,7 +36,7 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
@@ -53,7 +53,7 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
@@ -81,7 +81,7 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I shouldn't see the "EC_LOCATION_NAME" "Product Factory course instance Delete button"
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
@@ -112,7 +112,7 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I shouldn't see the "EC_LOCATION_NAME" "Product Factory course instance Delete button"
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element

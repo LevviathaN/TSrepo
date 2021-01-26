@@ -24,8 +24,8 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I execute "Create Course Type Financial Dimension" reusable step
     And I execute "Create Course Type" reusable step
     And I execute "Create Course Type" reusable step replacing some steps
-      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field two"|
-      |13|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field" |
+      |4|I set "CourseTypeDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
+      |13|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard |
       |15|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                     |
     And I execute "Create Location Financial Dimension" reusable step
     And I execute "Create Region Financial Dimension" reusable step
@@ -53,7 +53,7 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I execute "Create Pricing Matrix Full" reusable step
     And I execute "Create Digital Content" reusable step
 
-  @Positive @Regression @P1 #TC-2934
+  @Positive @Regression @P1 @Runn #TC-2934
   Scenario: CBA Changes Updating Course Validation
     And I execute "Create Deactivation Reason" reusable step with some additional steps
       |5|I click on the "Prevent Reactivation" "Product Factory checkbox"|
@@ -65,7 +65,7 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I execute "Create CBA Course" reusable step
 
     Then I click on the "CBAs" "Product Factory button title"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "Search" "Product Factory button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "Activate" "Product Factory button"
@@ -86,8 +86,8 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
 #    And I should see the "01/09/2025" element
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
     And I click on the "Default Institute Fee (£)" "Product Factory edit button"
@@ -112,8 +112,8 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
 #    And I should see the "2" element
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
     And I click on the "Clients" element
@@ -132,8 +132,8 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
 #    And I should see the "EC_CLIENT_NAME_TWO" element
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
 
 
@@ -149,8 +149,8 @@ Feature: CBA - CBA Changes updating CBA Courses - BPP-6481
     And I execute "Create CBA Course" reusable step
 
     Then I click on the "CBAs" "Product Factory button title"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "Activate" "Product Factory button"
     Then I should see the "(Active)" element
