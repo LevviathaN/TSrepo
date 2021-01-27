@@ -33,6 +33,7 @@ Feature: As an admin, setting up a course in Totara, I expect to see new control
     Then I execute "Log In to Hub as Student" reusable step replacing some steps
       |2|I set "automationregression@yopmail.com" text to the "Email" "Build Empire text field"|
       |3|I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"|
+    And I wait for "2" seconds
     And I click on the "Direct App My Learning Left Menu Link" link by JS
     And I wait for "3" seconds
     And I click on the "Direct App My Learning Automation Course Name" element
