@@ -45,7 +45,7 @@ Feature: Product Factory - Region - BPP-3648
     When I execute "Create Region Financial Dimension" reusable step replacing some steps
       |4|I set "RegionFDCodeTwo[######]" text to the "Code" "Product Factory text field"|
       |5|I set "RegionFDDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_REGION_FD_CODE_TWO" element|
+      |11|I should see the "EC_REGION_FD_CODE_TWO" element|
     When I execute "Create Region" reusable step
     And I click on the "EC_REGION_NAME" "Product Factory edit button"
     And I set "RegionNameTwo[######]" text to the "Name" "Product Factory text field"

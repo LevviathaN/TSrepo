@@ -656,12 +656,20 @@
     "value": "xpath=//*[@title='PARAMETER']"
   },
   {
+    "name": "element by title two",
+    "value": "xpath=(//*[@title='PARAMETER'])[2]"
+  },
+  {
     "name": "element by type",
     "value": "xpath=//*[@type='PARAMETER']"
   },
   {
     "name": "element by type two",
     "value": "xpath=(//*[@type='PARAMETER'])[2]"
+  },
+  {
+    "name": "element by type three",
+    "value": "xpath=(//*[@type='PARAMETER'])[3]"
   },
   {
     "name": "element by name",

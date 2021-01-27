@@ -36,13 +36,13 @@ Feature: Create Course Instance - BPP-429
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory select button"
+    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_PAPER_NAME" "Product Factory select button"
     And I click on the "EC_LEVEL_NAME" "Product Factory select button"
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field two"
-    And I click on the "Search" "Product Factory button two"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
+    And I click on the "submit" "element by type two"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
     When I click on the "Finish" "Product Factory button"

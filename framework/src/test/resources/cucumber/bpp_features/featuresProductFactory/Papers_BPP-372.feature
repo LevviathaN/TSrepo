@@ -35,9 +35,10 @@ Feature: Reference Data - Paper - BPP-372
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "EC_PPR_SN" text to the "Short Name" "Product Factory text field"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field two"
+    And I set "EC_PAPER_NAME" text to the "Name" "Product Factory text field"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
-    Then I should see the "Description must be unique" "message"
+    Then I should see the "Name must be unique" "message"
 
   @Negative @P2 #TC-4285
   Scenario: Ability to Search Instance by Paper Short Name
@@ -45,9 +46,10 @@ Feature: Reference Data - Paper - BPP-372
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field two"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
     When I set "PaperLongSN[####]" text to the "Short Name" "Product Factory text field"
+    And I set "PaperName[#####]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "ShortName has a maximum length of 10 characters" message
     When I set "EC_PPR_SN" text to the "Short Name" "Product Factory text field"

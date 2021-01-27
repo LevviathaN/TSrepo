@@ -26,7 +26,7 @@ Feature: Pricing Matrix - update prices - BPP-1321
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "text"
     And I click on the "EC_REGION_NAME" "text"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory change button"
+    And I click on the "EC_PAPER_NAME" "Product Factory change button"
     And I set "999" text to the "Enter a Price (£)" "Product Factory text field"
     And I click on the "Save" "Product Factory active button"
     Then I should see the "£999" element
