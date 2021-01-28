@@ -3576,6 +3576,10 @@
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW PDF')]"
   },
   {
+    "name": "Quark Publish BPP PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml')]//span[contains(.,'BPP PDF')]"
+  },
+  {
     "name": "Quark Generating Output Window",
     "value": "xpath=//span[contains(.,'Generating output...')]"
   }
