@@ -733,7 +733,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
     Then Browser performs "REFRESH" command
-    And I wait for "1" seconds
+    And I wait for "3" seconds
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "2"

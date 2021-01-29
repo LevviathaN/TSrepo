@@ -125,3 +125,11 @@ Feature: Harakirimail, Guerrillamail
     And I switch to window with index "2"
     And I wait for "2" seconds
     And I should see the "Email address verified! Please log in." "message"
+
+  Scenario: Harakirimail Verify Application Incomplete
+    Given I am on "https://harakirimail.com/" URL
+    And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
+    Then I click on the "Harakirimail Get Inbox" button
+    And I wait for "2" seconds
+    And I click on the "Information needed to" "text contained in element" by JS
+    And I validate text "CONTAINS=Unfortunately your application for UAT" to be displayed for "Harakirimail Validate Letter Body" element

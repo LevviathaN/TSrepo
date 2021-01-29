@@ -46,9 +46,9 @@ Feature: Financial Dimension - Select Course Type Codes - BPP-2496
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     When I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
-    And I click on the "Cost Centre Financial Dimension" "Product Factory change button"
-    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
-    And I click on the "Project Financial Dimension" "Product Factory change button"
-    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
+    And I click on the "Cost Centre Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory dropdown option"
+    And I click on the "Project Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "The Course Type is already linked to one or more Prices, so you cannot change the Course Type Financial Dimensions" element

@@ -32,32 +32,31 @@ Feature: Course Wizard - add filter to Paper list - BPP-8382
     When I click on the "Courses" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
 
-    And I set "XXX" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I shouldn't see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I should see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
-    And I set "EC_LEVEL_SHORT_NAME" text to the "Level" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I should see the "EC_PAPER_DESCRIPTION" "element"
-    And I click on the "Clear Filters" "Product Factory button"
+    Then I set "XXX" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I shouldn't see the "EC_PAPER_NAME" "element"
+    And I click on the "Clear the search text" "element by title"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I should see the "EC_PAPER_NAME" "element"
+    And I click on the "Clear the search text" "element by title"
+    And I set "EC_LEVEL_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I should see the "EC_PAPER_NAME" "element"
+    And I click on the "Clear the search text" "element by title"
+    And I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_PAPER_NAME" "Product Factory select button"
 
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_LEVEL_NAME" "Product Factory select button"
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
 
-    And I set "XXX" text to the "Description" "Product Factory text field two"
-    And I click on the "Search" "Product Factory button two"
-    And I shouldn't see the "EC_COURSE_TYPE_DESCRIPTION" "element"
-    When I click on the "Clear Filters" "Product Factory button two"
-
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field two"
-    And I click on the "Search" "Product Factory button two"
+    And I set "XXX" text to the "Search" "Product Factory text field two" from keyboard
+    And I click on the "submit" "element by type two"
+    And I shouldn't see the "EC_COURSE_TYPE_NAME" "element"
+    And I click on the "Clear the search text" "element by title two"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
+    And I click on the "submit" "element by type two"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I click on the "EC_REGION_NAME" "Product Factory select button"
     And I click on the "Product Factory Number Of Sessions Edit Button" button

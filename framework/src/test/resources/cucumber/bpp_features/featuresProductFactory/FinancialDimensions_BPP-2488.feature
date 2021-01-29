@@ -16,6 +16,8 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
     And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
 
@@ -38,6 +40,8 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
     And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
     Then I should see the "EC_FD_DESCRIPTION" element
@@ -48,6 +52,8 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
     And I set "FDDescriptionTwo[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE_TWO" element
     Then I should see the "EC_FD_DESCRIPTION_TWO" element
@@ -56,6 +62,8 @@ Feature: Financial Dimension - Reference Data Create Record - BPP-2488
     And I set "EC_FD_DESCRIPTION" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I validate text "A Financial Dimension with the same code already targets '<Error Type>'" to be displayed for "Product Factory Code Filed Validation Error Message" element
     Then I validate text "A Financial Dimension with the same code already targets '<Error Type>'" to be displayed for "Product Factory Toast Error Message Top-Right corner" element

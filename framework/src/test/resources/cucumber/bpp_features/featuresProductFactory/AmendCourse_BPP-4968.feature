@@ -58,7 +58,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
 
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
@@ -165,7 +165,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     #Verify absence of Course edit buttons
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field"
+    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     Then I should see the "Default Location" "Product Factory edit button"
@@ -218,6 +218,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "0"
     And I click on the "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button"
     And I click on the "Yes" "Product Factory button"
+    #todo potential bug button dont become inactive: https://automate.browserstack.com/dashboard/v2/builds/7ea61fc734dbad863763136e7721bfa21337514e/sessions/a1d84c57a2c0ed6245067a21874e4103ca5e4428
     Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
 
     #Edit session dates of first instance

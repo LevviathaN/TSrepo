@@ -694,6 +694,32 @@ public class SeleniumHelper {
     }
 
     /**
+     * Method to check or uncheck the checkbox
+     * If shouldBeChecked is true, but the checkbox is unchecked, than this method checks the checkbox
+     * Vice versa.
+     *
+     * @param shouldBeChecked = boolean to set a statement to the checkbox
+     * @param element By locator of checkbox
+     * @param handlers code from UiHandlers enum, that will be executed, when exception occurs
+     */
+    public void checkCheckboxByJS(By element, boolean shouldBeChecked, UiHandlers... handlers){
+        WebElement checkbox = findElement(element);
+        boolean toClick = (!checkbox.isSelected() & shouldBeChecked) || (checkbox.isSelected() & !shouldBeChecked);
+        if(toClick){
+            BPPLogManager.getLogger().info("Checking the checkbox " + checkbox);
+            try{
+                clickWithJS(element);
+                repeatAction = true;
+            } catch (Exception e) {
+                for(UiHandlers handler : handlers){
+                    handler.getHandler().handle(element, e);
+                }
+                if (repeatAction) checkCheckbox(element, shouldBeChecked, handlers);
+            }
+        }
+    }
+
+    /**
      * Method to scroll to the element
      * Scrolls down until element is in a view
      *

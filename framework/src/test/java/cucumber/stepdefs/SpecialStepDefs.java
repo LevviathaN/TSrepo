@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -376,6 +377,41 @@ public class SpecialStepDefs extends SeleniumHelper {
         }
     }
 
+    /**
+     * Definition to check or uncheck the checkbox by JS
+     * If svalue is check, but the checkbox is unchecked, than this method checks the checkbox
+     * Vice versa.
+     *
+     * @param value = value to set a statement to the checkbox. Can be "check" or "uncheck"
+     * @param elementLocator locator of checkbox
+     */
+    @When("^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\" by JS$")
+    public void i_check_uncheck_by_js_special(String value, String elementLocator, String elementType){
+        Reporter.log("Executing step: I " + value + " '" + elementLocator + "' " + elementType);
+        boolean state = true;
+        if(value.equals("check")){state = true;}
+        else if(value.equals("uncheck")){state = false;}
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            checkCheckboxByJS(initElementLocator(resultingXpath),state,
+                    UiHandlers.PF_SPINNER_HANDLER,
+                    UiHandlers.ACCEPT_ALERT,
+                    UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                    UiHandlers.PF_SCROLL_HANDLER,
+                    UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                    UiHandlers.SF_CLICK_HANDLER,
+                    UiHandlers.WAIT_HANDLER,
+                    UiHandlers.DEFAULT_HANDLER);
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
     @And("^I select \"([^\"]*)\" from \"([^\"]*)\" \"([^\"]*)\"$")
     public void i_select_from_element_special(String value, String elementLocator, String elementType) {
         Reporter.log("Executing step: I select: " + value + " from " + elementLocator + "' " + elementType);
@@ -518,8 +554,10 @@ public class SpecialStepDefs extends SeleniumHelper {
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER",
                     TestParametersController.checkIfSpecialParameter(elementLocator));
             char[] string = processedText.toCharArray();
+            By element = initElementLocator(resultingXpath);
+            clearEntireField(element);
             for (int i=0; i<string.length; i++) {
-                WebElement keyItem = findElement(initElementLocator(resultingXpath));
+                WebElement keyItem = findElement(element);
                 keyItem.sendKeys(String.valueOf(string[i]));
             }
             waitForPageToLoad();
