@@ -14,8 +14,8 @@ Feature: Quark PDF File Comparison
     And I doubleclick on the "ACCA ICAEW Regression test packs" "element by title"
     And I doubleclick on the "ACCA" "element by title"
     And I wait for "1" seconds
-    Then I hover over the "ACCA Regression Pack_5 QA.xml" "Quark XML File"
-    And I perform right mouse click on the "ACCA Regression Pack_5 QA.xml" "Quark XML File"
+    Then I hover over the "ACCA Regression Pack_2 QA.xml" "Quark XML File"
+    And I perform right mouse click on the "ACCA Regression Pack_2 QA.xml" "Quark XML File"
     And I wait for "3" seconds
     Then I hover over the "Quark Publish" element
     #And I hover over the "Quark Publish ICAEW PDF" element
@@ -27,7 +27,5 @@ Feature: Quark PDF File Comparison
     And I compare "<BaseFile>" file with "<QuarkWebPlatformFile>" PDF file
 
     Examples:
-      | BaseFile                     | QuarkWebPlatformFile|
-      #| ACCA E-Version Demo.pdf      | ACCA E-Version Workbook.pdf|
-      #| Version_1.pdf                | Version.pdf    |
-      | Version_1.pdf                |  ACCA Regression Pack_5 QA.pdf|
+      | BaseFile                                       | QuarkWebPlatformFile|
+      | ACCA Regression Pack_2 Base.pdf                |  ACCA Regression Pack_2 QA.pdf|

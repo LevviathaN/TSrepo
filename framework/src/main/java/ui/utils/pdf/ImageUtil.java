@@ -15,12 +15,12 @@ class ImageUtil {
     static boolean compareAndHighlight(BufferedImage img1, BufferedImage img2, String fileName, boolean highlight, int colorCode) throws IOException {
         int w = img1.getWidth();
         int h = img1.getHeight();
-        int[] p1 = img1.getRGB(0, 0, w, h, (int[])null, 0, w);
-        int[] p2 = img2.getRGB(0, 0, w, h, (int[])null, 0, w);
+        int[] p1 = img1.getRGB(0, 0, w, h, null, 0, w);
+        int[] p2 = img2.getRGB(0, 0, w, h, null, 0, w);
         if (Arrays.equals(p1, p2)) {
             return true;
         } else {
-            BPPLogManager.getLogger().warn("Image compared - differences found. Please check PDFDifferences folder");
+            BPPLogManager.getLogger().warn("Image compared - differences found. Please check PDFDifferences folder in report.");
             if (highlight) {
                 for(int i = 0; i < p1.length; ++i) {
                     if (p1[i] != p2[i]) {

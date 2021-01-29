@@ -38,7 +38,7 @@ public class PDFHandler {
                 pdfUtil.compare(fileOne, fileTwo);
             } catch (IOException e) {
                 e.printStackTrace();
-                Reporter.failTryTakingScreenshot("PDF FILE COMPARISON! FAILED");
+                Reporter.failTryTakingScreenshot("PDF FILE COMPARISON FAILED!");
             }
         } else {
             Reporter.log("Text comparison for PDF files is completed successfully! No differences found! Performing visual comparison...");
@@ -49,7 +49,7 @@ public class PDFHandler {
                 pdfUtil.compare(fileOne, fileTwo);
             } catch (IOException e) {
                 e.printStackTrace();
-                Reporter.failTryTakingScreenshot("PDF FILE COMPARISON! FAILED");
+                Reporter.failTryTakingScreenshot("PDF FILE COMPARISON FAILED!");
             }
         }
         return comparison;

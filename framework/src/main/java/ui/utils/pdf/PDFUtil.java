@@ -117,15 +117,12 @@ public class PDFUtil {
 
     private String getPDFText(String file, int startPage, int endPage) throws IOException {
         BPPLogManager.getLogger().info("file : " + file);
-        BPPLogManager.getLogger().info("startPage : " + startPage);
-        BPPLogManager.getLogger().info("endPage : " + endPage);
         PDDocument doc = PDDocument.load(new File(file));
         PDFTextStripper stripper = new PDFTextStripper();
         this.updateStartAndEndPages(file, startPage, endPage);
         stripper.setStartPage(this.startPage);
         stripper.setEndPage(this.endPage);
         String txt = stripper.getText(doc);
-        //BPPLogManager.getLogger().info("PDF Text before trimming : " + txt);
         if (this.bTrimWhiteSpace) {
             txt = txt.trim().replaceAll("\\s+", " ").trim();
             BPPLogManager.getLogger().info("PDF Text after  trimming : " + txt);
