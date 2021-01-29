@@ -47,9 +47,10 @@ Feature: Create a Single Booking
     Then I click on the "Salesforce Create Quote" element
     And I wait for "3" seconds
     And I click on the "Salesforce Quote Save" button
-    And I wait for "2" seconds
+    And I wait for "3" seconds
     And I click on the "Salesforce Quotes Quick Link Tab" element
     Then I click on the "Salesforce Quotes First Link" element
+    And I wait for "5" seconds
     And I click on the "Salesforce Quotes Edit Lines" element
     Then I wait for "10" seconds
     And I hover over the "Salesforce Quotes Add Products" button
