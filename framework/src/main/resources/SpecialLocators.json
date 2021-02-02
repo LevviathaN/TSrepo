@@ -96,6 +96,10 @@
     "value": "xpath=//option[@value='PARAMETER']"
   },
   {
+    "name": "Dropdown Option Contains text",
+    "value": "xpath=//option[contains(text(),'PARAMETER')]"
+  },
+  {
     "name": "BPP Digital Explore Our Subjects item link",
     "value": "xpath=//div[text()='Explore our subjects.']/following-sibling::div//a[text()='PARAMETER']"
   },
