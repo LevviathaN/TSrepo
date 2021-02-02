@@ -20,6 +20,8 @@ Feature: Product Factory
     And I set "BodyFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Body" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_FD_CODE" element
 
@@ -31,6 +33,8 @@ Feature: Product Factory
     And I set "LocationFDDescription[####]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Location" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LOCATION_FD_CODE" element
 
@@ -42,6 +46,8 @@ Feature: Product Factory
     And I set "RegionFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Region" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_REGION_FD_CODE" element
 
@@ -53,6 +59,8 @@ Feature: Product Factory
     And I set "CourseTypeFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Course Type" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_TYPE_FD_CODE" element
 
@@ -64,6 +72,8 @@ Feature: Product Factory
     And I set "MaterialTypeFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Material Type" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_FD_CODE" element
 
@@ -75,6 +85,8 @@ Feature: Product Factory
     And I set "MaterialFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Material" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_FD_CODE" element
 
@@ -86,6 +98,8 @@ Feature: Product Factory
     And I set "CourseFDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "Course" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COURSE_FD_CODE" element
 
@@ -114,13 +128,14 @@ Feature: Product Factory
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "PprSN[#####]" text to the "Short Name" "Product Factory text field"
+    And I set "PaperName[#####]" text to the "Name" "Product Factory text field"
     And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     And I wait for "5" seconds
     And I click on the "Search" "Product Factory text field"
     Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    Then I should see the "EC_PAPER_DESCRIPTION" element
+    Then I should see the "EC_PAPER_NAME" element
     And I click on the "Clear the search text" "element by title"
 
   Scenario: Link Body To Paper
@@ -128,7 +143,7 @@ Feature: Product Factory
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Change Body button"
+    When I click on the "EC_PAPER_NAME" "Product Factory Change Body button"
     And I click on the "EC_BODY_NAME" "Product Factory select button"
     Then I click on the "Yes" "Product Factory button"
     And I click on the "Clear the search text" "element by title"
@@ -138,7 +153,7 @@ Feature: Product Factory
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory Link Levels button"
+    When I click on the "EC_PAPER_NAME" "Product Factory Link Levels button"
     And I "check" "EC_LEVEL_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory button"
     And I click on the "Clear the search text" "element by title"
@@ -193,12 +208,12 @@ Feature: Product Factory
     When I click on the "Course Types" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "CourseTypeDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "VAT Rule" "Product Factory change button"
-    And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
-    And I click on the "Cost Centre Financial Dimension" "Product Factory change button"
-    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
-    And I click on the "Project Financial Dimension" "Product Factory change button"
-    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory select button"
+    And I click on the "VAT Rule" "Product Factory dropdown"
+    And I click on the "EC_VAT_RULE_CODE" "Product Factory dropdown option"
+    And I click on the "Cost Centre Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory dropdown option"
+    And I click on the "Project Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_COURSE_TYPE_FD_CODE" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     And I wait for "3" seconds
     Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
@@ -263,7 +278,7 @@ Feature: Product Factory
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     And I "check" "EC_REGION_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" button
-    And I "check" "EC_PAPER_DESCRIPTION" "Product Factory dialog checkbox"
+    And I click on the "EC_PAPER_NAME" "Product Factory dialog checkbox"
     And I click on the "Next" button
     And I set "~PricingMatrixPrice[####]" text to the "Enter a Price (£)" "Product Factory text field"
     And I click on the "Next" button
@@ -318,9 +333,9 @@ Feature: Product Factory
     When I click on the "Courses" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
 #    And I click on the "Search" "Product Factory text field"
-    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    Then I set "EC_PAPER_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory select button" by JS
+    And I click on the "EC_PAPER_NAME" "Product Factory select button" by JS
     And I click on the "EC_LEVEL_NAME" "Product Factory select button"
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
 #    And I click on the "Search" "Product Factory text field two"
@@ -395,8 +410,8 @@ Feature: Product Factory
     And I click on the "EC_REGION_NAME" "element"
     And I click on the "Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME" "element"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
     Then I should see the "EC_SITTING_NAME" element
     Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element
@@ -419,15 +434,15 @@ Feature: Product Factory
   Scenario: Create CBA Course
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "Create" "Product Factory button"
     And I "check" "EC_BODY_SHORT_NAME" "Product Factory checkbox"
     And I click on the "Next" "Product Factory button"
     And I click on the "Next" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    Then I should see the "EC_PAPER_DESCRIPTION" element
+    Then I should see the "EC_PAPER_NAME" element
     Then I should see the "EC_LEVEL_SHORT_NAME" element
     And I click on the "Finish" "Product Factory button"
 
@@ -440,13 +455,13 @@ Feature: Product Factory
     And I click on the "Level" "Product Factory dropdown"
     And I click on the "EC_LEVEL_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory dropdown option"
+    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
     And I click on the "Sittings" "Product Factory edit button"
     And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Course Types" "Product Factory edit button"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button two"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
+    And I click on the "submit" "element by type three"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I click on the "Save" "Product Factory button"

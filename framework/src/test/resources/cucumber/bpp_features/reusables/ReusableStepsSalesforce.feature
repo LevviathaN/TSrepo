@@ -35,7 +35,7 @@ Feature: Salesforce
     And I wait for "2" seconds
     And I click on the "Domestic" "element by title"
     And I set "31/01/1998" text to the "Date of Birth" "Salesforce date field"
-    And I click on the "Gender" "Salesforce dropdown field"
+    And I click on the "Gender" "Salesforce dropdown field" by JS
     And I click on the "Male" "option"
     And I set "Canada" text to the "Primary Nationality" "Salesforce search field"
     And I click on the "Canada" "option"
@@ -543,7 +543,7 @@ Feature: Salesforce
     And I click on the "Type" "Salesforce dropdown field" by JS
     And I click on the "New Business: New Client" "Salesforce dropdown field option"
     And I click on the "Salesforce Account Creation Save button" element
-    And I should see the " was created." message
+    #And I should see the " was created." message
 
   Scenario: Add A Booking
     And I click on the "Salesforce New Booking" button

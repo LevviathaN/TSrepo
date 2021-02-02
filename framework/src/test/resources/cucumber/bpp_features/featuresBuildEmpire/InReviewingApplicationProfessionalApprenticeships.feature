@@ -30,7 +30,10 @@ Feature: Professional Apprenticeship Applications
     And I set "02917uk7sr@harakirimail.com" text to the "Email" "Build Empire text field"
     And I set "qwerty azerty1!" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
-    Then I execute "Line Manager Review Apprenticeships" reusable step
+    Then I execute "Line Manager Review Apprenticeships" reusable step replacing some steps
+    |13|I click on the "Direct App Save Review And Next" button|
+    |15|I wait for "1" seconds|
+    |17|I wait for "1" seconds|
     And I execute "Log Out from Hub Student" reusable step
     Then I execute "Log In to Hub as Student" reusable step
     And I execute "Complete Professional Apprenticeships Application After Review" reusable step

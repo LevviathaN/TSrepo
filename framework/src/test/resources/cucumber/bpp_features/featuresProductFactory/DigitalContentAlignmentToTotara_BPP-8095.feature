@@ -34,21 +34,21 @@ Feature: Better alignment of Totara Course and Product Factory Digital Content (
     And I click on the "Level" "Product Factory dropdown"
     And I click on the "EC_LEVEL_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
-    And I click on the "EC_PAPER_DESCRIPTION" "Product Factory dropdown option"
+    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
     And I click on the "Sittings" "Product Factory edit button"
     And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
-    And I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_DESCRIPTION] - [EC_SITTING_NAME]" element
+    And I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_NAME] - [EC_SITTING_NAME]" element
     And I click on the "Course Types" "Product Factory edit button"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button two"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
+    And I click on the "submit" "element by type two"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
     And I click on the "Save" "Product Factory active button"
     And I set "Suffix" text to the "Name Suffix" "Product Factory text field"
-    And I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_DESCRIPTION] - [EC_SITTING_NAME] - Suffix" element
+    And I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_NAME] - [EC_SITTING_NAME] - Suffix" element
     And I click on the "Save" "Product Factory button"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Course Type" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
   @Positive @P1 #TC-3455

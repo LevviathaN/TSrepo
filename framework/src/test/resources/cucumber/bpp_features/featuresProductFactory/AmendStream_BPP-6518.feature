@@ -18,6 +18,12 @@ Feature: Edit Instance - Streams - BPP-6518
     And I execute "Create Location" reusable step
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
+    Given I execute "Create Paper" reusable step replacing some steps
+      |4|I set "PprSN[#####]~Dummy" text to the "Short Name" "Product Factory text field"|
+      |5|I set "PaperName[#####]~Dummy" text to the "Name" "Product Factory text field"|
+      |6|I set "PaperDescription[######]~Dummy" text to the "Description" "Product Factory text field"|
+      |10|I set "EC_PAPER_DESCRIPTION_DUMMY" text to the "Search" "Product Factory text field" from keyboard|
+      |12|I should see the "EC_PAPER_NAME_DUMMY" element                                       |
     And I execute "Link Body To Level" reusable step
     And I execute "Link Body To Paper" reusable step
     And I execute "Link Paper To Level" reusable step

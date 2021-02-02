@@ -130,7 +130,7 @@ public class StepDefinitions extends SeleniumHelper {
     }
 
     /**
-     * Definition to send some text into some text input field
+     * Definition to wait for desired amount of seconds
      *
      * @param seconds amount of seconds you want to wait
      *                Here we also check if text is EC_ or MD_ of KW_

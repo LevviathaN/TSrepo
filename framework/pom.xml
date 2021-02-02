@@ -36,7 +36,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <rerunFailingTestsCount>2</rerunFailingTestsCount>
                     <shutdown>kill</shutdown> <!-- Use it if required-->
                     <suiteXmlFiles>

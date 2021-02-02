@@ -16,6 +16,8 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Applies To" "Product Factory dropdown"
     And I click on the "<type>" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_FD_CODE" element
     Then I should see the "EC_FD_DESCRIPTION" element
@@ -35,15 +37,7 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
   @Positive @Regression @P1 #TC-1803
   Scenario: Verify that all Financial Dimensions are displayed in areas they are applied to
     #Material
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDMaterialCode[######]" text to the "Code" "Product Factory text field"
-    And I set "FDMaterialDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Material" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_MATERIAL_CODE" element
+    Given I execute "Create Material Financial Dimension" reusable step
     When I click on the "Products" "Product Factory navigation item"
     And I click on the "Materials" "Product Factory navigation sub item"
     And I click on the "Financials" "Product Factory button"
@@ -55,18 +49,10 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
     And I click on the "Cancel" "Product Factory button"
     #Course
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDCourseCode[######]" text to the "Code" "Product Factory text field"
-    And I set "FDCourseDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Course" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_COURSE_CODE" element
+    Given I execute "Create Course Financial Dimension" reusable step
     When I click on the "Products" "Product Factory navigation item"
     And I click on the "Courses" "Product Factory navigation sub item"
-    And I click on the "Financials" "Product Factory button"
+    And I click on the "Financials" "button"
     And I click on the "Entity Dimension" "Product Factory change button"
     Then I validate text "Course" to be displayed for "Product Factory Choose Dimension Popup Item Type" element
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
@@ -75,15 +61,7 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
     And I click on the "Cancel" "Product Factory button"
     #Body
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDBodyCode[######]" text to the "Code" "Product Factory text field"
-    And I set "FDBodyDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Body" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_BODY_CODE" element
+    Given I execute "Create Body Financial Dimension" reusable step
     When I click on the "Programme" "Product Factory navigation item"
     And I click on the "Bodies" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
@@ -92,52 +70,28 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
     And I click on the "Cancel" "Product Factory button"
     #Location
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDLocationCode[######]" text to the "Code" "Product Factory text field"
-    And I set "FDLocationDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Location" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_LOCATION_CODE" element
+    Given I execute "Create Location Financial Dimension" reusable step
     When I click on the "Delivery" "Product Factory navigation item"
     And I click on the "Locations" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
     And I click on the "Financial Dimension" "Product Factory dropdown"
-    Then I should see the "EC_FD_LOCATION_DESCRIPTION" "Product Factory Financial Dimension list in Locations"
+    Then I should see the "EC_LOCATION_FD_DESCRIPTION" "Product Factory dropdown option"
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
     And I click on the "Cancel" "Product Factory button"
     #Course Type
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDCourseTypeCode[######]" text to the "Code" "Product Factory text field"
-    And I set "FDCourseTypeDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Course Type" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_COURSE_TYPE_CODE" element
+    Given I execute "Create Course Type Financial Dimension" reusable step
     When I click on the "Types" "Product Factory navigation item"
     And I click on the "Course Types" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
-    And I click on the "Cost Centre Financial Dimension" "Product Factory change button"
-    Then I validate text "Course Type" to be displayed for "Product Factory Choose Dimension Popup Item Type" element
+    And I click on the "Cost Centre Financial Dimension" "Product Factory dropdown"
+    Then I should see the "EC_COURSE_TYPE_FD_CODE" "Product Factory dropdown option"
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
-    And I click on the "Project Financial Dimension" "Product Factory change button"
-    Then I validate text "Course Type" to be displayed for "Product Factory Choose Dimension Popup Item Type" element
+    And I click on the "Project Financial Dimension" "Product Factory dropdown"
+    Then I should see the "EC_COURSE_TYPE_FD_CODE" "Product Factory dropdown option"
     And I press "MD_COMMON_KEYBOARD_ESCAPE" for "Product Factory Body of Webpage"
     And I click on the "Cancel" "Product Factory button"
     #Material Type
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "FDMaterialTypeCode[######]" text to the "Code" "Product Factory text field"
-    And I set "FDMaterialTypeDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Applies To" "Product Factory dropdown"
-    And I click on the "Material Type" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_FD_MATERIAL_TYPE_CODE" element
+    Given I execute "Create Material Type Financial Dimension" reusable step
     When I click on the "Types" "Product Factory navigation item"
     And I click on the "Material Types" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
@@ -153,50 +107,50 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     When I execute "Create Material Financial Dimension" reusable step replacing some steps
       |4|I set "MaterialFDCodeOne[######]" text to the "Code" "Product Factory text field"|
       |5|I set "MaterialFDDescriptionOne[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_MATERIAL_FD_CODE_ONE" element|
+      |11|I should see the "EC_MATERIAL_FD_CODE_ONE" element|
 
     ###Second Financial Dimension for Material Block (Pre-requisite)
     When I execute "Create Material Financial Dimension" reusable step replacing some steps
       |4|I set "MaterialFDCodeTwo[######]" text to the "Code" "Product Factory text field"|
       |5|I set "MaterialFDDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_MATERIAL_FD_CODE_TWO" element|
+      |11|I should see the "EC_MATERIAL_FD_CODE_TWO" element|
 
     ###Third Financial Dimension for Material Block (Data Preparation)
     When I execute "Create Material Financial Dimension" reusable step replacing some steps
       |4|I set "MaterialFDCodeThree[######]" text to the "Code" "Product Factory text field"|
       |5|I set "MaterialFDDescriptionThree[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_MATERIAL_FD_CODE_THREE" element|
+      |11|I should see the "EC_MATERIAL_FD_CODE_THREE" element|
 
     ###Fourth Financial Dimension for Material Block (Data Preparation)
     When I execute "Create Material Financial Dimension" reusable step replacing some steps
       |4|I set "MaterialFDCodeFour[######]" text to the "Code" "Product Factory text field"|
       |5|I set "MaterialFDDescriptionFour[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_MATERIAL_FD_CODE_FOUR" element|
+      |11|I should see the "EC_MATERIAL_FD_CODE_FOUR" element|
 
     ######Precondition Create Course Financial Dimensions
     ###First Financial Dimension for Material Block (Pre-requisite)
     When I execute "Create Course Financial Dimension" reusable step replacing some steps
       |4|I set "CourseFDCodeOne[######]" text to the "Code" "Product Factory text field"|
       |5|I set "CourseFDDescriptionOne[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_COURSE_FD_CODE_ONE" element|
+      |11|I should see the "EC_COURSE_FD_CODE_ONE" element|
 
     ###Second Financial Dimension for Material Block (Pre-requisite)
     When I execute "Create Course Financial Dimension" reusable step replacing some steps
       |4|I set "CourseFDCodeTwo[######]" text to the "Code" "Product Factory text field"|
       |5|I set "CourseFDDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_COURSE_FD_CODE_TWO" element|
+      |11|I should see the "EC_COURSE_FD_CODE_TWO" element|
 
     ###Third Financial Dimension for Material Block (Data Preparation)
     When I execute "Create Course Financial Dimension" reusable step replacing some steps
       |4|I set "CourseFDCodeThree[######]" text to the "Code" "Product Factory text field"|
       |5|I set "CourseFDDescriptionThree[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_COURSE_FD_CODE_THREE" element|
+      |11|I should see the "EC_COURSE_FD_CODE_THREE" element|
 
     ###Fourth Financial Dimension for Material Block (Data Preparation)
     When I execute "Create Course Financial Dimension" reusable step replacing some steps
       |4|I set "CourseFDCodeFour[######]" text to the "Code" "Product Factory text field"|
       |5|I set "CourseFDDescriptionFour[######]" text to the "Description" "Product Factory text field"|
-      |9|I should see the "EC_COURSE_FD_CODE_FOUR" element|
+      |11|I should see the "EC_COURSE_FD_CODE_FOUR" element|
 
     ###Reusable steps for Creating Course
     And I execute "Create Body Financial Dimension" reusable step
