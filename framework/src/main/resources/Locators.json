@@ -352,6 +352,18 @@
     "value": "xpath=//div[contains(@class,'single-section')][1]/a"
   },
   {
+    "name": "BPP Digital Student Icaew Course Page Open Automation Restrictions C Topic Sticker",
+    "value": "xpath=(//div[text()='Automation Restrictions Completion C']/following::a)[1]"
+  },
+  {
+    "name": "BPP Digital Student Icaew Course Page Open Automation Restrictions D Topic Sticker",
+    "value": "xpath=(//div[text()='Automation Restrictions Multiple D']/following::a)[1]"
+  },
+  {
+    "name": "BPP Digital Student Sub Topic Quiz svg element",
+    "value": "xpath=//span[contains(@class,'sub-topic-status')]/*[name()='svg']"
+  },
+  {
     "name": "BPP Digital Student Icaew Course Page Open Second Topic Sticker",
     "value": "xpath=//div[contains(@class,'single-section')][2]/a"
   },
@@ -2248,6 +2260,10 @@
     "value": "xpath=(//div[@class='course-overview']//div[@class='course-progress-percentage'])[1]"
   },
   {
+    "name": "Hub Course Page Topics Name validation",
+    "value": "xpath=//div[@class='course-overview']"
+  },
+  {
     "name": "Hub Home Page Top Deadline",
     "value": "xpath=(//div[@class='activity-deadline-info']/span)[1]"
   },
@@ -3072,12 +3088,32 @@
     "value": "xpath=(//div[normalize-space()='Automation Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
   },
   {
+    "name": "Totara Automation Restrictions Date B Label Edit button",
+    "value": "xpath=(//span[normalize-space()='Automation Restrictions Date B']/following::a[text()='Edit'][1]/following::span[text()='Edit topic'])[2]"
+  },
+  {
+    "name": "Totara Year Dropdown Next Year option",
+    "value": "xpath=//select[@name='x[year]']/option[@selected='selected']/following::option[1]"
+  },
+  {
+    "name": "Totara Year Dropdown menu",
+    "value": "xpath=//select[@name='x[year]']"
+  },
+  {
+    "name": "Totara Restriction EYE icon",
+    "value": "xpath=//h3[contains(text(),'Date restriction')]/following::a[contains(@class,'availability-eye')]"
+  },
+  {
     "name": "Totara Automation Mobile Exp Label Edit Move Right Item",
     "value": "xpath=(//div[normalize-space()='Automation Mobile Expandable Label']/following::a[text()='Edit'][1]/following::a[@data-action='moveright'])[1]"
   },
   {
     "name": "Totara Automation Exp Label Edit button",
     "value": "xpath=(//div[normalize-space()=\"Automation Expandable Label\"]/following::a[text()='Edit'])[1]"
+  },
+  {
+    "name": "Totara Automation Restrictionas Date B Edit button",
+    "value": "xpath=(//span[normalize-space()=\"Automation Restrictions Date B\"]/following::a[text()='Edit'])[1]"
   },
   {
     "name": "Totara Automation Mobile Exp Label Edit button",
@@ -3332,6 +3368,10 @@
     "value": "xpath=//li/p[normalize-space()='Users']"
   },
   {
+    "name": "Totara Left Menu Groups link",
+    "value": "xpath=//li/p[normalize-space()='Groups']/a"
+  },
+  {
     "name": "Totara Login",
     "value": "xpath=//*[@class='login']/a"
   },
@@ -3346,6 +3386,10 @@
   {
     "name": "Totara Logout Message",
     "value": "xpath=//div[text()='You are not logged in. ']"
+  },
+  {
+    "name": "Totara Potential Member first option",
+    "value": "xpath=(//optgroup[contains(@label,'Matching') and contains(@label,'and Learner')]/option)[1]"
   },
   {
     "name": "Totara Main Box Text Field",
