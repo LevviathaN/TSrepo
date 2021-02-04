@@ -2980,6 +2980,10 @@
     "value": "xpath=(//iframe)[1]"
   },
   {
+    "name": "Salesforce New Product Catalog Item",
+    "value": "xpath=//a[@name='New']"
+  },
+  {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
   },
