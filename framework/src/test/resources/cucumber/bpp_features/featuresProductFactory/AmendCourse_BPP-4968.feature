@@ -1,4 +1,4 @@
-@ProductFactory @Courses @Amend
+@ProductFactory @Courses @Amend @NotFinished
 Feature: Course - Update Instances for non draft Courses - BPP-4968
   As a Product Setter
   I want to be able to update a Course Instance for a non draft Course
@@ -7,39 +7,49 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
   Background:
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
-    And I execute "Create VAT Rule" reusable step
-    And I execute "Create Course Type Financial Dimension" reusable step
-    And I execute "Create Course Type" reusable step
-    And I execute "Create Location Financial Dimension" reusable step
-    And I execute "Create Region Financial Dimension" reusable step
-    And I execute "Create Region" reusable step
-    And I execute "Create Location" reusable step
-    And I execute "Create Location" reusable step replacing some steps
-      |4|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|
-      |5|I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"|
-    And I execute "Create Location" reusable step replacing some steps
-      |4|I set "LocationNameThree[######]" text to the "Name" "Product Factory text field"|
-      |5|I set "LocationAddressThree[######]" text to the "Address Line 1" "Product Factory text field"|
-    And I execute "Create Level" reusable step
-    And I execute "Create Paper" reusable step
-    And I execute "Link Body To Level" reusable step
-    And I execute "Link Body To Paper" reusable step
-    And I execute "Link Paper To Level" reusable step
-    And I execute "Create Sitting" reusable step
-    And I execute "Create Pricing Matrix" reusable step
-    And I execute "Create Pricing Matrix Full" reusable step
-    And I execute "Create Material Type Financial Dimension" reusable step
-    And I execute "Create Material Type" reusable step
-    And I execute "Create Session Duration" reusable step
-    And I execute "Create Session Duration" reusable step replacing some steps
-      |4|I set "SessionDurationDescriptionTwoDates[######]" text to the "Description" "Product Factory text field"|
-      |5|I set "2" text to the "Number of Dates" "Product Factory text field"|
-    And I execute "Create Client" reusable step
-    And I execute "Create Stream" reusable step
-    And I execute "Create Material" reusable step
-    And I execute "Create Digital Content" reusable step
+    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
+    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
+    And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
+    And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
+    And I remember "AutoVatRuleDescription" text as "EC_VAT_RULE_DESCRIPTION" variable
+    And I remember "AutoCourseTypeFDCode" text as "EC_COURSE_TYPE_FD_CODE" variable
+    And I remember "AutoCourseTypeFDDescription" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
+    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+    And I remember "AutoLocationFDCode" text as "EC_LOCATION_FD_CODE" variable
+    And I remember "AutoLocationFDDescription" text as "EC_LOCATION_FD_DESCRIPTION" variable
+    And I remember "AutoRegionFDCode" text as "EC_REGION_FD_CODE" variable
+    And I remember "AutoRegionFDDescription" text as "EC_REGION_FD_DESCRIPTION" variable
+    And I remember "AutoRegionName" text as "EC_REGION_NAME" variable
+    And I remember "AutoLocationName" text as "EC_LOCATION_NAME" variable
+    And I remember "AutoLocationAddress" text as "EC_LOCATION_ADDRESS" variable
+    And I remember "AutoLevelName" text as "EC_LEVEL_NAME" variable
+    And I remember "AutoLevelShortName" text as "EC_LEVEL_SHORT_NAME" variable
+    And I remember "AutoPprSN" text as "EC_PPR_SN" variable
+    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
+    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
+    And I remember "AtCBAPprSN" text as "EC_CBA_PPR_SN" variable
+    And I remember "AutoCBAPaperName" text as "EC_CBA_PAPER_NAME" variable
+    And I remember "AutoCBAPaperDescription" text as "EC_CBA_PAPER_DESCRIPTION" variable
+    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
+    And I remember "AutoMaterialTypeFDCode" text as "EC_MATERIAL_TYPE_FD_CODE" variable
+    And I remember "AutoMaterialTypeFDDescription" text as "EC_MATERIAL_TYPE_FD_DESCRIPTION" variable
+    And I remember "AutoMaterialTypeName" text as "EC_MATERIAL_TYPE_NAME" variable
+    And I remember "AutoMaterialTypeDescription" text as "EC_MATERIAL_TYPE_DESCRIPTION" variable
+    And I remember "AutoSessionDurationDescription" text as "EC_SESSION_DURATION_DESCRIPTION" variable
+    And I remember "AutoCBASessionDurationDescription" text as "EC_CBA_SESSION_DURATION_DESCRIPTION" variable
+    And I remember "AutoSessionDurationDescriptionTwoDates" text as "EC_SESSION_DURATION_DESCRIPTION_TWO_DATES" variable
+    And I remember "AutoClientName" text as "EC_CLIENT_NAME" variable
+    And I remember "2000" text as "EC_PRICE" variable
+    And I remember "10" text as "EC_WEIGHT" variable
+    And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
+
+    And I remember "AutoLocationNameTwo" text as "EC_LOCATION_NAME_TWO" variable
+    And I remember "AutoLocationAddressTwo" text as "EC_LOCATION_ADDRESS_TWO" variable
+    And I remember "AutoLocationNameThree" text as "EC_LOCATION_NAME_THREE" variable
+    And I remember "AutoLocationAddressThree" text as "EC_LOCATION_ADDRESS_THREE" variable
 
   @Positive @P1 #TC-2406
   Scenario: Amend Non Draft Course Instance
@@ -58,9 +68,9 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
 
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
     Then I should see the "Default Location" "Product Factory edit button"
     And I should see the "Capacity" "Product Factory edit button"

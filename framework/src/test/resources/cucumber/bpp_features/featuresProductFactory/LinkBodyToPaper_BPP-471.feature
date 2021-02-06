@@ -6,7 +6,7 @@ Feature: Reference Data - Link Body/Paper(Module) - BPP-471
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
+    And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
     And I execute "Create Body" reusable step
     Then I execute "Create Paper" reusable step
 

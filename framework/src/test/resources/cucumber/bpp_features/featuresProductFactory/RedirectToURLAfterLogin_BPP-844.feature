@@ -92,21 +92,21 @@ Feature: Redirect to Requested URL after Authentication - BPP-844
       |1|I am on "EC_SAVED_URL" URL|
     Then I should see the "Clients" element
 #todo temporary fix
-#    When I click on the "Miscellaneous" "Product Factory navigation item"
-#    When I click on the "Streams" "Product Factory navigation sub item"
-#    Then I capture current URL as "EC_SAVED_URL" variable
-#    When I click on the "exit_to_app" button
-#    And I execute "Log In" reusable step replacing some steps
-#      |1|I am on "EC_SAVED_URL" URL|
-#    Then I should see the "Streams" element
-#
-#    When I click on the "Miscellaneous" "Product Factory navigation item"
-#    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
-#    Then I capture current URL as "EC_SAVED_URL" variable
-#    When I click on the "exit_to_app" button
-#    And I execute "Log In" reusable step replacing some steps
-#      |1|I am on "EC_SAVED_URL" URL|
-#    Then I should see the "Deactivation Reasons" element
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Streams" "Product Factory navigation sub item"
+    Then I capture current URL as "EC_SAVED_URL" variable
+    When I click on the "exit_to_app" button
+    And I execute "Log In" reusable step replacing some steps
+      |1|I am on "EC_SAVED_URL" URL|
+    Then I should see the "Streams" element
+
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
+    Then I capture current URL as "EC_SAVED_URL" variable
+    When I click on the "exit_to_app" button
+    And I execute "Log In" reusable step replacing some steps
+      |1|I am on "EC_SAVED_URL" URL|
+    Then I should see the "Deactivation Reasons" element
 
   @Positive @Regression @P1 #TC-3445
   Scenario: Redirect to URL after Authentication 2 - Senior Product Setter

@@ -6,14 +6,39 @@ Feature: Digital Content Id - Create - BPP-5605
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
+
+    And I remember "AutoStreamName" text as "EC_STREAM_NAME" variable
+    And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
+    And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
+#    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+#    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
+    And I remember "AutoVatRuleDescription" text as "EC_VAT_RULE_DESCRIPTION" variable
+    And I remember "AutoCourseTypeFDCode" text as "EC_COURSE_TYPE_FD_CODE" variable
+    And I remember "AutoCourseTypeFDDescription" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
+    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+    And I remember "AutoLocationFDCode" text as "EC_LOCATION_FD_CODE" variable
+    And I remember "AutoLocationFDDescription" text as "EC_LOCATION_FD_DESCRIPTION" variable
+    And I remember "AutoRegionFDCode" text as "EC_REGION_FD_CODE" variable
+    And I remember "AutoRegionFDDescription" text as "EC_REGION_FD_DESCRIPTION" variable
+    And I remember "AutoRegionName" text as "EC_REGION_NAME" variable
+#    And I remember "AutoLocationName" text as "EC_LOCATION_NAME" variable
+#    And I remember "AutoLocationAddress" text as "EC_LOCATION_ADDRESS" variable
+#    And I remember "AutoLevelName" text as "EC_LEVEL_NAME" variable
+#    And I remember "AutoLevelShortName" text as "EC_LEVEL_SHORT_NAME" variable
+#    And I remember "AutoPprSN" text as "EC_PPR_SN" variable
+#    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
+#    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
+#    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
+
+#    When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step
-    And I execute "Create VAT Rule" reusable step
-    And I execute "Create Course Type Financial Dimension" reusable step
-    And I execute "Create Course Type" reusable step
-    And I execute "Create Location Financial Dimension" reusable step
-    And I execute "Create Region Financial Dimension" reusable step
-    And I execute "Create Region" reusable step
+#    And I execute "Create VAT Rule" reusable step
+#    And I execute "Create Course Type Financial Dimension" reusable step
+#    And I execute "Create Course Type" reusable step
+#    And I execute "Create Location Financial Dimension" reusable step
+#    And I execute "Create Region Financial Dimension" reusable step
+#    And I execute "Create Region" reusable step
     And I execute "Create Location" reusable step
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
@@ -22,6 +47,7 @@ Feature: Digital Content Id - Create - BPP-5605
     And I execute "Link Paper To Level" reusable step
     And I execute "Create Sitting" reusable step
 
+  #todo can create only one instance
   @Positive @P1 #TC-3148, TC-3567
   Scenario: Create Digital Content
     Given I execute "Create Digital Content" reusable step

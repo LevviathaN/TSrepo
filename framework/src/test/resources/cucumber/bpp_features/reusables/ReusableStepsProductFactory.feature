@@ -123,6 +123,7 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
+    #todo remove search in the end
   Scenario: Create Paper
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
@@ -268,6 +269,7 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_NAME" element
 
+    #todo rename to Create Price, since it is more correct
   Scenario: Create Pricing Matrix Full
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
@@ -332,13 +334,11 @@ Feature: Product Factory
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
-#    And I click on the "Search" "Product Factory text field"
     Then I set "EC_PAPER_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_PAPER_NAME" "Product Factory select button" by JS
     And I click on the "EC_LEVEL_NAME" "Product Factory select button"
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
-#    And I click on the "Search" "Product Factory text field two"
     Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
     And I click on the "submit" "element by type two"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button" by JS
@@ -354,6 +354,14 @@ Feature: Product Factory
     And I click on the "Default Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
+    #todo: separate Course and Sessions creation
+#    When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
+#    And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
+#    And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
+#    And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"
+#    And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
+#    And I click on the "Next" "Product Factory button"
+#    And I click on the "Finish" "Product Factory button"
 
   Scenario: Clean Database
     Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYDATABASEURLNEW" URL

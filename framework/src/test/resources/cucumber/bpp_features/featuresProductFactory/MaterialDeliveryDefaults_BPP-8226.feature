@@ -7,33 +7,40 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
   Background:
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
-    And I execute "Create VAT Rule" reusable step
-    And I execute "Create Course Type Financial Dimension" reusable step
-    And I execute "Create Course Type" reusable step
-    And I execute "Create Location Financial Dimension" reusable step
-    And I execute "Create Region Financial Dimension" reusable step
-    And I execute "Create Region" reusable step
-    And I execute "Create Location" reusable step
-    And I execute "Create Level" reusable step
-    And I execute "Create Paper" reusable step
-    And I execute "Link Body To Level" reusable step
-    And I execute "Link Body To Paper" reusable step
-    And I execute "Link Paper To Level" reusable step
-    And I execute "Create Sitting" reusable step
-    And I execute "Create Pricing Matrix" reusable step
-    And I execute "Create Pricing Matrix Full" reusable step
-    And I execute "Create Material Type Financial Dimension" reusable step
-    And I execute "Create Material Type" reusable step
-    And I execute "Create Session Duration" reusable step
-    And I execute "Create Client" reusable step
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoLocationName" text as "EC_LOCATION_NAME" variable
+    And I remember "AutoMaterialTypeName" text as "EC_MATERIAL_TYPE_NAME" variable
+    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoLevelName" text as "EC_LEVEL_NAME" variable
+    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
+#    When I execute "Create Body Financial Dimension" reusable step
+#    And I execute "Create Body" reusable step
+#    And I execute "Create VAT Rule" reusable step
+#    And I execute "Create Course Type Financial Dimension" reusable step
+#    And I execute "Create Course Type" reusable step
+#    And I execute "Create Location Financial Dimension" reusable step
+#    And I execute "Create Region Financial Dimension" reusable step
+#    And I execute "Create Region" reusable step
+#    And I execute "Create Location" reusable step
+#    And I execute "Create Level" reusable step
+#    And I execute "Create Paper" reusable step
+#    And I execute "Link Body To Level" reusable step
+#    And I execute "Link Body To Paper" reusable step
+#    And I execute "Link Paper To Level" reusable step
+#    And I execute "Create Sitting" reusable step
+#    And I execute "Create Pricing Matrix" reusable step
+#    And I execute "Create Pricing Matrix Full" reusable step
+#    And I execute "Create Material Type Financial Dimension" reusable step
+#    And I execute "Create Material Type" reusable step
+#    And I execute "Create Session Duration" reusable step
+#    And I execute "Create Client" reusable step
 
 
   @Positive @P1 #TC-3556
   Scenario: Verify Ability to specify Material Delivery Default during Product Setup
-    Given I execute "Create Material" reusable step
-    And I execute "Create Course Instance" reusable step
+#    Given I execute "Create Material" reusable step
+#    And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
@@ -49,8 +56,8 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
 
   @Negative @P1 #TC-3557
   Scenario: Verify Not Selected Material Delivery Default during Product Setup
-    Given I execute "Create Material" reusable step
-    And I execute "Create Course Instance" reusable step
+#    Given I execute "Create Material" reusable step
+#    And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
@@ -63,11 +70,19 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     When I click on the "Activate" "Product Factory button"
     Then I should see the "The Material Delivery Default has not been set for all Course Materials" message
 
-  @Negative @P1 #TC-3558
+  @Negative @P1 @NotFinished #TC-3558
   Scenario: Edit Course With Selected Material Delivery Default
+    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
+    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
     Given I execute "Create Material" reusable step
-    Given I execute "Create Digital Content" reusable step
-    And I execute "Create Course Instance" reusable step
+#    Given I execute "Create Digital Content" reusable step
+#    And I execute "Create Course Instance" reusable step
+    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
     And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
     And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
@@ -94,11 +109,14 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I click on the "Yes" "Product Factory button"
     Then I shouldn't see the "The Material Delivery Default has not been set for all Course Materials" message
 
-  @Negative @P1 #TC-3559
+  @Negative @P1 @NotFinished #TC-3559
   Scenario: Edit Course Without Selecting Material Delivery Default
-    Given I execute "Create Material" reusable step
-    Given I execute "Create Digital Content" reusable step
-    And I execute "Create Course Instance" reusable step
+    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
     And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
     And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"

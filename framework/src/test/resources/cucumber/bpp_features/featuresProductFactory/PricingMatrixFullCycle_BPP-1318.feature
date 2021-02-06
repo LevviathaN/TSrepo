@@ -6,33 +6,24 @@ Feature: Pricing Matrix - price creation wizard - BPP-1318
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
-    Then I execute "Create Sitting" reusable step
-    And I execute "Create VAT Rule" reusable step
-    And I execute "Create Course Type Financial Dimension" reusable step
-    And I execute "Create Course Type" reusable step
+    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
+    And I remember "AutoVatRuleDescription" text as "EC_VAT_RULE_DESCRIPTION" variable
+    And I remember "AutoCourseTypeFDCode" text as "EC_COURSE_TYPE_FD_CODE" variable
+    And I remember "AutoCourseTypeFDDescription" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoCourseTypeFDDescription" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
+    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+    And I remember "AutoRegionName" text as "EC_REGION_NAME" variable
+    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
+    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
     Given I execute "Create Course Type" reusable step replacing some steps
       |4|I set "CourseTypeDescription[######]~Two" text to the "Description" "Product Factory text field"|
       |13|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
       |15|I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" element                                         |
-    And I execute "Create Region Financial Dimension" reusable step
-    And I execute "Create Paper" reusable step
-    And I execute "Create Region" reusable step
-    And I execute "Link Body To Paper" reusable step
-    And I execute "Create Pricing Matrix" reusable step
 
   @Positive @Regression @P1 @FullCycle #TC-1032
   Scenario: Add a New Pricing Matrix Full Cycle
-    When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    Then I click on the "Create" "Product Factory button"
-    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
-    And I "check" "EC_REGION_NAME" "Product Factory dialog checkbox"
-    And I click on the "Next" button
-    And I click on the "EC_PAPER_NAME" "Product Factory dialog checkbox"
-    And I click on the "Next" button
-    And I set "1000" text to the "Enter a Price (£)" "Product Factory text field"
-    And I click on the "Next" button
-    And I click on the "Finish" button
+  Given I execute "Create Pricing Matrix Full" reusable step replacing some steps
+    |5|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
+    |7|I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory select button"                       |

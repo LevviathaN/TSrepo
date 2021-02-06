@@ -6,37 +6,31 @@ Feature: Amend Reference Data - Body - BPP-624
 
   Background:
     Given I execute "Log In" reusable step
-    And I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
+    And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
+    And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
 
   @Positive @Regression @P1 #TC-1545
   Scenario: Amend a Body Using a Modal
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Bodies" "Product Factory navigation sub item"
-    When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I set "BodyShortName[######]" text to the "Short Name" "Product Factory text field"
-    And I set "BodyName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_BODY_SHORT_NAME" element
+    Given I execute "Create Body" reusable step
 
   @Negative @P2 #TC-814
   Scenario: Amend Submitting Incomplete Body Fields
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Bodies" "Product Factory navigation sub item"
-    When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I set "" text to the "Short Name" "Product Factory text field"
-    And I set "" text to the "Name" "Product Factory text field"
-    Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
+    Given I execute modified "Create Body" reusable step
+      |4|Replace|I set "" text to the "Short Name" "Product Factory text field"|
+      |5|Replace|I set "" text to the "Name" "Product Factory text field"      |
+      |8|Replace|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
+      |9|Delete |                                                                              |
 
   @Negative @P2 #TC-820
   Scenario: Amend a Body Where Short Name Already Exists
-    Given I execute "Create Body" reusable step replacing some steps
-    |4|I set "BodyShortNameNew[######]" text to the "Short Name" "Product Factory text field"|
-    |5|I set "BodyNameNew[######]" text to the "Name" "Product Factory text field"|
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Bodies" "Product Factory navigation sub item"
-    When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I set "EC_BODY_SHORT_NAME_NEW" text to the "Short Name" "Product Factory text field"
-    And I set "EC_BODY_NAME_NEW" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "Short Name must be unique" "message"
+    And I remember "AutoBodyShortNameTwo" text as "EC_BODY_SHORT_NAME_TWO" variable
+    And I remember "AutoBodyNameTwo" text as "EC_BODY_NAME_TWO" variable
+    Given I execute modified "Create Body" reusable step
+      |3|Replace|I click on the "EC_BODY_NAME" "Product Factory edit button"|
+      |4|Replace|I set "EC_BODY_SHORT_NAME_TWO" text to the "Short Name" "Product Factory text field"|
+      |5|Replace|I set "EC_BODY_NAME_TWO" text to the "Name" "Product Factory text field"      |
+      |6|Delete |                                                                              |
+      |7|Delete |                                                                              |
+      |9|Replace|I should see the "Short Name must be unique" "message"|

@@ -6,18 +6,9 @@ Feature: Pricing Matrix creation page - BPP-1320
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
-    Then I execute "Create Sitting" reusable step
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
 
   @Positive @Regression @P1 #TC-981, TC-1868
   Scenario: Add a New Pricing Matrix Using a Modal
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "Prices" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I click on the "Body" "Product Factory change button"
-    And I click on the "EC_BODY_NAME" "Product Factory change modal option"
-    And I click on the "Sitting" "Product Factory change button"
-    And I click on the "EC_SITTING_NAME" "Product Factory change modal option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_BODY_NAME" element
+    Given I execute "Create Pricing Matrix" reusable step

@@ -9,29 +9,19 @@ Feature: Reference Data - Course Deactivation Reasons - BPP-1613
 
   @Positive @Regression @P1 #TC-975
   Scenario: Add a New Deactivation Reason Using a Modal
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "DeactivationReasonDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_DEACTIVATION_REASON_DESCRIPTION" element
+    Given I execute "Create Deactivation Reason" reusable step
 
   @Negative @P2 #TC-977
   Scenario: Add a Deactivation Reason Where Description Already Exists
-    When I execute "Create Deactivation Reason" reusable step
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "EC_DEACTIVATION_REASON_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "Description must be unique" "message"
+    And I remember "AutoDeactivationReasonDescription" text as "EC_DEACTIVATION_REASON_DESCRIPTION" variable
+    When I execute "Create Deactivation Reason" reusable step replacing some steps
+      |4|I set "EC_DEACTIVATION_REASON_DESCRIPTION" text to the "Description" "Product Factory text field"|
+      |6|I should see the "Description must be unique" "message"                                          |
 
   @Positive @Regression @P1 @Amend #TC-978
   Scenario: Amend a Deactivation Reason Using a Modal
-    When I execute "Create Deactivation Reason" reusable step
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Deactivation Reasons" "Product Factory navigation sub item"
-    Then I click on the "EC_DEACTIVATION_REASON_DESCRIPTION" "Product Factory edit button"
-    And I set "DeactivationReasonDescription[####]" text to the "Description" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_DEACTIVATION_REASON_DESCRIPTION" element
+    Given I execute "Create Deactivation Reason" reusable step
+    When I execute "Create Deactivation Reason" reusable step replacing some steps
+      |3|I click on the "EC_DEACTIVATION_REASON_DESCRIPTION" "Product Factory edit button"|
+      |4|I set "DeactivationReasonDescriptionNew[####]" text to the "Description" "Product Factory text field"|
+      |6|I should see the "EC_DEACTIVATION_REASON_DESCRIPTION_NEW" element                                    |
