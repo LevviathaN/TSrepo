@@ -33,7 +33,7 @@ public class DataGenerationRunner extends BaseUITest {
             groups = {"DataGeneration"},
             dataProvider = "scenarios"
     )
-    public void runPFDatabaseCleanup(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
+    public void generateData(PickleEventWrapper pickleWrapper, CucumberFeatureWrapper featureWrapper) throws Throwable {
         scenarioName = pickleWrapper.getPickleEvent().pickle.getName();
         Reporter.node("Executing: " + scenarioName + " scenario",
                 "It contains " + pickleWrapper.getPickleEvent().pickle.getSteps().size() + " steps");

@@ -46,7 +46,6 @@ Feature: Create 150 Course Instances
     And I remember "10" text as "EC_WEIGHT" variable
     And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
 
-    @CreateData
   Scenario Outline: Create A Lot Of Draft Courses <counter>
     Given I execute "Create Course Instance" reusable step
 
