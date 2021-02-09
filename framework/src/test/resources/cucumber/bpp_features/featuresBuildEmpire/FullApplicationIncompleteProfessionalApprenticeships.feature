@@ -29,4 +29,4 @@ Feature: Professional Apprenticeship Applications
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Incomplete University Degree Apprenticeships Application As Admin" reusable step
-    And I execute "Nada Mitigating Circustances Incomplete Validation" reusable step
+    And I execute "Harakirimail Verify Application Incomplete" reusable step

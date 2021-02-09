@@ -1,4 +1,4 @@
-@RFI
+@RFI @DigitalSite
 Feature: Student data API tracking
   As a marketing data user
   I want a record in marketing cloud of when a user successfully logs into the Hub
