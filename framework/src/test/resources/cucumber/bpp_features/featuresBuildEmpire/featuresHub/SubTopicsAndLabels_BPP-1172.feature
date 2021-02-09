@@ -1,5 +1,8 @@
 @BuildEmpire @Hub @SubTopics @Totara
 Feature: BPP University Hub Sub Topics and Labels
+  As a learner, at a glance,
+  I'd like to be able to see a breakdown of how a topic is organised to help me organise my learning and so I can see my current progress on each activity
+  So that I can easily see where I am up to within a topic
 
   Background:
     Given I execute "Register New Student Account" reusable step

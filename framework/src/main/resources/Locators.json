@@ -3364,6 +3364,10 @@
     "value": "xpath=//a[@title='ICAEW Accounting Full']"
   },
   {
+    "name": "Totara Automation Only Course",
+    "value": "xpath=//a[@title='Only for Automation ']"
+  },
+  {
     "name": "Totara Key Activities Administration Link",
     "value": "xpath=(//div[@class='content block-content']//a[text()='Key Activities'])[1]"
   },
