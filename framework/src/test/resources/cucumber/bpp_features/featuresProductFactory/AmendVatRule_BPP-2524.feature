@@ -6,21 +6,17 @@ Feature: Reference Data - Vat Rules - Update Record - BPP-2524
 
   Background:
     Given I execute "Log In" reusable step
-    And I execute "Create VAT Rule" reusable step
+    And I remember "AutoVatRuleCodeEdit" text as "EC_VAT_RULE_CODE" variable
+    And I remember "AutoVatRuleDescriptionEdit" text as "EC_VAT_RULE_DESCRIPTION" variable
 
   @Positive @Regression @P1 #TC-1348
   Scenario: Amend a VAT Rule Using a Modal
-    When I click on the "Financials" "Product Factory navigation item"
-    When I click on the "VAT Rules" "Product Factory navigation sub item"
-    When I click on the "EC_VAT_RULE_CODE" "Product Factory edit button"
-    And I set "VatRuleCode[######]" text to the "Code" "Product Factory text field"
-    And I set "VatRuleDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_VAT_RULE_CODE" element
+    Given I execute modified "Create VAT Rule" reusable step
+      |3|Replace|I click on the "EC_VAT_RULE_CODE" "Product Factory edit button"|
 
   @Negative @P2 @NoQTest
   Scenario: Submitting Unchanged VAT Rule Fields
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "VAT Rules" "Product Factory navigation sub item"
-    When I click on the "EC_VAT_RULE_CODE" "Product Factory edit button"
+    When I click on the "AutoVatRuleCode" "Product Factory edit button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"

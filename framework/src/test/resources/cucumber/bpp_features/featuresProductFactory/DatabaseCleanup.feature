@@ -1,109 +1,113 @@
-@ProductFactoryCleanup @BeforePF @Runn
+@ProductFactoryCleanup @BeforePF
 Feature: Product Factory database cleanup
 
   #TC-1668, TC-1666, TC-1606
   Scenario: Clean Product Factory Database
-#    Given I am on "http://ec2-3-10-141-182.eu-west-2.compute.amazonaws.com:7474/browser/" URL
-#    When I fill the "Product Factory Database Connect URL Field" field with "bolt://ec2-3-10-141-182.eu-west-2.compute.amazonaws.com:7687"
-#    Then I fill the "Product Factory Database Username Field" field with "Neo4j"
-#    And I fill the "Product Factory Database Password Field" field with "3M#$,qns5uw*W#jr"
-#    And I click on the "Product Factory Database Connect Button" button
-#    When I click on the "Product Factory Database Query Field" button
-#    And I fill the "Product Factory Database Query Field" field with "MATCH (n) DETACH DELETE n"
-#    Then I click on the "Product Factory Database Submit Query Button" button
-#
+    Given I am on "http://ec2-3-10-141-182.eu-west-2.compute.amazonaws.com:7474/browser/" URL
+    When I fill the "Product Factory Database Connect URL Field" field with "bolt://ec2-3-10-141-182.eu-west-2.compute.amazonaws.com:7687"
+    Then I fill the "Product Factory Database Username Field" field with "Neo4j"
+    And I fill the "Product Factory Database Password Field" field with "3M#$,qns5uw*W#jr"
+    And I click on the "Product Factory Database Connect Button" button
+    When I click on the "Product Factory Database Query Field" button
+    And I fill the "Product Factory Database Query Field" field with "MATCH (n) DETACH DELETE n"
+    Then I click on the "Product Factory Database Submit Query Button" button
+
     Given I execute "Generate ISBN" reusable step
-#    And I execute "Log In" reusable step replacing some steps
-#      |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|
-#      |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
-#    Then I click on the "Products" "Product Factory navigation item"
-#    And I click on the "Materials" "Product Factory navigation sub item"
-#    Then I should see the "Materials have not yet been configured for use. Please check with your Team Leader" message
-#    When I click on the "exit_to_app" button
+    And I execute "Log In" reusable step replacing some steps
+      |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|
+      |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
+    Then I click on the "Products" "Product Factory navigation item"
+    And I click on the "Materials" "Product Factory navigation sub item"
+    Then I should see the "Materials have not yet been configured for use. Please check with your Team Leader" message
+    When I click on the "exit_to_app" button
     And I execute "Log In" reusable step
-#
-#    When I click on the "Financials" "Product Factory navigation item"
-#    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-#    Then I click on the "Create" "Product Factory button"
-#    And I set "FDCode[######]" text to the "Code" "Product Factory text field"
-#    And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
-#    And I click on the "Applies To" "Product Factory dropdown"
-#    And I click on the "Course" "Product Factory dropdown option"
-#    And I click on the "Dimension" "Product Factory dropdown"
-#    And I click on the "Product" "Product Factory dropdown option"
-#    And I click on the "Save" "Product Factory button"
-#    Then I should see the "EC_FD_CODE" element
-#    When I click on the "Products" "Product Factory navigation item"
-#    When I click on the "Courses" "Product Factory navigation sub item"
-#    And I click on the "Entity Dimension" "Product Factory change button"
-#    And I click on the "EC_FD_CODE" "Product Factory select button"
-#    And I click on the "Revenue Dimension" "Product Factory change button"
-#    And I click on the "EC_FD_CODE" "Product Factory select button"
-#    And I click on the "Save" "Product Factory button"
-#
-#    When I click on the "Financials" "Product Factory navigation item"
-#    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
-#    Then I click on the "Create" "Product Factory button"
-#    And I set "FDCode[######]" text to the "Code" "Product Factory text field"
-#    And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
-#    And I click on the "Applies To" "Product Factory dropdown"
-#    And I click on the "Material" "Product Factory dropdown option"
-#    And I click on the "Dimension" "Product Factory dropdown"
-#    And I click on the "Product" "Product Factory dropdown option"
-#    And I click on the "Save" "Product Factory button"
-#    Then I should see the "EC_FD_CODE" element
-#    When I click on the "Products" "Product Factory navigation item"
-#    When I click on the "Materials" "Product Factory navigation sub item"
-#    And I click on the "Entity Dimension" "Product Factory change button"
-#    And I click on the "EC_FD_CODE" "Product Factory select button"
-#    And I click on the "Revenue Dimension" "Product Factory change button"
-#    And I click on the "EC_FD_CODE" "Product Factory select button"
-#    And I click on the "Save" "Product Factory button"
+
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "FDCode[######]" text to the "Code" "Product Factory text field"
+    And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
+    And I click on the "Applies To" "Product Factory dropdown"
+    And I click on the "Course" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_FD_CODE" element
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I click on the "Entity Dimension" "Product Factory change button"
+    And I click on the "EC_FD_CODE" "Product Factory select button"
+    And I click on the "Revenue Dimension" "Product Factory change button"
+    And I click on the "EC_FD_CODE" "Product Factory select button"
+    And I click on the "Save" "Product Factory button"
+
+    When I click on the "Financials" "Product Factory navigation item"
+    When I click on the "Financial Dimensions" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "FDCode[######]" text to the "Code" "Product Factory text field"
+    And I set "FDDescription[######]" text to the "Description" "Product Factory text field"
+    And I click on the "Applies To" "Product Factory dropdown"
+    And I click on the "Material" "Product Factory dropdown option"
+    And I click on the "Dimension" "Product Factory dropdown"
+    And I click on the "Product" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_FD_CODE" element
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Materials" "Product Factory navigation sub item"
+    And I click on the "Entity Dimension" "Product Factory change button"
+    And I click on the "EC_FD_CODE" "Product Factory select button"
+    And I click on the "Revenue Dimension" "Product Factory change button"
+    And I click on the "EC_FD_CODE" "Product Factory select button"
+    And I click on the "Save" "Product Factory button"
+
+
 
     #______________________________Remember Variables__________________________
-    And I remember "AutoDeactivationReasonDescription" text as "EC_DEACTIVATION_REASON_DESCRIPTION" variable
-    And I remember "AutoDeactivationReasonDescriptionPrevent" text as "EC_DEACTIVATION_REASON_DESCRIPTION_PREVENT" variable
-    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
-    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
-    And I remember "AutoStreamName" text as "EC_STREAM_NAME" variable
-    And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
-    And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
-    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
-    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
-    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
-    And I remember "AutoVatRuleDescription" text as "EC_VAT_RULE_DESCRIPTION" variable
-    And I remember "AutoCourseTypeFDCode" text as "EC_COURSE_TYPE_FD_CODE" variable
-    And I remember "AutoCourseTypeFDDescription" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
-    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
-    And I remember "AutoLocationFDCode" text as "EC_LOCATION_FD_CODE" variable
-    And I remember "AutoLocationFDDescription" text as "EC_LOCATION_FD_DESCRIPTION" variable
-    And I remember "AutoRegionFDCode" text as "EC_REGION_FD_CODE" variable
-    And I remember "AutoRegionFDDescription" text as "EC_REGION_FD_DESCRIPTION" variable
-    And I remember "AutoRegionName" text as "EC_REGION_NAME" variable
-    And I remember "AutoLocationName" text as "EC_LOCATION_NAME" variable
-    And I remember "AutoLocationAddress" text as "EC_LOCATION_ADDRESS" variable
-    And I remember "AutoLevelName" text as "EC_LEVEL_NAME" variable
-    And I remember "AutoLevelShortName" text as "EC_LEVEL_SHORT_NAME" variable
-    And I remember "AutoPprSN" text as "EC_PPR_SN" variable
-    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
-    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
-    And I remember "AtCBAPprSN" text as "EC_CBA_PPR_SN" variable
-    And I remember "AutoCBAPaperName" text as "EC_CBA_PAPER_NAME" variable
-    And I remember "AutoCBAPaperDescription" text as "EC_CBA_PAPER_DESCRIPTION" variable
-    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
-    And I remember "AutoMaterialTypeFDCode" text as "EC_MATERIAL_TYPE_FD_CODE" variable
-    And I remember "AutoMaterialTypeFDDescription" text as "EC_MATERIAL_TYPE_FD_DESCRIPTION" variable
-    And I remember "AutoMaterialTypeName" text as "EC_MATERIAL_TYPE_NAME" variable
-    And I remember "AutoMaterialTypeDescription" text as "EC_MATERIAL_TYPE_DESCRIPTION" variable
-    And I remember "AutoSessionDurationDescription" text as "EC_SESSION_DURATION_DESCRIPTION" variable
-    And I remember "AutoCBASessionDurationDescription" text as "EC_CBA_SESSION_DURATION_DESCRIPTION" variable
-    And I remember "AutoSessionDurationDescriptionTwoDates" text as "EC_SESSION_DURATION_DESCRIPTION_TWO_DATES" variable
-    And I remember "AutoClientName" text as "EC_CLIENT_NAME" variable
-    And I remember "2000" text as "EC_PRICE" variable
-    And I remember "10" text as "EC_WEIGHT" variable
-    And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
+#  Scenario: Remember Variables
+#    And I remember "AutoDeactivationReasonDescription" text as "EC_DEACTIVATION_REASON_DESCRIPTION" variable
+#    And I remember "AutoDeactivationReasonDescriptionPrevent" text as "EC_DEACTIVATION_REASON_DESCRIPTION_PREVENT" variable
+#    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
+#    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
+#    And I remember "AutoStreamName" text as "EC_STREAM_NAME" variable
+#    And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
+#    And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
+#    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+#    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+#    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
+#    And I remember "AutoVatRuleDescription" text as "EC_VAT_RULE_DESCRIPTION" variable
+#    And I remember "AutoCourseTypeFDCode" text as "EC_COURSE_TYPE_FD_CODE" variable
+#    And I remember "AutoCourseTypeFDDescription" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
+#    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+#    And I remember "AutoLocationFDCode" text as "EC_LOCATION_FD_CODE" variable
+#    And I remember "AutoLocationFDDescription" text as "EC_LOCATION_FD_DESCRIPTION" variable
+#    And I remember "AutoRegionFDCode" text as "EC_REGION_FD_CODE" variable
+#    And I remember "AutoRegionFDDescription" text as "EC_REGION_FD_DESCRIPTION" variable
+#    And I remember "AutoRegionName" text as "EC_REGION_NAME" variable
+#    And I remember "AutoLocationName" text as "EC_LOCATION_NAME" variable
+#    And I remember "AutoLocationAddress" text as "EC_LOCATION_ADDRESS" variable
+#    And I remember "AutoLevelName" text as "EC_LEVEL_NAME" variable
+#    And I remember "AutoLevelShortName" text as "EC_LEVEL_SHORT_NAME" variable
+#    And I remember "AutoPprSN" text as "EC_PPR_SN" variable
+#    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
+#    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
+#    And I remember "AtCBAPprSN" text as "EC_CBA_PPR_SN" variable
+#    And I remember "AutoCBAPaperName" text as "EC_CBA_PAPER_NAME" variable
+#    And I remember "AutoCBAPaperDescription" text as "EC_CBA_PAPER_DESCRIPTION" variable
+#    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
+#    And I remember "AutoMaterialTypeFDCode" text as "EC_MATERIAL_TYPE_FD_CODE" variable
+#    And I remember "AutoMaterialTypeFDDescription" text as "EC_MATERIAL_TYPE_FD_DESCRIPTION" variable
+#    And I remember "AutoMaterialTypeName" text as "EC_MATERIAL_TYPE_NAME" variable
+#    And I remember "AutoMaterialTypeDescription" text as "EC_MATERIAL_TYPE_DESCRIPTION" variable
+#    And I remember "AutoSessionDurationDescription" text as "EC_SESSION_DURATION_DESCRIPTION" variable
+#    And I remember "AutoCBASessionDurationDescription" text as "EC_CBA_SESSION_DURATION_DESCRIPTION" variable
+#    And I remember "AutoSessionDurationDescriptionTwoDates" text as "EC_SESSION_DURATION_DESCRIPTION_TWO_DATES" variable
+#    And I remember "AutoClientName" text as "EC_CLIENT_NAME" variable
+#    And I remember "2000" text as "EC_PRICE" variable
+#    And I remember "10" text as "EC_WEIGHT" variable
+#    And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
 
     #_________________________________Create Reference Data Set____________________________
+#  Scenario: Create Reference Data Set
 #    Given I execute "Create Deactivation Reason" reusable step replacing some steps
 #      |4|I set "$Auto[DeactivationReasonDescription]" text to the "Description" "Product Factory text field"|
 #    And I execute modified "Create Deactivation Reason" reusable step
@@ -164,9 +168,9 @@ Feature: Product Factory database cleanup
 #    And I execute "Create Pricing Matrix" reusable step
 #    And I execute "Create Pricing Matrix Full" reusable step replacing some steps
 #      |12|I set "~PricingMatrixPrice[1000]" text to the "Enter a Price (£)" "Product Factory text field"|
-    And I execute "Create Pricing Matrix Full" reusable step replacing some steps
-      |10|I click on the "EC_CBA_PAPER_NAME" "Product Factory dialog checkbox"|
-      |12|I set "~PricingMatrixPrice[1000]" text to the "Enter a Price (£)" "Product Factory text field"|
+#    And I execute "Create Pricing Matrix Full" reusable step replacing some steps
+#      |10|I click on the "EC_CBA_PAPER_NAME" "Product Factory dialog checkbox"|
+#      |12|I set "~PricingMatrixPrice[1000]" text to the "Enter a Price (£)" "Product Factory text field"|
 #    And I execute "Create Material Type Financial Dimension" reusable step replacing some steps
 #      |4|I set "$Auto[MaterialTypeFDCode]" text to the "Code" "Product Factory text field"|
 #      |5|I set "$Auto[MaterialTypeFDDescription]" text to the "Description" "Product Factory text field"|
@@ -196,6 +200,7 @@ Feature: Product Factory database cleanup
 #    And I execute "Create Digital Content" reusable step
 
   #______________________________Remember Variables 2__________________________
+#  Scenario: Remember Variables Two
 #    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
 #    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
 #    And I remember "AutoBodyFDCodeTwo" text as "EC_BODY_FD_CODE" variable
@@ -232,6 +237,7 @@ Feature: Product Factory database cleanup
 #    And I remember "10" text as "EC_WEIGHT" variable
 
     #_________________________________Create Reference Data Set 2____________________________
+#  Scenario: Create Reference Data Set Two
 #    When I execute "Create Body Financial Dimension" reusable step replacing some steps
 #      |4|I set "$Auto[BodyFDCode]$Two" text to the "Code" "Product Factory text field"|
 #      |5|I set "$Auto[BodyFDDescription]$Two" text to the "Description" "Product Factory text field"|
@@ -295,6 +301,7 @@ Feature: Product Factory database cleanup
 #    And I execute "Create Course Instance" reusable step
 
 #    ______________________________Remember Variables 3__________________________
+#  Scenario: Remember Variables Three
 #    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
 #    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
 #    And I remember "AutoBodyFDCodeThree" text as "EC_BODY_FD_CODE" variable
@@ -331,6 +338,7 @@ Feature: Product Factory database cleanup
 #    And I remember "10" text as "EC_WEIGHT" variable
 
     #_________________________________Create Reference Data Set 3____________________________
+#  Scenario: Create Reference Data Set Three
 #    When I execute "Create Body Financial Dimension" reusable step replacing some steps
 #      |4|I set "$Auto[BodyFDCode]$Three" text to the "Code" "Product Factory text field"|
 #      |5|I set "$Auto[BodyFDDescription]$Three" text to the "Description" "Product Factory text field"|

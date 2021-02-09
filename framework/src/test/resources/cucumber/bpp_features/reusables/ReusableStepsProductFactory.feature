@@ -458,21 +458,21 @@ Feature: Product Factory
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
+    And I wait for "6" seconds
     And I click on the "Body" "Product Factory dropdown"
     And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
     And I click on the "Level" "Product Factory dropdown"
     And I click on the "EC_LEVEL_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
     And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
-    And I click on the "Sittings" "Product Factory edit button"
+    And I click on the "Next" "Product Factory button"
     And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory active button"
-    And I click on the "Course Types" "Product Factory edit button"
-    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
-    And I click on the "submit" "element by type three"
+    And I click on the "Next" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory active button"
-    And I click on the "Save" "Product Factory button"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
 
   Scenario: Generate ISBN
     Given I am on "https://generate.plus/en/number/isbn" URL

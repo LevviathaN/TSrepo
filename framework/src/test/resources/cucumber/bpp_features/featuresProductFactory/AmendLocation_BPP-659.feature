@@ -5,26 +5,22 @@ Feature: Amend Reference Data - Location - BPP-659
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Location Financial Dimension" reusable step
-    And I execute "Create Region Financial Dimension" reusable step
-    Then I execute "Create Region" reusable step
+    And I remember "AutoLocationFDCodeTwo" text as "EC_LOCATION_FD_CODE_TWO" variable
+    And I remember "AutoLocationFDDescriptionTwo" text as "EC_LOCATION_FD_DESCRIPTION_TWO" variable
+    And I remember "AutoRegionFDCode" text as "EC_REGION_FD_CODE" variable
+    And I remember "AutoRegionFDDescription" text as "EC_REGION_FD_DESCRIPTION" variable
+    And I remember "AutoLocationNameEdit" text as "EC_LOCATION_NAME" variable
+    And I remember "AutoLocationAddressEdit" text as "EC_LOCATION_ADDRESS" variable
+
 
   @Positive @P1 #TC-832
   Scenario: Amend Location
-    When I execute "Create Location Financial Dimension" reusable step replacing some steps
-      |4|I set "LocationFDCodeTwo[####]" text to the "Code" "Product Factory text field"|
-      |5|I set "LocationFDDescriptionTwo[####]" text to the "Description" "Product Factory text field"|
     Then I execute "Create Region" reusable step replacing some steps
       |4|I set "RegionNameTwo[######]" text to the "Name" "Product Factory text field"|
-    When I execute "Create Location" reusable step
-    When I click on the "Delivery" "Product Factory navigation item"
-    When I click on the "Locations" "Product Factory navigation sub item"
-    Then I click on the "EC_LOCATION_NAME" "Product Factory edit button"
-    And I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"
-    And I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"
-    And I click on the "Region" "Product Factory dropdown"
-    And I click on the "EC_REGION_NAME_TWO" "Product Factory dropdown option"
-    And I click on the "Financial Dimension" "Product Factory dropdown"
-    And I click on the "EC_LOCATION_FD_DESCRIPTION_TWO" "Product Factory dropdown option"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_LOCATION_NAME_TWO" "element"
+      |8|I should see the "EC_REGION_NAME_TWO" element                                |
+    When I execute modified "Create Location" reusable step
+      |4|Replace|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|
+      |5|Replace|I set "LocationAddressTwo[######]" text to the "Address Line 1" "Product Factory text field"|
+      |7|Replace|I click on the "EC_REGION_NAME_TWO" "Product Factory dropdown option"|
+      |9|Replace|I click on the "EC_LOCATION_FD_DESCRIPTION_TWO" "Product Factory dropdown option"|
+      |11|Replace|I should see the "EC_LOCATION_NAME_TWO" "element"|
