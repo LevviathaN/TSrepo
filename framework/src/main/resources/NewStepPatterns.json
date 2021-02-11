@@ -36,6 +36,14 @@
     "value": "^I am logged into Product Factory as \"([^\"]*)\"$"
   },
   {
+    "name": "I_COMPARE_PDF",
+    "value": "I compare \"([^\"]*)\" file with \"([^\"]*)\" PDF file"
+  },
+  {
+    "name": "I_COMPARE_PDF_PAGES",
+    "value": "I compare \"([^\"]*)\" file with \"([^\"]*)\" PDF file for pages from \"([^\"]*)\" to \"([^\"]*)\"$"
+  },
+  {
     "name": "I_AM_ON_URL",
     "value": "^I am on \"([^\"]*)\" URL$"
   },
@@ -86,6 +94,18 @@
   {
     "name": "I_CLICK_ON_THE_BUTTON",
     "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element)(?: in [^\"]*)?$"
+  },
+  {
+    "name": "I_DOUBLECLICK_ON_THE_BUTTON",
+    "value": "^I doubleclick on the \"([^\"]*)\" (?:button|link|option|element)$"
+  },
+  {
+    "name": "I_DOUBLECLICK_ON_THE_ElEMENT_SPECIAL",
+    "value": "^I doubleclick on the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_PERFORM_RIGHT_MOUSE_CLICK_ON_THE_ElEMENT_SPECIAL",
+    "value": "^I perform right mouse click on the \"([^\"]*)\" \"([^\"]*)\"$"
   },
   {
     "name": "I_CLICK_ON_THE_BUTTON_IF",

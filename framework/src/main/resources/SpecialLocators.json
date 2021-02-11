@@ -766,5 +766,9 @@
   {
     "name": "Nada BPP Specific Email",
     "value": "xpath=//a[contains(.,'PARAMETER')]"
+  },
+  {
+    "name": "Quark XML File",
+    "value": "xpath=//td[contains(.,'PARAMETER')]"
   }
 ]
