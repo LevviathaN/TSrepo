@@ -3032,12 +3032,24 @@
     "value": "xpath=//span[@class='typename'][text()='Label']"
   },
   {
+    "name": "Totara Add an Activity Assignment Radio button",
+    "value": "xpath=//span[@class='typename'][text()='Assignment']"
+  },
+  {
     "name": "Totara Add an Activity Quiz Radio button",
     "value": "xpath=//span[@class='typename'][text()='Quiz']"
   },
   {
     "name": "Totara Adding a New Label Text Field",
     "value": "xpath=//div[@id='id_introeditoreditable']"
+  },
+  {
+    "name": "Totara Display Description on a Course checkbox",
+    "value": "xpath=//input[@name='showdescription']"
+  },
+  {
+    "name": "Totara Assignment name Text Field",
+    "value": "xpath=(//label[text()='Assignment name']/following::input)[1]"
   },
   {
     "name": "Totara Assessment Next Button",
@@ -3114,6 +3126,26 @@
   {
     "name": "Totara Automation Exp Label Edit button",
     "value": "xpath=(//div[normalize-space()=\"Automation Expandable Label\"]/following::a[text()='Edit'])[1]"
+  },
+  {
+    "name": "Totara Automation First Topic Edit button",
+    "value": "xpath=(//a[contains(text(),\"Topic\")]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//a)[1]"
+  },
+  {
+    "name": "Totara Automation First Topic Delete button",
+    "value": "xpath=(//a[contains(text(),\"Topic\")]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[1]"
+  },
+  {
+    "name": "Totara Add Topic Plus icon",
+    "value": "xpath=//span[@data-flex-icon='core|t/more']"
+  },
+  {
+    "name": "Totara Set Topic Name field",
+    "value": "xpath=//input[contains(@id,'inplacevalue')]"
+  },
+  {
+    "name": "Totara Edit Topic Name icon",
+    "value": "xpath=//a[contains(text(),'Topic 1')]//span[@data-flex-icon='core|t/editstring']"
   },
   {
     "name": "Totara Automation Restrictionas Date B Edit button",
@@ -3218,6 +3250,10 @@
   {
     "name": "Totara Automation Mobile Topic Add an Activity or Resource",
     "value": "xpath=//span[@data-editlabel='New name for topic Automation Mobile']/following::span[contains(text(),'Add an activity or resource')][1]"
+  },
+  {
+    "name": "Totara Automation Course Created Topic Add and Activity button",
+    "value": "xpath=(//a[contains(text(),'EC_AUTOMATION_TOPIC')]/following::span[contains(text(),'Add an activity or resource')])[1]"
   },
   {
     "name": "Totara Bottom Key Activity Name",
