@@ -41,7 +41,7 @@ Feature: Course Wizard - add filter to Paper list - BPP-8382
 
   @Positive @P1 #TC-3609, TC-3612, TC-3617, TC-3618
   Scenario: Validate Paper and Course Type Filters in Course Creation Wizard
-    And I execute modified "Create Course Instance" reusable step
+    And I execute modified "Create Course" reusable step
       |4|Add|I set "XXX" text to the "Search" "Product Factory text field" from keyboard|
       |5|Add|I click on the "submit" "element by type"|
       |6|Add|I shouldn't see the "EC_PAPER_NAME" "element"|

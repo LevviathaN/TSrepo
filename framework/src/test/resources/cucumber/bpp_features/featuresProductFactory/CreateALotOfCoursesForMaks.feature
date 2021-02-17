@@ -47,6 +47,7 @@ Feature: Create 150 Course Instances
     And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
 
   Scenario Outline: Create A Lot Of Draft Courses <counter>
+    Then I execute "Create Course" reusable step
     Given I execute "Create Course Instance" reusable step
 
     Examples:

@@ -220,7 +220,7 @@ public class StepDefinitions extends SeleniumHelper {
 
     @Then("^I execute modified \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step_modified(String reusableName, List<List<String>> steps) {
-        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
+        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step modified");
         ReusableRunner.getInstance().executeReusableModified(reusableName,steps);
     }
 
@@ -766,10 +766,28 @@ public class StepDefinitions extends SeleniumHelper {
                 if (locatorsMap.containsKey(element)) {
                     xpathLocator = locatorsMap.get(element).replace("xpath=","xpath=(") + ")[" + i + "]";
                 } else {
-                    xpathLocator = "xpath=(//*[text()=']" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
+                    xpathLocator = "xpath=(//*[text()='" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
                 }
                 ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
             }
+        }
+    }
+
+    /**
+     * Definition to execute reusable step if given condition is true
+     *
+     * @param reusableName name of reusable step (Scenario in ReusableSteps.feature) you want to execute
+     *                     Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
+     */
+    @Then("^I execute modified \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_execute_reusable_step_modified_if(String reusableName, String conditionParameter, String condition, List<List<String>> steps) {
+        Conditions conditions = new Conditions();
+        if (conditions.checkCondition(condition, conditionParameter)) {
+            Reporter.log("Executing step: I execute '" + reusableName + "' reusable step modified");
+            ReusableRunner.getInstance().executeReusableModified(TestParametersController.checkIfSpecialParameter(reusableName), steps);
+        } else {
+            Reporter.log("Condition " + conditionParameter + " " + condition + " is not true, so '" + reusableName + "' reusable step will not be executed");
         }
     }
 }

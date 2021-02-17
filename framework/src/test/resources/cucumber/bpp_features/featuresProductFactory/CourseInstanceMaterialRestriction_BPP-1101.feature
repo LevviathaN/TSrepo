@@ -50,6 +50,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
       |7|Add|I "check" "Is Course Material" "Product Factory checkbox"|
       |17|Delete|                                                     |
       |18|Delete|                                                     |
+    Then I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
@@ -63,6 +64,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
   @Positive @P1 #TC-1077, TC-1072, TC-1073
   Scenario: Verify Link Materials Restriction Positive
     And I execute "Create Material" reusable step
+    Then I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
@@ -76,6 +78,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
   @Positive @P1 #TC-1063
   Scenario: Verify Already Selected Material Is Not Displayed In Dropdown
     Given I execute "Create Material" reusable step
+    Then I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
@@ -93,6 +96,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
   Scenario: Add Expired Material
     Given I execute "Create Material" reusable step replacing some steps
       |10|I set "10/10/2019" text to the "Expiry Date" "Product Factory text field"|
+    Then I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"

@@ -14,7 +14,7 @@ import ui.utils.Reporter;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@CreateData"},
+        tags = {"@CreateDataDriven"},
         plugin = {"pretty"})
 
 public class DataGenerationRunner extends BaseUITest {

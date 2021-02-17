@@ -109,8 +109,10 @@ Feature: Product Factory
     Then I click on the "Create" "Product Factory button"
     And I set "BodyShortName[######]" text to the "Short Name" "Product Factory text field"
     And I set "BodyName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Change" "button"
-    And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_BODY_FD_CODE" "Product Factory dropdown option"
+    And I click on the "Vertical" "Product Factory dropdown"
+    And I click on the "EC_VERTICAL_NAME" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
@@ -241,6 +243,14 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
 
+  Scenario: Create Vertical
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Verticals" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "VerticalName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_VERTICAL_NAME" element
+
   Scenario: Create Stream
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Streams" "Product Factory navigation sub item"
@@ -330,7 +340,7 @@ Feature: Product Factory
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
 
-  Scenario: Create Course Instance
+  Scenario: Create Course
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
@@ -347,21 +357,14 @@ Feature: Product Factory
     When I set "1" text to the "Number of Sessions" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
-    #todo: separate Course and Course Instance creation
-    Then I click on the "Create" "Product Factory button"
+
+  Scenario: Create Course Instance
+    Given I click on the "Create" "Product Factory button"
     And I click on the "Default Session Duration" "Product Factory dropdown"
     And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
     And I click on the "Default Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
-    #todo: separate Course and Sessions creation
-#    When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
-#    And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
-#    And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
-#    And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"
-#    And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
-#    And I click on the "Next" "Product Factory button"
-#    And I click on the "Finish" "Product Factory button"
 
   Scenario: Clean Database
     Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYDATABASEURLNEW" URL
@@ -478,3 +481,34 @@ Feature: Product Factory
     Given I am on "https://generate.plus/en/number/isbn" URL
     And I click on the " generate" "button"
     And I capture text data "ISBN Generator Number Field" as "EC_ISBN" variable
+    
+  Scenario: Keep the Course Activated
+    Given I click on the "Activate" "Product Factory button" if "Activate,Product Factory button" "special element is present"
+    Given I click on the "Reactivate" "Product Factory button" if "(Deactivated)" "element is present"
+    And I should see the "Deactivate" "Product Factory button"
+
+  Scenario: Keep the Course Instance Activated
+    And I click on the "EC_LOCATION_NAME" "Product Factory course instance Activate button" if "EC_LOCATION_NAME,Product Factory course instance Activate button" "special element is present"
+    And I shouldn't see the "EC_LOCATION_NAME" "Product Factory course instance Delete button"
+
+  Scenario: Edit Course
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
+
+  Scenario: Populate Course Instance Session Dates
+    When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
+    And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
+    And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
+    And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"
+    And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
+    
+  Scenario: Delete All Course Materials
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete by price button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |

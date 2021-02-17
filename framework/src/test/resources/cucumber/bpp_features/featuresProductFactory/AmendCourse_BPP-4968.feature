@@ -141,10 +141,11 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And I click on the "Yes" "Product Factory button"
     Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
 
-  @Positive @P2 @NotFinished #TC-2407
+  @Positive @P2 #TC-2407
   Scenario: Amend Non Draft Course Instance Additional Scenario
-    And I execute "Create Course Instance" reusable step replacing some steps
+    And I execute "Create Course" reusable step replacing some steps
       |14|I set "2" text to the "Number of Sessions" "Product Factory text field"|
+    Then I execute "Create Course Instance" reusable step
 
     #Create second instance
     Then I click on the "Create" "Product Factory button"
@@ -196,11 +197,11 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And I shouldn't see the "EC_LOCATION_NAME_THREE" "Product Factory course instance Delete button"
 
     #Verify absence of Course edit buttons
-    When I click on the "Products" "Product Factory navigation item"
-    When I click on the "Courses" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
+#    When I click on the "Products" "Product Factory navigation item"
+#    When I click on the "Courses" "Product Factory navigation sub item"
+#    And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+#    And I click on the "submit" "element by type"
+#    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     Then I should see the "Default Location" "Product Factory edit button"
     And I should see the "Capacity" "Product Factory edit button"
     And I should see the "Stream" "Product Factory edit button"
@@ -214,7 +215,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     Then I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
 
     #Verify absence of second instance edit buttons
-    When I click on the "EC_LOCATION_NAME_THREE" "Product Factory course instance sessions dropdown button"
+#    When I click on the "EC_LOCATION_NAME_THREE" "Product Factory course instance sessions dropdown button"
     And I should see the "EC_LOCATION_NAME_THREE" "Product Factory edit button"
     And I should see the "EC_LOCATION_NAME_THREE" "Product Factory Session Dates button"
     And I shouldn't see the "Default Session Duration" "Product Factory edit button"
@@ -251,7 +252,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
     And Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "0"
     And I click on the "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button"
     And I click on the "Yes" "Product Factory button"
-    #todo potential bug button dont become inactive: https://automate.browserstack.com/dashboard/v2/builds/7ea61fc734dbad863763136e7721bfa21337514e/sessions/a1d84c57a2c0ed6245067a21874e4103ca5e4428
+    #todo potential bug button dont become inactive
     Then Attribute "tabindex" of "EC_LOCATION_NAME_TWO" "Product Factory course instance Publish button" should have value "-1"
 
     #Edit session dates of first instance

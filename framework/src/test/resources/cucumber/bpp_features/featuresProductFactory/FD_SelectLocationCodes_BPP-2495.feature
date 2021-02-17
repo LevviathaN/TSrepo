@@ -36,6 +36,7 @@ Feature: Financial Dimension - Select Location Codes - BPP-2495
     And I execute "Create Session Duration" reusable step
     And I execute "Create Client" reusable step
     And I execute "Create Material" reusable step
+    And I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
 
     When I click on the "Delivery" "Product Factory navigation item"

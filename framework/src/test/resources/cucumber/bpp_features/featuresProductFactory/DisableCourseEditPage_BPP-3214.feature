@@ -43,7 +43,6 @@ Feature: CBA - Disable Course Edit Page - BPP-3214
 
   @Positive @Regression @P1 #TC-2587
   Scenario: Disable Course Edit Page
-    When I click on the "exit_to_app" button
     And I execute "Create CBA Record" reusable step
     When I click on the "Create" "Product Factory button"
     Then I "check" "EC_BODY_SHORT_NAME" "Product Factory checkbox"

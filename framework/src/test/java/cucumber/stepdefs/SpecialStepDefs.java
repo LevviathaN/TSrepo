@@ -1,5 +1,6 @@
 package cucumber.stepdefs;
 
+import cucumber.reusablesteps.ReusableRunner;
 import io.cucumber.java.en.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -16,6 +17,8 @@ import ui.utils.Reporter;
 import ui.utils.UiHandlers;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
+
+import java.util.List;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -561,6 +564,58 @@ public class SpecialStepDefs extends SeleniumHelper {
                 keyItem.sendKeys(String.valueOf(string[i]));
             }
             waitForPageToLoad();
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
+
+    /**
+     * Definition to execute a list of steps for each element found on the page by given locator
+     *
+     * @param elementLocator locator for element you want to click on
+     *                initElementLocator builds locator, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @param steps list of steps to execute for each element found on page by given locator
+     *              To perform some action whith iterated element from current iteration, use FOR_ITEM as the locator.
+     *              For example, if you say:
+     *                  For each "OK Button" element:
+     *                  |I click on the "FOR_ITEM" element|
+     *              where "OK Button" is specified in your Locators.json file as "xpath=//button[text()='OK']",
+     *              and there was 2 such elements found by given locator, then "I click on the "FOR_ITEM" element" step
+     *              will be executed 2 times: first on "xpath=(//button[text()='OK'])[1]", and second on
+     *              "xpath=(//button[text()='OK'])[2]" element.
+     * @author Ruslan Levytskyi
+     */
+    @When("^For each \"([^\"]*)\" \"([^\"]*)\":$")
+    public void for_each_special(String elementType, String elementLocator, List<String> steps) {
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+
+            Reporter.log("Executing step: For each '" + elementLocator + " " + elementType + "' element");
+            List<WebElement> elements = findElements(initElementLocator(resultingXpath));
+            String xpathLocator = "";
+            BPPLogManager.getLogger().info("There are " + elements.size() + " '" + elementLocator + " " + elementType + "' elements found on the page");
+            //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
+            for(int i = 1; i <= elements.size(); i++) {
+                BPPLogManager.getLogger().info("For " + i + " element");
+                for(String step : steps) {
+                    BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
+                    if (specialLocatorsMap.containsKey(elementType)) {
+                        xpathLocator = specialLocatorsMap.get(elementType).replace("xpath=","xpath=(") + ")[" + i + "]";
+                    } else {
+                        xpathLocator = "xpath=(//*[text()='" + TestParametersController.checkIfSpecialParameter(elementLocator) + "'])[" + i + "]";
+                    }
+                    ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
+                }
+            }
+
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
         } else {
             Reporter.fail("No such locator template key");
         }

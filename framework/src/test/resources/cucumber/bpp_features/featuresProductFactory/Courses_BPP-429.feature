@@ -45,10 +45,11 @@ Feature: Create Course Instance - BPP-429
 
   @Positive @P1 #TC-696, TC-2793, TC-2794, TC-2769, TC-2382, TC-2402, TC-2403
   Scenario: Create Course Instance
-    Given I execute modified "Create Course Instance" reusable step
+    Given I execute modified "Create Course" reusable step
       |13|Add|I click on the "Finish" "Product Factory button"|
       |14|Add|I should see the "Number of Sessions must be Greater than 0" message|
       |20|Add|I validate text "CONTAINS=1" to be displayed for ": " element|
+    Then I execute "Create Course Instance" reusable step
     #todo create separate reusable for setting session dates and publishing
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
     And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
