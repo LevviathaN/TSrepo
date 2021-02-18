@@ -6,13 +6,9 @@ Feature: Paper List - add search filter - BPP-8381
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    Then I execute "Create Body" reusable step
-    And I execute "Create Paper" reusable step
-    And I execute "Create Level" reusable step
-    And I execute "Link Body To Level" reusable step
-    And I execute "Link Body To Paper" reusable step
-    And I execute "Link Paper To Level" reusable step
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoLevelShortName" text as "EC_LEVEL_SHORT_NAME" variable
+    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
 
   @Positive @Regression #TC-3582, TC-3600
   Scenario: Paper Filters Validation

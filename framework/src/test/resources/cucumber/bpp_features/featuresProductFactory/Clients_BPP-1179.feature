@@ -9,12 +9,7 @@ Feature: Reference Data - Client - BPP-1179
 
   @Positive @Regression @P1 #TC-919
   Scenario: Add a New Client Using a Modal
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Clients" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "ClientName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_CLIENT_NAME" element
+    Given I execute "Create Client" reusable step
 
   @Negative @P2 #TC-920
   Scenario: Submitting Incomplete Client Fields
@@ -25,20 +20,11 @@ Feature: Reference Data - Client - BPP-1179
 
   @Negative @P2 #TC-921
   Scenario: Add a Client Where Name Already Exists
-    When I execute "Create Client" reusable step
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Clients" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "EC_CLIENT_NAME" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "Name must be unique" "message"
+    When I execute "Create Client" reusable step replacing some steps
+      |4|I set "EC_CLIENT_NAME" text to the "Name" "Product Factory text field"|
 
   @Positive @Regression @P1 @Amend #TC-1548
   Scenario: Amend a Client Using a Modal
     When I execute "Create Client" reusable step
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Clients" "Product Factory navigation sub item"
-    Then I click on the "EC_CLIENT_NAME" "Product Factory edit button"
-    And I set "ClientName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_CLIENT_NAME" element
+    When I execute modified "Create Client" reusable step
+      |3|Replace|I click on the "EC_CLIENT_NAME" "Product Factory edit button"|

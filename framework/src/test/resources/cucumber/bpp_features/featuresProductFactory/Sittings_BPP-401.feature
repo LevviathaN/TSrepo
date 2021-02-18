@@ -6,44 +6,19 @@ Feature: Reference Data - Sitting - BPP-401
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    Then I execute "Create Body" reusable step
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
 
   @Positive @Regression @P1 #TC-835
   Scenario: Add a New Sitting Using a Modal (Link to One Body)
-    When I click on the "Delivery" "Product Factory navigation item"
-    When I click on the "Sittings" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "SittingName[######]" text to the "Name" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
-    And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "22/10/2025" text as "EC_SITTING_END_DATE" variable
-    And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
-    And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_SITTING_NAME" element
+    Given I execute "Create Sitting" reusable step
 
   @Positive @Regression @P2 #TC-836
   Scenario: Add a New Sitting Using a Modal (Link to Multiple Bodies)
-    Then I click on the "Create" "Product Factory button"
-    And I set "BodyShortNameNew[######]" text to the "Short Name" "Product Factory text field"
-    And I set "BodyNameNew[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Change" "button"
-    And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
-    And I click on the "Save" "Product Factory button"
-    
-    When I click on the "Delivery" "Product Factory navigation item"
-    When I click on the "Sittings" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "SittingName[######]" text to the "Name" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
-    And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "22/10/2025" text as "EC_SITTING_END_DATE" variable
-    And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
-    And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
-    And I "check" "EC_BODY_NAME_NEW" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_SITTING_NAME" element
+    And I remember "AutoBodyShortNameTwo" text as "EC_BODY_SHORT_NAME_TWO" variable
+    And I remember "AutoBodyNameTwo" text as "EC_BODY_NAME_TWO" variable
+    Given I execute modified "Create Sitting" reusable step
+      |9|Add|I "check" "EC_BODY_NAME_TWO" "Product Factory dialog checkbox"|
 
   @Negative @P2 #TC-837
   Scenario: Submitting Incomplete Sitting Fields
@@ -54,15 +29,8 @@ Feature: Reference Data - Sitting - BPP-401
 
   @Negative @P2 @NoQTest
   Scenario: Add a Sitting Where Name Already Exists
-    When I execute "Create Sitting" reusable step
-    When I click on the "Delivery" "Product Factory navigation item"
-    When I click on the "Sittings" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "EC_SITTING_NAME" text to the "Name" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
-    And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "22/10/2025" text as "EC_SITTING_END_DATE" variable
-    And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
-    And I "check" "EC_BODY_NAME" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "A Sitting with the same name has already been attached to Body" "text contained in element"
+#    When I execute "Create Sitting" reusable step
+    And I remember "AutoSittingName" text as "EC_AUTO_SITTING_NAME" variable
+    Given I execute modified "Create Sitting" reusable step
+      |4|Replace|I set "EC_AUTO_SITTING_NAME" text to the "Name" "Product Factory text field"|
+      |11|Replace|I should see the "A Sitting with the same name has already been attached to Body" "text contained in element"|

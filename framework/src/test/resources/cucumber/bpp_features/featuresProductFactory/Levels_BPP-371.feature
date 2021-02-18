@@ -10,13 +10,7 @@ Feature: Reference Data - Level - BPP-371
 
   @Positive @Regression @P1 #TC-746
   Scenario: Add a New Level Using a Modal
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Levels" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "LevelShortName[######]" text to the "Short Name" "Product Factory text field"
-    And I set "LevelName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_LEVEL_SHORT_NAME" element
+    Given I execute "Create Level" reusable step
 
   @Negative @P2 #TC-745
   Scenario: Submitting Incomplete Level Fields
@@ -27,11 +21,7 @@ Feature: Reference Data - Level - BPP-371
 
   @Negative @P2 #TC-748
   Scenario: Add a Level Where Short Name Already Exists
-    When I execute "Create Level" reusable step
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Levels" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "EC_LEVEL_SHORT_NAME" text to the "Short Name" "Product Factory text field"
-    And I set "LevelName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "Short Name must be unique" "message"
+    And I remember "AutoLevelShortName" text as "EC_LEVEL_SHORT_NAME" variable
+    When I execute modified "Create Level" reusable step
+      |4|Replace|I set "EC_LEVEL_SHORT_NAME" text to the "Short Name" "Product Factory text field"|
+      |7|Replace|I should see the "Short Name must be unique" "message"                           |

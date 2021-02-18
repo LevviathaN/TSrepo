@@ -12,8 +12,8 @@ Feature: Financial Dimension - Course Code - Editing - BPP-3110
   Scenario: Edit FD Code on Courses Page
     When I click on the "Products" "Product Factory navigation item"
     And I click on the "Courses" "Product Factory navigation sub item"
-    Then I should see the "Financials" "Product Factory button"
-    When I click on the "Financials" "Product Factory button"
+    Then I should see the "Financials" button
+    When I click on the "Financials" button
     And I click on the "Entity Dimension" "Product Factory change button"
     And I click on the "EC_COURSE_FD_CODE" "Product Factory select button"
     And I click on the "Revenue Dimension" "Product Factory change button"

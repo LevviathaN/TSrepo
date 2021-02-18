@@ -2405,7 +2405,7 @@
   },
   {
     "name": "Product Factory Database Submit Query Button",
-    "value": "xpath=//span[@data-testid='submitQuery']"
+    "value": "xpath=//span[@data-testid='editor-Run']"
   },
   {
     "name": "Product Factory Database Username Field",

@@ -6,21 +6,24 @@ Feature: Amend Reference Data - Paper - BPP-660
 
   Background:
     Given I execute "Log In" reusable step
-    And I execute "Create Paper" reusable step
+    And I remember "EditPprSN" text as "EC_PPR_SN_EDIT" variable
+    And I remember "AutoPaperNameEdit" text as "EC_PAPER_NAME_EDIT" variable
+    And I remember "AutoPaperDescriptionEdit" text as "EC_PAPER_DESCRIPTION_EDIT" variable
+    And I remember "AutoPprSN" text as "EC_PPR_SN" variable
+    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
+    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
 
   @Positive @Regression @P1 #TC-828
   Scenario: Amend a Paper Using a Modal
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Papers" "Product Factory navigation sub item"
-    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    When I click on the "EC_PAPER_NAME" "Product Factory edit button"
-    And I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field"
-    And I set "PaperNameTwo[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    Then I should see the "EC_PAPER_NAME_TWO" element
+    Given I execute modified "Create Paper" reusable step
+      |3|Add|I set "EC_PAPER_DESCRIPTION_EDIT" text to the "Search" "Product Factory text field" from keyboard|
+      |4|Add|I click on the "submit" "element by type"|
+      |5|Replace|I click on the "EC_PAPER_NAME_EDIT" "Product Factory edit button"|
+      |6|Replace|I set "PprSNTwo[##]" text to the "Short Name" "Product Factory text field"|
+      |7|Replace|I set "PaperNameTwo[#####]" text to the "Name" "Product Factory text field"|
+      |8|Replace|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
+      |12|Replace|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
+      |14|Replace|I should see the "EC_PAPER_NAME_TWO" element|
 
   @Negative @P2 #TC-827
   Scenario: Submitting Unchanged Paper Fields
@@ -33,22 +36,18 @@ Feature: Amend Reference Data - Paper - BPP-660
 
   @Negative @P2 #TC-831
   Scenario: Amend a Paper Where Description Already Exists
-    Given I execute "Create Paper" reusable step replacing some steps
-      |5|I set "PaperDescriptionNew[######]" text to the "Description" "Product Factory text field"|
-      |6|I set "PaperNameNew[######]" text to the "Name" "Product Factory text field"|
-      |10|I set "EC_PAPER_DESCRIPTION_NEW" text to the "Search" "Product Factory text field" from keyboard   |
-      |12|I should see the "EC_PAPER_NAME_NEW" element                                       |
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    When I click on the "EC_PAPER_DESCRIPTION" "Product Factory edit button"
-    And I set "EC_PAPER_DESCRIPTION_NEW" text to the "Description" "Product Factory text field"
+    When I click on the "EC_PAPER_NAME" "Product Factory edit button"
+    And I set "AutoPaperDescriptionTwo" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "Description must be unique" "message"
 
   @Positive @Regression @P1 #TC-1552
   Scenario: Amend a Paper Changing Body And Level
+    Given I execute "Create Paper" reusable step
     When I execute "Create Body Financial Dimension" reusable step
     When I execute "Create Body" reusable step
     When I execute "Create Body" reusable step replacing some steps

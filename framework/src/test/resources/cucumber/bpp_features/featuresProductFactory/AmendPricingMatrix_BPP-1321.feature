@@ -6,18 +6,10 @@ Feature: Pricing Matrix - update prices - BPP-1321
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
-    Then I execute "Create Sitting" reusable step
-    And I execute "Create VAT Rule" reusable step
-    And I execute "Create Course Type Financial Dimension" reusable step
-    And I execute "Create Course Type" reusable step
-    And I execute "Create Region Financial Dimension" reusable step
-    And I execute "Create Region" reusable step
-    And I execute "Create Paper" reusable step
-    And I execute "Link Body To Paper" reusable step
-    And I execute "Create Pricing Matrix" reusable step
-    And I execute "Create Pricing Matrix Full" reusable step
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoCourseTypeDescription" text as "EC_COURSE_TYPE_DESCRIPTION" variable
+    And I remember "AutoRegionName" text as "EC_REGION_NAME" variable
+    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
 
   @Positive @Regression @P1 #TC-1145
   Scenario: Update Pricing Matrix Price

@@ -469,7 +469,11 @@
   },
   {
     "name": "Product Factory select button",
-    "value": "xpath=//td[text()='PARAMETER']/following-sibling::td/button"
+    "value": "xpath=//td[text()='PARAMETER']/following-sibling::td/button[*[text()='Select']]"
+  },
+  {
+    "name": "Product Factory deselect button",
+    "value": "xpath=//td[text()='PARAMETER']/following-sibling::td/button[*[text()='Deselect']]"
   },
   {
     "name": "Product Factory text field",
@@ -478,6 +482,10 @@
   {
     "name": "Product Factory text field two",
     "value": "xpath=(//label[text()='PARAMETER']/following-sibling::div//input)[2]|(//label[text()='PARAMETER']/following-sibling::textarea)[2]|(//label[text()='PARAMETER']/following-sibling::div/textarea)[2]"
+  },
+  {
+    "name": "Product Factory Material Delete by price button",
+    "value": "xpath=//span[text()='£PARAMETER']/../../../div[2]/div/div[3]/button"
   },
   {
     "name": "Salesforce New Qualification input fields",
@@ -686,6 +694,10 @@
   {
     "name": "element by class",
     "value": "xpath=//*[@class='PARAMETER']"
+  },
+  {
+    "name": "element by data value",
+    "value": "xpath=//*[@data-value='PARAMETER']"
   },
   {
     "name": "exact element",

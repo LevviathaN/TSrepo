@@ -177,6 +177,7 @@ Feature: Financial Dimension - Edit Validation - BPP-3328
     And I execute "Create Pricing Matrix Full" reusable step
 
     ###Create Course
+    Then I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
 
    ###Edit Course after item creation
