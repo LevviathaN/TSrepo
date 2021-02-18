@@ -92,13 +92,13 @@ public class BaseUITest {
                 String scenarioName;
                 String actualScenarioName = Reporter.getCurrentTestName();
                 if (actualScenarioName.contains("attempt")) {
-                    scenarioName = actualScenarioName.substring(0,actualScenarioName.length()-10);
+                    scenarioName = actualScenarioName.substring(0, actualScenarioName.length() - 10);
                 } else {
                     scenarioName = actualScenarioName;
                 }
                 if (qTestAPI.getTestRunIDfromSuite().containsKey(scenarioName)) {
                     String qtestID = qTestAPI.getTestRunIDfromSuite().get(scenarioName);
-                    if (testResult.toString().contains("SUCCESS")){
+                    if (testResult.toString().contains("SUCCESS")) {
                         BPPLogManager.getLogger().info("Test " + Reporter.getCurrentTestName() + " PASSED");
                         qTestAPI.TestRunStatusUpdate(Reporter.getCurrentTestName(), "Passed", 601, qtestID, "");
                     } else {
@@ -113,7 +113,7 @@ public class BaseUITest {
         }
 
         try {
-            if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK")|| DriverProvider.getCurrentBrowserName().toUpperCase().contains("MOBILE")) {
+            if (DriverProvider.getCurrentBrowserName().toUpperCase().contains("BSTACK") || DriverProvider.getCurrentBrowserName().toUpperCase().contains("MOBILE")) {
                 sessionId = ((RemoteWebDriver) DriverProvider.getDriver()).getSessionId().toString();
                 Reporter.addLinkToReport(Reporter.getScreencastLinkFromBrowserStack(sessionId));
 

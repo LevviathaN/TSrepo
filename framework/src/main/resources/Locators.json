@@ -3602,5 +3602,33 @@
   {
     "name": "Nada Verify Email",
     "value": "inframe=Nada Email Body Frame>xpath=//a[contains(.,'Verify')]"
+  },
+  {
+    "name": "Quark Username",
+    "value": "id=userName"
+  },
+  {
+    "name": "Quark Publishing Logo",
+    "value": "xpath=//*[@class='navbar-brand']"
+  },
+  {
+    "name": "Quark Publish",
+    "value": "xpath=//span[contains(.,'Publish')]"
+  },
+  {
+    "name": "Quark Home Menu",
+    "value": "xpath=(//span[text()='Home'])[1]"
+  },
+  {
+    "name": "Quark Publish ICAEW PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW PDF')]"
+  },
+  {
+    "name": "Quark Publish BPP PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml')]//span[contains(.,'BPP PDF')]"
+  },
+  {
+    "name": "Quark Generating Output Window",
+    "value": "xpath=//span[contains(.,'Generating output...')]"
   }
 ]

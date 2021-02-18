@@ -1042,4 +1042,50 @@ public class SeleniumHelper {
         }
         return true;
     }
+
+    /**
+     * Method to perform right mouse click on selected element
+     *
+     * @param element locator of element to perform click
+     */
+
+    public void rightMouseClick(By element) {
+
+        Actions action = new Actions(driver());
+        try {
+            (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
+                    .until(ExpectedConditions.visibilityOfElementLocated(element));
+            BPPLogManager.getLogger().info("Right mouse click for an element: " + element);
+            action.contextClick(findElement(element)).build().perform();
+            waitForPageToLoad();
+            repeatAction = true;
+        } catch (Exception e) {
+            waitForPageToLoad();
+            action.contextClick(findElement(element)).build().perform();
+        }
+    }
+
+    /**
+     * Method to perform double mouse click on selected element
+     *
+     * @param element locator of element to perform click
+     */
+
+    public void doubleClick(By element, UiHandlers... handlers) {
+        Actions action = new Actions(driver());
+        try {
+            (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
+                    .until(ExpectedConditions.visibilityOfElementLocated(element));
+            BPPLogManager.getLogger().info("Double mouse click on: " + element );
+            action.doubleClick(findElement(element)).perform();
+            waitForPageToLoad();
+            repeatAction = true;
+        } catch (Exception e) {
+            for(UiHandlers handler : handlers){
+                handler.getHandler().handle(element, e);
+            }
+            if (repeatAction) doubleClick(element, handlers);
+            waitForPageToLoad();
+        }
+    }
 }
