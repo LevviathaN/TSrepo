@@ -624,7 +624,6 @@ public class SpecialStepDefs extends SeleniumHelper {
             Reporter.fail("No such locator template key");
         }
     }
-}
 
     /**
      * Definition to execute a list of steps for each element found on the page by given locator
