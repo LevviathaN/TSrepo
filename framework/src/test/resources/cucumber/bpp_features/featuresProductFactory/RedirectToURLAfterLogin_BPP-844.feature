@@ -1,7 +1,7 @@
 @ProductFactory @Redirect
 Feature: Redirect to Requested URL after Authentication - BPP-844
 
-  @Positive @Regression @P1 @Run #TC-3445
+  @Positive @Regression @P1 #TC-3445
   Scenario: Redirect to URL after Authentication - Senior Product Setter
     Given I execute "Log In" reusable step
     When I click on the "Programme" "Product Factory navigation item"
