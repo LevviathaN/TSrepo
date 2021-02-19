@@ -2984,6 +2984,10 @@
     "value": "xpath=//a[@name='New']"
   },
   {
+    "name": "Salesforce Product Catalog Item Dropdown",
+    "value": "xpath=(//a[contains(.,'Related')]/../following::span[text()='Product Catalog Items']//following::div//button)[1]"
+  },
+  {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
   },
