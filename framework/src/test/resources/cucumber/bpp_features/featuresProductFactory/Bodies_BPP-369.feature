@@ -10,6 +10,7 @@ Feature: Reference Data - Body - BPP-369
     |4|I fill the "Product Factory Password" field with "Password1"|
     And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
     And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
+    And I remember "AutoVerticalName" text as "EC_VERTICAL_NAME" variable
 
   @Positive @Regression @P1 #TC-743
   Scenario: Add a New Body Using a Modal
@@ -20,11 +21,11 @@ Feature: Reference Data - Body - BPP-369
     Given I execute modified "Create Body" reusable step
       |4|Delete||
       |5|Delete||
-      |8|Delete||
-      |9|Replace|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
+      |10|Delete||
+      |11|Replace|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
 
   @Negative @P2 #TC-744
   Scenario: Add a Body Where Short Name Already Exists
     Given I execute modified "Create Body" reusable step
       |4|Replace|I set "AutoBodyShortNameTwo" text to the "Short Name" "Product Factory text field"|
-      |9|Replace|I should see the "Short Name must be unique" "message"                            |
+      |11|Replace|I should see the "Short Name must be unique" "message"                            |

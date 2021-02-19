@@ -25,15 +25,15 @@ Feature: CBA - Edit - BPP-3200
     And I remember "AutoLocationAddressDraftCBA" text as "EC_LOCATION_ADDRESS" variable
     And I remember "AutoLevelNameDraftCBA" text as "EC_LEVEL_NAME" variable
     And I remember "AutoLevelShortNamDraftCBAe" text as "EC_LEVEL_SHORT_NAME" variable
-    And I remember "DrCBAPprSN" text as "EC_PPR_SN" variable
-    And I remember "DraftCBAPaperName" text as "EC_PAPER_NAME" variable
-    And I remember "DraftCBAPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
+    And I remember "ACBAPsn" text as "EC_PPR_SN" variable
+    And I remember "AutoCBAPaperNameDraftCBA" text as "EC_PAPER_NAME" variable
+    And I remember "AutoCBAPaperDescriptionDraftCBA" text as "EC_PAPER_DESCRIPTION" variable
     And I remember "AutoSittingNameDraftCBA" text as "EC_SITTING_NAME" variable
     And I remember "AutoMaterialTypeFDCodeDraftCBA" text as "EC_MATERIAL_TYPE_FD_CODE" variable
     And I remember "AutoMaterialTypeFDDescriptionDraftCBA" text as "EC_MATERIAL_TYPE_FD_DESCRIPTION" variable
     And I remember "AutoMaterialTypeNameDraftCBA" text as "EC_MATERIAL_TYPE_NAME" variable
     And I remember "AutoMaterialTypeDescriptionDraftCBA" text as "EC_MATERIAL_TYPE_DESCRIPTION" variable
-    And I remember "DraftCBASessionDurationDescription" text as "EC_SESSION_DURATION_DESCRIPTION" variable
+    And I remember "AutoCBASessionDurationDescriptionDraftCBA" text as "EC_SESSION_DURATION_DESCRIPTION" variable
     And I remember "AutoClientNameDraftCBA" text as "EC_CLIENT_NAME" variable
     And I remember "2000" text as "EC_PRICE" variable
     And I remember "10" text as "EC_WEIGHT" variable
@@ -48,15 +48,17 @@ Feature: CBA - Edit - BPP-3200
 
   @Positive @Regression @P1 #TC-2717, TC-2721, TC-2864
   Scenario: Update Draft CBA Record
-    When I click on the "exit_to_app" button
     And I execute "Log In" reusable step replacing some steps
       |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|
       |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
+    And I remember "11:58:00" text as "EC_CBA_START_TIME" variable
+    And I execute modified "Create CBA Record" reusable step
+      |19|Replace|I set "11:58AM" text to the "Start Time" "Product Factory text field"|
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
+    And I click on the "EC_CBA_START_TIME" "Product Factory edit button"
     And I click on the "Sitting" "Product Factory edit button"
     And I click on the "EC_SITTING_NAME_TWO" "Product Factory select button"
     And I click on the "Session Duration" "Product Factory edit button"

@@ -430,7 +430,7 @@ Feature: Product Factory
     Then I should see the "EC_LOCATION_NAME" element
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
     And I set "[TODAY]" text to the "Date" "Product Factory text field"
-    And I set "01:00AM" text to the "Start Time" "Product Factory text field"
+    And I set "~CBAStartTime[01:00AM]" text to the "Start Time" "Product Factory text field"
     And I set "1" text to the "Capacity" "Product Factory text field"
     And I click on the "Finish" "Product Factory button"
     And I click on the "Default Institute Fee (£)" "Product Factory edit button"

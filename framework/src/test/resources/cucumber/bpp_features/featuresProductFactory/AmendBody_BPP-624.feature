@@ -10,6 +10,7 @@ Feature: Amend Reference Data - Body - BPP-624
     And I remember "AutoBodyFDDescription" text as "EC_BODY_FD_DESCRIPTION" variable
     And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
     And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoVerticalName" text as "EC_VERTICAL_NAME" variable
 
   @Positive @Regression @P1 #TC-1545
   Scenario: Amend a Body Using a Modal
@@ -20,8 +21,8 @@ Feature: Amend Reference Data - Body - BPP-624
     Given I execute modified "Create Body" reusable step
       |4|Replace|I set "" text to the "Short Name" "Product Factory text field"|
       |5|Replace|I set "" text to the "Name" "Product Factory text field"      |
-      |8|Replace|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
-      |9|Delete |                                                                              |
+      |10|Replace|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
+      |11|Delete |                                                                              |
 
   @Negative @P2 #TC-820
   Scenario: Amend a Body Where Short Name Already Exists
@@ -33,4 +34,4 @@ Feature: Amend Reference Data - Body - BPP-624
       |5|Replace|I set "EC_BODY_NAME_TWO" text to the "Name" "Product Factory text field"      |
       |6|Delete |                                                                              |
       |7|Delete |                                                                              |
-      |9|Replace|I should see the "Short Name must be unique" "message"|
+      |11|Replace|I should see the "Short Name must be unique" "message"|
