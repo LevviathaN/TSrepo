@@ -1976,6 +1976,18 @@
     "value": "xpath=(//*[@class='welcome-banner'])[2]"
   },
   {
+    "name": "Harakirimail Delete Adverisement DOM element",
+    "value": "xpath=(//ins[@class='adsbygoogle adsbygoogle-noablate'])[3]"
+  },
+  {
+    "name": "Harakirimail Advertisement Close icon",
+    "value": "inframe=Harakirimail Advertisement iframe>xpath=//div[@aria-label='Close ad']/div/*[name()='svg']"
+  },
+  {
+    "name": "Harakirimail Advertisement iframe",
+    "value": "xpath=//iframe[@id='aswift_3']"
+  },
+  {
     "name": "Harakirimail Application Outcome Letter",
     "value": "xpath=//div[contains(text(),'Your Mitigating Circumstances application outcome')]"
   },
@@ -3032,6 +3044,10 @@
     "value": "xpath=//span[@class='typename'][text()='Label']"
   },
   {
+    "name": "Totara Add an Activity File Radio button",
+    "value": "xpath=//span[@class='typename'][text()='File']"
+  },
+  {
     "name": "Totara Add an Activity Assignment Radio button",
     "value": "xpath=//span[@class='typename'][text()='Assignment']"
   },
@@ -3129,11 +3145,23 @@
   },
   {
     "name": "Totara Automation First Topic Edit button",
-    "value": "xpath=(//a[contains(text(),\"Topic\")]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//a)[1]"
+    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//a)[1]"
+  },
+  {
+    "name": "Totara Automation First Automation Topic Edit button",
+    "value": "xpath=(//h3[@class='sectionname'][contains(normalize-space(),'AutomationTopic')]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//a)[1]"
   },
   {
     "name": "Totara Automation First Topic Delete button",
-    "value": "xpath=(//a[contains(text(),\"Topic\")]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[1]"
+    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[1]"
+  },
+  {
+    "name": "Totara Automation First Automation Topic Delete button",
+    "value": "xpath=(//h3[@class='sectionname'][contains(normalize-space(),'AutomationTopic')]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[1]"
+  },
+  {
+    "name": "Totara Automation First Topic Edit Topic button",
+    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Edit topic'])[1]"
   },
   {
     "name": "Totara Add Topic Plus icon",

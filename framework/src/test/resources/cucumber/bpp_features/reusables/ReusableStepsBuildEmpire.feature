@@ -1736,8 +1736,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Save And Return" button
 
   Scenario: Course Topic Clean Up
-    Given I click on the "Totara Automation First Topic Edit button" button
-    And I click on the "Totara Automation First Topic Delete button" button
+    Given I click on the "Totara Automation First Automation Topic Edit button" button
+    And I click on the "Totara Automation First Automation Topic Delete button" button
     And I wait for "3" seconds
     And I click on the "Delete" "Totara button"
     And I wait for "3" seconds
