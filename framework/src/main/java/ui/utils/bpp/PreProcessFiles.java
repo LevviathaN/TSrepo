@@ -15,6 +15,8 @@ public class PreProcessFiles {
 	public static String ROOT_FOLDER_PATH = null;
 	public static String GUI_FOLDER_PATH = null;
 	public static String TEST_FILES_FOLDER_PATH = null;
+	public static String QUARK_FILES_FOLDER_PATH = null;
+	public static String DOWNLOADED_FILES_FOLDER_PATH = null;
 
 	public PreProcessFiles(){
 	}
@@ -43,6 +45,8 @@ public class PreProcessFiles {
 			if(moduleUI){
 				PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/src/main/resources/default.properties";
 				TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
+				QUARK_FILES_FOLDER_PATH = rootFolder + "/quarkFiles";
+				DOWNLOADED_FILES_FOLDER_PATH = rootFolder + "/downloads";
 			}
 		}
 		else {
@@ -50,6 +54,8 @@ public class PreProcessFiles {
 			GUI_FOLDER_PATH = rootFolder + "/gui";
 			METADATA_AND_KEYWORDS_FILES_FOLDER_PATH = rootFolder + "/resources/data/bpp/keywords.metadata";
 			TEST_FILES_FOLDER_PATH = rootFolder + "/testFilesToUpload";
+			QUARK_FILES_FOLDER_PATH = rootFolder + "/quarkFiles";
+			DOWNLOADED_FILES_FOLDER_PATH = rootFolder + "/downloads";
 			if (moduleUI) {
 				PROPERTIES_FILES_FOLDER_PATH = rootFolder + "/resources/default.properties";
 			}

@@ -6,22 +6,13 @@ Feature: Amend Reference Data - Sitting - BPP-662
 
   Background:
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    Then I execute "Create Body" reusable step
-    Given I execute "Create Sitting" reusable step
+    And I remember "AutoBodyShortName" text as "EC_BODY_SHORT_NAME" variable
+    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
+    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
 
   @Positive @Regression @P1 #TC-1547
   Scenario: Amend a Sitting Using a Modal
-    When I click on the "Delivery" "Product Factory navigation item"
-    When I click on the "Sittings" "Product Factory navigation sub item"
-    When I click on the "EC_SITTING_NAME" "Product Factory edit button"
-    And I set "SittingName[######]" text to the "Name" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
-    And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY_+7|DD/MM/YYYY" text as "EC_SITTING_END_DATE" variable
-    And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_SITTING_NAME" element
+    Given I execute "Create Sitting" reusable step
 
   @Negative @P2 @NoQTest
   Scenario: Submitting Unchanged Sitting Fields
@@ -33,10 +24,5 @@ Feature: Amend Reference Data - Sitting - BPP-662
   @Negative @P2 @NoQTest
   Scenario: Amend a Sitting Where Name Already Exists
     Given I execute "Create Sitting" reusable step replacing some steps
-      |4|I set "SittingNameNew[######]" text to the "Name" "Product Factory text field"|
-    When I click on the "Delivery" "Product Factory navigation item"
-    When I click on the "Sittings" "Product Factory navigation sub item"
-    When I click on the "EC_SITTING_NAME" "Product Factory edit button"
-    And I set "EC_SITTING_NAME_NEW" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "The combination of Name and Dates must be unique" "message"
+      |4|I set "AutoSittingNameTwo" text to the "Name" "Product Factory text field"|
+      |11|I should see the "The combination of Name and Dates must be unique" "message"|

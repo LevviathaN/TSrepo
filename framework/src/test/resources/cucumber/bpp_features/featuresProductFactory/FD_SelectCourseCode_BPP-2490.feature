@@ -32,6 +32,7 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
 
   @Positive @P1 @BlockedByIssue #TC-4411 (Blocked by BPP-11454)
   Scenario: Course Page Filters Validation
+    Then I execute "Create Course" reusable step
     Given I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"

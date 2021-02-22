@@ -9,17 +9,7 @@ Feature: Reference Data - Paper - BPP-372
 
   @Positive @Regression #TC-772
   Scenario: Add a New Paper Using a Modal
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Papers" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "PaperSN[###]" text to the "Short Name" "Product Factory text field"
-    And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    And I wait for "3" seconds
-    And I click on the "Search" "Product Factory text field"
-    Then I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    Then I should see the "EC_PAPER_DESCRIPTION" element
+    Given I execute "Create Paper" reusable step
 
   @Negative @P2 #TC-771
   Scenario: Submitting Incomplete Paper Fields
@@ -30,15 +20,19 @@ Feature: Reference Data - Paper - BPP-372
 
   @Negative @P2 #TC-773
   Scenario: Add a Paper Where Description Already Exists
-    When I execute "Create Paper" reusable step
-    When I click on the "Programme" "Product Factory navigation item"
-    When I click on the "Papers" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "EC_PPR_SN" text to the "Short Name" "Product Factory text field"
-    And I set "EC_PAPER_NAME" text to the "Name" "Product Factory text field"
-    And I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "Name must be unique" "message"
+    And I remember "AutoPprSN" text as "EC_PPR_SN" variable
+    And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
+    And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
+    When I execute modified "Create Paper" reusable step
+      |4|Replace|I set "EC_PPR_SN" text to the "Short Name" "Product Factory text field"|
+      |5|Replace|I set "EC_PAPER_NAME" text to the "Name" "Product Factory text field"|
+      |6|Replace|I set "EC_PAPER_DESCRIPTION" text to the "Description" "Product Factory text field"|
+      |8|Replace|I should see the "Name must be unique" "message"                                   |
+      |9|Delete |                                                                                   |
+      |10|Delete |                                                                                   |
+      |11|Delete |                                                                                   |
+      |12|Delete |                                                                                   |
+      |13|Delete |                                                                                   |
 
   @Negative @P2 #TC-4285
   Scenario: Ability to Search Instance by Paper Short Name

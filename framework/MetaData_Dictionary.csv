@@ -35,6 +35,8 @@ MD_PRODUCTFACTORYDATABASEUSERNEW,Neo4j,descr.
 MD_PRODUCTFACTORYDATABASEPASSWORDNEW,3M#$,qns5uw*W#jr,descr.
 MD_SALESFORCECPQUSER,oksanasysadmincpq@bpp.com.noahqa,descr.
 MD_SALESFORCECPQPASSWORD,12space34,descr.
+MD_QUARKUSER,yzosin,descr.
+MD_QUARKPASSWORD,Welcome8@,descr.
 MD_ENTER,ENTER,descr.
 MD_REFRESH,F5,descr.
 MD_INSPECT,F12,descr.
@@ -62,6 +64,7 @@ MD_TOTARALOGINURL,https://totara.staging.bppdigital.buildempire.app/login/index.
 MD_PRODUCTFACTORYURLNEW,https://qa2-products.bpp.com/,descr.
 MD_PRODUCTFACTORYDATABASEURLNEW,http://ec2-3-10-141-78.eu-west-2.compute.amazonaws.com:7474/,descr.
 MD_SALESFORCEINSTANCE,https://bpp-13fd3e55182--noahqa.lightning.force.com/lightning/r/Instance__c/a43g00000008940AAA/view,descr.
+MD_QUARKURL,7.0.12.124/workspace/login.qsp#,descr.
 MD_CUSTOMERGROUP,SELFFUND,descr.
 MD_MSCMANAGEMENTOFFERING,MSc Management CRO PTD 201819 for student application,descr.
 MD_SFOFFERING,2381626,descr.

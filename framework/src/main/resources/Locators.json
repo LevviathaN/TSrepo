@@ -2417,7 +2417,7 @@
   },
   {
     "name": "Product Factory Database Submit Query Button",
-    "value": "xpath=//span[@data-testid='submitQuery']"
+    "value": "xpath=//span[@data-testid='editor-Run']"
   },
   {
     "name": "Product Factory Database Username Field",
@@ -2994,6 +2994,10 @@
   {
     "name": "Salesforce New Product Catalog Item",
     "value": "xpath=//a[@name='New']"
+  },
+  {
+    "name": "Salesforce Product Catalog Item Dropdown",
+    "value": "xpath=(//a[contains(.,'Related')]/../following::span[text()='Product Catalog Items']//following::div//button)[1]"
   },
   {
     "name": "Totara Account Expandable Menu",
@@ -3670,5 +3674,33 @@
   {
     "name": "Nada Verify Email",
     "value": "inframe=Nada Email Body Frame>xpath=//a[contains(.,'Verify')]"
+  },
+  {
+    "name": "Quark Username",
+    "value": "id=userName"
+  },
+  {
+    "name": "Quark Publishing Logo",
+    "value": "xpath=//*[@class='navbar-brand']"
+  },
+  {
+    "name": "Quark Publish",
+    "value": "xpath=//span[contains(.,'Publish')]"
+  },
+  {
+    "name": "Quark Home Menu",
+    "value": "xpath=(//span[text()='Home'])[1]"
+  },
+  {
+    "name": "Quark Publish ICAEW PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW PDF')]"
+  },
+  {
+    "name": "Quark Publish BPP PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml')]//span[contains(.,'BPP PDF')]"
+  },
+  {
+    "name": "Quark Generating Output Window",
+    "value": "xpath=//span[contains(.,'Generating output...')]"
   }
 ]

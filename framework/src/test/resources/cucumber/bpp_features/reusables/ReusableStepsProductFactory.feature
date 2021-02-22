@@ -109,8 +109,10 @@ Feature: Product Factory
     Then I click on the "Create" "Product Factory button"
     And I set "BodyShortName[######]" text to the "Short Name" "Product Factory text field"
     And I set "BodyName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Change" "button"
-    And I click on the "EC_BODY_FD_CODE" "Product Factory change modal option"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_BODY_FD_CODE" "Product Factory dropdown option"
+    And I click on the "Vertical" "Product Factory dropdown"
+    And I click on the "EC_VERTICAL_NAME" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_SHORT_NAME" element
 
@@ -123,6 +125,7 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_LEVEL_SHORT_NAME" element
 
+    #todo remove search in the end
   Scenario: Create Paper
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
@@ -240,6 +243,14 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
 
+  Scenario: Create Vertical
+    When I click on the "Miscellaneous" "Product Factory navigation item"
+    When I click on the "Verticals" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "VerticalName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_VERTICAL_NAME" element
+
   Scenario: Create Stream
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Streams" "Product Factory navigation sub item"
@@ -268,6 +279,7 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_BODY_NAME" element
 
+    #todo rename to Create Price, since it is more correct
   Scenario: Create Pricing Matrix Full
     When I click on the "Financials" "Product Factory navigation item"
     When I click on the "Prices" "Product Factory navigation sub item"
@@ -328,17 +340,15 @@ Feature: Product Factory
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
 
-  Scenario: Create Course Instance
+  Scenario: Create Course
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
-#    And I click on the "Search" "Product Factory text field"
     Then I set "EC_PAPER_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_PAPER_NAME" "Product Factory select button" by JS
     And I click on the "EC_LEVEL_NAME" "Product Factory select button"
     And I click on the "EC_SITTING_NAME" "Product Factory select button"
-#    And I click on the "Search" "Product Factory text field two"
     Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
     And I click on the "submit" "element by type two"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button" by JS
@@ -347,8 +357,9 @@ Feature: Product Factory
     When I set "1" text to the "Number of Sessions" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
-    #todo: separate Course and Course Instance creation
-    Then I click on the "Create" "Product Factory button"
+
+  Scenario: Create Course Instance
+    Given I click on the "Create" "Product Factory button"
     And I click on the "Default Session Duration" "Product Factory dropdown"
     And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory dropdown option"
     And I click on the "Default Location" "Product Factory dropdown"
@@ -419,7 +430,7 @@ Feature: Product Factory
     Then I should see the "EC_LOCATION_NAME" element
     Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
     And I set "[TODAY]" text to the "Date" "Product Factory text field"
-    And I set "01:00AM" text to the "Start Time" "Product Factory text field"
+    And I set "~CBAStartTime[01:00AM]" text to the "Start Time" "Product Factory text field"
     And I set "1" text to the "Capacity" "Product Factory text field"
     And I click on the "Finish" "Product Factory button"
     And I click on the "Default Institute Fee (£)" "Product Factory edit button"
@@ -450,23 +461,54 @@ Feature: Product Factory
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
+    And I wait for "6" seconds
     And I click on the "Body" "Product Factory dropdown"
     And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
     And I click on the "Level" "Product Factory dropdown"
     And I click on the "EC_LEVEL_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
     And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
-    And I click on the "Sittings" "Product Factory edit button"
+    And I click on the "Next" "Product Factory button"
     And I "check" "EC_SITTING_NAME" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory active button"
-    And I click on the "Course Types" "Product Factory edit button"
-    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field two" from keyboard
-    And I click on the "submit" "element by type three"
+    And I click on the "Next" "Product Factory button"
+    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
     And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
-    And I click on the "Save" "Product Factory active button"
-    And I click on the "Save" "Product Factory button"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
 
   Scenario: Generate ISBN
     Given I am on "https://generate.plus/en/number/isbn" URL
     And I click on the " generate" "button"
     And I capture text data "ISBN Generator Number Field" as "EC_ISBN" variable
+    
+  Scenario: Keep the Course Activated
+    Given I click on the "Activate" "Product Factory button" if "Activate,Product Factory button" "special element is present"
+    Given I click on the "Reactivate" "Product Factory button" if "(Deactivated)" "element is present"
+    And I should see the "Deactivate" "Product Factory button"
+
+  Scenario: Keep the Course Instance Activated
+    And I click on the "EC_LOCATION_NAME" "Product Factory course instance Activate button" if "EC_LOCATION_NAME,Product Factory course instance Activate button" "special element is present"
+    And I shouldn't see the "EC_LOCATION_NAME" "Product Factory course instance Delete button"
+
+  Scenario: Edit Course
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
+
+  Scenario: Populate Course Instance Session Dates
+    When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
+    And I click on the "EC_LOCATION_NAME" "Product Factory Session Dates button"
+    And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
+    And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"
+    And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
+    
+  Scenario: Delete All Course Materials
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete by price button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |

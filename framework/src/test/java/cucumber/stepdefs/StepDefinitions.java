@@ -10,10 +10,12 @@ import org.hamcrest.Matchers;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.ITest;
 import ui.utils.SeleniumHelper;
 import ui.utils.*;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.TestParametersController;
+import ui.utils.pdf.PDFHandler;
 
 import java.io.IOException;
 import java.util.List;
@@ -220,7 +222,7 @@ public class StepDefinitions extends SeleniumHelper {
 
     @Then("^I execute modified \"([^\"]*)\" reusable step$")
     public void i_execute_reusable_step_modified(String reusableName, List<List<String>> steps) {
-        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step with replacing some steps");
+        Reporter.log("Executing step: I execute '" + reusableName + "' reusable step modified");
         ReusableRunner.getInstance().executeReusableModified(reusableName,steps);
     }
 
@@ -766,10 +768,72 @@ public class StepDefinitions extends SeleniumHelper {
                 if (locatorsMap.containsKey(element)) {
                     xpathLocator = locatorsMap.get(element).replace("xpath=","xpath=(") + ")[" + i + "]";
                 } else {
-                    xpathLocator = "xpath=(//*[text()=']" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
+                    xpathLocator = "xpath=(//*[text()='" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
                 }
                 ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
             }
         }
     }
+
+    /**
+     * Definition to execute a list of steps for each element found on the page by given locator
+     *
+     * @param baseFile a base PDF file for comparison
+     *
+     * @param fileName1 a PDF file downloaded from web platform to compare against
+     *
+     * @author Yurii Zosin
+     */
+    @And("I compare \"([^\"]*)\" file with \"([^\"]*)\" PDF file")
+    public void i_compare_pdfs(String baseFile, String fileName1) {
+        Reporter.log("Executing step: I check PDF files: " + baseFile + " and " + fileName1);
+        Reporter.log("Amount of pages in " + baseFile + " is: " + PDFHandler.getPageCountBaseFile(baseFile));
+        Reporter.log("Amount of pages in " + fileName1 + " is: " + PDFHandler.getPageCountDownloadedFile(fileName1));
+        Assert.assertTrue(PDFHandler.checkPDF(baseFile, fileName1));
+    }
+
+
+
+    /**
+     * Definition to doubleclick an element on the page
+     *
+     * @param element locator for element you want to click on
+     *                initElementLocator builds locator, depending on input parameter:
+     *                1. Starts with "xpath" or "css" - locator is passed directly into a method
+     *                2. Parameter exists in locators document - locator value is returned from document
+     *                3. None of above - parameter is treated as text value of element: //*[contains(text(), 'parameter')]
+     * @author Ruslan Levytskyi
+     */
+    @When("^I doubleclick on the \"([^\"]*)\" (?:button|link|option|element)$")
+    public void i_doubleclick_on_the_button(String element) {
+        Reporter.log("Executing step: I click on the '" + element + "' element");
+        doubleClick(initElementLocator(element),
+                UiHandlers.PF_SPINNER_HANDLER,
+                UiHandlers.ACCEPT_ALERT,
+                UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
+                UiHandlers.PF_SCROLL_HANDLER,
+                UiHandlers.PAGE_NOT_LOAD_HANDLER,
+                UiHandlers.SF_CLICK_HANDLER,
+                UiHandlers.WAIT_HANDLER,
+                UiHandlers.DEFAULT_HANDLER);
+    }
+
+    /**
+     * Definition to execute reusable step if given condition is true
+     *
+     * @param reusableName name of reusable step (Scenario in ReusableSteps.feature) you want to execute
+     *                     Here we also check if text is EC_ or MD_ of KW_
+     * @author Ruslan Levytskyi
+     */
+    @Then("^I execute modified \"([^\"]*)\" reusable step if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_execute_reusable_step_modified_if(String reusableName, String conditionParameter, String condition, List<List<String>> steps) {
+        Conditions conditions = new Conditions();
+        if (conditions.checkCondition(condition, conditionParameter)) {
+            Reporter.log("Executing step: I execute '" + reusableName + "' reusable step modified");
+            ReusableRunner.getInstance().executeReusableModified(TestParametersController.checkIfSpecialParameter(reusableName), steps);
+        } else {
+            Reporter.log("Condition " + conditionParameter + " " + condition + " is not true, so '" + reusableName + "' reusable step will not be executed");
+        }
+    }
+
 }

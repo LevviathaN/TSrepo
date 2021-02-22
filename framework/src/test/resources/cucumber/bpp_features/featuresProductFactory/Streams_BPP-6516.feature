@@ -6,39 +6,30 @@ Feature: Reference Data - Streams - BPP-6516
 
   Background:
     Given I execute "Log In" reusable step
+    And I remember "AutoStreamName" text as "EC_AUTO_STREAM_NAME" variable
 
   @Positive @P1 #TC-2929
   Scenario: Add a New Stream Using a Modal
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Streams" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "StreamName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_STREAM_NAME" element
+    And I execute "Create Stream" reusable step
 
   @Negative @P2 @Amend #TC-2932
   Scenario: Amend a Stream With Name That Already Exists
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Clients" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
+    And I execute "Create Stream" reusable step
+    And I execute "Create Stream" reusable step replacing some steps
+      |3|I click on the "EC_STREAM_NAME" "Product Factory edit button"|
+      |4|I set "EC_AUTO_STREAM_NAME" text to the "Name" "Product Factory text field"|
+      |6|I should see the "Name must be unique" element                             |
 
   @Negative @P2 #TC-2930
-  Scenario: Add a Stream Where Description Already Exists
-    When I execute "Create Stream" reusable step
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Streams" "Product Factory navigation sub item"
-    Then I click on the "Create" "Product Factory button"
-    And I set "EC_STREAM_NAME" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "Name must be unique" "message"
+  Scenario: Add a Stream Where Name Already Exists
+    And I execute "Create Stream" reusable step replacing some steps
+      |4|I set "EC_AUTO_STREAM_NAME" text to the "Name" "Product Factory text field"|
+      |6|I should see the "Name must be unique" element                             |
 
   @Positive @Regression @P1 @Amend #TC-2931
   Scenario: Amend a Stream Using a Modal
-    When I execute "Create Stream" reusable step
-    When I click on the "Miscellaneous" "Product Factory navigation item"
-    When I click on the "Streams" "Product Factory navigation sub item"
-    Then I click on the "EC_STREAM_NAME" "Product Factory edit button"
-    And I set "StreamName[######]" text to the "Name" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_STREAM_NAME" element
+    And I execute "Create Stream" reusable step
+    And I execute "Create Stream" reusable step replacing some steps
+      |3|I click on the "EC_STREAM_NAME" "Product Factory edit button"|
+      |4|I set "StreamNameNew[######]" text to the "Name" "Product Factory text field"|
+      |6|I should see the "EC_STREAM_NAME_NEW" element|
