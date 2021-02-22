@@ -33,7 +33,7 @@ Feature: Product Factory
     And I remember "AutoLocationAddress<varName>" text as "EC_LOCATION_ADDRESS<ecName>" variable
     And I remember "AutoLevelName<varName>" text as "EC_LEVEL_NAME<ecName>" variable
     And I remember "AutoLevelShortName<varName>" text as "EC_LEVEL_SHORT_NAME<ecName>" variable
-    And I remember "AutoPprSN<shortVar>" text as "EC_PPR_SN<shortEc>" variable
+    And I remember "AtPprSN<shortVar>" text as "EC_PPR_SN<shortEc>" variable
     And I remember "AutoPaperName<varName>" text as "EC_PAPER_NAME<ecName>" variable
     And I remember "AutoPaperDescription<varName>" text as "EC_PAPER_DESCRIPTION<ecName>" variable
     And I remember "ACBAPsn<shortVar>" text as "EC_CBA_PPR_SN<shortEc>" variable
@@ -87,7 +87,7 @@ Feature: Product Factory
     And I remember "AutoLocationAddress<varName>" text as "EC_LOCATION_ADDRESS" variable
     And I remember "AutoLevelName<varName>" text as "EC_LEVEL_NAME" variable
     And I remember "AutoLevelShortName<varName>" text as "EC_LEVEL_SHORT_NAME" variable
-    And I remember "AutoPprSN<shortVar>" text as "EC_PPR_SN" variable
+    And I remember "AtPprSN<shortVar>" text as "EC_PPR_SN" variable
     And I remember "AutoPaperName<varName>" text as "EC_PAPER_NAME" variable
     And I remember "AutoPaperDescription<varName>" text as "EC_PAPER_DESCRIPTION" variable
     And I remember "ACBAPsn<shortVar>" text as "EC_CBA_PPR_SN" variable

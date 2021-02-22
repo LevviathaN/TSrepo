@@ -12,6 +12,7 @@ Feature: Amend Reference Data - Paper - BPP-660
     And I remember "AutoPprSN" text as "EC_PPR_SN" variable
     And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
     And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
+    And I remember "AutoVerticalName" text as "EC_VERTICAL_NAME" variable
 
   @Positive @Regression @P1 #TC-828
   Scenario: Amend a Paper Using a Modal

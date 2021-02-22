@@ -6,8 +6,8 @@ Feature: Materials - Create Materials - BPP-1099
 
   Background:
     Given I execute "Generate ISBN" reusable step
-    And I click on the " generate" "button"
-    And I capture text data "ISBN Generator Number Field" as "EC_NEW_ISBN" variable
+#    And I click on the " generate" "button"
+#    And I capture text data "ISBN Generator Number Field" as "EC_NEW_ISBN" variable
     Given I execute "Log In" reusable step
     And I remember "AutoMaterialTypeName" text as "EC_MATERIAL_TYPE_NAME" variable
     And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
@@ -32,7 +32,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "submit" "element by type"
     And I should see the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
 
-  @Positive @P1 @Amend @NotResolved
+  @Positive @P1 @Amend @NotResolved @Runn
   Scenario: Amend Material Using Modal
     When I execute "Create Material" reusable step
     When I click on the "Products" "Product Factory navigation item"

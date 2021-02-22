@@ -6,6 +6,7 @@ Feature: Reference Data - Link Body to Level - BPP-470
 
   Background:
     Given I execute "Log In" reusable step
+    And I remember "AutoVerticalName" text as "EC_VERTICAL_NAME" variable
     And I remember "AutoBodyFDCode" text as "EC_BODY_FD_CODE" variable
     And I execute "Create Body" reusable step
     Then I execute "Create Level" reusable step
