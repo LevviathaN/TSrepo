@@ -652,6 +652,14 @@
     "value": "xpath=(//span[contains(text(),'PARAMETER')][@class='instancename']/following::span[@data-flex-icon='core|t/right']/following-sibling::span[2])[1]"
   },
   {
+    "name": "Totara edit topic by name using EC value",
+    "value": "xpath=(//*[contains(text(),'PARAMETER')]/following::a[@role='menuitem'])[1]"
+  },
+  {
+    "name": "Totara context menu delete action by name using EC value",
+    "value": "xpath=(//*[contains(text(),'PARAMETER')]/following::a[@role='menuitem']/following::a[@data-action=\"delete\"])[1]"
+  },
+  {
     "name": "VLE Login Fields",
     "value": "xpath=//input[@name='PARAMETER']"
   },

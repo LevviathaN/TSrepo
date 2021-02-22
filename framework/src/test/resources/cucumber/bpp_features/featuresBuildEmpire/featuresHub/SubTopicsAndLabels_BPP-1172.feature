@@ -14,9 +14,7 @@ Feature: BPP University Hub Sub Topics and Labels
     #Logout as a User
     Then I execute "Log Out from Hub Student" reusable step
     And I execute "Logout Totara Workaround" reusable step
-    #Admin Login With Walkaround
-    #When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
-    #And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
+    #Admin Login Totara
     Then I execute "Login as Admin Totara" reusable step
     #Enrol To course for ICAEW Course
     When I click on the "Totara ICAEW Course" link by JS
@@ -29,10 +27,24 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "Totara Enrol Button" button by JS
     And I wait for "2" seconds
     And I click on the "Totara Finish Enroling Users button" button by JS
-    #Totara Add Subtopic and Content
-    When I click on the "Dashboard" "text contained in SPAN element"
+    #Totara Clean Up test data
     When I click on the "Totara ICAEW Course" link by JS
     And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
+    And I click on the "Totara Automation Quiz Name Edit Quiz Button" link if "Totara Automation Quiz Name Edit Quiz Button" "element is present"
+    And I click on the "Totara Automation Quiz Name Delete Quiz Button" link if "Totara Automation Quiz Name Delete Quiz Button" "element is present"
+    And I click on the "Moodle Staging Confirm Activity Delete Button" link if "Moodle Staging Confirm Activity Delete Button" "element is present"
+    And Browser performs "Refresh" command
+    And I wait for "5" seconds
+    And I click on the "Totara Automation Exp Label Edit button" button if "Totara Automation Exp Label Edit button" "element is present"
+    And I click on the "Totara Automation Exp Label Delete Item" link if "Totara Automation Exp Label Delete Item" "element is present"
+    And I click on the "Moodle Staging Confirm Activity Delete Button" link if "Moodle Staging Confirm Activity Delete Button" "element is present"
+    And Browser performs "Refresh" command
+    And I wait for "5" seconds
+    And I click on the "Totara Automation Sub Topic Edit Button" link if "Totara Automation Sub Topic Edit Button" "element is present"
+    And I click on the "Totara Automation Sub Topic Delete Button" link if "Totara Automation Sub Topic Delete Button" "element is present"
+    And I click on the "Moodle Staging Confirm Activity Delete Button" link if "Moodle Staging Confirm Activity Delete Button" "element is present"
+    And I wait for "5" seconds
+    #Totara Add Subtopic and Content
     And I click on the "Totara Automation Topic Add an Activity or Resource" element
     And I click on the "Totara Add an Activity Label Radio button" element
     And I click on the "Totara Add an Activity Add Button" button
@@ -94,8 +106,6 @@ Feature: BPP University Hub Sub Topics and Labels
     And Attribute "data-icon" of "BPP Digital Automation Validate Quiz Check Svg Item" should have value "check"
     And Attribute "class" of "BPP Digital Automation Validate Green Check Icon" should have value "CONTAINS=complete"
     #Student Logout
-    #And I execute "Log Out from Hub Student" reusable step
-    #Admin Login With Walkaround
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Logout Totara Workaround" reusable step
     Then I execute "Login as Admin Totara" reusable step
