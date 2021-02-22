@@ -359,10 +359,10 @@ Feature: BuildEmpire
     And I click on the "Direct App What Are You Applying For Dropdown" element
     And I wait for "2" seconds
     Then I click on the "Professional Career Development Programmes England" "Build Empire application type"
-    And I hover over the "Direct App Programmes Programm Dropdown" button
-    And I click on the "Direct App Programmes Programm Dropdown" element
-    And I wait for "1" seconds
-    Then I click on the "Financial Services Professional" "Build Empire application type"
+    #And I hover over the "Direct App Programmes Programm Dropdown" button
+    #And I click on the "Direct App Programmes Programm Dropdown" element
+    #And I wait for "1" seconds
+    #Then I click on the "Financial Services Professional" "Build Empire application type"
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -1598,10 +1598,10 @@ Feature: BuildEmpire
     Then I click on the "BPP University Degree Apprenticeships" "Build Empire application type"
     And I click on the "Direct App Programmes Programm Dropdown" element
     Then I click on the "Direct App Level Three Paralegal" element
-    #And I hover over the "Direct App Start Date Application Dropdown" button
-    #And I click on the "Direct App Start Date Application Dropdown" element
-    #And I wait for "2" seconds
-    #Then I click on the "January 2021" "Build Empire application type"
+    And I hover over the "Direct App Start Date Application Dropdown" button
+    And I click on the "Direct App Start Date Application Dropdown" element
+    And I wait for "2" seconds
+    Then I click on the "January 2021" "Build Empire application type"
     And I wait for "2" seconds
     And I click on the "Direct App Create Application" button
 
