@@ -1,8 +1,8 @@
 @BuildEmpire @Hub @Totara @Restrictions
 Feature: Topic Restrictions Course Overview Page - BPP-3003
-  As a user in the Hub,
-  when a MOODLE QUIZ has been set as the Key Activity on my Topic Overview page,
-  I expect to see a score and date for each attempt
+  As a user, viewing a course overview page within the Hub,
+  I expect to be able to understand why I cannot access certain Topics and Sections
+  That I have partial access to within Totara.
 
   @Positive #TC-1621
   Scenario: Topic Restrictions Course Overview by Group

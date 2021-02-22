@@ -119,9 +119,12 @@ Feature: Harakirimail, Guerrillamail
     Given I am on "https://harakirimail.com/" URL
     And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
     Then I click on the "Harakirimail Get Inbox" button
-    Then I click on the "Harakirimail First Email" element
+    Then I click on the "Harakirimail First Email" element by JS
     And I wait for "2" seconds
-    Then I click on the "Harakirimail Verify Email" button
+    And I execute "document.getElementsByClassName('adsbygoogle adsbygoogle-noablate')[2].remove();" JS code
+    And I wait for "6" seconds
+    Then I click on the "Harakirimail First Email" element if "Harakirimail First Email" "element is present"
+    Then I click on the "Harakirimail Verify Email" button by JS
     And I switch to window with index "2"
     And I wait for "2" seconds
     And I should see the "Email address verified! Please log in." "message"

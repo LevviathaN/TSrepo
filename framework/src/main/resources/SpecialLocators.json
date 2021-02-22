@@ -272,6 +272,10 @@
     "value": "xpath=//li[text()='PARAMETER']"
   },
   {
+    "name": "Build Empire Course Expandable Labels name",
+    "value": "xpath=//div[@class='label-info-title'][text()='PARAMETER']"
+  },
+  {
     "name": "Build Empire education element",
     "value": "xpath=//label[contains(text(),'PARAMETER')]/..//input"
   },
@@ -648,6 +652,22 @@
     "value": "xpath=//*[@id='PARAMETER']"
   },
   {
+    "name": "Totara edit link by EC value",
+    "value": "xpath=(//span[contains(text(),'PARAMETER')][@class='instancename']/following::a[@role='menuitem'])[1]"
+  },
+  {
+    "name": "Totara Move Right link by EC value",
+    "value": "xpath=(//span[contains(text(),'PARAMETER')][@class='instancename']/following::span[@data-flex-icon='core|t/right']/following-sibling::span[2])[1]"
+  },
+  {
+    "name": "Totara edit topic by name using EC value",
+    "value": "xpath=(//*[contains(text(),'PARAMETER')]/following::a[@role='menuitem'])[1]"
+  },
+  {
+    "name": "Totara context menu delete action by name using EC value",
+    "value": "xpath=(//*[contains(text(),'PARAMETER')]/following::a[@role='menuitem']/following::a[@data-action=\"delete\"])[1]"
+  },
+  {
     "name": "VLE Login Fields",
     "value": "xpath=//input[@name='PARAMETER']"
   },
@@ -762,6 +782,10 @@
   {
     "name": "Totara Edit Activity Edit Settings option",
     "value": "xpath=(//span[contains(.,'PARAMETER')]/../../following::ul[@data-rel='menu-content']//a)[1]"
+  },
+  {
+    "name": "Totara role button with title name",
+    "value": "xpath=//a[@role='button'][@title='PARAMETER']"
   },
   {
     "name": "BPP Digital Mobile Courses Menu",
