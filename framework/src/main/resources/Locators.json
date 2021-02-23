@@ -3696,6 +3696,10 @@
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW PDF')]"
   },
   {
+    "name": "Quark Publish QB PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-questionBankPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW QB PDF')]"
+  },
+  {
     "name": "Quark Publish BPP PDF",
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml')]//span[contains(.,'BPP PDF')]"
   },
