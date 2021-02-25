@@ -30,6 +30,7 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
     And I click on the "Direct App Mark As Complete Checkbox" button
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
     And Browser performs "Refresh" command

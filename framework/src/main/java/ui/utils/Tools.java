@@ -245,6 +245,11 @@ public class Tools {
 
     public static String editDay(String value, int start, int end) {
         String trimmedNumber = value.substring(start, end);
+        //required to trim 0 as Totara dropdown options don't have 01, 02 etc.
+        if (trimmedNumber.startsWith("0")) {
+            String removedZero = trimmedNumber.substring(1);
+            return  removedZero;
+        }
         return trimmedNumber;
     }
 }
