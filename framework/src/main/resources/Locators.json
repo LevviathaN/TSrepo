@@ -1829,7 +1829,7 @@
   },
   {
     "name": "Direct Apps Home News Title",
-    "value": "xpath=//h4[@class='news-title']"
+    "value": "xpath=(//h4[@class='news-title'])[1]"
   },
   {
     "name": "Direct Apps Home News URL",
@@ -3718,6 +3718,10 @@
   {
     "name": "Quark Publish ICAEW PDF",
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW PDF')]"
+  },
+  {
+    "name": "Quark Publish QB PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-questionBankPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW QB PDF')]"
   },
   {
     "name": "Quark Publish BPP PDF",
