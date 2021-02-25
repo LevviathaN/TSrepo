@@ -1829,7 +1829,7 @@
   },
   {
     "name": "Direct Apps Home News Title",
-    "value": "xpath=//h4[@class='news-title']"
+    "value": "xpath=(//h4[@class='news-title'])[1]"
   },
   {
     "name": "Direct Apps Home News URL",

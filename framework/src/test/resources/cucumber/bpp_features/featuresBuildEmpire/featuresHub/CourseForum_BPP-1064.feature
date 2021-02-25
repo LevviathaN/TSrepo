@@ -33,6 +33,7 @@ Feature: BPP University Hub Course Forum
     And Browser deletes cookies
     #Login As student
     When I execute "Log In to Hub as Student" reusable step
+    And I wait for "3" seconds
     #Navigate to Course
     When I click on the "Direct App My Learning Left Menu Link" link by JS
     When I click on the "Direct App First Course link" link
@@ -47,6 +48,6 @@ Feature: BPP University Hub Course Forum
     When I click on the "Totara Course Select Forum link" link
     And I click on the "Totara Course Forum option" link by JS
     And I wait for "3" seconds
-    And I switch to window with index "3"
+    And I switch to window with index "4"
     Then I validate text "Automation Forum" to be displayed for "Totara Forum Header name" element
     Then I validate text "Are we happy with the Hub?" to be displayed for "Totara First Forum Question item" element
