@@ -23,13 +23,13 @@ public class PDFHandler {
         boolean comparison = true;
 
         pdfUtil.compareAllPages(true);
-        pdfUtil.setCompareMode(CompareMode.TEXT_MODE);
+        //pdfUtil.setCompareMode(CompareMode.TEXT_MODE);
 
-        try {
+        /*try {
             comparison = pdfUtil.compare(fileOne, fileTwo);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }**/
         if (comparison != true) {
             pdfUtil.setCompareMode(CompareMode.VISUAL_MODE);
             pdfUtil.highlightPdfDifference(true);
