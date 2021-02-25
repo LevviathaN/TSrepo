@@ -2512,6 +2512,30 @@
     "value": "xpath=//div[@title='Programme']//span[text()='work']"
   },
   {
+    "name": "Product Factory Additional Filters Button",
+    "value": "xpath=//span[text()='Additional Filters']"
+  },
+  {
+    "name": "Product Factory Clear Body Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'body: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Level Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'level: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Sitting Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'sitting: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Paper Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'paper: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Course Type Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'course type: ')]]/*[2]"
+  },
+  {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },

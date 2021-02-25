@@ -11,7 +11,7 @@ Feature: Product Factory
   Scenario Outline: Remember Variables <type>
     And I remember "AutoDeactivationReasonDescription<varName>" text as "EC_DEACTIVATION_REASON_DESCRIPTION<ecName>" variable
     And I remember "AutoDeactivationReasonDescriptionPrevent<varName>" text as "EC_DEACTIVATION_REASON_DESCRIPTION_PREVENT<ecName>" variable
-    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
+    And I remember "22/02/2022" text as "EC_SITTING_START_DATE" variable
     And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
     And I remember "AutoStreamName<varName>" text as "EC_STREAM_NAME<ecName>" variable
     And I remember "AutoBodyFDCode<varName>" text as "EC_BODY_FD_CODE<ecName>" variable
