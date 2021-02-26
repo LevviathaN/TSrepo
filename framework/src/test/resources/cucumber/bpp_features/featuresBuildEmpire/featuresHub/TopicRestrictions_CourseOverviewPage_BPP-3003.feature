@@ -110,9 +110,10 @@ Feature: Topic Restrictions Course Overview Page - BPP-3003
     And I click on the "Restrict access" "Build Empire link"
     And I click on the "Add restriction..." "BPP Digital Profile button"
     And I click on the "Date" "BPP Digital Profile button"
-    And I click on the "Totara Year Dropdown menu" element
-    And I click on the "Totara Year Dropdown Next Year option" element
-    And I click on the "Totara Restriction EYE icon" element
+    And I click on the "Totara Year Dropdown menu" element by JS
+    And I click on the "Totara Year Dropdown Next Year option" element by JS
+    And I click on the "Totara Restriction EYE icon" element by JS
+    Then I wait for "2" seconds
     And I click on the "Save changes" "Totara button"
     #Admin Logout
     Then I execute "Logout as Admin Totara" reusable step

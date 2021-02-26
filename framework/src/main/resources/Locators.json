@@ -1821,11 +1821,11 @@
   },
   {
     "name": "Direct Apps Home News Author",
-    "value": "xpath=//p[@class='news-author']"
+    "value": "xpath=(//p[@class='news-author'])[1]"
   },
   {
     "name": "Direct Apps Home News Content",
-    "value": "xpath=//div[@class='news-content']"
+    "value": "xpath=(//div[@class='news-content'])[1]"
   },
   {
     "name": "Direct Apps Home News Title",
