@@ -31,39 +31,11 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
     And I remember "AutoPaperName" text as "EC_PAPER_NAME" variable
     And I remember "AutoPaperDescription" text as "EC_PAPER_DESCRIPTION" variable
     And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
+    And I remember "22/02/2021" text as "EC_SITTING_START_DATE" variable
+    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
+    And I remember "AutoSessionDurationDescription" text as "EC_SESSION_DURATION_DESCRIPTION" variable
 
-#    When I execute "Create Body Financial Dimension" reusable step
-#    And I execute "Create Body" reusable step
-#    And I execute "Create VAT Rule" reusable step
-#    And I execute "Create Course Type Financial Dimension" reusable step
-#    And I execute "Create Course Type" reusable step
-#    And I execute "Create Location Financial Dimension" reusable step
-#    And I execute "Create Region Financial Dimension" reusable step
-#    And I execute "Create Region" reusable step
-#    And I execute "Create Location" reusable step
-#    And I execute "Create Level" reusable step
-#    And I execute "Create Paper" reusable step
-#    And I execute "Link Body To Level" reusable step
-#    And I execute "Link Body To Paper" reusable step
-#    And I execute "Link Paper To Level" reusable step
-#    And I execute "Create Sitting" reusable step
-    And I execute "Create Sitting" reusable step replacing some steps
-      |4|I set "SittingNameTwo[######]" text to the "Name" "Product Factory text field"|
-    And I execute "Create Sitting" reusable step replacing some steps
-      |4|I set "SittingNameThree[######]" text to the "Name" "Product Factory text field"|
-#    And I execute "Create Pricing Matrix" reusable step
-#    And I execute "Create Pricing Matrix Full" reusable step
-    And I execute "Create Pricing Matrix" reusable step replacing some steps
-      |8|I click on the "EC_SITTING_NAME_TWO" "Product Factory change modal option"|
-    And I execute "Create Pricing Matrix Full" reusable step replacing some steps
-      |3|I click on the "EC_SITTING_NAME_TWO" "Product Factory edit button"|
-#    And I execute "Create Material Type Financial Dimension" reusable step
-#    And I execute "Create Material Type" reusable step
-#    And I execute "Create Session Duration" reusable step
-#    And I execute "Create Client" reusable step
-#    And I execute "Create Material" reusable step
-
-  @Positive @P1 @Runn #TC-3181
+  @Positive @P1 #TC-3181
   Scenario: Create Course With Matching Digital Content
     Given I execute "Create Digital Content" reusable step with some additional steps
       |18|I set "Suffix[###]" text to the "Name Suffix" "Product Factory text field"|
@@ -82,6 +54,7 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
 
   @Negative @P1 #TC-3183
   Scenario: Create Course With No Matching Digital Content
+    And I execute "Create Sitting" reusable step
     Then I execute "Create Course" reusable step
     Then I execute "Create Course Instance" reusable step
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
@@ -96,8 +69,14 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
 
   @Positive @P1 #TC-3184
   Scenario: Change Sitting In The Active Course to One That Has Digital Content
-    Given I execute "Create Digital Content" reusable step with some additional steps
-      |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
+    And I execute "Create Sitting" reusable step replacing some steps
+      |4|I set "SittingNameTwo[######]" text to the "Name" "Product Factory text field"|
+    And I execute "Create Pricing Matrix" reusable step replacing some steps
+      |8|I click on the "EC_SITTING_NAME_TWO" "Product Factory change modal option"|
+    And I execute "Create Pricing Matrix Full" reusable step replacing some steps
+      |3|I click on the "EC_SITTING_NAME_TWO" "Product Factory edit button"|
+    Given I execute "Create Digital Content" reusable step replacing some steps
+      |12|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
     Then I execute "Create Course" reusable step
     Then I execute "Create Course Instance" reusable step
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
@@ -117,8 +96,16 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
 
   @Negative @P1 #TC-3185
   Scenario: Change Sitting In The Active Course to One Without Digital Content
-    Given I execute "Create Digital Content" reusable step with some additional steps
-      |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
+    And I execute "Create Sitting" reusable step replacing some steps
+      |4|I set "SittingNameTwo[######]" text to the "Name" "Product Factory text field"|
+    And I execute "Create Sitting" reusable step replacing some steps
+      |4|I set "SittingNameThree[######]" text to the "Name" "Product Factory text field"|
+    And I execute "Create Pricing Matrix" reusable step replacing some steps
+      |8|I click on the "EC_SITTING_NAME_TWO" "Product Factory change modal option"|
+    And I execute "Create Pricing Matrix Full" reusable step replacing some steps
+      |3|I click on the "EC_SITTING_NAME_TWO" "Product Factory edit button"|
+    Given I execute "Create Digital Content" reusable step replacing some steps
+      |12|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
     Then I execute "Create Course" reusable step
     Then I execute "Create Course Instance" reusable step
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
