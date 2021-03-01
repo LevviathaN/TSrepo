@@ -2052,6 +2052,10 @@
     "value": "xpath=//a[contains(.,'Verify')]"
   },
   {
+    "name": "Harakirimail Adds Banner",
+    "value": "xpath=//*[@class='adsbygoogle adsbygoogle-noablate']"
+  },
+  {
     "name": "Hub VPE Active First Topic",
     "value": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]"
   },
@@ -3137,7 +3141,27 @@
   },
   {
     "name": "Totara Restriction EYE icon",
-    "value": "xpath=//h3[contains(text(),'Date restriction')]/following::a[contains(@class,'availability-eye')]"
+    "value": "xpath=(//h3[contains(text(),'Date restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Group Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Activity Completion Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),'Activity completion restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Set of One Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),' Set of 1 restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Set of Two Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),' Set of 2 restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Set of Two Restriction EYE icon if not Hidden",
+    "value": "xpath=(//h3[contains(text(),' Set of 2 restriction')]/following::a[contains(@class,'availability-eye')]/span[@title='Displayed greyed-out if user does not meet conditions'])[1]"
   },
   {
     "name": "Totara Automation Mobile Exp Label Edit Move Right Item",
@@ -3514,6 +3538,10 @@
   {
     "name": "Totara VPE Email Sender",
     "value": "xpath=//input[@name='vpe_email_sender']"
+  },
+  {
+    "name": "Totara Restrictions Expandable link",
+    "value": "xpath=//a[@aria-controls='id_availabilityconditions']"
   },
   {
     "name": "Totara Volodymyr Course",
