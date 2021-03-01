@@ -512,3 +512,11 @@ Feature: Product Factory
       |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete by price button"|
       |I click on the "Yes" "Product Factory button"|
       |I wait for "3" seconds                       |
+
+  Scenario: Create Exam Preparation
+    When I click on the "Types" "Product Factory navigation item"
+    When I click on the "Exam Preparations" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "ExamPreparationName[######]" text to the "Name" "Product Factory text field"
+    And I set "ExamPreparationDescription[######]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
