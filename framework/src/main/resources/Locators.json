@@ -1821,15 +1821,15 @@
   },
   {
     "name": "Direct Apps Home News Author",
-    "value": "xpath=//p[@class='news-author']"
+    "value": "xpath=(//p[@class='news-author'])[1]"
   },
   {
     "name": "Direct Apps Home News Content",
-    "value": "xpath=//div[@class='news-content']"
+    "value": "xpath=(//div[@class='news-content'])[1]"
   },
   {
     "name": "Direct Apps Home News Title",
-    "value": "xpath=//h4[@class='news-title']"
+    "value": "xpath=(//h4[@class='news-title'])[1]"
   },
   {
     "name": "Direct Apps Home News URL",
@@ -2514,6 +2514,30 @@
   {
     "name": "Product Factory Work Link",
     "value": "xpath=//div[@title='Programme']//span[text()='work']"
+  },
+  {
+    "name": "Product Factory Additional Filters Button",
+    "value": "xpath=//span[text()='Additional Filters']"
+  },
+  {
+    "name": "Product Factory Clear Body Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'body: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Level Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'level: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Sitting Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'sitting: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Paper Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'paper: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory Clear Course Type Additional Filter",
+    "value": "xpath=//div[span[contains(text(),'course type: ')]]/*[2]"
   },
   {
     "name": "Salesforce Account Creation Save button",
@@ -3722,6 +3746,10 @@
   {
     "name": "Quark Publish ICAEW PDF",
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW PDF')]"
+  },
+  {
+    "name": "Quark Publish QB PDF",
+    "value": "xpath=//*[contains(@id,'publishContextMenuItem-questionBankPdfUsingFlattenXml_ICAEW')]//span[contains(.,'ICAEW QB PDF')]"
   },
   {
     "name": "Quark Publish BPP PDF",

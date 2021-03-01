@@ -120,6 +120,7 @@ Feature: Harakirimail, Guerrillamail
     And I fill the "Harakirimail Inbox Name" field with "EC_AUTO_EMAIL"
     Then I click on the "Harakirimail Get Inbox" button
     Then I click on the "Harakirimail First Email" element by JS
+    And I wait for "2" seconds
     And I click on the "document.getElementsByClassName('adsbygoogle adsbygoogle-noablate')[2].remove();" button with JS if "Harakirimail Adds Banner" "element is present"
     And I wait for "6" seconds
     Then I click on the "Harakirimail First Email" element if "Harakirimail First Email" "element is present"

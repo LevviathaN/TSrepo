@@ -321,6 +321,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     And I click on the "Direct App Line Manager Agree To Support Amount" element
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -359,10 +360,10 @@ Feature: BuildEmpire
     And I click on the "Direct App What Are You Applying For Dropdown" element
     And I wait for "2" seconds
     Then I click on the "Professional Career Development Programmes England" "Build Empire application type"
-    #And I hover over the "Direct App Programmes Programm Dropdown" button
-    #And I click on the "Direct App Programmes Programm Dropdown" element
-    #And I wait for "1" seconds
-    #Then I click on the "Financial Services Professional" "Build Empire application type"
+    And I hover over the "Direct App Programmes Programm Dropdown" button
+    And I click on the "Direct App Programmes Programm Dropdown" element
+    And I wait for "1" seconds
+    Then I click on the "Financial Services Professional" "Build Empire application type"
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -481,6 +482,8 @@ Feature: BuildEmpire
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
+    #Then I click on the "I confirm that my organisation employs fewer than 50 people" "Build Empire checkbox"
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -725,16 +728,18 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
+    Then I click on the "I confirm that my organisation employs fewer than 50 people" "Build Empire checkbox"
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Next" button
     And I click on the "Direct App Line Manager Review Health And Safety Checkbox" button
-    #And I click on the "Direct App Save Review And Next" button
-    And I click on the "Direct App Save Review And Back" button
-    And I wait for "1" seconds
-    Then Browser performs "REFRESH" command
+    And I click on the "Direct App Save Review And Next" button
+    #And I click on the "Direct App Save Review And Back" button
+    #And I wait for "1" seconds
+    #Then Browser performs "REFRESH" command
     And I wait for "3" seconds
-    And I click on the "Application documents" "Build Empire application section"
+    #And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
     Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
@@ -965,6 +970,8 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
+    Then I click on the "I confirm that my organisation employs fewer than 50 people" "Build Empire checkbox"
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -1001,6 +1008,8 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
+    Then I click on the "I confirm that my organisation employs fewer than 50 people" "Build Empire checkbox"
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -1293,6 +1302,8 @@ Feature: BuildEmpire
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I fill the "Direct Apps Line Manager End Point Assessment Organisation" field with "AutomationTesting"
     And I click on the "Direct App Line Manager New Role" button
+    Then I click on the "I confirm that my organisation employs fewer than 50 people" "Build Empire checkbox"
+    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "2" seconds
     And I click on the "Direct App Save Review And Next" button
