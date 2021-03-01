@@ -249,7 +249,7 @@ Feature: Product Factory
     Then I click on the "Create" "Product Factory button"
     And I set "VerticalName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
-    Then I should see the "EC_VERTICAL_NAME" element
+#    Then I should see the "EC_VERTICAL_NAME" element
 
   Scenario: Create Stream
     When I click on the "Miscellaneous" "Product Factory navigation item"
