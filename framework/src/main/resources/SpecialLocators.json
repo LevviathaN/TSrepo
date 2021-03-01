@@ -628,6 +628,10 @@
     "value": "xpath=//input[@id=\"PARAMETER\"]"
   },
   {
+    "name": "Totara Select field with title Parameter",
+    "value": "xpath=//select[@title=\"PARAMETER\"]"
+  },
+  {
     "name": "Totara Moodle Quiz checkbox",
     "value": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']"
   },
@@ -666,6 +670,10 @@
   {
     "name": "Totara context menu delete action by name using EC value",
     "value": "xpath=(//*[contains(text(),'PARAMETER')]/following::a[@role='menuitem']/following::a[@data-action=\"delete\"])[1]"
+  },
+  {
+    "name": "Totara context menu edit topic action by name using EC value",
+    "value": "xpath=(//*[contains(text(),'PARAMETER')]/following::a[@role='menuitem']/following::a[@title=\"Edit topic\"])[1]"
   },
   {
     "name": "VLE Login Fields",
