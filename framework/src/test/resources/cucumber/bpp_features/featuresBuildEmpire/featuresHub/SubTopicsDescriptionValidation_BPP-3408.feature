@@ -121,3 +121,16 @@ Feature: BPP University Hub Sub Topics and Labels
     And I click on the "EC_AUTOMATION_FILE_NAME" "Build Empire Course Expandable Labels name" by JS
     Then I should see the "EC_AUTOMATION_FILE_DESCRIPTION" element
     Then I should see the "Start" "Build Empire link"
+    #When I execute "Log Out from Hub Student" reusable step
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
+    And Browser deletes cookies
+    And I wait for "5" seconds
+    Then I execute "Login as Admin Totara" reusable step
+    #Totara Clear Topics
+    When I click on the "Dashboard" "text contained in SPAN element"
+    When I click on the "Totara Automation Only Course" link by JS
+    And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
+    And I execute "Course Topic Clean Up" reusable step if "Totara Automation First Topic Edit button" "element is present"
+    And Browser performs "Refresh" command
+    And I wait for "2" seconds
