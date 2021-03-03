@@ -74,20 +74,6 @@ public class SeleniumHelper {
         return driver.get();
     }
 
-//    public static Map<String,String> getLocatorsMap(String locatorsFile) {
-//        Map<String,String> locatorsMap = new HashMap<>();
-//        try {
-//            List<Locator> locators = JSONReader.toObjectListFromFile(Locator[].class,
-//                    new File(locatorsFile));
-//            for (Locator locator : locators) {
-//                locatorsMap.put(locator.getName(),locator.getValue());
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return locatorsMap;
-//    }
-
     //_______________________________________________Basic Assertions_______________________________________________
 
     /**
@@ -312,7 +298,7 @@ public class SeleniumHelper {
             value = value.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
             dropdown.selectByVisibleText(value);
         }
-        WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
+        WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.attributeContains(dropdown.getFirstSelectedOption(), "text", value));
     }
 
@@ -372,7 +358,7 @@ public class SeleniumHelper {
      * @param locator: locator to wait to make it enable
      */
     public void elementToBeEnable(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver(), SHORT_TIMEOUT);
+        WebDriverWait wait = new WebDriverWait(driver(), Duration.ofSeconds(SHORT_TIMEOUT));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -440,7 +426,7 @@ public class SeleniumHelper {
         waitForPageToLoad();
         int timeoutForFindElement = timeout.length < 1 ? SHORT_TIMEOUT : timeout[0];
         try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
+            (new WebDriverWait(driver(), Duration.ofSeconds(timeoutForFindElement)))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver().findElement(element);
         } catch (Exception e) {
@@ -456,7 +442,7 @@ public class SeleniumHelper {
      */
     public static void clickOnElement(By element, UiHandlers... handlers) {
         try {
-            (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
+            (new WebDriverWait(driver(), Duration.ofSeconds(DEFAULT_TIMEOUT)))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             BPPLogManager.getLogger().info("Clicking on: " + element );
             driver().findElement(element).click();
@@ -523,7 +509,7 @@ public class SeleniumHelper {
         int timeoutForFindElement = timeout.length < 1 ? DEFAULT_TIMEOUT : timeout[0];
         waitForPageToLoad();
         try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
+            (new WebDriverWait(driver(), Duration.ofSeconds(timeoutForFindElement)))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return driver().findElement(element);
         } catch (Exception e) {
@@ -576,7 +562,7 @@ public class SeleniumHelper {
         waitForPageToLoad();
         BPPLogManager.getLogger().info("Finding elements: " + element);
         try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
+            (new WebDriverWait(driver(), Duration.ofSeconds(timeoutForFindElement)))
                     .until(ExpectedConditions.presenceOfElementLocated(element));
             return driver().findElements(element);
         } catch (Exception e) {
@@ -619,7 +605,7 @@ public class SeleniumHelper {
         waitForPageToLoad();
         BPPLogManager.getLogger().info("Getting an: " + element + " by attribute: " + attributeName);
         try {
-            (new WebDriverWait(driver(), timeoutForFindElement))
+            (new WebDriverWait(driver(), Duration.ofSeconds(timeoutForFindElement)))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             return findElement(element).getAttribute(attributeName);
         } catch (Exception e) {
@@ -762,7 +748,7 @@ public class SeleniumHelper {
      * Method to wait for page to load for DEFAULT_TIMEOUT
      */
     public static void waitForPageToLoad(){
-        Wait<WebDriver> wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT, 1000).ignoring(WebDriverException.class);
+        Wait<WebDriver> wait = new WebDriverWait(driver(),Duration.ofSeconds(DEFAULT_TIMEOUT),Duration.ofSeconds(1)).ignoring(WebDriverException.class);
         if (driver().getTitle().contains("BPP Totara Staging") || driver().getTitle().contains("BPPTS: Automation Board")) {
             sleepFor(2);
             JavascriptExecutor executor = (JavascriptExecutor) driver();
@@ -777,17 +763,6 @@ public class SeleniumHelper {
         }); }
     }
 
-    /**
-     * Method to wait for selectrd element for DEFAULT_TIMEOUT
-     *
-     * @param by locator of element to wait for
-     */
-    //unused functionality. To be removed in next commits
-    static void waitForElement(By by) {
-        WebDriverWait wait = new WebDriverWait(driver(), DEFAULT_TIMEOUT);
-        BPPLogManager.getLogger().info("Waiting for element: " + by);
-        wait.until(ExpectedConditions.presenceOfElementLocated(by));
-    }
 
     /**
      * Method to call Thread.sleep
@@ -839,7 +814,7 @@ public class SeleniumHelper {
      */
     public void switchToFrame(By frameName) {
         BPPLogManager.getLogger().info("Switching to frame: " + frameName);
-        WebDriverWait wait = new WebDriverWait(driver(), 3);
+        WebDriverWait wait = new WebDriverWait(driver(),Duration.ofSeconds(3));
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
         sleepFor(2);
         try {
@@ -866,12 +841,12 @@ public class SeleniumHelper {
     public void switchToWindowByIndex(int index) {
         ArrayList<String> windows;
         if (index > 1) {
-            waitWhileExpectedWindowsAppear(5, index);
+            sleepFor(3);
             windows = new ArrayList<String>(driver().getWindowHandles());
             driver().switchTo().window(windows.get(index - 1));
         } else {
             try {
-                waitWhileExpectedWindowsLeft(5, 1);
+               wait(5);
             } catch (Exception e) {
                 BPPLogManager.getLogger().warn("Seems like several windows are still opened." +
                         " This may mean that some windows don't close themselves automatically." +
@@ -986,7 +961,7 @@ public class SeleniumHelper {
      * @return String webelement text with information provided in the Popup Window
      */
     public void acceptAlertMessage() {
-        Alert jsalert = new WebDriverWait(driver(), 5).until(ExpectedConditions.alertIsPresent());
+        Alert jsalert = new WebDriverWait(driver(),Duration.ofSeconds(5)).until(ExpectedConditions.alertIsPresent());
         String alertMsg = jsalert.getText();
 
         Reporter.log("Expected:" + alertMsg + " popup appeared");
@@ -1053,7 +1028,7 @@ public class SeleniumHelper {
 
         Actions action = new Actions(driver());
         try {
-            (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
+            (new WebDriverWait(driver(), Duration.ofSeconds(DEFAULT_TIMEOUT)))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             BPPLogManager.getLogger().info("Right mouse click for an element: " + element);
             action.contextClick(findElement(element)).build().perform();
@@ -1074,7 +1049,7 @@ public class SeleniumHelper {
     public void doubleClick(By element, UiHandlers... handlers) {
         Actions action = new Actions(driver());
         try {
-            (new WebDriverWait(driver(), DEFAULT_TIMEOUT))
+            (new WebDriverWait(driver(), Duration.ofSeconds(DEFAULT_TIMEOUT)))
                     .until(ExpectedConditions.visibilityOfElementLocated(element));
             BPPLogManager.getLogger().info("Double mouse click on: " + element );
             action.doubleClick(findElement(element)).perform();
