@@ -141,7 +141,6 @@ public class DriverProvider {
             options.setCapability("browserstack.console", "errors");
             options.setCapability("browserstack.localIdentifier", "TestAutomation");
             options.setCapability("browserstack.idleTimeout", "180");
-            options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             options.setCapability(ChromeOptions.CAPABILITY, options);
             options.setExperimentalOption("prefs", chromePreferences);
@@ -153,8 +152,6 @@ public class DriverProvider {
             String testName = Reporter.getCurrentTestName();
             options.setCapability("name", testName);
 
-            //RemoteWebDriver driver = new RemoteWebDriver(new URL(PropertiesHelper.determineEffectivePropertyValue("browserStackURL")), options);
-            //driver.setFileDetector(new LocalFileDetector());
             return new RemoteWebDriver(new URL(FileIO.getConfigProperty("browserStackURL")), options);
 
         } catch (Exception e) {
