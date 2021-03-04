@@ -4,6 +4,8 @@ import api.RestApiController;
 import api.SoapApiController;
 import api.Utilities;
 import io.restassured.response.Response;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import ui.utils.BPPLogManager;
 import ui.utils.GlobalDataBridge;
 import ui.utils.Reporter;
@@ -140,6 +142,19 @@ public class SalesforceBusinessProcesses {
         assertThat(recordData.get(93), matchesPattern("BP[0-9]+"));
 
         BPPLogManager.getLogger().info("Banner Id: " + recordData.get(93));
+        return this;
+    }
+
+    public SalesforceBusinessProcesses validateBannerID() {
+
+        Response validateBanner = restController.getRequest(propertiesHelper.getProperties().getProperty("sf_get_account_bannerID_url") + "'" + ExecutionContextHandler.getExecutionContextValueByKey("EC_ACCOUNT_ID") +"'");
+        JSONObject recordsObject = new Utilities().getResponseProperty(validateBanner);
+        JSONArray recordsArray = (JSONArray) recordsObject.get("records");
+        JSONObject bannerSObjectID = (JSONObject) recordsArray.get(0);
+        String bannerID = (String) bannerSObjectID.get("BNR_Banner_ID__pc");
+        assertThat(bannerID , matchesPattern("BP[0-9]+"));
+        Reporter.log("<pre>" + "Banner Id: " + bannerID + "</pre>");
+
         return this;
     }
 

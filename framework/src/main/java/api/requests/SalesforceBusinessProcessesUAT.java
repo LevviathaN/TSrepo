@@ -4,15 +4,15 @@ import api.RestApiController;
 import api.SoapApiController;
 import api.Utilities;
 import io.restassured.response.Response;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import ui.utils.BPPLogManager;
 import ui.utils.GlobalDataBridge;
 import ui.utils.Reporter;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHelper;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -106,6 +106,19 @@ public class SalesforceBusinessProcessesUAT {
 
         assertThat(recordData.get(92), matchesPattern("BP[0-9]+"));
         BPPLogManager.getLogger().info("Banner ID: " + recordData.get(92));
+
+        return this;
+    }
+
+    public SalesforceBusinessProcessesUAT validateBannerIDUAT() {
+
+        Response validateBanner = restController.getRequest(propertiesHelper.getProperties().getProperty("sf_get_account_bannerID_url_UAT") + "'" + ExecutionContextHandler.getExecutionContextValueByKey("EC_ACCOUNT_ID") +"'");
+        JSONObject recordsObject = new Utilities().getResponseProperty(validateBanner);
+        JSONArray recordsArray = (JSONArray) recordsObject.get("records");
+        JSONObject bannerSObjectID = (JSONObject) recordsArray.get(0);
+        String bannerID = (String) bannerSObjectID.get("BNR_Banner_ID__pc");
+        assertThat(bannerID , matchesPattern("BP[0-9]+"));
+        Reporter.log("<pre>" + "Banner Id: " + bannerID + "</pre>");
 
         return this;
     }
