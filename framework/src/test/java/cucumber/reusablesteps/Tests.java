@@ -57,7 +57,11 @@ public class Tests {
 
         Pickle pickle = pickleWrapper.getPickleEvent().pickle;
         List<PickleTag> tags = pickle.getTags();
-        step = "<scenario name=\"" + pickle.getName() + "\">";
+        String scenarioName = pickle.getName();
+        scenarioName = scenarioName.replaceAll("<", "&lt;");
+        scenarioName = scenarioName.replaceAll(">", "&gt;");
+        scenarioName = scenarioName.replaceAll("&", "&amp;");
+        step = "<scenario name=\"" + scenarioName + "\">";
         step = step + "<tags>";
         for (PickleTag tag : tags) {
             step = step + "<tag>" + tag.getName() + "</tag>";

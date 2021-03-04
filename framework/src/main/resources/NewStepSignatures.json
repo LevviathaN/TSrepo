@@ -48,6 +48,10 @@
     "value": "LOC_PARAM,LOC_TEMPLATE"
   },
   {
+    "name": "^I click on the \"([^\"]*)\" \"([^\"]*)\" by JS if \"([^\"]*)\" \"([^\"]*)\"$",
+    "value": "LOC_PARAM,LOC_TEMPLATE,CON_PARAM,CONDITION"
+  },
+  {
     "name": "^I click on the \"([^\"]*)\" \"([^\"]*)\"$",
     "value": "LOC_PARAM,LOC_TEMPLATE"
   },
@@ -170,6 +174,14 @@
   {
     "name": "^I validate text \"([^\"]*)\" to be displayed for \"([^\"]*)\" element$",
     "value": "PARAM,LOCATOR"
+  },
+  {
+    "name": "^I click on the \"([^\"]*)\" element until \"([^\"]*)\" \"([^\"]*)\"$",
+    "value": "LOCATOR,CON_PARAM,CONDITION"
+  },
+  {
+    "name": "^I click on the \"([^\"]*)\" \"([^\"]*)\" until \"([^\"]*)\" \"([^\"]*)\"$",
+    "value": "PARAM,LOCATOR,CON_PARAM,CONDITION"
   },
   {
     "name": "^I wait for \"([^\"]*)\" seconds$",

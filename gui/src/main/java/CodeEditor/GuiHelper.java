@@ -124,6 +124,23 @@ public class GuiHelper {
         return result;
     }
 
+    //todo: current approach with start and end quotes is not very accurate. To be upgraded.
+    public static List<String> getQuoted(final String input, final char startQuote, final char endQuote) {
+        final ArrayList<String> result = new ArrayList<>();
+        int n = -1;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == startQuote || input.charAt(i) == endQuote) {
+                if (n == -1) { //not currently inside quote -> start new quote
+                    n = i + 1;
+                } else { //close current quote
+                    result.add(input.substring(n, i));
+                    n = -1;
+                }
+            }
+        }
+        return result;
+    }
+
     /** Read file to string */
     public static String readFile(String path, Charset encoding) {
         byte[] encoded = new byte[1];

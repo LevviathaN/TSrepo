@@ -29,14 +29,18 @@ public class CodeEditor extends StackPane implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(CodeEditorExample.frameworkFolder + "/src/test/resources/cucumber/bpp_features"))));
-        editingTemplate = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
-        editingCode = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
+//        editingTemplate = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
+//        editingCode = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
+
+        editor.editingTemplate = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/htmlFileContent.txt", StandardCharsets.UTF_8);
+        editor.editingCode = GuiHelper.readFile(CodeEditorExample.guiFolder + "/src/main/resources/sampleText.txt", StandardCharsets.UTF_8).replaceAll("\r","");
     }
 
     private final GherkinValidator validator = new GherkinValidator();
     private final FeatureCRUD crud = new FeatureCRUD();
     private final LocatorsManager locatorsManager = new LocatorsManager();
     private final ReusableScenariosManager reusablesManager = new ReusableScenariosManager();
+    private final CodeEditorFunctionality editor = new CodeEditorFunctionality();
 
     public WebView webview;
     public Label labeledCode;
@@ -50,13 +54,13 @@ public class CodeEditor extends StackPane implements Initializable {
     public ListView<String> predictedStepdefsList;
     public Button loadFeatureButton;
 
-    public static String editingCode;
-    public static String editingTemplate;
-    public static String updatedCode;
-    public static Document updatedDoc;
-    public static int editingCursorPosition;
-    public static String editableWord;
-    public static String editableLine;
+//    public static String editingCode;
+//    public static String editingTemplate;
+//    public static String updatedCode;
+//    public static Document updatedDoc;
+//    public static int editingCursorPosition;
+//    public static String editableWord;
+//    public static String editableLine;
 
     public Map<String,String> featureFilesMap = new HashMap<>();
 
@@ -72,12 +76,12 @@ public class CodeEditor extends StackPane implements Initializable {
 
     /** WebEditor listener */
     public void updateEditingData() {
-        updatedCode = getCode();
-        updatedDoc = webview.getEngine().getDocument();
-        if (updatedCode.length()>3) {
-            editingCursorPosition = compareStrings(editingCode, updatedCode);
-            editableLine = getEditableLine();
-            editableWord = getEditableWord();
+        editor.updatedCode = getCode();
+        editor.updatedDoc = webview.getEngine().getDocument();
+        if (editor.updatedCode.length()>3) {
+            editor.editingCursorPosition = editor.compareStrings(editor.editingCode, editor.updatedCode);
+            editor.editableLine = getEditableLine();
+            editor.editableWord = getEditableWord();
         }
 
         updateValidationItems();
@@ -89,7 +93,7 @@ public class CodeEditor extends StackPane implements Initializable {
         predictedLocatorsList.getItems().clear();
 
         String originalStepdef = "";
-        String lineText = CodeEditor.editableLine.trim();
+        String lineText = editor.editableLine.trim();
 
         if (lineText.startsWith("Given") || lineText.startsWith("When")
                 || lineText.startsWith("Then") || lineText.startsWith("And") || lineText.startsWith("But")) {
@@ -98,67 +102,67 @@ public class CodeEditor extends StackPane implements Initializable {
 
         for (String stepPattern : GherkinValidator.stepPatternsMap.values()) {
             if (lineText.matches(stepPattern)) {
-                originalStepdef = CodeEditor.beutifyStepdef(stepPattern).substring(1,CodeEditor.beutifyStepdef(stepPattern).length()-1);
+                originalStepdef = editor.beutifyStepdef(stepPattern).substring(1,editor.beutifyStepdef(stepPattern).length()-1);
                 break;
             }
         }
 
         if (!originalStepdef.equals("")) {
-            Map<String, String> signatureMap = CodeEditor.getStepSignatureMap(lineText, originalStepdef);
-            String parameterType = signatureMap.get(editableWord);
+            Map<String, String> signatureMap = editor.getStepSignatureMap(lineText, originalStepdef);
+            String parameterType = signatureMap.get(editor.editableWord);
             switch (parameterType) {
                 case "LOCATOR":
                     System.out.println("LOCATOR");
-                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+                    predictedLocatorsList.getItems().addAll(editor.suggestionList(editor.editableWord,validLocatorsList,8));
                     break;
                 case "LOC_TEMPLATE":
                     System.out.println("LOC_TEMPLATE");
-                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validSpecialLocatorsList,8));
+                    predictedLocatorsList.getItems().addAll(editor.suggestionList(editor.editableWord,validSpecialLocatorsList,8));
                     break;
                 case "REUSABLE":
                     System.out.println("REUSABLE");
-                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,GherkinValidator.reusablesList,8));
+                    predictedLocatorsList.getItems().addAll(editor.suggestionList(editor.editableWord,GherkinValidator.reusablesList,8));
                     break;
                 case "PARAM":
                     System.out.println("PARAM");
                     break;
                 default:
                     System.out.println("Default");
-                    predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+                    predictedLocatorsList.getItems().addAll(editor.suggestionList(editor.editableWord,validLocatorsList,8));
                     break;
             }
         } else {
-            predictedLocatorsList.getItems().addAll(suggestionList(editableWord,validLocatorsList,8));
+            predictedLocatorsList.getItems().addAll(editor.suggestionList(editor.editableWord,validLocatorsList,8));
         }
 
 
         predictedStepdefsList.getItems().clear();
-        predictedStepdefsList.getItems().addAll(beutifyStepdefs(suggestionList(editableLine,validStepdefsList,8)));
+        predictedStepdefsList.getItems().addAll(editor.beutifyStepdefs(editor.suggestionList(editor.editableLine,validStepdefsList,8)));
 
         locatorComboBox.getItems().clear();
-        if (validator.isValidStepdef(editableWord)) {
+        if (validator.isValidStepdef(editor.editableWord)) {
             System.out.println("Parameter is valid");
             locatorComboBox.setPromptText("VALID");
         } else {
-            locatorComboBox.setPromptText(editableWord);
+            locatorComboBox.setPromptText(editor.editableWord);
         }
-        locatorComboBox.getItems().addAll(validator.getInvalidParameters(updatedCode));
+        locatorComboBox.getItems().addAll(validator.getInvalidParameters(editor.updatedCode));
 
         stepdefComboBox.getItems().clear();
-        if (validator.isValidStepdef(editableLine.trim().replaceAll("^(Given |When |Then |And |But )", ""))) {
+        if (validator.isValidStepdef(editor.editableLine.trim().replaceAll("^(Given |When |Then |And |But )", ""))) {
             System.out.println("Stepdef is valid");
             stepdefComboBox.setPromptText("VALID");
         } else {
-            stepdefComboBox.setPromptText(editableLine);
+            stepdefComboBox.setPromptText(editor.editableLine);
         }
-        stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(updatedDoc));
+        stepdefComboBox.getItems().addAll(validator.getInvalidStepdefs(editor.updatedDoc));
     }
 
     /** Save Feature File button listener */
     public void createNewFeature() {
         snapshot();
         try {
-            crud.display();
+            crud.display(editor);
             fileTreeView.setRoot(trimFileTreeView(new SimpleFileTreeItem(new File(
                     CodeEditorExample.frameworkFolder + "/src/test/resources/cucumber/bpp_features"))));
         } catch (Exception e) {
@@ -198,12 +202,12 @@ public class CodeEditor extends StackPane implements Initializable {
     /** Load button listener */
    public void loadFeature() {
        String filePath = featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue());
-       editingCode = GuiHelper.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
+       editor.editingCode = GuiHelper.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
        setCode();
    }
 
    public void saveChanges() {
-       byte[] data = CodeEditor.editingCode.getBytes();
+       byte[] data = editor.editingCode.getBytes();
        Path p = Paths.get(featureFilesMap.get(fileTreeView.getSelectionModel().getSelectedItem().getValue()));
        
        try {
@@ -241,7 +245,7 @@ public class CodeEditor extends StackPane implements Initializable {
      * @author Ruslan Levytskyi
      * */
     private String applyEditingTemplate() {
-        return editingTemplate.replace("${code}", editingCode);
+        return editor.editingTemplate.replace("${code}", editor.editingCode);
     }
 
     /** Method to get current text from WebEditor
@@ -257,71 +261,71 @@ public class CodeEditor extends StackPane implements Initializable {
      * @author Ruslan Levytskyi
      * */
     private void snapshot() {
-        editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
+        editor.editingCode = (String ) webview.getEngine().executeScript("editor.getValue();");
     }
 
-    /** Method to compare 2 strings and get first distinct character
-     *
-     * @author Ruslan Levytskyi
-     * */
-    private int compareStrings(String s1, String s2) {
-        int distinctPosition = 0;
-        String smallerString = s1.length()<s2.length() ? s1 : s2;
-        String biggerString = s1.length()>s2.length() ? s1 : s2;
-        for (int i=0; i<smallerString.length(); i++) {
-            char ch1 = s1.charAt(i);
-            char ch2 = s2.charAt(i);
-            if (ch1!=ch2) {
-                distinctPosition = i;
-                break;
-            }
-        }
-        if (!smallerString.equals(biggerString) && distinctPosition==0) {
-            return s2.length();
-        } else {
-            return distinctPosition;
-        }
-    }
+//    /** Method to compare 2 strings and get first distinct character
+//     *
+//     * @author Ruslan Levytskyi
+//     * */
+//    public int compareStrings(String s1, String s2) {
+//        int distinctPosition = 0;
+//        String smallerString = s1.length()<s2.length() ? s1 : s2;
+//        String biggerString = s1.length()>s2.length() ? s1 : s2;
+//        for (int i=0; i<smallerString.length(); i++) {
+//            char ch1 = s1.charAt(i);
+//            char ch2 = s2.charAt(i);
+//            if (ch1!=ch2) {
+//                distinctPosition = i;
+//                break;
+//            }
+//        }
+//        if (!smallerString.equals(biggerString) && distinctPosition==0) {
+//            return s2.length();
+//        } else {
+//            return distinctPosition;
+//        }
+//    }
 
     //todo: make this method more universal. Pass strings before and after as parameters
     /** Custom method to get the word between parentheses that was updated recently in web view.
      *
      * @author Ruslan Levytskyi
      * */
-    private String getEditableWord() {
+    public String getEditableWord() {
         String editableWord = "";
         String possibleR = "";
         String possibleL = "";
-        int rightRim = updatedCode.length();
+        int rightRim = editor.updatedCode.length();
         int leftRim = 0;
         int centerRim = 0;
-        for (int i=0; i+editingCursorPosition<updatedCode.length(); i++) {
-            if (updatedCode.charAt(editingCursorPosition + i)=='"') {
-                rightRim = editingCursorPosition + i;
+        for (int i=0; i+editor.editingCursorPosition<editor.updatedCode.length(); i++) {
+            if (editor.updatedCode.charAt(editor.editingCursorPosition + i)=='"') {
+                rightRim = editor.editingCursorPosition + i;
                 if (i==0) {
-                    centerRim = editingCursorPosition;
+                    centerRim = editor.editingCursorPosition;
                 } else {
                     break;
                 }
             }
         }
-        for (int i=0; editingCursorPosition-i>1; i++) {
-            if (updatedCode.charAt(editingCursorPosition - 1 - i)=='"') {
-                leftRim = editingCursorPosition - i;
+        for (int i=0; editor.editingCursorPosition-i>1; i++) {
+            if (editor.updatedCode.charAt(editor.editingCursorPosition - 1 - i)=='"') {
+                leftRim = editor.editingCursorPosition - i;
                 if (i==0) {
-                    centerRim = editingCursorPosition;
+                    centerRim = editor.editingCursorPosition;
                 } else {
                     break;
                 }
             }
         }
-        editableWord = updatedCode.substring(leftRim, rightRim);
+        editableWord = editor.updatedCode.substring(leftRim, rightRim);
         if (centerRim != 0) {
-            possibleR = updatedCode.substring(centerRim, rightRim);
-            possibleL = updatedCode.substring(leftRim, centerRim);
+            possibleR = editor.updatedCode.substring(centerRim, rightRim);
+            possibleL = editor.updatedCode.substring(leftRim, centerRim);
         }
 
-        List<String> invalidParametersList = validator.getInvalidParameters(updatedCode);
+        List<String> invalidParametersList = validator.getInvalidParameters(editor.updatedCode);
         if (invalidParametersList.contains(editableWord)) {
             System.out.println(editableWord);
             return editableWord;
@@ -342,38 +346,38 @@ public class CodeEditor extends StackPane implements Initializable {
      *
      * @author Ruslan Levytskyi
      * */
-    private String getEditableLine() {
+    public String getEditableLine() {
         String editableLine = "";
         String possibleR = "";
         String possibleL = "";
-        int rightRim = updatedCode.length();
+        int rightRim = editor.updatedCode.length();
         int leftRim = 0;
         int centerRim = 0;
-        for (int i=0; i+editingCursorPosition<updatedCode.length(); i++) {
-            if (updatedCode.charAt(editingCursorPosition + i)=='\n') {
-                rightRim = editingCursorPosition + i;
+        for (int i=0; i+editor.editingCursorPosition<editor.updatedCode.length(); i++) {
+            if (editor.updatedCode.charAt(editor.editingCursorPosition + i)=='\n') {
+                rightRim = editor.editingCursorPosition + i;
                 if (i==0) {
-                    centerRim = editingCursorPosition;
+                    centerRim = editor.editingCursorPosition;
                 } else {
                     break;
                 }
             }
         }
-        for (int i=0; editingCursorPosition-i>1; i++) {
-            if (updatedCode.charAt(editingCursorPosition - 1 - i)=='\n') {
-                leftRim = editingCursorPosition - i;
+        for (int i=0; editor.editingCursorPosition-i>1; i++) {
+            if (editor.updatedCode.charAt(editor.editingCursorPosition - 1 - i)=='\n') {
+                leftRim = editor.editingCursorPosition - i;
                 if (i!=0) {
                     break;
                 }
             }
         }
-        editableLine = updatedCode.substring(leftRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
+        editableLine = editor.updatedCode.substring(leftRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
         if (centerRim != 0) {
-            possibleR = updatedCode.substring(centerRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
-            possibleL = updatedCode.substring(leftRim, centerRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
+            possibleR = editor.updatedCode.substring(centerRim, rightRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
+            possibleL = editor.updatedCode.substring(leftRim, centerRim).trim().replaceAll("^(Given |When |Then |And |But )", "");
         }
 
-        List<String> invalidLinesList = validator.getInvalidStepdefs(updatedDoc);
+        List<String> invalidLinesList = validator.getInvalidStepdefs(editor.updatedDoc);
         if (invalidLinesList.contains(editableLine)) {
             System.out.println(editableLine);
             return editableLine;
@@ -389,31 +393,31 @@ public class CodeEditor extends StackPane implements Initializable {
         }
     }
 
-    /** Method to get a list of suggestions from chooseList based on the given word
-     *
-     * @param word - suggestion key
-     * @param chooseList - list of valid parameters to choose from
-     * @param restriction - max number of suggestions in the list
-     *
-     * @author Ruslan Levytskyi
-     * */
-    private List<String> suggestionList(String word, List<String> chooseList, int restriction) {
-        List<String> suggestions = new ArrayList<>();
-        int w = 0;
-        for (int i=0; word.length()-i>2; i++) {
-            for (String option : chooseList) {
-                String trimmedWord = word.substring(0,word.length()-i);
-                if (option.contains(trimmedWord) && !suggestions.contains(option)) {
-                    if (w > restriction) {
-                        break;
-                    }
-                    suggestions.add(option);
-                    w++;
-                }
-            }
-        }
-        return suggestions;
-    }
+//    /** Method to get a list of suggestions from chooseList based on the given word
+//     *
+//     * @param word - suggestion key
+//     * @param chooseList - list of valid parameters to choose from
+//     * @param restriction - max number of suggestions in the list
+//     *
+//     * @author Ruslan Levytskyi
+//     * */
+//    public static List<String> suggestionList(String word, List<String> chooseList, int restriction) {
+//        List<String> suggestions = new ArrayList<>();
+//        int w = 0;
+//        for (int i=0; word.length()-i>2; i++) {
+//            for (String option : chooseList) {
+//                String trimmedWord = word.substring(0,word.length()-i);
+//                if (option.contains(trimmedWord) && !suggestions.contains(option)) {
+//                    if (w > restriction) {
+//                        break;
+//                    }
+//                    suggestions.add(option);
+//                    w++;
+//                }
+//            }
+//        }
+//        return suggestions;
+//    }
 
     /** Method to replace invalid parameter, being edited, to the valid one, selected from the list
      *
@@ -421,7 +425,7 @@ public class CodeEditor extends StackPane implements Initializable {
      * */
     private void fixParameter() {
         if (!predictedLocatorsList.getSelectionModel().isEmpty()) {
-            editingCode = editingCode.replaceAll('"'+editableWord+'"','"'+predictedLocatorsList.getSelectionModel().getSelectedItem()+'"');
+            editor.editingCode = editor.editingCode.replaceAll('"'+editor.editableWord+'"','"'+predictedLocatorsList.getSelectionModel().getSelectedItem()+'"');
             setCode();
         }
     }
@@ -433,63 +437,63 @@ public class CodeEditor extends StackPane implements Initializable {
     private void fixStepdef() {
         if (!predictedStepdefsList.getSelectionModel().isEmpty()) {
             String fixedLine = predictedStepdefsList.getSelectionModel().getSelectedItem();
-            List<String> params = GuiHelper.getQuoted(editableLine,'"');
+            List<String> params = GuiHelper.getQuoted(editor.editableLine,'"');
             List<String> signature = GuiHelper.getQuoted(predictedStepdefsList.getSelectionModel().getSelectedItem(),'"');
             for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
                 fixedLine = fixedLine.replaceFirst(signature.get(i),params.get(i));
             }
-            editingCode = editingCode.replace(editableLine, fixedLine.substring(1,fixedLine.length()-1));
+            editor.editingCode = editor.editingCode.replace(editor.editableLine, fixedLine.substring(1,fixedLine.length()-1));
             setCode();
         }
     }
 
-    /** Method to get a signature of each parameter of the step, if it is valid
-     *
-     * @param step - step, to get parameters from
-     * @param template - valid stepdef, to get parameter signature from
-     *
-     * @return a map, where key is actual parameter of provided stepdef, and value - it`s signature (LOCATOR,REUSABLE,LOC_TEMPLATE e.t.c.)
-     *
-     * @author Ruslan Levytskyi
-     * */
-    public static Map<String,String> getStepSignatureMap(String step, String template) {
-        Map<String,String> stepSignatureMap = new HashMap<>();
-        List<String> params = GuiHelper.getQuoted(step,'"');
-        List<String> signature = GuiHelper.getQuoted(template,'"');
-        for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
-            stepSignatureMap.put(params.get(i),signature.get(i));
-        }
-        return stepSignatureMap;
-    }
+//    /** Method to get a signature of each parameter of the step, if it is valid
+//     *
+//     * @param step - step, to get parameters from
+//     * @param template - valid stepdef, to get parameter signature from
+//     *
+//     * @return a map, where key is actual parameter of provided stepdef, and value - it`s signature (LOCATOR,REUSABLE,LOC_TEMPLATE e.t.c.)
+//     *
+//     * @author Ruslan Levytskyi
+//     * */
+//    public static Map<String,String> getStepSignatureMap(String step, String template) {
+//        Map<String,String> stepSignatureMap = new HashMap<>();
+//        List<String> params = GuiHelper.getQuoted(step,'"');
+//        List<String> signature = GuiHelper.getQuoted(template,'"');
+//        for (int i = 0; i < Math.min(params.size(), signature.size()); i++) {
+//            stepSignatureMap.put(params.get(i),signature.get(i));
+//        }
+//        return stepSignatureMap;
+//    }
 
-    /** Method to replace all regex parameters in stepdef template with their signatures
-     *
-     * @author Ruslan Levytskyi
-     * */
-    private List<String> beutifyStepdefs(List<String> stepDefs) {
+//    /** Method to replace all regex parameters in stepdef template with their signatures
+//     *
+//     * @author Ruslan Levytskyi
+//     * */
+//    public static List<String> beutifyStepdefs(List<String> stepDefs) {
+//
+//        List<String> beutifiedStepdefs = new ArrayList<>();
+//        for (String stepdef : stepDefs) {
+//            List<String> signature = new ArrayList<>(Arrays.asList(GherkinValidator.stepSignaturesMap.get(stepdef).split(",")));
+//            for (String element : signature) {
+//                stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
+//            }
+//            beutifiedStepdefs.add(stepdef);
+//        }
+//        return beutifiedStepdefs;
+//    }
 
-        List<String> beutifiedStepdefs = new ArrayList<>();
-        for (String stepdef : stepDefs) {
-            List<String> signature = new ArrayList<>(Arrays.asList(GherkinValidator.stepSignaturesMap.get(stepdef).split(",")));
-            for (String element : signature) {
-                stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
-            }
-            beutifiedStepdefs.add(stepdef);
-        }
-        return beutifiedStepdefs;
-    }
-
-    /** Method to replace all regex parameters in stepdef template with their signatures
-     *
-     * @author Ruslan Levytskyi
-     * */
-    public static String beutifyStepdef(String stepdef) {
-        List<String> signature = new ArrayList<>(Arrays.asList(GherkinValidator.stepSignaturesMap.get(stepdef).split(",")));
-        for (String element : signature) {
-            stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
-        }
-        return stepdef;
-    }
+//    /** Method to replace all regex parameters in stepdef template with their signatures
+//     *
+//     * @author Ruslan Levytskyi
+//     * */
+//    public static String beutifyStepdef(String stepdef) {
+//        List<String> signature = new ArrayList<>(Arrays.asList(GherkinValidator.stepSignaturesMap.get(stepdef).split(",")));
+//        for (String element : signature) {
+//            stepdef = stepdef.replaceFirst("(\\(\\[\\^\\\"\\]\\*\\))", element);
+//        }
+//        return stepdef;
+//    }
 
     private WebElement getElementFromWebViewByXpath(String xpath) {
         WebElement element;
@@ -497,7 +501,7 @@ public class CodeEditor extends StackPane implements Initializable {
             element = (WebElement)
                     XPathFactory.newInstance().newXPath().evaluate(
                             "xpath",
-                            updatedDoc, XPathConstants.NODE);
+                            editor.updatedDoc, XPathConstants.NODE);
             return element;
         } catch (XPathException e) {
             e.printStackTrace();

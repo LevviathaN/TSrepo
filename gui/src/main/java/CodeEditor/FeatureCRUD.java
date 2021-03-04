@@ -20,12 +20,14 @@ import static java.nio.file.StandardOpenOption.CREATE;
 public class FeatureCRUD {
 
     public static Stage createFeatureWindow;
+    CodeEditorFunctionality editor;
     public TextField featurePath;
     public TextField featureNameField;
     public Label messageLabel;
 
     /** Displays "Save Feature File modal window" */
-    public void display() throws Exception {
+    public void display(CodeEditorFunctionality code) throws Exception {
+        editor = code;
         URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/resources/CreateFeatureModal.fxml");
         Parent root = FXMLLoader.load(url);
         createFeatureWindow = new Stage();
@@ -41,7 +43,7 @@ public class FeatureCRUD {
 
     /** Method to create feature file using the name fom text field*/
     public void createFeatureFile() {
-        byte[] data = CodeEditor.editingCode.getBytes();
+        byte[] data = editor.editingCode.getBytes();
 
         Path p = Paths.get(featurePath.getText() + featureNameField.getText() + ".feature");
 
