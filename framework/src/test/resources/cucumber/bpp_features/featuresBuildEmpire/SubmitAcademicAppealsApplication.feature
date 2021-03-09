@@ -63,9 +63,17 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
+    #Additional validation required for PP-12560
+    And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
+    And Attribute "class" of "Direct App Inactive Step Completed Button" should have value "step-completed  "
+    Then I upload "application_pack_document.pdf" file to "Direct App Upload File" element
+    And Attribute "class" of "Direct App Inactive Step Completed Button" should have value "step-completed  disabled"
+    And I fill the "Direct App Uploaded File Description" field with "Test"
+    And Attribute "class" of "Direct App Inactive Step Completed Button" should have value "step-completed  "
+    And I click on the "Direct App Remove Uploaded Document Button" button
+    And Attribute "class" of "Direct App Inactive Step Completed Button" should have value "step-completed  "
     Then I upload "directApp.pdf" file to "Direct App Upload File" element
     And I fill the "Direct App Uploaded File Description" field with "Test"
-    And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
     Then I execute "Submit Application Hub" reusable step

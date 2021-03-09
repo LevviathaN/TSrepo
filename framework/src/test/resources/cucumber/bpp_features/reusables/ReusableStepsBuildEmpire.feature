@@ -321,7 +321,6 @@ Feature: BuildEmpire
     And I click on the "Direct App Line Manager Review Application" button
     And I click on the "Line Manager Review" "Build Empire application section"
     And I click on the "Direct App Line Manager Agree To Support Amount" element
-    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
@@ -482,8 +481,6 @@ Feature: BuildEmpire
     Then I fill the "Direct App Details Text Area  Line Manager" field with "Automation"
     And I click on the "Direct App Line Manager Agree To Support Amount" element
     And I click on the "Direct App Line Manager New Role" button
-    #Then I click on the "I confirm that my organisation employs fewer than 50 people" "Build Empire checkbox"
-    Then I click on the "I confirm that I understand it is my requirement to reserve" "Build Empire checkbox"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
