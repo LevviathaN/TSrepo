@@ -452,6 +452,10 @@
     "value": "xpath=//span[text()='PARAMETER']/following-sibling::div/div"
   },
   {
+    "name": "Product Factory dropdown two",
+    "value": "xpath=(//span[text()='PARAMETER']/following-sibling::div/div)[2]"
+  },
+  {
     "name": "Product Factory dropdown option",
     "value": "xpath=//li[text()='PARAMETER']"
   },

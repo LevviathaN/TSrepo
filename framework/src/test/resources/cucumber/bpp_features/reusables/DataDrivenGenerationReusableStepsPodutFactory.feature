@@ -31,6 +31,7 @@ Feature: Product Factory
     And I remember "AutoRegionName<varName>" text as "EC_REGION_NAME<ecName>" variable
     And I remember "AutoLocationName<varName>" text as "EC_LOCATION_NAME<ecName>" variable
     And I remember "AutoLocationAddress<varName>" text as "EC_LOCATION_ADDRESS<ecName>" variable
+    And I remember "AutoStockSiteName<varName>" text as "EC_STOCK_SITE_NAME<ecName>" variable
     And I remember "AutoLevelName<varName>" text as "EC_LEVEL_NAME<ecName>" variable
     And I remember "AutoLevelShortName<varName>" text as "EC_LEVEL_SHORT_NAME<ecName>" variable
     And I remember "AtPprSN<shortVar>" text as "EC_PPR_SN<shortEc>" variable
@@ -85,6 +86,7 @@ Feature: Product Factory
     And I remember "AutoRegionName<varName>" text as "EC_REGION_NAME" variable
     And I remember "AutoLocationName<varName>" text as "EC_LOCATION_NAME" variable
     And I remember "AutoLocationAddress<varName>" text as "EC_LOCATION_ADDRESS" variable
+    And I remember "AutoStockSiteName<varName>" text as "EC_STOCK_SITE_NAME" variable
     And I remember "AutoLevelName<varName>" text as "EC_LEVEL_NAME" variable
     And I remember "AutoLevelShortName<varName>" text as "EC_LEVEL_SHORT_NAME" variable
     And I remember "AtPprSN<shortVar>" text as "EC_PPR_SN" variable
@@ -153,6 +155,8 @@ Feature: Product Factory
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "$Auto[LocationName]<varName>" text to the "Name" "Product Factory text field"|
       |5|I set "$Auto[LocationAddress]<varName>" text to the "Address Line 1" "Product Factory text field"|
+    And I execute "Create Stock Site" reusable step replacing some steps
+      |4|I set "$Auto[StockSiteName]<varName>" text to the "Name" "Product Factory text field"|
     And I execute "Create Level" reusable step replacing some steps
       |4|I set "$Auto[LevelShortName]<varName>" text to the "Short Name" "Product Factory text field"|
       |5|I set "$Auto[LevelName]<varName>" text to the "Name" "Product Factory text field"|
@@ -217,6 +221,8 @@ Feature: Product Factory
     Examples:
     |type        |varName     |ecName       |shortVar|shortEc|
 #    |Z           |$Z          |             |$Z      |       |
+#    |X           |$X          |             |$X      |       |
+#    |W           |$W          |             |$W      |       |
     |            |            |             |        |       |
     |Two         |$Two        |             |$Two    |   |
 #    |Three       |$Three      |             |$Tre    |   |
