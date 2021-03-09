@@ -1209,7 +1209,7 @@
   },
   {
     "name": "Direct App Channel Islands Email Training Manager",
-    "value": "xpath=//label/following-sibling::input"
+    "value": "xpath=//label[(contains(.,'Training manager email'))]/following-sibling::div//input"
   },
   {
     "name": "Direct App Channel Islands Phone Training Manager",
@@ -1378,6 +1378,14 @@
   {
     "name": "Direct App Inactive Status Button",
     "value": "xpath=//div[@class='step-actions disabled']"
+  },
+  {
+    "name": "Direct App Inactive Step Completed Button",
+    "value": "xpath=//div[contains(@class,'step-completed')]"
+  },
+  {
+    "name": "Direct App Remove Uploaded Document Button",
+    "value": "xpath=//span[@class='bppicon icon-cancel']"
   },
   {
     "name": "Direct App Insurance Number",
