@@ -854,7 +854,7 @@ public class SeleniumHelper {
                 windows = new ArrayList<String>(driver().getWindowHandles());
                 for (int i = windows.size(); i > 1; i--) {
                     driver().switchTo().window(windows.get(i - 1)).close();
-                    waitWhileExpectedWindowsLeft(5, i - 1);
+                    sleepFor(1);
                 }
             }
             windows = new ArrayList<String>(driver().getWindowHandles());
