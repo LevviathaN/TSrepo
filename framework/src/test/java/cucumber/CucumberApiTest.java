@@ -43,7 +43,7 @@ public class CucumberApiTest extends BaseApiTest {
     }
 
     @DataProvider(parallel = true)
-    public Object[][] scenarios() {
+    public synchronized Object[][] scenarios() {
         return this.testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }
 
