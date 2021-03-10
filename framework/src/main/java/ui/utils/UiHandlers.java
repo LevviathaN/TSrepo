@@ -27,6 +27,18 @@ public enum UiHandlers {
         }
     }),
 
+    PF_PREMATURE_MENU_CLICK_HANDLER((element, e) -> {
+        SeleniumHelper.isHandled.put("pfPrematureMenuClickHandler", false);
+        WebDriverWait wait = new WebDriverWait(SeleniumHelper.driver(),Duration.ofSeconds(SeleniumHelper.DEFAULT_TIMEOUT),Duration.ofSeconds(1));
+        if (e.getMessage().contains("jss5784")){
+            Reporter.log("Handling PF Premature Menu Item Click");
+            SeleniumHelper.sleepFor(3000);
+            SeleniumHelper.clickOnElement(element);
+            SeleniumHelper.isHandled.put("pfPrematureMenuClickHandler", true);
+            SeleniumHelper.repeatAction = false;
+        }
+    }),
+
     WAIT_HANDLER((element, e) -> {
         SeleniumHelper.isHandled.put("waitHandler", false);
         if (e.getMessage().contains("modal-body scrollable slds-modal__content slds-p-around--medium")||

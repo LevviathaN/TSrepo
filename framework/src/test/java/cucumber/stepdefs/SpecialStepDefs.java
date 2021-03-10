@@ -50,6 +50,7 @@ public class SpecialStepDefs extends SeleniumHelper {
                     UiHandlers.PAGE_NOT_LOAD_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
+                    UiHandlers.PF_PREMATURE_MENU_CLICK_HANDLER,
                     UiHandlers.DEFAULT_HANDLER);
             if(!elementLocator.equals(processedLocator)){
                 Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
@@ -105,6 +106,7 @@ public class SpecialStepDefs extends SeleniumHelper {
                         UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                         UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SPINNER_HANDLER,
+                        UiHandlers.PF_PREMATURE_MENU_CLICK_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
                     Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
@@ -487,6 +489,7 @@ public class SpecialStepDefs extends SeleniumHelper {
                         UiHandlers.PF_SCROLL_TO_ELEMENT_HANDLER,
                         UiHandlers.PAGE_NOT_LOAD_HANDLER,
                         UiHandlers.PF_SPINNER_HANDLER,
+                        UiHandlers.PF_PREMATURE_MENU_CLICK_HANDLER,
                         UiHandlers.DEFAULT_HANDLER);
                 if(!elementLocator.equals(processedLocator)){
                     Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
