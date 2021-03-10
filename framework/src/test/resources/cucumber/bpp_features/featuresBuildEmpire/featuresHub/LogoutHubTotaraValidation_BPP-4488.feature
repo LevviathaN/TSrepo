@@ -1,7 +1,7 @@
-@BuildEmpire @Hub @LogoutValidation @Totara
+@BuildEmpire @LogoutValidation
 Feature: As a user, if I logout of the Hub, I expect to be logged out of Moodle/Totara - BPP-4488
 
-  @Positive @Smoke #TC-2499
+  @NoRun @Positive @Smoke #TC-2499
   Scenario: If I Logout of the Hub I Expect to be Logged out of Moodle Totara
     #Register New Student
     When I execute "Register New Student Account" reusable step replacing some steps

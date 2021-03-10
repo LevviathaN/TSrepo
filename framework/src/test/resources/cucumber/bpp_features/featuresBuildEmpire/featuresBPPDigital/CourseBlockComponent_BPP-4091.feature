@@ -13,7 +13,6 @@ Feature: As an admin, I expect the ability to add a "course block" component,
     When I click on the "Add component" "BPP Digital Search Label Button"
     And I click on the "Courses Block" "BPP Digital Admin Sub Menu Item links"
     And I "check" "Undergraduate" "BPP Digital Admin Mandatory checkbox"
-    And I "check" "Business" "BPP Digital Admin Mandatory checkbox"
     And I "check" "Law" "BPP Digital Admin Mandatory checkbox"
     And I "check" "Accountancy and Tax" "BPP Digital Admin Mandatory checkbox"
     And I set "CMS Courses Block" text to the "Html" "BPP Digital Mandatory input field"

@@ -1209,7 +1209,7 @@
   },
   {
     "name": "Direct App Channel Islands Email Training Manager",
-    "value": "xpath=//label/following-sibling::input"
+    "value": "xpath=//label[(contains(.,'Training manager email'))]/following-sibling::div//input"
   },
   {
     "name": "Direct App Channel Islands Phone Training Manager",
@@ -1378,6 +1378,14 @@
   {
     "name": "Direct App Inactive Status Button",
     "value": "xpath=//div[@class='step-actions disabled']"
+  },
+  {
+    "name": "Direct App Inactive Step Completed Button",
+    "value": "xpath=//div[contains(@class,'step-completed')]"
+  },
+  {
+    "name": "Direct App Remove Uploaded Document Button",
+    "value": "xpath=//span[@class='bppicon icon-cancel']"
   },
   {
     "name": "Direct App Insurance Number",
@@ -2050,6 +2058,10 @@
   {
     "name": "Harakirimail Verify Email",
     "value": "xpath=//a[contains(.,'Verify')]"
+  },
+  {
+    "name": "Harakirimail Adds Banner",
+    "value": "xpath=//*[@class='adsbygoogle adsbygoogle-noablate']"
   },
   {
     "name": "Hub VPE Active First Topic",
@@ -3161,7 +3173,27 @@
   },
   {
     "name": "Totara Restriction EYE icon",
-    "value": "xpath=//h3[contains(text(),'Date restriction')]/following::a[contains(@class,'availability-eye')]"
+    "value": "xpath=(//h3[contains(text(),'Date restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Group Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Activity Completion Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),'Activity completion restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Set of One Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),' Set of 1 restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Set of Two Restriction EYE icon",
+    "value": "xpath=(//h3[contains(text(),' Set of 2 restriction')]/following::a[contains(@class,'availability-eye')])[1]"
+  },
+  {
+    "name": "Totara Set of Two Restriction EYE icon if not Hidden",
+    "value": "xpath=(//h3[contains(text(),' Set of 2 restriction')]/following::a[contains(@class,'availability-eye')]/span[@title='Displayed greyed-out if user does not meet conditions'])[1]"
   },
   {
     "name": "Totara Automation Mobile Exp Label Edit Move Right Item",
@@ -3538,6 +3570,10 @@
   {
     "name": "Totara VPE Email Sender",
     "value": "xpath=//input[@name='vpe_email_sender']"
+  },
+  {
+    "name": "Totara Restrictions Expandable link",
+    "value": "xpath=//a[@aria-controls='id_availabilityconditions']"
   },
   {
     "name": "Totara Volodymyr Course",

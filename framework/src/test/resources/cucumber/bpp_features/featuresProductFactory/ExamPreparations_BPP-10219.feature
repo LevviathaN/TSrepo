@@ -9,6 +9,7 @@ Feature: Additional Product Information - Exam Preparation Name - Ref Data - BPP
   @Positive @Regression @P1 #TC-4692
   Scenario: Add a New Exam Preparation Using a Modal
     Given I execute "Create Exam Preparation" reusable step
+    Then I should see the "EC_EXAM_PREPARATION_NAME" element
 
   @Negative @P2 @NoQTest
   Scenario: Submitting Incomplete Exam Preparation Fields

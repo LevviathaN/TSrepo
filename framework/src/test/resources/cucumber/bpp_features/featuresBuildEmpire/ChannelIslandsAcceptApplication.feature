@@ -1,7 +1,7 @@
 @BuildEmpire @DirectApps @ChannelIslands @Smoke
 Feature: Approve Channel Islands Application
 
-  @Positive @Smoke @ApproveApplicationPage#TC-1268 TC-1269
+  @Positive @Smoke @ApproveApplicationPage #TC-1268 TC-1269
   Scenario: Approve Channel Islands Application as Training Manager
     Given I execute "Register New Student Account" reusable step replacing some steps
       | 1 | I am on "MD_COMMON_LINKS_BUILDEMPIRECHANNELISLANDURL" URL |

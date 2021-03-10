@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 /**
@@ -16,7 +17,7 @@ public enum UiHandlers {
 
     PF_SPINNER_HANDLER((element, e) -> {
         SeleniumHelper.isHandled.put("pfSpinnerHandler", false);
-        WebDriverWait wait = new WebDriverWait(SeleniumHelper.driver(), SeleniumHelper.DEFAULT_TIMEOUT,300);
+        WebDriverWait wait = new WebDriverWait(SeleniumHelper.driver(),Duration.ofSeconds(SeleniumHelper.DEFAULT_TIMEOUT),Duration.ofSeconds(1));
         if (e.getMessage().contains("opacity: 1; transition: opacity 225ms cubic-bezier")){
             Reporter.log("Handling PF Spinner");
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@role='progressbar']")));

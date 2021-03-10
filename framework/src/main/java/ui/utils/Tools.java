@@ -132,7 +132,7 @@ public class Tools {
 
     public static void createFile(String fileName, String fileContent) {
         byte[] data = fileContent.getBytes();
-        Path p = Paths.get(fileName);
+        Path p = Paths.get(Reporter.getReportPath() + "/" + fileName);
 
         try {
             Files.deleteIfExists(p);
