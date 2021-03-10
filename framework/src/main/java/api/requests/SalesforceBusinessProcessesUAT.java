@@ -4,15 +4,15 @@ import api.RestApiController;
 import api.SoapApiController;
 import api.Utilities;
 import io.restassured.response.Response;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import ui.utils.BPPLogManager;
 import ui.utils.GlobalDataBridge;
 import ui.utils.Reporter;
 import ui.utils.bpp.ExecutionContextHandler;
 import ui.utils.bpp.PropertiesHelper;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -64,7 +64,16 @@ public class SalesforceBusinessProcessesUAT {
         Response thisResponse = soapController.postSoapRequest(propertiesHelper.getProperties().getProperty("sf_student_get_profile_id_url_UAT"),
                 soapController.processSoapProperties("account_GetProfileID", "accountId"));
 
-        assertThat(thisResponse.getBody().asString(), containsString("Success"));
+        if(thisResponse.getBody().asString().contains("Success")){
+            Reporter.log("<pre>" + "Get Profile ID Successful" + "</pre>");
+        } else {
+            try {
+                Reporter.log("<pre>" + thisResponse.getBody().asString() + "</pre>");
+            }
+            catch (NoSuchMethodError | AssertionError | Exception e) {
+                Reporter.failTryTakingScreenshot("Get Profile ID is not Successful. Cause: " + thisResponse.getBody().asString());
+            }
+        }
 
         return this;
     }
@@ -98,14 +107,33 @@ public class SalesforceBusinessProcessesUAT {
         Response thisResponse = soapController.postSoapRequest(propertiesHelper.getProperties().getProperty("sf_student_submit_application_url_UAT"),
                 soapController.processSoapProperties("account_SubmitApplication", "id"));
 
-        assertThat(thisResponse.getBody().asString(), containsString("Application Submitted Successfully"));
+        if(thisResponse.getBody().asString().contains("Application Submitted Successfully")){
+            Reporter.log("<pre>" + "Application Submitted Successfully" + "</pre>");
+        } else {
+            try {
+                Reporter.log("<pre>" + thisResponse.getBody().asString() + "</pre>");
+            }
+            catch (NoSuchMethodError | AssertionError | Exception e) {
+                Reporter.failTryTakingScreenshot("Application was not submitted. Cause: " + thisResponse.getBody().asString());
+            }
+        }
 
         Response dataResponse = restController.getRequest(propertiesHelper.getProperties().getProperty("sf_account_url_UAT") + "/" + ExecutionContextHandler.getExecutionContextValueByKey("EC_ACCOUNT_ID"));
         ArrayList<String> recordData = utils.getRecordData(utils.getResponseProperty(dataResponse));
         GlobalDataBridge.getInstance().setBufferValueByKey("Student UAT".concat(Integer.toString(new Random().nextInt(999999999))), recordData);
 
-        assertThat(recordData.get(92), matchesPattern("BP[0-9]+"));
-        BPPLogManager.getLogger().info("Banner ID: " + recordData.get(92));
+        return this;
+    }
+
+    public SalesforceBusinessProcessesUAT validateBannerIDUAT() {
+
+        Response validateBanner = restController.getRequest(propertiesHelper.getProperties().getProperty("sf_get_account_bannerID_url_UAT") + "'" + ExecutionContextHandler.getExecutionContextValueByKey("EC_ACCOUNT_ID") +"'");
+        JSONObject recordsObject = new Utilities().getResponseProperty(validateBanner);
+        JSONArray recordsArray = (JSONArray) recordsObject.get("records");
+        JSONObject bannerSObjectID = (JSONObject) recordsArray.get(0);
+        String bannerID = (String) bannerSObjectID.get("BNR_Banner_ID__pc");
+        assertThat(bannerID , matchesPattern("BP[0-9]+"));
+        Reporter.log("<pre>" + "Banner Id: " + bannerID + "</pre>");
 
         return this;
     }
