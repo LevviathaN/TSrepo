@@ -34,7 +34,8 @@ public class SalesforceAPI {
                     getAccountProfileIdUAT().
                     addOpportunityUAT().
                     addOfferingUAT().
-                    submitNewAccountUAT();
+                    submitNewAccountUAT().
+                    validateBannerIDUAT();
         else {
             new SalesforceBusinessProcesses().
                     createNewStudent().
@@ -42,7 +43,8 @@ public class SalesforceAPI {
                     getAccountProfileId().
                     addOpportunity().
                     addOffering().
-                    submitNewAccount();
+                    submitNewAccount().
+                    validateBannerID();
         }
     }
 }

@@ -338,6 +338,13 @@ Feature: Product Factory
     And I click on the "Next" "Product Factory button"
     And I "check" "EC_SITTING_NAME" "Product Factory checkbox"
     And I click on the "Next" "Product Factory button"
+    And I click on the "Add Material Stock Site" "element by title"
+    And I click on the "Stock Site" "Product Factory dropdown"
+    And I click on the "EC_STOCK_SITE_NAME" "Product Factory dropdown option"
+    And I click on the "Production Method" "Product Factory dropdown two"
+    And I click on the "Managed" "Product Factory dropdown option"
+    And I click on the "Save" "Product Factory button"
+    And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     And I wait for "5" seconds
 
@@ -521,3 +528,18 @@ Feature: Product Factory
     And I set "ExamPreparationName[######]" text to the "Name" "Product Factory text field"
     And I set "ExamPreparationDescription[######]" text to the "Description" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
+
+  Scenario: Create Stock Site
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Stock Sites" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "StockSiteName[######]" text to the "Name" "Product Factory text field"
+    And I set "StockSiteAddress[######]" text to the "Address Line 1" "Product Factory text field"
+    And I set "StockSiteAddressLineTwo[######]" text to the "Address Line 2" "Product Factory text field"
+    And I set "StockSiteAddressLineThree[######]" text to the "Address Line 3" "Product Factory text field"
+    And I set "StockSiteCity[###]" text to the "City" "Product Factory text field"
+    And I click on the "Country" "Product Factory dropdown"
+    And I click on the "Albania" "Product Factory dropdown option"
+    And I set "~StockSitePostcode[######]" text to the "Postcode" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_STOCK_SITE_NAME" element
