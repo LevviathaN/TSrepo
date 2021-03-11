@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
 <VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CodeEditor.ReusableScenariosManager">
    <children>
@@ -19,6 +20,7 @@
                   <ListView fx:id="reusablesListView" onMouseClicked="#updateStepsList" />
                </children>
             </VBox>
+            <WebView fx:id="reusableWebView" minHeight="400.0" minWidth="400.0" prefHeight="200.0" prefWidth="200.0" />
             <VBox>
                <children>
                   <Label text="Steps of reusable" />
@@ -36,7 +38,7 @@
       <HBox>
          <children>
             <Button fx:id="initiateButton" mnemonicParsing="false" onAction="#initiateList" text="Initiate" />
-            <Button fx:id="editReusableButton" mnemonicParsing="false" text="Edit" />
+            <Button fx:id="saveReusableButton" mnemonicParsing="false" onAction="#saveReusable" text="Save" />
             <ComboBox fx:id="stepdefsSuggestionCombobox" prefWidth="150.0" promptText="Stepdef Suggestion" />
             <ComboBox fx:id="parametersSuggestionCombobox" prefWidth="150.0" promptText="Param Suggestion" />
          </children>

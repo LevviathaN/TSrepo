@@ -9,7 +9,7 @@
    <center>
       <VBox>
          <children>
-            <WebView fx:id="webview" maxHeight="-1.0" maxWidth="-1.0" minHeight="500.0" minWidth="600.0" onKeyReleased="#updateEditingData" prefHeight="500.0" prefWidth="-1.0">
+            <WebView fx:id="webview" maxHeight="-1.0" maxWidth="-1.0" minHeight="500.0" minWidth="600.0" onKeyReleased="#webEditorKeyOffListener" prefHeight="500.0" prefWidth="-1.0">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
