@@ -7,33 +7,10 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
   Background:
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
-    When I execute "Create Body Financial Dimension" reusable step
-    And I execute "Create Body" reusable step
-    And I execute "Create VAT Rule" reusable step
-    And I execute "Create Course Type Financial Dimension" reusable step
-    And I execute "Create Course Type" reusable step
-    And I execute "Create Location Financial Dimension" reusable step
-    And I execute "Create Region Financial Dimension" reusable step
-    And I execute "Create Region" reusable step
-    And I execute "Create Location" reusable step
-    And I execute "Create Level" reusable step
-    And I execute "Create Paper" reusable step
-    And I execute "Link Body To Level" reusable step
-    And I execute "Link Body To Paper" reusable step
-    And I execute "Link Paper To Level" reusable step
-    And I execute "Create Sitting" reusable step
-    And I execute "Create Pricing Matrix" reusable step
-    And I execute "Create Pricing Matrix Full" reusable step
-    And I execute "Create Material Type Financial Dimension" reusable step
-    And I execute "Create Material Type" reusable step
-    And I execute "Create Session Duration" reusable step
-    And I execute "Create Client" reusable step
-    And I execute "Create Material" reusable step
+    And I execute "Remember Variables For Creation Dont Touch" reusable step
 
-  @Positive @P1 @BlockedByIssue #TC-4411 (Blocked by BPP-11454)
+  @Positive @P1 #TC-4411
   Scenario: Course Page Filters Validation
-    Then I execute "Create Course" reusable step
-    Given I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
 

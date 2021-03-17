@@ -6,22 +6,10 @@ Feature: Materials - Create Materials - BPP-1099
 
   Background:
     Given I execute "Generate ISBN" reusable step
-#    And I click on the " generate" "button"
-#    And I capture text data "ISBN Generator Number Field" as "EC_NEW_ISBN" variable
+    And I click on the " generate" "button"
+    And I capture text data "ISBN Generator Number Field" as "EC_NEW_ISBN" variable
     Given I execute "Log In" reusable step
-    And I remember "AutoMaterialTypeName" text as "EC_MATERIAL_TYPE_NAME" variable
-    And I remember "AutoVatRuleCode" text as "EC_VAT_RULE_CODE" variable
-    And I remember "AutoBodyName" text as "EC_BODY_NAME" variable
-    And I remember "AutoLevelName" text as "EC_LEVEL_NAME" variable
-    And I remember "AutoSittingName" text as "EC_SITTING_NAME" variable
-
-    And I remember "AutoMaterialTypeNameTwo" text as "EC_MATERIAL_TYPE_NAME_TWO" variable
-    And I remember "AutoVatRuleCodeTwo" text as "EC_VAT_RULE_CODE_TWO" variable
-    And I remember "AutoBodyNameTwo" text as "EC_BODY_NAME_TWO" variable
-    And I remember "AutoBodyShortNameTwo" text as "EC_BODY_SHORT_NAME_TWO" variable
-    And I remember "AutoLevelNameTwo" text as "EC_LEVEL_NAME_TWO" variable
-    And I remember "AutoLevelShortNameTwo" text as "EC_LEVEL_SHORT_NAME_TWO" variable
-    And I remember "AutoSittingNameTwo" text as "EC_SITTING_NAME_TWO" variable
+    And I execute "Remember Variables " reusable step
 
   @Positive @P1 #TC-918
   Scenario: Create Material Wizard
@@ -32,7 +20,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I click on the "submit" "element by type"
     And I should see the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
 
-  @Positive @P1 @Amend @NotResolved @Runn
+  @Positive @P1 @Amend
   Scenario: Amend Material Using Modal
     When I execute "Create Material" reusable step
     When I click on the "Products" "Product Factory navigation item"
@@ -53,9 +41,9 @@ Feature: Materials - Create Materials - BPP-1099
     Then I should see the "EC_BODY_SHORT_NAME_TWO" "element"
     And I should see the "EC_LEVEL_SHORT_NAME_TWO" "element"
     And I should see the "EC_SITTING_NAME_TWO" "element"
-
     When I click on the "Basic Properties" "Product Factory edit button"
-    And I click on the "EC_MATERIAL_TYPE_NAME_TWO" "Product Factory select button"
+    And I click on the "Material Type" "Product Factory dropdown"
+    And I click on the "EC_MATERIAL_TYPE_NAME_TWO" "Product Factory dropdown option"
     And I set "999" text to the "Price (£)" "Product Factory text field"
     And I set "9" text to the "Weight (kg)" "Product Factory text field"
     And I set "EC_NEW_ISBN" text to the "ISBN" "Product Factory text field"

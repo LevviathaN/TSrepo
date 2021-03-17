@@ -7,8 +7,9 @@ Feature: Financial Dimension - Select Body Code - BPP-2492
   Background:
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
+    And I remember "AutoVerticalName" text as "EC_VERTICAL_NAME" variable
 
-  @Negative @Regression @P1 #TC-1756
+  @Negative @Regression @P1 #TC-1756 todo: should work, but too much data on environment. Will see on next run.
   Scenario: Edit Financial Dimension for the Body that is in use
     When I execute "Create Body Financial Dimension" reusable step
     And I execute "Create Body" reusable step
@@ -20,8 +21,8 @@ Feature: Financial Dimension - Select Body Code - BPP-2492
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I click on the "Financial Dimension" "Product Factory change button"
-    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory select button"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "This Body is already linked to one or more Papers, so you cannot change the Financial Dimension" element
 
@@ -30,8 +31,8 @@ Feature: Financial Dimension - Select Body Code - BPP-2492
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I click on the "Financial Dimension" "Product Factory change button"
-    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory select button"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "This Body is already linked to one or more Sittings, so you cannot change the Financial Dimension" element
 
@@ -40,8 +41,8 @@ Feature: Financial Dimension - Select Body Code - BPP-2492
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I click on the "Financial Dimension" "Product Factory change button"
-    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory select button"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "This Body is already linked to one or more Pricing Matrices, so you cannot change the Financial Dimension" element
 
@@ -66,7 +67,7 @@ Feature: Financial Dimension - Select Body Code - BPP-2492
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     When I click on the "EC_BODY_NAME" "Product Factory edit button"
-    And I click on the "Financial Dimension" "Product Factory change button"
-    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory select button"
+    And I click on the "Financial Dimension" "Product Factory dropdown"
+    And I click on the "EC_BODY_FD_CODE_TWO" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     Then I should see the "This Body is already linked to one or more Materials, so you cannot change the Financial Dimension" element
