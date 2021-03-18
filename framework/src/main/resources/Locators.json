@@ -3184,6 +3184,10 @@
     "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@class,'availability-eye')])[1]"
   },
   {
+    "name": "Totara Group Restriction EYE icon click to Show",
+    "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to show')])[1]"
+  },
+  {
     "name": "Totara Activity Completion Restriction EYE icon",
     "value": "xpath=(//h3[contains(text(),'Activity completion restriction')]/following::a[contains(@class,'availability-eye')])[1]"
   },
@@ -3622,6 +3626,26 @@
   {
     "name": "Totara Edit Course Setting link Mobile",
     "value": "xpath=//a[normalize-space()='Edit settings']"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group A not available",
+    "value": "xpath=(//div[normalize-space()='Automation Restrictions Group A']/following-sibling::div[@class='section-restriction'])[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group A disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Group A']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group B disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Date B']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group C disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Completion C']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group C disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Completion D']/ancestor::div[1]"
   },
   {
     "name": "VLE Website Usermenu",
