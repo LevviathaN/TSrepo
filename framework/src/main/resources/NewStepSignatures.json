@@ -12,6 +12,10 @@
     "value": "PARAM"
   },
   {
+    "name": "ELEMENT_IS_ENABLED",
+    "value": "^Element \"([^\"]*)\" should be \"([^\"]*)\"$"
+  },
+  {
     "name": "^I \"(check|uncheck)\" \"([^\"]*)\" \"([^\"]*)\"$",
     "value": "PARAM,LOC_PARAM,LOC_TEMPLATE"
   },

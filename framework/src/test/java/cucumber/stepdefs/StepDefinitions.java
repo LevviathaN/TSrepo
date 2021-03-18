@@ -839,4 +839,20 @@ public class StepDefinitions extends SeleniumHelper {
         }
     }
 
+    /**
+     * Definition to check if element is enabled
+     *
+     * @param elementLocator name or value of needed element
+     * @param status         parameter (enabled/disabled) to verify enabled or disabled status of an element
+     * @author yzosin
+     */
+    @When("^Element \"([^\"]*)\" should be \"([^\"]*)\"$")
+    public void check_element_is_enabled(String elementLocator, String status) {
+        Reporter.log("Executing step: Check if " + elementLocator + " element is enabled");
+        if (status.contains("enabled")) {
+            Assert.assertTrue(findElement(initElementLocator(elementLocator)).isEnabled());
+        } else {
+            Assert.assertFalse(findElement(initElementLocator(elementLocator)).isEnabled());
+        }
+    }
 }
