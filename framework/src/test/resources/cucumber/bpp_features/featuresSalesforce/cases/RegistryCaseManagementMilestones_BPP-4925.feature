@@ -73,9 +73,10 @@ Feature: Registry Case Management
     When I execute "Create Timetable Registry Case" reusable step replacing some steps
       | 9  | I click on the "Book an Appointment" "Salesforce cases dropdown option" |
       | 11 | I click on the "Personal Tutor" "Salesforce cases dropdown option"      |
+      | 15 | I click on the "Business & Technology" "Salesforce cases dropdown option"      |
     And I click on the "Salesforce Case Milestones Tab" button
     And I wait for "2" seconds
-    Then I validate text "CONTAINS=Student Query - Ready to Close" to be displayed for "Salesforce Case Milestones Tab First Milestone Name" element
+    Then I validate text "CONTAINS=Student Query - Work Started" to be displayed for "Salesforce Case Milestones Tab First Milestone Name" element
     Then I validate text "RE=4.+" to be displayed for "Salesforce Case Milestones Tab Milestone One" element
 
   Scenario: Registry Case Verify Milestones Graduation and Certificates
