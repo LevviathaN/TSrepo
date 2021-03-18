@@ -79,6 +79,7 @@ public class StepDefinitions extends SeleniumHelper {
                 UiHandlers.PAGE_NOT_LOAD_HANDLER,
                 UiHandlers.SF_CLICK_HANDLER,
                 UiHandlers.WAIT_HANDLER,
+                UiHandlers.PF_PREMATURE_MENU_CLICK_HANDLER,
                 UiHandlers.DEFAULT_HANDLER);
     }
 
@@ -105,6 +106,7 @@ public class StepDefinitions extends SeleniumHelper {
                     UiHandlers.PAGE_NOT_LOAD_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
+                    UiHandlers.PF_PREMATURE_MENU_CLICK_HANDLER,
                     UiHandlers.DEFAULT_HANDLER);
         } else {
             Reporter.log("Condition " + conditionParameter + condition + " is not true, so '" + element + "' element step will not be clicked");
@@ -691,6 +693,7 @@ public class StepDefinitions extends SeleniumHelper {
                     UiHandlers.PAGE_NOT_LOAD_HANDLER,
                     UiHandlers.SF_CLICK_HANDLER,
                     UiHandlers.WAIT_HANDLER,
+                    UiHandlers.PF_PREMATURE_MENU_CLICK_HANDLER,
                     UiHandlers.DEFAULT_HANDLER);
             attempt++;
             if (attempt > 5) {

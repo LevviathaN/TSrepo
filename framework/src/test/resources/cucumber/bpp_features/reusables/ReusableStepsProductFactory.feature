@@ -346,6 +346,7 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
+    And I wait for "5" seconds
 
   Scenario: Create Course
     When I click on the "Products" "Product Factory navigation item"

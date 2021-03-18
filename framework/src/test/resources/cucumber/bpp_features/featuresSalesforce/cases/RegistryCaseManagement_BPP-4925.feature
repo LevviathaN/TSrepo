@@ -59,7 +59,7 @@ Feature: Registry Case Management
     And I should scroll to the "top" of the page
     And I validate text "CONTAINS=Student Records" to be displayed for "Salesforce Case Owner Data Field" element
 
-  @AssignmentRules1
+  @AssignmentRules
   Scenario: Registry Case Management Verify Case Assignment Attendance and VLE
     Given I execute "Log In To Salesforce" reusable step
         #Attendance and Absences
@@ -164,3 +164,41 @@ Feature: Registry Case Management
     And I execute "Create Complaints Registry Case" reusable step
     And I should scroll to the "top" of the page
     And I validate text "CONTAINS=Head of Student Experience" to be displayed for "Salesforce Case Owner Data Field" element
+
+  @AssignmentRules @GDL
+  Scenario: Registry Case Management Verify Case Assignment GDL Law Schools
+    Given I execute "Log In To Salesforce" reusable step
+    And I execute "Create Complaints Registry Case" reusable step replacing some steps
+      | 9  | I click on the "General GDL Query" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Cambridge" "Salesforce cases dropdown option" |
+      | 13 | I click on the "Law" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=General GDL Queries" to be displayed for "Salesforce Case Owner Data Field" element
+    And I wait for "1" seconds
+    And I execute "Create Complaints Registry Case" reusable step replacing some steps
+      | 9  | I click on the "General BPTC/LLM LPB Query" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Leeds" "Salesforce cases dropdown option" |
+      | 13 | I click on the "Law" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=General BPTC/LLM LPB Queries" to be displayed for "Salesforce Case Owner Data Field" element
+    And I wait for "1" seconds
+    And I execute "Create Complaints Registry Case" reusable step replacing some steps
+      | 9  | I click on the "General BTC/LLM LPB (from September 2020) Query" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Leeds" "Salesforce cases dropdown option" |
+      | 13 | I click on the "Law" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=General BTC/LLM LPB Sept Queries" to be displayed for "Salesforce Case Owner Data Field" element
+    And I wait for "1" seconds
+    And I execute "Create Complaints Registry Case" reusable step replacing some steps
+      | 9  | I click on the "General LPC/LLM LPS Query" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Leeds" "Salesforce cases dropdown option" |
+      | 13 | I click on the "Law" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=General LPC/LLM LPS Queries" to be displayed for "Salesforce Case Owner Data Field" element
+    And I wait for "1" seconds
+    And I execute "Create Complaints Registry Case" reusable step replacing some steps
+      | 9  | I click on the "General PGDL/LLM LLP (from September 2020) Query" "Salesforce cases dropdown option" |
+      | 11 | I click on the "Bristol" "Salesforce cases dropdown option" |
+      | 13 | I click on the "Law" "Salesforce cases dropdown option" |
+    And I should scroll to the "top" of the page
+    And I validate text "CONTAINS=General PGDL/LLM LLP Sept Queries" to be displayed for "Salesforce Case Owner Data Field" element
