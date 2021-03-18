@@ -497,7 +497,7 @@ Feature: Salesforce
     And I click on the "Salesforce New Case Button" element
     And I click on the "Student Query" "Salesforce radiobutton"
     And I click on the "Next" "button"
-    And I click on the "Study Location" "Salesforce cases dropdown field"
+    And I click on the "School" "Salesforce cases dropdown field"
     And I click on the "Case Origin" "Salesforce cases dropdown field"
     And I click on the "Face-to-Face" "Salesforce cases dropdown option"
     And I click on the "Query Type" "Salesforce cases dropdown field"
