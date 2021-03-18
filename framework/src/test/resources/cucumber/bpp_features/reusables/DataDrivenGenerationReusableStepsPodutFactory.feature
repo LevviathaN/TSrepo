@@ -124,7 +124,7 @@ Feature: Product Factory
       |Dont Touch  |DontTouch  |_DONT_TOUCH  |DT     |_DT    |
 
     #_________________________________Create Reference Data Set____________________________
-  @CreateDataDriven
+  @CreateDataDriven @Run
   Scenario Outline: Create Reference Data Set <type>
     Given I am on "https://generate.plus/en/number/isbn" URL
     And I click on the " generate" "button"
@@ -226,8 +226,8 @@ Feature: Product Factory
     And I execute "Create Course Instance" reusable step
     And I execute modified "Create CBA Record" reusable step
       |4|Replace|I click on the "EC_CBA_SESSION_DURATION_DESCRIPTION<ecName>" "Product Factory select button"|
-    And I execute modified "Create CBA Course" reusable step
-      |11|Replace|I should see the "EC_CBA_PAPER_NAME<ecName>" element|
+#    And I execute modified "Create CBA Course" reusable step
+#      |11|Replace|I should see the "EC_CBA_PAPER_NAME<ecName>" element|
     And I execute "Create Digital Content" reusable step
     And I execute "Create Stream" reusable step replacing some steps
       |4|I set "$Auto[StreamName]<varName>" text to the "Name" "Product Factory text field"|
