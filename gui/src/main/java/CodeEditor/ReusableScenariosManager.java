@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -13,9 +14,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ReusableScenariosManager {
 
@@ -24,6 +23,7 @@ public class ReusableScenariosManager {
     CodeEditorFunctionality editor = new CodeEditorFunctionality();
 
     public ComboBox<String> tagsFilter;
+    public ChoiceBox<String> applicationsChoiceBox;
 
     public WebView reusableWebView;
     public ListView<String> reusablesListView;
@@ -40,15 +40,18 @@ public class ReusableScenariosManager {
     public void display() throws Exception {
         URL url = new URL("file:" + CodeEditorExample.guiFolder + "/src/main/resources/ReusableScenariosManagerLayout.fxml");
         Parent root = FXMLLoader.load(url);
-        HBox hbox = (HBox) root.getChildrenUnmodifiable().get(1);
-        VBox vbox = (VBox) hbox.getChildren().get(0);
-        ListView<String> listView = (ListView<String>) vbox.getChildren().get(1);
-        listView.getItems().addAll(validator.getReusableScenariosList());
+        List<Parent> elements = new ArrayList<>();
+        GuiHelper.getSceneElementsFromRoot(root, elements);
+        ((ListView<String>) GuiHelper.getSceneElementFromListById(elements,"reusablesListView"))
+                .getItems().addAll(validator.getReusableScenariosList("@ProductFactoryReusable"));
+        ((ChoiceBox<String>) GuiHelper.getSceneElementFromListById(elements,"applicationsChoiceBox"))
+                .getItems().addAll(Arrays.asList("ProductFactory","BuildEmpire","Salesforce"));
+        ((ChoiceBox<String>) GuiHelper.getSceneElementFromListById(elements,"applicationsChoiceBox")).setValue("ProductFactory");
         reusableScenariosWindow = new Stage();
         reusableScenariosWindow.setTitle("Reusable Scenarios Manager");
         reusableScenariosWindow.setMinWidth(250);
 
-        Scene scene = new Scene(root, 620, 500);
+        Scene scene = new Scene(root, 1200, 500);
         reusableScenariosWindow.setScene(scene);
         reusableScenariosWindow.showAndWait();
 
@@ -81,7 +84,7 @@ public class ReusableScenariosManager {
         reusableScenariosWindow.setTitle("Reusable Scenarios Manager");
         reusableScenariosWindow.setMinWidth(250);
 
-        Scene scene = new Scene(root, 620, 500);
+        Scene scene = new Scene(root, 1200, 500);
         reusableScenariosWindow.setScene(scene);
         reusableScenariosWindow.showAndWait();
 
@@ -94,12 +97,17 @@ public class ReusableScenariosManager {
     }
 
     public void updateStepsList() {
-        editor.editingCode = validator.getReusableScenarioFromFeature(reusablesListView.getSelectionModel().getSelectedItem());
+        editor.editingCode = validator.getReusableScenarioFromFeature(reusablesListView.getSelectionModel().getSelectedItem(),applicationsChoiceBox.getValue());
         reusableWebView.getEngine().loadContent(editor.applyEditingTemplate());
         scenarioStepsListView.setItems(editor.getStepsOfReusableScenario(reusablesListView.getSelectionModel().getSelectedItem()));
         scenarioStepsListView.setCellFactory(TextFieldListCell.forListView());
         scenarioUsageListView.getItems().clear();
         scenarioUsageListView.getItems().addAll(GherkinValidator.reusablesUsageMap.get(reusablesListView.getSelectionModel().getSelectedItem()).keySet());
+    }
+
+    public void updateReusablesList() {
+        reusablesListView.getItems().clear();
+        reusablesListView.getItems().addAll(validator.getReusableScenariosList("@" + applicationsChoiceBox.getValue() + "Reusable"));
     }
 
     /** Method to close Save File modal */

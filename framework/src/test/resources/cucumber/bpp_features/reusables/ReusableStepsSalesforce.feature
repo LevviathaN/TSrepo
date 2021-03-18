@@ -1,4 +1,4 @@
-@Reusable
+@Reusable @SalesforceReusable
 Feature: Salesforce
 
   Scenario: Log In To Salesforce

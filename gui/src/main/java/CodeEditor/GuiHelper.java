@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
+import javafx.scene.Parent;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -150,5 +151,31 @@ public class GuiHelper {
             e.printStackTrace();
         }
         return new String(encoded, encoding);
+    }
+
+    public static void getSceneElementsFromRoot(Parent scene, List <Parent> list) {
+        for (javafx.scene.Node child : scene.getChildrenUnmodifiable()){
+            Parent subparent = (Parent) child;
+            if (subparent.getChildrenUnmodifiable().isEmpty()) {
+                list.add(subparent);
+            } else {
+                getSceneElementsFromRoot(subparent, list);
+            }
+        }
+    }
+
+    public static Parent getSceneElementFromListById(List <Parent> list, String id) {
+        Parent element = null;
+        for (Parent parent : list) {
+            if (!(parent.getId() == null || parent.getId().equals(""))) {
+                if (parent.getId().equals(id)) {
+                    element = parent;
+                }
+            }
+        }
+        if (element == null) {
+            System.out.println("No element with such ID: " + id);
+        }
+        return element;
     }
 }

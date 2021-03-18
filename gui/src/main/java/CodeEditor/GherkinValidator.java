@@ -5,7 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.sound.sampled.Line;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedOutputStream;
@@ -154,6 +153,36 @@ public class GherkinValidator {
                 Node reusableNode = reusablesList.item(i);
                 Element reusableElement = (Element) reusableNode;
                 availableReusableStepsList.add(reusableElement.getAttribute("name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return availableReusableStepsList;
+    }
+
+    public List<String> getReusableScenariosList(String tag) {
+        ArrayList<String> availableReusableStepsList = new ArrayList<>();
+
+        try {
+            File inputFile = new File(CodeEditorExample.frameworkFolder + "/src/main/resources/data/bpp/ReusableTestSteps.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(inputFile);
+            doc.getDocumentElement().normalize();
+
+            Node reusablesNode = doc.getElementsByTagName("reusables").item(0);
+            Element reusablesElement = (Element) reusablesNode;
+
+            NodeList reusablesList = reusablesElement.getElementsByTagName("reusable");
+            for (int i = 0; i < reusablesList.getLength(); i++) {
+                Node reusableNode = reusablesList.item(i);
+                Element reusableElement = (Element) reusableNode;
+                Node tagsNode = reusableElement.getElementsByTagName("tags").item(0);
+                for (int j = 0; j < ((Element) tagsNode).getElementsByTagName("tag").getLength(); j++) {
+                    if (((Element) tagsNode).getElementsByTagName("tag").item(j).getTextContent().equals(tag)) {
+                        availableReusableStepsList.add(reusableElement.getAttribute("name"));
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -323,10 +352,9 @@ public class GherkinValidator {
         return scenariosList;
     }
 
-    public String getReusableScenarioFromFeature(String scenarioName) {
-        String feature = "";
-        String filePath = featureFilesMap.get("ReusableStepsProductFactory.feature"); //todo remove hardcode!
-        feature = GuiHelper.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
+    public String getReusableScenarioFromFeature(String scenarioName, String featureName) {
+        String filePath = featureFilesMap.get("ReusableSteps" + featureName + ".feature"); //todo remove hardcode!
+        String feature = GuiHelper.readFile(filePath, StandardCharsets.UTF_8).replaceAll("\r","");
         int i = feature.indexOf(scenarioName + "\n");
         String scenarioPlus = feature.substring(i);
         int j = scenarioPlus.indexOf("Scenario: ");

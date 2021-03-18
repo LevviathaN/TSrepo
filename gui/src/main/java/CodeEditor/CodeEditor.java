@@ -103,7 +103,6 @@ public class CodeEditor extends StackPane implements Initializable {
     public void debugButtonListener() {
         try {
             if (GherkinValidator.reusablesList.contains(editor.getReusableNameFromStep(editor.editableLine))) {
-                validator.getReusableScenarioFromFeature(editor.getReusableNameFromStep(editor.editableLine));
                 reusablesManager.display(editor.getReusableNameFromStep(editor.editableLine));
             } else {
                 System.out.println("Invalid reusable");

@@ -6,12 +6,12 @@
 
 <VBox xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CodeEditor.ReusableScenariosManager">
    <children>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <items>
+      <HBox>
+         <children>
             <ComboBox fx:id="tagsFilter" editable="true" prefWidth="150.0" promptText="Tags" />
-            <ChoiceBox prefWidth="150.0" />
-        </items>
-      </ToolBar>
+            <ChoiceBox fx:id="applicationsChoiceBox" onMouseExited="#updateReusablesList" prefWidth="150.0" />
+         </children>
+      </HBox>
       <HBox>
          <children>
             <VBox>

@@ -1,4 +1,4 @@
-@Reusable
+@Reusable @BuildEmpireReusable
 Feature: BuildEmpire
 
   Scenario: Register New Student Account

@@ -25,7 +25,12 @@ import static java.nio.file.StandardOpenOption.CREATE;
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features",
         glue = {"cucumber.stepdefs"},
-        tags = {"@ProductFactory and not @DataGeneration or @DirectApps or @Hub or @DigitalSite or @Banner or @Salesforce"},
+        tags = {"@ProductFactory and not @DataGeneration and not @Reusable " +
+                "or @DirectApps and not @Reusable " +
+                "or @Hub and not @Reusable " +
+                "or @DigitalSite and not @Reusable " +
+                "or @Banner and not @Reusable " +
+                "or @Salesforce and not @Reusable"},
         plugin = {"pretty"})
 
 /**

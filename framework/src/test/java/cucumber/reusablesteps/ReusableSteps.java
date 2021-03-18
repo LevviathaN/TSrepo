@@ -2,6 +2,7 @@ package cucumber.reusablesteps;
 
 import gherkin.pickles.Pickle;
 import gherkin.pickles.PickleStep;
+import gherkin.pickles.PickleTag;
 import io.cucumber.testng.CucumberFeatureWrapper;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
@@ -17,6 +18,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -51,7 +53,13 @@ public class ReusableSteps {
         System.out.println("Debug " + pickleWrapper.getPickleEvent().pickle.getName());
 
         Pickle pickle = pickleWrapper.getPickleEvent().pickle;
+        List<PickleTag> tags = pickle.getTags();
         step = "<reusable name=\"" + pickle.getName() + "\">";
+        step = step + "<tags>";
+        for (PickleTag tag : tags) {
+            step = step + "<tag>" + tag.getName() + "</tag>";
+        }
+        step = step + "</tags>";
         for(PickleStep pickleStep : pickle.getSteps()){
             String currentStep = pickleStep.getText();
             currentStep = currentStep.replaceAll("<", "&lt;");
