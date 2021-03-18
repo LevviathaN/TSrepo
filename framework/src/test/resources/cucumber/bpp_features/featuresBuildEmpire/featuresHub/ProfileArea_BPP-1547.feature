@@ -3,7 +3,7 @@ Feature: BPP University Hub Profile Area
   As a user
   I expect to see an updated link to access my profile
 
-  @ProfileArea @Positive #TC-1170
+  @ProfileArea @Positive #TC-1170, TC-4962
   Scenario: Hub Profile Area
     #Register New Student
     And I execute "Register New Student Account" reusable step
@@ -20,6 +20,8 @@ Feature: BPP University Hub Profile Area
     Then I validate text "CONTAINS=EC_AUTO_FIRSTNAME" to be displayed for "Direct App Edit Account Page Account Name field" element
     Then I validate text "CONTAINS=EC_AUTO_LASTNAME" to be displayed for "Direct App Edit Account Page Account Name field" element
     When I click on the "Direct App Edit Account Page Edit button" button
+    And I validate text "CONTAINS=EC_AUTO_EMAIL" to be displayed for "Direct App Edit Account Email" element
+    Then Element "Direct App Edit Account Email" should be "disabled"
     And I upload "Avatar.png" file to "Direct App Upload File" element
     And I wait for "2" seconds
     And I validate text "Uploaded" to be displayed for "Direct App Account Avatar Image Upload status" element

@@ -1324,6 +1324,10 @@
     "value": "xpath=//button[normalize-space()='edit']"
   },
   {
+    "name": "Direct App Edit Account Email",
+    "value": "xpath=//label[contains(.,'Email')]//following-sibling::input"
+  },
+  {
     "name": "Direct App Edit Account Page Save button",
     "value": "xpath=//button[normalize-space()='save']"
   },

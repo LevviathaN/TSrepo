@@ -12,6 +12,10 @@
     "value": "^Сss \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
   },
   {
+    "name": "ELEMENT_IS_ENABLED",
+    "value": "^Element \"([^\"]*)\" should be \"([^\"]*)\"$"
+  },
+  {
     "name": "ELEMENTS_ATTRIBUTE_SHOULD_HAVE_VALUE",
     "value": "^Attribute \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
   },

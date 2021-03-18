@@ -165,7 +165,7 @@ Feature: Registry Case Management
     And I should scroll to the "top" of the page
     And I validate text "CONTAINS=Head of Student Experience" to be displayed for "Salesforce Case Owner Data Field" element
 
-  @AssignmentRules @GDL
+  @AssignmentRules @GDL #TC-3975,3984,3974,3983,3982,3973,3966,3965,3964,3981,3976,3978,3980,3977,3979
   Scenario: Registry Case Management Verify Case Assignment GDL Law Schools
     Given I execute "Log In To Salesforce" reusable step
     And I execute "Create Complaints Registry Case" reusable step replacing some steps
