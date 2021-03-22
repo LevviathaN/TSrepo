@@ -510,15 +510,17 @@ Feature: Salesforce
     And I wait for "3" seconds
 
   Scenario: Create Business Account
-    When I click on the "Accounts" "Salesforce navigation menu dropdown"
+    When I click on the "Account/home" "Salesforce navigation href links"
     And I wait for "2" seconds
-    And I click on the "New Account" "Salesforce navigation menu dropdown option"
+    And I click on the "Salesforce New Case Button" button
     And I click on the "Business Development Account" "Salesforce radiobutton"
     And I click on the "Next" "button"
     And I set "AutoBusiness[FIRSTNAME]" text to the "Account Name" "Salesforce text field label"
     And I click on the "Client Category" "Salesforce dropdown field" by JS
-    And I click on the "Key Client" "option" by JS
     And I wait for "1" seconds
+    And I click on the "Key Client" "Salesforce dropdown field option"
+    And I click on the "Account Tax Category" "Salesforce dropdown field"
+    Then I click on the "Domestic Business" "Salesforce dropdown field option"
     And I set "[PHONE]" text to the "Phone" "element by name"
     And I set "www.bpp.com" text to the "Website" "element by name"
     And I set "London" text to the "Head Office City" "Salesforce text field label"
@@ -558,9 +560,6 @@ Feature: Salesforce
     And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
     And I capture current URL as "EC_BOOKING_URL" variable
     And I wait for "2" seconds
-    Then Browser performs "REFRESH" command
-    And I wait for "2" seconds
-    And I should see the "Salesforce Booking Lines Number" element
 
   Scenario: Create Address Business Account
     And I click on the "Salesforce Addresses Quick Link Tab" button by JS

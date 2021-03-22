@@ -1,4 +1,4 @@
-@Salesforce @BDOpportunities
+@BDOpportunities
 Feature: Update Tiers in BD Opportunities
   As a Salesforce user that manages clients
   I want to to be able to select 'tiers' on my opportunities that reflect accurate verticals and products

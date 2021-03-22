@@ -1148,8 +1148,20 @@
     "value": "xpath=//label[contains(.,'Date of Assessment')]//following-sibling::div//input"
   },
   {
+    "name": "Direct App Assessment Handout Date",
+    "value": "xpath=//label[contains(.,'Handout Date')]//following-sibling::div//input"
+  },
+  {
     "name": "Direct App Assesment Exam Type Option",
     "value": "xpath=//label[contains(.,'Type of Assessment')]//following-sibling::div//ul/li[1]"
+  },
+  {
+    "name": "Direct App Assessment Coursebook Type Option",
+    "value": "xpath=//label[contains(.,'Type of Assessment')]//following-sibling::div//ul/li[2]"
+  },
+  {
+    "name": "Direct App Assessment Not Submitted Coursebook Please Note Message",
+    "value": "xpath=//*[@class='please-note']"
   },
   {
     "name": "Direct App Assesment Examination Venue",
@@ -1322,6 +1334,10 @@
   {
     "name": "Direct App Edit Account Page Edit button",
     "value": "xpath=//button[normalize-space()='edit']"
+  },
+  {
+    "name": "Direct App Edit Account Email",
+    "value": "xpath=//label[contains(.,'Email')]//following-sibling::input"
   },
   {
     "name": "Direct App Edit Account Page Save button",
@@ -1682,6 +1698,14 @@
   {
     "name": "Direct App Sit Assesment Yes",
     "value": "xpath=//label[contains(.,'Did you sit the Assessment?')]//following-sibling::div/label[1]"
+  },
+  {
+    "name": "Direct App Sit Assessment No",
+    "value": "xpath=//label[contains(.,'Did you sit the Assessment?')]//following-sibling::div/label[2]"
+  },
+  {
+    "name": "Direct App Submit Coursebook Yes",
+    "value": "xpath=//label[contains(.,'Did you submit the coursework?')]//following-sibling::div/label[1]"
   },
   {
     "name": "Direct App Skill Range Textarea",
@@ -3188,6 +3212,10 @@
     "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@class,'availability-eye')])[1]"
   },
   {
+    "name": "Totara Group Restriction EYE icon click to Show",
+    "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to show')])[1]"
+  },
+  {
     "name": "Totara Activity Completion Restriction EYE icon",
     "value": "xpath=(//h3[contains(text(),'Activity completion restriction')]/following::a[contains(@class,'availability-eye')])[1]"
   },
@@ -3626,6 +3654,26 @@
   {
     "name": "Totara Edit Course Setting link Mobile",
     "value": "xpath=//a[normalize-space()='Edit settings']"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group A not available",
+    "value": "xpath=(//div[normalize-space()='Automation Restrictions Group A']/following-sibling::div[@class='section-restriction'])[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group A disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Group A']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group B disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Date B']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group C disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Completion C']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Automation Course Restrictions Group C disabled",
+    "value": "xpath=//div[normalize-space()='Automation Restrictions Completion D']/ancestor::div[1]"
   },
   {
     "name": "VLE Website Usermenu",

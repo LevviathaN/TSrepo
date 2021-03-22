@@ -169,11 +169,22 @@ Feature: BuildEmpire
     And I click on the "Direct App Assesment Attempt Number" button
     And I click on the "Direct App Assesment Attempt Number Option Two" button
     And I click on the "Direct App Sit Assesment Yes" button
-    And I fill the "Direct App Assesment Date" field with "12/12/2018"
+    And I fill the "Direct App Assesment Date" field with "12/12/2020"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Assesment Date"
     And I click on the "Direct App Mitigating Checkbox If Application Is Successful" button
     And I fill the "Direct App Assesment Examination Venue" field with "Venue"
     And I click on the "Direct App Did You Apply For Deferral" button
+    Then I click on the "Direct App Sit Assessment No" element
+    And I shouldn't see the "Direct App Mitigating Checkbox If Application Is Successful" "element"
+    And I click on the "Direct App Assesment Type" button
+    And I click on the "Direct App Assessment Coursebook Type Option" button
+    And I fill the "Direct App Assessment Handout Date" field with "12/12/2020"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Direct App Assessment Handout Date"
+    And I should see the "Direct App Assessment Not Submitted Coursebook Please Note Message" element
+    Then I validate text "CONTAINS=As you have not submitted your coursework(s), the sit(s) will be disregarded from your record and, if eligible" to be displayed for "Direct App Assessment Not Submitted Coursebook Please Note Message" element
+    And I click on the "Direct App Submit Coursebook Yes" button
+    Then I validate text "CONTAINS=PLEASE NOTE: If the application is granted" to be displayed for "Direct App Assessment Not Submitted Coursebook Please Note Message" element
+    And I click on the "I confirm that I wish to have the assessment listed disregarded" "Build Empire radiobutton" by JS
     And I click on the "Direct App Add Filled Assesment" button
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I wait for "1" seconds
