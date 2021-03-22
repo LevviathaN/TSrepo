@@ -63,7 +63,7 @@ Feature: Digital Content Id - Multiple Course Types - BPP-7203
       |20|Add|I click on the "Search" "Product Factory button two"|
       |21|Add|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
 
-  @Negative @P1 #TC-3204
+  @Negative @P1 @DoNotRun @NotFinished #TC-3204
   Scenario: Create Digital Content Multiple Course Types Duplicate
     Given I execute modified "Create Digital Content" reusable step
       |18|Add|I set "Suffix[###]" text to the "Name Suffix" "Product Factory text field"|
@@ -79,29 +79,32 @@ Feature: Digital Content Id - Multiple Course Types - BPP-7203
       |23|Add|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
     Then I should see the "Digital Content already exists" "text contained in element"
 
-  @Positive @P1 #TC-3205, TC-3206
+  @Positive @P1 @DoNotRun @NotFinished #TC-3205, TC-3206
   Scenario: Create Digital Content Multiple Course Types Remove
     Given I execute "Create Digital Content" reusable step with some additional steps
-      |11|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
-      |18|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Description" "Product Factory text field"|
-      |19|I click on the "Search" "Product Factory button two"                                         |
+      |12|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
+      |18|I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
+      |19|I click on the "submit" "element by type"|
       |20|I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"|
-    Then I should see the "EC_BODY_SHORT_NAME" element
+#    Then I should see the "EC_BODY_SHORT_NAME" element
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
-    And I set "EC_BODY_SHORT_NAME" text to the "Body" "Product Factory text field"
-    And I click on the "Search" "Product Factory button"
+    And  I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Course Types" "Product Factory edit button"
-    And I set "CourseTypeDescription" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button two"
-    And I "check" "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory dialog checkbox"
-    And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
+    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type two"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory checkbox"
+    And I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type two"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory checkbox"
     And I click on the "Save" "Product Factory active button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"
     And I click on the "Course Types" "Product Factory edit button"
-    And I set "CourseTypeDescription" text to the "Description" "Product Factory text field"
-    And I click on the "Search" "Product Factory button two"
-    And I "check" "EC_COURSE_TYPE_DESCRIPTION" "Product Factory dialog checkbox"
+    And I set "EC_COURSE_TYPE_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type two"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory checkbox"
     And I click on the "Save" "Product Factory active button"
     Then Attribute "tabindex" of "Save" "Product Factory button" should have value "0"

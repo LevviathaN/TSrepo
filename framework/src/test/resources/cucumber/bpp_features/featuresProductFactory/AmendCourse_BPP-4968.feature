@@ -7,58 +7,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
   Background:
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
-
-    And I remember "AutoDeactivationReasonDescriptionEdit" text as "EC_DEACTIVATION_REASON_DESCRIPTION" variable
-    And I remember "AutoDeactivationReasonDescriptionPreventEdit" text as "EC_DEACTIVATION_REASON_DESCRIPTION_PREVENT" variable
-    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
-    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
-    And I remember "AutoStreamNameEdit" text as "EC_STREAM_NAME" variable
-    And I remember "AutoBodyFDCodeEdit" text as "EC_BODY_FD_CODE" variable
-    And I remember "AutoBodyFDDescriptionEdit" text as "EC_BODY_FD_DESCRIPTION" variable
-    And I remember "AutoBodyShortNameEdit" text as "EC_BODY_SHORT_NAME" variable
-    And I remember "AutoBodyNameEdit" text as "EC_BODY_NAME" variable
-    And I remember "AutoVatRuleCodeEdit" text as "EC_VAT_RULE_CODE" variable
-    And I remember "AutoVatRuleDescriptionEdit" text as "EC_VAT_RULE_DESCRIPTION" variable
-    And I remember "AutoCourseTypeFDCodeEdit" text as "EC_COURSE_TYPE_FD_CODE" variable
-    And I remember "AutoCourseTypeFDDescriptionEdit" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
-    And I remember "AutoCourseTypeDescriptionEdit" text as "EC_COURSE_TYPE_DESCRIPTION" variable
-    And I remember "AutoLocationFDCodeEdit" text as "EC_LOCATION_FD_CODE" variable
-    And I remember "AutoLocationFDDescriptionEdit" text as "EC_LOCATION_FD_DESCRIPTION" variable
-    And I remember "AutoRegionFDCodeEdit" text as "EC_REGION_FD_CODE" variable
-    And I remember "AutoRegionFDDescriptionEdit" text as "EC_REGION_FD_DESCRIPTION" variable
-    And I remember "AutoRegionNameEdit" text as "EC_REGION_NAME" variable
-    And I remember "AutoLocationNameEdit" text as "EC_LOCATION_NAME" variable
-    And I remember "AutoLocationAddressEdit" text as "EC_LOCATION_ADDRESS" variable
-    And I remember "AutoLevelNameEdit" text as "EC_LEVEL_NAME" variable
-    And I remember "AutoLevelShortNameEdit" text as "EC_LEVEL_SHORT_NAME" variable
-    And I remember "EditPprSN" text as "EC_PPR_SN" variable
-    And I remember "AutoPaperNameEdit" text as "EC_PAPER_NAME" variable
-    And I remember "AutoPaperDescriptionEdit" text as "EC_PAPER_DESCRIPTION" variable
-    And I remember "EdCBAPprSN" text as "EC_CBA_PPR_SN" variable
-    And I remember "AutoCBAPaperNameEdit" text as "EC_CBA_PAPER_NAME" variable
-    And I remember "AutoCBAPaperDescriptionEdit" text as "EC_CBA_PAPER_DESCRIPTION" variable
-    And I remember "AutoSittingNameEdit" text as "EC_SITTING_NAME" variable
-    And I remember "AutoMaterialTypeFDCodeEdit" text as "EC_MATERIAL_TYPE_FD_CODE" variable
-    And I remember "AutoMaterialTypeFDDescriptionEdit" text as "EC_MATERIAL_TYPE_FD_DESCRIPTION" variable
-    And I remember "AutoMaterialTypeNameEdit" text as "EC_MATERIAL_TYPE_NAME" variable
-    And I remember "AutoMaterialTypeDescriptionEdit" text as "EC_MATERIAL_TYPE_DESCRIPTION" variable
-    And I remember "AutoSessionDurationDescriptionEdit" text as "EC_SESSION_DURATION_DESCRIPTION" variable
-    And I remember "AutoCBASessionDurationDescriptionEdit" text as "EC_CBA_SESSION_DURATION_DESCRIPTION" variable
-    And I remember "AutoSessionDurationDescriptionTwoDatesEdit" text as "EC_SESSION_DURATION_DESCRIPTION_TWO_DATES" variable
-    And I remember "AutoClientNameEdit" text as "EC_CLIENT_NAME" variable
-    And I remember "2000" text as "EC_PRICE" variable
-    And I remember "10" text as "EC_WEIGHT" variable
-    And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
-
-#    And I remember "AutoLocationNameTwo" text as "EC_LOCATION_NAME_TWO" variable
-#    And I remember "AutoLocationAddressTwo" text as "EC_LOCATION_ADDRESS_TWO" variable
-#    And I remember "AutoLocationNameThree" text as "EC_LOCATION_NAME_THREE" variable
-#    And I remember "AutoLocationAddressThree" text as "EC_LOCATION_ADDRESS_THREE" variable
-
-#    And I remember "AutoLocationFDCodeTwo" text as "EC_LOCATION_FD_CODE" variable
-#    And I remember "AutoLocationFDDescriptionTwo" text as "EC_LOCATION_FD_DESCRIPTION" variable
-#    And I remember "AutoLocationFDCodeTwo" text as "EC_LOCATION_FD_CODE" variable
-#    And I remember "AutoLocationFDDescriptionTwo" text as "EC_LOCATION_FD_DESCRIPTION" variable
+    And I execute "Remember Variables For Creation Three" reusable step
 
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|

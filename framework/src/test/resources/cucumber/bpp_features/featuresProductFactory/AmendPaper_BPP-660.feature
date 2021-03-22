@@ -25,6 +25,16 @@ Feature: Amend Reference Data - Paper - BPP-660
       |8|Replace|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
       |12|Replace|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
       |14|Replace|I should see the "EC_PAPER_NAME_TWO" element|
+    #Cleanup, to return paper to initial state, to avoid problems in future scenarios require it
+    Given I execute modified "Create Paper" reusable step
+      |3|Add|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
+      |4|Add|I click on the "submit" "element by type"|
+      |5|Replace|I click on the "EC_PAPER_NAME_TWO" "Product Factory edit button"|
+      |6|Replace|I set "EC_PPR_SN_EDIT" text to the "Short Name" "Product Factory text field"|
+      |7|Replace|I set "EC_PAPER_NAME_EDIT" text to the "Name" "Product Factory text field"|
+      |8|Replace|I set "EC_PAPER_DESCRIPTION_EDIT" text to the "Description" "Product Factory text field"|
+      |12|Replace|I set "EC_PAPER_DESCRIPTION_EDIT" text to the "Search" "Product Factory text field" from keyboard|
+      |14|Replace|I should see the "EC_PAPER_NAME_EDIT" element|
 
   @Negative @P2 #TC-827
   Scenario: Submitting Unchanged Paper Fields
@@ -48,7 +58,7 @@ Feature: Amend Reference Data - Paper - BPP-660
     Then I should see the "Description must be unique" "message"
 
   @Negative @P2 #TC-831
-  Scenario: Amend a Paper Where Description Already Exists
+  Scenario: Amend a Paper Where Name Already Exists
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Papers" "Product Factory navigation sub item"
     Then I set "EC_PAPER_NAME" text to the "Search" "Product Factory text field" from keyboard

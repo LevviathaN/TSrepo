@@ -46,7 +46,7 @@ Feature: Edit Instance - Streams - BPP-6518
     And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
     And I remember "AutoStreamNameTwo" text as "EC_STREAM_NAME_TWO" variable
 
-  @Positive @P1 @NotFinished #TC-2951, TC-2968
+  @Positive @P1 @NotFinished @DoNotRun #TC-2951, TC-2968
   Scenario: Add a Stream to Course Instance
     And I execute "Create Digital Content" reusable step
     And I execute "Create Stream" reusable step replacing some steps
