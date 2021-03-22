@@ -73,7 +73,29 @@ Feature: Submit BPP University Programmes Application
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation personal statement"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
-    And I click on the "Direct App Payment Sponsorhsip I Will" button
+    And I click on the "Direct App Payment Sponsorhsip Company/Law Firm" button
+    Then I set "Auto Test" text to the "Name of organisation/company" "Build Empire text field by title"
+    Then I set "Test" text to the "Person authorising sponsorship" "Build Empire text field by title"
+    Then I set "London" text to the "City" "Build Empire text field by title"
+    Then I set "W35H1" text to the "Postcode" "Build Empire text field by title"
+    Then I set "test@test.com" text to the "Email" "Build Empire text field by title"
+    Then I set "1234567890" text to the "Telephone" "Build Empire text field by title"
+    And I click on the "Country" "Build Empire dropdown"
+    And I click on the "United Kingdom" "Build Empire dropdown option"
+    Then I fill the "Direct App Channel Islands Address Training Manager" field with "Address 1"
+    Then I set "***" text to the "Purchase order number" "Build Empire text field by title"
+    And I should see the "Only alphanumeric characters, - and / are allowed" "text"
+    And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+    Then I set "###" text to the "Purchase order number" "Build Empire text field by title"
+    And I should see the "Only alphanumeric characters, - and / are allowed" "text"
+    And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+    Then I set "$$" text to the "Purchase order number" "Build Empire text field by title"
+    And I should see the "Only alphanumeric characters, - and / are allowed" "text"
+    And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+    Then I set "%" text to the "Purchase order number" "Build Empire text field by title"
+    And I should see the "Only alphanumeric characters, - and / are allowed" "text"
+    And Attribute "class" of "Direct App Inactive Status Button" should have value "step-actions disabled"
+    Then I set "12345" text to the "Purchase order number" "Build Empire text field by title"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Other Information No Criminal Convictions" button
