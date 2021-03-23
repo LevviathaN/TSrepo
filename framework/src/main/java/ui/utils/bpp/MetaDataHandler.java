@@ -27,7 +27,6 @@ public class MetaDataHandler {
 
     private static MetaDataManager metaDataManager = null;
     private static final Path METADATA_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/metadata");
-    private static final Path METADATA_STAGING_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/metadata/staging");
     private static final Path METADATA_PRODUCTION_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/metadata/production");
     private static final Path METADATA_UAT_FILE_PATH = Paths.get(PreProcessFiles.METADATA_AND_KEYWORDS_FILES_FOLDER_PATH + "/metadata/UAT");
     private static final String PREFIX = "MD_";
@@ -37,8 +36,6 @@ public class MetaDataHandler {
         try {
             if (System.getProperties().containsKey("environment") && System.getProperty("environment").equalsIgnoreCase("Production")) {
                 metaDataManager = new MetaDataManager(METADATA_PRODUCTION_FILE_PATH, PREFIX);
-            } else if (System.getProperties().containsKey("environment") && System.getProperty("environment").equalsIgnoreCase("Staging")) {
-                metaDataManager = new MetaDataManager(METADATA_STAGING_FILE_PATH, PREFIX);
             } else if (System.getProperties().containsKey("environment") && System.getProperty("environment").equalsIgnoreCase("UAT")) {
                 metaDataManager = new MetaDataManager(METADATA_UAT_FILE_PATH, PREFIX);
             } else {
