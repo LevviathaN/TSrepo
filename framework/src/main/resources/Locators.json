@@ -3188,6 +3188,10 @@
     "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to show')])[1]"
   },
   {
+    "name": "Totara Group Restriction EYE icon click to Hide",
+    "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to hide')])[1]"
+  },
+  {
     "name": "Totara Activity Completion Restriction EYE icon",
     "value": "xpath=(//h3[contains(text(),'Activity completion restriction')]/following::a[contains(@class,'availability-eye')])[1]"
   },
@@ -3582,6 +3586,10 @@
   {
     "name": "Totara Restrictions Expandable link",
     "value": "xpath=//a[@aria-controls='id_availabilityconditions']"
+  },
+  {
+    "name": "Totara Restrictions Header Expandable link",
+    "value": "xpath=//a[@aria-controls='id_availabilityconditionsheader']"
   },
   {
     "name": "Totara Volodymyr Course",

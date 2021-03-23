@@ -636,6 +636,10 @@
     "value": "xpath=//select[@title=\"PARAMETER\"]"
   },
   {
+    "name": "Totara Select field with name Parameter",
+    "value": "xpath=//select[@name=\"PARAMETER\"]"
+  },
+  {
     "name": "Totara Moodle Quiz checkbox",
     "value": "xpath=//label[contains(text(),'PARAMETER')]/preceding-sibling::input[@type='checkbox']"
   },
