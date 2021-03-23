@@ -260,6 +260,10 @@
     "value": "xpath=//label[contains(normalize-space(),'PARAMETER')]/input[@type='checkbox']"
   },
   {
+    "name": "Build Empire radiobutton",
+    "value": "xpath=//label[contains(normalize-space(),'PARAMETER')]/input[@type='radio']"
+  },
+  {
     "name": "Build Empire course details element",
     "value": "xpath=.//label[contains(text(), 'PARAMETER')]/..//input"
   },

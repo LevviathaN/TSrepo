@@ -814,9 +814,7 @@ public class SeleniumHelper {
      */
     public void switchToFrame(By frameName) {
         BPPLogManager.getLogger().info("Switching to frame: " + frameName);
-        WebDriverWait wait = new WebDriverWait(driver(),Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameName));
-        sleepFor(2);
+        sleepFor(3);
         try {
             driver().switchTo().frame(findPresentElement(frameName, 3));
         } catch (Exception e) {

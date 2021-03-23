@@ -1148,8 +1148,20 @@
     "value": "xpath=//label[contains(.,'Date of Assessment')]//following-sibling::div//input"
   },
   {
+    "name": "Direct App Assessment Handout Date",
+    "value": "xpath=//label[contains(.,'Handout Date')]//following-sibling::div//input"
+  },
+  {
     "name": "Direct App Assesment Exam Type Option",
     "value": "xpath=//label[contains(.,'Type of Assessment')]//following-sibling::div//ul/li[1]"
+  },
+  {
+    "name": "Direct App Assessment Coursebook Type Option",
+    "value": "xpath=//label[contains(.,'Type of Assessment')]//following-sibling::div//ul/li[2]"
+  },
+  {
+    "name": "Direct App Assessment Not Submitted Coursebook Please Note Message",
+    "value": "xpath=//*[@class='please-note']"
   },
   {
     "name": "Direct App Assesment Examination Venue",
@@ -1580,6 +1592,10 @@
     "value": "xpath=//label[normalize-space()='I will']"
   },
   {
+    "name": "Direct App Payment Sponsorhsip Company/Law Firm",
+    "value": "xpath=//label[normalize-space()='Company / Law Firm']"
+  },
+  {
     "name": "Direct App PopUp Continue Button For Incomplete Documents",
     "value": "xpath=//div[@class='box-content']/div/button[2]"
   },
@@ -1686,6 +1702,14 @@
   {
     "name": "Direct App Sit Assesment Yes",
     "value": "xpath=//label[contains(.,'Did you sit the Assessment?')]//following-sibling::div/label[1]"
+  },
+  {
+    "name": "Direct App Sit Assessment No",
+    "value": "xpath=//label[contains(.,'Did you sit the Assessment?')]//following-sibling::div/label[2]"
+  },
+  {
+    "name": "Direct App Submit Coursebook Yes",
+    "value": "xpath=//label[contains(.,'Did you submit the coursework?')]//following-sibling::div/label[1]"
   },
   {
     "name": "Direct App Skill Range Textarea",
