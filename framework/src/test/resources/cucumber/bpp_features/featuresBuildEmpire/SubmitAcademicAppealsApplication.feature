@@ -63,7 +63,7 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
-    #Additional validation required for PP-12560
+    #Additional validation required for BPP-12560 and BPP-10376
     And I fill the "Direct App Details Text Area  Line Manager" field with "Automation Testing"
     And Attribute "class" of "Direct App Inactive Step Completed Button" should have value "step-completed  "
     Then I upload "application_pack_document.pdf" file to "Direct App Upload File" element
@@ -74,6 +74,14 @@ Feature: Complete Academic Appeals Application - BPPPMO-1091
     And Attribute "class" of "Direct App Inactive Step Completed Button" should have value "step-completed  "
     Then I upload "directApp.pdf" file to "Direct App Upload File" element
     And I fill the "Direct App Uploaded File Description" field with "Test"
+    Then I upload "CallOut.png" file to "Direct App Upload File" element
+    And I wait for "3" seconds
+    And I fill the "Direct App Uploaded Second File Description" field with "Test Two"
+    And I click on the "Direct App Save And Return" button
+    Then I click on the "Yes" "Build Empire button"
+    And I click on the "Personal Statement and Evidence" "Build Empire application section"
+    Then I validate text "Test" to be displayed for "Direct App Uploaded File Description" element
+    Then I validate text "Test Two" to be displayed for "Direct App Uploaded Second File Description" element
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Save And Return" button
     Then I execute "Submit Application Hub" reusable step
