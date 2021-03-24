@@ -55,7 +55,7 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I execute "Populate Course Instance Session Dates" reusable step
     Then I execute "Keep the Course Activated" reusable step
     And I execute "Keep the Course Instance Activated" reusable step
-    And I execute "Edit Course" reusable step
+#    And I execute "Edit Course" reusable step
     And I click on the "Materials" element
     And I click on the "Add Material" "button"
     Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory checkbox"
@@ -77,11 +77,12 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I execute "Populate Course Instance Session Dates" reusable step
     Then I execute "Keep the Course Activated" reusable step
     And I execute "Keep the Course Instance Activated" reusable step
-    And I execute "Edit Course" reusable step
+    #And I execute "Edit Course" reusable step
     And I click on the "Materials" element
     And I click on the "Add Material" "button"
     Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory checkbox"
     And I click on the "Save" "button"
+    And I wait for "3" seconds
     When I click on the "Publish" "Product Factory button"
     And I click on the "Yes" "Product Factory button"
     Then I should see the "The Material Delivery Default has not been set for all Course Materials" message

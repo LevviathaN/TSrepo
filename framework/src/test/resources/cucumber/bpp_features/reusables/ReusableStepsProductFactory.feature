@@ -302,6 +302,7 @@ Feature: Product Factory
     Then I click on the "Create" "Product Factory button"
     And I set "VatRuleCode[######]" text to the "Code" "Product Factory text field"
     And I set "VatRuleDescription[######]" text to the "Description" "Product Factory text field"
+    And I set "~VatRuleRate[70]" text to the "VAT Rate (%)" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_VAT_RULE_CODE" element
 

@@ -16,6 +16,10 @@ Feature: Product Factory
     And I remember "AutoMaterialFDDescription<varName>" text as "EC_MATERIAL_FD_DESCRIPTION<ecName>" variable
     And I remember "AutoCourseFDCode<varName>" text as "EC_COURSE_FD_CODE<ecName>" variable
     And I remember "AutoCourseFDDescription<varName>" text as "EC_COURSE_FD_DESCRIPTION<ecName>" variable
+    And I remember "AutoMaterialFDCode<varName>" text as "EC_MATERIAL_FD_CODE<ecName>" variable
+    And I remember "AutoMaterialFDDescription<varName>" text as "EC_MATERIAL_FD_DESCRIPTION<ecName>" variable
+    And I remember "AutoCourseFDCode<varName>" text as "EC_COURSE_FD_CODE<ecName>" variable
+    And I remember "AutoCourseFDDescription<varName>" text as "EC_COURSE_FD_DESCRIPTION<ecName>" variable
     And I remember "AutoVerticalName<varName>" text as "EC_VERTICAL_NAME<ecName>" variable
     And I remember "AutoBodyShortName<varName>" text as "EC_BODY_SHORT_NAME<ecName>" variable
     And I remember "AutoBodyName<varName>" text as "EC_BODY_NAME<ecName>" variable
@@ -75,6 +79,10 @@ Feature: Product Factory
     And I remember "AutoMaterialFDCode<varName>" text as "EC_MATERIAL_FD_CODE" variable
     And I remember "AutoMaterialFDDescription<varName>" text as "EC_MATERIAL_FD_DESCRIPTION" variable
     And I remember "AutoCourseFDCode<varName>" text as "EC_COURSE_FD_CODE" variable
+    And I remember "AutoCourseFDDescription<varName>" text as "EC_COURSE_FD_DESCRIPTION*" variable
+    And I remember "AutoMaterialFDCode<varName>" text as "EC_MATERIAL_FD_CODE" variable
+    And I remember "AutoMaterialFDDescription<varName>" text as "EC_MATERIAL_FD_DESCRIPTION" variable
+    And I remember "AutoCourseFDCode<varName>" text as "EC_COURSE_FD_CODE" variable
     And I remember "AutoCourseFDDescription<varName>" text as "EC_COURSE_FD_DESCRIPTION" variable
     And I remember "AutoVerticalName<varName>" text as "EC_VERTICAL_NAME" variable
     And I remember "AutoBodyShortName<varName>" text as "EC_BODY_SHORT_NAME" variable
@@ -115,6 +123,10 @@ Feature: Product Factory
 
     Examples:
       |type        |varName     |ecName       |shortVar|shortEc|
+#    |Z           |$Z          |_Z           |$Z      |_Z     |
+#    |X           |$X          |_X           |$X      |_X     |
+#    |W           |$W          |_W           |$W      |_W     |
+#    |O           |$O          |_O           |$O      |_O     |
       |            |            |             |        |       |
       |Two         |Two        |_TWO         |Two    |_TWO   |
       |Three       |Three      |_THREE       |Tre    |_TRE   |
@@ -146,6 +158,12 @@ Feature: Product Factory
     When I execute "Create Body Financial Dimension" reusable step replacing some steps
       |4|I set "$Auto[BodyFDCode]<varName>" text to the "Code" "Product Factory text field"|
       |5|I set "$Auto[BodyFDDescription]<varName>" text to the "Description" "Product Factory text field"|
+    When I execute "Create Material Financial Dimension" reusable step replacing some steps
+      |4|I set "$Auto[MaterialFDCode]<varName>" text to the "Code" "Product Factory text field"|
+      |5|I set "$Auto[MaterialFDDescription]<varName>" text to the "Description" "Product Factory text field"|
+    When I execute "Create Course Financial Dimension" reusable step replacing some steps
+      |4|I set "$Auto[CourseFDCode]<varName>" text to the "Code" "Product Factory text field"|
+      |5|I set "$Auto[CourseFDDescription]<varName>" text to the "Description" "Product Factory text field"|
     And I execute "Create Vertical" reusable step replacing some steps
       |4|I set "$Auto[VerticalName]<varName>" text to the "Name" "Product Factory text field"|
     And I execute "Create Body" reusable step replacing some steps
