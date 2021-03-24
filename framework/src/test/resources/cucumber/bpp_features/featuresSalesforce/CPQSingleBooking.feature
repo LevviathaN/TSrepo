@@ -11,7 +11,7 @@ Feature: Create a Single Booking
     And I execute "Switch to Key Clients App" reusable step if "Salesforce Billing Application Main Menu" "element is present"
     And I wait for "3" seconds
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
-    And I capture text data "Salesforce Instance Availability Data Field" as "EC_AVAILABILITY_NUMBER" variable
+    And I capture text data "Salesforce Instance Availability Data Field" as "EC_AVAILABILITY" variable
     #Create Student Account
     Given I execute "Create Student Account" reusable step
     And I execute "Create Address" reusable step
@@ -55,8 +55,9 @@ Feature: Create a Single Booking
     Then I click on the "Salesforce Account Related Tab" element
     Then I execute "Add A Booking" reusable step
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
-    And I wait for "2" seconds
-    And I should see the "[SUM(EC_AVAILABILITY_NUMBER,-1)]" element
+    And Browser performs "REFRESH" command
+    And I wait for "10" seconds
+    And I should see the "[SUM(EC_AVAILABILITY,-1)]" element
     And I capture text data "Salesforce Instance Availability Data Field" as "EC_MINUSONE_BOOKING" variable
     And I click on the "Salesforce Instance Page First Booking Link" element
     Then I click on the "Salesforce Quotes Edit" element
@@ -69,5 +70,5 @@ Feature: Create a Single Booking
     And I click on the "Salesforce Quote Edited Save" element
     And I wait for "10" seconds
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
-    And I wait for "2" seconds
-    And I should see the "[SUM(EC_MINUSONE_BOOKING,+1)]" element
+    And I wait for "5" seconds
+    Then I validate text "EC_AVAILABILITY" to be displayed for "Salesforce Instance Availability Data Field" element

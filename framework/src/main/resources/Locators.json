@@ -1592,6 +1592,10 @@
     "value": "xpath=//label[normalize-space()='I will']"
   },
   {
+    "name": "Direct App Payment Sponsorhsip Company/Law Firm",
+    "value": "xpath=//label[normalize-space()='Company / Law Firm']"
+  },
+  {
     "name": "Direct App PopUp Continue Button For Incomplete Documents",
     "value": "xpath=//div[@class='box-content']/div/button[2]"
   },
