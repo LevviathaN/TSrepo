@@ -101,7 +101,6 @@ Feature: The Hub - Law School - Assignments/Emails - Inbox Overview
     And I wait for "1" seconds
     When I execute "Log Out from Hub Student" reusable step
     And Browser deletes cookies
-    #And I should see the "Already registered? Log in" message
     When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
     And I click on the "BPP Digital Log out button" button if "Totara Login Confirmation Popup window" "element is present"
     #Remove topic
