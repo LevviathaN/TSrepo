@@ -8,6 +8,8 @@ Feature: Financial Dimension - Select Material Code - Initial Selection - BPP-24
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
     When I execute "Create Body Financial Dimension" reusable step
+    And I execute "Create Stock Site" reusable step
+    And I execute "Create Vertical" reusable step
     And I execute "Create Body" reusable step
     And I execute "Create Level" reusable step
     And I execute "Create Sitting" reusable step

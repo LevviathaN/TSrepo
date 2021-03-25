@@ -2576,6 +2576,14 @@
     "value": "xpath=//div[span[contains(text(),'paper: ')]]/*[2]"
   },
   {
+    "name": "Product Factory CBA Wizard Date",
+    "value": "xpath=(//tfoot//input)[1]"
+  },
+  {
+    "name": "Product Factory CBA Wizard Start Time",
+    "value": "xpath=(//tfoot//input)[2]"
+  },
+  {
     "name": "Product Factory Clear Course Type Additional Filter",
     "value": "xpath=//div[span[contains(text(),'course type: ')]]/*[2]"
   },
