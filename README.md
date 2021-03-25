@@ -6,5 +6,5 @@ In VM options field paste: -Ddriver=BSTACK_CHROME -Dcucumber.options="--tags @Pr
 -Dcucumber.options="--tags @Salesforce" -Denvironment=UAT)
 or: -Ddriver=MOBILE_IOS
     -Dcucumber.options="--tags @Pages --tags @VPE"
-    -Denvironment=Staging
+    -Denvironment=UAT
     -Ddevice="iPhone XS"

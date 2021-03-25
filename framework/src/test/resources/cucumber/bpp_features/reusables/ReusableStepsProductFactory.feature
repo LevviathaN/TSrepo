@@ -166,7 +166,7 @@ Feature: Product Factory
     When I click on the "Sittings" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
     And I set "SittingName[######]" text to the "Name" "Product Factory text field"
-    And I remember "KW_AUTO_TODAY|DD/MM/YYYY" text as "EC_SITTING_START_DATE" variable
+    And I remember "22/02/2022" text as "EC_SITTING_START_DATE" variable
     And I set "EC_SITTING_START_DATE" text to the "Start Date" "Product Factory text field"
     And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
     And I set "EC_SITTING_END_DATE" text to the "End Date" "Product Factory text field"
@@ -302,6 +302,7 @@ Feature: Product Factory
     Then I click on the "Create" "Product Factory button"
     And I set "VatRuleCode[######]" text to the "Code" "Product Factory text field"
     And I set "VatRuleDescription[######]" text to the "Description" "Product Factory text field"
+    And I set "~VatRuleRate[70]" text to the "VAT Rate (%)" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_VAT_RULE_CODE" element
 
@@ -423,32 +424,29 @@ Feature: Product Factory
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
     And I click on the "Create" "Product Factory button"
-    And I click on the "EC_SITTING_NAME" "Product Factory select button"
-    And I click on the "EC_SESSION_DURATION_DESCRIPTION" "Product Factory select button"
+    And I click on the "EC_CBA_SESSION_DURATION_DESCRIPTION" "Product Factory select button"
     And I click on the "Region" "Product Factory dropdown"
     And I click on the "EC_REGION_NAME" "element"
     And I click on the "Location" "Product Factory dropdown"
     And I click on the "EC_LOCATION_NAME" "element"
-    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
-    And I click on the "submit" "element by type"
-    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
-    Then I should see the "EC_SITTING_NAME" element
-    Then I should see the "EC_SESSION_DURATION_DESCRIPTION" element
-    Then I should see the "EC_REGION_NAME" element
-    Then I should see the "EC_LOCATION_NAME" element
-    Then I should see the "EC_COURSE_TYPE_DESCRIPTION" element
-    And I set "[TODAY]" text to the "Date" "Product Factory text field"
-    And I set "~CBAStartTime[01:00AM]" text to the "Start Time" "Product Factory text field"
-    And I set "1" text to the "Capacity" "Product Factory text field"
-    And I click on the "Finish" "Product Factory button"
-    And I click on the "Default Institute Fee (£)" "Product Factory edit button"
+    And I fill the "Product Factory CBA Wizard Date" field with "[TODAY]"
+    And I fill the "Product Factory CBA Wizard Start Time" field with "~CBAStartTime[01:00AM]"
+    And I click on the "Add Date & Time" "element by title"
+    And I click on the "Next" "Product Factory button"
+    And I set "1" text to the "Default Capacity" "Product Factory text field"
     And I set "~DefaultInstituteFee[###]" text to the "Default Institute Fee (£)" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
-    When I click on the "Clients" "Product Factory button"
-    And I click on the "Edit" "Product Factory button"
-    And I "check" "EC_CLIENT_NAME" "Product Factory checkbox"
-    And I click on the "Save" "Product Factory button"
-    And I click on the "Courses" "Product Factory button"
+    And I click on the "Next" "Product Factory button"
+#    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+#    And I click on the "submit" "element by type"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
+    And I click on the "Sitting" "Product Factory dropdown"
+    And I click on the "EC_SITTING_NAME" "Product Factory dropdown option"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
+    And I click on the "Paper" "Product Factory dropdown"
+    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
 
   Scenario: Create CBA Course
     When I click on the "Products" "Product Factory navigation item"
@@ -456,13 +454,17 @@ Feature: Product Factory
     Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
+    And I click on the "Courses" "element"
     When I click on the "Create" "Product Factory button"
-    And I "check" "EC_BODY_SHORT_NAME" "Product Factory checkbox"
-    And I click on the "Next" "Product Factory button"
-    And I click on the "Next" "Product Factory button"
-    Then I should see the "EC_BODY_SHORT_NAME" element
-    Then I should see the "EC_PAPER_NAME" element
-    Then I should see the "EC_LEVEL_SHORT_NAME" element
+#    Then I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+#    And I click on the "submit" "element by type"
+    And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory select button"
+    And I click on the "Sitting" "Product Factory dropdown"
+    And I click on the "EC_SITTING_NAME" "Product Factory dropdown option"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
+    And I click on the "Paper" "Product Factory dropdown"
+    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
     And I click on the "Finish" "Product Factory button"
 
   Scenario: Create Digital Content

@@ -1824,6 +1824,10 @@
     "value": "xpath=//input[@placeholder='File description']"
   },
   {
+    "name": "Direct App Uploaded Second File Description",
+    "value": "xpath=(//input[@placeholder='File description'])[2]"
+  },
+  {
     "name": "Direct App User Icon Menu",
     "value": "xpath=//button[@class='dropdown-button']"
   },
@@ -2574,6 +2578,14 @@
   {
     "name": "Product Factory Clear Paper Additional Filter",
     "value": "xpath=//div[span[contains(text(),'paper: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory CBA Wizard Date",
+    "value": "xpath=(//tfoot//input)[1]"
+  },
+  {
+    "name": "Product Factory CBA Wizard Start Time",
+    "value": "xpath=(//tfoot//input)[2]"
   },
   {
     "name": "Product Factory Clear Course Type Additional Filter",
