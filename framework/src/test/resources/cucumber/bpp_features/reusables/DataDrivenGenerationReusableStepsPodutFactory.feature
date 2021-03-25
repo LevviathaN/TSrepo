@@ -136,7 +136,7 @@ Feature: Product Factory
       |Dont Touch  |DontTouch  |_DONT_TOUCH  |DT     |_DT    |
 
     #_________________________________Create Reference Data Set____________________________
-  @CreateDataDriven @Run
+  @CreateDataDriven
   Scenario Outline: Create Reference Data Set <type>
     Given I am on "https://generate.plus/en/number/isbn" URL
     And I click on the " generate" "button"
@@ -252,13 +252,13 @@ Feature: Product Factory
 
     Examples:
     |type        |varName     |ecName       |shortVar|shortEc|
-    |Z           |$Z          |             |$Z      |       |
+#    |Z           |$Z          |             |$Z      |       |
 #    |X           |$X          |             |$X      |       |
 #    |W           |$W          |             |$W      |       |
-#    |            |            |             |        |       |
-#    |Two         |$Two        |             |$Two    |   |
-#    |Three       |$Three      |             |$Tre    |   |
-#    |Edit        |$Edit       |             |$Edt    |   |
-#    |Draft CBA   |$DraftCBA   |             |$DCB    |   |
-#    |Draft Course|$DraftCourse|             |$DCO    |   |
-#    |Dont Touch  |$DontTouch  |             |$DT     |   |
+    |            |            |             |        |       |
+    |Two         |$Two        |             |$Two    |   |
+    |Three       |$Three      |             |$Tre    |   |
+    |Edit        |$Edit       |             |$Edt    |   |
+    |Draft CBA   |$DraftCBA   |             |$DCB    |   |
+    |Draft Course|$DraftCourse|             |$DCO    |   |
+    |Dont Touch  |$DontTouch  |             |$DT     |   |
