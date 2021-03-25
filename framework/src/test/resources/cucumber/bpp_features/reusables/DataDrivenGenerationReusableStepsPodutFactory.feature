@@ -244,6 +244,7 @@ Feature: Product Factory
     And I execute "Create Course Instance" reusable step
     And I execute modified "Create CBA Record" reusable step
       |4|Replace|I click on the "EC_CBA_SESSION_DURATION_DESCRIPTION<ecName>" "Product Factory select button"|
+      |22|Replace|I click on the "EC_CBA_PAPER_NAME" "Product Factory dropdown option"                       |
 #    And I execute modified "Create CBA Course" reusable step
 #      |11|Replace|I should see the "EC_CBA_PAPER_NAME<ecName>" element|
     And I execute "Create Digital Content" reusable step
