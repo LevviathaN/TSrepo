@@ -51,6 +51,7 @@
     "name": "BPP Digital Admin Page Button",
     "value": "xpath=//a[@class='btn btn-secondary'][normalize-space()='PARAMETER']"
   },
+
   {
     "name": "BPP Digital Admin Page Header name",
     "value": "xpath=//div[@class='page-header']//h1[normalize-space()='PARAMETER']"
@@ -674,6 +675,10 @@
   {
     "name": "Totara Move Right link by EC value",
     "value": "xpath=(//span[contains(text(),'PARAMETER')][@class='instancename']/following::span[@data-flex-icon='core|t/right']/following-sibling::span[2])[1]"
+  },
+  {
+    "name": "Totara Edit Activity link  by EC value",
+    "value": "xpath=(//span[contains(text(),'PARAMETER')][@class='instancename']/following::span[@data-flex-icon='core|t/edit']/following-sibling::span[2])[1]"
   },
   {
     "name": "Totara edit topic by name using EC value",

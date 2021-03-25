@@ -1204,6 +1204,10 @@
     "value": "xpath=//div[contains(@class,'cta-banner')]"
   },
   {
+    "name": "Direct App CTA Button",
+    "value": "xpath=(//a[@class='btn-book-exam'])[1]"
+  },
+  {
     "name": "Direct App Channel Islands Accepted Applciation",
     "value": "xpath=//div[@class='confirm-dialog-body']/div[1]"
   },
@@ -3216,6 +3220,10 @@
     "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to hide')])[1]"
   },
   {
+    "name": "Totara Set Of One Restriction EYE icon click to Hide",
+    "value": "xpath=(//h3[contains(text(),'Set of 1 restriction')]/following::a[contains(@title,'Click to hide')])[1]"
+  },
+  {
     "name": "Totara Activity Completion Restriction EYE icon",
     "value": "xpath=(//h3[contains(text(),'Activity completion restriction')]/following::a[contains(@class,'availability-eye')])[1]"
   },
@@ -3678,6 +3686,10 @@
   {
     "name": "Totara Automation Course Restrictions Group C disabled",
     "value": "xpath=//div[normalize-space()='Automation Restrictions Completion D']/ancestor::div[1]"
+  },
+  {
+    "name": "Totara Delete Restriction button",
+    "value": "xpath=//span[@title='Delete']"
   },
   {
     "name": "VLE Website Usermenu",
