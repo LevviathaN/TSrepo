@@ -1820,6 +1820,10 @@
     "value": "xpath=//input[@placeholder='File description']"
   },
   {
+    "name": "Direct App Uploaded Second File Description",
+    "value": "xpath=(//input[@placeholder='File description'])[2]"
+  },
+  {
     "name": "Direct App User Icon Menu",
     "value": "xpath=//button[@class='dropdown-button']"
   },
