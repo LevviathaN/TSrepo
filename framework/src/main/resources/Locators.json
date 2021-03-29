@@ -3232,6 +3232,10 @@
     "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to hide')])[1]"
   },
   {
+    "name": "Totara Date Restriction EYE icon click to Hide",
+    "value": "xpath=(//h3[contains(text(),'Date restriction')]/following::a[contains(@title,'Click to hide')])[1]"
+  },
+  {
     "name": "Totara Set Of One Restriction EYE icon click to Hide",
     "value": "xpath=(//h3[contains(text(),'Set of 1 restriction')]/following::a[contains(@title,'Click to hide')])[1]"
   },

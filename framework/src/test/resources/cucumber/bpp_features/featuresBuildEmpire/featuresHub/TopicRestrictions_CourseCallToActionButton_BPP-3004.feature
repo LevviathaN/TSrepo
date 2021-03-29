@@ -4,7 +4,7 @@ Feature: The Hub - Activity Restrictions - Call to Action Button - Completely Hi
   I only expect to be able to access a Call to Action button that
   I have unrestricted access to within Totara.
 
-  @Positive @BET #TC-1589
+  @Positive @BET #TC-1589 TC-1592 TC-1593
   Scenario: Topic Restrictions by Group CTA button Completely Hidden
     #Register New Student
     And I execute "Register New Student Account" reusable step
@@ -105,6 +105,117 @@ Feature: The Hub - Activity Restrictions - Call to Action Button - Completely Hi
     And I click on the "Totara Set Of One Restriction EYE icon click to Hide" element with JS if "Totara Set Of One Restriction EYE icon click to Hide" "element is present"
     And I wait for "3" seconds
     And I click on the "Save and return to course" "element by value" by JS
+    #Admin Logout
+    Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
+    And I wait for "4" seconds
+    #Login As student
+    When I execute "Log In to Hub as Student" reusable step
+    #Click Most Recent Course
+    When I click on the "Only for Automation " "Build Empire My Learning Right Block Course name"
+    And I should see the "CTA Button" element
+    And I validate text "CTA Button" to be displayed for "Direct App CTA Button" element
+    #CleanUp
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
+    And Browser deletes cookies
+    Then I execute "Login as Admin Totara" reusable step
+    When I click on the "Dashboard" "text contained in SPAN element"
+    When I click on the "Totara Automation Only Course" link by JS
+    And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
+    And I click on the "CTA Button" "Totara edit topic by name using EC value"
+    And I click on the "CTA Button" "Totara Edit Activity link  by EC value"
+    And I click on the "Totara Restrictions Header Expandable link" link
+    And I click on the "Totara Delete Restriction button" element if "Totara Delete Restriction button" "element is present"
+    And I click on the "Save and return to course" "element by value" by JS
+    And I wait for "2" seconds
+
+  @Positive @BET #TC-1591
+  Scenario: Topic Restrictions by Date CTA button Completely Hidden
+    #Register New Student
+    And I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    #Validate Timeline block
+    Then I should see the "Timeline" message
+    Then I should see the "Welcome to your new logged in area." message
+    #When I execute "Log Out from Hub Student" reusable step
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
+    And Browser deletes cookies
+    Then I execute "Login as Admin Totara" reusable step
+    #Enrol to a course
+    When I click on the "Totara Automation Only Course" link by JS
+    And I click on the "Totara Left Menu Users link" link by JS
+    And I click on the "Totara Enrolled Users button" button by JS
+    And I wait for "3" seconds
+    And I click on the "Totara Enrol User button" button by JS
+    And I set "EC_AUTO_EMAIL" text to the element with ID "enrolusersearch" using JS
+    And I click on the "Totara Enrol User Search button" button by JS
+    And I click on the "Totara Enrol Button" button by JS
+    And I click on the "Totara Finish Enroling Users button" button by JS
+    #Add Date Restriction
+    When I click on the "Dashboard" "text contained in SPAN element"
+    When I click on the "Totara Automation Only Course" link by JS
+    And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
+    And I click on the "CTA Button" "Totara edit topic by name using EC value"
+    And I click on the "CTA Button" "Totara Edit Activity link  by EC value"
+    And I click on the "Totara Restrictions Header Expandable link" link
+    And I click on the "Totara Delete Restriction button" element if "Totara Delete Restriction button" "element is present"
+    And I click on the "Add restriction..." "BPP Digital Profile button"
+    And I wait for "2" seconds
+    And I click on the "Date" "BPP Digital Profile button"
+    And I click on the "Totara Year Dropdown menu" element
+    And I click on the "Totara Year Dropdown Next Year option" element
+    And I click on the "Totara Date Restriction EYE icon click to Hide" element with JS if "Totara Date Restriction EYE icon click to Hide" "element is present"
+    And I select "must" from "Restriction type" "Totara Select field with title Parameter"
+    And I click on the "Save and return to course" "element by value" by JS
+    And I wait for "3" seconds
+    #Admin Logout
+    Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
+    And I wait for "4" seconds
+    #Login As student
+    When I execute "Log In to Hub as Student" reusable step
+    #Click Most Recent Course
+    When I click on the "Only for Automation " "Build Empire My Learning Right Block Course name"
+    And I shouldn't see the "CTA Button" "element"
+    #When I execute "Log Out from Hub Student" reusable step
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
+    And Browser deletes cookies
+    Then I execute "Login as Admin Totara" reusable step
+    #Admin Logout
+    Then I execute "Logout as Admin Totara" reusable step
+    And Browser deletes cookies
+    And I wait for "6" seconds
+    #Login As student
+    When I execute "Log In to Hub as Student" reusable step
+    #Click Most Recent Course
+    When I click on the "Only for Automation " "Build Empire My Learning Right Block Course name"
+    And I shouldn't see the "CTA Button" "element"
+    #When I execute "Log Out from Hub Student" reusable step
+    When I am on "MD_COMMON_LINKS_TOTARALOGINURL" URL
+    And I execute "Logout as Admin Totara" reusable step if "Totara Account Expandable Menu" "element is present"
+    And Browser deletes cookies
+    Then I execute "Login as Admin Totara" reusable step
+    #Date Restriction
+    When I click on the "Dashboard" "text contained in SPAN element"
+    When I click on the "Totara Automation Only Course" link by JS
+    And I click on the "Turn editing on" "BPP Digital Admin Value attribute button"
+    And I click on the "CTA Button" "Totara edit topic by name using EC value"
+    And I click on the "CTA Button" "Totara Edit Activity link  by EC value"
+    And I click on the "Totara Restrictions Header Expandable link" link
+    And I select "must not" from "Restriction type" "Totara Select field with title Parameter"
+    And I click on the "Totara Delete Restriction button" element if "Totara Delete Restriction button" "element is present"
+    And I click on the "Add restriction..." "BPP Digital Profile button"
+    And I wait for "2" seconds
+    And I click on the "Date" "BPP Digital Profile button"
+    And I click on the "Totara Year Dropdown menu" element
+    And I click on the "Totara Year Dropdown Next Year option" element
+    And I click on the "Totara Set Of One Restriction EYE icon click to Hide" element with JS if "Totara Set Of One Restriction EYE icon click to Hide" "element is present"
+    And I click on the "Save and return to course" "element by value" by JS
+    And I wait for "3" seconds
     #Admin Logout
     Then I execute "Logout as Admin Totara" reusable step
     And Browser deletes cookies
