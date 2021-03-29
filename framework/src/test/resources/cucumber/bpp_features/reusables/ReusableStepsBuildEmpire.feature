@@ -1088,7 +1088,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I set "AutoTitle" text to the "Manager Job Title" "Build Empire employment element"
-    And I fill the "Direct App Line Manager Telephone" field with "0913<KW_AUTO_RANDOMNUMBER|#######>"
+    And I fill the "Direct App Line Manager Telephone" field with "1234567890"
     And I click on the "Direct App Mark As Complete Checkbox" button
     And I click on the "Direct App Next" button
     And I click on the "Direct App Privacy Notice By Email" button

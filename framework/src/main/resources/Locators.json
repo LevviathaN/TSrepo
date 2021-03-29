@@ -2097,7 +2097,7 @@
   },
   {
     "name": "Harakirimail Adds Banner",
-    "value": "xpath=//*[@class='adsbygoogle adsbygoogle-noablate']"
+    "value": "xpath=(//*[@class='adsbygoogle adsbygoogle-noablate'])[last()]"
   },
   {
     "name": "Hub VPE Active First Topic",
