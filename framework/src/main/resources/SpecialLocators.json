@@ -638,7 +638,11 @@
   },
   {
     "name": "Totara Select field with title Parameter",
-    "value": "xpath=//select[@title=\"PARAMETER\"]"
+    "value": "xpath=(//select[@title=\"PARAMETER\"])[1]"
+  },
+  {
+    "name": "Totara Second Select field with title Parameter",
+    "value": "xpath=(//select[@title=\"PARAMETER\"])[2]"
   },
   {
     "name": "Totara Select field with name Parameter",

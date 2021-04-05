@@ -352,6 +352,14 @@
     "value": "xpath=//div[contains(@class,'single-section')][1]/a"
   },
   {
+    "name": "BPP Digital Student Automation Topic for CTA Topic Sticker",
+    "value": "xpath=//div[contains(@class,'single-section')]/div[normalize-space()='Automation Topic for CTA']/following-sibling::a"
+  },
+  {
+    "name": "BPP Digital Student Automation Topic To Complete label",
+    "value": "xpath=//h5/div[normalize-space()='Automation Topic To Complete']"
+  },
+  {
     "name": "BPP Digital Student Icaew Course Page Open Automation Restrictions C Topic Sticker",
     "value": "xpath=(//div[text()='Automation Restrictions Completion C']/following::a)[1]"
   },
@@ -362,6 +370,14 @@
   {
     "name": "BPP Digital Student Sub Topic Quiz svg element",
     "value": "xpath=//span[contains(@class,'sub-topic-status')]/*[name()='svg']"
+  },
+  {
+    "name": "Build Empire Quiz One Activity checkbox",
+    "value": "xpath=//a[text()='Quiz 1']/ancestor::li/span/*[name()='svg']"
+  },
+  {
+    "name": "Build Empire Quiz Two Activity checkbox",
+    "value": "xpath=//a[text()='Quiz 2']/ancestor::li/span/*[name()='svg']"
   },
   {
     "name": "BPP Digital Student Icaew Course Page Open Second Topic Sticker",
@@ -1570,6 +1586,10 @@
   {
     "name": "Direct App My Learning Left Menu Link",
     "value": "xpath=//a[contains(.,'My Learning')]"
+  },
+  {
+    "name": "Direct App Home first element Left Menu Link",
+    "value": "xpath=(//a[contains(.,'Home')])[1]"
   },
   {
     "name": "Direct App My Learning No Course Placeholder",
@@ -3232,12 +3252,28 @@
     "value": "xpath=(//h3[contains(text(),'Group restriction')]/following::a[contains(@title,'Click to hide')])[1]"
   },
   {
+    "name": "Totara CTA Button edit link",
+    "value": "xpath=(//span[text()='CTA Button']/following::a[@role='menuitem'])[1]"
+  },
+  {
     "name": "Totara Date Restriction EYE icon click to Hide",
     "value": "xpath=(//h3[contains(text(),'Date restriction')]/following::a[contains(@title,'Click to hide')])[1]"
   },
   {
     "name": "Totara Set Of One Restriction EYE icon click to Hide",
     "value": "xpath=(//h3[contains(text(),'Set of 1 restriction')]/following::a[contains(@title,'Click to hide')])[1]"
+  },
+  {
+    "name": "Totara Set Of Two Restriction EYE icon click to Hide",
+    "value": "xpath=(//h3[contains(text(),'Set of 2 restriction')]/following::a[contains(@title,'Click to hide')])[1]"
+  },
+  {
+    "name": "Totara Activity One Restriction EYE icon click to Hide",
+    "value": "xpath=(//h3[contains(text(),'1: Activity completion restriction')]/following::a[contains(@title,'Click to hide')])[1]"
+  },
+  {
+    "name": "Totara Activity Two Restriction EYE icon click to Hide",
+    "value": "xpath=(//h3[contains(text(),'2: Activity completion restriction')]/following::a[contains(@title,'Click to hide')])[1]"
   },
   {
     "name": "Totara Activity Completion Restriction EYE icon",
@@ -3552,6 +3588,10 @@
     "value": "xpath=//a[@title='Only for Automation ']"
   },
   {
+    "name": "Totara Automation CTA Button Course",
+    "value": "xpath=//a[@title='Automation CTA Button Course']"
+  },
+  {
     "name": "Totara Key Activities Administration Link",
     "value": "xpath=(//div[@class='content block-content']//a[text()='Key Activities'])[1]"
   },
@@ -3705,7 +3745,7 @@
   },
   {
     "name": "Totara Delete Restriction button",
-    "value": "xpath=//span[@title='Delete']"
+    "value": "xpath=(//span[@title='Delete'])[1]"
   },
   {
     "name": "VLE Website Usermenu",
