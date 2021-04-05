@@ -3180,6 +3180,14 @@
     "value": "inframe=TotaraScromFrame>xpath=//input[@id='qm_SUB']"
   },
   {
+    "name": "Totara Assessment Title",
+    "value": "inframe=TotaraScromFrame>xpath=//*[@class='qm_TITLE']"
+  },
+  {
+    "name": "Totara Assessment Column Description",
+    "value": "inframe=TotaraScromFrame>xpath=//*[@class='qm_BOX_COL']"
+  },
+  {
     "name": "Totara Assignment Description",
     "value": "id=id_introeditoreditable"
   },
