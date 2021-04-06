@@ -296,7 +296,7 @@ Feature: Salesforce
     Then I should see the "Transcripts" "Salesforce cases dropdown option"
     Then I should see the "Turnitin" "Salesforce cases dropdown option"
     And I click on the "Query Type" "Salesforce cases dropdown field"
-    And I click on the "Attendance &amp; Absences" "Salesforce cases dropdown option"
+    And I click on the "Attendance & Absences" "Salesforce cases dropdown option"
     And I click on the "Query Subtype" "Salesforce cases dropdown field"
     Then I should see the "Absence" "Salesforce cases dropdown option"
     Then I should see the "Attendance record" "Salesforce cases dropdown option"
@@ -381,11 +381,9 @@ Feature: Salesforce
     And I click on the "Query Type" "Salesforce cases dropdown field"
     And I click on the "VLE" "Salesforce cases dropdown option"
     And I click on the "Query Subtype" "Salesforce cases dropdown field"
-    Then I should see the "Cant login to the VLE" "Salesforce cases dropdown option"
     Then I should see the "Cant see submission link on the VLE" "Salesforce cases dropdown option"
     Then I should see the "Missing or wrong modules" "Salesforce cases dropdown option"
-    Then I should see the "Not getting announcements" "Salesforce cases dropdown option"
-    Then I click on the "Not getting announcements" "Salesforce cases dropdown option"
+    Then I click on the "Missing or wrong modules" "Salesforce cases dropdown option"
     And I click on the "Study Location" "Salesforce cases dropdown field"
     Then I click on the "Birmingham" "Salesforce cases dropdown option"
     And I click on the "School" "Salesforce cases dropdown field"
@@ -556,7 +554,9 @@ Feature: Salesforce
     And I fill the "Salesforce Booking Search Instance" field with "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER"
     And I click on the "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER" "option"
     And I click on the "Salesforce Save Booking Button" element
-    And I wait for "1" seconds
+    And I wait for "2" seconds
+    Then Browser performs "REFRESH" command
+    And I wait for "3" seconds
     And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
     And I capture current URL as "EC_BOOKING_URL" variable
     And I wait for "2" seconds
@@ -575,5 +575,5 @@ Feature: Salesforce
     Then I wait for "2" seconds
     And I click on the "Kingdom" "option" by JS
     And I click on the "Salesforce Account Creation Save button" element
-    And I wait for "1" seconds
+    And I wait for "3" seconds
     And I click on the "Salesforce Business Account Link Address Page" element by JS
