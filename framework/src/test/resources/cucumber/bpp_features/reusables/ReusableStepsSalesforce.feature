@@ -556,7 +556,8 @@ Feature: Salesforce
     And I click on the "Salesforce Save Booking Button" element
     And I wait for "2" seconds
     Then Browser performs "REFRESH" command
-    And I wait for "3" seconds
+    And I click on the "Salesforce Account Related Tab" element
+    And I wait for "5" seconds
     And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
     And I capture current URL as "EC_BOOKING_URL" variable
     And I wait for "2" seconds
