@@ -2841,7 +2841,7 @@
   },
   {
     "name": "Salesforce Submit Application",
-    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li//button[normalize-space()='Submit Application LEX']"
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li//button[normalize-space()='Submit Application']"
   },
   {
     "name": "Salesforce User Menu Icon",
@@ -3008,6 +3008,14 @@
     "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//*[contains(text(),'Order Number')]//following::tbody/tr//th/span/a"
   },
   {
+    "name": "Salesforce Order Activate",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//div[@title='Activate']"
+  },
+  {
+    "name": "Salesforce Order Activate Popup",
+    "value": "xpath=//button[@title='Activate']"
+  },
+  {
     "name": "Salesforce Booking Search Account",
     "value": "xpath=(//label[contains(.,'Student')]//following::input[@title='Search Accounts'])[1]"
   },
@@ -3028,8 +3036,20 @@
     "value": "xpath=//*[text()='Availability']//following-sibling::p/slot//slot/*"
   },
   {
-    "name": "Salesforce Instance Page First Booking Link",
-    "value": "xpath=//*[text()='Booking Number']//following::tr[1]//th[1]//a"
+    "name": "Salesforce Instance Page View All Bookings",
+    "value": "xpath=(//span[@title='Bookings']//following::span[contains(text(),'View All')])[1]"
+  },
+  {
+    "name": "Salesforce Booking Number Column Header",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[@title='Booking Number']"
+  },
+  {
+    "name": "Salesforce Recent Booking Link",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[contains(.,'EC_BOOKING')]"
+  },
+  {
+    "name": "Salesforce Recent Booking Link Active Cell",
+    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//a[contains(.,'EC_BOOKING')]"
   },
   {
     "name": "Salesforce Address Primary Delivery",
