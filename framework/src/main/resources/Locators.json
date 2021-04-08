@@ -1056,6 +1056,10 @@
     "value": "xpath=//*[contains(.,'Mitigating circumstances application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]"
   },
   {
+    "name": "Direct App Admin Status Changed for Programmes",
+    "value": "xpath=//*[contains(.,'Programme application')]/../div[@class='card-body']/div[@class='row'][1]//div[2]"
+  },
+  {
     "name": "Direct App Admin Status Full Application",
     "value": "xpath=//div[@class='container content-container']/div/div/div[2]//tbody/tr[7]/td[2]"
   },
