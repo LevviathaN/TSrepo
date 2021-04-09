@@ -133,6 +133,8 @@ Feature: Product Factory
     And I set "PprSN[#####]" text to the "Short Name" "Product Factory text field"
     And I set "PaperName[#####]" text to the "Name" "Product Factory text field"
     And I set "PaperDescription[######]" text to the "Description" "Product Factory text field"
+    And I click on the "Exam Schedule" "Product Factory dropdown"
+    And I click on the "Not Applicable" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     And I wait for "5" seconds
     And I click on the "Search" "Product Factory text field"
@@ -325,8 +327,6 @@ Feature: Product Factory
     And I set "From[TODAY]" text to the "Available From" "Product Factory text field"
     And I set "10/10/2022" text to the "Expiry Date" "Product Factory text field"
     And I set "1020" text to the "Edition" "Product Factory text field"
-    And I click on the "Production Method" "Product Factory dropdown"
-    And I click on the "Not Applicable" "Product Factory dropdown option"
     And I click on the "Learning Media VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE" "Product Factory select button"
     And I click on the "Course Material VAT Rule" "Product Factory change button"
@@ -342,7 +342,7 @@ Feature: Product Factory
     And I click on the "Add Material Stock Site" "element by title"
     And I click on the "Stock Site" "Product Factory dropdown"
     And I click on the "EC_STOCK_SITE_NAME" "Product Factory dropdown option"
-    And I click on the "Production Method" "Product Factory dropdown two"
+    And I click on the "Production Method" "Product Factory dropdown"
     And I click on the "Managed" "Product Factory dropdown option"
     And I click on the "Save" "Product Factory button"
     And I click on the "Next" "Product Factory button"
@@ -444,7 +444,7 @@ Feature: Product Factory
     And I click on the "Body" "Product Factory dropdown"
     And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
-    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
+    And I click on the "EC_CBA_PAPER_NAME" "Product Factory dropdown option"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
 
@@ -507,6 +507,13 @@ Feature: Product Factory
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     And I click on the "EC_COURSE_TYPE_DESCRIPTION" "Product Factory edit button"
+
+  Scenario: Edit Material
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Materials" "Product Factory navigation sub item"
+    And I set "EC_MATERIAL_TYPE_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory edit button"
 
   Scenario: Populate Course Instance Session Dates
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"

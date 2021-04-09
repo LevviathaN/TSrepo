@@ -2513,7 +2513,7 @@
   },
   {
     "name": "Product Factory Materials Page Entry",
-    "value": "xpath=//tr"
+    "value": "xpath=//tr//button"
   },
   {
     "name": "Product Factory Name Filed Validation Error Message",
@@ -2614,6 +2614,10 @@
   {
     "name": "Product Factory Clear Course Type Additional Filter",
     "value": "xpath=//div[span[contains(text(),'course type: ')]]/*[2]"
+  },
+  {
+    "name": "Product Factory CBA Course BPP Fee",
+    "value": "xpath=//tr/td[6]/div"
   },
   {
     "name": "Salesforce Account Creation Save button",

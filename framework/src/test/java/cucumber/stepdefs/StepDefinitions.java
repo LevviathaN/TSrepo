@@ -760,22 +760,28 @@ public class StepDefinitions extends SeleniumHelper {
     public void for_each(String element, List<String> steps) {
         //todo: To be tested properly
         Reporter.log("Executing step: For each '" + element + "' element");
-        List<WebElement> elements = findElements(initElementLocator(element));
-        String xpathLocator = "";
-        BPPLogManager.getLogger().info("There are " + elements.size() + " '" + element + "' elements found on the page");
-        //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
-        for(int i = 1; i <= elements.size(); i++) {
-            BPPLogManager.getLogger().info("For " + i + " element");
-            for(String step : steps) {
-                BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
-                if (locatorsMap.containsKey(element)) {
-                    xpathLocator = locatorsMap.get(element).replace("xpath=","xpath=(") + ")[" + i + "]";
-                } else {
-                    xpathLocator = "xpath=(//*[text()='" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
+        if (isElementPresentAndDisplay(initElementLocator(element))) {
+            List<WebElement> elements = findElements(initElementLocator(element));
+            String xpathLocator = "";
+            BPPLogManager.getLogger().info("There are " + elements.size() + " '" + element + "' elements found on the page");
+            //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
+            for(int i = 1; i <= elements.size(); i++) {
+                BPPLogManager.getLogger().info("For " + i + " element");
+                for(String step : steps) {
+                    BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
+                    if (locatorsMap.containsKey(element)) {
+                        xpathLocator = locatorsMap.get(element).replace("xpath=","xpath=(") + ")[" + i + "]";
+                    } else {
+                        xpathLocator = "xpath=(//*[text()='" + TestParametersController.checkIfSpecialParameter(element) + "'])[" + i + "]";
+                    }
+                    ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
                 }
-                ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
             }
+        } else {
+            Reporter.log("Element '" + element + "' not found");
+            BPPLogManager.getLogger().info("Element '" + element + "' not found");
         }
+
     }
 
     /**
@@ -854,5 +860,29 @@ public class StepDefinitions extends SeleniumHelper {
         } else {
             Assert.assertFalse(findElement(initElementLocator(elementLocator)).isEnabled());
         }
+    }
+
+    /**
+     * Definition to validate condition
+     *
+     */
+    @Then("^I verify that \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_verify_that(String conditionParameter, String condition) {
+        Reporter.log("Executing step: I verify that" + conditionParameter + " " + condition);
+        Conditions conditions = new Conditions();
+        Assert.assertTrue(conditions.checkCondition(condition,conditionParameter));
+    }
+
+    /**
+     * Definition to double-click an element on the page
+     *
+     * @author Ruslan Levytskyi
+     */
+    @When("^I store \"([^\"]*)\" elements number in \"([^\"]*)\" variable$")
+    public void i_count_elements(String element, String varName) {
+        Reporter.log("Executing step: I count '" + element + "' elements");
+            BPPLogManager.getLogger().info("Counting: " + element + " elements");
+            int actualNumberOfElements = numberOfElements(initElementLocator(element));
+            ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(String.valueOf(actualNumberOfElements)));
     }
 }

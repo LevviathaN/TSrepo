@@ -46,7 +46,7 @@ Feature: CBA - Edit - BPP-3200
     And I remember "AutoCBASessionDurationDescriptionTwo" text as "EC_SESSION_DURATION_DESCRIPTION_TWO" variable
     And I remember "AutoCourseTypeDescriptionTwo" text as "EC_COURSE_TYPE_DESCRIPTION_TWO" variable
 
-  @Positive @Regression @P1 #TC-2717, TC-2721, TC-2864
+  @Positive @Regression @P1 @DoNotRun @Outdated #TC-2717, TC-2721, TC-2864
   Scenario: Update Draft CBA Record
     And I execute "Log In" reusable step replacing some steps
       |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|
@@ -56,9 +56,9 @@ Feature: CBA - Edit - BPP-3200
       |19|Replace|I set "11:58AM" text to the "Start Time" "Product Factory text field"|
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
-    And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
+    And I set "EC_REGION_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
-    And I click on the "EC_CBA_START_TIME" "Product Factory edit button"
+    And I click on the "EC_REGION_NAME" "Product Factory edit button"
     And I click on the "Sitting" "Product Factory edit button"
     And I click on the "EC_SITTING_NAME_TWO" "Product Factory select button"
     And I click on the "Session Duration" "Product Factory edit button"
@@ -82,7 +82,7 @@ Feature: CBA - Edit - BPP-3200
     And I click on the "submit" "element by type"
     And I should see the "EC_COURSE_TYPE_DESCRIPTION_TWO" "Product Factory edit button"
 
-  @Positive @Regression @P1 #TC-2865
+  @Positive @Regression @P1 @Outdated @DoNotRun #TC-2865
   Scenario: Update Draft CBA Record With Course
     And I execute "Log In" reusable step replacing some steps
       |3|I fill the "Product Factory Email" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPRODUCTSETTER"|

@@ -23,8 +23,8 @@ Feature: Amend Reference Data - Paper - BPP-660
       |6|Replace|I set "PprSNTwo[##]" text to the "Short Name" "Product Factory text field"|
       |7|Replace|I set "PaperNameTwo[#####]" text to the "Name" "Product Factory text field"|
       |8|Replace|I set "PaperDescriptionTwo[######]" text to the "Description" "Product Factory text field"|
-      |12|Replace|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
-      |14|Replace|I should see the "EC_PAPER_NAME_TWO" element|
+      |14|Replace|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
+      |16|Replace|I should see the "EC_PAPER_NAME_TWO" element|
     #Cleanup, to return paper to initial state, to avoid problems in future scenarios require it
     Given I execute modified "Create Paper" reusable step
       |3|Add|I set "EC_PAPER_DESCRIPTION_TWO" text to the "Search" "Product Factory text field" from keyboard|
@@ -33,8 +33,8 @@ Feature: Amend Reference Data - Paper - BPP-660
       |6|Replace|I set "EC_PPR_SN_EDIT" text to the "Short Name" "Product Factory text field"|
       |7|Replace|I set "EC_PAPER_NAME_EDIT" text to the "Name" "Product Factory text field"|
       |8|Replace|I set "EC_PAPER_DESCRIPTION_EDIT" text to the "Description" "Product Factory text field"|
-      |12|Replace|I set "EC_PAPER_DESCRIPTION_EDIT" text to the "Search" "Product Factory text field" from keyboard|
-      |14|Replace|I should see the "EC_PAPER_NAME_EDIT" element|
+      |14|Replace|I set "EC_PAPER_DESCRIPTION_EDIT" text to the "Search" "Product Factory text field" from keyboard|
+      |16|Replace|I should see the "EC_PAPER_NAME_EDIT" element|
 
   @Negative @P2 #TC-827
   Scenario: Submitting Unchanged Paper Fields
