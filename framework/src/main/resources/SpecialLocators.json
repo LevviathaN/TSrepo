@@ -400,6 +400,14 @@
     "value": "xpath=(//tr[PARAMETER]/td[2]/div/div/input)[2]"
   },
   {
+    "name": "Product Factory Pricing Matrix dropdown",
+    "value": "xpath=(//*[@aria-expanded='true'])[last()]/following-sibling::*//*[text()='PARAMETER']"
+  },
+  {
+    "name": "Product Factory Pricing Matrix change button",
+    "value": "xpath=(//*[@aria-expanded='true'])[last()]/following-sibling::*//*[text()='PARAMETER']/following-sibling::button"
+  },
+  {
     "name": "Product Factory active button",
     "value": "xpath=//span[text()='PARAMETER']/parent::button[@tabindex='0']"
   },
@@ -489,11 +497,15 @@
   },
   {
     "name": "Product Factory text field",
-    "value": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea|//span[text()='PARAMETER']/following-sibling::div//input[@type!='hidden']"
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea|//span[text()='PARAMETER']/following-sibling::div//input[@type!='hidden']|//*[text()='PARAMETER']/following-sibling::*//input[@type!='hidden']"
   },
   {
     "name": "Product Factory text field two",
     "value": "xpath=(//label[text()='PARAMETER']/following-sibling::div//input)[2]|(//label[text()='PARAMETER']/following-sibling::textarea)[2]|(//label[text()='PARAMETER']/following-sibling::div/textarea)[2]"
+  },
+  {
+    "name": "Product Factory Material Delete button",
+    "value": "xpath=//p[text()='PARAMETER']/../../div[2]/div/div[3]/button"
   },
   {
     "name": "Product Factory Material Delete by price button",

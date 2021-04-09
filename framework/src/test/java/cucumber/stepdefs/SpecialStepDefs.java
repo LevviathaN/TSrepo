@@ -679,5 +679,30 @@ public class SpecialStepDefs extends SeleniumHelper {
             Reporter.fail("No such locator template key");
         }
     }
+
+    /**
+     * Definition to double-click an element on the page
+     *
+     * @author Ruslan Levytskyi
+     * @param elementLocator name or value of needed element which replaces PARAMETER definiton in SpecialLocators.json
+     * @param elementType xpath template of needed element
+     */
+    @When("^I store \"([^\"]*)\" \"([^\"]*)\" elements number in \"([^\"]*)\" variable$")
+    public void i_count_elements_special(String elementLocator, String elementType, String varName) {
+        Reporter.log("Executing step: I count '" + elementLocator + "' " + elementType);
+        if(specialLocatorsMap.containsKey(elementType)) {
+            String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
+            String xpathTemplate = specialLocatorsMap.get(elementType);
+            String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
+            BPPLogManager.getLogger().info("Counting: " + elementLocator + " elements");
+            int actualNumberOfElements = numberOfElements(initElementLocator(resultingXpath));
+            ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(String.valueOf(actualNumberOfElements)));
+            if(!elementLocator.equals(processedLocator)){
+                Reporter.log("<pre>[input test parameter] " + elementLocator + "' -> '" + processedLocator + "' [output value]</pre>");
+            }
+        } else {
+            Reporter.fail("No such locator template key");
+        }
+    }
 }
 

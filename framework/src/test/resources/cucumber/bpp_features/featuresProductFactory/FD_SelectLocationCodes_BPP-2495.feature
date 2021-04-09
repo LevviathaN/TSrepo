@@ -11,6 +11,7 @@ Feature: Financial Dimension - Select Location Codes - BPP-2495
   @Negative @Regression @P1 #TC-1771, TC-1718
   Scenario: Edit Financial Dimension for the Location that is in use
     When I execute "Create Body Financial Dimension" reusable step
+    And I execute "Create Vertical" reusable step
     And I execute "Create Body" reusable step
     And I execute "Create VAT Rule" reusable step
     And I execute "Create Course Type Financial Dimension" reusable step
@@ -23,6 +24,7 @@ Feature: Financial Dimension - Select Location Codes - BPP-2495
     And I execute "Create Region" reusable step
     And I execute "Create Location" reusable step
     And I execute "Create Location" reusable step
+    And I execute "Create Stock Site" reusable step
     And I execute "Create Level" reusable step
     And I execute "Create Paper" reusable step
     And I execute "Link Body To Level" reusable step
