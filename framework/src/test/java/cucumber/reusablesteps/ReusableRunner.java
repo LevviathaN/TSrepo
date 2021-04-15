@@ -98,6 +98,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_PRESS_FROM_KEYBOARD_SPECIAL"), () -> specialStepDefs.i_press_from_keyboard_special(arg1, arg2, arg3));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_PERFORM_RIGHT_MOUSE_CLICK_ON_THE_ElEMENT_SPECIAL"), () -> specialStepDefs.i_right_click_on_element_with_parameter_special(arg1,arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get( "I_DOUBLECLICK_ON_THE_ElEMENT_SPECIAL"), () -> specialStepDefs.i_doubleclick_on_element_with_parameter_special(arg1, arg2));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_EXECUTE_JS_CODE_IF"), () -> specialStepDefs.i_execute_js_code_if(arg1, arg2, arg3));
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();

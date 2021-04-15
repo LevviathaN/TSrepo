@@ -1801,7 +1801,7 @@
   },
   {
     "name": "Direct App Topic Key Activities",
-    "value": "xpath=//div[contains(@class,'single-section')][12]/a"
+    "value": "xpath=(//div[contains(.,'Topic to test adding activities')])[last()]"
   },
   {
     "name": "Direct App Topic Name",
@@ -2124,6 +2124,10 @@
     "value": "xpath=(//*[@class='adsbygoogle adsbygoogle-noablate'])[last()]"
   },
   {
+    "name": "Hub Submit Button For Activity",
+    "value": "xpath=//div[@class='take-test-details']/following::*[1]"
+  },
+  {
     "name": "Hub VPE Active First Topic",
     "value": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]"
   },
@@ -2357,7 +2361,7 @@
   },
   {
     "name": "Hub Scorm Deadline View",
-    "value": "xpath=//p[contains(.,'Scorm Deadline Assignment')]/../div//a"
+    "value": "xpath=//h2[contains(.,'Scorm Deadline Assignment')]/../div//a"
   },
   {
     "name": "Build Empire Course Topic Section Message",
@@ -3122,6 +3126,22 @@
   {
     "name": "Salesforce Product Catalog Item Dropdown",
     "value": "xpath=(//a[contains(.,'Related')]/../following::span[text()='Product Catalog Items']//following::div//button)[1]"
+  },
+  {
+    "name": "Salesforce Instance Edit",
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li//button[normalize-space()='Edit']"
+  },
+  {
+    "name": "Salesforce Instance Start Date Calendar Icon",
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]"
+  },
+  {
+    "name": "Salesforce Invoices First Link",
+    "value": "xpath=(//span[@title='Invoices']//following::table//tbody//a)[1]"
+  },
+  {
+    "name": "Salesforce Usages Number",
+    "value": "xpath=(//span[@title='Usages']//following::*)[1]"
   },
   {
     "name": "Totara Account Expandable Menu",

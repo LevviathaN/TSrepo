@@ -132,6 +132,10 @@
     "value": "^I execute \"([^\"]*)\" JS code for \"([^\"]*)\" \"([^\"]*)\"$"
   },
   {
+    "name": "I_EXECUTE_JS_CODE_IF",
+    "value": "^I execute \"([^\"]*)\" JS code if \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
     "name": "I_EXECUTE_REUSABLE_STEP",
     "value": "^I execute \"([^\"]*)\" reusable step$"
   },
