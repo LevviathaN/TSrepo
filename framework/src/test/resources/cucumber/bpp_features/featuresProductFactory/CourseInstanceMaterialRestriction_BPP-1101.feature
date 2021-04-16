@@ -14,8 +14,8 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
     Given I execute "Create Material Type" reusable step
     Given I execute modified "Create Material" reusable step
       |7|Add|I "check" "Is Course Material" "Product Factory checkbox"|
-      |17|Delete|                                                     |
-      |18|Delete|                                                     |
+      |15|Delete|                                                     |
+      |16|Delete|                                                     |
 #    Then I execute "Create Course" reusable step
 #    And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"

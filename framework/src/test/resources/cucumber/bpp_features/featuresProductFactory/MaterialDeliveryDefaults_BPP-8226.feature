@@ -35,6 +35,12 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I click on the "submit" "element by type"
     And I click on the "EC_BODY_SHORT_NAME" "Product Factory edit button"
     And I click on the "Materials" element
+    #precondition
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |
+
     And I click on the "Add Material" "button"
     Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory checkbox"
     And I click on the "Save" "button"
@@ -42,10 +48,12 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     When I click on the "Publish" "Product Factory button" if "Publish,Product Factory button" "special element is present"
     When I click on the "Yes" "Product Factory button" if "Yes,Product Factory button" "special element is present"
     Then I should see the "The Material Delivery Default has not been set for all Course Materials" message
-    Then I click on the "No" "Product Factory button"
-    And I click on the "2000" "Product Factory Material Delete by price button"
-    And I click on the "Yes" "Product Factory button"
-    And I wait for "4" seconds
+    Then I click on the "No" "Product Factory button" if "No,Product Factory button" "special element is present"
+    #cleanup
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |
 
   @Negative @P1 #TC-3558
   Scenario: Edit Course With Selected Material Delivery Default
@@ -55,8 +63,12 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I execute "Populate Course Instance Session Dates" reusable step
     Then I execute "Keep the Course Activated" reusable step
     And I execute "Keep the Course Instance Activated" reusable step
-#    And I execute "Edit Course" reusable step
     And I click on the "Materials" element
+    #precondition
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |
     And I click on the "Add Material" "button"
     Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory checkbox"
     And I click on the "Save" "button"
@@ -65,9 +77,11 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     When I click on the "Publish" "Product Factory button"
     And I click on the "Yes" "Product Factory button"
     Then I shouldn't see the "The Material Delivery Default has not been set for all Course Materials" message
-    And I click on the "2000" "Product Factory Material Delete by price button"
-    And I click on the "Yes" "Product Factory button"
-    And I wait for "4" seconds
+    #cleanup
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |
 
   @Negative @P1 #TC-3559
   Scenario: Edit Course Without Selecting Material Delivery Default
@@ -77,8 +91,11 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I execute "Populate Course Instance Session Dates" reusable step
     Then I execute "Keep the Course Activated" reusable step
     And I execute "Keep the Course Instance Activated" reusable step
-    #And I execute "Edit Course" reusable step
     And I click on the "Materials" element
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |
     And I click on the "Add Material" "button"
     Then I "check" "EC_MATERIAL_TYPE_NAME" "Product Factory checkbox"
     And I click on the "Save" "button"
@@ -86,7 +103,8 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     When I click on the "Publish" "Product Factory button"
     And I click on the "Yes" "Product Factory button"
     Then I should see the "The Material Delivery Default has not been set for all Course Materials" message
-    Then I click on the "No" "Product Factory button"
-    And I click on the "2000" "Product Factory Material Delete by price button"
-    And I click on the "Yes" "Product Factory button"
-    And I wait for "4" seconds
+    Then I click on the "No" "Product Factory button" if "No,Product Factory button" "special element is present"
+    Given For each "EC_MATERIAL_TYPE_DESCRIPTION" element:
+      |I click on the "EC_MATERIAL_TYPE_DESCRIPTION" "Product Factory Material Delete button"|
+      |I click on the "Yes" "Product Factory button"|
+      |I wait for "3" seconds                       |

@@ -10,6 +10,7 @@ Feature: Materials - Create Materials - BPP-1099
     And I capture text data "ISBN Generator Number Field" as "EC_NEW_ISBN" variable
     Given I execute "Log In" reusable step
     And I execute "Remember Variables " reusable step
+    And I execute "Remember Variables Two" reusable step
 
   @Positive @P1 #TC-918
   Scenario: Create Material Wizard
@@ -49,8 +50,6 @@ Feature: Materials - Create Materials - BPP-1099
     And I set "EC_NEW_ISBN" text to the "ISBN" "Product Factory text field"
     And I set "09/09/2022" text to the "Expiry Date" "Product Factory text field"
     And I set "1020" text to the "Edition" "Product Factory text field"
-    And I click on the "Production Method" "Product Factory dropdown"
-    And I click on the "On Demand" "Product Factory dropdown option"
     And I click on the "Learning Media VAT Rule" "Product Factory change button"
     And I click on the "EC_VAT_RULE_CODE_TWO" "Product Factory select button"
     And I click on the "Course Material VAT Rule" "Product Factory change button"
