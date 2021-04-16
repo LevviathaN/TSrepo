@@ -2525,7 +2525,11 @@
   },
   {
     "name": "Product Factory Number Of Sessions Edit Button",
-    "value": "xpath=//label[text()='Number of Sessions']/../following-sibling::div/button"
+    "value": "xpath=//label[text()='Number of Sessions']/../../following-sibling::div/button"
+  },
+  {
+    "name": "Product Factory Number Of Steps Edit Button",
+    "value": "xpath=//label[text()='Number of Steps']/../../following-sibling::div/button"
   },
   {
     "name": "Product Factory Number Of Sessions Edit Field",

@@ -17,41 +17,62 @@ Feature: Financial Dimension - Select Course Code initial selection - BPP-2490
     And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_BODY_SHORT_NAME" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
     And I set "EC_LEVEL_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_LEVEL_NAME" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
+    When I click on the "Clear the search text" "element by title"
+    Then Attribute "value" of "Search" "Product Factory text field" should have value ""
+
+    And I set "EC_PAPER_NAME" text to the "Search" "Product Factory text field" from keyboard
+    And I click on the "submit" "element by type"
+    Then I should see the "EC_BODY_SHORT_NAME" element
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_PAPER_NAME" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
     And I set "EC_PAPER_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_PAPER_NAME" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
     And I set "EC_SITTING_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_SITTING_NAME" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
     And I set "EC_COURSE_TYPE_DESCRIPTION" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_COURSE_TYPE_DESCRIPTION" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
 
     And I set "EC_REGION_NAME" text to the "Search" "Product Factory text field" from keyboard
     And I click on the "submit" "element by type"
     Then I should see the "EC_BODY_SHORT_NAME" element
-    And I should see the "Product Factory Materials Page Entry" element in quantity of "2"
+    And I store "Product Factory Materials Page Entry" elements number in "EC_TOTAL_MATERIALS_ENTRIES" variable
+    And I store "EC_REGION_NAME" elements number in "EC_SELECTED_MATERIALS_ENTRIES" variable
+    And I verify that "<EC_TOTAL_MATERIALS_ENTRIES,EC_SELECTED_MATERIALS_ENTRIES>" "values are equal"
     When I click on the "Clear the search text" "element by title"
     Then Attribute "value" of "Search" "Product Factory text field" should have value ""
