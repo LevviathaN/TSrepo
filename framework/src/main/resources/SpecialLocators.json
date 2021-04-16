@@ -678,7 +678,7 @@
   },
   {
     "name": "Totara side menu option",
-    "value": "xpath=//span[text='PARAMETER']"
+    "value": "xpath=//span[text()='PARAMETER']"
   },
   {
     "name": "Totara text field",
