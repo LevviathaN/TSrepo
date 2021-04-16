@@ -704,5 +704,23 @@ public class SpecialStepDefs extends SeleniumHelper {
             Reporter.fail("No such locator template key");
         }
     }
+
+
+    /**
+     * Definition to execute JS code if given condition is true
+     *
+     * @param jsCode JS code to execute
+     * @author yzosin
+     */
+    @When("^I execute \"([^\"]*)\" JS code if \"([^\"]*)\" \"([^\"]*)\"$")
+    public void i_execute_js_code_if(String jsCode, String conditionParameter, String condition) {
+        Conditions conditions = new Conditions();
+        if (conditions.checkCondition(condition, conditionParameter)) {
+            Reporter.log("Executing JS code: " + jsCode);
+            executeJSCode(TestParametersController.checkIfSpecialParameter(jsCode));
+        } else {
+            Reporter.log("Condition " + conditionParameter + condition + " is not true, so JS code will not be executed!");
+        }
+    }
 }
 

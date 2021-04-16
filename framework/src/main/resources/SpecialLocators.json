@@ -342,7 +342,7 @@
   },
   {
     "name": "Hub Deadline Activity Name Second",
-    "value": "xpath=//p[text()='PARAMETER']"
+    "value": "xpath=//h2[text()='PARAMETER']"
   },
   {
     "name": "Product Factory CBA Course Institute Fee edit button",
@@ -637,6 +637,10 @@
     "value": "inframe=SalesforceEditTiersFrame>xpath=//label[normalize-space()='PARAMETER']/following-sibling::select[1]/option"
   },
   {
+    "name": "Salesforce checkbox",
+    "value": "xpath=//div[contains(@class,'isModal inlinePanel oneRecordActionWrapper')]//span[text()='PARAMETER']//following::input[1]"
+  },
+  {
     "name": "Totara Assessment radiobutton",
     "value": "inframe=TotaraScromFrame>xpath=//span[contains(text(),'PARAMETER')]/../../preceding-sibling::td/input"
   },
@@ -807,6 +811,10 @@
   {
     "name": "text contained in element",
     "value": "xpath=//*[contains(text(),'PARAMETER')]"
+  },
+  {
+    "name": "text in div element",
+    "value": "xpath=//div[text()='PARAMETER']"
   },
   {
     "name": "Totara Edit Activity Dropdown Button",
