@@ -47,7 +47,7 @@ Feature: Create a Single Booking
     Then I wait for "15" seconds
     And I hover over the "Salesforce Quotes Add Products" button
     And I click on the "Salesforce Quotes Add Products" element
-    Then I fill the "Salesforce Quotes Search Products" field with "MD_COMMON_VALIDDATA_SFCPQPRODUCT"
+    Then I fill the "Salesforce Quotes Search Products" field with "MD_COMMON_VALIDDATA_SFCPQPRODUCTSECOND"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Salesforce Quotes Search Products"
     Then I click on the "Salesforce Quotes Product Checkbox" option
     And I click on the "Salesforce Quotes Select Product Button" element
@@ -73,8 +73,5 @@ Feature: Create a Single Booking
     Then I execute "Add A Booking" reusable step replacing some steps
     |6|I fill the "Salesforce Booking Search Instance" field with "MD_COMMON_VALIDDATA_SFCPQTHIRDINSTANCENUMBER"|
     |7|I click on the "MD_COMMON_VALIDDATA_SFCPQTHIRDINSTANCENUMBER" "option"|
-    Given I am on "MD_COMMON_LINKS_SALESFORCETHIRDINSTANCE" URL
-    And Browser performs "REFRESH" command
     And I wait for "10" seconds
-
-    #Get orderID as EC_var
+    And I capture current URL as "EC_INARREARS_ORDER_URL" variable

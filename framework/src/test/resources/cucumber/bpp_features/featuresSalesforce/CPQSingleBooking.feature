@@ -36,7 +36,7 @@ Feature: Create a Single Booking
     Then I wait for "15" seconds
     And I hover over the "Salesforce Quotes Add Products" button
     And I click on the "Salesforce Quotes Add Products" element
-    Then I fill the "Salesforce Quotes Search Products" field with "MD_COMMON_VALIDDATA_SFCPQPRODUCT"
+    Then I fill the "Salesforce Quotes Search Products" field with "MD_COMMON_VALIDDATA_SFCPQPRODUCTSECOND"
     And I press "MD_COMMON_KEYBOARD_ENTER" for "Salesforce Quotes Search Products"
     Then I click on the "Salesforce Quotes Product Checkbox" option
     And I click on the "Salesforce Quotes Select Product Button" element

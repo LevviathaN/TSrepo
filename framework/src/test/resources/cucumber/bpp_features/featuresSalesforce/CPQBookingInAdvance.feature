@@ -75,20 +75,17 @@ Feature: Create a Single Booking
     And I click on the "MD_COMMON_VALIDDATA_SFCPQSECONDINSTANCENUMBER" "option"
     And I click on the "Salesforce Save Booking Button" element
     And I wait for "10" seconds
-    Then Browser performs "REFRESH" command
-    And I wait for "10" seconds
-    And I capture current URL as "EC_ORDER_URL" variable
-    #check usages
+    And I capture current URL as "EC_INADVANCE_ORDER_URL" variable
+    #Check usages
     Then I click on the "Edit" "text in div element"
     And I click on the "Bill Now" "Salesforce checkbox"
     Then I click on the "Save" "element by title"
     And I wait for "5" seconds
-    And I click on the "Salesforce Account Related Tab" element
-    And I should scroll to the "bottom" of the page
+    Then Browser performs "REFRESH" command
     And I wait for "5" seconds
-    And I should scroll to the "top" of the page
-    And I should scroll to the "bottom" of the page
-    And I wait for "10" seconds
+    And I click on the "Salesforce Account Related Tab" element
+    Then I execute "window.scrollTo(1250, 800);" JS code
+    And I wait for "5" seconds
     Then I should see the "Salesforce Invoices First Link" element
     And I validate text "CONTAINS=INV" to be displayed for "Salesforce Invoices First Link" element
     Then I should see the "Salesforce Usages Number" element

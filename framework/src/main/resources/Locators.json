@@ -3141,11 +3141,11 @@
   },
   {
     "name": "Salesforce Invoices First Link",
-    "value": "xpath=(//span[@title='Invoices']//following::table//tbody//a)[1]"
+    "value": "xpath=//th[@title='Invoice Number']/../../following-sibling::tbody/tr/th/div/a"
   },
   {
     "name": "Salesforce Usages Number",
-    "value": "xpath=(//span[@title='Usages']//following::*)[1]"
+    "value": "xpath=(//span[@title='Usages']//following-sibling::span)[last()]"
   },
   {
     "name": "Totara Account Expandable Menu",
