@@ -534,6 +534,9 @@ Feature: Salesforce
     Then I click on the "Salesforce Opportunities Quick Link Tab" element
     And I click on the "Salesforce Student Account Pages New button" button
     And I wait for "1" seconds
+    #Then I click on the "Business Development" "Salesforce radiobutton"
+    #Then I click on the "Next" "button"
+    #Then I wait for "3" seconds
     And I set "AutoOpportunity[###]" text to the "Opportunity Name" "Salesforce text field label"
     And I set "1000" text to the "Amount" "Salesforce text field label"
     And I click on the "Status" "Salesforce dropdown field" by JS

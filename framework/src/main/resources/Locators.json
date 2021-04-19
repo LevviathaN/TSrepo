@@ -352,6 +352,10 @@
     "value": "xpath=//div[contains(@class,'single-section')][1]/a"
   },
   {
+    "name": "BPP Digital Student AutomationTopic Course Sticker",
+    "value": "xpath=(//div[contains(text(),'AutomationTopic')]/parent::div[contains(@class,'section-data')]/following-sibling::a)[1]"
+  },
+  {
     "name": "BPP Digital Student Automation Topic for CTA Topic Sticker",
     "value": "xpath=//div[contains(@class,'single-section')]/div[normalize-space()='Automation Topic for CTA']/following-sibling::a"
   },
@@ -1725,7 +1729,7 @@
   },
   {
     "name": "Direct App Scorm Topic",
-    "value": "xpath=//div[contains(@class,'single-section')][5]/a"
+    "value": "xpath=//div[text()='SCORM Topic']/parent::div[@class='section-data']/following-sibling::a"
   },
   {
     "name": "Direct App Sit Assesment Yes",
@@ -1801,7 +1805,7 @@
   },
   {
     "name": "Direct App Topic Key Activities",
-    "value": "xpath=//div[contains(@class,'single-section')][12]/a"
+    "value": "xpath=(//div[contains(.,'Topic to test adding activities')])[last()]"
   },
   {
     "name": "Direct App Topic Name",
@@ -2124,6 +2128,10 @@
     "value": "xpath=(//*[@class='adsbygoogle adsbygoogle-noablate'])[last()]"
   },
   {
+    "name": "Hub Submit Button For Activity",
+    "value": "xpath=//div[@class='take-test-details']/following::*[1]"
+  },
+  {
     "name": "Hub VPE Active First Topic",
     "value": "xpath=(//*[@class='nav-item']//following::u[@class='active'])[1]"
   },
@@ -2357,7 +2365,7 @@
   },
   {
     "name": "Hub Scorm Deadline View",
-    "value": "xpath=//p[contains(.,'Scorm Deadline Assignment')]/../div//a"
+    "value": "xpath=//h2[contains(.,'Scorm Deadline Assignment')]/../div//a"
   },
   {
     "name": "Build Empire Course Topic Section Message",
@@ -3132,6 +3140,22 @@
     "value": "xpath=(//a[contains(.,'Related')]/../following::span[text()='Product Catalog Items']//following::div//button)[1]"
   },
   {
+    "name": "Salesforce Instance Edit",
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]//li//button[normalize-space()='Edit']"
+  },
+  {
+    "name": "Salesforce Instance Start Date Calendar Icon",
+    "value": "xpath=//div[contains(@class,'active lafPageHost')]"
+  },
+  {
+    "name": "Salesforce Invoices First Link",
+    "value": "xpath=//th[@title='Invoice Number']/../../following-sibling::tbody/tr/th/div/a"
+  },
+  {
+    "name": "Salesforce Usages Number",
+    "value": "xpath=(//span[@title='Usages']//following-sibling::span)[last()]"
+  },
+  {
     "name": "Totara Account Expandable Menu",
     "value": "id=action-menu-toggle-0"
   },
@@ -3340,24 +3364,24 @@
     "value": "xpath=(//div[normalize-space()=\"Automation Expandable Label\"]/following::a[text()='Edit'])[1]"
   },
   {
-    "name": "Totara Automation First Topic Edit button",
-    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//a)[1]"
+    "name": "Totara Automation Topic Edit button",
+    "value": "xpath=(//a[contains(text(),'AutomationTopic')]/ancestor::li//a)[1]"
   },
   {
     "name": "Totara Automation First Automation Topic Edit button",
-    "value": "xpath=(//h3[@class='sectionname'][contains(normalize-space(),'AutomationTopic')]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//a)[1]"
+    "value": "xpath=(//li[contains(normalize-space(),'AutomationTopic')]//a[@role='menuitem'])[1]"
   },
   {
     "name": "Totara Automation First Topic Delete button",
-    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[1]"
+    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[5]"
   },
   {
     "name": "Totara Automation First Automation Topic Delete button",
     "value": "xpath=(//h3[@class='sectionname'][contains(normalize-space(),'AutomationTopic')]/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Delete topic'])[1]"
   },
   {
-    "name": "Totara Automation First Topic Edit Topic button",
-    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Edit topic'])[1]"
+    "name": "Totara Automation Fifth Topic Edit Topic button",
+    "value": "xpath=(//h3[@class='sectionname']/ancestor::div[@class='content']/preceding-sibling::div[contains(@class,'right side')]//li/a[@title='Edit topic'])[5]"
   },
   {
     "name": "Totara Add Topic Plus icon",
@@ -3369,7 +3393,7 @@
   },
   {
     "name": "Totara Edit Topic Name icon",
-    "value": "xpath=//a[contains(text(),'Topic 1')]//span[@data-flex-icon='core|t/editstring']"
+    "value": "xpath=//a[contains(text(),'Topic 5')]//span[@data-flex-icon='core|t/editstring']"
   },
   {
     "name": "Totara Automation Restrictionas Date B Edit button",
