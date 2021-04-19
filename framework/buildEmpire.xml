@@ -2,7 +2,7 @@
     <test name="BE Cucumber Test">
         <classes>
             <class name="cucumber.CucumberUITest" />
-<!--            <class name="cucumber.regressionSpreadsheetUpdate.UpdateBERegression" />-->
+            <class name="cucumber.regressionSpreadsheetUpdate.UpdateBERegression" />
         </classes>
     </test> <!-- test -->
 </suite> <!-- suite -->
