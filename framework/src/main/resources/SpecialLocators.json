@@ -337,6 +337,10 @@
     "value": "xpath=//label[contains(normalize-space(),'PARAMETER')]/following-sibling::*/descendant-or-self::input"
   },
   {
+    "name": "Direct App Country Dropdown Option",
+    "value": "xpath=(//ul[@role='listbox']/li[contains(.,'PARAMETER')])[last()]"
+  },
+  {
     "name": "Hub Deadline Activity Name",
     "value": "xpath=//h2[text()='PARAMETER']"
   },
