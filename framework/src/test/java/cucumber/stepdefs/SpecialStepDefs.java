@@ -648,7 +648,7 @@ public class SpecialStepDefs extends SeleniumHelper {
      * @author Ruslan Levytskyi
      */
     @When("^For each \"([^\"]*)\" \"([^\"]*)\":$")
-    public void for_each_special(String elementType, String elementLocator, List<String> steps) {
+    public void for_each_special(String elementLocator, String elementType,  List<String> steps) {
         if(specialLocatorsMap.containsKey(elementType)) {
             String processedLocator = TestParametersController.checkIfSpecialParameter(elementLocator);
             String xpathTemplate = specialLocatorsMap.get(elementType);
@@ -663,11 +663,7 @@ public class SpecialStepDefs extends SeleniumHelper {
                 BPPLogManager.getLogger().info("For " + i + " element");
                 for(String step : steps) {
                     BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
-                    if (specialLocatorsMap.containsKey(elementType)) {
-                        xpathLocator = specialLocatorsMap.get(elementType).replace("xpath=","xpath=(") + ")[" + i + "]";
-                    } else {
-                        xpathLocator = "xpath=(//*[text()='" + TestParametersController.checkIfSpecialParameter(elementLocator) + "'])[" + i + "]";
-                    }
+                    xpathLocator = resultingXpath.replace("xpath=","xpath=(") + ")[" + i + "]";
                     ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
                 }
             }

@@ -2632,6 +2632,10 @@
     "value": "xpath=//tr/td[6]/div"
   },
   {
+    "name": "Product Factory Change Course Step Due Date",
+    "value": "xpath=//h6[text()='Steps']/following-sibling::table//button"
+  },
+  {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },
