@@ -12,7 +12,8 @@ Feature: University Degree Apprenticeships
     When I execute "Create University Degree Apprenticeships Application" reusable step replacing some steps
       | 1 | I click on the "Direct App Start New Application Button" button |
     And I execute "Complete University Degree Apprenticeships Application With Existing Student" reusable step
-    Then I execute "Submit Application Hub" reusable step
+    Then I execute "Submit Application Hub" reusable step replacing some steps
+      | 4 | I wait for "2" seconds |
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
     And I execute "Pre Approve Apprenticeships Application As Admin" reusable step replacing some steps
@@ -25,12 +26,14 @@ Feature: University Degree Apprenticeships
     And I set "automationLinemanager8@harakirimail.com" text to the "Email" "Build Empire text field"
     And I set "Line Manager008!" text to the "Password" "Build Empire text field"
     Then I click on the "Direct App Login Button" button
-    Then I execute "Line Manager Review University Degree Apprenticeships Scotland" reusable step
+    Then I execute "Line Manager Review University Degree Apprenticeships Scotland" reusable step replacing some steps
+      |17| I switch to window with index "1"|
     And I execute "Log Out from Hub Student" reusable step
     Given I execute "Log In to Hub as Student" reusable step replacing some steps
       | 2 | I set "AutoRandolphBarnett7250@harakirimail.com" text to the "Email" "Build Empire text field" |
       | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
-    And I execute "Complete Professional Apprenticeships Application After Review" reusable step
+    And I execute "Complete Professional Apprenticeships Application After Review" reusable step replacing some steps
+      |6| I switch to window with index "1"|
     And I wait for "2" seconds
     Given I click on the "Direct App My Applications Left Menu Link" button
     Then I validate text "CONTAINS=Are you sure you want to exit without submitting your application?" to be displayed for "Direct App PopUp Header For Incomplete Documents" element

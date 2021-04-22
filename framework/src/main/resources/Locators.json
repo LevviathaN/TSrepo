@@ -1141,7 +1141,7 @@
   },
   {
     "name": "Direct App Application Progress Percentage",
-    "value": "xpath=//div[@class='intro-app completed']//div[@class='app-progress']"
+    "value": "xpath=(//div[@class='app-progress'])[1]"
   },
   {
     "name": "Direct App Application Progress Percentage After Review",
