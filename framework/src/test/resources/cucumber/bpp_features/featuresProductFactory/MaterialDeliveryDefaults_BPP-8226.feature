@@ -60,7 +60,7 @@ Feature: Abilit to specify Material Delivery Defaults during Product Setup - BPP
     And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
     And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
     And I execute "Edit Course" reusable step
-    And I execute "Populate Course Instance Session Dates" reusable step
+#    And I execute "Populate Course Instance Session Dates" reusable step
     Then I execute "Keep the Course Activated" reusable step
     And I execute "Keep the Course Instance Activated" reusable step
     And I click on the "Materials" element

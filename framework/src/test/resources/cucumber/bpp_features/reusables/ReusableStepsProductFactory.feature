@@ -364,7 +364,10 @@ Feature: Product Factory
     And I click on the "EC_REGION_NAME" "Product Factory select button"
     And I click on the "Product Factory Number Of Sessions Edit Button" button
     When I set "1" text to the "Number of Sessions" "Product Factory text field"
-    And I click on the "Save" "Product Factory button"
+    And I click on the "Yes" "Product Factory button title"
+    And I click on the "Product Factory Number Of Steps Edit Button" button
+    When I set "1" text to the "Number of Steps" "Product Factory text field"
+    And I click on the "Yes" "Product Factory button title"
     And I click on the "Finish" "Product Factory button"
 
   Scenario: Create Course Instance

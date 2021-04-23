@@ -1729,7 +1729,7 @@
   },
   {
     "name": "Direct App Scorm Topic",
-    "value": "xpath=//div[contains(@class,'single-section')][5]/a"
+    "value": "xpath=//div[text()='SCORM Topic']/parent::div[@class='section-data']/following-sibling::a"
   },
   {
     "name": "Direct App Sit Assesment Yes",
@@ -2533,7 +2533,11 @@
   },
   {
     "name": "Product Factory Number Of Sessions Edit Button",
-    "value": "xpath=//label[text()='Number of Sessions']/../following-sibling::div/button"
+    "value": "xpath=//label[text()='Number of Sessions']/../../following-sibling::div/button"
+  },
+  {
+    "name": "Product Factory Number Of Steps Edit Button",
+    "value": "xpath=//label[text()='Number of Steps']/../../following-sibling::div/button"
   },
   {
     "name": "Product Factory Number Of Sessions Edit Field",
@@ -2626,6 +2630,10 @@
   {
     "name": "Product Factory CBA Course BPP Fee",
     "value": "xpath=//tr/td[6]/div"
+  },
+  {
+    "name": "Product Factory Change Course Step Due Date",
+    "value": "xpath=//h6[text()='Steps']/following-sibling::table//button"
   },
   {
     "name": "Salesforce Account Creation Save button",

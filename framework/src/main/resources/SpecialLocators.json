@@ -421,6 +421,10 @@
     "value": "xpath=//button[@title='PARAMETER']"
   },
   {
+    "name": "Product Factory button title two",
+    "value": "xpath=(//button[@title='PARAMETER'])[2]"
+  },
+  {
     "name": "Product Factory button two",
     "value": "xpath=(//span[text()='PARAMETER']/..)[2]"
   },
@@ -498,7 +502,7 @@
   },
   {
     "name": "Product Factory text field",
-    "value": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea|//span[text()='PARAMETER']/following-sibling::div//input[@type!='hidden']|//*[text()='PARAMETER']/following-sibling::*//input[@type!='hidden']"
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::div//input|//label[text()='PARAMETER']/following-sibling::textarea|//label[text()='PARAMETER']/following-sibling::div/textarea|//span[text()='PARAMETER']/following-sibling::div//input[@type!='hidden']|//*[text()='PARAMETER']/following-sibling::*//input[@type!='hidden']|//label[text()='PARAMETER']/../following-sibling::div//input"
   },
   {
     "name": "Product Factory text field two",
