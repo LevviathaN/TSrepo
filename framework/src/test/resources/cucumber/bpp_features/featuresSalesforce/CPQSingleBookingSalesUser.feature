@@ -1,7 +1,7 @@
 #@Salesforce @CPQ
 Feature: Create a Single Booking
 
-# Do not include in regression until Dave wil fix user permissions
+  #Do not include in regression until Dave wil fix user permissions
   @Positive @SalesUser
   Scenario: CPQ Single Booking Sales User
     Given I execute "Log In To Salesforce" reusable step replacing some steps
