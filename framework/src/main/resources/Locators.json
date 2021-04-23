@@ -2997,7 +2997,7 @@
   },
   {
     "name": "Salesforce Quotes Product Checkbox",
-    "value": "inframe=Salesforce Frame>xpath=//sb-group[contains(@class,'th style-scope')]"
+    "value": "inframe=Salesforce Frame>xpath=(//sb-group[contains(@class,'th style-scope')]/../../../following-sibling::div//sb-group[1])[1]"
   },
   {
     "name": "Salesforce Quotes Select Product Button",
