@@ -548,6 +548,23 @@ Feature: Salesforce
     And I click on the "Salesforce Account Creation Save button" element
     #And I should see the " was created." message
 
+  Scenario: Create Business Opportunity CSA User
+    Then I click on the "Salesforce Opportunities Quick Link Tab" element
+    And I click on the "Salesforce Student Account Pages New button" button
+    And I wait for "1" seconds
+    Then I click on the "Business Development" "Salesforce radiobutton"
+    Then I click on the "Next" "button"
+    Then I wait for "3" seconds
+    And I set "AutoOpportunity[###]" text to the "Opportunity Name" "Salesforce text field label"
+    And I set "1000" text to the "Amount" "Salesforce text field label"
+    And I click on the "Status" "Salesforce dropdown field" by JS
+    And I click on the "Prospecting" "Salesforce dropdown field option"
+    And I set "31/01/2021" text to the "Close Date" "Salesforce date field"
+    And I set "31/01/2021" text to the "Desired Start Date" "Salesforce date field"
+    And I click on the "Type" "Salesforce dropdown field" by JS
+    And I click on the "New Business: New Client" "Salesforce dropdown field option"
+    And I click on the "Salesforce Account Creation Save button" element
+
   Scenario: Add A Booking
     And I click on the "Salesforce New Booking" button
     And I fill the "Salesforce Booking Search Account" field with "EC_AUTO_LASTNAME"
