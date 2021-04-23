@@ -517,6 +517,10 @@
     "value": "xpath=//span[text()='£PARAMETER']/../../../div[2]/div/div[3]/button"
   },
   {
+    "name": "Product Factory Course Instance Delete button",
+    "value": "xpath=//p[text()='PARAMETER']/../../../following-sibling::div//button[@title='Delete']"
+  },
+  {
     "name": "Salesforce New Qualification input fields",
     "value": "xpath=//div[contains(@class,'groupDependentFieldEnabled')]//span[text()='PARAMETER']/following::input[1]"
   },
