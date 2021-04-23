@@ -1,8 +1,8 @@
-@Salesforce @CPQ @Booking
+#@Salesforce @CPQ
 Feature: Create a Single Booking
-  Description
+  # Do not include in regression until Dave wil fix user permissions
 
-  @Positive @SingleBooking @CSAUser
+  @Positive @CSAUser
   Scenario: CPQ Single Booking CSA User
     Given I execute "Log In To Salesforce" reusable step replacing some steps
       |2|I fill the "Salesforce Username" field with "MD_COMMON_CREDENTIALS_SALESFORCECSA"|
@@ -60,7 +60,6 @@ Feature: Create a Single Booking
     And I wait for "5" seconds
     Then I click on the "Salesforce Account Related Tab" element
     Then I execute "Add A Booking" reusable step
-
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
     And Browser performs "REFRESH" command
     And I wait for "10" seconds
