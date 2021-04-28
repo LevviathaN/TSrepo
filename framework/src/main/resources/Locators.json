@@ -2636,6 +2636,10 @@
     "value": "xpath=//h6[text()='Steps']/following-sibling::table//button"
   },
   {
+    "name": "Product Factory Course Instance Delete",
+    "value": "xpath=//button[@aria-label='DeleteInstance']"
+  },
+  {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },
