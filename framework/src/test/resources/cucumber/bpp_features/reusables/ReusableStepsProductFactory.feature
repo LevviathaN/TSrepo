@@ -321,6 +321,7 @@ Feature: Product Factory
     And I click on the "Create" "Product Factory button"
     And I click on the "BPP Learning Media" "Product Factory button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
+    And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "~Price[####]" text to the "Price (£)" "Product Factory text field"
     And I set "~Weight[##]" text to the "Weight (kg)" "Product Factory text field"
     And I set "EC_ISBN" text to the "ISBN" "Product Factory text field"
@@ -474,6 +475,8 @@ Feature: Product Factory
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
+    And I click on the "Totara" "Product Factory button"
+    And I click on the "Save" "Product Factory button"
     And I wait for "6" seconds
     And I click on the "Body" "Product Factory dropdown"
     And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
