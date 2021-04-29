@@ -1,11 +1,8 @@
 @Quark
 Feature: Quark PDF File Comparison
 
-  @ACCA
+  @ACCA @Automation
   Scenario Outline: <BaseFile> to <QuarkWebPlatformFile> ACCA PDF published comparison
-    #Given I am on "http://7.0.12.124/workspace/login.qsp" URL
-    #And I fill the "Quark Username" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
-    #And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
     Given I am on "http://yzosin:Welcome9%40@7.0.12.124/workspace/login.qsp" URL
     And I wait for "3" seconds
     Then I should see the "Quark Publishing Logo" element
@@ -21,16 +18,19 @@ Feature: Quark PDF File Comparison
     And I hover over the "Quark Publish BPP PDF" element
     Then I click on the "Quark Publish BPP PDF" element
     And I should see the "Quark Generating Output Window" element
-    Then I wait for "150" seconds
+    Then I wait for "130" seconds
     And I compare "<BaseFile>" file with "<QuarkWebPlatformFile>" PDF file
 
     Examples:
-      | BaseFile                                         | QuarkWebPlatformFile|                      QuarkWebPlatformXML|
-      |Automation One File - ACCA FQPBase.pdf            | Automation One File - ACCA FQP.pdf        |Automation One File - ACCA FQP.xml |
-      |Automation Two File - ACCA ActivitiesBase.pdf     | Automation Two File - ACCA Activities.pdf      |Automation Two File - ACCA Activities.xml |
-      |Automation Three File - ACCA TYLBase.pdf          | Automation Three File - ACCA TYL.pdf      |Automation Three File - ACCA TYL.xml |
-      |Automation Four File - ACCA TYLBase.pdf           | Automation Four File - ACCA TYL.pdf      |Automation Four File - ACCA TYL.xml |
-
+      | BaseFile                                              | QuarkWebPlatformFile|                           QuarkWebPlatformXML|
+      #|Automation One File - ACCA FQPBase.pdf                 | Automation One File - ACCA FQP.pdf              |Automation One File - ACCA FQP.xml |
+      |Automation Two File - ACCA ActivitiesBase.pdf          | Automation Two File - ACCA Activities.pdf       |Automation Two File - ACCA Activities.xml |
+      |Automation Three File - ACCA TYLBase.pdf               | Automation Three File - ACCA TYL.pdf            |Automation Three File - ACCA TYL.xml |
+      |Automation Four File - ACCA IllustrationBase.pdf       | Automation Four File - ACCA Illustration.pdf    |Automation Four File - ACCA Illustration.xml |
+      |Automation Five File - ACCA Illustartions 1Base.pdf    | Automation Five File - ACCA Illustrations 1.pdf |Automation Five File - ACCA Illustrations 1.xml |
+      |Automation Six file - ACCA Illustrations 2Base.pdf     | Automation Six file - ACCA Illustrations 2.pdf  |Automation Six file - ACCA Illustrations 2.xml |
+      |Automation Seven File - FQP1Base.pdf                   | Automation Seven File - FQP1.pdf                |Automation Seven File - FQP1.xml |
+      |Automation Eight File - FQP2Base.pdf                   | Automation Eight File - FQP2.pdf                |Automation Eight File - FQP2.xml |
 
   @ICAEW @KW
   Scenario Outline: <BaseFile> to <QuarkWebPlatformFile> ICAEW PDF published comparison
@@ -73,6 +73,9 @@ Feature: Quark PDF File Comparison
 
   @ICAEW @QuestionBank
   Scenario Outline: <BaseFile> to <QuarkWebPlatformFile> ICAEW PDF published comparison
+    #Given I am on "http://7.0.12.124/workspace/login.qsp" URL
+    #And I fill the "Quark Username" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
+    #And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
     Given I am on "http://yzosin:Welcome9%40@7.0.12.124/workspace/login.qsp" URL
     And I wait for "3" seconds
     Then I should see the "Quark Publishing Logo" element
