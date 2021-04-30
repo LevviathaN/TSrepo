@@ -2640,6 +2640,10 @@
     "value": "xpath=//button[@aria-label='DeleteInstance']"
   },
   {
+    "name": "Product Factory Course Reference ID edit button",
+    "value": "xpath=//label[text()='Course Reference ID']/../following-sibling::div/button"
+  },
+  {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },

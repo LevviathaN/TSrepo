@@ -421,6 +421,10 @@
     "value": "xpath=//span[text()='PARAMETER']/.."
   },
   {
+    "name": "Product Factory button last",
+    "value": "xpath=(//span[text()='PARAMETER']/..)[last()]"
+  },
+  {
     "name": "Product Factory button title",
     "value": "xpath=//button[@title='PARAMETER']"
   },
