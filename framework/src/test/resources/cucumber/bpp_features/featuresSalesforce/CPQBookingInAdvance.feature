@@ -84,8 +84,9 @@ Feature: Create a Single Booking
     Then Browser performs "REFRESH" command
     And I wait for "5" seconds
     And I click on the "Salesforce Account Related Tab" element
+    And I wait for "2" seconds
     Then I execute "window.scrollTo(1250, 800);" JS code
-    And I wait for "5" seconds
+    And I wait for "8" seconds
     Then I should see the "Salesforce Invoices First Link" element
     And I validate text "CONTAINS=INV" to be displayed for "Salesforce Invoices First Link" element
     Then I should see the "Salesforce Usages Number" element
