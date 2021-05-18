@@ -1284,6 +1284,10 @@
     "value": "xpath=(//ul[@role='listbox']/li[1])[last()]"
   },
   {
+    "name": "Direct App Company Division Dropdown",
+    "value": "xpath=//label[contains(.,'Division')]//following-sibling::div[1]/div"
+  },
+  {
     "name": "Direct App Company Health And Safety",
     "value": "xpath=//label[contains(.,'Health and Safety')]/following-sibling::div/label[1]"
   },
