@@ -795,12 +795,17 @@ public class StepDefinitions extends SeleniumHelper {
      */
     @And("I compare \"([^\"]*)\" file with \"([^\"]*)\" PDF file")
     public void i_compare_pdfs(String baseFile, String fileName1) {
-        Reporter.log("Executing step: I check PDF files: " + baseFile + " and " + fileName1);
-        Reporter.log("Amount of pages in " + baseFile + " is: " + PDFHandler.getPageCountBaseFile(baseFile));
-        Reporter.log("Amount of pages in " + fileName1 + " is: " + PDFHandler.getPageCountDownloadedFile(fileName1));
-        Assert.assertTrue(PDFHandler.checkPDF(baseFile, fileName1));
-    }
 
+        Reporter.log("Executing step: I check PDF files: " + baseFile + " and " + fileName1);
+        try {
+            Reporter.log("Amount of pages in " + baseFile + " is: " + PDFHandler.getPageCountBaseFile(baseFile));
+            Reporter.log("Amount of pages in " + fileName1 + " is: " + PDFHandler.getPageCountDownloadedFile(fileName1));
+            Assert.assertTrue(PDFHandler.checkPDF(baseFile, fileName1));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Reporter.log("Please check the PDF files! Some files are missing! ");
+        }
+    }
 
 
     /**

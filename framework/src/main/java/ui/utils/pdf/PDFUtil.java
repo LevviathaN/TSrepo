@@ -84,22 +84,12 @@ public class PDFUtil {
         this.bCompareAllPages = flag;
     }
 
-    public int getPageCount(String file)  {
+    public int getPageCount(String file) throws IOException {
         BPPLogManager.getLogger().info("file :" + file);
-        PDDocument doc = null;
-        try {
-            doc = PDDocument.load(new File(file));
-        } catch (IOException e) {
-            e.printStackTrace();
-            Reporter.failTryTakingScreenshot("PDF FILE: " +  file + " NOT FOUND");
-        }
+        PDDocument doc = PDDocument.load(new File(file));
         int pageCount = doc.getNumberOfPages();
         BPPLogManager.getLogger().info("pageCount :" + pageCount);
-        try {
-            doc.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        doc.close();
         return pageCount;
     }
 

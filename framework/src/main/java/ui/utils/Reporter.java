@@ -747,14 +747,13 @@ public class Reporter {
         testStorage.get(Thread.currentThread().getId()).pass(log);
     }
 
-    public static String getQuarkImagesFolder() {
+    public static synchronized String getQuarkImagesFolder() {
         try {
             Path rootPath = getQuarkScreenshotsPath();
-            Path testFolder = Paths.get(rootPath.toString(), Reporter.getCurrentTestName());
             if (Files.notExists(rootPath))
-                quarkPath = Files.createDirectories(testFolder);
+                quarkPath = Files.createDirectories(rootPath);
             else
-                quarkPath = testFolder;
+                quarkPath = rootPath;
         } catch (IOException e) {
             e.printStackTrace();
         }
