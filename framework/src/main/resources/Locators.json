@@ -2769,7 +2769,7 @@
   },
   {
     "name": "Salesforce First Qualification Subject",
-    "value": "xpath=(//ul[contains(@class,'lookup__list')]//div[contains(@class,'primaryLabel')])[1]"
+    "value": "xpath=(//div[@role='listbox']//ul//span[2])[1]"
   },
   {
     "name": "Salesforce Frame",
@@ -2837,15 +2837,23 @@
   },
   {
     "name": "Salesforce Qualification Institution Capture information",
-    "value": "xpath=//span[normalize-space()='Qualification Institution']/following::span[@class='pillText']"
+    "value": "xpath=//*[text()='Qualification Institution']/following::input[1]"
   },
   {
     "name": "Salesforce Qualification Subject Capture information",
-    "value": "xpath=//span[normalize-space()='Qualification Subject']/following::span[@class='pillText']"
+    "value": "xpath=//*[text()='Qualification Subject']/following::input[1]"
   },
   {
     "name": "Salesforce Qualification Type Capture information",
-    "value": "xpath=//span[normalize-space()='Qualification Type']/following::span[@class='pillText']"
+    "value": "xpath=//*[text()='Qualification Type']/following::input[1]"
+  },
+  {
+    "name": "Salesforce Qualification Tariff Points",
+    "value": "xpath=(//*[text()='Tariff Points']/following::input[1])[2]"
+  },
+  {
+    "name": "Salesforce Address Type First Link",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//parent::td/preceding-sibling::th//a)[1]"
   },
   {
     "name": "Salesforce Qualifications link",
@@ -2890,14 +2898,6 @@
   {
     "name": "Salesforce Username",
     "value": "id=username"
-  },
-  {
-    "name": "Salesforce Qualification Used for Offer checkbox",
-    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='Used for Offer']/following-sibling::input"
-  },
-  {
-    "name": "Salesforce Qualification Naric indicator checkbox",
-    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='NARIC Indicator']/following-sibling::input"
   },
   {
     "name": "Salesforce Qualification Status value",
