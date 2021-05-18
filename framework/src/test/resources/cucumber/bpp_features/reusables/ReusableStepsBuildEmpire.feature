@@ -1760,3 +1760,44 @@ Feature: BuildEmpire
     And I wait for "3" seconds
     And I click on the "Delete" "Totara button"
     And I wait for "3" seconds
+
+  Scenario: Complete Professional Apprenticeships Application Chartered Manager Existing Student
+    Given I click on the "Direct App Start Application" button
+    And I click on the "Eligibility criteria" "Build Empire application section"
+    And I click on the "Are you aged over 15" "Build Empire bespoke Scotland eligibility"
+    And I click on the "Do you have a husband, wife," "Build Empire bespoke Scotland eligibility"
+    And I click on the "Direct App Right To Work in England?" element
+    And I click on the "Direct App Do You Spend 50 Percent" element
+    And I click on the "Direct App Bespoke Enrolled On Another Apprenticeship No" element
+    And I click on the "Direct App Are You In Employment" element
+    And I click on the "Direct App Are You Working At Least 16 Hours" element
+    And I click on the "Are you applying for a programme" "Build Empire bespoke Scotland eligibility"
+    And I click on the "Do you confirm that your job is a new" "Build Empire bespoke Scotland eligibility"
+    And I click on the "You confirm that you have discussed" "Build Empire bespoke Scotland eligibility"
+    And I wait for "2" seconds
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "2" seconds
+    And I click on the "Direct App Next" button
+    And I wait for "2" seconds
+    And I click on the "employment status?:" "Build Empire nationality dropdown"
+    And I click on the "I have work experience in this sector of up to 2 years" "Build Empire nationality option"
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "2" seconds
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "2" seconds
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "2" seconds
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I wait for "2" seconds
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    And I click on the "Direct App Next" button
+    And I click on the "Direct App Mark As Complete Checkbox" button
+    Then I wait for "1" seconds
+    And I click on the "Direct App Save And Return" button

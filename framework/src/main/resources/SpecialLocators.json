@@ -181,6 +181,22 @@
     "value": "xpath=//*[contains(.,'Bottom margin')]/../following::div[contains(.,'PARAMETER')]/input"
   },
   {
+    "name": "BPP Digital dropdown",
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::select"
+  },
+  {
+    "name": "BPP Digital dropdown option",
+    "value": "xpath=//option[text()='PARAMETER']"
+  },
+  {
+    "name": "BPP Digital View Dates and Prices button",
+    "value": "xpath=//div[text()='PARAMETER' and @class='card-title']/following-sibling::div//button[text()='View dates & prices']"
+  },
+  {
+    "name": "BPP Digital dropdown item",
+    "value": "xpath=//*[@class='dropdown-item' and text()='PARAMETER']"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
@@ -335,6 +351,10 @@
   {
     "name": "Build Empire text field by title",
     "value": "xpath=//label[contains(normalize-space(),'PARAMETER')]/following-sibling::*/descendant-or-self::input"
+  },
+  {
+    "name": "Direct App Country Dropdown Option",
+    "value": "xpath=(//ul[@role='listbox']/li[contains(.,'PARAMETER')])[last()]"
   },
   {
     "name": "Hub Deadline Activity Name",
@@ -526,11 +546,11 @@
   },
   {
     "name": "Salesforce New Qualification input fields",
-    "value": "xpath=//div[contains(@class,'groupDependentFieldEnabled')]//span[text()='PARAMETER']/following::input[1]"
+    "value": "xpath=//*[text()='PARAMETER']/following::input[1]"
   },
   {
-    "name": "Salesforce Address Type link",
-    "value": "xpath=//div[@class='windowViewMode-normal oneContent active lafPageHost']//span[normalize-space()='PARAMETER']/parent::td/preceding-sibling::th//a"
+    "name": "Salesforce Qualification Subject",
+    "value": "xpath=//div[@role='listbox']//ul//*[@title='PARAMETER']"
   },
   {
     "name": "Salesforce Related Buttons link",

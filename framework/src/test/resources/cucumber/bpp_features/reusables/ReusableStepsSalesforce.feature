@@ -114,27 +114,29 @@ Feature: Salesforce
     And I click on the "Salesforce Student Account Pages New button" button
     And I set "LAW" text to the "Qualification Subject" "Salesforce New Qualification input fields"
     And I wait for "2" seconds
-    And I click on the "Salesforce First Qualification Subject" link by JS
+    And I click on the "Law and Society" "Salesforce Qualification Subject" by JS
     And I capture text data "Salesforce Qualification Subject Capture information" as "EC_QUALIFICATION_SUBJECT" variable
-    And I set "ACC" text to the "Qualification Institution" "Salesforce New Qualification input fields"
+    And I set "Accrington Academy" text to the "Qualification Institution" "Salesforce New Qualification input fields"
     And I wait for "2" seconds
-    And I click on the "Salesforce First Qualification Subject" link by JS
+    And I click on the "Accrington Academy" "Salesforce Qualification Subject" by JS
     And I capture text data "Salesforce Qualification Institution Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
     And I set "ACC" text to the "Qualification Type" "Salesforce New Qualification input fields"
     And I wait for "2" seconds
-    And I click on the "Salesforce First Qualification Subject" link by JS
+    And I click on the "Acc to HE Dip (AQA)" "Salesforce Qualification Subject" by JS
     And I capture text data "Salesforce Qualification Type Capture information" as "EC_QUALIFICATION_INSTITUTION" variable
+    And I set "EC_QUALIFICATION_LASTNAME" text to the "Student" "Salesforce New Qualification input fields"
+    Then I click on the "Salesforce First Qualification Subject" element
     And I remember "KW_AUTO_RANDOMNUMBER|####" text as "EC_TARIFF_POINT" variable
-    And I set "EC_TARIFF_POINT" text to the "Tariff Points" "Salesforce New Qualification input fields"
+    And I fill the "Salesforce Qualification Tariff Points" field with "EC_TARIFF_POINT"
     And I click on the "Status" "Salesforce dropdown field"
     And I click on the "Actual" "Salesforce dropdown field option"
-    And I capture text data "Salesforce Qualification Status value" as "EC_STATUS" variable
+    And I remember "Actual" text as "EC_STATUS" variable
     And I set "KW_AUTO_TODAY|DD/MM/YYYY" text to the "Qualification Date" "Salesforce date field"
-    And I set "G[####]" text to the "Grade" "Salesforce text field"
-    And I "check" "Salesforce Qualification Used for Offer checkbox" checkbox
-    And I "check" "Salesforce Qualification Naric indicator checkbox" checkbox
-    And I click on the "NARIC Equivalent Grade" "Salesforce dropdown field"
-    And I click on the "8~ Specialist awards" "Salesforce dropdown field option"
+    And I set "G[####]" text to the "Grade" "Salesforce New Qualification input fields"
+    And I click on the "Used for Offer" "Salesforce checkbox" by JS
+    And I click on the "NARIC Indicator" "Salesforce checkbox" by JS
+    And I click on the "NARIC Equivalent Grade" "Salesforce dropdown field" by JS
+    And I click on the "8~ Specialist awards" "Salesforce dropdown field option" by JS
     And I click on the "Salesforce Account Creation Save button" link
     Then I should see the " was created." message
     Then I wait for "5" seconds

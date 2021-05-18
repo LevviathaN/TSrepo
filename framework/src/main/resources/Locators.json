@@ -604,6 +604,14 @@
     "value": "xpath=//a[@class='dropdown-item' and normalize-space()='Pages']"
   },
   {
+    "name": "BPP Digital Dates and Prices Number of Sessions field",
+    "value": "xpath=//*[text()='Weekday' and text()='sessions']"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Papers dropdown",
+    "value": "xpath=//button[span[@class='paper-name']]"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
@@ -1141,7 +1149,7 @@
   },
   {
     "name": "Direct App Application Progress Percentage",
-    "value": "xpath=//div[@class='intro-app completed']//div[@class='app-progress']"
+    "value": "xpath=(//div[@class='app-progress'])[1]"
   },
   {
     "name": "Direct App Application Progress Percentage After Review",
@@ -1865,7 +1873,7 @@
   },
   {
     "name": "Direct App Validate As Student Application Accepted",
-    "value": "xpath=//div[@class='app-state']/span[@class='msg-state']"
+    "value": "xpath=(//div[@class='app-state']/span[@class='msg-state'])[1]"
   },
   {
     "name": "Direct App What Are You Applying For Dropdown",
@@ -2761,7 +2769,7 @@
   },
   {
     "name": "Salesforce First Qualification Subject",
-    "value": "xpath=(//ul[contains(@class,'lookup__list')]//div[contains(@class,'primaryLabel')])[1]"
+    "value": "xpath=(//div[@role='listbox']//ul//span[2])[1]"
   },
   {
     "name": "Salesforce Frame",
@@ -2829,15 +2837,23 @@
   },
   {
     "name": "Salesforce Qualification Institution Capture information",
-    "value": "xpath=//span[normalize-space()='Qualification Institution']/following::span[@class='pillText']"
+    "value": "xpath=//*[text()='Qualification Institution']/following::input[1]"
   },
   {
     "name": "Salesforce Qualification Subject Capture information",
-    "value": "xpath=//span[normalize-space()='Qualification Subject']/following::span[@class='pillText']"
+    "value": "xpath=//*[text()='Qualification Subject']/following::input[1]"
   },
   {
     "name": "Salesforce Qualification Type Capture information",
-    "value": "xpath=//span[normalize-space()='Qualification Type']/following::span[@class='pillText']"
+    "value": "xpath=//*[text()='Qualification Type']/following::input[1]"
+  },
+  {
+    "name": "Salesforce Qualification Tariff Points",
+    "value": "xpath=(//*[text()='Tariff Points']/following::input[1])[2]"
+  },
+  {
+    "name": "Salesforce Address Type First Link",
+    "value": "xpath=(//div[@class='windowViewMode-normal oneContent active lafPageHost']//parent::td/preceding-sibling::th//a)[1]"
   },
   {
     "name": "Salesforce Qualifications link",
@@ -2882,14 +2898,6 @@
   {
     "name": "Salesforce Username",
     "value": "id=username"
-  },
-  {
-    "name": "Salesforce Qualification Used for Offer checkbox",
-    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='Used for Offer']/following-sibling::input"
-  },
-  {
-    "name": "Salesforce Qualification Naric indicator checkbox",
-    "value": "xpath=//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//label[normalize-space()='NARIC Indicator']/following-sibling::input"
   },
   {
     "name": "Salesforce Qualification Status value",
