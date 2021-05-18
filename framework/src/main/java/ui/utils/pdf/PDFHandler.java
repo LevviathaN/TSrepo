@@ -31,7 +31,7 @@ public class PDFHandler {
             pdfUtil.compare(fileOne, fileTwo);
             Reporter.fail("PDF COMPARISON FAILED!Please Check PDF Differences Folder");
        } else {
-            Reporter.log("Text comparison for PDF files is completed successfully! No differences found!Performing visual comparison...");
+            Reporter.log("Text comparison for PDF files is completed successfully! No differences found!Performing visual comparison....");
             pdfUtil.setCompareMode(CompareMode.VISUAL_MODE);
             pdfUtil.compare(fileOne, fileTwo);
         }
