@@ -181,6 +181,22 @@
     "value": "xpath=//*[contains(.,'Bottom margin')]/../following::div[contains(.,'PARAMETER')]/input"
   },
   {
+    "name": "BPP Digital dropdown",
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::select"
+  },
+  {
+    "name": "BPP Digital dropdown option",
+    "value": "xpath=//option[text()='PARAMETER']"
+  },
+  {
+    "name": "BPP Digital View Dates and Prices button",
+    "value": "xpath=//div[text()='PARAMETER' and @class='card-title']/following-sibling::div//button[text()='View dates & prices']"
+  },
+  {
+    "name": "BPP Digital dropdown item",
+    "value": "xpath=//*[@class='dropdown-item' and text()='PARAMETER']"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
