@@ -23,7 +23,7 @@ Feature: Quark PDF File Comparison
 
     Examples:
       | BaseFile                                              | QuarkWebPlatformFile|                           QuarkWebPlatformXML|
-      #|Automation One File - ACCA FQPBase.pdf                 | Automation One File - ACCA FQP.pdf              |Automation One File - ACCA FQP.xml |
+      |Automation One File - ACCA FQPBase.pdf                 | Automation One File - ACCA FQP.pdf              |Automation One File - ACCA FQP.xml |
       |Automation Two File - ACCA ActivitiesBase.pdf          | Automation Two File - ACCA Activities.pdf       |Automation Two File - ACCA Activities.xml |
       |Automation Three File - ACCA TYLBase.pdf               | Automation Three File - ACCA TYL.pdf            |Automation Three File - ACCA TYL.xml |
       |Automation Four File - ACCA IllustrationBase.pdf       | Automation Four File - ACCA Illustration.pdf    |Automation Four File - ACCA Illustration.xml |
@@ -31,6 +31,16 @@ Feature: Quark PDF File Comparison
       |Automation Six file - ACCA Illustrations 2Base.pdf     | Automation Six file - ACCA Illustrations 2.pdf  |Automation Six file - ACCA Illustrations 2.xml |
       |Automation Seven File - FQP1Base.pdf                   | Automation Seven File - FQP1.pdf                |Automation Seven File - FQP1.xml |
       |Automation Eight File - FQP2Base.pdf                   | Automation Eight File - FQP2.pdf                |Automation Eight File - FQP2.xml |
+      |Automation 9 - Group Scenario (FQP)Base.pdf            | Automation 9 - Group Scenario (FQP).pdf         |Automation 9 - Group Scenario (FQP).xml |
+      |Automation 10 - Group Scenario (KC)Base.pdf            | Automation 10 - Group Scenario (KC).pdf         |Automation 10 - Group Scenario (KC).xml |
+      |Automation 11 - Group Requirement (FQP)Base.pdf        | Automation 11 - Group Requirement (FQP).pdf     |Automation 11 - Group Requirement (FQP).xml |
+      |Automation 12 - Group Requirement (KC)Base.pdf         | Automation 12 - Group Requirement (KC).pdf      |Automation 12 - Group Requirement (KC).xml |
+      |Automation 13 - Group Debrief (FQP)Base.pdf            | Automation 13 - Group Debrief (FQP).pdf         |Automation 13 - Group Debrief (FQP).xml |
+      |Automation 14 - Group Debrief (KC)Base.pdf             | Automation 14 - Group Debrief (KC).pdf          |Automation 14 - Group Debrief (KC).xml |
+      |Automation 15 - FITB (FQP)Base.pdf                     | Automation 15 - FITB (FQP).pdf                  |Automation 15 - FITB (FQP).xml |
+      |Automation 16 - FITB (KC)Base.pdf                      | Automation 16 - FITB (KC).pdf                   |Automation 16 - FITB (KC).xml |
+      |Automation 17 - MCQ_MRQ (FQP)Base.pdf                  | Automation 17 - MCQ_MRQ (FQP).pdf               |Automation 17 - MCQ_MRQ (FQP).xml|
+      |Automation 18 - MCQ_MRQ (KC)Base.pdf                   | Automation 18 - MCQ_MRQ (KC).pdf                |Automation 18 - MCQ_MRQ (KC).xml|
 
   @ICAEW @KW
   Scenario Outline: <BaseFile> to <QuarkWebPlatformFile> ICAEW PDF published comparison
