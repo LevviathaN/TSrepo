@@ -604,6 +604,14 @@
     "value": "xpath=//a[@class='dropdown-item' and normalize-space()='Pages']"
   },
   {
+    "name": "BPP Digital Dates and Prices Number of Sessions field",
+    "value": "xpath=//*[text()='Weekday' and text()='sessions']"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Papers dropdown",
+    "value": "xpath=//button[span[@class='paper-name']]"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
