@@ -204,11 +204,11 @@ Feature: BuildEmpire
     And I wait for "1" seconds
     Then I click on the "Professional Career Development Programmes Scotland" "Build Empire application type"
     And I wait for "1" seconds
-    #And I hover over the "Direct App Programmes Programm Dropdown" button
-    #And I click on the "Direct App Programmes Programm Dropdown" element
-    #Then I wait for "1" seconds
-    #Then I click on the "Chartered Manager" "Build Empire application type"
-    #And I wait for "1" seconds
+    And I hover over the "Direct App Programmes Programm Dropdown" button
+    And I click on the "Direct App Programmes Programm Dropdown" element
+    Then I wait for "1" seconds
+    Then I click on the "Chartered Manager" "Build Empire application type"
+    And I wait for "1" seconds
     And I click on the "Direct App Create Application" button
     Then I wait for "1" seconds
 
@@ -469,7 +469,8 @@ Feature: BuildEmpire
     And I set "Address 1" text to the "Address Line 1" "Build Empire employment element"
     And I set "London" text to the "Company/Employer City" "Build Empire employment element"
     And I set "Employee" text to the "Employee" "Build Empire employment element"
-    And I set "Division" text to the "Division" "Build Empire employment element"
+    And I click on the "Direct App Company Division Dropdown" element
+    Then I click on the "NatWest Markets" "Build Empire dropdown option"
     And I set "Subdivision" text to the "Subdivision" "Build Empire employment element"
     And I click on the "Direct App Company Health And Safety" element
     And I fill the "Direct App When You Start At Company" field with "05/05/2018"
