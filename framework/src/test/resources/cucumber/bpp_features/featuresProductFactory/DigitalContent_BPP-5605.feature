@@ -12,11 +12,11 @@ Feature: Digital Content Id - Create - BPP-5605
   @Positive @P1 #TC-3148, TC-3567, TC-5444
   Scenario: Create Digital Content
     Given I execute modified "Create Digital Content" reusable step
-      |4|Add|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
-      |21|Add|I set "NameSuffix[###]" text to the "Name Suffix" "Product Factory text field"|
-      |22|Add|I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_NAME] - [EC_SITTING_NAME] - [EC_NAME_SUFFIX]" element|
-      |23|Add|I set "CourseReferenceID[###]" text to the "Course Reference ID" "Product Factory text field"|
-      |24|Add|I should see the "EC_COURSE_REFERENCE_ID" "element by title"                                 |
+      |5|Add|Attribute "tabindex" of "Save" "Product Factory button" should have value "-1"|
+      |22|Add|I set "NameSuffix[###]" text to the "Name Suffix" "Product Factory text field"|
+      |23|Add|I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_NAME] - [EC_SITTING_NAME] - [EC_NAME_SUFFIX]" element|
+      |24|Add|I set "CourseReferenceID[###]" text to the "Course Reference ID" "Product Factory text field"|
+      |25|Add|I should see the "EC_COURSE_REFERENCE_ID" "element by title"                                 |
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
 

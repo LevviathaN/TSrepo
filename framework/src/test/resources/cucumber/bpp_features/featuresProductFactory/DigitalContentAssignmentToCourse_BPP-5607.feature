@@ -12,8 +12,8 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
   @Positive @P1 #TC-3181
   Scenario: Create Course With Matching Digital Content
     Given I execute "Create Digital Content" reusable step with some additional steps
-      |20|I set "Suffix[###]" text to the "Name Suffix" "Product Factory text field"|
-      |21|I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_NAME] - [EC_SITTING_NAME] - [EC_SUFFIX]" element|
+      |21|I set "Suffix[###]" text to the "Name Suffix" "Product Factory text field"|
+      |22|I should see the "[EC_BODY_SHORT_NAME] - [EC_LEVEL_SHORT_NAME] - [EC_PAPER_NAME] - [EC_SITTING_NAME] - [EC_SUFFIX]" element|
     Then I execute "Create Course" reusable step
     Then I execute "Create Course Instance" reusable step
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
@@ -52,7 +52,7 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
     And I execute "Create Pricing Matrix Full" reusable step replacing some steps
       |3|I click on the "EC_SITTING_NAME_TWO" "Product Factory edit button"|
     Given I execute "Create Digital Content" reusable step replacing some steps
-      |14|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
+      |15|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
     Then I execute "Create Course" reusable step
     Then I execute "Create Course Instance" reusable step
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
@@ -85,7 +85,7 @@ Feature: Digital Content Id - Assignment to Course - BPP-5607
     And I execute "Create Pricing Matrix Full" reusable step replacing some steps
       |3|I click on the "EC_SITTING_NAME_TWO" "Product Factory edit button"|
     Given I execute "Create Digital Content" reusable step replacing some steps
-      |14|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
+      |15|I "check" "EC_SITTING_NAME_TWO" "Product Factory dialog checkbox"|
     Then I execute "Create Course" reusable step
     Then I execute "Create Course Instance" reusable step
     When I click on the "EC_LOCATION_NAME" "Product Factory course instance sessions dropdown button"
