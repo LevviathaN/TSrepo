@@ -475,6 +475,7 @@ Feature: Product Factory
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
     Then I click on the "Create" "Product Factory button"
+    And I click on the "Professional Qualifications" "text contained in SPAN element"
     And I click on the "Totara" "Product Factory button"
     And I click on the "Save" "Product Factory button"
     And I wait for "6" seconds
