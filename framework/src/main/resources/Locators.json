@@ -612,6 +612,10 @@
     "value": "xpath=//button[span[@class='paper-name']]"
   },
   {
+    "name": "BPP Digital Dates and Prices Course Instance entry",
+    "value": "xpath=//div[@id='course-instances-list']/*"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
