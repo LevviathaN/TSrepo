@@ -584,6 +584,25 @@ Feature: Salesforce
     And I capture current URL as "EC_BOOKING_URL" variable
     And I wait for "2" seconds
 
+  Scenario: Add A Booking Sales User
+    And I click on the "Salesforce New Booking" button
+    And I fill the "Salesforce Booking Search Account" field with "EC_AUTO_LASTNAME"
+    And I click on the "EC_AUTO_LASTNAME" "option"
+    And I click on the "Salesforce Status Booking" element by JS
+    And I click on the "Confirmed" "option"
+    And I fill the "Salesforce Booking Search Instance" field with "MD_COMMON_VALIDDATA_SFCPQINSTANCENUMBER"
+    And I press "MD_COMMON_KEYBOARD_ENTER" for "Salesforce Booking Search Instance"
+    Then I wait for "1" seconds
+    And I click on the "I-2524" "text contained in A element"
+    And I click on the "Salesforce Save Booking Button" element
+    And I wait for "2" seconds
+    Then Browser performs "REFRESH" command
+    And I click on the "Salesforce Account Related Tab" element
+    And I wait for "5" seconds
+    And I capture text data "Salesforce Booking Number Data Field" as "EC_BOOKING" variable
+    And I capture current URL as "EC_BOOKING_URL" variable
+    And I wait for "2" seconds
+
   Scenario: Create Address Business Account
     And I click on the "Salesforce Addresses Quick Link Tab" button by JS
     And I wait for "1" seconds
