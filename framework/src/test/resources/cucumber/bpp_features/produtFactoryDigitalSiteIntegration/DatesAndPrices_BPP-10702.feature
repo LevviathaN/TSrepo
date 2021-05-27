@@ -52,7 +52,7 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
     And I set "ICAEWU" text to the "Short Name" "Product Factory text field"
     And I set "Institute Chartered Accountants of England & Wales Updated" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
-    And I wait for "150" seconds
+    And I wait for "180" seconds
 
     # Find Course in Product factory
     When I click on the "Products" "Product Factory navigation item"
@@ -78,7 +78,7 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
     And I click on the "Finish" "Product Factory button"
     And I click on the "Online" "Product Factory course instance Publish button"
     And I click on the "Yes" "Product Factory button"
-    And I wait for "120" seconds
+    And I wait for "150" seconds
 
     # Delete DnP component in Admin
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
