@@ -2660,6 +2660,18 @@
     "value": "xpath=//label[text()='Course Reference ID']/../following-sibling::div/button"
   },
   {
+    "name": "Product Factory Course Creation Wizard Number of Sessions",
+    "value": "xpath=//label[text()='Number of Sessions']/../following-sibling::div/p"
+  },
+  {
+    "name": "Product Factory Course Creation Wizard Number of Steps",
+    "value": "xpath=//label[text()='Number of Steps']/../following-sibling::div/p"
+  },
+  {
+    "name": "Product Factory Delete Course Material button",
+    "value": "xpath=//span[text()='Material Delivery Default']/../../../../div[3]/button"
+  },
+  {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },

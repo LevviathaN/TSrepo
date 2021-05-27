@@ -545,6 +545,10 @@
     "value": "xpath=//p[text()='PARAMETER']/../../../following-sibling::div//button[@title='Delete']"
   },
   {
+    "name": "Product Factory Change Course Step Due Date button",
+    "value": "xpath=(//h6[text()='Steps']/following-sibling::table//button)[PARAMETER]"
+  },
+  {
     "name": "Salesforce New Qualification input fields",
     "value": "xpath=//*[text()='PARAMETER']/following::input[1]"
   },
