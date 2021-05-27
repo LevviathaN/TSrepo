@@ -4,12 +4,12 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
   I want to be able to view the "dates & prices" component in the same page with the marketing data
   so that the user can read the information for a particular course and navigate through the available papers.
 
-  @Runn #TC-4850, TC-4939, TC-4825
+  @Positive #TC-4850, TC-4939, TC-4825
   Scenario: Add Dates n Prices Component to CMS Page
     Given I execute "Log In to Hub as Admin" reusable step
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
 
-    # Add Accordion Component:
+    # Add Dates and Prices Component:
     When I click on the "Add component" "BPP Digital Search Label Button"
     And I click on the "Dates And Prices" "BPP Digital Admin Sub Menu Item links"
     And I click on the "Body name" "BPP Digital dropdown"
@@ -140,3 +140,102 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
     And I click on the "Finish" "Product Factory button"
     And I click on the "Online" "Product Factory course instance Publish button"
     And I click on the "Yes" "Product Factory button"
+
+  @Positive #TC-4940
+  Scenario: Verify Course Filters on Dates and Prices Page
+    Given I execute "Log In to Hub as Admin" reusable step
+    And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
+
+    # Add Dates and Prices Component:
+    When I click on the "Add component" "BPP Digital Search Label Button"
+    And I click on the "Dates And Prices" "BPP Digital Admin Sub Menu Item links"
+    And I click on the "Body name" "BPP Digital dropdown"
+    And I click on the "Institute Chartered Accountants of England & Wales (ICAEW)" "BPP Digital dropdown option"
+    And I click on the "Level" "BPP Digital dropdown"
+    And I click on the "Professional Level" "BPP Digital dropdown option"
+    And I click on the "Save" "element by value"
+    And I wait for "3" seconds
+
+    # Verify Papers
+    And I am on "http://web-stage-bppdigital.bppuniversity.com/courses/autodatesandprices" URL
+    And I should see the "Audit & Assurance" "BPP Digital View Dates and Prices button"
+    And I should see the "Financial Accounting and Reporting" "BPP Digital View Dates and Prices button"
+    And I should see the "Financial Management" "BPP Digital View Dates and Prices button"
+    And I should see the "Tax Compliance" "BPP Digital View Dates and Prices button"
+
+    And I click on the "Audit & Assurance" "BPP Digital View Dates and Prices button"
+    And I click on the "Thu 25 Mar 2021" "element"
+
+    # Check Course type filter
+    When I hover over the "Course type" element
+    And I validate text "CONTAINS=2" to be displayed for "Final Mock" element
+    And I validate text "CONTAINS=4" to be displayed for "Taught" element
+
+    And I click on the "Final Mock" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "2"
+    And I click on the "Final Mock" element
+    And I click on the "Taught" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "4"
+    And I click on the "Taught" element
+
+    # Check Start date filter
+    When I hover over the "Start date" element
+    And I should see the "Mar 2021 (4)" element
+    And I should see the "Apr 2021 (1)" element
+    And I should see the "Jun 2021 (1)" element
+
+    When I click on the "Mar 2021 (4)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "4"
+    And I click on the "Mar 2021 (4)" element
+    When I click on the "Apr 2021 (1)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "1"
+    And I click on the "Apr 2021 (1)" element
+    When I click on the "Jun 2021 (1)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "1"
+    And I click on the "Jun 2021 (1)" element
+
+    # Check Study mode filter
+    When I hover over the "Study mode" element
+    And I validate text "CONTAINS=6" to be displayed for "Face-to-face" element
+
+    When I click on the "Face-to-face" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "6"
+    And I click on the "Face-to-face" element
+
+    # Check Location filter
+    When I hover over the "Location" element
+    And I validate text "CONTAINS=6" to be displayed for "London" element
+
+    When I click on the "London" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "6"
+    And I click on the "London" element
+
+    # Check Session times filter
+    When I hover over the "Session times" element
+    And I should see the "Weekday (4)" element
+    And I should see the "Morning (1)" element
+    And I should see the "Afternoon (1)" element
+
+    When I click on the "Weekday (4)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "4"
+    And I click on the "Weekday (4)" element
+    When I click on the "Morning (1)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "1"
+    And I click on the "Morning (1)" element
+    When I click on the "Afternoon (1)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "1"
+    And I click on the "Afternoon (1)" element
+
+    # Check filters interaction
+    When I hover over the "Course type" element
+    And I click on the "Taught" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "4"
+    When I hover over the "Start date" element
+    And I should see the "Mar 2021 (3)" element
+    And I should see the "Apr 2021 (1)" element
+    And I should see the "Jun 2021 (0)" element
+
+    # Delete DnP component in Admin
+    And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
+    And I click on the "Dates and prices" "BPP Digital Admin Pages Delete Button for Specific Component name"
+    And I wait for "3" seconds
