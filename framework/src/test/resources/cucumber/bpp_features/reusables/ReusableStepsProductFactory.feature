@@ -321,7 +321,6 @@ Feature: Product Factory
     And I click on the "Create" "Product Factory button"
     And I click on the "BPP Learning Media" "Product Factory button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
-    And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "~Price[####]" text to the "Price (£)" "Product Factory text field"
     And I set "~Weight[##]" text to the "Weight (kg)" "Product Factory text field"
     And I set "EC_ISBN" text to the "ISBN" "Product Factory text field"
@@ -502,6 +501,7 @@ Feature: Product Factory
   Scenario: Keep the Course Activated
     Given I click on the "Activate" "Product Factory button" if "Activate,Product Factory button" "special element is present"
     Given I click on the "Reactivate" "Product Factory button" if "(Deactivated)" "element is present"
+    When I click on the "Yes" "Product Factory button" if "Yes,Product Factory button" "special element is present"
     And I should see the "Deactivate" "Product Factory button"
 
   Scenario: Keep the Course Instance Activated
@@ -528,6 +528,12 @@ Feature: Product Factory
     And I fill the "Product Factory Session Dates Popup Date Input Field" field with "EC_SITTING_START_DATE"
     And I fill the "Product Factory Session Dates Popup Start Time Input Field" field with "03:00AM"
     And I fill the "Product Factory Session Dates Popup End Time Input Field" field with "04:00AM"
+    And I click on the "Next" "Product Factory button"
+    And I click on the "Finish" "Product Factory button"
+
+  Scenario: Populate Course Instance Step Due Dates
+    And I click on the "Product Factory Change Course Step Due Date" button
+    And I set "[TODAY]" text to the "Due Date" "Product Factory text field"
     And I click on the "Next" "Product Factory button"
     And I click on the "Finish" "Product Factory button"
     

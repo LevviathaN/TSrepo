@@ -654,18 +654,23 @@ public class SpecialStepDefs extends SeleniumHelper {
             String xpathTemplate = specialLocatorsMap.get(elementType);
             String resultingXpath = xpathTemplate.replaceAll("PARAMETER", processedLocator);
 
-            Reporter.log("Executing step: For each '" + elementLocator + " " + elementType + "' element");
-            List<WebElement> elements = findElements(initElementLocator(resultingXpath));
-            String xpathLocator = "";
-            BPPLogManager.getLogger().info("There are " + elements.size() + " '" + elementLocator + " " + elementType + "' elements found on the page");
-            //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
-            for(int i = 1; i <= elements.size(); i++) {
-                BPPLogManager.getLogger().info("For " + i + " element");
-                for(String step : steps) {
-                    BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
-                    xpathLocator = resultingXpath.replace("xpath=","xpath=(") + ")[" + i + "]";
-                    ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM",xpathLocator));
+            if(isElementPresentAndDisplay(initElementLocator(resultingXpath))) {
+
+                Reporter.log("Executing step: For each '" + elementLocator + " " + elementType + "' element");
+                List<WebElement> elements = findElements(initElementLocator(resultingXpath));
+                String xpathLocator = "";
+                BPPLogManager.getLogger().info("There are " + elements.size() + " '" + elementLocator + " " + elementType + "' elements found on the page");
+                //todo: To be discussed, to move all cycling through elements and steps into separate method in ReusableRunner
+                for (int i = 1; i <= elements.size(); i++) {
+                    BPPLogManager.getLogger().info("For " + i + " element");
+                    for (String step : steps) {
+                        BPPLogManager.getLogger().info("Executing: " + step + " iteration " + i);
+                        xpathLocator = resultingXpath.replace("xpath=", "xpath=(") + ")[" + i + "]";
+                        ReusableRunner.getInstance().executeStep(step.replace("FOR_ITEM", xpathLocator));
+                    }
                 }
+            } else {
+                Reporter.fail("No such elements present on the page");
             }
 
             if(!elementLocator.equals(processedLocator)){
