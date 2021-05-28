@@ -237,6 +237,15 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_DESCRIPTION" element
 
+  Scenario: Create Programme
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "University Programmes" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "ProgrammeCode[######]" text to the "Code" "Product Factory text field"
+    And I set "ProgrammeName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_PROGRAMME_NAME" element
+
   Scenario: Create Client
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"
