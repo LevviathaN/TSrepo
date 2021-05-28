@@ -1821,7 +1821,7 @@
   },
   {
     "name": "Direct App Topic Key Activities",
-    "value": "xpath=(//div[contains(.,'Topic to test adding activities')])[last()]"
+    "value": "xpath=(//div[contains(.,'Topic to test adding activities')]/a)[last()]"
   },
   {
     "name": "Direct App Topic Name",
