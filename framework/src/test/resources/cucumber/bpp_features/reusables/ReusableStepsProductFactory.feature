@@ -246,6 +246,17 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_PROGRAMME_NAME" element
 
+  Scenario: Create Programme Cohort
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Programme Cohorts" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "University Programme" "Product Factory change button"
+    And I click on the "EC_PROGRAMME_CODE" "Product Factory select button"
+    And I set "~CohortStartDate[TODAY]" text to the "Start Teaching Date" "Product Factory text field"
+    And I set "CohortName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_COHORT_NAME" element
+
   Scenario: Create Client
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"

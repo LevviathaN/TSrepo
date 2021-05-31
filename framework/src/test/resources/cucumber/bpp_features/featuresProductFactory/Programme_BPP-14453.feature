@@ -23,6 +23,7 @@ Feature: Onboarding - Programme - Reference Data - BPP-14453
 
   @Negative @P2 #TC-5389
   Scenario: Create Duplicate of Existing Programme
+    Given I execute "Create Programme" reusable step
     When I execute "Create Programme" reusable step replacing some steps
       |4|I set "EC_PROGRAMME_CODE" text to the "Code" "Product Factory text field"|
       |5|I set "EC_PROGRAMME_NAME" text to the "Name" "Product Factory text field"|
