@@ -3,20 +3,16 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
 
   @Positive @BPP-2542 #TC-3632
   Scenario: Line Manager has an Ability to Delete Documents that were Uploaded by Mistake
-    Given I execute "Log In to Hub as Student" reusable step replacing some steps
-    | 2 | I set "AutoIanMcKinney4745@harakirimail.com" text to the "Email" "Build Empire text field" |
-    | 3 | I set "A@polloGlobal2020" text to the "Password" "Build Empire text field"               |
-    Then I remember "AutoFre" text as "EC_AUTO_LASTNAME" variable
-    And I wait for "5" seconds
-    And I click on the "Direct App My Applications Left Menu Link" link by JS
-    When I execute "Create University Degree Apprenticeships Application" reusable step replacing some steps
-      | 1 | I click on the "Direct App Start New Application Button" button |
-    And I execute "Complete University Degree Apprenticeships Application With Existing Student" reusable step
+    Given I execute "Register New Student Account" reusable step
+    Then I execute "Harakirimail Verify Email" reusable step
+    Then I execute "Log In to Hub as Student" reusable step
+    And I wait for "2" seconds
+    When I execute "Create University Degree Apprenticeships Application" reusable step
+    And I execute "Complete University Degree Apprenticeships Application Chartered Manager" reusable step
     Then I execute "Submit Application Hub" reusable step
     And I execute "Log Out from Hub Student" reusable step
     And I execute "Log In to Hub as Admin" reusable step
-    And I execute "Pre Approve Apprenticeships Application As Admin" reusable step replacing some steps
-      | 4 | I fill the "Direct App Admin Filter By User" field with "AutoIanMcKinney4745@harakirimail.com" |
+    And I execute "Pre Approve Apprenticeships Application As Admin" reusable step
     And I execute "Attach Automation Line Manager Apprenticeships" reusable step replacing some steps
       | 4 | I fill the "Direct App Admin Attach Line Manger Text Field" field with "automationLinemanager8@harakirimail.com" |
       | 5 | I click on the "Automation8 Linemanager8" "Build Empire line manager option"                                     |
@@ -40,7 +36,7 @@ Feature: Line Manager has an Ability to Delete Documents that was Uploaded by Mi
     And Browser performs "Refresh" command
     And I click on the "Application documents" "Build Empire application section"
     And I click on the "Download Application of" "Build Empire application section"
-    Then I switch to window with index "1"
+    Then I switch to window with index "2"
     Then I upload "application_pack_document.pdf" file to "Direct App Apprenticeships Upload Documents" element
     Then I upload "application_pack_document.pdf" file to "Direct App Upload Job Role Documents" element
     And I wait for "3" seconds
