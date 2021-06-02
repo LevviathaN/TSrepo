@@ -1,7 +1,9 @@
 package api;
 
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import ui.utils.BPPLogManager;
@@ -20,9 +22,9 @@ public class RestApiController {
      * @param requestBody - JSON format; depends on record type
      */
 
-    public Response postRequest(String baseURI, String requestBody) {
+    public Response postRequest(String baseURI, String requestBody, RequestSpecification auth) {
         Response response = given()
-                .spec(SalesforceAuthentication.getInstance().requestHeaderSpecification())
+                .spec(auth)
                 .when()
                 .contentType(ContentType.JSON)
                 .baseUri(baseURI)
@@ -40,9 +42,9 @@ public class RestApiController {
     /**
      * @param baseURI - will be changed based of record type to be created
      */
-    public Response getRequest(String baseURI) {
+    public Response getRequest(String baseURI, RequestSpecification auth) {
         Response response = given()
-                .spec(SalesforceAuthentication.getInstance().requestHeaderSpecification())
+                .spec(auth)
                 .when()
                 .contentType(ContentType.JSON)
                 .get(baseURI)
