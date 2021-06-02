@@ -197,6 +197,10 @@
     "value": "xpath=//*[@class='dropdown-item' and text()='PARAMETER']"
   },
   {
+    "name": "BPP Digital Dates and Prices Course Filter radiobutton",
+    "value": "xpath=(//span[text()='PARAMETER'])[2]"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
