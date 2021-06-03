@@ -5,7 +5,6 @@ Feature: Dates & Prices - Display all records for multi location and session tim
   Additionally, location information can be duplicated across different sessions. Sessions with duplicate location information will contain different timing information for the same location.
   The requirement is to display a unique location only once, with ALL associated timing information alongside this location.
   Where there are multiple different locations, each separate location would display with its timinig information.
-
   There is a further requirement (not on the visuals) to include a Google pin that links to Google maps passing the address postcode so that individuals can visualise the location.
   The link should open a new browser window/tab. The Google pin should only appear when a postcode exists.
 
