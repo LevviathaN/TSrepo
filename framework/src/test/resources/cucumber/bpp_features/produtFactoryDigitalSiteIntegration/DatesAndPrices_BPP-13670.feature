@@ -8,7 +8,7 @@ Feature: Dates & Prices - Display all records for multi location and session tim
   There is a further requirement (not on the visuals) to include a Google pin that links to Google maps passing the address postcode so that individuals can visualise the location.
   The link should open a new browser window/tab. The Google pin should only appear when a postcode exists.
 
-  @Positive @MultipleLocations #TC-5108, 5165, 5166, 5167, 5170, 5171
+  @Positive @MultipleLocations #TC-5106, 5107, 5108, 5165, 5166, 5167, 5170, 5171
   Scenario:Dates n Prices Multi Location and Session Timings
     Given I execute "Log In to Hub as Admin" reusable step
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2696/edit" URL
@@ -29,6 +29,7 @@ Feature: Dates & Prices - Display all records for multi location and session tim
     And I should see the "Thu 3 June" "element"
     And I should see the "10:05 am" "element"
     And I validate text "CONTAINS=Southampton" to be displayed for "BPP Digital Dates and Prices Location For Instance" element
+    And I validate text "CONTAINS=Grenville House" to be displayed for "BPP Digital Dates and Prices Location For Instance" element
     And I validate text "CONTAINS=Southampton SO15 1GX" to be displayed for "BPP Digital Dates and Prices Location For Instance" element
     And I validate text "CONTAINS=1" to be displayed for "BPP Digital Dates and Prices Number of Sessions For Multiple Address" element
     And I should see the "https://www.google.com/maps/search/?api=1&query=Southampton" "link address"
@@ -74,8 +75,13 @@ Feature: Dates & Prices - Display all records for multi location and session tim
     And I validate text "CONTAINS=London King's Cross" to be displayed for "BPP Digital Dates and Prices Location For Instance" element
     And I validate text "CONTAINS=London Waterloo" to be displayed for "BPP Digital Dates and Prices Second Location For Instance" element
     And I validate text "CONTAINS=4" to be displayed for "BPP Digital Dates and Prices Number of Sessions For Multiple Address" element
+    And I click on the "Sun 27 Jun 2021" "element"
+    #Check no address displayed for Online type of learning
+    And I click on the "Sat 5 Jun 2021" "element"
+    Then I shouldn't see the "BPP Digital Dates and Prices Location For Instance" element
+    Then I shouldn't see the "BPP Digital Dates and Prices Second Location For Instance" element
     #Delete DnP component in Admin
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2696/edit" URL
-    And I wait for "2" seconds
+    And I wait for "5" seconds
     And I click on the "Dates and prices" "BPP Digital Admin Pages Delete Button for Specific Component name"
     And I wait for "5" seconds
