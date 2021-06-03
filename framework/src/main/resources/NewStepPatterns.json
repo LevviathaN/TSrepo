@@ -189,7 +189,7 @@
   },
   {
     "name": "I_SHOULD_NOT_SEE_ELEMENT",
-    "value": "I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"
+    "value": "^I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"
   },
   {
     "name": "I_SHOULD_SCROLL_TO_THE_TOP_BOTTOM_OF_THE_PAGE",
