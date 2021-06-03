@@ -4,7 +4,7 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
   I want to be able to view the "dates & prices" component in the same page with the marketing data
   so that the user can read the information for a particular course and navigate through the available papers.
 
-  @Positive #TC-4850, TC-4939, TC-4825
+  @Positive @AddComponent #TC-4850, TC-4939, TC-4825
   Scenario: Add Dates n Prices Component to CMS Page
     Given I execute "Log In to Hub as Admin" reusable step
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
@@ -79,10 +79,11 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
     And I click on the "Online" "Product Factory course instance Publish button"
     And I click on the "Yes" "Product Factory button"
     And I wait for "150" seconds
+    Then I should scroll to the "bottom" of the page
 
     # Delete DnP component in Admin
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
-    And I wait for "120" seconds
+    And I wait for "150" seconds
     And I click on the "Dates and prices" "BPP Digital Admin Pages Delete Button for Specific Component name"
     And I wait for "3" seconds
     
@@ -141,7 +142,7 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
     And I click on the "Online" "Product Factory course instance Publish button"
     And I click on the "Yes" "Product Factory button"
 
-  @Positive #TC-4940
+  @Positive @CourseFilters #TC-4940
   Scenario: Verify Course Filters on Dates and Prices Page
     Given I execute "Log In to Hub as Admin" reusable step
     And I am on "https://admin-stage-bppdigital.bppuniversity.com/admin/cms/pages/2752/edit" URL
