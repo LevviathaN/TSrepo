@@ -4,4 +4,8 @@ Feature: Product Factory API Data Creation
 
   @BET
   Scenario: Create Financial Dimension
-    When I create new Financial Dimension for Course
+    When I create new Financial Dimension
+
+  @ISBN
+  Scenario: Generate new ISBN
+    When I generate new ISBN code

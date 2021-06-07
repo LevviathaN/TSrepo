@@ -2,8 +2,8 @@
   "operationName": "createFinancialDimension",
   "variables": {
     "command": {
-      "code": "AutomationCode",
-      "description": "AutomationDescription",
+      "code": "FinancialDimensionCode[##########]",
+      "description": "FinancialDimensionDescription[##########]",
       "dimensionType": "COSTCENTRE",
       "target": "COURSETYPE"
     }

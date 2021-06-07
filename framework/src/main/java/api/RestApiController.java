@@ -1,5 +1,6 @@
 package api;
 
+import com.google.api.client.json.JsonString;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
@@ -78,6 +79,23 @@ public class RestApiController {
         });
 
         return map.toString();
+    }
+
+    public String processPropertiesPF(String requestTemplate, String Parameter1, String Parameter2) {
+        JSONObject jo = new Utilities().getJsonObject(requestTemplate);
+        /*Get command list*/
+        Map variables = ((Map)jo.get("variables"));
+        Map command = ((Map)variables.get("command"));
+
+        /*Get and Put Special Parameter for Financial Dimension*/
+        String code = TestParametersController.checkIfSpecialParameter((String)command.get("code"));
+        String description = TestParametersController.checkIfSpecialParameter((String)command.get("description"));
+        command.put("code", code);
+        command.put("description", description);
+        command.put("dimensionType",Parameter1);
+        command.put("target",Parameter2);
+
+        return jo.toJSONString();
     }
 
     public Map processLocatorProperties(String locatorsFile) {
