@@ -62,7 +62,7 @@ public class BaseUITest {
             BPPLogManager.getLogger().info(e.toString());
             Reporter.failTryTakingScreenshot("Before test failure during Driver creation. Please check options for test executions ");
             Reporter.flush();
-            Assert.fail();
+            Assert.fail(e.getMessage());
             BPPLogManager.getLogger().error("Driver set up failed! Please check configurations in VM options!");
         }
 
@@ -128,6 +128,8 @@ public class BaseUITest {
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            SeleniumHelper.driver().quit();
+            DriverProvider.closeDriver();
         }
     }
 
