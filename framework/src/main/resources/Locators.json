@@ -632,6 +632,18 @@
     "value": "xpath=//div[@id='course-instances-list']/*"
   },
   {
+    "name": "BPP Digital Dates and Prices Course And Timings Section",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'course-timings-and-address')]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Type of Session First Instance",
+    "value": "xpath=(//div[@class='sessions col']/p)[1]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Type of Session Second Instance",
+    "value": "xpath=(//div[@class='sessions col']/p)[3]"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
