@@ -608,12 +608,40 @@
     "value": "xpath=//*[text()='Weekday' and text()='sessions']"
   },
   {
+    "name": "BPP Digital Dates and Prices Number of Sessions For Multiple Address",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'course-timings-and-address')]//div[@class='row']//p"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Location For Instance",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'location-address')]//p"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Second Location For Instance",
+    "value": "xpath=(//div[@class='table-content row open ']//div[contains(@class,'location-address')]//p)[2]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Active Instance Google Pin",
+    "value": "xpath=//*[@class='bi bi-geo-alt']"
+  },
+  {
     "name": "BPP Digital Dates and Prices Papers dropdown",
     "value": "xpath=//button[span[@class='paper-name']]"
   },
   {
     "name": "BPP Digital Dates and Prices Course Instance entry",
     "value": "xpath=//div[@id='course-instances-list']/*"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Course And Timings Section",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'course-timings-and-address')]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Type of Session First Instance",
+    "value": "xpath=(//div[@class='sessions col']/p)[1]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Type of Session Second Instance",
+    "value": "xpath=(//div[@class='sessions col']/p)[3]"
   },
   {
     "name": "Banner Username",

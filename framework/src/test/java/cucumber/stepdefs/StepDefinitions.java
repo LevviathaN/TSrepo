@@ -367,7 +367,7 @@ public class StepDefinitions extends SeleniumHelper {
      * @param element: By locator of a element
      * @author Andrii Yakymchuk
      */
-    @Then("I shouldn't see the \"([^\"]*)\"(?: button| message| element| text)?$")
+    @Then("^I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
     public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
         if (checkIfElementNotExist(initElementLocator(element))) {
