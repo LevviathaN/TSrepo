@@ -4,40 +4,7 @@ Feature: CBA - Edit - BPP-3200
   I want to be able to amend any existing CBA records so that I can make any required changes.
 
   Background:
-    And I remember "23/10/2020" text as "EC_SITTING_START_DATE" variable
-    And I remember "10/10/2025" text as "EC_SITTING_END_DATE" variable
-    And I remember "AutoStreamNameDraftCBA" text as "EC_STREAM_NAME" variable
-    And I remember "AutoBodyFDCodeDraftCBA" text as "EC_BODY_FD_CODE" variable
-    And I remember "AutoBodyFDDescriptionDraftCBA" text as "EC_BODY_FD_DESCRIPTION" variable
-    And I remember "AutoBodyShortNameDraftCBA" text as "EC_BODY_SHORT_NAME" variable
-    And I remember "AutoBodyNameDraftCBA" text as "EC_BODY_NAME" variable
-    And I remember "AutoVatRuleCodeDraftCBA" text as "EC_VAT_RULE_CODE" variable
-    And I remember "AutoVatRuleDescriptionDraftCBA" text as "EC_VAT_RULE_DESCRIPTION" variable
-    And I remember "AutoCourseTypeFDCodeDraftCBA" text as "EC_COURSE_TYPE_FD_CODE" variable
-    And I remember "AutoCourseTypeFDDescriptionDraftCBA" text as "EC_COURSE_TYPE_FD_DESCRIPTION" variable
-    And I remember "AutoCourseTypeDescriptionDraftCBA" text as "EC_COURSE_TYPE_DESCRIPTION" variable
-    And I remember "AutoLocationFDCodeDraftCBA" text as "EC_LOCATION_FD_CODE" variable
-    And I remember "AutoLocationFDDescriptionDraftCBA" text as "EC_LOCATION_FD_DESCRIPTION" variable
-    And I remember "AutoRegionFDCodeDraftCBA" text as "EC_REGION_FD_CODE" variable
-    And I remember "AutoRegionFDDescriptionDraftCBA" text as "EC_REGION_FD_DESCRIPTION" variable
-    And I remember "AutoRegionNameDraftCBA" text as "EC_REGION_NAME" variable
-    And I remember "AutoLocationNameDraftCBA" text as "EC_LOCATION_NAME" variable
-    And I remember "AutoLocationAddressDraftCBA" text as "EC_LOCATION_ADDRESS" variable
-    And I remember "AutoLevelNameDraftCBA" text as "EC_LEVEL_NAME" variable
-    And I remember "AutoLevelShortNamDraftCBAe" text as "EC_LEVEL_SHORT_NAME" variable
-    And I remember "ACBAPsn" text as "EC_PPR_SN" variable
-    And I remember "AutoCBAPaperNameDraftCBA" text as "EC_PAPER_NAME" variable
-    And I remember "AutoCBAPaperDescriptionDraftCBA" text as "EC_PAPER_DESCRIPTION" variable
-    And I remember "AutoSittingNameDraftCBA" text as "EC_SITTING_NAME" variable
-    And I remember "AutoMaterialTypeFDCodeDraftCBA" text as "EC_MATERIAL_TYPE_FD_CODE" variable
-    And I remember "AutoMaterialTypeFDDescriptionDraftCBA" text as "EC_MATERIAL_TYPE_FD_DESCRIPTION" variable
-    And I remember "AutoMaterialTypeNameDraftCBA" text as "EC_MATERIAL_TYPE_NAME" variable
-    And I remember "AutoMaterialTypeDescriptionDraftCBA" text as "EC_MATERIAL_TYPE_DESCRIPTION" variable
-    And I remember "AutoCBASessionDurationDescriptionDraftCBA" text as "EC_SESSION_DURATION_DESCRIPTION" variable
-    And I remember "AutoClientNameDraftCBA" text as "EC_CLIENT_NAME" variable
-    And I remember "2000" text as "EC_PRICE" variable
-    And I remember "10" text as "EC_WEIGHT" variable
-    And I remember "1000" text as "EC_PRICING_MATRIX_PRICE" variable
+    And I execute "Remember Variables " reusable step
 
     And I remember "AutoRegionNameTwo" text as "EC_REGION_NAME_TWO" variable
     And I remember "AutoLocationNameTwo" text as "EC_LOCATION_NAME_TWO" variable
@@ -53,7 +20,7 @@ Feature: CBA - Edit - BPP-3200
       |4|I fill the "Product Factory Password" field with "MD_COMMON_CREDENTIALS_PRODUCTFACTORYJUNIORPSPASSWORD"|
     And I remember "11:58:00" text as "EC_CBA_START_TIME" variable
     And I execute modified "Create CBA Record" reusable step
-      |19|Replace|I set "11:58AM" text to the "Start Time" "Product Factory text field"|
+      |10|Replace|I fill the "Product Factory CBA Wizard Start Time" field with "~CBAStartTime[11:58AM]"|
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "CBAs" "Product Factory navigation sub item"
     And I set "EC_REGION_NAME" text to the "Search" "Product Factory text field" from keyboard

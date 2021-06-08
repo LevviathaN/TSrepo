@@ -7,7 +7,7 @@ Feature: Course - Update Instances for non draft Courses - BPP-4968
   Background:
     Given I execute "Generate ISBN" reusable step
     Given I execute "Log In" reusable step
-    And I execute "Remember Variables For Creation Edit" reusable step
+    And I execute "Remember Variables For Creation " reusable step
 
     And I execute "Create Location" reusable step replacing some steps
       |4|I set "LocationNameTwo[######]" text to the "Name" "Product Factory text field"|
