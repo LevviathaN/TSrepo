@@ -219,7 +219,7 @@ public class PDFUtil {
         int pgCount2 = this.getPageCount(file2);
         if (pgCount1 != pgCount2) {
             BPPLogManager.getLogger().warn("files page counts do not match - returning false");
-            return false;
+            return this.convertToImageAndCompare(file1, file2, this.startPage, this.endPage);
         } else {
             if (this.bHighlightPdfDifference) {
                 this.createImageDestinationDirectory(file2);

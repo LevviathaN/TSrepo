@@ -3,7 +3,15 @@ Feature: Quark PDF File Comparison
 
   @ACCA @Automation
   Scenario Outline: <BaseFile> to <QuarkWebPlatformFile> ACCA PDF published comparison
-    Given I am on "http://yzosin:Welcome10%40@7.0.12.124/workspace/login.qsp" URL
+    Given I am on "MD_COMMON_LINKS_QUARKURL" URL
+    And I fill the "Quark Username" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
+    And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_QUARKPASSWORD"
+    Then I click on the "Single Sign-On" "button"
+    And I fill the "Quark Microsoft Username" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
+    Then I click on the "submit" "element by type"
+    Then I set "MD_COMMON_CREDENTIALS_QUARKPASSWORD" text to the "password" "element by type"
+    Then I click on the "submit" "element by type"
+    Then I click on the "Yes" "element by value"
     And I wait for "3" seconds
     Then I should see the "Quark Publishing Logo" element
     And I click on the "Quark Home Menu" element
@@ -15,9 +23,8 @@ Feature: Quark PDF File Comparison
     Then I hover over the "<QuarkWebPlatformXML>" "Quark XML File"
     And I perform right mouse click on the "<QuarkWebPlatformXML>" "Quark XML File"
     And I wait for "3" seconds
-    Then I hover over the "Quark Publish" element
-    And I hover over the "Quark Publish BPP PDF" element
-    Then I click on the "Quark Publish BPP PDF" element
+    Then I perform right mouse click "Quark Publish" button
+    Then I click on the "Quark Publish BPP PDF" element by JS
     And I should see the "Quark Generating Output Window" element
     Then I wait for "130" seconds
     And I compare "<BaseFile>" file with "<QuarkWebPlatformFile>" PDF file
@@ -40,12 +47,20 @@ Feature: Quark PDF File Comparison
       |Automation 14 - Group Debrief (KC)Base.pdf             | Automation 14 - Group Debrief (KC).pdf          |Automation 14 - Group Debrief (KC).xml |
       |Automation 15 - FITB (FQP)Base.pdf                     | Automation 15 - FITB (FQP).pdf                  |Automation 15 - FITB (FQP).xml |
       |Automation 16 - FITB (KC)Base.pdf                      | Automation 16 - FITB (KC).pdf                   |Automation 16 - FITB (KC).xml |
-      |Automation 17 - MCQ_MRQ (FQP)Base.pdf                  | Automation 17 - MCQ_MRQ (FQP).pdf               |Automation 17 - MCQ_MRQ (FQP).xml|
-      |Automation 18 - MCQ_MRQ (KC)Base.pdf                   | Automation 18 - MCQ_MRQ (KC).pdf                |Automation 18 - MCQ_MRQ (KC).xml|
+      |Automation 17 - MCQ_MRQ (FQP)Base.pdf                  | Automation 17 - MCQ/MRQ (FQP).pdf               |Automation 17 - MCQ/MRQ (FQP).xml|
+      |Automation 18 - MCQ_MRQ (KC)Base.pdf                   | Automation 18 - MCQ/MRQ (KC).pdf                |Automation 18 - MCQ/MRQ (KC).xml|
 
   @CIMA @Automation
   Scenario Outline: <BaseFile> to <QuarkWebPlatformFile> ACCA PDF published comparison
-    Given I am on "http://yzosin:Welcome10%40@7.0.12.124/workspace/login.qsp" URL
+    Given I am on "MD_COMMON_LINKS_QUARKURL" URL
+    And I fill the "Quark Username" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
+    And I fill the "Direct App Admin Password" field with "MD_COMMON_CREDENTIALS_QUARKPASSWORD"
+    Then I click on the "Single Sign-On" "button"
+    And I fill the "Quark Microsoft Username" field with "MD_COMMON_CREDENTIALS_QUARKUSER"
+    Then I click on the "submit" "element by type"
+    Then I set "MD_COMMON_CREDENTIALS_QUARKPASSWORD" text to the "password" "element by type"
+    Then I click on the "submit" "element by type"
+    Then I click on the "Yes" "element by value"
     And I wait for "3" seconds
     Then I should see the "Quark Publishing Logo" element
     And I click on the "Quark Home Menu" element
@@ -57,9 +72,8 @@ Feature: Quark PDF File Comparison
     Then I hover over the "<QuarkWebPlatformXML>" "Quark XML File"
     And I perform right mouse click on the "<QuarkWebPlatformXML>" "Quark XML File"
     And I wait for "3" seconds
-    Then I hover over the "Quark Publish" element
-    And I hover over the "Quark Publish BPP PDF" element
-    Then I click on the "Quark Publish BPP PDF" element
+    Then I perform right mouse click "Quark Publish" button
+    Then I click on the "Quark Publish BPP PDF" element by JS
     And I should see the "Quark Generating Output Window" element
     Then I wait for "130" seconds
     And I compare "<BaseFile>" file with "<QuarkWebPlatformFile>" PDF file
@@ -81,7 +95,7 @@ Feature: Quark PDF File Comparison
       |CIMA Automation 33- FITB -FQBase.pdf             |CIMA Automation 33- FITB -FQ.pdf          |CIMA Automation 33- FITB -FQ.xml |
       |CIMA Automation 34 - FITB KCBase.pdf             |CIMA Automation 34 - FITB KC.pdf          |CIMA Automation 34 - FITB KC.xml |
       |CIMA Automation 35 - MCQ FQPBase.pdf             |CIMA Automation 35 - MCQ FQP.pdf          |CIMA Automation 35 - MCQ FQP.xml |
-      |CIMA Automation 36 MCQ_MRQ KCBase.pdf            |CIMA Automation 36 MCQ_MRQ KC.pdf         |CIMA Automation 36 MCQ_MRQ KC.xml |
+      |CIMA Automation 36 MCQ_MRQ KCBase.pdf            |CIMA Automation 36 MCQ/MRQ KC.pdf         |CIMA Automation 36 MCQ/MRQ KC.xml |
 
 
   @ICAEW @KW

@@ -890,4 +890,16 @@ public class StepDefinitions extends SeleniumHelper {
             int actualNumberOfElements = numberOfElements(initElementLocator(element));
             ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(String.valueOf(actualNumberOfElements)));
     }
+
+    /**
+     * Definition to perform right click an element on the page
+     *
+     * @author Yurii Zosin
+     * @param element name or value of needed element
+     */
+    @When("^I perform right mouse click \"([^\"]*)\" (?:button|link|option|element)$")
+    public void i_right_click_on_element_(String element) {
+        Reporter.log("Executing step: I perform right mouse click on the '" + element );
+        rightMouseClick(initElementLocator(element));
+    }
 }
