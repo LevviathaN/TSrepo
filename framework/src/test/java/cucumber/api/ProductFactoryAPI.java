@@ -15,20 +15,49 @@ import java.io.IOException;
 
 public class ProductFactoryAPI {
 
-    @And("I create new Financial Dimension")
-    public void i_create_financial_dimension_for_course() {
+    @When("I create new Financial Dimension")
+    public void i_create_financial_dimension() {
             new ProductFactoryBusinessProcesses()
                     .createNewFinancialDimension("COSTCENTRE","COURSETYPE")
                     .createNewFinancialDimension("PROJECT","COURSETYPE")
                     .createNewFinancialDimension("PRODUCT","BODY")
                     .createNewFinancialDimension("PRODUCT","REGION")
-                    .createNewFinancialDimension("PRODUCT","LOCATION")
-            ;
+                    .createNewFinancialDimension("PRODUCT","LOCATION");
     }
 
     @When("I generate new ISBN code")
     public void iGenerateNewISBNCode() throws IOException {
-        new ProductFactoryBusinessProcesses().
-                createNewISBNcode();
+        new ProductFactoryBusinessProcesses()
+                .createNewISBNcode();
     }
+
+    @When("I create new Vat Rule")
+    public void i_create_vat_rule() {
+        new ProductFactoryBusinessProcesses()
+                .createNewVatRule();
+    }
+
+    @When("I create new Exam Preparation")
+    public void i_create_exam_preparation() {
+        new ProductFactoryBusinessProcesses()
+                .createNewExamPreparation();
+    }
+
+    @When("I create new Study Mode")
+    public void i_create_study_mode() {
+        new ProductFactoryBusinessProcesses()
+                .createNewStudyMode();
+    }
+
+    @When("I create new Course Type")
+    public void i_create_course_type() {
+        new ProductFactoryBusinessProcesses()
+                .createNewFinancialDimension("COSTCENTRE","COURSETYPE")
+                .createNewFinancialDimension("PROJECT","COURSETYPE")
+                .createNewVatRule()
+                .createNewExamPreparation()
+                .createNewStudyMode()
+                .createNewCourseType();
+    }
+
 }

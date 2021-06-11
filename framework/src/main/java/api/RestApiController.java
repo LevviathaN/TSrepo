@@ -82,18 +82,46 @@ public class RestApiController {
     }
 
     public String processPropertiesPF(String requestTemplate, String Parameter1, String Parameter2) {
-        JSONObject jo = new Utilities().getJsonObject(requestTemplate);
-        /*Get command list*/
-        Map variables = ((Map)jo.get("variables"));
-        Map command = ((Map)variables.get("command"));
 
-        /*Get and Put Special Parameter for Financial Dimension*/
-        String code = TestParametersController.checkIfSpecialParameter((String)command.get("code"));
-        String description = TestParametersController.checkIfSpecialParameter((String)command.get("description"));
-        command.put("code", code);
-        command.put("description", description);
-        command.put("dimensionType",Parameter1);
-        command.put("target",Parameter2);
+        JSONObject jo = new Utilities().getJsonObject(requestTemplate);
+
+        /*Get command list*/
+        Map variables = ((Map) jo.get("variables"));
+        Map command = ((Map) variables.get("command"));
+
+
+        /*Get and Put Special Parameter*/
+
+        if (!(command.get("dimensionType") == null)) {
+            command.put("dimensionType", Parameter1);
+        }
+        if (!(command.get("target") == null)) {
+            command.put("target", Parameter2);
+        }
+        if (!(command.get("code") == null)) {
+            command.put("code", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("code"))));
+        }
+        if (!(command.get("name") == null)) {
+            command.put("name", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("name"))));
+        }
+        if (!(command.get("description") == null)) {
+            command.put("description", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("description"))));
+        }
+        if (!(command.get("vatRuleReference") == null)) {
+            command.put("vatRuleReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("vatRuleReference"))));
+        }
+        if (!(command.get("costCentreFinancialDimensionReference") == null)) {
+            command.put("costCentreFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("costCentreFinancialDimensionReference"))));
+        }
+        if (!(command.get("projectFinancialDimensionReference") == null)) {
+            command.put("projectFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("projectFinancialDimensionReference"))));
+        }
+        if (!(command.get("examPreparationReference") == null)) {
+            command.put("examPreparationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("examPreparationReference"))));
+        }
+        if (!(command.get("studyModeReference") == null)) {
+            command.put("studyModeReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("studyModeReference"))));
+        }
 
         return jo.toJSONString();
     }
