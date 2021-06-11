@@ -257,6 +257,17 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_COHORT_NAME" element
 
+  Scenario: Create Module Section
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Module Sections" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "Programme Cohort" "Product Factory change button"
+    And I click on the "EC_COHORT_NAME" "Product Factory select button"
+    And I set "ModuleSectionName[######]" text to the "Name" "Product Factory text field"
+    And I set "~SISTermCode[######]" text to the "SIS Term Code" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_MODULE_SECTION_NAME" element
+
   Scenario: Create Client
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"

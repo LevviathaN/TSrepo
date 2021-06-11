@@ -25,7 +25,7 @@ Feature: Onboarding - Programme - Reference Data - BPP-14453
     When I execute "Create Programme Cohort" reusable step
     When I execute modified "Create Programme Cohort" reusable step
       |3|Replace|I click on the "EC_COHORT_NAME" "Product Factory edit button"|
-      |4|Replace|Attribute "tabindex" of "Univeristy Programme" "Product Factory change button" should have value "-1"|
+      |4|Replace|Attribute "tabindex" of "University Programme" "Product Factory change button" should have value "-1"|
       |5|Delete |                                                                                                     |
       |6|Replace|I set "~CohortStartDateNew[12/12/2020]" text to the "Start Teaching Date" "Product Factory text field"  |
       |7|Replace|I press "MD_COMMON_KEYBOARD_ENTER" for "Start Teaching Date" "Product Factory text field"|
