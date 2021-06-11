@@ -4005,7 +4005,7 @@
   },
   {
     "name": "Quark Publish",
-    "value": "xpath=//span[contains(.,'Publish')]"
+    "value": "xpath=//span[text()='Publish']"
   },
   {
     "name": "Quark Home Menu",
@@ -4022,6 +4022,10 @@
   {
     "name": "Quark Publish BPP PDF",
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml')]//span[contains(.,'BPP PDF')]"
+  },
+  {
+    "name": "Quark Microsoft Username",
+    "value": "name=loginfmt"
   },
   {
     "name": "Quark Generating Output Window",

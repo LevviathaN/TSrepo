@@ -78,6 +78,7 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_COMPARE_PDF"), ()-> stepDefs.i_compare_pdfs(arg1,arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_DOUBLECLICK_ON_THE_BUTTON"), ()-> stepDefs.i_doubleclick_on_the_button(arg1));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("ELEMENT_IS_ENABLED"), ()-> stepDefs.check_element_is_enabled(arg1, arg2));
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_PERFORM_RIGHT_MOUSE_CLICK"), ()-> stepDefs.i_right_click_on_element_(arg1));
         //Special stepdefs
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_special(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_CLICK_ON_ELEMENT_WITH_PARAMETER_BY_JS_SPECIAL"),() -> specialStepDefs.i_click_on_element_with_parameter_by_js_special(arg1, arg2));
