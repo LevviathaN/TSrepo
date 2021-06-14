@@ -146,7 +146,7 @@ Feature: Product Factory
       |Dont Touch  |DontTouch  |_DONT_TOUCH  |DT     |_DT    |
 
     #_________________________________Create Reference Data Set____________________________
-  @CreateDataDriven
+  @CreateDataDriven @Run
   Scenario Outline: Create Reference Data Set <type>
     Given I am on "https://generate.plus/en/number/isbn" URL
     And I click on the " generate" "button"
@@ -170,7 +170,6 @@ Feature: Product Factory
       |7|I set "$Auto[CohortName]<varName>" text to the "Name" "Product Factory text field"|
     And I execute "Create Module Section" reusable step replacing some steps
       |6|I set "$Auto[ModuleSectionName]<varName>" text to the "Name" "Product Factory text field"|
-      |7|I set "~SISTermCode[$123456]" text to the "SIS Term Code" "Product Factory text field"|
     And I execute "Create Stream" reusable step replacing some steps
       |4|I set "$Auto[StreamName]<varName>" text to the "Name" "Product Factory text field"|
     When I execute "Create Body Financial Dimension" reusable step replacing some steps
