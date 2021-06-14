@@ -644,6 +644,14 @@
     "value": "xpath=(//div[@class='sessions col']/p)[3]"
   },
   {
+    "name": "BPP Digital Dates and Prices Course Type Tooltip",
+    "value": "xpath=(//div[@class='col courseType']//following-sibling::div)[1]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Tooltip Content",
+    "value": "xpath=//div[@class='tip-content']"
+  },
+  {
     "name": "Banner Username",
     "value": "xpath=//*[@id='username']"
   },
