@@ -257,7 +257,7 @@ Feature: Product Factory
       |4|I set "$Auto[ClientName]<varName>" text to the "Name" "Product Factory text field"|
     And I execute "Create Material" reusable step replacing some steps
       |6|I set "~Price[2000]" text to the "Price (£)" "Product Factory text field"|
-      |7|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
+      |8|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
     Then I execute "Create Course" reusable step
     And I execute "Create Course Instance" reusable step
     And I execute modified "Create CBA Record" reusable step

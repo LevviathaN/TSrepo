@@ -13,9 +13,9 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
   Scenario: Verify Link Materials Restriction Negative
     Given I execute "Create Material Type" reusable step
     Given I execute modified "Create Material" reusable step
-      |7|Add|I "check" "Is Course Material" "Product Factory checkbox"|
-      |15|Delete|                                                     |
+      |8|Add|I "check" "Is Course Material" "Product Factory checkbox"|
       |16|Delete|                                                     |
+      |17|Delete|                                                     |
 #    Then I execute "Create Course" reusable step
 #    And I execute "Create Course Instance" reusable step
     When I click on the "Products" "Product Factory navigation item"
@@ -62,7 +62,7 @@ Feature: Course Instance - Link Materials restrictions - BPP-1101
   Scenario: Add Expired Material
     Given I execute "Create Material Type" reusable step
     Given I execute "Create Material" reusable step replacing some steps
-      |10|I set "10/10/2019" text to the "Expiry Date" "Product Factory text field"|
+      |11|I set "10/10/2019" text to the "Expiry Date" "Product Factory text field"|
     When I click on the "Products" "Product Factory navigation item"
     When I click on the "Courses" "Product Factory navigation sub item"
     And I set "EC_BODY_SHORT_NAME" text to the "Search" "Product Factory text field" from keyboard

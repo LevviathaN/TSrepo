@@ -553,6 +553,10 @@
     "value": "xpath=(//h6[text()='Steps']/following-sibling::table//button)[PARAMETER]"
   },
   {
+    "name": "Product Factory readonly field",
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::*"
+  },
+  {
     "name": "Salesforce New Qualification input fields",
     "value": "xpath=//*[text()='PARAMETER']/following::input[1]"
   },

@@ -2700,6 +2700,14 @@
     "value": "xpath=//span[text()='Material Delivery Default']/../../../../div[3]/button"
   },
   {
+    "name": "Product Factory Material Edit Page Price Readonly Field",
+    "value": "xpath=//label[text()='Price (£)']/following-sibling::*"
+  },
+  {
+    "name": "Product Factory Material Edit Page Cost Readonly Field",
+    "value": "xpath=//label[text()='Cost (£)']/following-sibling::*"
+  },
+  {
     "name": "Salesforce Account Creation Save button",
     "value": "xpath=(//div[@class='windowViewMode-normal oneRecordActionWrapper isModal active lafPageHost']//button[normalize-space()='Save'])[1]"
   },

@@ -353,6 +353,7 @@ Feature: Product Factory
     And I click on the "BPP Learning Media" "Product Factory button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "~Price[####]" text to the "Price (£)" "Product Factory text field"
+    And I set "~Cost[####]" text to the "Cost (£)" "Product Factory text field"
     And I set "~Weight[##]" text to the "Weight (kg)" "Product Factory text field"
     And I set "EC_ISBN" text to the "ISBN" "Product Factory text field"
     And I set "From[TODAY]" text to the "Available From" "Product Factory text field"
