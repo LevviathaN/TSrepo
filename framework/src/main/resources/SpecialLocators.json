@@ -201,6 +201,15 @@
     "value": "xpath=(//span[text()='PARAMETER'])[2]"
   },
   {
+    "name": "BPP Digital Dates and Prices Filter By",
+    "value": "xpath=//div[@class='button-text' and contains(.,'PARAMETER')]/parent::button[contains(@class,'btn dropdown-toggle')]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Start date filter option",
+    "value": "xpath=//div[@class='button-text' and contains(.,'Start date')]//following::div[@class='dropdown-menu']//span[contains(.,'PARAMETER')]"
+  },
+
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
@@ -847,6 +856,10 @@
   {
     "name": "text contained in P element",
     "value": "xpath=//p[contains(text(),'PARAMETER')]"
+  },
+  {
+    "name": "contained in P element",
+    "value": "xpath=//p[contains(.,'PARAMETER')]"
   },
   {
     "name": "text contained in SPAN element",
