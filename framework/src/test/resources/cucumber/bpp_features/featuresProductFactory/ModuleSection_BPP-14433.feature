@@ -33,11 +33,13 @@ Feature: Onboarding - Module Section - Reference Data - BPP-14433
 
   @Negative @P2 @Amend #TC-5412
   Scenario: Amend Module Section With Duplicate Values
+    When I execute modified "Create Module Section" reusable step
+      |7|Replace|I set "~SISTermCodeTwo[######]" text to the "SIS Term Code" "Product Factory text field"|
     When I execute "Create Module Section" reusable step
     When I execute modified "Create Module Section" reusable step
       |3|Replace|I click on the "EC_MODULE_SECTION_NAME" "Product Factory edit button"|
       |4|Delete |                                                                     |
       |5|Delete ||
       |6|Replace|I set "AutoModuleSectionName" text to the "Name" "Product Factory text field"|
-      |7|Replace|I set "123456" text to the "SIS Term Code" "Product Factory text field"|
+      |7|Replace|I set "EC_SIS_TERM_CODE_TWO" text to the "SIS Term Code" "Product Factory text field"|
       |9|Replace|I should see the "SIS Term Code must be unique" message                           |
