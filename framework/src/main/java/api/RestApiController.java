@@ -11,6 +11,8 @@ import ui.utils.BPPLogManager;
 import ui.utils.Tools;
 import ui.utils.bpp.TestParametersController;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 
@@ -101,20 +103,53 @@ public class RestApiController {
         if (!(command.get("code") == null)) {
             command.put("code", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("code"))));
         }
+        if (!(command.get("shortName") == null)) {
+            command.put("shortName", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("shortName"))));
+        }
         if (!(command.get("name") == null)) {
             command.put("name", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("name"))));
         }
         if (!(command.get("description") == null)) {
             command.put("description", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("description"))));
         }
+        if (!(command.get("startDate") == null)) {
+            command.put("startDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("startDate"))));
+        }
+        if (!(command.get("endDate") == null)) {
+            command.put("endDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("endDate"))));
+        }
+        if (!(command.get("bodyReferences") == null)) {
+            JSONArray bodyArray = (JSONArray) command.get("bodyReferences");
+            ArrayList<String> bodyList = new ArrayList<String>();
+            bodyList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(bodyArray.get(0))));
+            command.put("bodyReferences",bodyList);
+        }
+        if (!(command.get("levelReferences") == null)) {
+            JSONArray levelArray = (JSONArray) command.get("levelReferences");
+            ArrayList<String> levelList = new ArrayList<String>();
+            levelList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(levelArray.get(0))));
+            command.put("levelReferences",levelList);
+        }
+        if (!(command.get("bodyReference") == null)) {
+            command.put("bodyReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("bodyReference"))));
+        }
+        if (!(command.get("paperReference") == null)) {
+            command.put("paperReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("paperReference"))));
+        }
         if (!(command.get("vatRuleReference") == null)) {
             command.put("vatRuleReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("vatRuleReference"))));
+        }
+        if (!(command.get("verticalReference") == null)) {
+            command.put("verticalReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("verticalReference"))));
         }
         if (!(command.get("costCentreFinancialDimensionReference") == null)) {
             command.put("costCentreFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("costCentreFinancialDimensionReference"))));
         }
         if (!(command.get("projectFinancialDimensionReference") == null)) {
             command.put("projectFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("projectFinancialDimensionReference"))));
+        }
+        if (!(command.get("financialDimensionReference") == null)) {
+            command.put("financialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("financialDimensionReference"))));
         }
         if (!(command.get("examPreparationReference") == null)) {
             command.put("examPreparationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("examPreparationReference"))));
@@ -123,7 +158,7 @@ public class RestApiController {
             command.put("studyModeReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("studyModeReference"))));
         }
 
-        return jo.toJSONString();
+        return jo.toString();
     }
 
     public Map processLocatorProperties(String locatorsFile) {

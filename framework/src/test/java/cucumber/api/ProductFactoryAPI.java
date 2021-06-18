@@ -1,15 +1,7 @@
 package cucumber.api;
 
 import api.requests.ProductFactoryBusinessProcesses;
-import api.requests.SalesforceBusinessProcesses;
-import api.requests.SalesforceBusinessProcessesUAT;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import ui.utils.Reporter;
-import ui.utils.bpp.ExecutionContextHandler;
-import ui.utils.bpp.PropertiesHelper;
-import ui.utils.bpp.TestParametersController;
 
 import java.io.IOException;
 
@@ -26,7 +18,7 @@ public class ProductFactoryAPI {
     }
 
     @When("I generate new ISBN code")
-    public void iGenerateNewISBNCode() throws IOException {
+    public void i_generate_new_isbn_code() throws IOException {
         new ProductFactoryBusinessProcesses()
                 .createNewISBNcode();
     }
@@ -58,6 +50,69 @@ public class ProductFactoryAPI {
                 .createNewExamPreparation()
                 .createNewStudyMode()
                 .createNewCourseType();
+    }
+
+    @When("I create new Vertical")
+    public void i_create_vertical() {
+        new ProductFactoryBusinessProcesses()
+                .createNewVertical();
+    }
+
+    @When("I create new Body")
+    public void i_create_body() {
+        new ProductFactoryBusinessProcesses()
+                .createNewVertical()
+                .createNewFinancialDimension("PRODUCT","BODY")
+                .createNewBody();
+    }
+
+    @When("I create new Sitting")
+    public void i_create_sitting() {
+        new ProductFactoryBusinessProcesses()
+                .createNewVertical()
+                .createNewFinancialDimension("PRODUCT","BODY")
+                .createNewBody()
+                .createNewSitting();
+    }
+
+    @When("I create new Paper")
+    public void i_create_paper() {
+        new ProductFactoryBusinessProcesses()
+                .createNewPaper();
+    }
+
+    @When("I create new Level")
+    public void i_create_level() {
+        new ProductFactoryBusinessProcesses()
+                .createNewLevel();
+    }
+
+    @When("I link Body to Levels")
+    public void i_link_body_to_levels() {
+        new ProductFactoryBusinessProcesses()
+                .createNewVertical()
+                .createNewFinancialDimension("PRODUCT","BODY")
+                .createNewBody()
+                .createNewLevel()
+                .linkBodyToLevels();
+    }
+
+    @When("I change Paper Body")
+    public void i_change_paper_body() {
+        new ProductFactoryBusinessProcesses()
+                .createNewVertical()
+                .createNewFinancialDimension("PRODUCT","BODY")
+                .createNewBody()
+                .createNewPaper()
+                .changePaperBody();
+    }
+
+    @When("I link Paper to Levels")
+    public void i_link_paper_to_levels() {
+        new ProductFactoryBusinessProcesses()
+                .createNewLevel()
+                .createNewPaper()
+                .linkPaperToLevels();
     }
 
 }

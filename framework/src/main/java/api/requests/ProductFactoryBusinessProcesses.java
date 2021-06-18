@@ -15,6 +15,7 @@ import ui.utils.bpp.TestParametersController;
 import java.io.IOException;
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.internal.matchers.StringContains.containsString;
 
 /**
@@ -23,8 +24,8 @@ import static org.junit.internal.matchers.StringContains.containsString;
 
 public class ProductFactoryBusinessProcesses {
 
-    private PropertiesHelper propertiesHelper = new PropertiesHelper();
-    private RestApiController restController;
+    private final PropertiesHelper propertiesHelper = new PropertiesHelper();
+    private final RestApiController restController;
 
     public ProductFactoryBusinessProcesses() {
         this.restController = new RestApiController();
@@ -255,7 +256,6 @@ public class ProductFactoryBusinessProcesses {
             throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
         }
 
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
         String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
 
         assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
@@ -277,4 +277,339 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
+    public ProductFactoryBusinessProcesses createNewVertical() {
+        Response verticalResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/addVertical",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = verticalResponse.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(verticalResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("createVertical");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("createVertical"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VERTICAL_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VERTICAL_NAME", Name);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Vertical: " +
+                "<br>" + "Vertical Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Vertical Description: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Vertical was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewBody() {
+        Response verticalResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/addBody",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = verticalResponse.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(verticalResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("createBody");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("createBody"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_SHORTNAME", ShortName);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_DESCRIPTION", Description);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Body: " +
+                "<br>" + "Body Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Body Short Name: " + "<font color='red'><b>" + ShortName + "</font></b>" +
+                "<br>" + "Body Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Body Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Body was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewSitting() {
+        Response sittingResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/addSitting",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = sittingResponse.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(sittingResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("createSitting");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String StartDate = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("startDate")));
+        String EndDate = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("endDate")));
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("createSitting"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_STARTDATE", StartDate);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_ENDDATE", EndDate);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Sitting: " +
+                "<br>" + "Sitting Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Sitting Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Sitting Start Date: " + "<font color='red'><b>" + StartDate + "</font></b>" +
+                "<br>" + "Sitting End Date: " + "<font color='red'><b>" + EndDate + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Sitting was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewPaper() {
+        Response paperResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/addPaper",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = paperResponse.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(paperResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("createPaper");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
+        String IsCBA = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("isCba")));
+        String TimeInHours = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("timeInHours")));
+        String ExamSchedule = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("examSchedule")));
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("createPaper"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_SHORTNAME", ShortName);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_ISCBA", IsCBA);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_TIMEINHOURS", TimeInHours);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_EXAMSCHEDULE", ExamSchedule);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Paper: " +
+                "<br>" + "Paper Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Paper Short Name: " + "<font color='red'><b>" + ShortName + "</font></b>" +
+                "<br>" + "Paper Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Paper Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Paper Is CBA: " + "<font color='red'><b>" + IsCBA + "</font></b>" +
+                "<br>" + "Paper Time in Hours: " + "<font color='red'><b>" + TimeInHours + "</font></b>" +
+                "<br>" + "Paper Exam Schedule: " + "<font color='red'><b>" + ExamSchedule + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Paper was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewLevel() {
+        Response levelResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/addLevel",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = levelResponse.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(levelResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("createLevel");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("createLevel"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_SHORTNAME", ShortName);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_DESCRIPTION", Description);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Level: " +
+                "<br>" + "Level Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Level Short Name: " + "<font color='red'><b>" + ShortName + "</font></b>" +
+                "<br>" + "Level Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Level Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Level was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses linkBodyToLevels() {
+        Response levelBodyResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/linkBodyToLevels",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = levelBodyResponse.getBody().prettyPrint();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(levelBodyResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("linkBodyToLevels");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        assertThat(ResponseString, containsString("linkBodyToLevels"));
+        assertTrue("Response reference is equal to linked Body Reference", Reference.equals(TestParametersController.checkIfSpecialParameter("EC_BODY_REFERENCE")));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" + "Response Reference equal to Body Reference: " + Reference.equals(TestParametersController.checkIfSpecialParameter("EC_BODY_REFERENCE")) + "</pre>");
+        BPPLogManager.getLogger().info("Body was successfully linked to Level.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses changePaperBody() {
+        Response paperBodyResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/changePaperBody",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = paperBodyResponse.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(paperBodyResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("changePaperBody");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        assertThat(ResponseString, containsString("changePaperBody"));
+        assertTrue("Response reference is equal to Paper Reference", Reference.equals(TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE")));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" + "Response Reference equal to Body Reference: " + Reference.equals(TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE")) + "</pre>");
+        BPPLogManager.getLogger().info("Paper's Body was successfully changed.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses linkPaperToLevels() {
+        Response levelPaperResponse = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/linkPaperToLevels",null,null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = levelPaperResponse.getBody().prettyPrint();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(levelPaperResponse);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("linkPaperToLevels");
+
+        /*Get Json object values*/
+        String Reference = null;
+        try {
+            Reference = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("reference")));
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        assertThat(ResponseString, containsString("linkPaperToLevels"));
+        assertTrue("Response reference is equal to linked Paper Reference", Reference.equals(TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE")));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" + "Response Reference equal to Paper Reference: " + Reference.equals(TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE")) + "</pre>");
+        BPPLogManager.getLogger().info("Paper was successfully linked to Level.");
+
+        return this;
+    }
 }
