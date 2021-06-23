@@ -151,6 +151,8 @@ Feature: Salesforce
     And I validate text "STARTS-WITH=BP" to be displayed for "Salesforce Banner ID Field" element
     And I capture text data "Salesforce Banner ID Field" as "EC_BANNER_ID" variable
     And I capture text data "Salesforce Profile Services ID Field" as "EC_PROFILE_ID" variable
+    Then I validate text "RE=^[a-zA-Z].[a-zA-Z]\w{1,}" to be displayed for "Salesforce Provisioning Username field" element
+    Then I validate text "RE=^([1-zA-Z0-1@.\s]{1,255})$" to be displayed for "Salesforce Provisioning Email Address field" element
 
   Scenario: Create And Validate CSA Cases Query Types and Subtypes
     And I click on the "Cases" "Salesforce navigation menu option"
