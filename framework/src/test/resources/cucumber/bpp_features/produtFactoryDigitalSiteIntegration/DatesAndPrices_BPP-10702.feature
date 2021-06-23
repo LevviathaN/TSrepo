@@ -95,9 +95,9 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
 
     # Verify absence of papers
     And I click on the "Body name" "BPP Digital dropdown"
-    And I click on the "AutoBodyName (AutoBodyShortName)" "BPP Digital dropdown option"
+    And I click on the "TBFN HRV (TBSN HRV)" "BPP Digital dropdown option"
     And I click on the "Level" "BPP Digital dropdown"
-    And I click on the "AutoLevelName" "BPP Digital dropdown option"
+    And I click on the "LFN HRV 2" "BPP Digital dropdown option"
     And I click on the "Save" "element by value"
     And I wait for "3" seconds
     And I am on "http://web-stage-bppdigital.bppuniversity.com/courses/autodatesandprices" URL
@@ -110,6 +110,7 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
 
     # Revert body name changes in Product Factory
     Given I am on "MD_COMMON_LINKS_PRODUCTFACTORYURLNEW" URL
+    Given I click on the "Sign in with Auth0" element if "Sign in with Auth0" "element is present"
     When I click on the "Programme" "Product Factory navigation item"
     When I click on the "Bodies" "Product Factory navigation sub item"
     And I click on the "ICAEWU" "Product Factory edit button"
