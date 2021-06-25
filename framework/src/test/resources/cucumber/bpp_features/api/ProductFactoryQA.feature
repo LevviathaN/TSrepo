@@ -93,3 +93,23 @@ Feature: Product Factory API Data Creation
   @ModuleSections
   Scenario: Create Module Sections
     When I create new Module Sections
+
+  @StockSite
+  Scenario: Create Stock Site
+    When I create new Stock Site
+
+  @MaterialType
+  Scenario: Create Material Type
+    When I create new Material Type
+
+  @Clients
+  Scenario: Create Clients
+    When I create new Clients
+
+  @Streams
+  Scenario: Create Streams
+    When I create new Streams
+
+  @DeactivationReason
+  Scenario: Create Deactivation Reason
+    When I create new Deactivation Reason

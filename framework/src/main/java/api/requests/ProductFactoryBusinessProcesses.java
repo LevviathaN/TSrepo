@@ -640,4 +640,155 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
+    public ProductFactoryBusinessProcesses createNewStockSite() {
+
+        JSONObject recordsList = requestProcess("addStockSites","createStockSite", null, null);
+
+        /*Get JSON object values*/
+        String Name = (String ) recordsList.get("name");
+        String AddressLine1 = (String ) recordsList.get("addressLine1");
+        String AddressLine2 = (String ) recordsList.get("addressLine2");
+        String AddressLine3 = (String ) recordsList.get("addressLine3");
+        String PostCode = (String ) recordsList.get("postcode");
+        String City = (String ) recordsList.get("city");
+        String CountryCode = (String ) recordsList.get("countryCode");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_ADDRESS_LINE_ONE", AddressLine1);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_ADDRESS_LINE_TWO", AddressLine2);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_ADDRESS_LINE_THREE", AddressLine3);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_POST_CODE", PostCode);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_CITY", City);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_COUNTRY_CODE", CountryCode);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Stock Site: " +
+                "<br>" + "Stock Site Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Stock Site Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Stock Site Address Line 1: " + "<font color='red'><b>" + AddressLine1 + "</font></b>" +
+                "<br>" + "Stock Site Address Line 2: " + "<font color='red'><b>" + AddressLine2 + "</font></b>" +
+                "<br>" + "Stock Site Address Line 3: " + "<font color='red'><b>" + AddressLine3 + "</font></b>" +
+                "<br>" + "Stock Site Post Code: " + "<font color='red'><b>" + PostCode + "</font></b>" +
+                "<br>" + "Stock Site Coty: " + "<font color='red'><b>" + City + "</font></b>" +
+                "<br>" + "Stock Site Country Code: " + "<font color='red'><b>" + CountryCode + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Location was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewMaterialType(Boolean Parameter1) {
+
+        JSONObject recordsList = requestProcess("addMaterialType","createMaterialType", String.valueOf(Parameter1), null);
+
+        /*Get JSON object values*/
+        String Name = (String) recordsList.get("name");
+        String Description = (String) recordsList.get("description");
+        Boolean IsExpiryDateRequired = (Boolean) recordsList.get("isExpiryDateRequired");
+        Boolean IsIsbnRequired = (Boolean) recordsList.get("isIsbnRequired");
+        Boolean IsPriceRequired = (Boolean) recordsList.get("isPriceRequired");
+        Boolean IsWeightRequired = (Boolean) recordsList.get("isWeightRequired");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsExpiryDateRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsIsbnRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsPriceRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsWeightRequired));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Material Type: " +
+                "<br>" + "Material Type Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Material Type Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Material Type Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Material Type Is Expiry Date Required: " + "<font color='red'><b>" + IsExpiryDateRequired + "</font></b>" +
+                "<br>" + "Material Type Is Isbn Required: " + "<font color='red'><b>" + IsIsbnRequired + "</font></b>" +
+                "<br>" + "Material Type Is Price Required: " + "<font color='red'><b>" + IsPriceRequired + "</font></b>" +
+                "<br>" + "Material Type Is Weight Required: " + "<font color='red'><b>" + IsWeightRequired + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Material Type was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewClients() {
+
+        JSONObject recordsList = requestProcess("addClients","createClient", null, null);
+
+        /*Get JSON object values*/
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_CLIENTS_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_CLIENTS_NAME", Name);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Clients: " +
+                "<br>" + "Clients Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Clients Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Client was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewStreams() {
+
+        JSONObject recordsList = requestProcess("addStreams","createStream", null, null);
+
+        /*Get JSON object values*/
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAMS_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAMS_NAME", Name);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Streams: " +
+                "<br>" + "Streams Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Streams Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Stream was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewDeactivationReason(Boolean Parameter1) {
+
+        JSONObject recordsList = requestProcess("addDeactivationReason","createDeactivationReason", String.valueOf(Parameter1), null);
+
+        /*Get JSON object values*/
+        String Description = (String) recordsList.get("description");
+        Boolean PreventReactivation = (Boolean) recordsList.get("preventReactivation");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_DEACTIVATION_REASON_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_DEACTIVATION_REASON_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_DEACTIVATION_REASON_PREVENT_REACTIVATION", String.valueOf(PreventReactivation));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Deactivation Reason: " +
+                "<br>" + "Deactivation Reason Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Deactivation Reason Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Deactivation Reason Prevent Reactivation: " + "<font color='red'><b>" + PreventReactivation + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Deactivation Reason was successfully created.");
+
+        return this;
+    }
+
 }

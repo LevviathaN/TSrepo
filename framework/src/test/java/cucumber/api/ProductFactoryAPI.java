@@ -14,7 +14,8 @@ public class ProductFactoryAPI {
                     .createNewFinancialDimension("PROJECT","COURSETYPE")
                     .createNewFinancialDimension("PRODUCT","BODY")
                     .createNewFinancialDimension("PRODUCT","REGION")
-                    .createNewFinancialDimension("PRODUCT","LOCATION");
+                    .createNewFinancialDimension("PRODUCT","LOCATION")
+                    .createNewFinancialDimension("PRODUCT","MATERIALTYPE");
     }
 
     @When("I generate new ISBN code")
@@ -214,6 +215,37 @@ public class ProductFactoryAPI {
                 .createNewUniversityProgrammes()
                 .createNewProgrammeCohorts()
                 .createNewModuleSections(false);
+    }
+
+    @When("I create new Stock Site")
+    public void i_create_stock_site() {
+        new ProductFactoryBusinessProcesses()
+                .createNewStockSite();
+    }
+
+    @When("I create new Material Type")
+    public void i_create_material_type() {
+        new ProductFactoryBusinessProcesses()
+                .createNewFinancialDimension("PRODUCT","MATERIALTYPE")
+                .createNewMaterialType(true);
+    }
+
+    @When("I create new Clients")
+    public void i_create_clients() {
+        new ProductFactoryBusinessProcesses()
+                .createNewClients();
+    }
+
+    @When("I create new Streams")
+    public void i_create_streams() {
+        new ProductFactoryBusinessProcesses()
+                .createNewStreams();
+    }
+
+    @When("I create new Deactivation Reason")
+    public void i_create_deactivation_reason() {
+        new ProductFactoryBusinessProcesses()
+                .createNewDeactivationReason(true);
     }
 
 }

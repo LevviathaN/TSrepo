@@ -114,6 +114,26 @@ public class RestApiController {
             boolean boolStr = Boolean.parseBoolean(Parameter1);
             command.put("allowedForCba", boolStr);
         }
+        if (!(command.get("isExpiryDateRequired") == null)) {
+            boolean boolStr = Boolean.parseBoolean(Parameter1);
+            command.put("isExpiryDateRequired", boolStr);
+        }
+        if (!(command.get("preventReactivation") == null)) {
+            boolean boolStr = Boolean.parseBoolean(Parameter1);
+            command.put("preventReactivation", boolStr);
+        }
+        if (!(command.get("isIsbnRequired") == null)) {
+            boolean boolStr = Boolean.parseBoolean(Parameter1);
+            command.put("isIsbnRequired", boolStr);
+        }
+        if (!(command.get("isPriceRequired") == null)) {
+            boolean boolStr = Boolean.parseBoolean(Parameter1);
+            command.put("isPriceRequired", boolStr);
+        }
+        if (!(command.get("isWeightRequired") == null)) {
+            boolean boolStr = Boolean.parseBoolean(Parameter1);
+            command.put("isWeightRequired", boolStr);
+        }
         if (!(command.get("groupRequirementCohort") == null)) {
             boolean boolStr = Boolean.parseBoolean(Parameter1);
             command.put("groupRequirementCohort", boolStr);
