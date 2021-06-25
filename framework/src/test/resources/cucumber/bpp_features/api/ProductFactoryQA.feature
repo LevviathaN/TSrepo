@@ -57,3 +57,39 @@ Feature: Product Factory API Data Creation
   @PaperToLevels
   Scenario: Link Paper to Levels
     When I link Paper to Levels
+
+  @Region
+  Scenario: Create Region
+    When I create new Region
+
+  @Location
+  Scenario: Create Location
+    When I create new Location
+
+  @SessionDuration
+  Scenario: Create Session Duration
+    When I create new Session Duration
+
+  @PricingMatrix
+  Scenario: Create Pricing Matrix
+    When I create new Pricing Matrix
+
+  @Prices
+  Scenario: Create Prices
+    When I create new Prices
+
+  @DigitalContent
+  Scenario: Create Digital Content
+    When I create new Digital Content
+
+  @UniversityProgrammes
+  Scenario: Create University Programmes
+    When I create new University Programmes
+
+  @ProgrammeCohorts
+  Scenario: Create Programme Cohorts
+    When I create new Programme Cohorts
+
+  @ModuleSections
+  Scenario: Create Module Sections
+    When I create new Module Sections

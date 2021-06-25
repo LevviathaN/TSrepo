@@ -21,7 +21,7 @@ import static org.junit.internal.matchers.StringContains.containsString;
 import static org.testng.Assert.assertEquals;
 
 /**
- *<p> Contains all methods required for main Product Factory API calls to create End to End</p>
+ * Contains all methods required for main Product Factory API calls to create End to End
  */
 
 public class ProductFactoryBusinessProcesses {
@@ -46,7 +46,13 @@ public class ProductFactoryBusinessProcesses {
     }
 
     /**
-     * **/
+     * Method for processing JSON file of request.
+     * @param fileName - json file that is coresspondent for current request
+     * @param objName - json object (operationName) of current json file
+     * @param Parameter1 - Parameter for JSON object String. If required. Look at FinancialDimension method
+     * @param Parameter2 - Parameter for JSON object String. If required. Look at FinancialDimension method
+     **/
+
     public JSONObject requestProcess(String fileName,String objName,String Parameter1, String Parameter2) {
         Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
                 restController.processPropertiesPF("ProductFactory/" + fileName, Parameter1, Parameter2),
@@ -290,9 +296,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewPaper() {
+    public ProductFactoryBusinessProcesses createNewPaper(Boolean Parameter1) {
 
-        JSONObject recordsList = requestProcess("addPaper","createPaper", null, null);
+        JSONObject recordsList = requestProcess("addPaper","createPaper", String.valueOf(Parameter1), null);
 
         /*Get JSON object values*/
         String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
@@ -395,4 +401,243 @@ public class ProductFactoryBusinessProcesses {
 
         return this;
     }
+
+    public ProductFactoryBusinessProcesses createNewRegion() {
+
+        JSONObject recordsList = requestProcess("addRegion","createRegion", null, null);
+
+        /*Get JSON object values*/
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_REGION_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_REGION_NAME", Name);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Region: " +
+                "<br>" + "Region Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Region Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Region was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewLocation() {
+
+        JSONObject recordsList = requestProcess("addLocation","createLocation", null, null);
+
+        /*Get JSON object values*/
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String AddressLine1 = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("addressLine1")));
+        String AddressLine2 = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("addressLine2")));
+        String AddressLine3 = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("addressLine3")));
+        String PostCode = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("postcode")));
+        String City = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("city")));
+        String CountryCode = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("countryCode")));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_ADDRESS_LINE_ONE", AddressLine1);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_ADDRESS_LINE_TWO", AddressLine2);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_ADDRESS_LINE_THREE", AddressLine3);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_POST_CODE", PostCode);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_CITY", City);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_COUNTRY_CODE", CountryCode);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Location: " +
+                "<br>" + "Location Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Location Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Location Address Line 1: " + "<font color='red'><b>" + AddressLine1 + "</font></b>" +
+                "<br>" + "Location Address Line 2: " + "<font color='red'><b>" + AddressLine2 + "</font></b>" +
+                "<br>" + "Location Address Line 3: " + "<font color='red'><b>" + AddressLine3 + "</font></b>" +
+                "<br>" + "Location Post Code: " + "<font color='red'><b>" + PostCode + "</font></b>" +
+                "<br>" + "Location Coty: " + "<font color='red'><b>" + City + "</font></b>" +
+                "<br>" + "Location Country Code: " + "<font color='red'><b>" + CountryCode + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Location was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewSessionDuration(Boolean Parameter1) {
+
+        JSONObject recordsList = requestProcess("addSessionDuration","createSessionDuration", String.valueOf(Parameter1), null);
+
+        /*Get JSON object values*/
+        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
+        String DateCount = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("dateCount")));
+        String AllowedForCBA = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("allowedForCba")));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_DATE_COUNT", DateCount);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_ALLOWED_FOR_CBA", AllowedForCBA);
+
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Session Duration: " +
+                "<br>" + "Session Duration Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Session Duration Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Session Duration Date Count: " + "<font color='red'><b>" + DateCount + "</font></b>" +
+                "<br>" + "Session Duration Allowed For CBA: " + "<font color='red'><b>" + AllowedForCBA + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Location was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewPricingMatrix() {
+
+        JSONObject recordsList = requestProcess("addPricingMatrix","createPricingMatrix", null, null);
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PRICING_MATRIX_REFERENCE", Reference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Pricing Matrix: " +
+                "<br>" + "Pricing Matrix Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Pricing Matrix was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewPrices() {
+
+        JSONObject recordsList = requestProcess("addPrices","createPrices", null, null);
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PRICES_REFERENCE", Reference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Prices: " +
+                "<br>" + "Prices Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Prices was successfully created for Pricing Matrix.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewDigitalContent(String Parameter1, String Parameter2) {
+
+        JSONObject recordsList = requestProcess("addDigitalContent","createDigitalContent", Parameter1, Parameter2);
+
+        /*Get JSON object values*/
+        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_DIGITAL_CONTENT_REFERENCE", Reference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Digital Content: " +
+                "<br>" + "Digital Content Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Digital Content was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewUniversityProgrammes() {
+
+        JSONObject recordsList = requestProcess("addUniversityProgrammes","createProgramme", null, null);
+
+        /*Get JSON object values*/
+        String Code = (String) recordsList.get("code");
+        String Name = (String) recordsList.get("name");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_UNIVERSITY_PROGRAMME_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_UNIVERSITY_PROGRAMME_CODE", Code);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_UNIVERSITY_PROGRAMME_NAME", Name);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>University Programmes: " +
+                "<br>" + "University Programmes Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "University Programmes Code: " + "<font color='red'><b>" + Code + "</font></b>" +
+                "<br>" + "University Programmes Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("University Programme was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewProgrammeCohorts() {
+
+        JSONObject recordsList = requestProcess("addProgrammeCohort","createCohort", null, null);
+
+        /*Get JSON object values*/
+        String Name = (String) recordsList.get("name");
+        String StartTeachingDate = (String) recordsList.get("startTeachingDate");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PROGRAMME_COHORT_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PROGRAMME_COHORT_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_PROGRAMME_COHORT_CODE", StartTeachingDate);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Programme Cohort: " +
+                "<br>" + "Programme Cohort Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Programme Cohort Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Programme Cohort Code: " + "<font color='red'><b>" + StartTeachingDate + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Programme Cohort was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewModuleSections(Boolean Parameter1) {
+
+        JSONObject recordsList = requestProcess("addModuleSections","createModule", String.valueOf(Parameter1), null);
+
+        /*Get JSON object values*/
+        String Name = (String) recordsList.get("name");
+        String TermCode = (String) recordsList.get("termCode");
+        Boolean GroupRequirementCohort = (Boolean) recordsList.get("groupRequirementCohort");
+        Boolean GroupRequirementMode = (Boolean) recordsList.get("groupRequirementMode");
+        Boolean GroupRequirementLocation = (Boolean) recordsList.get("groupRequirementLocation");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_TERM_CODE", TermCode);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_GROUP_REQUIREMENT_COHORT", String.valueOf(GroupRequirementCohort));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_GROUP_REQUIREMENT_MODE", String.valueOf(GroupRequirementMode));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_GROUP_REQUIREMENT_LOCATION", String.valueOf(GroupRequirementLocation));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Module Sections: " +
+                "<br>" + "Module Sections Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Module Sections Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Module Sections Term Code: " + "<font color='red'><b>" + TermCode + "</font></b>" +
+                "<br>" + "Module Sections Group Requirement Location: " + "<font color='red'><b>" + GroupRequirementCohort + "</font></b>" +
+                "<br>" + "Module Sections Group Requirement Mode: " + "<font color='red'><b>" + GroupRequirementMode + "</font></b>" +
+                "<br>" + "Module Sections Group Requirement Location: " + "<font color='red'><b>" + GroupRequirementLocation + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Module Section was successfully created.");
+
+        return this;
+    }
+
 }
