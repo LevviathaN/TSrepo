@@ -2,10 +2,10 @@
   "operationName": "createStockSite",
   "variables": {
     "command": {
-      "name": "StockSiteName[#######]",
-      "addressLine1": "AddressLineOne[######]",
-      "addressLine2": "AddressLineTwo[######]",
-      "addressLine3": "AddressLineThree[######]",
+      "name": "ApiStockSiteName[####]",
+      "addressLine1": "ApiAddressLineOne[####]",
+      "addressLine2": "ApiAddressLineTwo[####]",
+      "addressLine3": "ApiAddressLineThree[####]",
       "postcode": "411E",
       "city": "London",
       "countryCode": "GBR"

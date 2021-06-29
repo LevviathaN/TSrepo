@@ -2,7 +2,7 @@
   "operationName": "createDeactivationReason",
   "variables": {
     "command": {
-      "description": "DeactivationReasonDescription[#######]",
+      "description": "ApiDeactivationReasonDescription[####]",
       "preventReactivation": true
     }
   },

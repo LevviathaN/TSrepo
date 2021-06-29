@@ -2,8 +2,8 @@
   "operationName": "createExamPreparation",
   "variables": {
     "command": {
-      "name": "ExamPreparationName[#######]",
-      "description": "ExamPreparationDescription[#######]"
+      "name": "ApiExamPreparationName[####]",
+      "description": "ApiExamPreparationDescription[####]"
     }
   },
   "query": "mutation createExamPreparation($command: CreateExamPreparationCommandInput!) {  createExamPreparation(command: $command) {  ...examPreparation  __typename  } }  fragment examPreparation on ExamPreparation {  reference  name  description  createdBy  createdOn  updatedBy  updatedOn  __typename } "

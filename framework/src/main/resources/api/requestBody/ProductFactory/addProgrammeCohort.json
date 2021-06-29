@@ -3,7 +3,7 @@
   "variables": {
     "command": {
       "programmeReference": "EC_UNIVERSITY_PROGRAMME_REFERENCE",
-      "name": "ProgrammeCohortName[######]",
+      "name": "ApiProgrammeCohortName[####]",
       "startTeachingDate": "[TIMENOW-yyyy-MM-dd]"
     }
   },

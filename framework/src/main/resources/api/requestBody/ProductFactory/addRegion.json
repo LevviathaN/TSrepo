@@ -2,7 +2,7 @@
   "operationName": "createRegion",
   "variables": {
     "command": {
-      "name": "RegionName[#######]",
+      "name": "ApiRegionName[####]",
       "financialDimensionReference": "EC_FD_REGION_PRODUCT_REFERENCE"
     }
   },

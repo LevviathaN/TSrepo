@@ -2,10 +2,10 @@
   "operationName": "createLocation",
   "variables": {
     "command": {
-      "name": "LocationName[#######]",
-      "addressLine1": "AddressLineOne[######]",
-      "addressLine2": "AddressLineTwo[######]",
-      "addressLine3": "AddressLineThree[######]",
+      "name": "ApiLocationName[####]",
+      "addressLine1": "ApiAddressLineOne[####]",
+      "addressLine2": "ApiAddressLineTwo[####]",
+      "addressLine3": "ApiAddressLineThree[####]",
       "postcode": "AE312",
       "city": "London",
       "countryCode": "GBR",

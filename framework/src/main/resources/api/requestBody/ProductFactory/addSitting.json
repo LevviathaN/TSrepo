@@ -2,7 +2,7 @@
   "operationName": "createSitting",
   "variables": {
     "command": {
-      "name": "SittingName[#######]",
+      "name": "ApiSittingName[####]",
       "startDate": "[TIMENOW-yyyy-MM-dd]",
       "endDate": "[TIMENOW-yyyy-MM-dd]",
       "bodyReferences": [

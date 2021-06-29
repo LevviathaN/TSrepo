@@ -2,8 +2,8 @@
   "operationName": "createStudyMode",
   "variables": {
     "command": {
-      "name": "StudyModeName[#######]",
-      "description": "StudyModeDescription[#######]"
+      "name": "ApiStudyModeName[####]",
+      "description": "ApiStudyModeDescription[####]"
     }
   },
   "query": "mutation createStudyMode($command: CreateStudyModeCommandInput!) {  createStudyMode(command: $command) {  ...studyMode  __typename  } }  fragment studyMode on StudyMode {  reference  name  description  createdBy  createdOn  updatedBy  updatedOn  __typename } "

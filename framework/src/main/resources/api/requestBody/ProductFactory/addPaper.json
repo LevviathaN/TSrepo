@@ -2,9 +2,9 @@
   "operationName": "createPaper",
   "variables": {
     "command": {
-      "shortName": "PSN[#######]",
-      "name": "PaperName[#######]",
-      "description": "PaperDescription[#######]",
+      "shortName": "ApiPSN[####]",
+      "name": "ApiPaperName[####]",
+      "description": "ApiPaperDescription[####]",
       "isCba": false,
       "timeInHours": 6,
       "examSchedule": "ONSITTING"

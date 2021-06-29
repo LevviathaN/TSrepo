@@ -3,7 +3,7 @@
   "variables": {
     "command": {
       "cohortReference": "EC_PROGRAMME_COHORT_REFERENCE",
-      "name": "ModuleSectionName[#######]",
+      "name": "ApiModuleSectionName[####]",
       "termCode": "KW_AUTO_RANDOMNUMBER|#####",
       "groupRequirementCohort": true,
       "groupRequirementMode": true,

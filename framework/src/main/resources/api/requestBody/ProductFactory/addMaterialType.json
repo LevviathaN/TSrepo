@@ -2,8 +2,8 @@
   "operationName": "createMaterialType",
   "variables": {
     "command": {
-      "name": "MaterialTypeName[#######]",
-      "description": "MaterialTypeDescription[#######]",
+      "name": "ApiMaterialTypeName[####]",
+      "description": "ApiMaterialTypeDescription[####]",
       "isExpiryDateRequired": true,
       "isIsbnRequired": true,
       "isPriceRequired": true,
