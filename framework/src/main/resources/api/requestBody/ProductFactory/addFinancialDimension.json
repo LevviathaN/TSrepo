@@ -2,8 +2,8 @@
   "operationName": "createFinancialDimension",
   "variables": {
     "command": {
-      "code": "ApiFinancialDimensionCode[####]",
-      "description": "ApiFinancialDimensionDescriptione[####]",
+      "code": "ApiFinancialDimensionCode[#######]",
+      "description": "ApiFinancialDimensionDescriptione[#######]",
       "dimensionType": "COSTCENTRE",
       "target": "COURSETYPE"
     }

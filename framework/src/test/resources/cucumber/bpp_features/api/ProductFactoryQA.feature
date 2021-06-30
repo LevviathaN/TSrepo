@@ -113,3 +113,19 @@ Feature: Product Factory API Data Creation
   @DeactivationReason
   Scenario: Create Deactivation Reason
     When I create new Deactivation Reason
+
+  @Course
+  Scenario: Create Course
+    When I create new Course
+
+  @Instance
+  Scenario: Create Instance
+    When I create new Instance
+
+  @ChangeInstance
+  Scenario: Change Instance Capacity
+    When I change Instance Capacity
+
+  @GetInstanceSessions
+  Scenario: Get Instance Sessions
+    When I get Instance Sessions

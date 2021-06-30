@@ -2,9 +2,9 @@
   "operationName": "createBody",
   "variables": {
     "command": {
-      "shortName": "ApiBodyShortName[####]",
+      "shortName": "ApiBodyShortName[#####]",
       "name": "ApiBodyName[####]",
-      "description": "ApiBodyDescription[####]",
+      "description": "ApiBodyDescription[#####]",
       "financialDimensionReference": "EC_FD_BODY_PRODUCT_REFERENCE",
       "verticalReference": "EC_VERTICAL_REFERENCE"
     }

@@ -1,8 +1,8 @@
 package api.requests;
 
 import api.*;
-import com.sun.deploy.uitoolkit.impl.fx.ui.FXAppContext;
 import io.restassured.response.Response;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,7 +16,6 @@ import ui.utils.bpp.TestParametersController;
 import java.io.IOException;
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.junit.internal.matchers.StringContains.containsString;
 import static org.testng.Assert.assertEquals;
 
@@ -491,7 +490,7 @@ public class ProductFactoryBusinessProcesses {
                 "<br>" + "Session Duration Allowed For CBA: " + "<font color='red'><b>" + AllowedForCBA + "</font></b>" +
                 "</pre>");
 
-        BPPLogManager.getLogger().info("Location was successfully created.");
+        BPPLogManager.getLogger().info("Session Duration was successfully created.");
 
         return this;
     }
@@ -750,8 +749,8 @@ public class ProductFactoryBusinessProcesses {
         String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAMS_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAMS_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAM_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAM_NAME", Name);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -787,6 +786,141 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Deactivation Reason was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewCourse() {
+
+        JSONObject recordsList = requestProcess("addCourse","createCourse", null, null);
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_REFERENCE", Reference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Course: " +
+                "<br>" + "Course Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Course was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createNewInstance() {
+
+        JSONObject recordsList = requestProcess("addInstance","createInstance", null, null);
+
+        /*Get JSON object values*/
+        JSONArray sessionsArray = (JSONArray) recordsList.get("sessions");
+        JSONObject sessionsObj = (JSONObject) sessionsArray.get(0);
+
+        String SessionReference = (String) sessionsObj.get("reference");
+        String Status = (String) recordsList.get("status");
+        Integer Capacity = (Integer) recordsList.get("capacity");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESION_REFERENCE", SessionReference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Instance: " +
+                "<br>" + "Instance Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Instance Status: " + "<font color='red'><b>" + Status + "</font></b>" +
+                "<br>" + "Instance Capacity: " + "<font color='red'><b>" + Capacity + "</font></b>" +
+                "<br>" + "Session Reference: " + "<font color='red'><b>" + SessionReference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Instance was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses changeInstanceCapacity(Integer Parameter1) {
+
+        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/changeInstanceCapacity", String.valueOf(Parameter1), null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+
+        String ResponseString = Response.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("updateInstance");
+
+        /*Get Json object values*/
+        try {
+            Reference = (String) recordsList.get("reference");
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("updateInstance"));
+
+        /*Get JSON object values*/
+        Long Capacity = (Long) recordsList.get("capacity");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_CAPACITY", String.valueOf(Capacity));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Instance: " +
+                "<br>" + "Instance Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Instance Capacity: " + "<font color='red'><b>" + Capacity + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Instance Capacity was successfully changed.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses getInstanceSessions() {
+
+        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/getInstanceSessions", null, null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+
+        String ResponseString = Response.getBody().asString();
+
+        /*Get JSON object values*/
+        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONArray recordsArray = (JSONArray) recordsData.get("sessions");
+        JSONObject recordsList = (JSONObject) recordsArray.get(0);
+        JSONArray recordsArrayList = (JSONArray) recordsList.get("timings");
+        JSONObject item = (JSONObject) recordsArrayList.get(0);
+        String timingReference = (String) item.get("reference");
+
+        /*Get Json object values*/
+        try {
+            Reference = timingReference;
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+        }
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("session"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_TIMING_REFERENCE", Reference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Instance Timing: " +
+                "<br>" + "Instance Timing Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Instance timing was successfully received.");
 
         return this;
     }
