@@ -66,8 +66,10 @@ Feature: Create a Single Booking
     And I should see the "[SUM(EC_AVAILABILITY,-1)]" element
     And I capture text data "Salesforce Instance Availability Data Field" as "EC_MINUSONE_BOOKING" variable
     And I click on the "Salesforce Instance Page View All Bookings" element
-    And I click on the "Salesforce Booking Number Column Header" element by JS
     And I wait for "2" seconds
+    And I click on the "Salesforce Booking Number Column Header" button with JS if "Salesforce Recent Booking Link" "element is absent"
+    #And I click on the "Salesforce Booking Number Column Header" element by JS
+    And I wait for "3" seconds
     And I hover over the "Salesforce Recent Booking Link" element
     Then I click on the "Salesforce Recent Booking Link" element by JS
     Then I click on the "Salesforce Recent Booking Link Active Cell" element by JS
@@ -77,7 +79,7 @@ Feature: Create a Single Booking
     And I click on the "Cancelled" "Salesforce booking dropdown option"
     And I click on the "Status Reason" "Salesforce booking dropdown field" by JS
     And I click on the "Changed Mind" "Salesforce booking dropdown option"
-    And I set "Automation Cancelled" text to the "Cancellation Reason" "Salesforce text field"
+    #And I set "Automation Cancelled" text to the "Cancellation Reason" "Salesforce text field"
     And I click on the "Salesforce Quote Edited Save" element
     And I wait for "10" seconds
     Given I am on "MD_COMMON_LINKS_SALESFORCEINSTANCE" URL
