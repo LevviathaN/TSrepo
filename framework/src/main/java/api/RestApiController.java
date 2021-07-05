@@ -82,7 +82,7 @@ public class RestApiController {
         return map.toString();
     }
 
-    public String processPropertiesPF(String requestTemplate, String Parameter1, String Parameter2) {
+    public String processPropertiesPF(String requestTemplate, String parameter1, String parameter2) {
 
         JSONObject jo = new Utilities().getJsonObject(requestTemplate);
 
@@ -98,58 +98,58 @@ public class RestApiController {
 
             /*Get and Put Special Parameter*/
             if (!(command.get("dimensionType") == null)) {
-                command.put("dimensionType", Parameter1);
+                command.put("dimensionType", parameter1);
             }
             if (!(command.get("target") == null)) {
-                command.put("target", Parameter2);
+                command.put("target", parameter2);
             }
             if (!(command.get("contentType") == null)) {
-                command.put("contentType", Parameter1);
+                command.put("contentType", parameter1);
             }
             if (!(command.get("targetPlatform") == null)) {
-                command.put("targetPlatform", Parameter2);
+                command.put("targetPlatform", parameter2);
             }
             if (!(command.get("capacity") == null)) {
-                command.put("capacity", Integer.valueOf(Parameter1));
+                command.put("capacity", Integer.valueOf(parameter1));
             }
             if (!(command.get("isCba") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("isCba", boolStr);
             }
             if (!(command.get("allowedForCba") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("allowedForCba", boolStr);
             }
             if (!(command.get("isExpiryDateRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("isExpiryDateRequired", boolStr);
             }
             if (!(command.get("preventReactivation") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("preventReactivation", boolStr);
             }
             if (!(command.get("isIsbnRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("isIsbnRequired", boolStr);
             }
             if (!(command.get("isPriceRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("isPriceRequired", boolStr);
             }
             if (!(command.get("isWeightRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("isWeightRequired", boolStr);
             }
             if (!(command.get("groupRequirementCohort") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("groupRequirementCohort", boolStr);
             }
             if (!(command.get("groupRequirementMode") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("groupRequirementMode", boolStr);
             }
             if (!(command.get("groupRequirementLocation") == null)) {
-                boolean boolStr = Boolean.parseBoolean(Parameter1);
+                boolean boolStr = Boolean.parseBoolean(parameter1);
                 command.put("groupRequirementLocation", boolStr);
             }
             if (!(command.get("code") == null)) {

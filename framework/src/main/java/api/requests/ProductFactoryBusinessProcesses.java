@@ -48,13 +48,13 @@ public class ProductFactoryBusinessProcesses {
      * Method for processing JSON file of request.
      * @param fileName - json file that is coresspondent for current request
      * @param objName - json object (operationName) of current json file
-     * @param Parameter1 - Parameter for JSON object String. If required. Look at FinancialDimension method
-     * @param Parameter2 - Parameter for JSON object String. If required. Look at FinancialDimension method
+     * @param parameter1 - Parameter for JSON object String. If required. Look at FinancialDimension method
+     * @param parameter2 - Parameter for JSON object String. If required. Look at FinancialDimension method
      **/
 
-    public JSONObject requestProcess(String fileName,String objName,String Parameter1, String Parameter2) {
+    public JSONObject requestProcess(String fileName,String objName,String parameter1, String parameter2) {
         Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
-                restController.processPropertiesPF("ProductFactory/" + fileName, Parameter1, Parameter2),
+                restController.processPropertiesPF("ProductFactory/" + fileName, parameter1, parameter2),
                 ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
         );
         String ResponseString = Response.getBody().asString();
@@ -78,9 +78,9 @@ public class ProductFactoryBusinessProcesses {
         return recordsList;
     }
 
-    public ProductFactoryBusinessProcesses createNewFinancialDimension(String Parameter1, String Parameter2) {
+    public ProductFactoryBusinessProcesses createNewFinancialDimension(String parameter1, String parameter2) {
 
-        JSONObject recordsList = requestProcess("addFinancialDimension","createFinancialDimension", Parameter1, Parameter2);
+        JSONObject recordsList = requestProcess("addFinancialDimension","createFinancialDimension", parameter1, parameter2);
 
         /*Get JSON object values*/
         String DimensionType = (String) recordsList.get("dimensionType");
@@ -105,7 +105,7 @@ public class ProductFactoryBusinessProcesses {
                 "<br>" + "Financial Dimension " + Target + " " + DimensionType + " Description: " + "<font color='red'><b>" + Description + "</font></b>" +
                 "</pre>");
 
-        BPPLogManager.getLogger().info("Financial Dimension of " + Parameter1 + "and " + Parameter2 + " was successfully created.");
+        BPPLogManager.getLogger().info("Financial Dimension of " + parameter1 + "and " + parameter2 + " was successfully created.");
 
         return this;
     }
@@ -295,9 +295,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewPaper(Boolean Parameter1) {
+    public ProductFactoryBusinessProcesses createNewPaper(Boolean parameter1) {
 
-        JSONObject recordsList = requestProcess("addPaper","createPaper", String.valueOf(Parameter1), null);
+        JSONObject recordsList = requestProcess("addPaper","createPaper", String.valueOf(parameter1), null);
 
         /*Get JSON object values*/
         String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
@@ -465,9 +465,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewSessionDuration(Boolean Parameter1) {
+    public ProductFactoryBusinessProcesses createNewSessionDuration(Boolean parameter1) {
 
-        JSONObject recordsList = requestProcess("addSessionDuration","createSessionDuration", String.valueOf(Parameter1), null);
+        JSONObject recordsList = requestProcess("addSessionDuration","createSessionDuration", String.valueOf(parameter1), null);
 
         /*Get JSON object values*/
         String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
@@ -531,9 +531,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewDigitalContent(String Parameter1, String Parameter2) {
+    public ProductFactoryBusinessProcesses createNewDigitalContent(String parameter1, String parameter2) {
 
-        JSONObject recordsList = requestProcess("addDigitalContent","createDigitalContent", Parameter1, Parameter2);
+        JSONObject recordsList = requestProcess("addDigitalContent","createDigitalContent", parameter1, parameter2);
 
         /*Get JSON object values*/
         String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
@@ -604,9 +604,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewModuleSections(Boolean Parameter1) {
+    public ProductFactoryBusinessProcesses createNewModuleSections(Boolean parameter1) {
 
-        JSONObject recordsList = requestProcess("addModuleSections","createModule", String.valueOf(Parameter1), null);
+        JSONObject recordsList = requestProcess("addModuleSections","createModule", String.valueOf(parameter1), null);
 
         /*Get JSON object values*/
         String Name = (String) recordsList.get("name");
@@ -680,9 +680,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewMaterialType(Boolean Parameter1) {
+    public ProductFactoryBusinessProcesses createNewMaterialType(Boolean parameter1) {
 
-        JSONObject recordsList = requestProcess("addMaterialType","createMaterialType", String.valueOf(Parameter1), null);
+        JSONObject recordsList = requestProcess("addMaterialType","createMaterialType", String.valueOf(parameter1), null);
 
         /*Get JSON object values*/
         String Name = (String) recordsList.get("name");
@@ -764,9 +764,9 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewDeactivationReason(Boolean Parameter1) {
+    public ProductFactoryBusinessProcesses createNewDeactivationReason(Boolean parameter1) {
 
-        JSONObject recordsList = requestProcess("addDeactivationReason","createDeactivationReason", String.valueOf(Parameter1), null);
+        JSONObject recordsList = requestProcess("addDeactivationReason","createDeactivationReason", String.valueOf(parameter1), null);
 
         /*Get JSON object values*/
         String Description = (String) recordsList.get("description");
@@ -838,10 +838,10 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses changeInstanceCapacity(Integer Parameter1) {
+    public ProductFactoryBusinessProcesses changeInstanceCapacity(Integer parameter1) {
 
         Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
-                restController.processPropertiesPF("ProductFactory/changeInstanceCapacity", String.valueOf(Parameter1), null),
+                restController.processPropertiesPF("ProductFactory/changeInstanceCapacity", String.valueOf(parameter1), null),
                 ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
         );
 
@@ -1114,10 +1114,10 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses bulkWebPublish(Boolean Parameter1) {
+    public ProductFactoryBusinessProcesses bulkWebPublish(Boolean parameter1) {
 
         Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
-                restController.processPropertiesPF("ProductFactory/bulkWebPublish", String.valueOf(Parameter1), null),
+                restController.processPropertiesPF("ProductFactory/bulkWebPublish", String.valueOf(parameter1), null),
                 ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
         );
         String ResponseString = Response.getBody().asString();
