@@ -33,7 +33,6 @@ import static org.hamcrest.Matchers.not;
  */
 public class StepDefinitions extends SeleniumHelper {
 
-    private static final Pattern COOKIE_PATTERN = Pattern.compile("^[A-Za-z0-9\\_]{11}$");
 
     @AfterStep
     public void postActions() {
