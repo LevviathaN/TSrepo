@@ -110,7 +110,7 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewVatRule(String name) {
+    public ProductFactoryBusinessProcesses createNewVatRule() {
 
         JSONObject recordsList = requestProcess("addVatRule","createVatRule", null, null);
 
@@ -120,18 +120,18 @@ public class ProductFactoryBusinessProcesses {
         Long Rate = (Long) recordsList.get("rate");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + name.toUpperCase() + "_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + name.toUpperCase() + "_CODE", Code);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + name.toUpperCase() + "_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + name.toUpperCase() + "_RATE", String.valueOf(Rate));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_CODE", Code);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_RATE", String.valueOf(Rate));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
                 "<br>Vat Rule: " +
-                "<br>" + "Vat Rule " + name + " Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Vat Rule " + name + " Code: " + "<font color='red'><b>" + Code + "</font></b>" +
-                "<br>" + "Vat Rule " + name + " Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "<br>" + "Vat Rule " + name + " Rate: " + "<font color='red'><b>" + Rate + "</font></b>" +
+                "<br>" + "Vat Rule Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Vat Rule Code: " + "<font color='red'><b>" + Code + "</font></b>" +
+                "<br>" + "Vat Rule Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Vat Rule Rate: " + "<font color='red'><b>" + Rate + "</font></b>" +
                 "</pre>");
 
         BPPLogManager.getLogger().info("Vat Rule was successfully created.");

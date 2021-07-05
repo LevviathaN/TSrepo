@@ -1,6 +1,5 @@
 package api;
 
-import com.sun.tools.xjc.api.Property;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -10,10 +9,7 @@ import ui.utils.BPPLogManager;
 import ui.utils.Tools;
 import ui.utils.bpp.TestParametersController;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static io.restassured.RestAssured.given;
 
@@ -88,7 +84,6 @@ public class RestApiController {
 
         /*Get command list*/
         Map variables = ((Map) jo.get("variables"));
-//        Map command = ((Map) variables.get("command"));
         Map.Entry<String,String> entry = (Map.Entry<String, String>) variables.entrySet().iterator().next();
         String key = entry.getKey();
 
@@ -109,160 +104,36 @@ public class RestApiController {
             if (!(command.get("targetPlatform") == null)) {
                 command.put("targetPlatform", parameter2);
             }
-            /*
-            * Integer List
-            * */
+            /*Integer List*/
             if (!(command.get("capacity") == null)) {
                 command.put("capacity", Integer.valueOf(parameter1));
             }
-            /*
-            * Boolean List
-            * */
-            if (!(command.get("isCba") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("isCba", boolStr);
+            /*Boolean List*/
+            String[] booleanArray = {"isCba","allowedForCba","isExpiryDateRequired","isExpiryDateRequired","isIsbnRequired","isWeightRequired",
+            "groupRequirementCohort","groupRequirementMode","groupRequirementLocation"};
+
+            for (String s: booleanArray) {
+                if (!(command.get(s) == null)) {
+                    boolean boolStr = Boolean.parseBoolean(parameter1);
+                    command.put(s, boolStr);
+                }
             }
-            if (!(command.get("allowedForCba") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("allowedForCba", boolStr);
+
+            /*Object List*/
+            String[] objectArray = {"code", "shortName", "name", "description", "startDate", "endDate", "startTeachingDate", "termCode", "bodyReference",
+                    "operationReference", "reference", "streamReference", "courseReference", "defaultLocationReference", "defaultSessionDurationReference",
+                    "paperReference", "sittingReference", "vatRuleReference", "verticalReference", "regionReference", "courseTypeReference",
+                    "pricingMatrixReference", "levelReference", "programmeReference", "cohortReference", "sessionReference", "stepReference",
+                    "dueDate", "costCentreFinancialDimensionReference", "projectFinancialDimensionReference", "financialDimensionReference",
+                    "examPreparationReference", "studyModeReference"};
+
+            for (String s: objectArray) {
+                if (!(command.get(s) == null)) {
+                    command.put(s, TestParametersController.checkIfSpecialParameter(String.valueOf(command.get(s))));
+                }
             }
-            if (!(command.get("isExpiryDateRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("isExpiryDateRequired", boolStr);
-            }
-            if (!(command.get("preventReactivation") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("preventReactivation", boolStr);
-            }
-            if (!(command.get("isIsbnRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("isIsbnRequired", boolStr);
-            }
-            if (!(command.get("isPriceRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("isPriceRequired", boolStr);
-            }
-            if (!(command.get("isWeightRequired") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("isWeightRequired", boolStr);
-            }
-            if (!(command.get("groupRequirementCohort") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("groupRequirementCohort", boolStr);
-            }
-            if (!(command.get("groupRequirementMode") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("groupRequirementMode", boolStr);
-            }
-            if (!(command.get("groupRequirementLocation") == null)) {
-                boolean boolStr = Boolean.parseBoolean(parameter1);
-                command.put("groupRequirementLocation", boolStr);
-            }
-            /*
-            * Object List
-            * */
-            if (!(command.get("code") == null)) {
-                command.put("code", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("code"))));
-            }
-            if (!(command.get("shortName") == null)) {
-                command.put("shortName", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("shortName"))));
-            }
-            if (!(command.get("name") == null)) {
-                command.put("name", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("name"))));
-            }
-            if (!(command.get("description") == null)) {
-                command.put("description", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("description"))));
-            }
-            if (!(command.get("startDate") == null)) {
-                command.put("startDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("startDate"))));
-            }
-            if (!(command.get("endDate") == null)) {
-                command.put("endDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("endDate"))));
-            }
-            if (!(command.get("startTeachingDate") == null)) {
-                command.put("startTeachingDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("startTeachingDate"))));
-            }
-            if (!(command.get("termCode") == null)) {
-                command.put("termCode", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("termCode"))));
-            }
-            if (!(command.get("bodyReference") == null)) {
-                command.put("bodyReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("bodyReference"))));
-            }
-            if (!(command.get("operationReference") == null)) {
-                command.put("operationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("operationReference"))));
-            }
-            if (!(command.get("reference") == null)) {
-                command.put("reference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("reference"))));
-            }
-            if (!(command.get("streamReference") == null)) {
-                command.put("streamReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("streamReference"))));
-            }
-            if (!(command.get("courseReference") == null)) {
-                command.put("courseReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("courseReference"))));
-            }
-            if (!(command.get("defaultLocationReference") == null)) {
-                command.put("defaultLocationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("defaultLocationReference"))));
-            }
-            if (!(command.get("defaultSessionDurationReference") == null)) {
-                command.put("defaultSessionDurationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("defaultSessionDurationReference"))));
-            }
-            if (!(command.get("paperReference") == null)) {
-                command.put("paperReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("paperReference"))));
-            }
-            if (!(command.get("sittingReference") == null)) {
-                command.put("sittingReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("sittingReference"))));
-            }
-            if (!(command.get("vatRuleReference") == null)) {
-                command.put("vatRuleReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("vatRuleReference"))));
-            }
-            if (!(command.get("verticalReference") == null)) {
-                command.put("verticalReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("verticalReference"))));
-            }
-            if (!(command.get("regionReference") == null)) {
-                command.put("regionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("regionReference"))));
-            }
-            if (!(command.get("courseTypeReference") == null)) {
-                command.put("courseTypeReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("courseTypeReference"))));
-            }
-            if (!(command.get("pricingMatrixReference") == null)) {
-                command.put("pricingMatrixReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("pricingMatrixReference"))));
-            }
-            if (!(command.get("levelReference") == null)) {
-                command.put("levelReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("levelReference"))));
-            }
-            if (!(command.get("programmeReference") == null)) {
-                command.put("programmeReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("programmeReference"))));
-            }
-            if (!(command.get("cohortReference") == null)) {
-                command.put("cohortReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("cohortReference"))));
-            }
-            if (!(command.get("sessionReference") == null)) {
-                command.put("sessionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("sessionReference"))));
-            }
-            if (!(command.get("stepReference") == null)) {
-                command.put("stepReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("stepReference"))));
-            }
-            if (!(command.get("dueDate") == null)) {
-                command.put("dueDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("dueDate"))));
-            }
-            if (!(command.get("costCentreFinancialDimensionReference") == null)) {
-                command.put("costCentreFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("costCentreFinancialDimensionReference"))));
-            }
-            if (!(command.get("projectFinancialDimensionReference") == null)) {
-                command.put("projectFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("projectFinancialDimensionReference"))));
-            }
-            if (!(command.get("financialDimensionReference") == null)) {
-                command.put("financialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("financialDimensionReference"))));
-            }
-            if (!(command.get("examPreparationReference") == null)) {
-                command.put("examPreparationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("examPreparationReference"))));
-            }
-            if (!(command.get("studyModeReference") == null)) {
-                command.put("studyModeReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("studyModeReference"))));
-            }
-            /*
-            * Property List
-            * */
+
+            /*Property List*/
             if (!(command.get("timings") == null)) {
                 ArrayList<String> bodyList = new ArrayList<String>();
                 JSONArray bodyArray = (JSONArray) command.get("timings");
@@ -278,51 +149,18 @@ public class RestApiController {
                 bodyList.add(String.valueOf(bodyArray));
             }
 
-            /*
-            * Array List
-            * */
-            if (!(command.get("bodyReferences") == null)) {
-                JSONArray bodyArray = (JSONArray) command.get("bodyReferences");
-                ArrayList<String> bodyList = new ArrayList<String>();
-                bodyList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(bodyArray.get(0))));
-                command.put("bodyReferences", bodyList);
-            }
-            if (!(command.get("courseReferences") == null)) {
-                JSONArray bodyArray = (JSONArray) command.get("courseReferences");
-                ArrayList<String> bodyList = new ArrayList<String>();
-                bodyList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(bodyArray.get(0))));
-                command.put("courseReferences", bodyList);
-            }
-            if (!(command.get("levelReferences") == null)) {
-                JSONArray levelArray = (JSONArray) command.get("levelReferences");
-                ArrayList<String> levelList = new ArrayList<String>();
-                levelList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(levelArray.get(0))));
-                command.put("levelReferences", levelList);
-            }
-            if (!(command.get("paperReferences") == null)) {
-                JSONArray paperArray = (JSONArray) command.get("paperReferences");
-                ArrayList<String> levelList = new ArrayList<String>();
-                levelList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(paperArray.get(0))));
-                command.put("paperReferences", levelList);
-            }
-            if (!(command.get("regionReferences") == null)) {
-                JSONArray regionArray = (JSONArray) command.get("regionReferences");
-                ArrayList<String> levelList = new ArrayList<String>();
-                levelList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(regionArray.get(0))));
-                command.put("regionReferences", levelList);
-            }
-            if (!(command.get("sittingReferences") == null)) {
-                JSONArray regionArray = (JSONArray) command.get("sittingReferences");
-                ArrayList<String> levelList = new ArrayList<String>();
-                levelList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(regionArray.get(0))));
-                command.put("sittingReferences", levelList);
-            }
-            if (!(command.get("courseTypeReferences") == null)) {
-                JSONArray regionArray = (JSONArray) command.get("courseTypeReferences");
-                ArrayList<String> levelList = new ArrayList<String>();
-                levelList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(regionArray.get(0))));
-                command.put("courseTypeReferences", levelList);
-            }
+            /*Array List*/
+            List<String> anotherList = (List<String>) Arrays.asList("bodyReferences", "courseReferences", "levelReferences", "paperReferences", "regionReferences",
+                    "sittingReferences", "courseTypeReferences");
+
+            for (String l: anotherList) {
+                if (!(command.get(l) == null)) {
+                    JSONArray bodyArray = (JSONArray) command.get(l);
+                    ArrayList<String> bodyList = new ArrayList<String>();
+                    bodyList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(bodyArray.get(0))));
+                    command.put(l, bodyList);
+                    }
+                }
         } else {
             if (!(variables.get("instanceReference") == null)) {
                 variables.put("instanceReference", TestParametersController.checkIfSpecialParameter(String.valueOf(variables.get("instanceReference"))));
