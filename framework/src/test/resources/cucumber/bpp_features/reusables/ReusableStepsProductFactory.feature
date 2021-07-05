@@ -499,7 +499,7 @@ Feature: Product Factory
     And I click on the "Body" "Product Factory dropdown"
     And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
-    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
+    And I click on the "EC_CBA_PAPER_NAME" "Product Factory dropdown option"
     And I click on the "Finish" "Product Factory button"
 
   Scenario: Create Digital Content

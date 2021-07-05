@@ -389,6 +389,10 @@
     "value": "xpath=//td[text()='PARAMETER']/following-sibling::td//input"
   },
   {
+    "name": "Product Factory CBA Course BPP Fee recalculate button",
+    "value": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Recalculate Price']"
+  },
+  {
     "name": "Product Factory Change Body button",
     "value": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]"
   },
