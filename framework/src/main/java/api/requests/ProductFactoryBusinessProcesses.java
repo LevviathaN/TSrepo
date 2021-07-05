@@ -69,7 +69,7 @@ public class ProductFactoryBusinessProcesses {
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
-            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
         }
 
         assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
@@ -110,7 +110,7 @@ public class ProductFactoryBusinessProcesses {
         return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewVatRule() {
+    public ProductFactoryBusinessProcesses createNewVatRule(String Name) {
 
         JSONObject recordsList = requestProcess("addVatRule","createVatRule", null, null);
 
@@ -120,18 +120,18 @@ public class ProductFactoryBusinessProcesses {
         Long Rate = (Long) recordsList.get("rate");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_CODE", Code);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_RATE", String.valueOf(Rate));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + Name.toUpperCase() + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + Name.toUpperCase() + "_CODE", Code);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + Name.toUpperCase() + "_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_" + Name.toUpperCase() + "_RATE", String.valueOf(Rate));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
                 "<br>Vat Rule: " +
-                "<br>" + "Vat Rule Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Vat Rule Code: " + "<font color='red'><b>" + Code + "</font></b>" +
-                "<br>" + "Vat Rule Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "<br>" + "Vat Rule Rate: " + "<font color='red'><b>" + Rate + "</font></b>" +
+                "<br>" + "Vat Rule " + Name + " Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Vat Rule " + Name + " Code: " + "<font color='red'><b>" + Code + "</font></b>" +
+                "<br>" + "Vat Rule " + Name + " Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Vat Rule " + Name + " Rate: " + "<font color='red'><b>" + Rate + "</font></b>" +
                 "</pre>");
 
         BPPLogManager.getLogger().info("Vat Rule was successfully created.");
@@ -822,7 +822,7 @@ public class ProductFactoryBusinessProcesses {
 
         /*Set EC values for JSON object values*/
         ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESION_REFERENCE", SessionReference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_REFERENCE", SessionReference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -857,7 +857,7 @@ public class ProductFactoryBusinessProcesses {
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
-            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
         }
 
         assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
@@ -905,22 +905,273 @@ public class ProductFactoryBusinessProcesses {
         } catch (Exception e) {
             BPPLogManager.getLogger().error(Tools.getStackTrace(e));
             Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
-            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty stings");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
         }
 
         assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
         assertThat(ResponseString, containsString("session"));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_TIMING_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_TIMING_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
-                "<br>Instance Timing: " +
-                "<br>" + "Instance Timing Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>Session Timing: " +
+                "<br>" + "Session Timing Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
                 "</pre>");
 
-        BPPLogManager.getLogger().info("Instance timing was successfully received.");
+        BPPLogManager.getLogger().info("Session Timing Reference timing was successfully received.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses changeSessionTimings() {
+
+        JSONObject recordsList = requestProcess("changeSessionTimings","changeSessionTimings", null, null);
+
+        /*Get JSON object values*/
+        JSONArray recordsArrayList = (JSONArray) recordsList.get("timings");
+        JSONObject item = (JSONObject) recordsArrayList.get(0);
+        String sessionDate = (String) item.get("sessionDate");
+        String startTime = (String) item.get("startTime");
+        String endTime = (String) item.get("endTime");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DATE", sessionDate);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_START_TIME", String.valueOf(startTime));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_END_TIME", String.valueOf(endTime));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Session: " +
+                "<br>" + "Session : " + "<font color='red'><b> Changed successfully</font></b>" +
+                "<br>" + "Session Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Session Date: " + "<font color='red'><b>" + sessionDate + "</font></b>" +
+                "<br>" + "Session Start Time: " + "<font color='red'><b>" + startTime + "</font></b>" +
+                "<br>" + "Session End Time: " + "<font color='red'><b>" + endTime + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Session Timing was successfully changed.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses getInstanceSteps() {
+
+        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/getInstanceSteps", null, null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+
+        String ResponseString = Response.getBody().asString();
+
+        /*Get JSON object values*/
+        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONArray recordsArray = (JSONArray) recordsData.get("steps");
+        JSONObject recordsList = (JSONObject) recordsArray.get(0);
+
+        String dueDate = (String) recordsList.get("dueDate");
+        Long stepNumber = (Long) recordsList.get("stepNumber");
+
+        /*Get Json object values*/
+        try {
+            Reference = String.valueOf(recordsList.get("reference"));;
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
+        }
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("steps"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_DUE_DATE", dueDate);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_STEPNUMBER", String.valueOf(stepNumber));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Steps: " +
+                "<br>" + "Step Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Step Due Date: " + "<font color='red'><b>" + dueDate + "</font></b>" +
+                "<br>" + "Step Number: " + "<font color='red'><b>" + stepNumber + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Step Reference was successfully received.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses changeInstanceSteps() {
+
+        JSONObject recordsList = requestProcess("changeStepDueDate","changeStepDueDate", null, null);
+
+        /*Get JSON object values*/
+        String dueDate = (String) recordsList.get("dueDate");
+        Long stepNumber = (Long) recordsList.get("stepNumber");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_DUE_DATE", dueDate);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_STEPNUMBER", String.valueOf(stepNumber));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Changed Steps: " +
+                "<br>" + "Step Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Step Due Date: " + "<font color='red'><b>" + dueDate + "</font></b>" +
+                "<br>" + "Step Number: " + "<font color='red'><b>" + stepNumber + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Steps was successfully changed.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses calculateCoursePrice() {
+
+        JSONObject recordsList = requestProcess("calculateCoursePrice","calculateCoursePrice", null, null);
+
+        /*Get JSON object values*/
+        Long price = (Long) recordsList.get("price");
+
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_DUE_DATE", String.valueOf(price));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Price: " +
+                "<br>" + "Course Price: " + "<font color='red'><b>" + price + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Course Price was successfully calculated.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses activateCourse() {
+
+        JSONObject recordsList = requestProcess("activateCourse","activateCourse", null, null);
+
+        /*Get JSON object values*/
+        String status = (String) recordsList.get("status");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_ACTIVATION_STATUS", status);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Course Activation: " +
+                "<br>" + "Course Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Course Activation Status: " + "<font color='red'><b>" + status + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Course was successfully activated.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses activateInstance() {
+
+        JSONObject recordsList = requestProcess("activateInstance","activateInstance", null, null);
+
+        /*Get JSON object values*/
+        String status = (String) recordsList.get("status");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_ACTIVATION_STATUS", status);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Instance Activation: " +
+                "<br>" + "Instance Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Instance Activation Status: " + "<font color='red'><b>" + status + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Instance was successfully activated.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses createCourseBulkOperation() {
+
+        JSONObject recordsList = requestProcess("createCourseBulkOperation","createCourseBulkOperation", null, null);
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_BULK_OPERATION_REFERENCE", Reference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Course Bulk Operation: " +
+                "<br>" + "Course Bulk Operation Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Course Bulk Operation was successfully created.");
+
+        return this;
+    }
+
+    public ProductFactoryBusinessProcesses bulkWebPublish(Boolean Parameter1) {
+
+        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                restController.processPropertiesPF("ProductFactory/bulkWebPublish", String.valueOf(Parameter1), null),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = Response.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get("courseBulkOperationWebPublish");
+
+        /*Get Json object values*/
+        JSONArray coursesArray = (JSONArray) recordsList.get("courses");
+        JSONObject coursesFirstArray = (JSONObject) coursesArray.get(0);
+        Boolean courseIncluded = (Boolean) coursesFirstArray.get("included");
+        JSONObject coursesCourseObject = (JSONObject) coursesFirstArray.get("course");
+        Boolean courseAvailableOnWEB = (Boolean) coursesCourseObject.get("availableOnWebsite");
+        String courseStatus = (String) coursesCourseObject.get("status");
+        JSONArray coursesInstancesArray = (JSONArray) coursesFirstArray.get("instances");
+        JSONObject instancesFirstArray = (JSONObject) coursesInstancesArray.get(0);
+        Boolean instanceIncluded = (Boolean) coursesFirstArray.get("included");
+        JSONObject instancesObject = (JSONObject) instancesFirstArray.get("instance");
+        Boolean instanceAvailableOnWEB = (Boolean) instancesObject.get("availableOnWebsite");
+        String instanceStatus = (String) instancesObject.get("status");
+
+        try {
+            Reference = (String) recordsList.get("reference");
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
+        }
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString("courseBulkOperationWebPublish"));
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_INCLUDED", String.valueOf(courseIncluded));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_AWAILABLE_ON_WEB", String.valueOf(courseAvailableOnWEB));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_STATUS",courseStatus );
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_INCLUDED", String.valueOf(instanceIncluded));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_AWAILABLE_ON_WEB", String.valueOf(instanceAvailableOnWEB));
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_STATUS",instanceStatus);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Course Web Publish: " +
+                "<br>" + "Course Bulk Operation Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Course Included: " + "<font color='red'><b>" + courseIncluded + "</font></b>" +
+                "<br>" + "Course Available on Web: " + "<font color='red'><b>" + courseAvailableOnWEB + "</font></b>" +
+                "<br>" + "Course Status: " + "<font color='red'><b>" + courseStatus + "</font></b>" +
+                "<br>" + "Instance Included: " + "<font color='red'><b>" + instanceIncluded + "</font></b>" +
+                "<br>" + "Instance Available on Web: " + "<font color='red'><b>" + instanceAvailableOnWEB + "</font></b>" +
+                "<br>" + "Instance Status: " + "<font color='red'><b>" + instanceStatus + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Bulk Web Publish was successfully executed.");
 
         return this;
     }

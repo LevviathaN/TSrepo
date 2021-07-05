@@ -129,3 +129,35 @@ Feature: Product Factory API Data Creation
   @GetInstanceSessions
   Scenario: Get Instance Sessions
     When I get Instance Sessions
+
+  @ChangeSessionTimings
+  Scenario: Change Session Timings
+    When I change Session Timings
+
+  @GetInstanceSteps
+  Scenario: Get Instance Steps
+    When I get Instance Steps
+
+  @ChangeInstanceSteps
+  Scenario: Change Instance Steps
+    When I change Instance Steps
+
+  @CalculateCoursePrice
+  Scenario: Calculate Course Price
+    When I calculate Course Price
+
+  @ActivateCourse
+  Scenario: Activate Course
+    When I activate Course
+
+  @ActivateInstance
+  Scenario: Activate Instance
+    When I activate Instance
+
+  @CreateCourseBulkOperation
+  Scenario: Create Course Bulk Operation
+    When I create Course Bulk Operation
+
+  @BulkWebPublish
+  Scenario: Execute Bulk Web Publishing
+    When I execute Bulk Web Publishing

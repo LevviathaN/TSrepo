@@ -1,8 +1,7 @@
 package api;
 
-import com.google.api.client.json.JsonString;
+import com.sun.tools.xjc.api.Property;
 import io.restassured.http.ContentType;
-import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONArray;
@@ -177,11 +176,31 @@ public class RestApiController {
             if (!(command.get("termCode") == null)) {
                 command.put("termCode", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("termCode"))));
             }
+            if (!(command.get("timings") == null)) {
+                ArrayList<String> bodyList = new ArrayList<String>();
+                JSONArray bodyArray = (JSONArray) command.get("timings");
+                JSONObject timingObj = (JSONObject) bodyArray.get(0);
+                String sessionTimingReference = (String) timingObj.get("sessionTimingReference");
+                String sessionDate = (String) timingObj.get("sessionDate");
+                String startTime = (String) timingObj.get("startTime");
+                String endTime = (String) timingObj.get("endTime");
+                ((JSONObject) bodyArray.get(0)).put("sessionTimingReference", TestParametersController.checkIfSpecialParameter(sessionTimingReference));
+                ((JSONObject) bodyArray.get(0)).put("sessionDate", TestParametersController.checkIfSpecialParameter(sessionDate));
+                ((JSONObject) bodyArray.get(0)).put("startTime", TestParametersController.checkIfSpecialParameter(startTime));
+                ((JSONObject) bodyArray.get(0)).put("endTime", TestParametersController.checkIfSpecialParameter(endTime));
+                bodyList.add(String.valueOf(bodyArray));
+            }
             if (!(command.get("bodyReferences") == null)) {
                 JSONArray bodyArray = (JSONArray) command.get("bodyReferences");
                 ArrayList<String> bodyList = new ArrayList<String>();
                 bodyList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(bodyArray.get(0))));
                 command.put("bodyReferences", bodyList);
+            }
+            if (!(command.get("courseReferences") == null)) {
+                JSONArray bodyArray = (JSONArray) command.get("courseReferences");
+                ArrayList<String> bodyList = new ArrayList<String>();
+                bodyList.add(TestParametersController.checkIfSpecialParameter(String.valueOf(bodyArray.get(0))));
+                command.put("courseReferences", bodyList);
             }
             if (!(command.get("levelReferences") == null)) {
                 JSONArray levelArray = (JSONArray) command.get("levelReferences");
@@ -215,6 +234,9 @@ public class RestApiController {
             }
             if (!(command.get("bodyReference") == null)) {
                 command.put("bodyReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("bodyReference"))));
+            }
+            if (!(command.get("operationReference") == null)) {
+                command.put("operationReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("operationReference"))));
             }
             if (!(command.get("reference") == null)) {
                 command.put("reference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("reference"))));
@@ -260,6 +282,15 @@ public class RestApiController {
             }
             if (!(command.get("cohortReference") == null)) {
                 command.put("cohortReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("cohortReference"))));
+            }
+            if (!(command.get("sessionReference") == null)) {
+                command.put("sessionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("sessionReference"))));
+            }
+            if (!(command.get("stepReference") == null)) {
+                command.put("stepReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("stepReference"))));
+            }
+            if (!(command.get("dueDate") == null)) {
+                command.put("dueDate", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("dueDate"))));
             }
             if (!(command.get("costCentreFinancialDimensionReference") == null)) {
                 command.put("costCentreFinancialDimensionReference", TestParametersController.checkIfSpecialParameter(String.valueOf(command.get("costCentreFinancialDimensionReference"))));
