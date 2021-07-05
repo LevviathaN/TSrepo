@@ -198,29 +198,29 @@ Feature: Dates & Prices - Dates and Prices 'pods' (front-end) component
 
     # Check Study mode filter
     When I hover over the "Study mode" element
-    And I validate text "CONTAINS=6" to be displayed for "Face-to-face" element
+    And I validate text "CONTAINS=12" to be displayed for "Face-to-face" element
 
     When I click on the "Face-to-face" element
-    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "6"
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "12"
     And I click on the "Face-to-face" element
 
     # Check Location filter
     When I hover over the "Location" element
-    And I validate text "CONTAINS=6" to be displayed for "London" element
+    And I validate text "CONTAINS=12" to be displayed for "London" element
 
     When I click on the "London" element
-    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "6"
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "12"
     And I click on the "London" element
 
     # Check Session times filter
     When I hover over the "Session times" element
-    And I should see the "Weekday (4)" element
+    And I should see the "Weekday (10)" element
     And I should see the "Morning (1)" element
     And I should see the "Afternoon (1)" element
 
-    When I click on the "Weekday (4)" element
-    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "4"
-    And I click on the "Weekday (4)" element
+    When I click on the "Weekday (10)" element
+    Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "10"
+    And I click on the "Weekday (10)" element
     When I click on the "Morning (1)" element
     Then I should see the "BPP Digital Dates and Prices Course Instance entry" element in quantity of "1"
     And I click on the "Morning (1)" element
