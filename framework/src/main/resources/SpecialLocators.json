@@ -505,6 +505,10 @@
     "value": "xpath=//p[text()='PARAMETER']/../../../../../following-sibling::div/span[1]"
   },
   {
+    "name": "Product Factory Course Page checkbox",
+    "value": "xpath=//td[text()='PARAMETER']/preceding-sibling::td[last()]"
+  },
+  {
     "name": "Product Factory dialog checkbox",
     "value": "xpath=//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]"
   },

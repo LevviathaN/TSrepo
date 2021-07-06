@@ -597,3 +597,27 @@ Feature: Product Factory
     And I set "~StockSitePostcode[######]" text to the "Postcode" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_STOCK_SITE_NAME" element
+
+  Scenario: Keep Course Available On Website
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I click on the "Additional Filters" "button"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "[EC_BODY_SHORT_NAME] - [EC_BODY_NAME]" "Product Factory dropdown option"
+    And I click on the "Done" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory Course Page checkbox"
+    And I click on the "Perform Bulk Operation" button
+    And I click on the "Make available on website" "element by title" if "Make available on website,element by title" "Product Factory special element is enabled"
+    Then Attribute "tabindex" of "Make available on website" "element by title" should have value "-1"
+
+  Scenario: Keep Course Removed From Website
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I click on the "Additional Filters" "button"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "[EC_BODY_SHORT_NAME] - [EC_BODY_NAME]" "Product Factory dropdown option"
+    And I click on the "Done" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory Course Page checkbox"
+    And I click on the "Perform Bulk Operation" button
+    And I click on the "Remove from the website" "element by title" if "Remove from the website,element by title" "Product Factory special element is enabled"
+    Then Attribute "tabindex" of "Remove from the website" "element by title" should have value "-1"
