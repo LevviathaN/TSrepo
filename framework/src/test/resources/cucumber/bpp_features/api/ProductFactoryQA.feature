@@ -1,4 +1,4 @@
-@PF-API
+@REFERENCE-ITEM
 Feature: Product Factory API Data Creation
   As an Admin I should be able to create items in PF using API
 
@@ -6,91 +6,91 @@ Feature: Product Factory API Data Creation
   Scenario: Generate new ISBN
     When I generate new ISBN code
 
-  @FinancialDimension
+  @FinancialDimension #TC-1532
   Scenario: Create Financial Dimension
     When I create new Financial Dimension
 
-  @VatRule
+  @VatRule #TC-1340
   Scenario: Create Vat Rule
     When I create new Vat Rule
 
-  @ExamPreparation
+  @ExamPreparation #TC-4692
   Scenario: Create Exam Preparation
     When I create new Exam Preparation
 
-  @StudyMode
+  @StudyMode #TC-4793
   Scenario: Create Study Mode
     When I create new Study Mode
 
-  @CourseType
+  @CourseType #TC-701
   Scenario: Create Course Type
     When I create new Course Type
 
-  @Vertical
+  @Vertical #TC-4811
   Scenario: Create Vertical
     When I create new Vertical
 
-  @Body
+  @Body #TC-743
   Scenario: Create Body
     When I create new Body
 
-  @Sitting
+  @Sitting #TC-835
   Scenario: Create Sitting
     When I create new Sitting
 
-  @Paper
+  @Paper #TC-772
   Scenario: Create Paper
     When I create new Paper
 
-  @Level
+  @Level #TC-746
   Scenario: Create Level
     When I create new Level
 
-  @BodyToLevels
+  @BodyToLevels #TC-703
   Scenario: Link Body to Levels
     When I link Body to Levels
 
-  @ChangePaperBody
+  @ChangePaperBody #TC-697
   Scenario: Change Paper Body
     When I change Paper Body
 
-  @PaperToLevels
+  @PaperToLevels #TC-716
   Scenario: Link Paper to Levels
     When I link Paper to Levels
 
-  @Region
+  @Region #TC-1875
   Scenario: Create Region
     When I create new Region
 
-  @Location
+  @Location #TC-775
   Scenario: Create Location
     When I create new Location
 
-  @SessionDuration
+  @SessionDuration #TC-811
   Scenario: Create Session Duration
     When I create new Session Duration
 
-  @PricingMatrix
+  @PricingMatrix #TC-981
   Scenario: Create Pricing Matrix
     When I create new Pricing Matrix
 
-  @Prices
+  @Prices #TC-1032
   Scenario: Create Prices
     When I create new Prices
 
-  @DigitalContent
+  @DigitalContent #TC-3148
   Scenario: Create Digital Content
     When I create new Digital Content
 
-  @UniversityProgrammes
+  @UniversityProgrammes #TC-5387
   Scenario: Create University Programmes
     When I create new University Programmes
 
-  @ProgrammeCohorts
+  @ProgrammeCohorts #TC-5391
   Scenario: Create Programme Cohorts
     When I create new Programme Cohorts
 
-  @ModuleSections
+  @ModuleSections #TC-5407
   Scenario: Create Module Sections
     When I create new Module Sections
 
@@ -98,19 +98,19 @@ Feature: Product Factory API Data Creation
   Scenario: Create Stock Site
     When I create new Stock Site
 
-  @MaterialType
+  @MaterialType #TC-1435
   Scenario: Create Material Type
     When I create new Material Type
 
-  @Clients
+  @Clients #TC-919
   Scenario: Create Clients
     When I create new Clients
 
-  @Streams
+  @Streams #TC-2929
   Scenario: Create Streams
     When I create new Streams
 
-  @DeactivationReason
+  @DeactivationReason #TC-975
   Scenario: Create Deactivation Reason
     When I create new Deactivation Reason
 
@@ -158,6 +158,6 @@ Feature: Product Factory API Data Creation
   Scenario: Create Course Bulk Operation
     When I create Course Bulk Operation
 
-  @BulkWebPublish
+  @BulkWebPublish #TC-685
   Scenario: Execute Bulk Web Publishing
     When I execute Bulk Web Publishing
