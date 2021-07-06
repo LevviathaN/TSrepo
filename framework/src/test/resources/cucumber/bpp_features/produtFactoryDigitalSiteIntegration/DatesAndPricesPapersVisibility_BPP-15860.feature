@@ -5,7 +5,7 @@ Feature: Dates & Prices - Verify visibility of Papers with inactive Courses
   so as a result I would not expect this paper to appear within the D&P component on the Website for public users.
 
   @Positive #Blocked by BPP-15860
-  Scenario: Add Dates n Prices Component to CMS Page
+  Scenario: Verify Papers Without Active Courses Are Not Displayed On Website
     Given I execute "Remember Variables " reusable step
 
     Given I execute "Log In" reusable step
