@@ -17,9 +17,6 @@ public class ProductFactoryAPITests {
     @When("I create Financial Dimensions record for Material Type item")
     public void i_create_financial_dimension_material_type() {
         new ProductFactoryBusinessProcesses()
-                .createNewFinancialDimension("PRODUCT","BODY")
-                .createNewFinancialDimension("PRODUCT","REGION")
-                .createNewFinancialDimension("PRODUCT","LOCATION")
                 .createNewFinancialDimension("PRODUCT","MATERIALTYPE");
     }
 
