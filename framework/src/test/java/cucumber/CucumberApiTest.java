@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ui.utils.Reporter;
+import ui.utils.RetryAnalyzer;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features/api",
@@ -32,6 +33,7 @@ public class CucumberApiTest extends BaseApiTest {
     @Test(
             groups = {"BPP API Automation"},
             dataProvider = "scenarios",
+            retryAnalyzer = RetryAnalyzer.class,
             invocationCount = 10,
             threadPoolSize = 10
     )
