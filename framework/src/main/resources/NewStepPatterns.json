@@ -8,6 +8,14 @@
     "value": "^Browser deletes cookies$"
   },
   {
+    "name": "BROWSER_GETS_COOKIES",
+    "value": "^Browser gets first party cookies$"
+  },
+  {
+    "name": "BROWSER_CHECKS_FIRST_PARTY_COOKIES",
+    "value": "^Browser checks first party cookies$"
+  },
+  {
     "name": "ELEMENT_CSS_SHOULD_HAVE_VALUE",
     "value": "^Сss \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
   },
