@@ -1,8 +1,8 @@
 @ProductFactory @DigitalContent
-Feature: Digital Content Id - Create - BPP-5605
-  As a Senior Product Setter
-  I want to create a Digital Content Id
-  so that Course(s) can be given a Digital Content Id.
+Feature: Onboarding - Digital Content - ability to define Type - BPP-14452
+  As a member of the PS team
+  I want to be able to configure digital content differently for a university programme to a PQ programme
+  o that the provisioning middleware can auto provision the correct materials for a given programme instance
 
   Background:
     Given I execute "Log In" reusable step
@@ -29,7 +29,7 @@ Feature: Digital Content Id - Create - BPP-5605
     And I click on the "Finish" "Product Factory button"
     Then I should see the "Edit Digital Content" element
 
-  @Positive @P1 @BlockedByIssue #TC-5488 Blocked by BPP-15863
+  @Positive @P1 #TC-5488
   Scenario: Amend Digital Content University Type
     When I click on the "Delivery" "Product Factory navigation item"
     When I click on the "Digital Content" "Product Factory navigation sub item"
@@ -38,6 +38,7 @@ Feature: Digital Content Id - Create - BPP-5605
     And I click on the "Content Restriction" "Product Factory dropdown"
     And I click on the "Provisioning Start Date" "Product Factory dropdown option"
     Then I set "[TODAY]" text to the "Provisioning Start Date" "Product Factory text field"
+    And I click on the "Content Restriction" "Product Factory dropdown"
     Then I click on the "Save" "Product Factory button"
     Then I should see the "Provisioning Start Date" element
 
