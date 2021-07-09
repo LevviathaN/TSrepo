@@ -14,7 +14,7 @@ import ui.utils.RetryAnalyzer;
 
 @CucumberOptions(
         features = "src/test/resources/cucumber/bpp_features/api",
-        glue = {"cucumber.api"},
+        glue = {"cucumber.api", "cucumber.productFactory"},
         tags = {"@API"},
         plugin = {"pretty"})
 
