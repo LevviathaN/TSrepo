@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.Matchers;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -20,6 +21,7 @@ import ui.utils.pdf.PDFHandler;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,6 +32,7 @@ import static org.hamcrest.Matchers.not;
  * Created by Ruslan Levytskyi on 15/3/2019.
  */
 public class StepDefinitions extends SeleniumHelper {
+
 
     @AfterStep
     public void postActions() {
@@ -367,7 +370,7 @@ public class StepDefinitions extends SeleniumHelper {
      * @param element: By locator of a element
      * @author Andrii Yakymchuk
      */
-    @Then("I shouldn't see the \"([^\"]*)\"(?: button| message| element| text)?$")
+    @Then("^I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$")
     public void i_should_not_see_the_element(String element) {
         Reporter.log("Executing step: I shouldn't see the '" + element + "' element");
         if (checkIfElementNotExist(initElementLocator(element))) {
@@ -738,6 +741,52 @@ public class StepDefinitions extends SeleniumHelper {
     }
 
     /**
+     * Provides the ability to get first party cookie settings for bpp domain. Required in BPP-14260
+     *
+     */
+    @Then("^Browser gets first party cookies$")
+    public void get_first_party_cookies () {
+        Reporter.log("Executing step: Browser gets first party cookies");
+        Cookie cookie = driver().manage().getCookieNamed("kppid");
+        Assert.assertEquals(cookie.getDomain(),"web-stage-bppdigital.bppuniversity.com");
+        BPPLogManager.getLogger().info("Cookie domain is: " + cookie.getDomain());
+        Assert.assertEquals(cookie.getName(),"kppid");
+        BPPLogManager.getLogger().info("Cookie name is: " + cookie.getName());
+        String cookieValue = cookie.getValue();
+        assertThat(cookieValue, matchesPattern("^[A-Za-z0-9\\_]{11}$"));
+        BPPLogManager.getLogger().info("Cookie value is: " + cookieValue);
+        long cookieTime = cookie.getExpiry().getTime();
+        BPPLogManager.getLogger().info("Cookie expiry is: " + cookieTime);
+        long checkedTime = Tools.checkExpiryTimeForCookies();
+        Assert.assertEquals(String.valueOf(cookieTime).substring(0,8), String.valueOf(checkedTime).substring(0,8));
+        Reporter.log("Cookie expiry date matches a date 6 months in the future as expected");
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COOKIE_VALUE", cookieValue);
+        ExecutionContextHandler.setExecutionContextValueByKey("EC_COOKIE_EXPIRY", String.valueOf(cookieTime));
+    }
+
+    /**
+     * Provides the ability to check first party cookies after navigating through website
+     *
+     */
+    @Then("^Browser checks first party cookies$")
+    public void check_first_party_cookies () {
+        Reporter.log("Executing step: Browser gets first party cookies");
+        Cookie cookie = driver().manage().getCookieNamed("kppid");
+        Assert.assertEquals(cookie.getDomain(),"web-stage-bppdigital.bppuniversity.com");
+        BPPLogManager.getLogger().info("Cookie domain after navigating through website is: " + cookie.getDomain());
+        Assert.assertEquals(cookie.getName(),"kppid");
+        BPPLogManager.getLogger().info("Cookie name after navigating through website is " + cookie.getName());
+        String cookieValue = cookie.getValue();
+        Assert.assertEquals(cookieValue,ExecutionContextHandler.getExecutionContextValueByKey("EC_COOKIE_VALUE"));
+        Reporter.log("Cookie value: " + cookieValue + " matches the EC variable: " + ExecutionContextHandler.getExecutionContextValueByKey("EC_COOKIE_VALUE"));
+        BPPLogManager.getLogger().info("Cookie value after navigating through website is: " + cookieValue);
+        long cookieTime = cookie.getExpiry().getTime();
+        BPPLogManager.getLogger().info("Cookie expiry after navigating through website is: " + cookieTime);
+        Assert.assertNotEquals(String.valueOf(cookieTime), ExecutionContextHandler.getExecutionContextValueByKey("EC_COOKIE_EXPIRY"));
+        Reporter.log("Cookie expiry date: " + cookieTime + " matches the EC variable by pattern [^[A-Za-z0-9\\_]{11}$]: " + ExecutionContextHandler.getExecutionContextValueByKey("EC_COOKIE_EXPIRY"));
+    }
+
+    /**
      * Definition to execute a list of steps for each element found on the page by given locator
      *
      * @param element locator for element you want to click on
@@ -889,5 +938,17 @@ public class StepDefinitions extends SeleniumHelper {
             BPPLogManager.getLogger().info("Counting: " + element + " elements");
             int actualNumberOfElements = numberOfElements(initElementLocator(element));
             ExecutionContextHandler.setExecutionContextValueByKey(varName, TestParametersController.checkIfSpecialParameter(String.valueOf(actualNumberOfElements)));
+    }
+
+    /**
+     * Definition to perform right click an element on the page
+     *
+     * @author Yurii Zosin
+     * @param element name or value of needed element
+     */
+    @When("^I perform right mouse click \"([^\"]*)\" (?:button|link|option|element)$")
+    public void i_right_click_on_element_(String element) {
+        Reporter.log("Executing step: I perform right mouse click on the '" + element );
+        rightMouseClick(initElementLocator(element));
     }
 }

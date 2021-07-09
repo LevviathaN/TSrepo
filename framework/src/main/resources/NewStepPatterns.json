@@ -8,6 +8,14 @@
     "value": "^Browser deletes cookies$"
   },
   {
+    "name": "BROWSER_GETS_COOKIES",
+    "value": "^Browser gets first party cookies$"
+  },
+  {
+    "name": "BROWSER_CHECKS_FIRST_PARTY_COOKIES",
+    "value": "^Browser checks first party cookies$"
+  },
+  {
     "name": "ELEMENT_CSS_SHOULD_HAVE_VALUE",
     "value": "^Сss \"([^\"]*)\" of \"([^\"]*)\" should have value \"([^\"]*)\"$"
   },
@@ -112,6 +120,10 @@
     "value": "^I perform right mouse click on the \"([^\"]*)\" \"([^\"]*)\"$"
   },
   {
+    "name": "I_PERFORM_RIGHT_MOUSE_CLICK",
+    "value": "^I perform right mouse click \"([^\"]*)\" (?:button|link|option|element)$"
+  },
+  {
     "name": "I_CLICK_ON_THE_BUTTON_IF",
     "value": "^I click on the \"([^\"]*)\" (?:button|link|option|element) if \"([^\"]*)\" \"([^\"]*)\"$"
   },
@@ -189,7 +201,7 @@
   },
   {
     "name": "I_SHOULD_NOT_SEE_ELEMENT",
-    "value": "I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"
+    "value": "^I shouldn't see the \"([^\"]*)\" (?:button|message|element|text)$"
   },
   {
     "name": "I_SHOULD_SCROLL_TO_THE_TOP_BOTTOM_OF_THE_PAGE",

@@ -237,6 +237,37 @@ Feature: Product Factory
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_MATERIAL_TYPE_DESCRIPTION" element
 
+  Scenario: Create Programme
+    When I click on the "Programme" "Product Factory navigation item"
+    When I click on the "University Programmes" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "ProgrammeCode[######]" text to the "Code" "Product Factory text field"
+    And I set "ProgrammeName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_PROGRAMME_NAME" element
+
+  Scenario: Create Programme Cohort
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Programme Cohorts" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "University Programme" "Product Factory change button"
+    And I click on the "EC_PROGRAMME_CODE" "Product Factory select button"
+    And I set "~CohortStartDate[TODAY]" text to the "Start Teaching Date" "Product Factory text field"
+    And I set "CohortName[######]" text to the "Name" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_COHORT_NAME" element
+
+  Scenario: Create Module Section
+    When I click on the "Delivery" "Product Factory navigation item"
+    When I click on the "Module Sections" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I click on the "Programme Cohort" "Product Factory change button"
+    And I click on the "EC_COHORT_NAME" "Product Factory select button"
+    And I set "ModuleSectionName[######]" text to the "Name" "Product Factory text field"
+    And I set "~SISTermCode[######]" text to the "SIS Term Code" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_MODULE_SECTION_NAME" element
+
   Scenario: Create Client
     When I click on the "Miscellaneous" "Product Factory navigation item"
     When I click on the "Clients" "Product Factory navigation sub item"
@@ -244,6 +275,15 @@ Feature: Product Factory
     And I set "ClientName[######]" text to the "Name" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_CLIENT_NAME" element
+
+  Scenario: Create Study Mode
+    When I click on the "Types" "Product Factory navigation item"
+    When I click on the "Study Modes" "Product Factory navigation sub item"
+    Then I click on the "Create" "Product Factory button"
+    And I set "StudyModeName[######]" text to the "Name" "Product Factory text field"
+    And I set "StudyModeDescription[######]" text to the "Description" "Product Factory text field"
+    And I click on the "Save" "Product Factory button"
+    Then I should see the "EC_STUDY_MODE_NAME" element
 
   Scenario: Create Vertical
     When I click on the "Miscellaneous" "Product Factory navigation item"
@@ -322,6 +362,7 @@ Feature: Product Factory
     And I click on the "BPP Learning Media" "Product Factory button"
     And I click on the "EC_MATERIAL_TYPE_NAME" "Product Factory select button"
     And I set "~Price[####]" text to the "Price (£)" "Product Factory text field"
+    And I set "~Cost[####]" text to the "Cost (£)" "Product Factory text field"
     And I set "~Weight[##]" text to the "Weight (kg)" "Product Factory text field"
     And I set "EC_ISBN" text to the "ISBN" "Product Factory text field"
     And I set "From[TODAY]" text to the "Available From" "Product Factory text field"
@@ -467,7 +508,7 @@ Feature: Product Factory
     And I click on the "Body" "Product Factory dropdown"
     And I click on the "EC_BODY_NAME" "Product Factory dropdown option"
     And I click on the "Paper" "Product Factory dropdown"
-    And I click on the "EC_PAPER_NAME" "Product Factory dropdown option"
+    And I click on the "EC_CBA_PAPER_NAME" "Product Factory dropdown option"
     And I click on the "Finish" "Product Factory button"
 
   Scenario: Create Digital Content
@@ -565,3 +606,27 @@ Feature: Product Factory
     And I set "~StockSitePostcode[######]" text to the "Postcode" "Product Factory text field"
     And I click on the "Save" "Product Factory button"
     Then I should see the "EC_STOCK_SITE_NAME" element
+
+  Scenario: Keep Course Available On Website
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I click on the "Additional Filters" "button"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "[EC_BODY_SHORT_NAME] - [EC_BODY_NAME]" "Product Factory dropdown option"
+    And I click on the "Done" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory Course Page checkbox"
+    And I click on the "Perform Bulk Operation" button
+    And I click on the "Make available on website" "element by title" if "Make available on website,element by title" "Product Factory special element is enabled"
+    Then Attribute "tabindex" of "Make available on website" "element by title" should have value "-1"
+
+  Scenario: Keep Course Removed From Website
+    When I click on the "Products" "Product Factory navigation item"
+    When I click on the "Courses" "Product Factory navigation sub item"
+    And I click on the "Additional Filters" "button"
+    And I click on the "Body" "Product Factory dropdown"
+    And I click on the "[EC_BODY_SHORT_NAME] - [EC_BODY_NAME]" "Product Factory dropdown option"
+    And I click on the "Done" "Product Factory button"
+    And I click on the "EC_BODY_SHORT_NAME" "Product Factory Course Page checkbox"
+    And I click on the "Perform Bulk Operation" button
+    And I click on the "Remove from the website" "element by title" if "Remove from the website,element by title" "Product Factory special element is enabled"
+    Then Attribute "tabindex" of "Remove from the website" "element by title" should have value "-1"

@@ -608,12 +608,48 @@
     "value": "xpath=//*[text()='Weekday' and text()='sessions']"
   },
   {
+    "name": "BPP Digital Dates and Prices Number of Sessions For Multiple Address",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'course-timings-and-address')]//div[@class='row']//p"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Location For Instance",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'location-address')]//p"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Second Location For Instance",
+    "value": "xpath=(//div[@class='table-content row open ']//div[contains(@class,'location-address')]//p)[2]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Active Instance Google Pin",
+    "value": "xpath=//*[@class='bi bi-geo-alt']"
+  },
+  {
     "name": "BPP Digital Dates and Prices Papers dropdown",
     "value": "xpath=//button[span[@class='paper-name']]"
   },
   {
     "name": "BPP Digital Dates and Prices Course Instance entry",
     "value": "xpath=//div[@id='course-instances-list']/*"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Course And Timings Section",
+    "value": "xpath=//div[@class='table-content row open ']//div[contains(@class,'course-timings-and-address')]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Type of Session First Instance",
+    "value": "xpath=(//div[@class='sessions col']/p)[1]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Type of Session Second Instance",
+    "value": "xpath=(//div[@class='sessions col']/p)[3]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Course Type Tooltip",
+    "value": "xpath=(//div[@class='col courseType']//following-sibling::div)[1]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Tooltip Content",
+    "value": "xpath=//div[@class='tip-content']"
   },
   {
     "name": "Banner Username",
@@ -1821,7 +1857,7 @@
   },
   {
     "name": "Direct App Topic Key Activities",
-    "value": "xpath=(//div[contains(.,'Topic to test adding activities')])[last()]"
+    "value": "xpath=(//div[contains(.,'Topic to test adding activities')]/a)[last()]"
   },
   {
     "name": "Direct App Topic Name",
@@ -2670,6 +2706,14 @@
   {
     "name": "Product Factory Delete Course Material button",
     "value": "xpath=//span[text()='Material Delivery Default']/../../../../div[3]/button"
+  },
+  {
+    "name": "Product Factory Material Edit Page Price Readonly Field",
+    "value": "xpath=//label[text()='Price (£)']/following-sibling::*"
+  },
+  {
+    "name": "Product Factory Material Edit Page Cost Readonly Field",
+    "value": "xpath=//label[text()='Cost (£)']/following-sibling::*"
   },
   {
     "name": "Salesforce Account Creation Save button",
@@ -3977,7 +4021,7 @@
   },
   {
     "name": "Quark Publish",
-    "value": "xpath=//span[contains(.,'Publish')]"
+    "value": "xpath=//span[text()='Publish']"
   },
   {
     "name": "Quark Home Menu",
@@ -3994,6 +4038,10 @@
   {
     "name": "Quark Publish BPP PDF",
     "value": "xpath=//*[contains(@id,'publishContextMenuItem-workbookPdfUsingFlattenXml')]//span[contains(.,'BPP PDF')]"
+  },
+  {
+    "name": "Quark Microsoft Username",
+    "value": "name=loginfmt"
   },
   {
     "name": "Quark Generating Output Window",

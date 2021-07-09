@@ -74,7 +74,7 @@ Feature: UAT Test Data Generation
       |4|I set "$Auto[StockSiteName]<varName>" text to the "Name" "Product Factory text field"|
     And I execute "Create Material" reusable step replacing some steps
       |6|I set "~Price[2000]" text to the "Price (£)" "Product Factory text field"|
-      |7|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
+      |8|I set "~Weight[10]" text to the "Weight (kg)" "Product Factory text field"|
 #    Create Course and its instance
     And I execute "Create Session Duration" reusable step replacing some steps
       |4|I set "$Auto[SessionDurationDescription]<varName>" text to the "Description" "Product Factory text field"|

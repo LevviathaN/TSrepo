@@ -336,7 +336,7 @@ Feature: BuildEmpire
     And I click on the "Direct App Save Review And Back" button
     And I wait for "1" seconds
     And Browser performs "Refresh" command
-    And I wait for "5" seconds
+    And I wait for "10" seconds
     And I click on the "Application documents" "Build Empire application section"
     #And I click on the "Download Application of" "Build Empire application section"
     #Then I switch to window with index "0"
@@ -1150,7 +1150,7 @@ Feature: BuildEmpire
     And I wait for "2" seconds
     And I hover over the "Direct App Programmes Programm Dropdown" element
     And I click on the "Direct App Programmes Programm Dropdown" element
-    Then I click on the "UAT Accounting Assitant" "Build Empire application type"
+    Then I click on the "UAT Accounting Assistant" "Build Empire application type"
     And I wait for "2" seconds
     #And I hover over the "Direct App Location Dropdown" button
     #And I click on the "Direct App Location Dropdown" element
@@ -1174,7 +1174,7 @@ Feature: BuildEmpire
     And I hover over the "Direct App Programmes Programm Dropdown" button
     And I click on the "Direct App Programmes Programm Dropdown" element
     And I wait for "2" seconds
-    Then I click on the "UAT Accounting Assitant" "Build Empire application type"
+    Then I click on the "UAT Accounting Assistant" "Build Empire application type"
     And I wait for "2" seconds
     #And I hover over the "Direct App Location Dropdown" button
     #And I click on the "Direct App Location Dropdown" element

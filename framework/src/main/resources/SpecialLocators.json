@@ -197,6 +197,22 @@
     "value": "xpath=//*[@class='dropdown-item' and text()='PARAMETER']"
   },
   {
+    "name": "BPP Digital Dates and Prices Course Filter radiobutton",
+    "value": "xpath=(//span[text()='PARAMETER'])[2]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Filter By",
+    "value": "xpath=//div[@class='button-text' and contains(.,'PARAMETER')]/parent::button[contains(@class,'btn dropdown-toggle')]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Start date filter option",
+    "value": "xpath=//div[@class='button-text' and contains(.,'Start date')]//following::div[@class='dropdown-menu']//span[contains(.,'PARAMETER')]"
+  },
+  {
+    "name": "BPP Digital Dates and Prices Location filter option",
+    "value": "xpath=//div[@class='button-text' and contains(.,'Location')]//following::div[@class='dropdown-menu']//span[contains(.,'PARAMETER')]"
+  },
+  {
     "name": "Build Empire Breadcrumb Not Clickable Tab",
     "value": "xpath=//ul[@class='breadcrumb ember-view']/li//li[contains(.,'PARAMETER')]"
   },
@@ -373,6 +389,10 @@
     "value": "xpath=//td[text()='PARAMETER']/following-sibling::td//input"
   },
   {
+    "name": "Product Factory CBA Course BPP Fee recalculate button",
+    "value": "xpath=//td[text()='PARAMETER']/following-sibling::td//button[@title='Recalculate Price']"
+  },
+  {
     "name": "Product Factory Change Body button",
     "value": "xpath=//td[text()='PARAMETER']/following-sibling::td/button/span[contains(text(),'Change Body')]"
   },
@@ -485,6 +505,10 @@
     "value": "xpath=//p[text()='PARAMETER']/../../../../../following-sibling::div/span[1]"
   },
   {
+    "name": "Product Factory Course Page checkbox",
+    "value": "xpath=//td[text()='PARAMETER']/preceding-sibling::td[last()]"
+  },
+  {
     "name": "Product Factory dialog checkbox",
     "value": "xpath=//td[text()='PARAMETER']//preceding-sibling::td/span/span[1]"
   },
@@ -549,6 +573,10 @@
     "value": "xpath=(//h6[text()='Steps']/following-sibling::table//button)[PARAMETER]"
   },
   {
+    "name": "Product Factory readonly field",
+    "value": "xpath=//label[text()='PARAMETER']/following-sibling::*"
+  },
+  {
     "name": "Salesforce New Qualification input fields",
     "value": "xpath=//*[text()='PARAMETER']/following::input[1]"
   },
@@ -571,6 +599,10 @@
   {
     "name": "Salesforce cases search student",
     "value": "xpath=//div[@title='PARAMETER']"
+  },
+  {
+    "name": "Salesforce cases contact",
+    "value": "xpath=(//div[@title='PARAMETER'])[last()]"
   },
   {
     "name": "Salesforce cases status option",
@@ -839,6 +871,10 @@
   {
     "name": "text contained in P element",
     "value": "xpath=//p[contains(text(),'PARAMETER')]"
+  },
+  {
+    "name": "contained in P element",
+    "value": "xpath=//p[contains(.,'PARAMETER')]"
   },
   {
     "name": "text contained in SPAN element",
