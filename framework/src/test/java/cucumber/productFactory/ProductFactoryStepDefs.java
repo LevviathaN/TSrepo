@@ -48,8 +48,8 @@ public class ProductFactoryStepDefs {
         BPPLogManager.getLogger().info("ISBN Code was successfully created. ISBN: " + result.text());
     }
 
-    @When("^I create Financial Dimensions with Dimension Type of \"([^\"]*)\" and Target \"([^\"]*)\" saving as \"([^\"]*)\"$")
-    public synchronized void i_create_financial_dimension_course_type(String dimensionType, String target, String ecFDValue) {
+    @When("I create Financial Dimensions with Dimension Type of \"([^\"]*)\" and Target \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_create_financial_dimension(String dimensionType, String target, String ecFDValue) {
 
         JSONObject recordsList = restController.requestProcess("addFinancialDimension","createFinancialDimension", dimensionType,target);
 
@@ -82,7 +82,7 @@ public class ProductFactoryStepDefs {
     }
 
     @When("I create new Sitting saving as \"([^\"]*)\"$")
-    public synchronized void i_create_sitting(String ecSittingValue) {
+    public void i_create_sitting(String ecSittingValue) {
 
         JSONObject recordsList = restController.requestProcess("addSitting","createSitting", null, null);
 
