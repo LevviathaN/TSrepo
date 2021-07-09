@@ -601,6 +601,10 @@
     "value": "xpath=//div[@title='PARAMETER']"
   },
   {
+    "name": "Salesforce cases contact",
+    "value": "xpath=(//div[@title='PARAMETER'])[last()]"
+  },
+  {
     "name": "Salesforce cases status option",
     "value": "xpath=//span[@title='PARAMETER']"
   },
