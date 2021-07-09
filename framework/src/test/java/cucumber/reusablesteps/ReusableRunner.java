@@ -1,5 +1,6 @@
 package cucumber.reusablesteps;
 
+import cucumber.productFactory.ProductFactoryStepDefs;
 import cucumber.stepdefs.SpecialStepDefs;
 import cucumber.stepdefs.StepDefinitions;
 import org.w3c.dom.Document;
@@ -99,10 +100,14 @@ public static ReusableRunner getInstance() {
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_PERFORM_RIGHT_MOUSE_CLICK_ON_THE_ElEMENT_SPECIAL"), () -> specialStepDefs.i_right_click_on_element_with_parameter_special(arg1,arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get( "I_DOUBLECLICK_ON_THE_ElEMENT_SPECIAL"), () -> specialStepDefs.i_doubleclick_on_element_with_parameter_special(arg1, arg2));
         stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_EXECUTE_JS_CODE_IF"), () -> specialStepDefs.i_execute_js_code_if(arg1, arg2, arg3));
+        //PF Steps
+        stepDefsMap.put(SeleniumHelper.stepPatternsMap.get("I_GENERATE_NEW_ISBN_CODE"), () -> { pfStepDefs.i_generate_new_isbn_code(arg1);
+        });
     }
 
     private StepDefinitions stepDefs = new StepDefinitions();
     private SpecialStepDefs specialStepDefs = new SpecialStepDefs();
+    private ProductFactoryStepDefs pfStepDefs = new ProductFactoryStepDefs();
 
     private ArrayList<String> reusable;
 

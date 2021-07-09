@@ -254,5 +254,9 @@
   {
     "name": "HOVER_OVER_ELEMENT_SPECIAL",
     "value": "^I hover over the \"([^\"]*)\" \"([^\"]*)\"$"
+  },
+  {
+    "name": "I_GENERATE_NEW_ISBN_CODE",
+    "value": "I generate new ISBN code saving as \"([^\"]*)\"$"
   }
 ]

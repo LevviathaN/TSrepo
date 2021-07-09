@@ -1,6 +1,9 @@
-package api.requests;
+package cucumber.productFactory;
 
-import api.*;
+import api.ProductFactoryAuthentication;
+import api.RestApiController;
+import api.Utilities;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -19,81 +22,51 @@ import static org.junit.Assert.assertThat;
 import static org.junit.internal.matchers.StringContains.containsString;
 import static org.testng.Assert.assertEquals;
 
-/**
- * Contains all methods required for main Product Factory API calls to create End to End
- */
 
-public class ProductFactoryBusinessProcesses {
+public class ProductFactoryStepDefs {
 
-    private final PropertiesHelper propertiesHelper = new PropertiesHelper();
     private final RestApiController restController;
-    String Reference = null;
-
-    public ProductFactoryBusinessProcesses() {
+    private final PropertiesHelper propertiesHelper = new PropertiesHelper();
+    public ProductFactoryStepDefs() {
         this.restController = new RestApiController();
     }
 
-    public void createNewISBNcode() throws IOException {
-        Document doc = Jsoup.connect("https://generate.plus/en/number/isbn").get();
+    @When("I generate new ISBN code saving as \"([^\"]*)\"$")
+    public void i_generate_new_isbn_code(String ecISBNValue) {
+        Document doc = null;
+        try {
+            doc = Jsoup.connect("https://generate.plus/en/number/isbn").get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Element result = doc.select("div[class='content single text-center text-bold h1 char-break']").first();
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_ISBN", result.text());
+        ExecutionContextHandler.setExecutionContextValueByKey(ecISBNValue, result.text());
 
-        assertThat(result.text(), matchesPattern("^[0-9]{1}-[0-9]{4}-[0-9]{4}-[0-9]{1}"));
+        assertThat(result.text(), matchesPattern("^[0-9]{1}-[0-9]{4}-[0-9]{4}-[0-9A-Z]{1}"));
 
         Reporter.log("<pre>" + "ISBN nubmer: " + result.text() + "</pre>");
         BPPLogManager.getLogger().info("ISBN Code was successfully created. ISBN: " + result.text());
     }
 
-    /**
-     * Method for processing JSON file of request.
-     * @param fileName - json file that is coresspondent for current request
-     * @param objName - json object (operationName) of current json file
-     * @param parameter1 - Parameter for JSON object String. If required. Look at FinancialDimension method
-     * @param parameter2 - Parameter for JSON object String. If required. Look at FinancialDimension method
-     **/
+    @When("^I create Financial Dimensions with Dimension Type of \"([^\"]*)\" and Target \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public synchronized void i_create_financial_dimension_course_type(String dimensionType, String target, String ecFDValue) {
 
-    public JSONObject requestProcess(String fileName,String objName,String parameter1, String parameter2) {
-        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
-                restController.processPropertiesPF("ProductFactory/" + fileName, parameter1, parameter2),
-                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
-        );
-        String ResponseString = Response.getBody().asString();
-
-        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
-        JSONObject recordsData = (JSONObject) recordsObject.get("data");
-        JSONObject recordsList = (JSONObject) recordsData.get(objName);
-
-        /*Get Json object values*/
-        try {
-            Reference = (String) recordsList.get("reference");
-        } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
-            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
-            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
-        }
-
-        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
-        assertThat(ResponseString, containsString(objName));
-
-        return recordsList;
-    }
-
-    public ProductFactoryBusinessProcesses createNewFinancialDimension(String parameter1, String parameter2) {
-
-        JSONObject recordsList = requestProcess("addFinancialDimension","createFinancialDimension", parameter1, parameter2);
+        JSONObject recordsList = restController.requestProcess("addFinancialDimension","createFinancialDimension", dimensionType,target);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String DimensionType = (String) recordsList.get("dimensionType");
         String Target = (String) recordsList.get("target");
         String Code = (String) recordsList.get("code");
         String Description = (String) recordsList.get("description");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_FD_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_FD_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_DIMENSION_TYPE", DimensionType);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_FD_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_TARGET", Target);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_FD_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_CODE", Code);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_FD_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_DESCRIPTION", Description);
+
+        ExecutionContextHandler.setExecutionContextValueByKey(ecFDValue + "_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecFDValue + "_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_DIMENSION_TYPE", DimensionType);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecFDValue + "_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_TARGET", Target);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecFDValue + "_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_CODE", Code);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecFDValue + "_" + Target.toUpperCase().replace(" ", "_") + "_" + DimensionType.toUpperCase().replace(" ", "_") + "_DESCRIPTION", Description);
 
         /*Report log with JSON object values*/
         Reporter.log("<pre>" +
@@ -105,181 +78,25 @@ public class ProductFactoryBusinessProcesses {
                 "<br>" + "Financial Dimension " + Target + " " + DimensionType + " Description: " + "<font color='red'><b>" + Description + "</font></b>" +
                 "</pre>");
 
-        BPPLogManager.getLogger().info("Financial Dimension of " + parameter1 + "and " + parameter2 + " was successfully created.");
-
-        return this;
+        BPPLogManager.getLogger().info("Financial Dimension of " + dimensionType + " and " + target + " was successfully created.");
     }
 
-    public ProductFactoryBusinessProcesses createNewVatRule() {
+    @When("I create new Sitting saving as \"([^\"]*)\"$")
+    public synchronized void i_create_sitting(String ecSittingValue) {
 
-        JSONObject recordsList = requestProcess("addVatRule","createVatRule", null, null);
-
-        /*Get JSON object values*/
-        String Code = (String) recordsList.get("code");
-        String Description = (String) recordsList.get("description");
-        Long Rate = (Long) recordsList.get("rate");
-
-        /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_CODE", Code);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VAT_RULE_RATE", String.valueOf(Rate));
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" +
-                "<br>Vat Rule: " +
-                "<br>" + "Vat Rule Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Vat Rule Code: " + "<font color='red'><b>" + Code + "</font></b>" +
-                "<br>" + "Vat Rule Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "<br>" + "Vat Rule Rate: " + "<font color='red'><b>" + Rate + "</font></b>" +
-                "</pre>");
-
-        BPPLogManager.getLogger().info("Vat Rule was successfully created.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewExamPreparation() {
-
-        JSONObject recordsList = requestProcess("addExamPreparation","createExamPreparation", null, null);
+        JSONObject recordsList = restController.requestProcess("addSitting","createSitting", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = (String) recordsList.get("name");
-        String Description = (String) recordsList.get("description");
+        String StartDate = (String) recordsList.get("startDate");
+        String EndDate = (String) recordsList.get("endDate");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_EXAM_PREPARATION_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_EXAM_PREPARATION_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_EXAM_PREPARATION_DESCRIPTION", Description);
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" +
-                "<br>Exam Preparation: " +
-                "<br>" + "Exam Preparation Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Exam Preparation Name: " + "<font color='red'><b>" + Name + "</font></b>" +
-                "<br>" + "Exam Preparation Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "</pre>");
-
-        BPPLogManager.getLogger().info("Exam Preparation was successfully created.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewStudyMode() {
-
-        JSONObject recordsList = requestProcess("addStudyMode","createStudyMode", null, null);
-
-        /*Get JSON object values*/
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
-
-        /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STUDY_MODE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STUDY_MODE_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STUDY_MODE_DESCRIPTION", Description);
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" +
-                "<br>Study Mode: " +
-                "<br>" + "Study Mode Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Study Mode Name: " + "<font color='red'><b>" + Name + "</font></b>" +
-                "<br>" + "Study Mode Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "</pre>");
-
-        BPPLogManager.getLogger().info("Study Mode was successfully created.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewCourseType() {
-
-        JSONObject recordsList = requestProcess("addCourseType","createCourseType", null, null);
-
-        /*Get JSON object values*/
-        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
-
-        /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_TYPE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_TYPE_DESCRIPTION", Description);
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" +
-                "<br>Course Type: " +
-                "<br>" + "Course Type Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Course Type Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "</pre>");
-
-        BPPLogManager.getLogger().info("Course Type was successfully created.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewVertical() {
-
-        JSONObject recordsList = requestProcess("addVertical","createVertical", null, null);
-
-        /*Get JSON object values*/
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-
-        /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VERTICAL_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_VERTICAL_NAME", Name);
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" +
-                "<br>Vertical: " +
-                "<br>" + "Vertical Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Vertical Description: " + "<font color='red'><b>" + Name + "</font></b>" +
-                "</pre>");
-
-        BPPLogManager.getLogger().info("Vertical was successfully created.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewBody() {
-
-        JSONObject recordsList = requestProcess("addBody","createBody", null, null);
-
-        /*Get JSON object values*/
-        String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
-
-        /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_SHORTNAME", ShortName);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_BODY_DESCRIPTION", Description);
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" +
-                "<br>Body: " +
-                "<br>" + "Body Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
-                "<br>" + "Body Short Name: " + "<font color='red'><b>" + ShortName + "</font></b>" +
-                "<br>" + "Body Name: " + "<font color='red'><b>" + Name + "</font></b>" +
-                "<br>" + "Body Description: " + "<font color='red'><b>" + Description + "</font></b>" +
-                "</pre>");
-
-        BPPLogManager.getLogger().info("Body was successfully created.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewSitting() {
-
-        JSONObject recordsList = requestProcess("addSitting","createSitting", null, null);
-
-        /*Get JSON object values*/
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-        String StartDate = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("startDate")));
-        String EndDate = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("endDate")));
-
-        /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_STARTDATE", StartDate);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SITTING_ENDDATE", EndDate);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSittingValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSittingValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSittingValue + "_STARTDATE", StartDate);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSittingValue + "_ENDDATE", EndDate);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -292,29 +109,186 @@ public class ProductFactoryBusinessProcesses {
 
         BPPLogManager.getLogger().info("Sitting was successfully created.");
 
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewPaper(Boolean parameter1) {
+    @When("I create new Vat Rule saving as \"([^\"]*)\"$")
+    public void i_create_vat_rule(String ecVatRuleValue) {
 
-        JSONObject recordsList = requestProcess("addPaper","createPaper", String.valueOf(parameter1), null);
+        JSONObject recordsList = restController.requestProcess("addVatRule","createVatRule", null, null);
 
         /*Get JSON object values*/
-        String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
-        String IsCBA = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("isCba")));
-        String TimeInHours = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("timeInHours")));
-        String ExamSchedule = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("examSchedule")));
+        String Reference = (String) recordsList.get("reference");
+        String Code = (String) recordsList.get("code");
+        String Description = (String) recordsList.get("description");
+        Long Rate = (Long) recordsList.get("rate");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_SHORTNAME", ShortName);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_ISCBA", IsCBA);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_TIMEINHOURS", TimeInHours);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PAPER_EXAMSCHEDULE", ExamSchedule);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecVatRuleValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecVatRuleValue + "_CODE", Code);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecVatRuleValue + "_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecVatRuleValue + "_RATE", String.valueOf(Rate));
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Vat Rule: " +
+                "<br>" + "Vat Rule Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Vat Rule Code: " + "<font color='red'><b>" + Code + "</font></b>" +
+                "<br>" + "Vat Rule Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "<br>" + "Vat Rule Rate: " + "<font color='red'><b>" + Rate + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Vat Rule was successfully created.");
+    }
+
+    @When("I create new Exam Preparation saving as \"([^\"]*)\"$")
+    public void i_create_exam_preparation(String ecExamPreparationValue) {
+
+        JSONObject recordsList = restController.requestProcess("addExamPreparation","createExamPreparation", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String Name = (String) recordsList.get("name");
+        String Description = (String) recordsList.get("description");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey(ecExamPreparationValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecExamPreparationValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecExamPreparationValue + "_DESCRIPTION", Description);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Exam Preparation: " +
+                "<br>" + "Exam Preparation Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Exam Preparation Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Exam Preparation Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Exam Preparation was successfully created.");
+    }
+
+    @When("I create new Study Mode saving as \"([^\"]*)\"$")
+    public void i_create_study_mode(String ecStudyModeValue) {
+
+        JSONObject recordsList = restController.requestProcess("addStudyMode","createStudyMode", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String Name = (String) recordsList.get("name");
+        String Description = (String) recordsList.get("description");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStudyModeValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStudyModeValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStudyModeValue + "_DESCRIPTION", Description);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Study Mode: " +
+                "<br>" + "Study Mode Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Study Mode Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Study Mode Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Study Mode was successfully created.");
+    }
+
+    @When("I create new Course Type saving as \"([^\"]*)\"$")
+    public void i_create_course_type(String ecCourseTypeValue) {
+
+        JSONObject recordsList = restController.requestProcess("addCourseType","createCourseType", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String Description = (String) recordsList.get("description");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseTypeValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseTypeValue + "_DESCRIPTION", Description);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Course Type: " +
+                "<br>" + "Course Type Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Course Type Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Course Type was successfully created.");
+    }
+
+    @When("I create new Vertical saving as \"([^\"]*)\"$")
+    public synchronized void i_create_vertical(String ecVerticalValue) {
+
+        JSONObject recordsList = restController.requestProcess("addVertical","createVertical", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String Name = (String) recordsList.get("name");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey(ecVerticalValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecVerticalValue + "_NAME", Name);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Vertical: " +
+                "<br>" + "Vertical Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Vertical Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Vertical was successfully created.");
+    }
+
+    @When("I create new Body saving as \"([^\"]*)\"$")
+    public synchronized void i_create_body(String ecBodyValue) {
+
+        JSONObject recordsList = restController.requestProcess("addBody","createBody", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String ShortName = (String) recordsList.get("shortName");
+        String Name = (String) recordsList.get("name");
+        String Description = (String) recordsList.get("description");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey(ecBodyValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecBodyValue + "_SHORTNAME", ShortName);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecBodyValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecBodyValue + "_DESCRIPTION", Description);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" +
+                "<br>Body: " +
+                "<br>" + "Body Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
+                "<br>" + "Body Short Name: " + "<font color='red'><b>" + ShortName + "</font></b>" +
+                "<br>" + "Body Name: " + "<font color='red'><b>" + Name + "</font></b>" +
+                "<br>" + "Body Description: " + "<font color='red'><b>" + Description + "</font></b>" +
+                "</pre>");
+
+        BPPLogManager.getLogger().info("Body was successfully created.");
+    }
+
+    @When("I create new Paper with CBA \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_create_paper(Boolean isCBA, String ecPaperValue) {
+
+        JSONObject recordsList = restController.requestProcess("addPaper","createPaper", String.valueOf(isCBA), null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String ShortName = (String) recordsList.get("shortName");
+        String Name = (String) recordsList.get("name");
+        String Description = (String) recordsList.get("description");
+        Boolean IsCBA = (Boolean) recordsList.get("isCba");
+        Long TimeInHours = (Long) recordsList.get("timeInHours");
+        String ExamSchedule = (String) recordsList.get("examSchedule");
+
+        /*Set EC values for JSON object values*/
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_SHORTNAME", ShortName);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_ISCBA", String.valueOf(IsCBA));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_TIMEINHOURS", String.valueOf(TimeInHours));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPaperValue + "_EXAMSCHEDULE", ExamSchedule);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -329,24 +303,24 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Paper was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewLevel() {
+    @When("I create new Level saving as \"([^\"]*)\"$")
+    public void i_create_level(String ecLevelValue) {
 
-        JSONObject recordsList = requestProcess("addLevel","createLevel", null, null);
+        JSONObject recordsList = restController.requestProcess("addLevel","createLevel", null, null);
 
         /*Get JSON object values*/
-        String ShortName = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("shortName")));
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
+        String Reference = (String) recordsList.get("reference");
+        String ShortName = (String) recordsList.get("shortName");
+        String Name = (String) recordsList.get("name");
+        String Description = (String) recordsList.get("description");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_SHORTNAME", ShortName);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LEVEL_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLevelValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLevelValue + "_SHORTNAME", ShortName);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLevelValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLevelValue + "_DESCRIPTION", Description);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -358,59 +332,71 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Level was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses linkBodyToLevels() {
+    @When("I link Body to Levels")
+    public void i_link_body_to_levels() {
 
-        requestProcess("linkBodyToLevels","linkBodyToLevels", null, null);
-
-        assertEquals(Reference,TestParametersController.checkIfSpecialParameter("EC_BODY_REFERENCE"));
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" + "Response Reference equal to Body Reference" + "</pre>");
-        BPPLogManager.getLogger().info("Body was successfully linked to Level.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses changePaperBody() {
-
-        requestProcess("changePaperBody","changePaperBody", null, null);
-
-        assertEquals(Reference,TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE"));
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" + "Response Reference equal to Body Reference" + "</pre>");
-        BPPLogManager.getLogger().info("Paper's Body was successfully changed.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses linkPaperToLevels() {
-
-        requestProcess("linkPaperToLevels","linkPaperToLevels", null, null);
-
-        assertEquals(Reference,TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE"));
-
-        /*Report log with Json object values*/
-        Reporter.log("<pre>" + "Response Reference equal to Paper Reference" + "</pre>");
-        BPPLogManager.getLogger().info("Paper was successfully linked to Level.");
-
-        return this;
-    }
-
-    public ProductFactoryBusinessProcesses createNewRegion() {
-
-        JSONObject recordsList = requestProcess("addRegion","createRegion", null, null);
+        JSONObject recordsList = restController.requestProcess("linkBodyToLevels","linkBodyToLevels", null, null);
 
         /*Get JSON object values*/
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String Reference = (String) recordsList.get("reference");
+        String BodyReference = TestParametersController.checkIfSpecialParameter("EC_BODY_REFERENCE");
+
+        assertEquals(Reference,BodyReference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" + "Response Reference: [" + Reference + "] is equal to Body Reference: [" + BodyReference + "]" + "</pre>");
+
+        BPPLogManager.getLogger().info("Body was successfully linked to Level.");
+    }
+
+    @When("I change Paper Body")
+    public void i_change_paper_body() {
+
+        JSONObject recordsList = restController.requestProcess("changePaperBody","changePaperBody", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String PaperReference = TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE");
+
+        assertEquals(Reference,PaperReference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" + "Response Reference: [" + Reference + "] is equal to Paper Reference: [" + PaperReference + "]" + "</pre>");
+
+        BPPLogManager.getLogger().info("Paper's Body was successfully changed.");
+    }
+
+    @When("I link Paper to Levels")
+    public void i_link_paper_to_levels() {
+
+        JSONObject recordsList = restController.requestProcess("linkPaperToLevels","linkPaperToLevels", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String PaperReference = TestParametersController.checkIfSpecialParameter("EC_PAPER_REFERENCE");
+
+        assertEquals(Reference,PaperReference);
+
+        /*Report log with Json object values*/
+        Reporter.log("<pre>" + "Response Reference: [" + Reference + "] is equal to Paper Reference: [" + PaperReference + "]" + "</pre>");
+
+        BPPLogManager.getLogger().info("Paper was successfully linked to Level.");
+    }
+
+    @When("I create new Region saving as \"([^\"]*)\"$")
+    public void i_create_region(String ecRegionValue) {
+
+        JSONObject recordsList = restController.requestProcess("addRegion","createRegion", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
+        String Name = (String) recordsList.get("name");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_REGION_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_REGION_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecRegionValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecRegionValue + "_NAME", Name);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -420,32 +406,32 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Region was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewLocation() {
+    @When("I create new Location saving as \"([^\"]*)\"$")
+    public void i_create_location(String ecLocationValue) {
 
-        JSONObject recordsList = requestProcess("addLocation","createLocation", null, null);
+        JSONObject recordsList = restController.requestProcess("addLocation","createLocation", null, null);
 
         /*Get JSON object values*/
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
-        String AddressLine1 = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("addressLine1")));
-        String AddressLine2 = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("addressLine2")));
-        String AddressLine3 = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("addressLine3")));
-        String PostCode = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("postcode")));
-        String City = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("city")));
-        String CountryCode = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("countryCode")));
+        String Reference = (String) recordsList.get("reference");
+        String Name = (String) recordsList.get("name");
+        String AddressLine1 = (String) recordsList.get("addressLine1");
+        String AddressLine2 = (String) recordsList.get("addressLine2");
+        String AddressLine3 = (String) recordsList.get("addressLine3");
+        String PostCode = (String) recordsList.get("postcode");
+        String City = (String) recordsList.get("city");
+        String CountryCode = (String) recordsList.get("countryCode");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_ADDRESS_LINE_ONE", AddressLine1);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_ADDRESS_LINE_TWO", AddressLine2);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_ADDRESS_LINE_THREE", AddressLine3);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_POST_CODE", PostCode);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_CITY", City);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_LOCATION_COUNTRY_CODE", CountryCode);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_ADDRESS_LINE_ONE", AddressLine1);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_ADDRESS_LINE_TWO", AddressLine2);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_ADDRESS_LINE_THREE", AddressLine3);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_POST_CODE", PostCode);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_CITY", City);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecLocationValue + "_COUNTRY_CODE", CountryCode);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -461,24 +447,24 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Location was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewSessionDuration(Boolean parameter1) {
+    @When("I create new Session Duration with Allowed for CBA \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_create_session_duration(Boolean allowedForCba, String ecSessionDurationValue) {
 
-        JSONObject recordsList = requestProcess("addSessionDuration","createSessionDuration", String.valueOf(parameter1), null);
+        JSONObject recordsList = restController.requestProcess("addSessionDuration","createSessionDuration", String.valueOf(allowedForCba), null);
 
         /*Get JSON object values*/
-        String Description = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("description")));
-        String DateCount = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("dateCount")));
-        String AllowedForCBA = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("allowedForCba")));
+        String Reference = (String) recordsList.get("reference");
+        String Description = (String) recordsList.get("description");
+        Long DateCount = (Long) recordsList.get("dateCount");
+        Boolean AllowedForCBA = (Boolean) recordsList.get("allowedForCba");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_DATE_COUNT", DateCount);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DURATION_ALLOWED_FOR_CBA", AllowedForCBA);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionDurationValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionDurationValue + "_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionDurationValue + "_DATE_COUNT", String.valueOf(DateCount));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionDurationValue + "_ALLOWED_FOR_CBA", String.valueOf(AllowedForCBA));
 
 
         /*Report log with Json object values*/
@@ -491,16 +477,18 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Session Duration was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewPricingMatrix() {
+    @When("I create new Pricing Matrix saving as \"([^\"]*)\"$")
+    public void i_create_pricing_matrix(String ecPricingMatrixValue) {
 
-        JSONObject recordsList = requestProcess("addPricingMatrix","createPricingMatrix", null, null);
+        JSONObject recordsList = restController.requestProcess("addPricingMatrix","createPricingMatrix", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PRICING_MATRIX_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPricingMatrixValue + "_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -509,16 +497,18 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Pricing Matrix was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewPrices() {
+    @When("I create new Prices saving as \"([^\"]*)\"$")
+    public void i_create_prices(String ecPricesValue) {
 
-        JSONObject recordsList = requestProcess("addPrices","createPrices", null, null);
+        JSONObject recordsList = restController.requestProcess("addPrices","createPrices", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PRICES_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPricesValue + "_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -527,19 +517,19 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Prices was successfully created for Pricing Matrix.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewDigitalContent(String parameter1, String parameter2) {
+    @When("I create new Digital Content with Content Type \"([^\"]*)\" and Target Platform \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_create_digital_content(String contentType, String targetPlatform,String ecDigitalContentValue) {
 
-        JSONObject recordsList = requestProcess("addDigitalContent","createDigitalContent", parameter1, parameter2);
+        JSONObject recordsList = restController.requestProcess("addDigitalContent","createDigitalContent", contentType, targetPlatform);
 
         /*Get JSON object values*/
-        String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
+        String Reference = (String) recordsList.get("reference");
+        String Name = (String) recordsList.get("name");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_DIGITAL_CONTENT_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecDigitalContentValue + "_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -548,22 +538,22 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Digital Content was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewUniversityProgrammes() {
+    @When("I create new University Programmes saving as \"([^\"]*)\"$")
+    public void i_create_university_programmes(String ecUniversityProgrammesValue) {
 
-        JSONObject recordsList = requestProcess("addUniversityProgrammes","createProgramme", null, null);
+        JSONObject recordsList = restController.requestProcess("addUniversityProgrammes","createProgramme", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Code = (String) recordsList.get("code");
         String Name = (String) recordsList.get("name");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_UNIVERSITY_PROGRAMME_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_UNIVERSITY_PROGRAMME_CODE", Code);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_UNIVERSITY_PROGRAMME_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecUniversityProgrammesValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecUniversityProgrammesValue + "_PROGRAMME_CODE", Code);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecUniversityProgrammesValue + "_PROGRAMME_NAME", Name);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -574,41 +564,42 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("University Programme was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewProgrammeCohorts() {
+    @When("I create new Programme Cohorts saving as \"([^\"]*)\"$")
+    public void i_create_programme_cohorts(String ecProgrammeCohortsValue) {
 
-        JSONObject recordsList = requestProcess("addProgrammeCohort","createCohort", null, null);
+        JSONObject recordsList = restController.requestProcess("addProgrammeCohort","createCohort", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = (String) recordsList.get("name");
         String StartTeachingDate = (String) recordsList.get("startTeachingDate");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PROGRAMME_COHORT_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PROGRAMME_COHORT_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_PROGRAMME_COHORT_CODE", StartTeachingDate);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecProgrammeCohortsValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecProgrammeCohortsValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecProgrammeCohortsValue + "_START_TEACHING_DATE", StartTeachingDate);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
                 "<br>Programme Cohort: " +
                 "<br>" + "Programme Cohort Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
                 "<br>" + "Programme Cohort Name: " + "<font color='red'><b>" + Name + "</font></b>" +
-                "<br>" + "Programme Cohort Code: " + "<font color='red'><b>" + StartTeachingDate + "</font></b>" +
+                "<br>" + "Programme Cohort Start Teaching Date: " + "<font color='red'><b>" + StartTeachingDate + "</font></b>" +
                 "</pre>");
 
         BPPLogManager.getLogger().info("Programme Cohort was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewModuleSections(Boolean parameter1) {
+    //TODO: FIX
+    @When("I create new Module Sections with all Checkboxes \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_create_module_sections(String checkBox, String ecModuleSectionValue) {
 
-        JSONObject recordsList = requestProcess("addModuleSections","createModule", String.valueOf(parameter1), null);
+        JSONObject recordsList = restController.requestProcess("addModuleSections","createModule", String.valueOf(checkBox), null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = (String) recordsList.get("name");
         String TermCode = (String) recordsList.get("termCode");
         Boolean GroupRequirementCohort = (Boolean) recordsList.get("groupRequirementCohort");
@@ -616,12 +607,12 @@ public class ProductFactoryBusinessProcesses {
         Boolean GroupRequirementLocation = (Boolean) recordsList.get("groupRequirementLocation");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_TERM_CODE", TermCode);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_GROUP_REQUIREMENT_COHORT", String.valueOf(GroupRequirementCohort));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_GROUP_REQUIREMENT_MODE", String.valueOf(GroupRequirementMode));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MODULE_SECTIONS_GROUP_REQUIREMENT_LOCATION", String.valueOf(GroupRequirementLocation));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecModuleSectionValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecModuleSectionValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecModuleSectionValue + "_TERM_CODE", TermCode);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecModuleSectionValue + "_GROUP_REQUIREMENT_COHORT", String.valueOf(GroupRequirementCohort));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecModuleSectionValue + "_GROUP_REQUIREMENT_MODE", String.valueOf(GroupRequirementMode));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecModuleSectionValue + "_REQUIREMENT_LOCATION", String.valueOf(GroupRequirementLocation));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -635,15 +626,15 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Module Section was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewStockSite() {
+    @When("I create new Stock Site saving as \"([^\"]*)\"$")
+    public void i_create_stock_site(String ecStockSiteValue) {
 
-        JSONObject recordsList = requestProcess("addStockSites","createStockSite", null, null);
+        JSONObject recordsList = restController.requestProcess("addStockSites","createStockSite", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = (String ) recordsList.get("name");
         String AddressLine1 = (String ) recordsList.get("addressLine1");
         String AddressLine2 = (String ) recordsList.get("addressLine2");
@@ -653,14 +644,14 @@ public class ProductFactoryBusinessProcesses {
         String CountryCode = (String ) recordsList.get("countryCode");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_ADDRESS_LINE_ONE", AddressLine1);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_ADDRESS_LINE_TWO", AddressLine2);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_ADDRESS_LINE_THREE", AddressLine3);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_POST_CODE", PostCode);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_CITY", City);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STOCK_SITE_COUNTRY_CODE", CountryCode);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_ADDRESS_LINE_ONE", AddressLine1);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_ADDRESS_LINE_TWO", AddressLine2);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_ADDRESS_LINE_THREE", AddressLine3);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_POST_CODE", PostCode);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_CITY", City);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStockSiteValue + "_COUNTRY_CODE", CountryCode);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -675,16 +666,16 @@ public class ProductFactoryBusinessProcesses {
                 "<br>" + "Stock Site Country Code: " + "<font color='red'><b>" + CountryCode + "</font></b>" +
                 "</pre>");
 
-        BPPLogManager.getLogger().info("Location was successfully created.");
-
-        return this;
+        BPPLogManager.getLogger().info("Stock Site was successfully created.");
     }
 
-    public ProductFactoryBusinessProcesses createNewMaterialType(Boolean parameter1) {
+    @When("I create new Material Type with all Checkboxes \"([^\"]*)\"  saving as \"([^\"]*)\"$")
+    public void i_create_material_type(Boolean checkBoxes, String ecMaterialTypeValue) {
 
-        JSONObject recordsList = requestProcess("addMaterialType","createMaterialType", String.valueOf(parameter1), null);
+        JSONObject recordsList = restController.requestProcess("addMaterialType","createMaterialType", String.valueOf(checkBoxes), null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = (String) recordsList.get("name");
         String Description = (String) recordsList.get("description");
         Boolean IsExpiryDateRequired = (Boolean) recordsList.get("isExpiryDateRequired");
@@ -693,13 +684,13 @@ public class ProductFactoryBusinessProcesses {
         Boolean IsWeightRequired = (Boolean) recordsList.get("isWeightRequired");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_NAME", Name);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsExpiryDateRequired));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsIsbnRequired));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsPriceRequired));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_MATERIAL_TYPE_", String.valueOf(IsWeightRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_IS_EXPIRY_DATE_REQUIRED", String.valueOf(IsExpiryDateRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_IS_ISBN_REQUIRED", String.valueOf(IsIsbnRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_IS_PRICE_REQUIRED", String.valueOf(IsPriceRequired));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecMaterialTypeValue + "_IS_WEIGHT_REQUIRED", String.valueOf(IsWeightRequired));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -714,20 +705,20 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Material Type was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewClients() {
+    @When("I create new Clients saving as \"([^\"]*)\"$")
+    public void i_create_clients(String ecClientsValue) {
 
-        JSONObject recordsList = requestProcess("addClients","createClient", null, null);
+        JSONObject recordsList = restController.requestProcess("addClients","createClient", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_CLIENTS_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_CLIENTS_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecClientsValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecClientsValue + "_NAME", Name);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -737,20 +728,20 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Client was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewStreams() {
+    @When("I create new Streams saving as \"([^\"]*)\"$")
+    public void i_create_streams(String ecStreamsValue) {
 
-        JSONObject recordsList = requestProcess("addStreams","createStream", null, null);
+        JSONObject recordsList = restController.requestProcess("addStreams","createStream", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Name = TestParametersController.checkIfSpecialParameter(String.valueOf(recordsList.get("name")));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAM_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STREAM_NAME", Name);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStreamsValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStreamsValue + "_NAME", Name);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -760,22 +751,22 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Stream was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewDeactivationReason(Boolean parameter1) {
+    @When("I create new Deactivation Reason with all Checkboxes \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_create_deactivation_reason(Boolean preventReactivation, String ecDeactivationReasonValue) {
 
-        JSONObject recordsList = requestProcess("addDeactivationReason","createDeactivationReason", String.valueOf(parameter1), null);
+        JSONObject recordsList = restController.requestProcess("addDeactivationReason","createDeactivationReason", String.valueOf(preventReactivation), null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String Description = (String) recordsList.get("description");
         Boolean PreventReactivation = (Boolean) recordsList.get("preventReactivation");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_DEACTIVATION_REASON_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_DEACTIVATION_REASON_DESCRIPTION", Description);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_DEACTIVATION_REASON_PREVENT_REACTIVATION", String.valueOf(PreventReactivation));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecDeactivationReasonValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecDeactivationReasonValue + "_DESCRIPTION", Description);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecDeactivationReasonValue + "_PREVENT_REACTIVATION", String.valueOf(PreventReactivation));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -786,16 +777,18 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Deactivation Reason was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewCourse() {
+    @When("I create new Course saving as \"([^\"]*)\"$")
+    public void i_create_course(String ecCourseValue) {
 
-        JSONObject recordsList = requestProcess("addCourse","createCourse", null, null);
+        JSONObject recordsList = restController.requestProcess("addCourse","createCourse", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseValue + "_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -804,25 +797,24 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Course was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createNewInstance() {
+    @When("I create new Instance saving as \"([^\"]*)\" and saving new session as \"([^\"]*)\"$")
+    public void i_create_instance_for_course(String ecInstanceValue, String ecSessionValue) {
 
-        JSONObject recordsList = requestProcess("addInstance","createInstance", null, null);
+        JSONObject recordsList = restController.requestProcess("addInstance","createInstance", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         JSONArray sessionsArray = (JSONArray) recordsList.get("sessions");
         JSONObject sessionsObj = (JSONObject) sessionsArray.get(0);
-
         String SessionReference = (String) sessionsObj.get("reference");
         String Status = (String) recordsList.get("status");
         Integer Capacity = (Integer) recordsList.get("capacity");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_REFERENCE", SessionReference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecInstanceValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionValue + "_REFERENCE", SessionReference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -834,40 +826,19 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Instance was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses changeInstanceCapacity(Integer parameter1) {
+    @When("I change Instance Capacity with Capacity \"([^\"]*)\" saving as \"([^\"]*)\"$")
+    public void i_change_instance_capacity(Integer capacity, String ecInstanceCapacityValue) {
 
-        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
-                restController.processPropertiesPF("ProductFactory/changeInstanceCapacity", String.valueOf(parameter1), null),
-                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
-        );
-
-        String ResponseString = Response.getBody().asString();
-
-        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
-        JSONObject recordsData = (JSONObject) recordsObject.get("data");
-        JSONObject recordsList = (JSONObject) recordsData.get("updateInstance");
-
-        /*Get Json object values*/
-        try {
-            Reference = (String) recordsList.get("reference");
-        } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
-            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
-            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
-        }
-
-        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
-        assertThat(ResponseString, containsString("updateInstance"));
+        JSONObject recordsList = restController.requestProcess("changeInstanceCapacity","updateInstance", String.valueOf(capacity), null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         Long Capacity = (Long) recordsList.get("capacity");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_CAPACITY", String.valueOf(Capacity));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecInstanceCapacityValue + "_CAPACITY", String.valueOf(Capacity));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -877,11 +848,10 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Instance Capacity was successfully changed.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses getInstanceSessions() {
+    @When("I get Instance Sessions saving as \"([^\"]*)\"$")
+    public void i_get_instance_sessions(String ecSessionTimingValue) {
 
         Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
                 restController.processPropertiesPF("ProductFactory/getInstanceSessions", null, null),
@@ -898,6 +868,7 @@ public class ProductFactoryBusinessProcesses {
         JSONArray recordsArrayList = (JSONArray) recordsList.get("timings");
         JSONObject item = (JSONObject) recordsArrayList.get(0);
         String timingReference = (String) item.get("reference");
+        String Reference = (String) recordsList.get("reference");
 
         /*Get Json object values*/
         try {
@@ -912,7 +883,7 @@ public class ProductFactoryBusinessProcesses {
         assertThat(ResponseString, containsString("session"));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_TIMING_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionTimingValue + "_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -921,13 +892,12 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Session Timing Reference timing was successfully received.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses changeSessionTimings() {
+    @When("I change Session Timings saving as \"([^\"]*)\"$")
+    public void i_change_session_timings(String ecSessionValue) {
 
-        JSONObject recordsList = requestProcess("changeSessionTimings","changeSessionTimings", null, null);
+        JSONObject recordsList = restController.requestProcess("changeSessionTimings","changeSessionTimings", null, null);
 
         /*Get JSON object values*/
         JSONArray recordsArrayList = (JSONArray) recordsList.get("timings");
@@ -935,12 +905,13 @@ public class ProductFactoryBusinessProcesses {
         String sessionDate = (String) item.get("sessionDate");
         String startTime = (String) item.get("startTime");
         String endTime = (String) item.get("endTime");
+        String Reference = (String) recordsList.get("reference");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_DATE", sessionDate);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_START_TIME", String.valueOf(startTime));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_SESSION_END_TIME", String.valueOf(endTime));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionValue + "_DATE", sessionDate);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionValue + "_START_TIME", String.valueOf(startTime));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecSessionValue + "_END_TIME", String.valueOf(endTime));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -953,11 +924,10 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Session Timing was successfully changed.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses getInstanceSteps() {
+    @When("I get Instance Steps saving as \"([^\"]*)\"$")
+    public void i_get_instance_steps(String ecStepValue) {
 
         Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
                 restController.processPropertiesPF("ProductFactory/getInstanceSteps", null, null),
@@ -971,7 +941,7 @@ public class ProductFactoryBusinessProcesses {
         JSONObject recordsData = (JSONObject) recordsObject.get("data");
         JSONArray recordsArray = (JSONArray) recordsData.get("steps");
         JSONObject recordsList = (JSONObject) recordsArray.get(0);
-
+        String Reference = (String) recordsList.get("reference");
         String dueDate = (String) recordsList.get("dueDate");
         Long stepNumber = (Long) recordsList.get("stepNumber");
 
@@ -988,9 +958,9 @@ public class ProductFactoryBusinessProcesses {
         assertThat(ResponseString, containsString("steps"));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_REFERENCE", Reference);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_DUE_DATE", dueDate);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_STEPNUMBER", String.valueOf(stepNumber));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStepValue + "_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStepValue + "_DUE_DATE", dueDate);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStepValue + "_STEPNUMBER", String.valueOf(stepNumber));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -1001,21 +971,21 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Step Reference was successfully received.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses changeInstanceSteps() {
+    @When("I change Instance Steps saving as \"([^\"]*)\"$")
+    public void i_change_instance_steps(String ecStepValue) {
 
-        JSONObject recordsList = requestProcess("changeStepDueDate","changeStepDueDate", null, null);
+        JSONObject recordsList = restController.requestProcess("changeStepDueDate","changeStepDueDate", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String dueDate = (String) recordsList.get("dueDate");
         Long stepNumber = (Long) recordsList.get("stepNumber");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_DUE_DATE", dueDate);
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_STEPNUMBER", String.valueOf(stepNumber));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStepValue + "_DUE_DATE", dueDate);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecStepValue +"_STEPNUMBER", String.valueOf(stepNumber));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -1026,41 +996,44 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Steps was successfully changed.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses calculateCoursePrice() {
+    @When("I calculate Course Price saving as \"([^\"]*)\"$")
+    public void i_calculate_course_price(String ecPriceValue) {
 
-        JSONObject recordsList = requestProcess("calculateCoursePrice","calculateCoursePrice", null, null);
+        JSONObject recordsList = restController.requestProcess("calculateCoursePrice","calculateCoursePrice", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         Long price = (Long) recordsList.get("price");
+        String status = (String) recordsList.get("status");
 
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_STEP_DUE_DATE", String.valueOf(price));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecPriceValue, String.valueOf(price));
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
                 "<br>Price: " +
+                "<br>" + "Course Reference: " + "<font color='red'><b>" + Reference + "</font></b>" +
                 "<br>" + "Course Price: " + "<font color='red'><b>" + price + "</font></b>" +
+                "<br>" + "Course Status: " + "<font color='red'><b>" + status + "</font></b>" +
                 "</pre>");
 
         BPPLogManager.getLogger().info("Course Price was successfully calculated.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses activateCourse() {
+    @When("I activate Course saving as \"([^\"]*)\"$")
+    public void i_activate_course(String ecActivateCourseValue) {
 
-        JSONObject recordsList = requestProcess("activateCourse","activateCourse", null, null);
+        JSONObject recordsList = restController.requestProcess("activateCourse","activateCourse", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String status = (String) recordsList.get("status");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_ACTIVATION_STATUS", status);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecActivateCourseValue + "_STATUS", status);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -1070,19 +1043,19 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Course was successfully activated.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses activateInstance() {
+    @When("I activate Instance saving as \"([^\"]*)\"$")
+    public void i_activate_instance(String ecActivateInstanceValue) {
 
-        JSONObject recordsList = requestProcess("activateInstance","activateInstance", null, null);
+        JSONObject recordsList = restController.requestProcess("activateInstance","activateInstance", null, null);
 
         /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
         String status = (String) recordsList.get("status");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_ACTIVATION_STATUS", status);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecActivateInstanceValue + "_STATUS", status);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -1092,16 +1065,18 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Instance was successfully activated.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses createCourseBulkOperation() {
+    @When("I create Course Bulk Operation saving as \"([^\"]*)\"$")
+    public void i_create_course_bulk_operation(String ecCourseBulkOperationValue) {
 
-        JSONObject recordsList = requestProcess("createCourseBulkOperation","createCourseBulkOperation", null, null);
+        JSONObject recordsList = restController.requestProcess("createCourseBulkOperation","createCourseBulkOperation", null, null);
+
+        /*Get JSON object values*/
+        String Reference = (String) recordsList.get("reference");
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_BULK_OPERATION_REFERENCE", Reference);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseBulkOperationValue + "_REFERENCE", Reference);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -1110,21 +1085,12 @@ public class ProductFactoryBusinessProcesses {
                 "</pre>");
 
         BPPLogManager.getLogger().info("Course Bulk Operation was successfully created.");
-
-        return this;
     }
 
-    public ProductFactoryBusinessProcesses bulkWebPublish(Boolean parameter1) {
+    @When("I execute Bulk Web Publishing with publish to WEB \"([^\"]*)\" saving course as \"([^\"]*)\" and instance as \"([^\"]*)\"$")
+    public void i_execute_bulk_web_publishing(Boolean makeAvailable, String ecCourseAvailableValue, String ecInstanceAvailableValue) {
 
-        Response Response = restController.postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
-                restController.processPropertiesPF("ProductFactory/bulkWebPublish", String.valueOf(parameter1), null),
-                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
-        );
-        String ResponseString = Response.getBody().asString();
-
-        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
-        JSONObject recordsData = (JSONObject) recordsObject.get("data");
-        JSONObject recordsList = (JSONObject) recordsData.get("courseBulkOperationWebPublish");
+        JSONObject recordsList = restController.requestProcess("bulkWebPublish","courseBulkOperationWebPublish", String.valueOf(makeAvailable), null);
 
         /*Get Json object values*/
         JSONArray coursesArray = (JSONArray) recordsList.get("courses");
@@ -1139,25 +1105,16 @@ public class ProductFactoryBusinessProcesses {
         JSONObject instancesObject = (JSONObject) instancesFirstArray.get("instance");
         Boolean instanceAvailableOnWEB = (Boolean) instancesObject.get("availableOnWebsite");
         String instanceStatus = (String) instancesObject.get("status");
+        String Reference = (String) recordsList.get("reference");
 
-        try {
-            Reference = (String) recordsList.get("reference");
-        } catch (Exception e) {
-            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
-            Reporter.fail("<br>" + Tools.getStackTrace(e) + "</br>");
-            throw new RuntimeException("Can't proceed with response: " + Reference + " Please check -corespondent.json- file. Possible duplication or empty strings");
-        }
-
-        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
-        assertThat(ResponseString, containsString("courseBulkOperationWebPublish"));
 
         /*Set EC values for JSON object values*/
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_INCLUDED", String.valueOf(courseIncluded));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_AWAILABLE_ON_WEB", String.valueOf(courseAvailableOnWEB));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_COURSE_STATUS",courseStatus );
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_INCLUDED", String.valueOf(instanceIncluded));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_AWAILABLE_ON_WEB", String.valueOf(instanceAvailableOnWEB));
-        ExecutionContextHandler.setExecutionContextValueByKey("EC_INSTANCE_STATUS",instanceStatus);
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseAvailableValue + "_INCLUDED", String.valueOf(courseIncluded));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseAvailableValue + "_AWAILABLE_ON_WEB", String.valueOf(courseAvailableOnWEB));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecCourseAvailableValue + "_STATUS",courseStatus );
+        ExecutionContextHandler.setExecutionContextValueByKey(ecInstanceAvailableValue + "_INCLUDED", String.valueOf(instanceIncluded));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecInstanceAvailableValue + "_AWAILABLE_ON_WEB", String.valueOf(instanceAvailableOnWEB));
+        ExecutionContextHandler.setExecutionContextValueByKey(ecInstanceAvailableValue + "_STATUS",instanceStatus);
 
         /*Report log with Json object values*/
         Reporter.log("<pre>" +
@@ -1173,7 +1130,7 @@ public class ProductFactoryBusinessProcesses {
 
         BPPLogManager.getLogger().info("Bulk Web Publish was successfully executed.");
 
-        return this;
     }
 
 }
+

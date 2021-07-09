@@ -6,14 +6,22 @@ import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import ui.utils.BPPLogManager;
+import ui.utils.Reporter;
 import ui.utils.Tools;
+import ui.utils.bpp.PropertiesHelper;
 import ui.utils.bpp.TestParametersController;
 
 import java.util.*;
 
+import static com.jcabi.matchers.RegexMatchers.matchesPattern;
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertThat;
+import static org.junit.internal.matchers.StringContains.containsString;
 
 public class RestApiController {
+
+    private final PropertiesHelper propertiesHelper = new PropertiesHelper();
+    String Reference = null;
 
     /**
      * @param baseURI     - will be changed based of record type to be created
@@ -125,7 +133,7 @@ public class RestApiController {
                     "paperReference", "sittingReference", "vatRuleReference", "verticalReference", "regionReference", "courseTypeReference",
                     "pricingMatrixReference", "levelReference", "programmeReference", "cohortReference", "sessionReference", "stepReference",
                     "dueDate", "costCentreFinancialDimensionReference", "projectFinancialDimensionReference", "financialDimensionReference",
-                    "examPreparationReference", "studyModeReference"};
+                    "examPreparationReference", "studyModeReference","addressLine1","addressLine2","addressLine3"};
 
             for (String s: objectArray) {
                 if (!(command.get(s) == null)) {
@@ -168,6 +176,43 @@ public class RestApiController {
         }
 
         return jo.toString();
+    }
+
+    /**
+     * Method for processing JSON file of request.
+     * @param fileName - json file that is coresspondent for current request
+     * @param objName - json object (operationName) of current json file
+     **/
+
+    public synchronized JSONObject requestProcess(String fileName,String objName, String parameter1, String parameter2)  {
+
+        Response Response = postRequest(propertiesHelper.getProperties().getProperty("pf_request_link"),
+                processPropertiesPF("ProductFactory/" + fileName, parameter1, parameter2),
+                ProductFactoryAuthentication.getInstance().requestHeaderSpecification()
+        );
+        String ResponseString = Response.getBody().asString();
+
+        JSONObject recordsObject = new Utilities().getResponseProperty(Response);
+        JSONObject recordsData = (JSONObject) recordsObject.get("data");
+        JSONObject recordsList = (JSONObject) recordsData.get(objName);
+
+        /*Get Json object values*/
+        try {
+            Reference = (String) recordsList.get("reference");
+        } catch (Exception e) {
+            BPPLogManager.getLogger().error(Tools.getStackTrace(e));
+            Reporter.failTryTakingScreenshot("<br>" + Tools.getStackTrace(e) + "</br>");
+            JSONArray errorData = (JSONArray) recordsObject.get("errors");
+            JSONObject errorArray = (JSONObject) errorData.get(0);
+            String error = (String) errorArray.get("message");
+            Reporter.failTryTakingScreenshot("<br>" + error + "</br>");
+            throw new RuntimeException("Can't proceed with response: " + error);
+        }
+
+        assertThat(Reference, matchesPattern("([a-z0-9-]){36}"));
+        assertThat(ResponseString, containsString(objName));
+
+        return recordsList;
     }
 
     public Map processLocatorProperties(String locatorsFile) {
